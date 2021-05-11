@@ -1,0 +1,73 @@
+"Form_tx_Descricao"	"Form_tx_nomeCampo"	"Form_nr_Imprime"	"Form_nr_Altura"	"Form_nr_Largura"	"Form_nr_TamFonte"	"Form_nr_negrito"	"Form_tx_TipoDocumento"	"Empr_cd_empresa"
+"CPF ou CGC"	"CPF_CGC"	-1	6.2000000000000002	2.5	8	1	"PR"	1
+"Data do Vencimento"	"DataVenc"	-1	0.29999999999999999	7.4000000000000004	8	1	"PR"	1
+"Ano Atual - 4 Dígitos"	"DataAtual"	1	1.5	6.7999999999999998	8	1	"PR"	1
+"Valor do Título"	"ValorTitulo"	-1	0.69999999999999996	17.600000000000001	7	1	"PR"	1
+"Nome do Conjuge"	"NomeConjuge"	1	0	0	8	1	"PR"	1
+"Impostos"	"deen_vl_valor"	-1	14	11	8	1	"NFS"	1
+"Cidade "	"focl_tx_cidade"	-1	7	7	8	1	"NFS"	1
+"Valor do Serviço"	"itnf_vl_valor"	-1	5	2	8	1	"NFS"	1
+"Numero da Nota"	"nofi_cd_notafiscal"	-1	1	15	8	1	"NFS"	1
+"Data Registro Cont. - Extenso"	"DataRegCont"	1	0	0	8	1	"PR"	1
+"Endereço do Comprador"	"EndCorrespondencia"	-1	6.6500000000000004	2.5	8	1	"PR"	1
+"Ano Atual - 2 Dígitos"	"Data Atual"	1	0	0	8	1	"PR"	1
+"Data de Registro do Contrato"	"DataRegCont"	1	0	0	8	1	"PR"	1
+"Numero da Fatura"	"NumFatura"	-1	1	1	8	1	"NFS"	1
+"Data do Vencimento - Exenso"	"DataVenc"	1	1.5	1.2	8	1	"PR"	1
+"Cidade/Estado do Comprador"	"Municipio_UF"	1	6.6500000000000004	7	8	1	"PR"	1
+"Nome do Indexador"	"NomeIndexador"	1	0	0	8	1	"PR"	1
+"Nome do Comprador"	"NomeCliente"	-1	5.7999999999999998	2.5	8	1	"PR"	1
+"Fax"	"Fax"	1	0	0	8	1	"PR"	1
+"Dia Atual"	"DataAtual"	1	1.5	1.5	8	1	"PR"	1
+"Data da Venda - Extenso"	"DataVenda"	1	0	0	8	1	"PR"	1
+"Ano Registro Cont. - 2 Dígitos"	"DataRegCont"	1	0	0	8	1	"PR"	1
+"Telefone Celular"	"TelCel"	1	0	0	8	1	"PR"	1
+"Ano Registro Cont. - 4 Dígitos"	"DataRegCont"	-1	6.2000000000000002	18	8	1	"PR"	1
+"Telefone Residencial"	"TelRes"	-1	7.5	4.5	8	1	"PR"	1
+"Ano da Venda - 2 Dígitos"	"DataVenda"	1	0	0	8	1	"PR"	1
+"Cidade/UF do Empreendimento"	"CidadeEstadoEmpreendimento"	1	0	0	8	1	"PR"	1
+"Data Atual - Extenso"	"DataAtual"	1	0	0	8	1	"PR"	1
+"Observação"	"Observacao"	1	8.4000000000000004	1	8	1	"PR"	1
+"Juros do Financiamento"	"JurosFin"	-1	7.9000000000000004	1	8	1	"PR"	1
+"Bairro"	"focl_tx_bairro"	-1	8	1	8	1	"NFS"	1
+"CEP"	"focl_tx_cep"	-1	9	1	8	1	"NFS"	1
+"Discriminação "	"nofi_tx_historico"	-1	2	3.5	8	1	"NFS"	1
+"Endereço"	"focl_tx_endereco"	-1	7	1	8	1	"NFS"	1
+"Estado"	"focl_tx_estado"	-1	11	1	8	1	"NFS"	1
+"Nome da Firma"	"focl_tx_razaosocial"	-1	1	1	11	1	"NFS"	1
+"Valor Total por Extenso"	"ValorPorExtenso"	-1	17	5	8	1	"NFS"	1
+"Quantidade dos Itens"	"Quantidade"	-1	5	2	8	1	"NFS"	1
+"Valor do Título - Extenso"	"ValorTitulo"	-1	4.5	4.5	8	1	"PR"	1
+"CPF do Conjuge"	"CPFConjuge"	1	0	0	8	1	"PR"	1
+"Mês do Registro Cont - Extenso"	"DataRegCont"	-1	6.2000000000000002	14.699999999999999	8	1	"PR"	1
+"CEP do Comprador"	"CEP"	-1	7.5	2.5	8	1	"PR"	1
+"Data Atual"	"DataAtual"	1	0	0	8	1	"PR"	1
+"Mês da Venda - Extenso"	"DataVenda"	1	0	0	8	1	"PR"	1
+"Ano do Vencimento - 4 Dígitos"	"DataVenc"	-1	1.5	6.7999999999999998	8	1	"PR"	1
+"Código do Título"	"CodTitulo"	-1	0.29999999999999999	4.7999999999999998	7	1	"PR"	1
+"Ano do Vencimento - 2 Dígitos"	"DataVenc"	1	3	8	8	1	"PR"	1
+"Mês Atual - Extenso"	"DataAtual"	1	1.5	3.2999999999999998	8	1	"PR"	1
+"Mês do Vencimento - Extenso"	"DataVenc"	-1	1.5	3.2999999999999998	8	1	"PR"	1
+"Dia da Venda"	"DataVenda"	1	0	0	8	1	"PR"	1
+"Ano da Venda - 4 Dígitos"	"DataVenda"	1	0	0	8	1	"PR"	1
+"Data da Venda"	"DataVenda"	1	0	0	8	1	"PR"	1
+"Cliente"	"focl_tx_razaosocial"	-1	14	1	8	1	"NFS"	1
+"Data de Emissao"	"nofi_dt_emissao"	-1	20	8	8	1	"NFS"	1
+"Cod. Item"	"CodItem"	-1	2	1	8	1	"NFS"	1
+"Numero do Documento"	"nofi_nr_documento"	-1	4	3.5	8	1	"NFS"	1
+"Total dos Serviço"	"TotalDoServico"	-1	2	15	8	1	"NFS"	1
+"Valor da Nota"	"nofi_vl_valor"	-1	2	13	8	1	"NFS"	1
+"Nr. Série da Nota"	"nofi_tx_serie"	-1	1	16	8	1	"NFS"	1
+"Valor Indexado"	"ValorIndexado"	-1	0.69999999999999996	11.199999999999999	8	1	"PR"	1
+"Telefone Comercial"	"TelCom"	-1	7.5	6.7999999999999998	8	1	"PR"	1
+"Dia do Vencimento - 2 Dígitos"	"DataVenc"	-1	1.5	1.5	8	1	"PR"	1
+"Titulo CGC:"	"TituloCGC"	1	0	0	8	1	"PR"	1
+"Nome da Empresa"	"NomeEmpresa"	-1	2.7000000000000002	11.5	8	1	"PR"	1
+"CGC"	"CGC"	-1	3.6800000000000002	2	8	1	"PR"	1
+"Dia do Registro Cont. - 2 Dig"	"DataRegCont"	-1	6.2000000000000002	12.800000000000001	8	1	"PR"	1
+"Cidade/UF da Empresa"	"CidadeEstadoEmpresa"	-1	5.7999999999999998	13.6	8	1	"PR"	1
+"Código do Imóvel"	"CodImovel"	-1	0.29999999999999999	1.3999999999999999	7	1	"PR"	1
+"CGC/CPF"	"focl_tx_CGCCPF"	-1	12	5	8	1	"NFS"	1
+"Data de Vencimento"	"dupl_dt_vencimento"	-1	6	1	8	1	"NFS"	1
+"Inscr. Estadual"	"focl_tx_Iestadual"	-1	13	1	8	1	"NFS"	1
+"Cotação"	"Cotacao"	-1	0.69999999999999996	15.4	8	1	"PR"	1
