@@ -32,6 +32,33 @@ Begin VB.Form FrmRelAssistenciaTecnica
       TabIndex        =   20
       Top             =   720
       Width           =   4095
+      Begin VB.Frame Frame15 
+         Caption         =   "Status"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   735
+         Left            =   120
+         TabIndex        =   46
+         Top             =   4440
+         Width           =   3855
+         Begin VB.ComboBox cboStatus 
+            Height          =   315
+            ItemData        =   "FrmRelAssistenciaTecnica.frx":0000
+            Left            =   120
+            List            =   "FrmRelAssistenciaTecnica.frx":0013
+            TabIndex        =   47
+            Text            =   "Todos"
+            Top             =   360
+            Width           =   3615
+         End
+      End
       Begin VB.Frame Frame13 
          Caption         =   "Responsável pela Conclusão"
          BeginProperty Font 
@@ -187,7 +214,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   66650115
+            Format          =   99155971
             CurrentDate     =   37678
          End
          Begin MSComCtl2.DTPicker DtpDataFim 
@@ -202,7 +229,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   66650115
+            Format          =   99155971
             CurrentDate     =   37617.651087963
          End
          Begin VB.Label LblFim 
@@ -270,7 +297,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   66650115
+            Format          =   99155971
             CurrentDate     =   37678
          End
          Begin MSComCtl2.DTPicker DtpConclusaoFim 
@@ -285,7 +312,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   66650115
+            Format          =   99155971
             CurrentDate     =   37617.651087963
          End
          Begin VB.Label Label8 
@@ -353,7 +380,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   66650115
+            Format          =   99155971
             CurrentDate     =   37678
          End
          Begin MSComCtl2.DTPicker DtpInicioTrabalhosFim 
@@ -368,7 +395,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   66650115
+            Format          =   99155971
             CurrentDate     =   37617.651087963
          End
          Begin VB.Label Label7 
@@ -436,7 +463,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   66650115
+            Format          =   99155971
             CurrentDate     =   37678
          End
          Begin MSComCtl2.DTPicker DtpPrimeiraVisitaFim 
@@ -451,7 +478,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   66650115
+            Format          =   99155971
             CurrentDate     =   37617.651087963
          End
          Begin VB.Label Label6 
@@ -519,7 +546,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   66650115
+            Format          =   99155971
             CurrentDate     =   37678
          End
          Begin MSComCtl2.DTPicker DtpEmissaoFim 
@@ -534,7 +561,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   66650115
+            Format          =   99155971
             CurrentDate     =   37617.651087963
          End
          Begin VB.Label Label5 
@@ -737,7 +764,8 @@ Dim XGT_CONJUNCAO As String
     XLT_RESPINICIOTRABALHOS = RespInicioTrabalhos.Text
     XLT_RESPCONCLUSAO = RespConclusao.Text
     XLT_AUTORIZADOR = Autorizador.Text
-    
+    XLT_STATUS = CboStatus.Text
+      
     
     
     
@@ -963,6 +991,17 @@ Dim XGT_CONJUNCAO As String
             End If
         End If
         
+        
+'Filtra pelo Status
+    If (XLT_STATUS <> "Todos") Then
+        XGT_SQL = "assi_tx_status = '" & XLT_STATUS & "'"
+         If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+           XGT_SELECAO = XGT_SELECAO + XGT_SQL
+        Else
+            XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
+        End If
+    
+    End If
         
      'Abre os recordsets e verifica se eles possuem dados
     Set XGO_RSRELATORIO = ConexaoRelatorio.Execute(XGT_SELECAO)
