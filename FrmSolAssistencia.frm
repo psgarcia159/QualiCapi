@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form FrmSolAssistencia 
    BorderStyle     =   1  'Fixed Single
@@ -125,7 +125,7 @@ Begin VB.Form FrmSolAssistencia
             _Version        =   393216
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
-            Format          =   85917699
+            Format          =   102170627
             CurrentDate     =   40544
          End
          Begin MSMask.MaskEdBox LblHoraConclusao 
@@ -240,7 +240,7 @@ Begin VB.Form FrmSolAssistencia
             _Version        =   393216
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
-            Format          =   85917699
+            Format          =   102170627
             CurrentDate     =   40544
          End
          Begin MSMask.MaskEdBox LblHoraIniTrabalhos 
@@ -355,7 +355,7 @@ Begin VB.Form FrmSolAssistencia
             _Version        =   393216
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
-            Format          =   85917699
+            Format          =   102170627
             CurrentDate     =   40544
          End
          Begin MSMask.MaskEdBox LblHoraPrVisita 
@@ -480,8 +480,8 @@ Begin VB.Form FrmSolAssistencia
          Begin VB.TextBox TxtOcorrencia 
             Height          =   2055
             Left            =   120
-            MaxLength       =   1000
             MultiLine       =   -1  'True
+            ScrollBars      =   2  'Vertical
             TabIndex        =   2
             Top             =   240
             Width           =   8055
@@ -503,7 +503,7 @@ Begin VB.Form FrmSolAssistencia
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   85917699
+            Format          =   102170627
             CurrentDate     =   40544
          End
          Begin VB.Label LblEntregaChaves 
@@ -1163,7 +1163,7 @@ Private Sub CmdGravar_Click()
         XLO_RS!empd_cd_Empreendimento = XFT_CODEMPREENDIMENTO
         XLO_RS!imov_cd_Imovel = XFT_CODIMOVEL
         XLO_RS!assi_cd_CodigoSeq = Format(XLT_CODSEQUENCIAL, "0#")
-        XLO_RS!empr_cd_empresa = PCodEmpresa
+        XLO_RS!empr_cd_Empresa = PCodEmpresa
         XLS_DATAPRVISITA = DataPrVisita.Value & " " & LblHoraPrVisita.Text
         XLS_DATAINITRABALHO = DataIniTrabalhos.Value & " " & LblHoraIniTrabalhos.Text
         XLS_DATACONCLUSAO = DataConclusao.Value & " " & LblHoraConclusao.Text
@@ -1237,7 +1237,7 @@ Private Sub CmdGravar_Click()
         XLO_RS!empd_cd_Empreendimento = XFT_CODEMPREENDIMENTO
         XLO_RS!imov_cd_Imovel = XFT_CODIMOVEL
         XLO_RS!assi_cd_CodigoSeq = LblNumOrdem.Caption
-        XLO_RS!empr_cd_empresa = PCodEmpresa
+        XLO_RS!empr_cd_Empresa = PCodEmpresa
         XLS_DATAPRVISITA = DataPrVisita.Value & " " & LblHoraPrVisita.Text
         XLS_DATAINITRABALHO = DataIniTrabalhos.Value & " " & LblHoraIniTrabalhos.Text
         XLS_DATACONCLUSAO = DataConclusao.Value & " " & LblHoraConclusao.Text
