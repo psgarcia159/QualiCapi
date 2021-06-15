@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
@@ -17,9 +17,9 @@ Begin VB.Form TelaManEmpreendimentos
    WindowState     =   2  'Maximized
    Begin Threed.SSPanel PanEmpreendimento 
       Height          =   5115
-      Left            =   360
+      Left            =   1080
       TabIndex        =   52
-      Top             =   360
+      Top             =   120
       Visible         =   0   'False
       Width           =   9030
       _Version        =   65536
@@ -80,7 +80,7 @@ Begin VB.Form TelaManEmpreendimentos
          Height          =   4110
          Left            =   120
          TabIndex        =   0
-         Top             =   300
+         Top             =   360
          Width           =   8850
          Begin VB.ComboBox cboAtividadeSped 
             Height          =   315
@@ -1275,14 +1275,14 @@ Begin VB.Form TelaManEmpreendimentos
       _StyleDefs(110) =   ":id=42,.parent=33"
    End
    Begin Threed.SSPanel PanBotoes 
-      Height          =   360
+      Height          =   720
       Left            =   240
       TabIndex        =   51
       Top             =   4125
       Width           =   8760
       _Version        =   65536
       _ExtentX        =   15452
-      _ExtentY        =   635
+      _ExtentY        =   1270
       _StockProps     =   15
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
@@ -1294,6 +1294,23 @@ Begin VB.Form TelaManEmpreendimentos
          Strikethrough   =   0   'False
       EndProperty
       BevelOuter      =   0
+      Begin VB.CommandButton Command1 
+         Caption         =   "Assis.Técnica"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   195
+         TabIndex        =   61
+         Top             =   360
+         Width           =   1335
+      End
       Begin VB.CommandButton CmdImoveis 
          BackColor       =   &H00000000&
          Caption         =   "&Imóveis"
@@ -1307,7 +1324,7 @@ Begin VB.Form TelaManEmpreendimentos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   3300
+         Left            =   3420
          TabIndex        =   46
          Top             =   0
          Width           =   975
@@ -1325,7 +1342,7 @@ Begin VB.Form TelaManEmpreendimentos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   75
+         Left            =   195
          TabIndex        =   43
          Top             =   0
          Width           =   975
@@ -1342,10 +1359,10 @@ Begin VB.Form TelaManEmpreendimentos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   7680
+         Left            =   7440
          TabIndex        =   50
          Top             =   0
-         Width           =   975
+         Width           =   615
       End
       Begin VB.CommandButton CmdImprimir 
          Caption         =   "Im&primir"
@@ -1359,7 +1376,7 @@ Begin VB.Form TelaManEmpreendimentos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   6540
+         Left            =   6300
          TabIndex        =   49
          Top             =   0
          Width           =   975
@@ -1376,10 +1393,10 @@ Begin VB.Form TelaManEmpreendimentos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   5460
+         Left            =   5580
          TabIndex        =   48
          Top             =   0
-         Width           =   975
+         Width           =   735
       End
       Begin VB.CommandButton CmdRemoverFiltro 
          Caption         =   "Se&leções"
@@ -1393,7 +1410,7 @@ Begin VB.Form TelaManEmpreendimentos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   4380
+         Left            =   4500
          TabIndex        =   47
          Top             =   0
          Width           =   975
@@ -1410,7 +1427,7 @@ Begin VB.Form TelaManEmpreendimentos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   2220
+         Left            =   2340
          TabIndex        =   45
          Top             =   0
          Width           =   975
@@ -1428,7 +1445,7 @@ Begin VB.Form TelaManEmpreendimentos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   1140
+         Left            =   1260
          TabIndex        =   44
          Top             =   0
          Width           =   975
@@ -1718,6 +1735,20 @@ Private Sub GravaLog(XLT_OPERACAO As ENUM_OPERACOES, XLT_ORDEM As String)
     
     Call subRegistraLog("TelaManEmpreendimentos", XLT_ORDEM, funCriaDescricaoLog(XGM_MATRIZLOG, XLT_OPERACAO, EMPREENDIMENTO_CAPI))
     
+End Sub
+
+Private Sub CmdAssistencia_Click()
+  If Not FunVerifica_Permissao("TelaFinTitulos", "1") Then
+      Exit Sub
+  End If
+  
+  XOrigem = "TelaAssistenciaCondominio"
+  Chave = Adodc1.Recordset.Fields("Contrato")
+  TelaAssistenciaCondominio.Show
+  
+  If FunLocalizaJanelasAtivas("TelaAssistenciaCondominio") <> -1 Then
+      TelaAssistenciaCondominio.SetFocus
+  End If
 End Sub
 
 Private Sub CmdConfirmar_Click()
@@ -2174,6 +2205,20 @@ Private Sub Adodc1_Error(ByVal Number As Long, Description As String, ByVal Scod
         Case ErrExclusaoRelacionamento
             CancelDisplay = False
     End Select
+End Sub
+
+Private Sub Command1_Click()
+  If Not FunVerifica_Permissao("TelaFinTitulos", "1") Then
+      Exit Sub
+  End If
+  
+  XOrigem = "TelaAssistenciaCondominio"
+  Chave = Adodc1.Recordset.Fields("empd_cd_empreendimento")
+  TelaAssistenciaCondominio.Show
+  
+  If FunLocalizaJanelasAtivas("TelaAssistenciaCondominio") <> -1 Then
+      TelaAssistenciaCondominio.SetFocus
+  End If
 End Sub
 
 Private Sub MskCodigo_GotFocus()

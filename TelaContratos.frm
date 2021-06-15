@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
-Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "msdatlst.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form TelaManContratos 
@@ -1056,7 +1056,7 @@ Begin VB.Form TelaManContratos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   85917699
+         Format          =   103809027
          CurrentDate     =   37180
       End
       Begin VB.Label LblDtDistrato 
@@ -1167,7 +1167,7 @@ Begin VB.Form TelaManContratos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   85917699
+         Format          =   103809027
          CurrentDate     =   37180
       End
       Begin MSDataListLib.DataCombo CboContratoInicial 
@@ -2213,9 +2213,9 @@ Private Sub CboEmpresa_LostFocus()
   
   Dim XLT_EMPRESADESTINO As String
   
-  If Not IsNull(DatEmpresa.Recordset.Fields!empr_cd_empresa) Then
+  If Not IsNull(DatEmpresa.Recordset.Fields!empr_cd_Empresa) Then
     DatEmpresa.Recordset.bookmark = CboEmpresa.SelectedItem
-    XLT_EMPRESADESTINO = DatEmpresa.Recordset.Fields!empr_cd_empresa
+    XLT_EMPRESADESTINO = DatEmpresa.Recordset.Fields!empr_cd_Empresa
     subConectarControleDadosNV DatPcr, "SELECT * FROM ConsGENCRcombo WHERE empr_cd_empresa = " & XLT_EMPRESADESTINO & " ORDER BY cere_cd_estruturado", Estatico
     subConectarControleDadosNV DatConta, "SELECT * FROM ConsGENPCcombo WHERE empr_cd_empresa = " & XLT_EMPRESADESTINO & " and (plco_tx_recdesp= 'R' or plco_tx_recdesp= 'G') ORDER BY plco_cd_estruturado", Estatico
     subConectarControleDadosNV DatContaCorrente, "SELECT * FROM ConsGENCCcombo where empr_cd_empresa=" & XLT_EMPRESADESTINO & " ORDER BY coco_tx_Descricao", Estatico
@@ -2463,7 +2463,7 @@ Private Sub GravaLog(XLT_OPERACAO As ENUM_OPERACOES, XLT_ORDEM As String)
         XGM_MATRIZLOG(0, 1) = PCodEmpresa
         XGM_MATRIZLOG(1, 1) = Left(LblImovelOrigemEmpr.Caption, 4)
         XGM_MATRIZLOG(2, 1) = Right(LblImovelOrigemEmpr.Caption, 4)
-        XGM_MATRIZLOG(3, 1) = DatEmpresa.Recordset.Fields!empr_cd_empresa
+        XGM_MATRIZLOG(3, 1) = DatEmpresa.Recordset.Fields!empr_cd_Empresa
         XGM_MATRIZLOG(4, 1) = Left(MaskImovel.Text, 4)
         XGM_MATRIZLOG(5, 1) = Right(MaskImovel.Text, 4)
         XGM_MATRIZLOG(6, 1) = FunNulo(DatConta.Recordset.Fields("plco_cd_Estruturado")) & " - " & FunNulo(DatConta.Recordset.Fields("plco_tx_DescContabil"))
@@ -2537,8 +2537,8 @@ Private Sub CmdConfirmarTransEmp_Click()
         
         'Selecionando os códigos
         DatEmpresa.Recordset.bookmark = CboEmpresa.SelectedItem
-        If Not IsNull(DatEmpresa.Recordset.Fields!empr_cd_empresa) Then
-            XLT_EMPRESADESTINO = DatEmpresa.Recordset.Fields!empr_cd_empresa
+        If Not IsNull(DatEmpresa.Recordset.Fields!empr_cd_Empresa) Then
+            XLT_EMPRESADESTINO = DatEmpresa.Recordset.Fields!empr_cd_Empresa
         Else
             XLT_EMPRESADESTINO = ""
         End If
@@ -2704,7 +2704,7 @@ Private Sub CmdConfirmarTransEmp_Click()
             
             'Insere os títulos do contrato da empresa de origem no novo contrato da empresa de destino.
             Do While Not XLO_CODIGO.EOF
-                If ((mskTituloFinal.Text) = "  .   .  ") Or (((mskTituloFinal.Text) <> "  .   .  ") And Not ((XLO_CODIGO!titu_cd_plano = Mid(mskTituloFinal.Text, 1, 2)) And (XLO_CODIGO!titu_cd_Parcela > Mid(mskTituloFinal.Text, 4, 3)))) Then
+                If ((mskTituloFinal.Text) = "  .   .  ") Or (((mskTituloFinal.Text) <> "  .   .  ") And Not ((XLO_CODIGO!titu_cd_Plano = Mid(mskTituloFinal.Text, 1, 2)) And (XLO_CODIGO!titu_cd_Parcela > Mid(mskTituloFinal.Text, 4, 3)))) Then
                         
                     XLI_COUNT = XLI_COUNT + 1
                     
@@ -2717,7 +2717,7 @@ Private Sub CmdConfirmarTransEmp_Click()
                         "titu_vl_PercJurosMora, titu_dt_Deposito, titu_dt_Repasse, titu_tx_LocalPagto, titu_tx_DocPagto, titu_dt_Prorrogacao, " & _
                         "titu_tx_TipoPag, titu_dt_Base, cere_cd_Pcr, plco_cd_Conta, titu_tx_NaturezaPlano, moed_cd_Moeda3, titu_tx_CorrigeParcela, titu_tx_PreDatado, titu_dt_BasePagto, " & _
                         "titu_dt_Criacao, nofi_cd_NotaFiscal, iden_cd_Projeto, titu_tx_ExpBanco, titu_tx_EntregaChave) " & _
-                        "VALUES ('" & XLO_CODIGO!titu_cd_plano & "','" & XLO_CODIGO!titu_cd_Parcela & "','" & XLO_CODIGO!titu_cd_residuo & "','" & XLT_EMPRESADESTINO & "','" & Left(MaskImovel.Text, 4) & "','" & Right(MaskImovel.Text, 4) & "','" & _
+                        "VALUES ('" & XLO_CODIGO!titu_cd_Plano & "','" & XLO_CODIGO!titu_cd_Parcela & "','" & XLO_CODIGO!titu_cd_residuo & "','" & XLT_EMPRESADESTINO & "','" & Left(MaskImovel.Text, 4) & "','" & Right(MaskImovel.Text, 4) & "','" & _
                         "" & XLO_CODIGO!cont_cd_Contrato & "','" & XLO_CODIGO!tipl_cd_TipoPlano & "','" & XLT_CONTACORRENTE & "'," & FunNuloBanco(XLO_CODIGO!obse_cd_Observacao) & "," & _
                         "" & FunNuloBanco(XLO_CODIGO!moed_cd_Moeda1) & "," & FunNuloBanco(XLO_CODIGO!moed_cd_Moeda2) & "," & _
                         "" & FunNuloVal(FunTrataFloat(XLO_CODIGO!titu_vl_Parcela)) & "," & FunNuloVal(FunTrataFloat(XLO_CODIGO!titu_vl_ParcelaIndex1)) & "," & _
@@ -2866,11 +2866,11 @@ Private Sub CmdConfirmarTransEmp_Click()
                             
                             XLO_TITULO.AddNew
                         
-                            XLO_TITULO!empr_cd_empresa = XLT_EMPRESADESTINO
+                            XLO_TITULO!empr_cd_Empresa = XLT_EMPRESADESTINO
                             XLO_TITULO!empd_cd_Empreendimento = Left(MaskImovel.Text, 4)
                             XLO_TITULO!imov_cd_Imovel = Right(MaskImovel.Text, 4)
                             XLO_TITULO!cont_cd_Contrato = XLO_CODIGO!cont_cd_Contrato
-                            XLO_TITULO!titu_cd_plano = XLO_CODIGO!titu_cd_plano
+                            XLO_TITULO!titu_cd_Plano = XLO_CODIGO!titu_cd_Plano
                             XLO_TITULO!titu_cd_Parcela = XLO_CODIGO!titu_cd_Parcela
                             XLO_TITULO!titu_cd_residuo = XLO_CODIGO!titu_cd_residuo
                             XLO_TITULO!obse_cd_Observacao = funNull(XLO_CODIGO!obse_cd_Observacao)
@@ -2930,7 +2930,7 @@ Private Sub CmdConfirmarTransEmp_Click()
                         If XGB_PQUALIFIN Then
                             
                             'Determina o número do título no Qualifin: cod.empreendimento + cod.imovel + cod.contrato + cod.plano + num.parcela + residuo
-                            XLT_TITULOQUALIFIN = Left(LblImovelOrigemEmpr, 4) + "." + Right(LblImovelOrigemEmpr, 4) + "." + XLO_CODIGO!cont_cd_Contrato + "." + XLO_CODIGO!titu_cd_plano + "." + XLO_CODIGO!titu_cd_Parcela + "." + XLO_CODIGO!titu_cd_residuo
+                            XLT_TITULOQUALIFIN = Left(LblImovelOrigemEmpr, 4) + "." + Right(LblImovelOrigemEmpr, 4) + "." + XLO_CODIGO!cont_cd_Contrato + "." + XLO_CODIGO!titu_cd_Plano + "." + XLO_CODIGO!titu_cd_Parcela + "." + XLO_CODIGO!titu_cd_residuo
                             
                             SubQOpenRecordset XLO_QUALIFIN, "SELECT * FROM NotasFiscais " & _
                                 "WHERE nofi_nr_TituloCapi LIKE '" & XLT_TITULOQUALIFIN & "' AND empr_cd_empresa = " & PCodEmpresa & "", Dinamico
@@ -2944,7 +2944,7 @@ Private Sub CmdConfirmarTransEmp_Click()
                                 
                                 'Exclui os descontos/acréscimos das duplicatas da nota fiscal
                                 SubQOpenRecordset XLO_QUALIFIN, "SELECT * FROM Duplicatas WHERE dupl_nr_fatura = " & XLL_FATURA, Dinamico
-                                Conexao.Execute "DELETE FROM DuplDescAcresc WHERE dupl_cd_duplicata= " & XLO_QUALIFIN!DUPL_CD_DUPLICATA
+                                Conexao.Execute "DELETE FROM DuplDescAcresc WHERE dupl_cd_duplicata= " & XLO_QUALIFIN!dupl_cd_Duplicata
                                 XLO_QUALIFIN.Close
                                 
                                 'Exclui as duplicatas da nota fiscal
@@ -2965,7 +2965,7 @@ Private Sub CmdConfirmarTransEmp_Click()
                             " AND (titu_dt_Pagamento is null or titu_dt_Pagamento = '')  " & _
                             " AND (cont_cd_contrato = '" & XLT_CONTRATO & "')" & _
                             " AND empr_cd_empresa =" & PCodEmpresa & _
-                            " AND titu_cd_Plano = " & XLO_CODIGO!titu_cd_plano & _
+                            " AND titu_cd_Plano = " & XLO_CODIGO!titu_cd_Plano & _
                             " AND titu_cd_Parcela >= " & XLO_CODIGO!titu_cd_Parcela
                         
                         Conexao.Execute XLT_SQL
@@ -3910,7 +3910,7 @@ Sub subGravaFinanceiroTransf(XLO_TITULO As Object, XLT_STATUS As String, XLI_COD
     XLD_VENDACONTRATO = XLO_REGISTRO!cont_dt_Venda
     XLO_REGISTRO.Close
     
-    XLT_TITULO = XLO_TITULO!empd_cd_Empreendimento + "." + XLO_TITULO!imov_cd_Imovel + "." + XLO_TITULO!cont_cd_Contrato + "." + XLO_TITULO!titu_cd_plano + "." + XLO_TITULO!titu_cd_Parcela + "." + XLO_TITULO!titu_cd_residuo
+    XLT_TITULO = XLO_TITULO!empd_cd_Empreendimento + "." + XLO_TITULO!imov_cd_Imovel + "." + XLO_TITULO!cont_cd_Contrato + "." + XLO_TITULO!titu_cd_Plano + "." + XLO_TITULO!titu_cd_Parcela + "." + XLO_TITULO!titu_cd_residuo
     If (XLT_STATUS = "COMPROMISSAR") _
         Or (XGT_EXPCOMPROMCAPI = "N" And XLT_STATUS = "PAGAR") Then
         SubQOpenRecordset XLO_REGISTRO, "SELECT * FROM NotasFiscais WHERE nofi_cd_notafiscal= -1", Dinamico
@@ -3960,7 +3960,7 @@ Sub subGravaFinanceiroTransf(XLO_TITULO As Object, XLT_STATUS As String, XLI_COD
     XLO_REGISTRO!nofi_tx_tipofatura = "1" 'Uma nota para uma duplicata
     XLO_REGISTRO!nofi_nr_TituloCapi = XLT_TITULO 'Código do título
     'XLO_REGISTRO!empr_cd_Empresa = PCodEmpresa
-    XLO_REGISTRO!empr_cd_empresa = XLO_TITULO!empr_cd_empresa
+    XLO_REGISTRO!empr_cd_Empresa = XLO_TITULO!empr_cd_Empresa
 
     XLO_REGISTRO.Update
 
@@ -3977,8 +3977,8 @@ Sub subGravaFinanceiroTransf(XLO_TITULO As Object, XLT_STATUS As String, XLI_COD
 '
      Conexao.Execute "UPDATE Titulos SET nofi_cd_notafiscal = " & Chave & " WHERE empd_cd_Empreendimento= '" & XLO_TITULO!empd_cd_Empreendimento & "' AND " & _
                 " imov_cd_Imovel='" & XLO_TITULO!imov_cd_Imovel & "' AND cont_cd_Contrato='" & XLO_TITULO!cont_cd_Contrato & "' AND " & _
-                " titu_cd_plano = '" & XLO_TITULO!titu_cd_plano & "' AND titu_cd_Parcela = '" & XLO_TITULO!titu_cd_Parcela & "' AND " & _
-                " titu_cd_residuo = '" & XLO_TITULO!titu_cd_residuo & "' AND empr_cd_Empresa = " & XLO_TITULO!empr_cd_empresa & ""
+                " titu_cd_plano = '" & XLO_TITULO!titu_cd_Plano & "' AND titu_cd_Parcela = '" & XLO_TITULO!titu_cd_Parcela & "' AND " & _
+                " titu_cd_residuo = '" & XLO_TITULO!titu_cd_residuo & "' AND empr_cd_Empresa = " & XLO_TITULO!empr_cd_Empresa & ""
      
     '*****************************DUPLICATAS*******************************
     'dupl_tx_debcred = (C - Crédito)
@@ -4027,7 +4027,7 @@ Sub subGravaFinanceiroTransf(XLO_TITULO As Object, XLT_STATUS As String, XLI_COD
     
     XLO_REGISTRO.Update
     
-    XLL_CODDUPL = XLO_REGISTRO!DUPL_CD_DUPLICATA
+    XLL_CODDUPL = XLO_REGISTRO!dupl_cd_Duplicata
     
     XLO_REGISTRO.Close
             
@@ -4131,7 +4131,7 @@ Sub subGravaFinanceiroTransf(XLO_TITULO As Object, XLT_STATUS As String, XLI_COD
         'Cássio Medeiros
         '04/06/2014
         'Cópia de "SubContabilizarPromissoria" com a inclusão do códico da empresa destino como parâmetro
-        SubContabilizarPromissoriaTransf XLL_CODDUPL, XLL_FATURA, XLO_TITULO!coco_cd_codigo, XLT_DOCREC, XLO_TITULO!titu_dt_Deposito, XLT_TIPOPAGTO, True, XLO_TITULO!empr_cd_empresa
+        SubContabilizarPromissoriaTransf XLL_CODDUPL, XLL_FATURA, XLO_TITULO!coco_cd_codigo, XLT_DOCREC, XLO_TITULO!titu_dt_Deposito, XLT_TIPOPAGTO, True, XLO_TITULO!empr_cd_Empresa
     End If
 End Sub
 
@@ -4257,7 +4257,7 @@ Sub SubContabilizarPromissoriaTransf(XLL_CODDUPLICATA As Long, XLL_FATURA As Lon
             
             '******************************DESCONTOS/ACRÉSCIMOS******************************
             If XLO_PARCELA!desconto <> 0 Or XLO_PARCELA!Acrescimo <> 0 Then
-                XLT_SQL = "SELECT deac_cd_descacresc, deac_tx_Descricao, deac_tx_Descricao, natu_cd_Natureza, plco_cd_Conta, cere_cd_Pcr, dude_vl_descacresc, TOTALDESCACRESC, deac_tx_tipo FROM ConsFINExpDescacresc WHERE dupl_cd_duplicata = " & XLO_PARCELA!DUPL_CD_DUPLICATA & " and empr_cd_empresa = " & PCodEmpresa & ""
+                XLT_SQL = "SELECT deac_cd_descacresc, deac_tx_Descricao, deac_tx_Descricao, natu_cd_Natureza, plco_cd_Conta, cere_cd_Pcr, dude_vl_descacresc, TOTALDESCACRESC, deac_tx_tipo FROM ConsFINExpDescacresc WHERE dupl_cd_duplicata = " & XLO_PARCELA!dupl_cd_Duplicata & " and empr_cd_empresa = " & PCodEmpresa & ""
                 SubQOpenRecordset XLO_DESCONTOS, XLT_SQL, Estatico
                 
                 If XLO_DESCONTOS.EOF Then
@@ -4382,7 +4382,7 @@ Sub SubContabilizarPromissoriaTransf(XLL_CODDUPLICATA As Long, XLL_FATURA As Lon
                             "" & FunNuloBanco(XLT_CONTACREDITO) & "," & FunNuloBanco(XLT_CONTADEBITO) & "," & _
                             "'" & FunNulo(FunTrataString(XLT_HISTORICO)) & "'," & FunTrataFloat(XLF_VALOR) & "," & _
                             "" & XLI_EMPRESA & ",'" & FunTrataString(FunNulo(XLO_PARCELA!nofi_tx_historico)) & "'," & _
-                            "" & FunNuloBanco(XLO_PARCELA!iden_cd_Projeto) & "," & XLO_PARCELA!DUPL_CD_DUPLICATA & ",'C')"
+                            "" & FunNuloBanco(XLO_PARCELA!iden_cd_Projeto) & "," & XLO_PARCELA!dupl_cd_Duplicata & ",'C')"
                     Conexao.Execute XLT_SQL
                     XLO_DESCONTOS.MoveNext
                 Wend
@@ -4442,8 +4442,8 @@ Sub SubContabilizarPromissoriaTransf(XLL_CODDUPLICATA As Long, XLL_FATURA As Lon
         XLO_PARCELA!plco_cd_credito = Null 'XLT_CONTACREDITO
         XLO_PARCELA!plco_cd_Debito = XLT_CONTADEBITOCC
         XLO_PARCELA!lanc_tx_historico = XLT_HISTORICO
-        XLO_PARCELA!LANC_VL_VALOR = XLF_VLCONSOLIDADO
-        XLO_PARCELA!empr_cd_empresa = XLI_EMPRESA
+        XLO_PARCELA!lanc_vl_valor = XLF_VLCONSOLIDADO
+        XLO_PARCELA!empr_cd_Empresa = XLI_EMPRESA
         XLO_PARCELA!lanc_tx_DescCustos = XLT_HISTCUSTO
         XLO_PARCELA!iden_cd_Projeto = funNull(XLI_IDENTIFICADOR)
         XLO_PARCELA!lanc_cd_OrigemFin = XLL_CODDUPLICATA
