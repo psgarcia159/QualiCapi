@@ -125,7 +125,7 @@ Begin VB.Form FrmSolAssistenciaCondominio
             _Version        =   393216
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
-            Format          =   100728835
+            Format          =   37748739
             CurrentDate     =   40544
          End
          Begin MSMask.MaskEdBox LblHoraConclusao 
@@ -240,7 +240,7 @@ Begin VB.Form FrmSolAssistenciaCondominio
             _Version        =   393216
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
-            Format          =   100728835
+            Format          =   37748739
             CurrentDate     =   40544
          End
          Begin MSMask.MaskEdBox LblHoraIniTrabalhos 
@@ -355,7 +355,7 @@ Begin VB.Form FrmSolAssistenciaCondominio
             _Version        =   393216
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
-            Format          =   100728835
+            Format          =   37748739
             CurrentDate     =   40544
          End
          Begin MSMask.MaskEdBox LblHoraPrVisita 
@@ -503,7 +503,7 @@ Begin VB.Form FrmSolAssistenciaCondominio
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   100728835
+            Format          =   37748739
             CurrentDate     =   40544
          End
          Begin VB.Label LblEntregaChaves 
@@ -885,7 +885,7 @@ Private Sub Form_Load()
     'XFT_CODCONTRATO = Mid$(Chave, 11, 2)
     
     If (XInserir = "A") Then
-        XLT_ASSISTENCIA = Mid$(Chave, 14, 3)
+        XLT_ASSISTENCIA = Mid$(Chave, 6, 3)
     End If
     
     If (XInserir = "I") Then
@@ -932,51 +932,51 @@ Private Sub Form_Load()
         SubQOpenRecordset XLO_RS, XGT_SQL, "Estatico"
         If Not XLO_RS.EOF Then
             LblNumOrdem.Caption = XLO_RS!assi_cd_CodigoSeq
-            Data.Value = Format(XLO_RS!assi_dt_Data, "dd/MM/yyyy")
-            LblDataEmissao.Caption = Format(XLO_RS!assi_dt_DataEmissao, "dd/MM/yyyy")
-            LblHora.Caption = Format(XLO_RS!assi_dt_DataEmissao, "HH:MM")
+            Data.Value = Format(XLO_RS!ascd_dt_Data, "dd/MM/yyyy")
+            LblDataEmissao.Caption = Format(XLO_RS!ascd_dt_DataEmissao, "dd/MM/yyyy")
+            LblHora.Caption = Format(XLO_RS!ascd_dt_DataEmissao, "HH:MM")
             If IsNull(XLO_RS!cont_dt_EntregaChaves) Then
                 IsEmpty (LblEntregaChaves)
             Else
                 LblEntregaChaves.Caption = Format(XLO_RS!cont_dt_EntregaChaves, "dd/MM/yyyy")
             End If
-            TxtOcorrencia.Text = XLO_RS!assi_tx_Ocorrencia
-            TxtObservacao.Text = XLO_RS!assi_tx_Observacao
-            DataPrVisita.Value = Format(XLO_RS!assi_dt_PrimeiraVisita, "dd/MM/yyyy")
-            If IsNull(XLO_RS!assi_dt_PrimeiraVisita) Then
+            TxtOcorrencia.Text = XLO_RS!ascd_tx_Ocorrencia
+            TxtObservacao.Text = XLO_RS!ascd_tx_Observacao
+            DataPrVisita.Value = Format(XLO_RS!ascd_dt_PrimeiraVisita, "dd/MM/yyyy")
+            If IsNull(XLO_RS!ascd_dt_PrimeiraVisita) Then
                 IsEmpty (LblHoraPrVisita)
             Else
-                LblHoraPrVisita.Text = Format(XLO_RS!assi_dt_PrimeiraVisita, "HH:MM")
+                LblHoraPrVisita.Text = Format(XLO_RS!ascd_dt_PrimeiraVisita, "HH:MM")
             End If
 
-            DataIniTrabalhos.Value = Format(XLO_RS!assi_dt_InicioTrabalho, "dd/MM/yyyy")
-            If IsNull(XLO_RS!assi_dt_InicioTrabalho) Then
+            DataIniTrabalhos.Value = Format(XLO_RS!ascd_dt_InicioTrabalho, "dd/MM/yyyy")
+            If IsNull(XLO_RS!ascd_dt_InicioTrabalho) Then
                 IsEmpty (LblHoraIniTrabalhos.Text)
             Else
-                LblHoraIniTrabalhos.Text = Format(XLO_RS!assi_dt_InicioTrabalho, "HH:MM")
+                LblHoraIniTrabalhos.Text = Format(XLO_RS!ascd_dt_InicioTrabalho, "HH:MM")
             End If
-            DataConclusao.Value = Format(XLO_RS!assi_dt_Conclusao, "dd/MM/yyyy")
-            If IsNull(XLO_RS!assi_dt_Conclusao) Then
+            DataConclusao.Value = Format(XLO_RS!ascd_dt_Conclusao, "dd/MM/yyyy")
+            If IsNull(XLO_RS!ascd_dt_Conclusao) Then
                 IsEmpty (LblHoraConclusao.Text)
             Else
-                LblHoraConclusao.Text = Format(XLO_RS!assi_dt_Conclusao, "HH:MM")
+                LblHoraConclusao.Text = Format(XLO_RS!ascd_dt_Conclusao, "HH:MM")
             End If
 
             
-            If Not IsNull(XLO_RS!assi_tx_Autorizador) Then
-                Autorizador.Text = XLO_RS!assi_tx_Autorizador
+            If Not IsNull(XLO_RS!ascd_tx_Autorizador) Then
+                Autorizador.Text = XLO_RS!ascd_tx_Autorizador
             End If
             
-            If Not IsNull(XLO_RS!assi_tx_RespPrVisita) Then
-                RespPrVisita.Text = XLO_RS!assi_tx_RespPrVisita
+            If Not IsNull(XLO_RS!ascd_tx_RespPrVisita) Then
+                RespPrVisita.Text = XLO_RS!ascd_tx_RespPrVisita
             End If
             
-            If Not IsNull(XLO_RS!assi_tx_RespIniTrabalhos) Then
-                RespIniTrabalhos.Text = XLO_RS!assi_tx_RespIniTrabalhos
+            If Not IsNull(XLO_RS!ascd_tx_RespIniTrabalhos) Then
+                RespIniTrabalhos.Text = XLO_RS!ascd_tx_RespIniTrabalhos
             End If
             
-            If Not IsNull(XLO_RS!assi_tx_RespConclusao) Then
-                RespConclusao.Text = XLO_RS!assi_tx_RespConclusao
+            If Not IsNull(XLO_RS!ascd_tx_RespConclusao) Then
+                RespConclusao.Text = XLO_RS!ascd_tx_RespConclusao
             End If
 
         End If
@@ -1221,11 +1221,11 @@ Private Sub CmdGravar_Click()
             XLO_RS.AddNew
         End If
 
-    XLO_RS!assi_dt_Data = Format(Data.Value, "dd/MM/yyyy")
-        XLO_RS!assi_dt_DataEmissao = Format(Now, "dd/MM/yyyy HH:MM")
-        'XLO_RS!assi_dt_DataEmissao = Format(LblHora.Caption, "HH:MM")
-        XLO_RS!assi_tx_Ocorrencia = TxtOcorrencia.Text
-        XLO_RS!assi_tx_Observacao = TxtObservacao.Text
+        XLO_RS!ascd_dt_Data = Format(Data.Value, "dd/MM/yyyy")
+        XLO_RS!ascd_dt_DataEmissao = Format(Now, "dd/MM/yyyy HH:MM")
+        'XLO_RS!ascd_dt_DataEmissao = Format(LblHora.Caption, "HH:MM")
+        XLO_RS!ascd_tx_Ocorrencia = TxtOcorrencia.Text
+        XLO_RS!ascd_tx_Observacao = TxtObservacao.Text
         'XLO_RS!cont_cd_Contrato = XFT_CODCONTRATO
         XLO_RS!empd_cd_Empreendimento = XFT_CODEMPREENDIMENTO
         'XLO_RS!imov_cd_Imovel = XFT_CODIMOVEL
@@ -1236,42 +1236,42 @@ Private Sub CmdGravar_Click()
         XLS_DATACONCLUSAO = DataConclusao.Value & " " & LblHoraConclusao.Text
         
         
-        If Not IsNull(XLO_RS!assi_tx_Autorizador) Then
-            XLO_RS!assi_tx_Autorizador = Autorizador.Text
+        If Not IsNull(XLO_RS!ascd_tx_Autorizador) Then
+            XLO_RS!ascd_tx_Autorizador = Autorizador.Text
         End If
         
         If IsNull(DataPrVisita.Value) Then
-            XLO_RS!assi_dt_PrimeiraVisita = Null
+            XLO_RS!ascd_dt_PrimeiraVisita = Null
         Else
-            XLO_RS!assi_dt_PrimeiraVisita = Format(XLS_DATAPRVISITA, "dd/MM/yyyy HH:MM")
+            XLO_RS!ascd_dt_PrimeiraVisita = Format(XLS_DATAPRVISITA, "dd/MM/yyyy HH:MM")
         End If
         'XLO_RS!assi_dt_PrimeiraVisita = Format(LblHoraPrVisita.Text, "HH:MM")
         If IsNull(DataIniTrabalhos.Value) Then
-            XLO_RS!assi_dt_InicioTrabalho = Null
+            XLO_RS!ascd_dt_InicioTrabalho = Null
         Else
-            XLO_RS!assi_dt_InicioTrabalho = Format(XLS_DATAINITRABALHO, "dd/MM/yyyy HH:MM")
+            XLO_RS!ascd_dt_InicioTrabalho = Format(XLS_DATAINITRABALHO, "dd/MM/yyyy HH:MM")
         End If
         'XLO_RS!assi_dt_InicioTrabalho = Format(LblHoraIniTrabalhos.Text, "HH:MM")
         
         If IsNull(DataConclusao.Value) Then
-            XLO_RS!assi_dt_Conclusao = Null
+            XLO_RS!ascd_dt_Conclusao = Null
         Else
-            XLO_RS!assi_dt_Conclusao = Format(XLS_DATACONCLUSAO, "dd/MM/yyyy HH:MM")
+            XLO_RS!ascd_dt_Conclusao = Format(XLS_DATACONCLUSAO, "dd/MM/yyyy HH:MM")
         End If
 
         
-        If Not IsNull(XLO_RS!assi_tx_RespPrVisita) Then
-            XLO_RS!assi_tx_RespPrVisita = RespPrVisita.Text
+        If Not IsNull(XLO_RS!ascd_tx_RespPrVisita) Then
+            XLO_RS!ascd_tx_RespPrVisita = RespPrVisita.Text
             'RespPrVisita.Text = XLO_RS!assi_tx_RespPrVisita
         End If
         
-        If Not IsNull(XLO_RS!assi_tx_RespIniTrabalhos) Then
-            XLO_RS!assi_tx_RespIniTrabalhos = RespIniTrabalhos.Text
+        If Not IsNull(XLO_RS!ascd_tx_RespIniTrabalhos) Then
+            XLO_RS!ascd_tx_RespIniTrabalhos = RespIniTrabalhos.Text
             'RespIniTrabalhos.Text = XLO_RS!assi_tx_RespIniTrabalhos
         End If
         
-        If Not IsNull(XLO_RS!assi_tx_RespConclusao) Then
-            XLO_RS!assi_tx_RespConclusao = RespConclusao.Text
+        If Not IsNull(XLO_RS!ascd_tx_RespConclusao) Then
+            XLO_RS!ascd_tx_RespConclusao = RespConclusao.Text
             'RespConclusao.Text = XLO_RS!assi_tx_RespConclusao
         End If
           
