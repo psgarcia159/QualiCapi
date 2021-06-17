@@ -214,7 +214,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   99155971
+            Format          =   309395459
             CurrentDate     =   37678
          End
          Begin MSComCtl2.DTPicker DtpDataFim 
@@ -229,7 +229,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   99155971
+            Format          =   309395459
             CurrentDate     =   37617.651087963
          End
          Begin VB.Label LblFim 
@@ -297,7 +297,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   99155971
+            Format          =   309395459
             CurrentDate     =   37678
          End
          Begin MSComCtl2.DTPicker DtpConclusaoFim 
@@ -312,7 +312,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   99155971
+            Format          =   309395459
             CurrentDate     =   37617.651087963
          End
          Begin VB.Label Label8 
@@ -380,7 +380,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   99155971
+            Format          =   309395459
             CurrentDate     =   37678
          End
          Begin MSComCtl2.DTPicker DtpInicioTrabalhosFim 
@@ -395,7 +395,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   99155971
+            Format          =   309395459
             CurrentDate     =   37617.651087963
          End
          Begin VB.Label Label7 
@@ -463,7 +463,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   99155971
+            Format          =   309395459
             CurrentDate     =   37678
          End
          Begin MSComCtl2.DTPicker DtpPrimeiraVisitaFim 
@@ -478,7 +478,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   99155971
+            Format          =   309395459
             CurrentDate     =   37617.651087963
          End
          Begin VB.Label Label6 
@@ -546,7 +546,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   99155971
+            Format          =   309395459
             CurrentDate     =   37678
          End
          Begin MSComCtl2.DTPicker DtpEmissaoFim 
@@ -561,7 +561,7 @@ Begin VB.Form FrmRelAssistenciaTecnica
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   99155971
+            Format          =   309395459
             CurrentDate     =   37617.651087963
          End
          Begin VB.Label Label5 
@@ -770,20 +770,20 @@ Dim XGT_CONJUNCAO As String
     
     
     
-    XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE empr_cd_empresa = " & PCodEmpresa & " "
+    XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE empr_cd_empresa = " & PCodEmpresa & " "
     XGT_CONJUNCAO = " AND "
     
 'Filtra pelo Empreendimento
     If (XLT_EMPREENDIMENTOINICIAL <> "") And (XLT_EMPREENDIMENTOFINAL <> "") Then
         XGT_SQL = "empd_cd_Empreendimento >= '" & XLT_EMPREENDIMENTOINICIAL & "' AND empd_cd_Empreendimento <= '" & XLT_EMPREENDIMENTOFINAL & "' "
-        If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
             XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
         End If
     ElseIf (XLT_EMPREENDIMENTOINICIAL <> "") Then
         XGT_SQL = "empd_cd_Empreendimento >= '" & XLT_EMPREENDIMENTOINICIAL & "'"
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -791,7 +791,7 @@ Dim XGT_CONJUNCAO As String
             
         ElseIf (XLT_EMPREENDIMENTOFINAL <> "") Then
         XGT_SQL = "empd_cd_Empreendimento <= '" & XLT_EMPREENDIMENTOFINAL & "'"
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -801,7 +801,7 @@ Dim XGT_CONJUNCAO As String
 'Filtra pela Ocorrencia
     If (XLT_OCORRENCIA <> "") Then
         XGT_SQL = "assi_tx_Ocorrencia LIKE'" & "%" & XLT_OCORRENCIA & "%" & "' "
-         If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+         If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
            XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -813,7 +813,7 @@ Dim XGT_CONJUNCAO As String
 'Filtra pela Oservacao
     If (XLT_OBSERVACAO <> "") Then
         XGT_SQL = "assi_tx_Observacao LIKE'" & "%" & XLT_OBSERVACAO & "%" & "' "
-         If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+         If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
            XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -825,7 +825,7 @@ Dim XGT_CONJUNCAO As String
 'Filtra pelo Responsavel Pela Primeira Visita
     If (XLT_RESPPRIMEIRAVISITA <> "") Then
         XGT_SQL = "assi_tx_RespPrVisita = '" & XLT_RESPPRIMEIRAVISITA & "'"
-         If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+         If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
            XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -836,7 +836,7 @@ Dim XGT_CONJUNCAO As String
 'Filtra pelo Responsavel Pelo Inicio dos Trabalhos
     If (XLT_RESPINICIOTRABALHOS <> "") Then
         XGT_SQL = "assi_tx_RespIniTrabalhos = '" & XLT_RESPINICIOTRABALHOS & "'"
-         If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+         If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
            XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -847,7 +847,7 @@ Dim XGT_CONJUNCAO As String
 'Filtra pelo Responsavel Pela Conclusao
     If (XLT_RESPCONCLUSAO <> "") Then
         XGT_SQL = "assi_tx_RespConclusao = '" & XLT_RESPCONCLUSAO & "'"
-         If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+         If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
            XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -858,7 +858,7 @@ Dim XGT_CONJUNCAO As String
 'Filtra pelo Autorizador
     If (XLT_AUTORIZADOR <> "") Then
         XGT_SQL = "assi_tx_Autorizador = '" & XLT_AUTORIZADOR & "'"
-         If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+         If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
            XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -868,23 +868,23 @@ Dim XGT_CONJUNCAO As String
     
 'Filtra pela Data
     If (XLT_DATAINICIO <> "") And (XLT_DATAFIM <> "") Then
-        XGT_SQL = "assi_dt_Data >= " & XLT_DATAINICIO & " AND assi_dt_Data <= " & XLT_DATAFIM & " "
-        If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_Data >= " & "CONVERT(DATE, '" & XLT_DATAINICIO & "',103)" & " AND assi_dt_Data <= " & "CONVERT(DATE, '" & XLT_DATAFIM & "',103)" & " "
+        If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
             XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
         End If
     ElseIf (XLT_DATAINICIO <> "") Then
-        XGT_SQL = "assi_dt_Data >= " & XLT_DATAINICIO & ""
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_Data >= " & "CONVERT(DATE, '" & XLT_DATAINICIO & "',103)" & ""
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
             End If
             
         ElseIf (XLT_DATAFIM <> "") Then
-        XGT_SQL = "assi_dt_Data <= " & XLT_DATAFIM & ""
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_Data <= " & "CONVERT(DATE, '" & XLT_DATAFIM & "',103)" & ""
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -893,23 +893,23 @@ Dim XGT_CONJUNCAO As String
         
 'Filtra pela Data de Emissao
     If (XLT_EMISSAOINICIO <> "") And (XLT_EMISSAOFIM <> "") Then
-        XGT_SQL = "assi_dt_DataEmissao >= '" & XLT_EMISSAOINICIO & "' AND assi_dt_DataEmissao <= '" & XLT_EMISSAOFIM & "' "
-        If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_DataEmissao >= " & "CONVERT(DATE, '" & XLT_EMISSAOINICIO & "',103)" & " AND assi_dt_DataEmissao <= " & "CONVERT(DATE, '" & XLT_EMISSAOFIM & "',103)" & " "
+        If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
             XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
         End If
     ElseIf (XLT_EMISSAOINICIO <> "") Then
-        XGT_SQL = "assi_dt_DataEmissao >= '" & XLT_EMISSAOINICIO & "'"
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_DataEmissao >= " & "CONVERT(DATE, '" & XLT_EMISSAOINICIO & "',103)" & ""
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
             End If
             
         ElseIf (XLT_EMISSAOFIM <> "") Then
-        XGT_SQL = "assi_dt_DataEmissao <= '" & XLT_EMISSAOFIM & "'"
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_DataEmissao <= " & "CONVERT(DATE, '" & XLT_EMISSAOFIM & "',103)" & ""
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -918,23 +918,23 @@ Dim XGT_CONJUNCAO As String
         
 'Filtra pela Primeira Visita
     If (XLT_PRIMEIRAVISITAINICIO <> "") And (XLT_PRIMEIRAVISITAFIM <> "") Then
-        XGT_SQL = "assi_dt_PrimeiraVisita >= '" & XLT_PRIMEIRAVISITAINICIO & "' AND assi_dt_PrimeiraVisita <= '" & XLT_PRIMEIRAVISITAFIM & "' "
-        If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_PrimeiraVisita >= " & "CONVERT(DATE, '" & XLT_PRIMEIRAVISITAINICIO & "',103)" & " AND assi_dt_PrimeiraVisita <= " & "CONVERT(DATE, '" & XLT_PRIMEIRAVISITAFIM & "',103)" & " "
+        If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
             XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
         End If
     ElseIf (XLT_PRIMEIRAVISITAINICIO <> "") Then
-        XGT_SQL = "assi_dt_PrimeiraVisita >= '" & XLT_PRIMEIRAVISITAINICIO & "'"
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_PrimeiraVisita >= " & "CONVERT(DATE, '" & XLT_PRIMEIRAVISITAINICIO & "',103)" & ""
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
             End If
             
         ElseIf (XLT_PRIMEIRAVISITAFIM <> "") Then
-        XGT_SQL = "assi_dt_PrimeiraVisita <= '" & XLT_PRIMEIRAVISITAFIM & "'"
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_PrimeiraVisita <= " & "CONVERT(DATE, '" & XLT_PRIMEIRAVISITAFIM & "',103)" & ""
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -943,23 +943,23 @@ Dim XGT_CONJUNCAO As String
         
 'Filtra pela data de Inicio dos Trabalhos
     If (XLT_INICIOTRABALHOSINICIO <> "") And (XLT_INICIOTRABALHOSFIM <> "") Then
-        XGT_SQL = "assi_dt_InicioTrabalho >= '" & XLT_INICIOTRABALHOSINICIO & "' AND assi_dt_InicioTrabalho <= '" & XLT_INICIOTRABALHOSFIM & "' "
-        If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_InicioTrabalho >= " & "CONVERT(DATE, '" & XLT_INICIOTRABALHOSINICIO & "',103)" & " AND assi_dt_InicioTrabalho <= " & "CONVERT(DATE, '" & XLT_INICIOTRABALHOSFIM & "',103)" & " "
+        If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
             XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
         End If
     ElseIf (XLT_INICIOTRABALHOSINICIO <> "") Then
-        XGT_SQL = "assi_dt_InicioTrabalho >= '" & XLT_INICIOTRABALHOSINICIO & "'"
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_InicioTrabalho >= " & "CONVERT(DATE, '" & XLT_INICIOTRABALHOSINICIO & "',103)" & ""
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
             End If
             
         ElseIf (XLT_INICIOTRABALHOSFIM <> "") Then
-        XGT_SQL = "assi_dt_InicioTrabalho <= '" & XLT_INICIOTRABALHOSFIM & "'"
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_InicioTrabalho <= " & "CONVERT(DATE, '" & XLT_INICIOTRABALHOSFIM & "',103)" & ""
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -968,23 +968,23 @@ Dim XGT_CONJUNCAO As String
         
 'Filtra pela data de Conclusao
     If (XLT_CONCLUSAOINICIO <> "") And (XLT_CONCLUSAOFIM <> "") Then
-        XGT_SQL = "assi_dt_Conclusao >= '" & XLT_CONCLUSAOINICIO & "' AND assi_dt_Conclusao <= '" & XLT_CONCLUSAOFIM & "' "
-        If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_Conclusao >= " & "CONVERT(DATE, '" & XLT_CONCLUSAOINICIO & "',103)" & " AND assi_dt_Conclusao <= " & XLT_CONCLUSAOFIM & "',103)" & " "
+        If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
             XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
         End If
     ElseIf (XLT_CONCLUSAOINICIO <> "") Then
-        XGT_SQL = "assi_dt_Conclusao >= '" & XLT_CONCLUSAOINICIO & "'"
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_Conclusao >= " & "CONVERT(DATE, '" & XLT_CONCLUSAOINICIO & "',103)" & ""
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
             End If
             
         ElseIf (XLT_CONCLUSAOFIM <> "") Then
-        XGT_SQL = "assi_dt_Conclusao <= '" & XLT_CONCLUSAOFIM & "'"
-            If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+        XGT_SQL = "assi_dt_Conclusao <= " & "CONVERT(DATE, '" & XLT_CONCLUSAOFIM & "',103)" & ""
+            If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
                 XGT_SELECAO = XGT_SELECAO + XGT_SQL
             Else
                 XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
@@ -995,7 +995,7 @@ Dim XGT_CONJUNCAO As String
 'Filtra pelo Status
     If (XLT_STATUS <> "Todos") Then
         XGT_SQL = "assi_tx_status = '" & XLT_STATUS & "'"
-         If XGT_SELECAO = "SELECT * FROM CONSCAPASSISTENCIATECNICA WHERE " Then
+         If XGT_SELECAO = "SELECT * FROM ConsCapAssistenciaTecnica_condo_apt WHERE " Then
            XGT_SELECAO = XGT_SELECAO + XGT_SQL
         Else
             XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + XGT_SQL
