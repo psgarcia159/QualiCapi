@@ -1,10 +1,10 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
 Object = "{0D623638-DBA2-11D1-B5DF-0060976089D0}#7.0#0"; "tdbg7.ocx"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
-Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "msdatlst.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form FrmFornecedores 
    BorderStyle     =   3  'Fixed Dialog
@@ -167,7 +167,7 @@ Begin VB.Form FrmFornecedores
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
             DateIsNull      =   -1  'True
-            Format          =   88276993
+            Format          =   106823681
             CurrentDate     =   37825.4625578704
          End
          Begin VB.Label lblDataPesquisaUltimaQualificacao 
@@ -181,9 +181,9 @@ Begin VB.Form FrmFornecedores
       End
       Begin Threed.SSPanel PanCadBancoForn 
          Height          =   1545
-         Left            =   -74160
+         Left            =   -72960
          TabIndex        =   102
-         Top             =   4920
+         Top             =   5040
          Visible         =   0   'False
          Width           =   7770
          _Version        =   65536
@@ -552,7 +552,7 @@ Begin VB.Form FrmFornecedores
                _Version        =   393216
                CheckBox        =   -1  'True
                DateIsNull      =   -1  'True
-               Format          =   88276993
+               Format          =   106823681
                CurrentDate     =   39057
             End
             Begin VB.TextBox TxtRG 
@@ -607,7 +607,7 @@ Begin VB.Form FrmFornecedores
                _Version        =   393216
                CheckBox        =   -1  'True
                DateIsNull      =   -1  'True
-               Format          =   88276993
+               Format          =   106823681
                CurrentDate     =   37180
             End
             Begin MSDataListLib.DataCombo CboProfissao 
@@ -1096,7 +1096,7 @@ Begin VB.Form FrmFornecedores
                _Version        =   393216
                CheckBox        =   -1  'True
                DateIsNull      =   -1  'True
-               Format          =   88276993
+               Format          =   106823681
                CurrentDate     =   37180
             End
             Begin MSDataListLib.DataCombo CboProfConjuge 
@@ -4509,7 +4509,7 @@ Sub DesabHabCampos(XHab As Boolean)
     MskEstado.Enabled = XHab
     MskCep.Enabled = XHab
         
-    TxtEMail.Enabled = XHab
+    TxtEmail.Enabled = XHab
     TxtInscricaoEstadual.Enabled = XHab
     TxtIMunicipal.Enabled = XHab
     TxtContatoComercial.Enabled = XHab
@@ -4782,7 +4782,7 @@ Sub PreencheCampos()
         TxtNumPorta.Text = FunNulo(XLO_FORNCLI!focl_nr_porta)
         TxtBairro.Text = FunNulo(XLO_FORNCLI!focl_tx_Bairro)
         TxtCidade.Text = FunNulo(XLO_FORNCLI!focl_tx_cidade)
-        TxtEMail.Text = FunNulo(XLO_FORNCLI!focl_tx_email)
+        TxtEmail.Text = FunNulo(XLO_FORNCLI!focl_tx_email)
         TxtIMunicipal.Text = FunNulo(XLO_FORNCLI!focl_tx_imunicipal)
         txtNumEndereco.Text = FunNulo(XLO_FORNCLI!focl_tx_EnderecoNumero)
         cboNaturezaJuridica.ListIndex = FunNuloVal(XLO_FORNCLI!focl_nr_NaturezaJuridica)
@@ -5129,7 +5129,7 @@ Sub PrepararInsercao()
     TxtNumPorta.Text = ""
     TxtBairro.Text = ""
     TxtCidade.Text = ""
-    TxtEMail.Text = ""
+    TxtEmail.Text = ""
     'Adicionado no dia 14/08/2018 - Samuel Jesus. Solicitação feita por Daniela para atender ao E-Social
     TxtPis.Mask = "###.###.###-##"
     txtNumEndereco.Text = ""
@@ -5483,7 +5483,6 @@ RotuloErro:
 End Sub
 
 Private Sub cmdInserirRespCoaf_Click()
-    
     XCoaf = "I"
     PanDadosRespCoaf.Visible = True
     PanDadosRespCoaf.Enabled = True
@@ -5491,11 +5490,12 @@ Private Sub cmdInserirRespCoaf_Click()
     TxtResponsavelCoaf.SetFocus
     CboFuncaoRespCoaf.Text = ""
     'Adicionado no dia 14/08/2018 - Samuel Jesus. Solicitação feita por Daniela para atender ao E-Social
-    If FunNulo(TxtCPFRespCoaf.Text) <> "___.___.___-__" Then
-        ResFormulario!focl_nr_pis = FunNulo(TxtPis.Text)
-    Else
-        ResFormulario!focl_nr_pis = ""
-    End If
+    'Comentado dia 12/08/2021
+'    If FunNulo(TxtCPFRespCoaf.Text) <> "___.___.___-__" Then
+'        ResFormulario!focl_nr_pis = FunNulo(TxtPis.Text)
+'    Else
+'        ResFormulario!focl_nr_pis = ""
+'    End If
 
     
     If TxtCPFRespCoaf <> "___.___.___-__" Then
@@ -5749,7 +5749,7 @@ Private Sub CmdGravar_Click()
     ResFormulario!focl_nr_porta = FunNulo(TxtNumPorta.Text)
     ResFormulario!focl_tx_Bairro = FunNulo(TxtBairro.Text)
     ResFormulario!focl_tx_cidade = FunNulo(TxtCidade.Text)
-    ResFormulario!focl_tx_email = FunNulo(TxtEMail.Text)
+    ResFormulario!focl_tx_email = FunNulo(TxtEmail.Text)
     ResFormulario!focl_tx_estado = FunNulo(MskEstado.Text)
     ResFormulario!focl_tx_cep = FunNulo(MskCep.Text)
     ResFormulario!focl_tx_fone = FunNulo(MskFoneResid.Text)
