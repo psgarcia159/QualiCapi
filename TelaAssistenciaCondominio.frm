@@ -465,7 +465,7 @@ Private Sub CmdExcluir_Click()
     Chave = Adodc1.Recordset("empd_cd_empreendimento") & "." & _
         Format(Adodc1.Recordset("ascd_cd_assistencia"), "#")
         
-        XLT_ASSISTENCIA = Mid$(Chave, 6, 3)
+        XLT_ASSISTENCIA = Mid$(Chave, 6)
     
     XLI_OPCAO = MsgBox("Confirma Remoção do Registro ?", 273, "CUIDADO")
     

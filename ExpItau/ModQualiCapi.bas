@@ -13,20 +13,20 @@ Global XGI_CODSEGURO  As Integer 'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS
 Global XGI_CODOUTROS  As Integer 'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Outros - Cliente
 
 
-Function FunZeros(XLI_QTD As Integer) As String
-  
-   Dim XLT_ZEROS As String
-   Dim XLI_CONT As Integer
-      
-   For XLI_CONT = 1 To XLI_QTD
-     XLT_ZEROS = XLT_ZEROS & "0"
-   Next
-   
-   FunZeros = XLT_ZEROS
-   
-End Function
+'Function FunZeros(XLI_QTD As Integer) As String
+'
+'   Dim XLT_ZEROS As String
+'   Dim XLI_CONT As Integer
+'
+'   For XLI_CONT = 1 To XLI_QTD
+'     XLT_ZEROS = XLT_ZEROS & "0"
+'   Next
+'
+'   FunZeros = XLT_ZEROS
+'
+'End Function
 
-Function funVerirficaCotacao(XLO_TITULO As adodb.Recordset, XLT_INDEXADOR As Byte, XLD_DATABASE As Date, XLB_FORMULARIOCOTACAO As Boolean, XLO_TELACOTACAO As Form) As Boolean
+Function funVerirficaCotacao(XLO_TITULO As ADODB.Recordset, XLT_INDEXADOR As Byte, XLD_DATABASE As Date, XLB_FORMULARIOCOTACAO As Boolean, XLO_TELACOTACAO As Form) As Boolean
 ' XLB_FORMULARIOCOTACAO Indica se apresentará a tela de cotações quando não tiver cotação
 ' XLO_TELACOTACAO è a tela de cotações que é passada como referência
     
@@ -259,7 +259,7 @@ Function FunCorrecaoMonetaria(ByVal XLF_VALORTITULO As Double, ByVal XLF_COTACAO
     Dim XLF_PERCENT As Double   'Divisão entre a cotacao do mês e do mês anterior
     Dim XLF_CORRECAO As Double
     Dim XLD_DATA As Date
-    Dim XLO_COTACAO As adodb.Recordset
+    Dim XLO_COTACAO As ADODB.Recordset
     
     'Se a moeda for 0 significa que ´deve ser informado o valor histórico, a correcao é 0
     If XLT_PRORATA = "M" And XLI_MOEDA = 0 Then
@@ -547,9 +547,9 @@ End Function
 'Retorna o valor indexado por uma determinada moeda
 Function FunCalcularValorIndexado(ByVal XLF_VALORREAL As Double, ByVal XLD_DTBASE As Date, ByVal XLI_CODMOEDA As Integer, ByVal XLT_INDEXACAO As String, ByVal XLT_PRORATA As String, XLO_TELACOTACAO As Form)
          
-    Dim XLO_COTACAO As New adodb.Recordset
-    Dim XLO_COTACAOANTERIOR As New adodb.Recordset
-    Dim XLO_COTACAOPOSTERIOR As New adodb.Recordset
+    Dim XLO_COTACAO As New ADODB.Recordset
+    Dim XLO_COTACAOANTERIOR As New ADODB.Recordset
+    Dim XLO_COTACAOPOSTERIOR As New ADODB.Recordset
     Dim XLF_COTACAO As Double
     Dim XLF_COTACAOANTERIOR As Double
     Dim XLF_COTACAOPOSTERIOR As Double

@@ -125,7 +125,7 @@ Begin VB.Form FrmSolAssistenciaCondominio
             _Version        =   393216
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
-            Format          =   37748739
+            Format          =   111935491
             CurrentDate     =   40544
          End
          Begin MSMask.MaskEdBox LblHoraConclusao 
@@ -240,7 +240,7 @@ Begin VB.Form FrmSolAssistenciaCondominio
             _Version        =   393216
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
-            Format          =   37748739
+            Format          =   111935491
             CurrentDate     =   40544
          End
          Begin MSMask.MaskEdBox LblHoraIniTrabalhos 
@@ -355,7 +355,7 @@ Begin VB.Form FrmSolAssistenciaCondominio
             _Version        =   393216
             CheckBox        =   -1  'True
             CustomFormat    =   "dd/MM/yy"
-            Format          =   37748739
+            Format          =   111935491
             CurrentDate     =   40544
          End
          Begin MSMask.MaskEdBox LblHoraPrVisita 
@@ -503,7 +503,7 @@ Begin VB.Form FrmSolAssistenciaCondominio
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   37748739
+            Format          =   111935491
             CurrentDate     =   40544
          End
          Begin VB.Label LblEntregaChaves 
@@ -885,7 +885,7 @@ Private Sub Form_Load()
     'XFT_CODCONTRATO = Mid$(Chave, 11, 2)
     
     If (XInserir = "A") Then
-        XLT_ASSISTENCIA = Mid$(Chave, 6, 3)
+        XLT_ASSISTENCIA = Mid$(Chave, 6)
     End If
     
     If (XInserir = "I") Then
@@ -916,7 +916,7 @@ Private Sub Form_Load()
 
     SubQOpenRecordset XLO_RS, XGT_SQL, "Estatico"
     If Not XLO_RS.EOF Then
-        LblNomeEmpreendimento.Caption = XLO_RS!empd_cd_Empreendimento & " - " & XLO_RS!empd_tx_Nome
+        LblNomeEmpreendimento.Caption = XLO_RS!empd_cd_empreendimento & " - " & XLO_RS!empd_tx_Nome
         LblNomeCliente.Caption = XLO_RS!focl_tx_RazaoSocial
         LblNumeroApartamento.Caption = XLO_RS!imov_cd_Imovel
         'LblContrato.Caption = XLO_RS!cont_cd_Contrato
@@ -1153,7 +1153,7 @@ Private Sub CmdGravar_Click()
         XLO_RS!ascd_tx_Ocorrencia = TxtOcorrencia.Text
         XLO_RS!ascd_tx_Observacao = TxtObservacao.Text
         'XLO_RS!cont_cd_Contrato = XFT_CODCONTRATO
-        XLO_RS!empd_cd_Empreendimento = XFT_CODEMPREENDIMENTO
+        XLO_RS!empd_cd_empreendimento = XFT_CODEMPREENDIMENTO
         'XLO_RS!imov_cd_Imovel = XFT_CODIMOVEL
         XLO_RS!assi_cd_CodigoSeq = Format(XLT_CODSEQUENCIAL, "0#")
         XLO_RS!empr_cd_Empresa = PCodEmpresa
@@ -1227,7 +1227,7 @@ Private Sub CmdGravar_Click()
         XLO_RS!ascd_tx_Ocorrencia = TxtOcorrencia.Text
         XLO_RS!ascd_tx_Observacao = TxtObservacao.Text
         'XLO_RS!cont_cd_Contrato = XFT_CODCONTRATO
-        XLO_RS!empd_cd_Empreendimento = XFT_CODEMPREENDIMENTO
+        XLO_RS!empd_cd_empreendimento = XFT_CODEMPREENDIMENTO
         'XLO_RS!imov_cd_Imovel = XFT_CODIMOVEL
         XLO_RS!assi_cd_CodigoSeq = LblNumOrdem.Caption
         XLO_RS!empr_cd_Empresa = PCodEmpresa
