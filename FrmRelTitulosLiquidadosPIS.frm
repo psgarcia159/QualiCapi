@@ -4,7 +4,7 @@ Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
-Begin VB.Form FrmRelTitulosLiquidadosPIS 
+Begin VB.Form FrmRelTitulosLiquidadosPIS
    Caption         =   "Títulos Liquidados PIS/COFINS"
    ClientHeight    =   8565
    ClientLeft      =   60

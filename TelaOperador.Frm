@@ -329,7 +329,7 @@ Private Sub CmdVinculosCR_Click()
   MdiPrincipal.MousePointer = vbHourglass
   TelaOperador.MousePointer = vbHourglass
 
-  Chave = ADODC1.Recordset("func_cd_operador").Value
+  Chave = Adodc1.Recordset("func_cd_operador").Value
   TelaVinculosCR.Show 1
 
   MdiPrincipal.MousePointer = vbDefault
@@ -342,11 +342,11 @@ End Sub
 
 Private Sub Form_Activate()
 
-If ModuloGenerico.getVersion = "Windows 7" Then
-    ADODC1.ConnectionString = ADODC1.ConnectionString & ";Password=qd;"
-End If
+'If ModuloGenerico.getVersion = "Windows 7" Then
+'    Adodc1.ConnectionString = Adodc1.ConnectionString & ";Password=qd;"
+'End If
     
-  ADODC1.Refresh
+  Adodc1.Refresh
   Set Formulario = TelaOperador
 End Sub
 
@@ -354,7 +354,7 @@ Private Sub Form_Load()
   
   Set Formulario = TelaOperador
   funAtualizaHabilitacoes
-  subCarregaDadosNV ADODC1, "", "func_tx_Nome", "", "SELECT * FROM funcionarios"
+  subCarregaDadosNV Adodc1, "", "func_tx_Nome", "", "SELECT * FROM funcionarios"
   HabilitaBotoes
   
 End Sub
@@ -364,7 +364,7 @@ Private Sub Botao_Alt_Click()
   TelaOperador.MousePointer = vbHourglass
 
   XInserir = "E"
-  Chave = ADODC1.Recordset("func_cd_operador").Value
+  Chave = Adodc1.Recordset("func_cd_operador").Value
   
   FrmAtualizaSenha.Show 1
 
@@ -377,7 +377,7 @@ Private Sub Botao_Hab_Click()
   MdiPrincipal.MousePointer = vbHourglass
   TelaOperador.MousePointer = vbHourglass
 
-  Chave = ADODC1.Recordset("func_cd_operador").Value
+  Chave = Adodc1.Recordset("func_cd_operador").Value
   TelaHabilitacao.Show 1
 
   MdiPrincipal.MousePointer = vbDefault
@@ -400,9 +400,9 @@ End Sub
 Private Sub Botao_Rem_Click()
     Dim Posicao As Variant
 
-    Posicao = ADODC1.Recordset.Bookmark
+    Posicao = Adodc1.Recordset.bookmark
     
-  If ADODC1.Recordset.Fields("func_cd_operador").Value = func_cd_operador Then
+  If Adodc1.Recordset.Fields("func_cd_operador").Value = func_cd_operador Then
      MsgBox "Não é permitido Auto-Exclusão", vbCritical, "ATENÇÃO"
      Exit Sub
   End If
@@ -410,10 +410,10 @@ Private Sub Botao_Rem_Click()
   If MsgBox("Confirma Remoção do Registro ?", vbQuestion + vbYesNo, "CUIDADO") = 6 Then 'Confirma exclusão
     Conexao.BeginTrans
     On Error GoTo RotuloErro
-    Conexao.Execute ("DELETE From Habilitacoes WHERE func_cd_operador = " & ADODC1.Recordset.Fields("func_cd_operador"))
-    Conexao.Execute ("DELETE From Funcionarios WHERE func_cd_operador = " & ADODC1.Recordset.Fields("func_cd_operador"))
+    Conexao.Execute ("DELETE From Habilitacoes WHERE func_cd_operador = " & Adodc1.Recordset.Fields("func_cd_operador"))
+    Conexao.Execute ("DELETE From Funcionarios WHERE func_cd_operador = " & Adodc1.Recordset.Fields("func_cd_operador"))
     Conexao.CommitTrans
-    ADODC1.Refresh
+    Adodc1.Refresh
   End If
   HabilitaBotoes
   TDBGrid1.SetFocus
@@ -422,7 +422,7 @@ Private Sub Botao_Rem_Click()
   
   'Posicionando o cursor na linha anterior - Lucas Santiago 22.01.09
   If Posicao > 1 Then
-      ADODC1.Recordset.Bookmark = Posicao - 1
+      Adodc1.Recordset.bookmark = Posicao - 1
   End If
   
   Exit Sub
@@ -443,7 +443,7 @@ End Sub
 Private Sub HabilitaBotoes()
     'Objetivo: Habilita os Botões da Tela
     Botao_Ins.Enabled = True
-    If Not FunTabelaVazia(ADODC1) Then
+    If Not FunTabelaVazia(Adodc1) Then
         Botao_Rem.Enabled = True
         Botao_Hab.Enabled = True
         Botao_Alt.Enabled = True
@@ -464,7 +464,7 @@ Private Sub Desabili_Botoes()
     Botao_Hab.Enabled = False
 End Sub
 
-Private Sub TDBGrid1_UnboundColumnFetch(Bookmark As Variant, ByVal Col As Integer, Value As Variant)
+Private Sub TDBGrid1_UnboundColumnFetch(bookmark As Variant, ByVal Col As Integer, Value As Variant)
   Dim Senha As String
   Dim sen As String
   Dim a As Integer
