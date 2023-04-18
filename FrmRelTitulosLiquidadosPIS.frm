@@ -450,7 +450,7 @@ Begin VB.Form FrmRelTitulosLiquidadosPIS
       _Version        =   393216
    End
 End
-Attribute VB_Name = "FrmRelTitulosLiquidadosPis"
+Attribute VB_Name = "FrmRelTitulosLiquidadosPIS"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -541,7 +541,7 @@ Private Sub CmdExportar_Click()
     'Verifica se o usuário selecionou o caminho do arquivo
     If (dlgSalvar.FileName <> "") Then
     
-        FrmRelTitulosLiquidadosPis.MousePointer = vbHourglass
+        FrmRelTitulosLiquidadosPIS.MousePointer = vbHourglass
             
         'Inicializa o objeto excel
         Set XFO_ExlObj = CreateObject("excel.application")
@@ -750,7 +750,7 @@ Private Sub CmdExportar_Click()
         'Limpa o caminho do arquivo
         dlgSalvar.FileName = ""
         
-        FrmRelTitulosLiquidadosPis.MousePointer = vbDefault
+        FrmRelTitulosLiquidadosPIS.MousePointer = vbDefault
     
     End If
     

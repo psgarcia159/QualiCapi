@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
-Object = "{6FBA474E-43AC-11CE-9A0E-00AA0062BB4C}#1.0#0"; "sysinfo.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6FBA474E-43AC-11CE-9A0E-00AA0062BB4C}#1.0#0"; "SYSINFO.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.MDIForm MdiPrincipal 
    BackColor       =   &H00C0C0C0&
    Caption         =   "QualiCapi"
@@ -207,6 +207,7 @@ Begin VB.MDIForm MdiPrincipal
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   10585
             MinWidth        =   10585
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Mensagens do Sistema"
@@ -214,6 +215,7 @@ Begin VB.MDIForm MdiPrincipal
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3069
             MinWidth        =   3069
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Empresa Atual"
@@ -222,6 +224,7 @@ Begin VB.MDIForm MdiPrincipal
             Alignment       =   1
             Object.Width           =   2822
             MinWidth        =   2822
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Informações sobre o Banco de Dados"
@@ -240,6 +243,7 @@ Begin VB.MDIForm MdiPrincipal
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Style           =   2
             Alignment       =   1
+            Enabled         =   0   'False
             Object.Width           =   882
             MinWidth        =   882
             TextSave        =   "NUM"
@@ -573,6 +577,9 @@ Begin VB.MDIForm MdiPrincipal
          Caption         =   "&Extrato do Contrato"
          Begin VB.Menu MnuRelExtratoContratoAnalitico 
             Caption         =   "&Analítico"
+         End
+         Begin VB.Menu MnuRelExtratoContratoAnaliticoCliente 
+            Caption         =   "Analítico (&Cliente)"
          End
          Begin VB.Menu MnuRelExtratoContratoReal 
             Caption         =   "Analítico &Real"
@@ -1530,6 +1537,20 @@ Private Sub MnuRelExtratoContratoAnalitico_Click()
   
 End Sub
 
+Private Sub MnuRelExtratoContratoAnaliticoCliente_Click()
+  
+ ' If Not FunVerifica_Permissao("FrmRelExtratoContratoAnaliticoCliente", "1") Then
+ '      Exit Sub
+ ' End If
+  
+  XOrigem = "Analitico"
+  FrmRelExtratoContratoAnaliticoCliente.Show
+  If FunLocalizaJanelasAtivas("FrmRelExtratoContratoAnaliticoCliente") <> -1 Then
+    FrmRelExtratoContratoAnaliticoCliente.SetFocus
+  End If
+
+End Sub
+
 Private Sub MnuRelExtratoContratoPagamentos_Click()
   
   If Not FunVerifica_Permissao("FrmRelExtratoContratoPgtosRealizados", "1") Then
@@ -1765,9 +1786,9 @@ Private Sub MnuRelTitulosLiquidadosPIS_Click()
         Exit Sub
     End If
     
-    FrmRelTitulosLiquidadosPis.Show
+    FrmRelTitulosLiquidadosPIS.Show
     If FunLocalizaJanelasAtivas("FrmRelTitulosLiquidadosPis") <> -1 Then
-        FrmRelTitulosLiquidadosPis.SetFocus
+        FrmRelTitulosLiquidadosPIS.SetFocus
     End If
     
 End Sub
