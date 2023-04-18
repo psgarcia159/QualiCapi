@@ -1,8 +1,8 @@
 VERSION 5.00
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "msdatlst.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Begin VB.Form FrmImportacao 
    Caption         =   "Retorno de Pagamento Eletrônico - CAIXA"
    ClientHeight    =   1785
@@ -182,8 +182,8 @@ Dim Caminho As String
 
 Private Sub CboCCorrente_Change()
 
-  If cboCCorrente.Text <> "" Then
-    datContaCorrente.Recordset.Bookmark = cboCCorrente.SelectedItem
+  If CboCCorrente.Text <> "" Then
+    DatContaCorrente.Recordset.Bookmark = CboCCorrente.SelectedItem
   End If
 
 End Sub
@@ -241,10 +241,12 @@ Private Sub btnConfirmar_Click()
     
     XLB_ERRO = False
     
-    If FunObrigatorioCBO(cboCCorrente, "Selecione uma Conta Corrente.") Then Exit Sub
+    If FunObrigatorioCBO(CboCCorrente, "Selecione uma Conta Corrente.") Then Exit Sub
     
+    DlgAbrirFigura.DialogTitle = "Arquivo de Importação da CAIXA"
+    'DlgAbrirFigura.InitDir = XGT_LOCALARQ
+    DlgAbrirFigura.InitDir = "C:\"
     DlgAbrirFigura.CancelError = False
-    DlgAbrirFigura.InitDir = XGT_LOCALARQ
     DlgAbrirFigura.ShowOpen
     
     If DlgAbrirFigura.FileName = "" Then
@@ -259,10 +261,10 @@ Private Sub btnConfirmar_Click()
   
     Me.MousePointer = vbHourglass
     
-    XLT_CODEMPRESA = Format(Left(datContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
+    XLT_CODEMPRESA = Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
                      "0" & _
-                     Format(Left(datContaCorrente.Recordset.Fields!coco_tx_Conta, 9), "000000000") & _
-                     Format(Right(FunNuloVal(datContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")
+                     Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 9), "000000000") & _
+                     Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")
 
     'Consulta para criação do recibo
     If NomeSgbd = "Access" Then
@@ -302,15 +304,19 @@ Private Sub btnConfirmar_Click()
     
     'leitura do header
     Input #1, XLT_TEXTO
-    
-    '117 a 126 - N. Aviso Bancário (identifica o arquivo para não permitir a importação mais de uma vez.
+        
+    '15.0 - Número Sequencial do Arquivo de Retorno
+    '       390 a 394 - N. Aviso Bancário (identifica o arquivo para não permitir a importação mais de uma vez.
      XLT_NUMARQUIVO = Mid(XLT_TEXTO, 390, 5)
+     
      XLT_SQL = "SELECT NotasFiscais.empr_cd_empresa FROM " & _
                 "NotasFiscais INNER JOIN Duplicatas ON (NotasFiscais.Nofi_nr_fatura = Duplicatas.Dupl_nr_fatura) " & _
                 "INNER JOIN RelacaoOcorrencias ON (Duplicatas.Dupl_nr_fatura = RelacaoOcorrencias.Dupl_nr_fatura) " & _
                 "where NotasFiscais.Empr_cd_empresa = " & PCodEmpresa & _
                 " and RelacaoOcorrencias.reoc_nr_Lote = " & XLT_NUMARQUIVO
+                
     SubQOpenRecordset XLO_OCORRENCIAS, XLT_SQL, Estatico
+    
     If Not (XLO_OCORRENCIAS.EOF) Then
         Close #1
         MsgBox "Esse arquivo já foi importado!"
@@ -319,6 +325,7 @@ Private Sub btnConfirmar_Click()
     End If
     
         If Mid(XLT_TEXTO, 2, 1) = "2" Then 'Verifica se é o header de retorno
+        
             If Trim(Mid(XLT_TEXTO, 77, 3)) = 104 Then 'Verifica se é o do Banco Caixa
           
                 Conexao.BeginTrans
@@ -326,89 +333,150 @@ Private Sub btnConfirmar_Click()
                 While Not EOF(1)
                     
                     Input #1, XLT_TEXTO
-                    'Verifica se é registro de detalhe
+                    
+                    'Verifica se é registro de detalhe (01.1)
                     If Mid(XLT_TEXTO, 1, 1) = "1" Then
-                    ' Verifica se é registro de retorno de inconsistência ou se é confirmação de pagamento.
-                    'Se não tem data de pagamento, então é registro de inconsistência.
-                    'O registro de inconsistência poderá ser uma confirmação de aceitação do título exportado ou a informação de uma
-                    'inconsistência que ocorreu em relação ao título no último arquivo de remessa gerado.
+                    
+                        ' Verifica se é registro de retorno de inconsistência ou se é confirmação de pagamento.
+                        ' Se não tem data de de crédito/liquidação (33.1), considera-se que é registro de inconsistência.
+                        ' O registro de inconsistência poderá ser uma confirmação de aceitação do título exportado ou a informação de uma
+                        ' inconsistência que ocorreu em relação ao título no último arquivo de remessa gerado.
                         If Not (IsDate(Mid(XLT_TEXTO, 294, 2) & "/" & Mid(XLT_TEXTO, 296, 2) & "/" & Mid(XLT_TEXTO, 298, 2))) Then
-                                '038 a 062 - N. de Controle do Participante
-                                XLT_TITULO = Trim(Mid(XLT_TEXTO, 32, 25))
-                                XLT_CODEMPREENDIMENTO = Mid(XLT_TEXTO, 32, 4)
-                                XLT_CODIMOVEL = Mid(XLT_TEXTO, 36, 4)
-                                XLT_CODCONTRATO = Mid(XLT_TEXTO, 40, 2)
-                                XLT_CODPLANO = Mid(XLT_TEXTO, 42, 2)
-                                XLT_CODPARCELA = Mid(XLT_TEXTO, 44, 3)
-                                XLT_CODRESIDUO = Mid(XLT_TEXTO, 47, 2)
                                 
-                                '147 a 152 - Data de Vencimento do Título
-                                XLD_DATAVENCIMENTO = (Mid(XLT_TEXTO, 147, 2) & "/" & Mid(XLT_TEXTO, 149, 2) & "/" & _
-                                                      Mid(XLT_TEXTO, 151, 2))
-                                '153 a 165 - Valor do Título
-                                XLF_VALORTITULO = CDbl(Mid(XLT_TEXTO, 153, 13) / 100)
-                                '109 a 110 - Identificação de Ocorrência e 319 a 328 Motivos das Rejeições para os Códigos de Ocorrência da Posição 109 a 110
-                                XLT_SQL = "select Duplicatas.dupl_nr_Fatura, Duplicatas.dupl_nr_Duplicata from NotasFiscais " & _
-                                            "INNER JOIN Duplicatas ON (NotasFiscais.Nofi_nr_fatura = Duplicatas.dupl_nr_fatura)" & _
-                                            "WHERE NotasFiscais.nofi_nr_titulocapi = '" & XLT_TITULO & "'"
-                                SubQOpenRecordset XLO_IMPORTACAO, XLT_SQL, Estatico
-                                'If Not (XLO_IMPORTACAO.EOF) Then
-                                        XLI_CONTADOR = 1
-                                       XLI_POSICAO = 319
-            
-                                        While XLI_CONTADOR < 6
-                                            If XLI_CONTADOR <> 1 Then
-                                               If (Mid(XLT_TEXTO, XLI_POSICAO, 1) <> 0) Or (Mid(XLT_TEXTO, XLI_POSICAO, 2) <> 0) Then
-                                                    XLT_SQL = "INSERT INTO RelacaoOcorrencias (ocor_cd_Codigo, banc_cd_Codigo, dupl_nr_Fatura, dupl_nr_Duplicata, reoc_vl_ValorPago, reoc_dt_Pagamento, reoc_nr_Lote) VALUES ("
-                                                    XLT_SQL = XLT_SQL & "'" & (Mid(XLT_TEXTO, 109, 2) & Mid(XLT_TEXTO, XLI_POSICAO, 2)) & "', " & "104, " & XLO_IMPORTACAO!dupl_nr_fatura & ", '" & XLO_IMPORTACAO!dupl_nr_duplicata & "', " & FunTrataFloat(XLF_VALORTITULO) & ", '" & XLD_DATAVENCIMENTO & "', '" & XLT_NUMARQUIVO & "')"
-                                                    Conexao.Execute (XLT_SQL)
-                                                    
-                                                    XLI_POSICAO = XLI_POSICAO + 2
-                                                End If
-                                            Else
-                                            'Se existe a Data Ocorrência no Banco sem a Data do Crédito, então o pagamento foi feito com Cheque.
-                                                If (Mid(XLT_TEXTO, XLI_POSICAO, 1) = 0) And (Mid(XLT_TEXTO, XLI_POSICAO, 2) = 0) Then
-                                                    XLT_SQL = "INSERT INTO RelacaoOcorrencias (ocor_cd_Codigo, banc_cd_Codigo, dupl_nr_Fatura, dupl_nr_Duplicata, reoc_vl_ValorPago, reoc_dt_Pagamento, reoc_nr_Lote) VALUES ("
-                                                    XLT_SQL = XLT_SQL & "'00CH'" & ", " & "104, " & XLO_IMPORTACAO!dupl_nr_fatura & ", '" & XLO_IMPORTACAO!dupl_nr_duplicata & "', " & FunTrataFloat(XLF_VALORTITULO) & ", '" & XLD_DATAVENCIMENTO & "', '" & XLT_NUMARQUIVO & "')"
-                                                    Conexao.Execute (XLT_SQL)
-                                                Else
-                                                    XLT_SQL = "INSERT INTO RelacaoOcorrencias (ocor_cd_Codigo, banc_cd_Codigo, dupl_nr_Fatura, dupl_nr_Duplicata, reoc_vl_ValorPago, reoc_dt_Pagamento, reoc_nr_Lote) VALUES ("
-                                                    XLT_SQL = XLT_SQL & "'" & (Mid(XLT_TEXTO, 109, 2) & Mid(XLT_TEXTO, XLI_POSICAO, 2)) & "', " & "104, " & XLO_IMPORTACAO!dupl_nr_fatura & ", '" & XLO_IMPORTACAO!dupl_nr_duplicata & "', " & FunTrataFloat(XLF_VALORTITULO) & ", '" & XLD_DATAVENCIMENTO & "', '" & XLT_NUMARQUIVO & "')"
-                                                   Conexao.Execute (XLT_SQL)
+                            If (Mid(XLT_TEXTO, 36, 1) = "." And Mid(XLT_TEXTO, 41, 1) = "." And Mid(XLT_TEXTO, 44, 1) = "." And Mid(XLT_TEXTO, 47, 1) = "." And Mid(XLT_TEXTO, 51, 1) = ".") Then
+                                '09.1 - Identificação do Titulo na Empresa (Código do titulo c/separadores)
+                                XLT_TITULO = Trim(Mid(XLT_TEXTO, 32, 25))
+                                '09.1A - Código do Empreendimento
+                                XLT_CODEMPREENDIMENTO = Mid(XLT_TITULO, 1, 4)
+                                '09.1B - Código do Imóvel
+                                XLT_CODIMOVEL = Mid(XLT_TITULO, 6, 4)
+                                '09.1C - Código do Contrato
+                                XLT_CODCONTRATO = Mid(XLT_TITULO, 11, 2)
+                                '09.1D - Código do Plano
+                                XLT_CODPLANO = Mid(XLT_TITULO, 14, 2)
+                                '09.1E - Código da Parcela
+                                XLT_CODPARCELA = Mid(XLT_TITULO, 17, 3)
+                                '09.1F - Código do Residuo
+                                XLT_CODRESIDUO = Mid(XLT_TITULO, 21, 2)
+                            Else
+                                '09.1 - Identificação do Titulo na Empresa (Código do titulo s/separadores)
+                                XLT_TITULO = Mid(XLT_TEXTO, 32, 4) & "." & Mid(XLT_TEXTO, 36, 4) & "." & Mid(XLT_TEXTO, 40, 2) & "." & Mid(XLT_TEXTO, 42, 2) & Mid(XLT_TEXTO, 44, 3) & "." & Mid(XLT_TEXTO, 47, 2)
+                                '09.1A - Código do Empreendimento
+                                XLT_CODEMPREENDIMENTO = Mid(XLT_TEXTO, 32, 4)
+                                '09.1B - Código do Imóvel
+                                XLT_CODIMOVEL = Mid(XLT_TEXTO, 36, 4)
+                                '09.1C - Código do Contrato
+                                XLT_CODCONTRATO = Mid(XLT_TEXTO, 40, 2)
+                                '09.1D - Código do Plano
+                                XLT_CODPLANO = Mid(XLT_TEXTO, 42, 2)
+                                '09.1E - Código da Parcela
+                                XLT_CODPARCELA = Mid(XLT_TEXTO, 44, 3)
+                                '09.1F - Código do Residuo
+                                XLT_CODRESIDUO = Mid(XLT_TEXTO, 47, 2)
+                            End If
 
-                                                End If
-                                                
-                                                
-                                                XLI_POSICAO = XLI_POSICAO + 2
-    
-                                            End If
-                                           XLI_CONTADOR = XLI_CONTADOR + 1
-                                        Wend
-                                        XLO_IMPORTACAO.Close
-                                        Set XLO_IMPORTACAO = Nothing
+                            '19.1 - Data de Vencimento do Título
+                            XLD_DATAVENCIMENTO = (Mid(XLT_TEXTO, 147, 2) & "/" & Mid(XLT_TEXTO, 149, 2) & "/" & _
+                                                  Mid(XLT_TEXTO, 151, 2))
+
+                            '20.1 - Valor do Título
+                            XLF_VALORTITULO = CDbl(Mid(XLT_TEXTO, 153, 13) / 100)
+                                
+                            '109 a 110 - Identificação de Ocorrência e 319 a 328 Motivos das Rejeições para os Códigos de Ocorrência da Posição 109 a 110
+                            XLT_SQL = "select Duplicatas.dupl_nr_Fatura, Duplicatas.dupl_nr_Duplicata from NotasFiscais " & _
+                                        "INNER JOIN Duplicatas ON (NotasFiscais.Nofi_nr_fatura = Duplicatas.dupl_nr_fatura)" & _
+                                        "WHERE NotasFiscais.nofi_nr_titulocapi = '" & XLT_TITULO & "'"
+                            
+                            SubQOpenRecordset XLO_IMPORTACAO, XLT_SQL, Estatico
+                            
+                            'If Not (XLO_IMPORTACAO.EOF) Then
+                            
+                            XLI_CONTADOR = 1
+                            XLI_POSICAO = 319
+                            
+                             While XLI_CONTADOR < 6
+                                 If XLI_CONTADOR <> 1 Then
+                                    If (Mid(XLT_TEXTO, XLI_POSICAO, 1) <> 0) Or (Mid(XLT_TEXTO, XLI_POSICAO, 2) <> 0) Then
+                                         XLT_SQL = "INSERT INTO RelacaoOcorrencias (ocor_cd_Codigo, banc_cd_Codigo, dupl_nr_Fatura, dupl_nr_Duplicata, reoc_vl_ValorPago, reoc_dt_Pagamento, reoc_nr_Lote) VALUES ("
+                                         XLT_SQL = XLT_SQL & "'" & (Mid(XLT_TEXTO, 109, 2) & Mid(XLT_TEXTO, XLI_POSICAO, 2)) & "', " & "104, " & XLO_IMPORTACAO!dupl_nr_fatura & ", '" & XLO_IMPORTACAO!dupl_nr_duplicata & "', " & FunTrataFloat(XLF_VALORTITULO) & ", '" & XLD_DATAVENCIMENTO & "', '" & XLT_NUMARQUIVO & "')"
+                                         Conexao.Execute (XLT_SQL)
+                                         
+                                         XLI_POSICAO = XLI_POSICAO + 2
+                                     End If
+                                 Else
+                                 'Se existe a Data Ocorrência no Banco sem a Data do Crédito, então o pagamento foi feito com Cheque.
+                                     If (Mid(XLT_TEXTO, XLI_POSICAO, 1) = 0) And (Mid(XLT_TEXTO, XLI_POSICAO, 2) = 0) Then
+                                         XLT_SQL = "INSERT INTO RelacaoOcorrencias (ocor_cd_Codigo, banc_cd_Codigo, dupl_nr_Fatura, dupl_nr_Duplicata, reoc_vl_ValorPago, reoc_dt_Pagamento, reoc_nr_Lote) VALUES ("
+                                         XLT_SQL = XLT_SQL & "'00CH'" & ", " & "104, " & XLO_IMPORTACAO!dupl_nr_fatura & ", '" & XLO_IMPORTACAO!dupl_nr_duplicata & "', " & FunTrataFloat(XLF_VALORTITULO) & ", '" & XLD_DATAVENCIMENTO & "', '" & XLT_NUMARQUIVO & "')"
+                                         Conexao.Execute (XLT_SQL)
+                                     Else
+                                         XLT_SQL = "INSERT INTO RelacaoOcorrencias (ocor_cd_Codigo, banc_cd_Codigo, dupl_nr_Fatura, dupl_nr_Duplicata, reoc_vl_ValorPago, reoc_dt_Pagamento, reoc_nr_Lote) VALUES ("
+                                         XLT_SQL = XLT_SQL & "'" & (Mid(XLT_TEXTO, 109, 2) & Mid(XLT_TEXTO, XLI_POSICAO, 2)) & "', " & "104, " & XLO_IMPORTACAO!dupl_nr_fatura & ", '" & XLO_IMPORTACAO!dupl_nr_duplicata & "', " & FunTrataFloat(XLF_VALORTITULO) & ", '" & XLD_DATAVENCIMENTO & "', '" & XLT_NUMARQUIVO & "')"
+                                        Conexao.Execute (XLT_SQL)
+                            
+                                     End If
+                                                                          
+                                     XLI_POSICAO = XLI_POSICAO + 2
+                            
+                                 End If
+                                XLI_CONTADOR = XLI_CONTADOR + 1
+                             Wend
+                             XLO_IMPORTACAO.Close
+                             Set XLO_IMPORTACAO = Nothing
+                                    
                             'End If
 
                         Else 'Confirmação de Pagamento
-                            'Registro de detalhe tipo U
-                            XLT_TITULO = Trim(Mid(XLT_TEXTO, 32, 25))
-                            XLT_CODEMPREENDIMENTO = Mid(XLT_TEXTO, 32, 4)
-                            XLT_CODIMOVEL = Mid(XLT_TEXTO, 36, 4)
-                            XLT_CODCONTRATO = Mid(XLT_TEXTO, 40, 2)
-                            XLT_CODPLANO = Mid(XLT_TEXTO, 42, 2)
-                            XLT_CODPARCELA = Mid(XLT_TEXTO, 44, 3)
-                            XLT_CODRESIDUO = Mid(XLT_TEXTO, 47, 2)
-    
+                            
+                            If (Mid(XLT_TEXTO, 36, 1) = "." And Mid(XLT_TEXTO, 41, 1) = "." And Mid(XLT_TEXTO, 44, 1) = "." And Mid(XLT_TEXTO, 47, 1) = "." And Mid(XLT_TEXTO, 51, 1) = ".") Then
+                                '09.1 - Identificação do Titulo na Empresa (Código do titulo c/separadores)
+                                XLT_TITULO = Trim(Mid(XLT_TEXTO, 32, 25))
+                                '09.1A - Código do Empreendimento
+                                XLT_CODEMPREENDIMENTO = Mid(XLT_TITULO, 1, 4)
+                                '09.1B - Código do Imóvel
+                                XLT_CODIMOVEL = Mid(XLT_TITULO, 6, 4)
+                                '09.1C - Código do Contrato
+                                XLT_CODCONTRATO = Mid(XLT_TITULO, 11, 2)
+                                '09.1D - Código do Plano
+                                XLT_CODPLANO = Mid(XLT_TITULO, 14, 2)
+                                '09.1E - Código da Parcela
+                                XLT_CODPARCELA = Mid(XLT_TITULO, 17, 3)
+                                '09.1F - Código do Residuo
+                                XLT_CODRESIDUO = Mid(XLT_TITULO, 21, 2)
+                            Else
+                                '09.1 - Identificação do Titulo na Empresa (Código do titulo s/separadores)
+                                XLT_TITULO = Mid(XLT_TEXTO, 32, 4) & "." & Mid(XLT_TEXTO, 36, 4) & "." & Mid(XLT_TEXTO, 40, 2) & "." & Mid(XLT_TEXTO, 42, 2) & Mid(XLT_TEXTO, 44, 3) & "." & Mid(XLT_TEXTO, 47, 2)
+                                '09.1A - Código do Empreendimento
+                                XLT_CODEMPREENDIMENTO = Mid(XLT_TEXTO, 32, 4)
+                                '09.1B - Código do Imóvel
+                                XLT_CODIMOVEL = Mid(XLT_TEXTO, 36, 4)
+                                '09.1C - Código do Contrato
+                                XLT_CODCONTRATO = Mid(XLT_TEXTO, 40, 2)
+                                '09.1D - Código do Plano
+                                XLT_CODPLANO = Mid(XLT_TEXTO, 42, 2)
+                                '09.1E - Código da Parcela
+                                XLT_CODPARCELA = Mid(XLT_TEXTO, 44, 3)
+                                '09.1F - Código do Residuo
+                                XLT_CODRESIDUO = Mid(XLT_TEXTO, 47, 2)
+                            End If
+                            
+                            '16.1 - Data da Ocorrência na Caixa
                             XLD_DATAPAG = IIf(IsDate(Mid(XLT_TEXTO, 111, 2) & "/" & Mid(XLT_TEXTO, 113, 2) & _
                                             "/" & Mid(XLT_TEXTO, 115, 2)), Mid(XLT_TEXTO, 111, 2) & "/" & Mid(XLT_TEXTO, 113, 2) & _
                                             "/" & Mid(XLT_TEXTO, 115, 2), "000000")
-                            
-
+                                            
+                            '33.1 - Data do Crédito
                             XLD_DATADEPOSITO = IIf(IsDate(Mid(XLT_TEXTO, 294, 2) & "/" & Mid(XLT_TEXTO, 296, 2) & _
                                                 "/" & Mid(XLT_TEXTO, 298, 2)), Mid(XLT_TEXTO, 294, 2) & "/" & Mid(XLT_TEXTO, 296, 2) & _
                                                 "/" & Mid(XLT_TEXTO, 298, 2), "000000")
                             
+                            '30.1 - Valor dos Juros
                             XLF_JUROS = CDbl(Mid(XLT_TEXTO, 267, 13) / 100)
+                            
+                            '28.1 - Descontos
                             XLF_DESCONTO = CDbl(Mid(XLT_TEXTO, 241, 13) / 100)
+                            
+                            '29.1 - Valor Principal
                             XLF_VALORPAGO = CDbl(Mid(XLT_TEXTO, 254, 13) / 100)
                           
                             XLT_SQL = FunCriaConsultaBase("01/01/01", NomeSgbd, "ConsCAPImpBanco", 3)
@@ -423,8 +491,9 @@ Private Sub btnConfirmar_Click()
                           
                                 'Veririfica se já foi importado
                                 If IsNull(XLO_IMPORTACAO!titu_dt_Pagamento) Then
-                                    'Acrescenta cada título importado à consulta do recibo
-                                    XLT_SQLRECIBO = XLT_SQLRECIBO + XGT_CONJUNCAO + "Titulo = '" & XLT_CODEMPREENDIMENTO & "." & XLT_CODIMOVEL & "." & XLT_CODCONTRATO & "." & XLT_CODPLANO & "." & XLT_CODPARCELA & "." & XLT_CODRESIDUO & "'"
+                                    'Acrescenta cada título (XLT_TITULO)importado à consulta do recibo
+                                    'XLT_SQLRECIBO = XLT_SQLRECIBO + XGT_CONJUNCAO + "Titulo = '" & XLT_CODEMPREENDIMENTO & "." & XLT_CODIMOVEL & "." & XLT_CODCONTRATO & "." & XLT_CODPLANO & "." & XLT_CODPARCELA & "." & XLT_CODRESIDUO & "'"
+                                    XLT_SQLRECIBO = XLT_SQLRECIBO + XGT_CONJUNCAO + "Titulo = '" & XLT_TITULO & "'"
                                     XGT_CONJUNCAO = " OR "
                                     
                                     XLI_CONT = XLI_CONT + 1
@@ -494,7 +563,7 @@ Private Sub btnConfirmar_Click()
                                     XLO_TITULO!titu_dt_Deposito = XLD_DATADEPOSITO
                                     XLO_TITULO!titu_tx_LocalPagto = 3
                                     XLO_TITULO!titu_tx_DocPagto = XLT_DOCPGTO
-                                    XLO_TITULO!coco_cd_codigo = cboCCorrente.BoundText
+                                    XLO_TITULO!coco_cd_codigo = CboCCorrente.BoundText
                     
                                     If Not IsNull(XLO_IMPORTACAO!moed_cd_Moeda3) Then
                                         If XLO_IMPORTACAO!moed_cd_Moeda3 = XLO_IMPORTACAO!moed_cd_Moeda1 Then
@@ -547,7 +616,7 @@ Private Sub btnConfirmar_Click()
                                     XGM_MATRIZLOG(7, 1) = XLD_DATADEPOSITO
                                     XGM_MATRIZLOG(8, 1) = XLT_DOCPGTO
                                     XGM_MATRIZLOG(9, 1) = XLT_TIPOPAG
-                                    XGM_MATRIZLOG(10, 1) = cboCCorrente.Text
+                                    XGM_MATRIZLOG(10, 1) = CboCCorrente.Text
                                     '*******************************************************************
                                                                 
                                     XLO_TITULO.Update
@@ -644,7 +713,7 @@ End Sub
 
 Private Sub Form_Load()
   
-  subConectarControleDadosNV datContaCorrente, "SELECT * FROM ConsGENCCcombo where empr_cd_empresa=" & Int(PCodEmpresa) & " AND banc_cd_codigo=104 ORDER BY coco_tx_Descricao", Estatico
+  subConectarControleDadosNV DatContaCorrente, "SELECT * FROM ConsGENCCcombo where empr_cd_empresa=" & Int(PCodEmpresa) & " AND banc_cd_codigo=104 ORDER BY coco_tx_Descricao", Estatico
   
 End Sub
 

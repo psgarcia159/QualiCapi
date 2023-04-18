@@ -226,39 +226,39 @@ Begin VB.Form TelaExpBancaria
          TabCaption(1)   =   "Empreendimentos"
          TabPicture(1)   =   "TelaExpBancaria.frx":001C
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(1)=   "LlbEmpreendimento"
-         Tab(1).Control(2)=   "TDBGridEmpr1"
-         Tab(1).Control(3)=   "TDBGridEmpr2"
-         Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(6)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(4)=   "TDBGridEmpr2"
+         Tab(1).Control(5)=   "TDBGridEmpr1"
+         Tab(1).Control(6)=   "LlbEmpreendimento"
+         Tab(1).Control(7)=   "Label1"
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
          TabPicture(2)   =   "TelaExpBancaria.frx":0038
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "Label3"
-         Tab(2).Control(1)=   "Label2"
-         Tab(2).Control(2)=   "TDBGridMoeda2"
-         Tab(2).Control(3)=   "TDBGridMoeda1"
+         Tab(2).Control(0)=   "CmdRemoverMoeda"
+         Tab(2).Control(1)=   "CmdInserirMoeda"
+         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(5)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(7)=   "CmdInserirMoeda"
-         Tab(2).Control(8)=   "CmdRemoverMoeda"
+         Tab(2).Control(5)=   "TDBGridMoeda1"
+         Tab(2).Control(6)=   "TDBGridMoeda2"
+         Tab(2).Control(7)=   "Label2"
+         Tab(2).Control(8)=   "Label3"
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
          TabPicture(3)   =   "TelaExpBancaria.frx":0054
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "Label5"
-         Tab(3).Control(1)=   "Label4"
-         Tab(3).Control(2)=   "TDBGridObs1"
-         Tab(3).Control(3)=   "TDBGridObs2"
-         Tab(3).Control(4)=   "CmdRemoverObservacao"
-         Tab(3).Control(5)=   "CmdInserirObservacao"
-         Tab(3).Control(6)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(7)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(0)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(1)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(2)=   "CmdInserirObservacao"
+         Tab(3).Control(3)=   "CmdRemoverObservacao"
+         Tab(3).Control(4)=   "TDBGridObs2"
+         Tab(3).Control(5)=   "TDBGridObs1"
+         Tab(3).Control(6)=   "Label4"
+         Tab(3).Control(7)=   "Label5"
          Tab(3).ControlCount=   8
          Begin VB.TextBox TxtMensagem1 
             Height          =   315
@@ -801,7 +801,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   80936963
+            Format          =   79036419
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -814,7 +814,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   80936963
+            Format          =   79036419
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -3425,7 +3425,7 @@ Private Sub BtnConfExportar_Click()
     Exit Sub
   End If
   
-  DlgSalvar.DialogTitle = "Arquivo de Exportação do CAIXA"
+  DlgSalvar.DialogTitle = "Arquivo de Exportação para CAIXA"
   DlgSalvar.Filter = "Arquivos de Remessa (*.txt)|*.txt"
   DlgSalvar.InitDir = "C:\"
   DlgSalvar.FileName = "CCE" & Format(Now, "dd") & Format(Now, "MM") & Format(Now, "yy")
@@ -3467,28 +3467,28 @@ Private Sub BtnConfExportar_Click()
   
   
   '**********DESCRIÇÃO DE REGISTRO TIPO '0' (OBRIGATÓRIO) - HEADER DE REMESSA**********
-      'CÓDIGO DO REGISTRO
+      '01.0 - CÓDIGO DO REGISTRO
       XLT_TEXTO = "0"
       
-      'CÓDIGO DA REMESSA
+      '02.0 - CÓDIGO DA REMESSA
       XLT_TEXTO = XLT_TEXTO & "1"
       
-      'LITERAL DA REMESSA
+      '03.0 - LITERAL DA REMESSA
       XLT_TEXTO = XLT_TEXTO & "REMESSA"
       
-      'CÓDIGO DO SERVIÇO
+      '04.0 - CÓDIGO DO SERVIÇO
       XLT_TEXTO = XLT_TEXTO & "01"
       
-      'LITERAL DE SERVIÇO
+      '05.0 - LITERAL DE SERVIÇO
       XLT_TEXTO = XLT_TEXTO & "COBRANCA" & Space(15 - Len("COBRANCA"))
       
-      'CÓDIGO DA AGÊNCIA ALTERADO *MICHEL 13/07/20022
+      '06.0 - CÓDIGO DA AGÊNCIA ALTERADO *MICHEL 13/07/20022
       XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(datContaCorrente.Recordset.Fields!coco_cd_Agencia) = "", FuncoesGenericas.FunZeros(4), (FuncoesGenericas.FunZeros(4 - Len(datContaCorrente.Recordset.Fields!coco_cd_Agencia))) & Format(datContaCorrente.Recordset.Fields!coco_cd_Agencia, "0000"))
       
       'CÓDIGO DA AGÊNCIA ALTERADO NOVO LAYOUT NÃO REQUER *MICHEL 05/05/2022
       'XLT_TEXTO = XLT_TEXTO & "0000"
             
-      'CÓDIGO DO BENEFICIÁRIO
+      '07.0 - CÓDIGO DO BENEFICIÁRIO
       If CLng(datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca) <= 999999 Then
         ' De 000001 a 999999        PSGarcia 22/03/2023
         XLT_TEXTO = XLT_TEXTO & datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca & "0"
@@ -3497,23 +3497,23 @@ Private Sub BtnConfExportar_Click()
         XLT_TEXTO = XLT_TEXTO & datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca
       End If
       
-      'USO EXCLUSIVO
+      '08.0 - USO EXCLUSIVO
       'ALTERAÇÃO MICHEL ADCIONADO 0 AO FINAL DO CONVENIO
       XLT_TEXTO = XLT_TEXTO & Space(9)
       
-      'NOME DA EMPRESA
+      '09.0 - NOME DA EMPRESA
       XLT_TEXTO = XLT_TEXTO & Mid(PEmpresa, 1, 30) & (FuncoesGenericas.FunZeros(30 - Len(PEmpresa)))
       
-      'CÓDIGO DO BANCO
+      '10.0 - CÓDIGO DO BANCO
       XLT_TEXTO = XLT_TEXTO & "104"
       
-      'NOME DO BANCO
+      '11.0 - NOME DO BANCO
       XLT_TEXTO = XLT_TEXTO & "CAIXA ECONOMICA"
       
-      'DATA DE GERAÇÃO
+      '12.0 - DATA DE GERAÇÃO
       XLT_TEXTO = XLT_TEXTO & Format(DateTime.Now, "ddMMyy")
       
-      'VERSÃO do LAYOUT
+      '12.0V - VERSÃO do LAYOUT
       If CLng(datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca) <= 999999 Then
         ' De 000001 a 999999        PSGarcia 22/03/2023
         XLT_TEXTO = XLT_TEXTO & Space(3)
@@ -3522,13 +3522,13 @@ Private Sub BtnConfExportar_Click()
         XLT_TEXTO = XLT_TEXTO & "007"
       End If
       
-      'USO EXCLUSIVO
+      '13.0 - USO EXCLUSIVO
       XLT_TEXTO = XLT_TEXTO & Space(286)
       
-      'Nº SEQUENCIAL - A
+      '14.0 - Nº SEQUENCIAL - A
       XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(5 - Len(XLO_ULTREMESSA!Ulti_nr_RemessaCaixa)) & XLO_ULTREMESSA!Ulti_nr_RemessaCaixa
       
-      'Nº SEQUENCIAL - B
+      '15.0 - Nº SEQUENCIAL - B
       XLT_TEXTO = XLT_TEXTO & "000001"
       
       Print #1, funTiraAcento(XLT_TEXTO, True)
@@ -3626,27 +3626,29 @@ Private Sub BtnConfExportar_Click()
               End If
               
               XLT_REGLOTE = XLT_REGLOTE + 1
+              
+              'Trata o número do titulo (p/Numeração Própria) substituindo caracteres Alfabéticos por Numéricos (ver tabela [dbo].[ImoveisCodigos])
               NR_TITULO_CONVERTIDO = Trata_NrTitulo(XFO_EXPORTACAO!Titulo)
               XLT_TITULO = Mid(NR_TITULO_CONVERTIDO, 1, 4) & Mid(NR_TITULO_CONVERTIDO, 6, 4) & Mid(NR_TITULO_CONVERTIDO, 11, 2) & Mid(NR_TITULO_CONVERTIDO, 14, 2) & Mid(NR_TITULO_CONVERTIDO, 17, 3) & Mid(NR_TITULO_CONVERTIDO, 21, 2)
                         
               '*****************Descrição de registro tipo '1' (Obrigatório) - Dados do título - Detalhe de Remessa*****************
-              'CÓDIGO DO REGISTRO - PREENCHER COM 1
+              '01.1 - CÓDIGO DO REGISTRO - PREENCHER COM 1
               XLT_TEXTO = "1"
               
-              'TIPO INSCRIÇÃO - PJ OU PF
+              '02.1 - TIPO INSCRIÇÃO - PJ OU PF
               XLT_TEXTO = XLT_TEXTO & "02"
               
-              'NÚMERO INSCRIÇÃO - CGC
+              '03.1 - NÚMERO INSCRIÇÃO - CPF/CNPJ
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_CGCEMP) = "", FuncoesGenericas.FunZeros(14), (FuncoesGenericas.FunZeros(14 - Len(XLT_CGCEMP))) & Format(XLT_CGCEMP, "00000000000000"))
               
               'CÓDIGO DA AGÊNCIA DE VINCULAÇÃO DO BENEFICIÁRIO ALTERADO NOVO LAYOUT NÃO REQUER
               'XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(DatContaCorrente.Recordset.Fields!coco_cd_Agencia) = "", FuncoesGenericas.FunZeros(4), (FuncoesGenericas.FunZeros(4 - Len(DatContaCorrente.Recordset.Fields!coco_cd_Agencia))) & Format(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, "0000"))
               'XLT_TEXTO = XLT_TEXTO & "0000"
               
-              'USO EXLUSIVO
+              '04.1 - USO EXLUSIVO
               XLT_TEXTO = XLT_TEXTO & "000"
               
-              'CÓDIGO DO BENEFICIÁRIO
+              '05.1 - CÓDIGO DO BENEFICIÁRIO
               'XLT_TEXTO = XLT_TEXTO & datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca
               If CLng(datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca) <= 999999 Then
                 ' De 000001 a 999999        PSGarcia 22/03/2023
@@ -3656,164 +3658,166 @@ Private Sub BtnConfExportar_Click()
                 XLT_TEXTO = XLT_TEXTO & datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca
               End If
               
-              'ID EMISSÃO
+              '06.1 - ID EMISSÃO (Código FREBABAN 1=banco, 2=cliente)
               'XLT_TEXTO = XLT_TEXTO & "1"
               XLT_TEXTO = XLT_TEXTO & "2"
               
-              'ID POSTAGEM
+              '07.1 - ID POSTAGEM (Código FREBABAN 0=Beneficiário, 1=Correio, 2=Agência Caixa, 3=e-mail)
               'ALTERAÇÃO DA ID DA POSTAGEM ANTES = 1 AGORA = 3 PAGADOR VIA EMAIL *MICHEL 05/05/2022
               XLT_TEXTO = XLT_TEXTO & "0"
               
-              'TAXA PERMANÊNCIA
+              '09.1 - TAXA PERMANÊNCIA
               XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(2)
               
-              'USO EMPRESA BENEFICIÁRIO
-              XLT_TEXTO = XLT_TEXTO & XLT_TITULO & Space(25 - Len(XLT_TITULO))
+              '10.1 - USO EMPRESA BENEFICIÁRIO - Identificação do titulo na Empresa (codigo original do titulo, s/edição)
+              'XLT_TEXTO = XLT_TEXTO & XLT_TITULO & Space(25 - Len(XLT_TITULO))
+              XLT_TEXTO = XLT_TEXTO & XFO_EXPORTACAO!Titulo & Space(25 - Len(XFO_EXPORTACAO!Titulo))
                                           
-              'ALTERAÇÃO PARA GERAR COM NOSSO NUMERO
+              '11.1 - NOSSO NUMERO
               If EXP_TIPO_NORMAL Then
-                
-                'MODALIDADE IDENTIFICAÇÃO E IDENTIFICAÇÃO DO TÍTULO NA CAIXA
+                '- Exportação normal (Emissão do boleto por parte da Caixa)
+                '11.1A - MODALIDADE IDENTIFICAÇÃO E IDENTIFICAÇÃO DO TÍTULO NA CAIXA
                  XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(2)
-                'IDENTIFICAÇÃO DO TÍTULO NA CAIXA
+                '11.1B - IDENTIFICAÇÃO DO TÍTULO NA CAIXA
                  XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(15)
               Else
-                'EMISSAO NOSSO NUMERO
-                'MODALIDADE IDENTIFICAÇÃO E IDENTIFICAÇÃO DO TÍTULO NA CAIXA
+                '- Exportação numeração própria (Emissão do boleto por parte da empresa beneficiária)
+                '11.1A - MODALIDADE IDENTIFICAÇÃO E IDENTIFICAÇÃO DO TÍTULO NA CAIXA
                  XLT_TEXTO = XLT_TEXTO & "14"
-                'IDENTIFICAÇÃO DO TÍTULO NA CAIXA
+                '11.1B - IDENTIFICAÇÃO DO TÍTULO NA CAIXA
                 'NR_TITULO_CONVERTIDO = Replace(NR_TITULO_CONVERTIDO, ".", "")
                 If IsNumeric(Replace(NR_TITULO_CONVERTIDO, ".", "")) Then
                     XLT_TEXTO = XLT_TEXTO & Mid(Replace(NR_TITULO_CONVERTIDO, ".", ""), 1, 15)
                 Else
                     MsgBox "O código " & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & _
-                    " não possui código alfanúmerico equivalente"
+                    " não possui código alfanúmerico equivalente (ver tabela [dbo].[ImoveisCodigos])"
                     Exit Sub
                 End If
                 
               End If
               
               
-              'CAMPOS EM BRANCOS
+              '12.1 - CAMPOS EM BRANCO
               XLT_TEXTO = XLT_TEXTO & Space(2)
               
-              'USO LIVRE BANCO/EMPRESA
+              '12A.1 - USO LIVRE BANCO/EMPRESA
               XLT_TEXTO = XLT_TEXTO & Space(1)
               
-              'CÓDIGO DOS JUROS
-              XLT_TEXTO = XLT_TEXTO & Space(1)
+              '13.1 - CÓDIGO DOS JUROS
+              'XLT_TEXTO = XLT_TEXTO & Space(1)
+              XLT_TEXTO = XLT_TEXTO & "1"
               
-              'DATA DE JUROS
+              '13A.1 - DATA DE JUROS
               XLT_TEXTO = XLT_TEXTO & Format(DateAdd("d", 1, XFO_EXPORTACAO!titu_dt_Vencimento), "ddMMyy")
               
-              'CÓDIGO DO DESCONTO
+              '13B.1 - CÓDIGO DO DESCONTO
               XLT_TEXTO = XLT_TEXTO & "0"
               
-              'BRANCOS
+              '13C.1 - BRANCOS
               XLT_TEXTO = XLT_TEXTO & Space(22)
               
-              'CÓDIGO DA CARTEIRA - PREENCHER COM 01
+              '14.1 - CÓDIGO DA CARTEIRA - PREENCHER COM 01=Cobrança Registrada
               XLT_TEXTO = XLT_TEXTO & "01"
               
-              'IDENTIFICAÇÃO TIPO OCORRÊNCIA DO ARQUIVO REMESSA
+              '15.1 - IDENTIFICAÇÃO TIPO OCORRÊNCIA DO ARQUIVO REMESSA
               XLT_TEXTO = XLT_TEXTO & "01"
               
-              'NÚMERO DO DOCUMENTO DE COBRANÇA
+              '16.1 - NÚMERO DO DOCUMENTO DE COBRANÇA (número do cliente)
               XLT_TEXTO = XLT_TEXTO & Left(NR_TITULO_CONVERTIDO, 4) & Mid(NR_TITULO_CONVERTIDO, 6, 4) & Mid(NR_TITULO_CONVERTIDO, 11, 2)
               
-              'DATA DE VENCIMENTO DO TÍTULO
+              '17.1 - DATA DE VENCIMENTO DO TÍTULO
               XLT_TEXTO = XLT_TEXTO & Format(XFO_EXPORTACAO!titu_dt_Vencimento, "ddMMyy")
               
-              'VALOR NOMINAL DO TÍTULO
+              '18.1 - VALOR NOMINAL DO TÍTULO
               XLT_VALORTEMP = Replace(XLF_VALOR, ",", ".")
               XLT_TEXTO = XLT_TEXTO & Format(XLT_VALORTEMP, "0000000000000")
               
-              'CÓDIGO DO BANCO
+              '19.1 - CÓDIGO DO BANCO
               XLT_TEXTO = XLT_TEXTO & "104"
               
-              'AGÊNCIA COBRADORA
+              '20.1 - AGÊNCIA COBRADORA
               XLT_TEXTO = XLT_TEXTO & "00000"
               
-              'ESPÉCIE DE TÍTULO
+              '21.1 - ESPÉCIE DE TÍTULO 02=Nota Promissória (NP)
               XLT_TEXTO = XLT_TEXTO & "02"
               
-              'ACEITE
+              '22.1 - ACEITE (Identificação de Título Aceito / Não Aceito)
               XLT_TEXTO = XLT_TEXTO & "A"
               
-              'DATA EMISSÃO TÍTULO
+              '23.1 - DATA EMISSÃO TÍTULO
               XLT_TEXTO = XLT_TEXTO & Format(DateTime.Now, "ddMMyy")
               
-              'INSTRUÇÃO 1
+              '24.1 - INSTRUÇÃO 1
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(TxtMensagem1.Text) = "", "02", (FuncoesGenericas.FunZeros(2 - Len(TxtMensagem1.Text)))) & TxtMensagem1.Text
               
-              'INSTRUÇÃO 2
+              '25.1 - INSTRUÇÃO 2
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(TxtMensagem2.Text) = "", FuncoesGenericas.FunZeros(2), (FuncoesGenericas.FunZeros(2 - Len(TxtMensagem2.Text)))) & TxtMensagem2.Text
               
-              'JUROS MORA
+              '26.1 - JUROS MORA
               XLO_PERCJUROS = XLF_VALOR * (XFO_EXPORTACAO!titu_vl_PercJurosMora / 100)
               XLO_PERCJUROS = Format(XLO_PERCJUROS, "0.00")
               XLO_PERCJUROS = Replace(XLO_PERCJUROS, ",", ".")
               XLT_TEXTO = XLT_TEXTO & Format(XLO_PERCJUROS, "0000000000000")
               
-              'DATA DO DESCONTO
+              '27.1 - DATA DO DESCONTO
               XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(6)
               
-              'VALOR/PERCENTUAL DO DESCONTO
+              '28.1 - VALOR/PERCENTUAL DO DESCONTO
               XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(13)
               
-              'VALOR DO IOF
+              '29.1 - VALOR DO IOF
               XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(13)
               
-              'ABATIMENTO
+              '30.1 - ABATIMENTO
               XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(13)
               
-              'TIPO INSCRIÇÃO
+              '31.1 - TIPO INSCRIÇÃO
               XLT_TEXTO = XLT_TEXTO & XLT_TIPO
               
-              'NÚMERO INSCRIÇÃO
+              '32.1 - NÚMERO INSCRIÇÃO
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_CGCCPF) = "", FuncoesGenericas.FunZeros(14), (FuncoesGenericas.FunZeros(14 - Len(XLT_CGCCPF)))) & XLT_CGCCPF
               
-              'NOME
+              '33.1 - NOME
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_NOME) = "", Space(40), XLT_NOME) & Space(40 - Len(XLT_NOME))
               
-              'ENDEREÇO
+              '34.1 - ENDEREÇO
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_ENDERECO) = "", Space(40), XLT_ENDERECO) & Space(40 - Len(XLT_ENDERECO))
               
-              'BAIRRO
+              '35.1 - BAIRRO
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_BAIRRO) = "", Space(12), XLT_BAIRRO) & Space(12 - Len(XLT_BAIRRO))
               
-              'CEP
+              '36.1 - CEP
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_CEP) = "", FuncoesGenericas.FunZeros(8), (FuncoesGenericas.FunZeros(8 - Len(XLT_CEP)))) & XLT_CEP
               
-              'CIDADE
+              '37.1 - CIDADE
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_CIDADE) = "", Space(15), XLT_CIDADE) & Space(15 - Len(XLT_CIDADE))
               
-              'ESTADO
+              '38.1 - ESTADO
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_ESTADO) = "", Space(2), XLT_ESTADO) & Space(2 - Len(XLT_ESTADO))
               
-              'DATA DA MULTA
+              '39.1 - DATA DA MULTA
               XLT_TEXTO = XLT_TEXTO & Format(DateAdd("d", 1, XFO_EXPORTACAO!titu_dt_Vencimento), "ddMMyy")
               
-              'VALOR DA MULTA
+              '40.1 - VALOR DA MULTA
               XLT_VALORMULTA = XLF_VALOR * 0.02
               XLT_VALORMULTA = FormatNumber(XLT_VALORMULTA, 2)
               XLT_VALORMULTA = Replace(XLT_VALORMULTA, ",", ".")
               XLT_TEXTO = XLT_TEXTO & Format(XLT_VALORMULTA, "0000000000")
               
-              'SACADOR/AVALISTA
+              '41.1 - SACADOR/AVALISTA
               XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_NOME) = "", Space(22), Trim(Mid(XLT_NOME, 1, 22))) & Space(22 - Len(Trim(Mid(XLT_NOME, 1, 22))))
               
-              'INSTRUÇÃO 3
+              '42.1 - INSTRUÇÃO 3
               XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(2)
               
-              'PRAZO
+              '43.1 - PRAZO
               'XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(2 - Len(XLI_PRAZOMORA)) & IIf(FunNulo(XLI_PRAZOMORA) = "", "05", Format(XLI_PRAZOMORA, "00"))
               XLT_TEXTO = XLT_TEXTO & "30"
               
-              'CÓDIGO DA MOEDA - PREENCHER COM 1
+              '44.1 - CÓDIGO DA MOEDA - PREENCHER COM 1
               XLT_TEXTO = XLT_TEXTO & "1"
               
-              'NÚMERO SEQUENCIAL
+              '45.1 - NÚMERO SEQUENCIAL
               XLT_TEXTO = XLT_TEXTO & Format(XLI_NUMSQUENCIAL, "000000")
     
               Print #1, funTiraAcento(XLT_TEXTO, True)

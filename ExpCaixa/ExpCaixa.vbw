@@ -17,4 +17,4 @@ FiltroCaracter = 0, 0, 0, 0, C, 175, 175, 952, 620, C
 FrmVisRelatorios = 0, 0, 0, 0, C, 200, 200, 977, 645, CZ
 FuncoesGenericas = 0, 0, 0, 0, C
 TratamentoErros = 0, 0, 0, 0, C
-FrmImportacao = 75, 75, 1041, 506, Z, 25, 25, 777, 460, C
+FrmImportacao = 75, 75, 1041, 506, Z, 25, 25, 777, 460, 
