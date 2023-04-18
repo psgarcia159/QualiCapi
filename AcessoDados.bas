@@ -277,31 +277,44 @@ Public Function funAbreConexao(XLT_MSGERRO As String) As Boolean
     
     Screen.MousePointer = vbHourglass
     'Indica o banco de dados a ser utilizado
-    If GetPrivateProfileString("BancoDeDados", "TipoBanco", "", XLT_TIPOBANCO, 255, App.path + "\QualiAdmFin.INI") = 0 Then
+    If GetPrivateProfileString("BancoDeDados", "TipoBanco", "", XLT_TIPOBANCO, 255, App.Path + "\QualiAdmFin.INI") = 0 Then
         MsgBox "Problemas na Leitura do Arquivo de configuração", vbCritical, "Configuração"
     End If
     
     'PEGA O ENDEREÇO DO BANCO
-    GetPrivateProfileString "BancoDeDados", "Endereco", "", XLT_STRINGCONEXAO, 255, App.path + "\QualiAdmFin.INI"
+    GetPrivateProfileString "BancoDeDados", "Endereco", "", XLT_STRINGCONEXAO, 255, App.Path + "\QualiAdmFin.INI"
     
     'PEGA O NOME DO BANCO
-    GetPrivateProfileString "BancoDeDados", "NomeBanco", "", XLT_NOMEBANCO, 255, App.path + "\QualiAdmFin.INI"
+    GetPrivateProfileString "BancoDeDados", "NomeBanco", "", XLT_NOMEBANCO, 255, App.Path + "\QualiAdmFin.INI"
+    
+    'PEGA O USUARIO
+    GetPrivateProfileString "BancoDeDados", "Usuario", "", XLT_USUARIO, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_USUARIO) Or IsEmpty(XLT_USUARIO) Or XLT_USUARIO = "" Then
+        XLT_USUARIO = "qualiadmfin"
+    End If
+        
+    'PEGA A SENHA
+    GetPrivateProfileString "BancoDeDados", "Senha", "", XLT_SENHA, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_SENHA) Or IsEmpty(XLT_SENHA) Or XLT_SENHA = "" Then
+        XLT_SENHA = "qd"
+    End If
     
     'PEGA MÁSCARA DO CÓDIGO REDUZIDO
-    GetPrivateProfileString "BancoDeDados", "MskCodReduzido", "", XGT_MSKCODREDUZIDO, 255, App.path + "\QualiAdmFin.INI"
+    GetPrivateProfileString "BancoDeDados", "MskCodReduzido", "", XGT_MSKCODREDUZIDO, 255, App.Path + "\QualiAdmFin.INI"
     
     'PEGA MÁSCARA DO CÓDIGO DA CATEGORIA
-    GetPrivateProfileString "BancoDeDados", "Mascara", "", XGT_MSKCATEGORIA, 255, App.path + "\QualiAdmFin.INI"
+    GetPrivateProfileString "BancoDeDados", "Mascara", "", XGT_MSKCATEGORIA, 255, App.Path + "\QualiAdmFin.INI"
     
     'PEGA CÓDIGO REDUZIDO DA CONTA DE GLOSA A RECUPERAR
     XGT_CONTAGLOSA = ""
-    GetPrivateProfileString "BancoDeDados", "ContaGlosa", "", XGT_CONTAGLOSA, 7, App.path + "\QualiAdmFin.INI"
+    GetPrivateProfileString "BancoDeDados", "ContaGlosa", "", XGT_CONTAGLOSA, 7, App.Path + "\QualiAdmFin.INI"
     XGT_CONTAGLOSA = Trim(FunStrArqIni(XGT_CONTAGLOSA))
-
 
     'Patrícia - PEGA O NÚMERO DE DIAS PARA SER UTILIZADO NO CÁLCULO DO NÚMERO DE REGISTROS A SEREM MOSTRADOS NAS TELAS DE DUPLICATAS E CONTAS A PAGAR\RECEBER.
     XGT_NUMDIAS = ""
-    GetPrivateProfileString "BancoDeDados", "NumDias", "", XGT_NUMDIAS, 7, App.path + "\QualiAdmFin.INI"
+    GetPrivateProfileString "BancoDeDados", "NumDias", "", XGT_NUMDIAS, 7, App.Path + "\QualiAdmFin.INI"
     XGT_NUMDIAS = Trim(FunStrArqIni(XGT_NUMDIAS))
 
     Select Case Val(XLT_TIPOBANCO)
@@ -315,7 +328,7 @@ Public Function funAbreConexao(XLT_MSGERRO As String) As Boolean
         Conexao.Provider = "sqloledb"
         XGT_SQL = "Data Source=" & FunStrArqIni(XLT_STRINGCONEXAO) & _
                 ";Persist Security Info=True;Initial Catalog=" & FunStrArqIni(XLT_NOMEBANCO) & _
-                ";User Id=qualiadmfin;Password=qd; "
+                ";User Id=" & FunStrArqIni(XLT_USUARIO) & ";Password=" & FunStrArqIni(XLT_SENHA) & "; "
         Conexao.CommandTimeout = 1200
         Conexao.Open XGT_SQL
 
@@ -344,15 +357,29 @@ Public Function funAbreConexaoRelatorio() As Boolean
     Screen.MousePointer = vbHourglass
     
     'Indica o banco de dados a ser utilizado
-    If GetPrivateProfileString("BancoDeDados", "TipoBanco", "", XLT_TIPOBANCO, 255, App.path + "\QualiAdmFin.INI") = 0 Then
+    If GetPrivateProfileString("BancoDeDados", "TipoBanco", "", XLT_TIPOBANCO, 255, App.Path + "\QualiAdmFin.INI") = 0 Then
         MsgBox "Problemas na Leitura do Arquivo de configuração", vbCritical, "Configuração"
     End If
     
     'PEGA O ENDEREÇOÇ DO BANCO
-    GetPrivateProfileString "BancoDeDados", "Endereco", "", XLT_STRINGCONEXAO, 255, App.path + "\QualiAdmFin.INI"
+    GetPrivateProfileString "BancoDeDados", "Endereco", "", XLT_STRINGCONEXAO, 255, App.Path + "\QualiAdmFin.INI"
     
     'PEGA O NOME DO BANCO
-    GetPrivateProfileString "BancoDeDados", "NomeBanco", "", XLT_NOMEBANCO, 255, App.path + "\QualiAdmFin.INI"
+    GetPrivateProfileString "BancoDeDados", "NomeBanco", "", XLT_NOMEBANCO, 255, App.Path + "\QualiAdmFin.INI"
+    
+    'PEGA O USUARIO
+    GetPrivateProfileString "BancoDeDados", "Usuario", "", XLT_USUARIO, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_USUARIO) Or IsEmpty(XLT_USUARIO) Or XLT_USUARIO = "" Then
+        XLT_USUARIO = "qualiadmfin"
+    End If
+        
+    'PEGA A SENHA
+    GetPrivateProfileString "BancoDeDados", "Senha", "", XLT_SENHA, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_SENHA) Or IsEmpty(XLT_SENHA) Or XLT_SENHA = "" Then
+        XLT_SENHA = "qd"
+    End If
     
     Select Case Val(XLT_TIPOBANCO)
         Case 1
@@ -368,7 +395,7 @@ Public Function funAbreConexaoRelatorio() As Boolean
             ConexaoRelatorio.CursorLocation = adUseClient
             XGT_SQL = "Data Source=" & FunStrArqIni(XLT_STRINGCONEXAO) & _
                       ";Persist Security Info=True;Initial Catalog=" & FunStrArqIni(XLT_NOMEBANCO) & _
-                      ";User Id=qualiadmfin;Password=qd;OLE DB Services = -2; "
+                      ";User Id=" & FunStrArqIni(XLT_USUARIO) & ";Password=" & FunStrArqIni(XLT_SENHA) & ";OLE DB Services = -2; "
             ConexaoRelatorio.Open XGT_SQL
     End Select
     Screen.MousePointer = vbDefault

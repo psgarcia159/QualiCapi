@@ -1,8 +1,9 @@
 VERSION 5.00
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+																	   
 Begin VB.Form FrmConfBanco 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Configurações do Sistema"
@@ -119,10 +120,10 @@ Begin VB.Form FrmConfBanco
       TabCaption(1)   =   "Registro do Banco"
       TabPicture(1)   =   "FrmConfBanco.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label4"
-      Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "frmRegistro"
-      Tab(1).Control(1).Enabled=   0   'False
+      Tab(1).Control(0)=   "frmRegistro"
+											 
+      Tab(1).Control(1)=   "Label4"
+											 
       Tab(1).ControlCount=   2
       TabCaption(2)   =   "Atualização"
       TabPicture(2)   =   "FrmConfBanco.frx":0038
@@ -266,8 +267,28 @@ Begin VB.Form FrmConfBanco
          Height          =   2535
          Left            =   180
          TabIndex        =   4
-         Top             =   1380
+         Top             =   1440
          Width           =   5955
+         Begin VB.TextBox txtSenha 
+            Enabled         =   0   'False
+            Height          =   315
+            IMEMode         =   3  'DISABLE
+            Left            =   1620
+            PasswordChar    =   "*"
+            TabIndex        =   40
+            Top             =   1680
+            Visible         =   0   'False
+            Width           =   2655
+         End
+         Begin VB.TextBox txtUsuario 
+            Enabled         =   0   'False
+            Height          =   315
+            Left            =   1620
+            TabIndex        =   38
+            Top             =   1260
+            Visible         =   0   'False
+            Width           =   2655
+         End
          Begin VB.TextBox txtLocalBanco 
             BeginProperty Font 
                Name            =   "MS Sans Serif"
@@ -322,10 +343,30 @@ Begin VB.Form FrmConfBanco
          Begin VB.CommandButton txtVerifBanco 
             Caption         =   "Verificar..."
             Height          =   315
-            Left            =   4560
+            Left            =   4520
             TabIndex        =   10
-            Top             =   1320
-            Width           =   1215
+            Top             =   1680
+            Width           =   1335
+         End
+         Begin VB.Label lblSenha 
+            Alignment       =   1  'Right Justify
+            Caption         =   "Senha:"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   41
+            Top             =   1800
+            Visible         =   0   'False
+            Width           =   1455
+         End
+         Begin VB.Label lblUsuario 
+            Alignment       =   1  'Right Justify
+            Caption         =   "Usuário:"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   39
+            Top             =   1380
+            Visible         =   0   'False
+            Width           =   1455
          End
          Begin VB.Label lblLocalBanco 
             Alignment       =   1  'Right Justify
@@ -550,6 +591,10 @@ Private Sub cmdOK_Click()
     WritePrivateProfileString "BancoDeDados", "Endereco", txtLocalBanco.Text, App.Path + "\QualiAdmFin.INI"
     'GRAVA O NOME DO BANCO
     WritePrivateProfileString "BancoDeDados", "NomeBanco", txtNomeBanco.Text, App.Path + "\QualiAdmFin.INI"
+    'GRAVA O USUARIO
+    WritePrivateProfileString "BancoDeDados", "Usuario", txtUsuario.Text, App.Path + "\QualiAdmFin.INI"
+    'GRAVA A SENHA
+    WritePrivateProfileString "BancoDeDados", "Senha", txtSenha.Text, App.Path + "\QualiAdmFin.INI"
     
     'Grava o local da atualização
     If Dir(txtPastaAtualizacoes.Text, vbDirectory) <> "" Then
@@ -652,6 +697,8 @@ Private Sub Form_Load()
   Dim XLT_STRINGCONEXAO
   Dim XLT_TIPOBANCO
   Dim XLT_NOMEBANCO
+  Dim XLT_USUARIO
+  Dim XLT_SENHA
   Dim XLT_TEMP As String * 254
   Dim XLT_PASTA As String
   
@@ -673,6 +720,18 @@ Private Sub Form_Load()
   End If
   XLT_NOMEBANCO = funTiraCaracteresNulos(XLT_TEMP)
   
+  'PEGA O USUARIO
+  If GetPrivateProfileString("BancoDeDados", "Usuario", "", XLT_TEMP, 255, App.Path + "\QualiAdmFin.INI") = 0 Then
+    MsgBox "Problemas na Leitura do Arquivo de configuração", vbCritical, "Configuração"
+  End If
+  XLT_USUARIO = funTiraCaracteresNulos(XLT_TEMP)
+    
+  'PEGA A SENHA
+  If GetPrivateProfileString("BancoDeDados", "Senha", "", XLT_TEMP, 255, App.Path + "\QualiAdmFin.INI") = 0 Then
+    MsgBox "Problemas na Leitura do Arquivo de configuração", vbCritical, "Configuração"
+  End If
+  XLT_SENHA = funTiraCaracteresNulos(XLT_TEMP)
+    
   
   If GetPrivateProfileString("Atualizacao", "Pasta", "", XLT_TEMP, 255, App.Path + "\QualiAdmFin.INI") <> 0 Then
     XLT_PASTA = Left$(XLT_TEMP, InStr(XLT_TEMP, Chr$(0)) - 1)
@@ -684,12 +743,15 @@ Private Sub Form_Load()
   Else
     optSql.Value = True
   End If
+  
   txtLocalBanco.Text = Trim(XLT_STRINGCONEXAO)
   txtNomeBanco.Text = Trim(XLT_NOMEBANCO)
   txtNomeServidor.Text = funNomeComp
   txtLocalBancoServ.Text = App.Path
   txtPastaAtualizacoes.Text = XLT_PASTA
-    
+  txtUsuario.Text = Trim(XLT_USUARIO)
+  txtSenha.Text = Trim(XLT_SENHA)
+      
 End Sub
 
 Private Sub optAccess_Click()
@@ -698,6 +760,12 @@ Private Sub optAccess_Click()
   frmRegistro.Enabled = False
   cmdProcurarBanco.Visible = True
   SSTab1.TabVisible(1) = False
+  lblUsuario.Visible = False
+  txtUsuario.Enabled = False
+  txtUsuario.Visible = False
+  LblSenha.Visible = False
+  txtSenha.Enabled = False
+  txtSenha.Visible = False
 End Sub
 
 Private Sub optSql_Click()
@@ -706,6 +774,12 @@ Private Sub optSql_Click()
   frmRegistro.Enabled = True
   cmdProcurarBanco.Visible = False
   SSTab1.TabVisible(1) = True
+  lblUsuario.Visible = True
+  txtUsuario.Enabled = True
+  txtUsuario.Visible = True
+  LblSenha.Visible = True
+  txtSenha.Enabled = True
+  txtSenha.Visible = True
 End Sub
 
 Private Sub txtVerifBanco_Click()
@@ -738,7 +812,7 @@ Private Function funTestaConexao(XLT_ERRO As String) As Boolean
     XFO_CONEXAO.Open _
       "Data Source=" & txtLocalBanco.Text & _
       ";Initial Catalog=" & txtNomeBanco.Text & _
-      ";User Id=QualiAdmFin; Password=qd;"
+      ";User Id=" & txtUsuario.Text & "; Password=" & txtSenha.Text & ";"
   End If
   If XFO_CONEXAO.State = adStateOpen Then XFO_CONEXAO.Close
   funTestaConexao = True
