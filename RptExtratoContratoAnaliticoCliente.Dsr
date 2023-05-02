@@ -189,14 +189,14 @@ Private Sub SecDetalhe_Format(ByVal pFormattingInfo As Object)
     SetReportVariableValue "TOTALLIQUIDADOATUALIZADO", (FunNuloVal(GetReportVariableValue("TOTALLIQUIDADOATUALIZADO")) + XLF_VALORPAGOATUALIZADO)
     
     TxtValorPago.SetText Format(XLF_VALORPAGO, "Standard")
-    TxtValorPagoIndexado.SetText Format(XLF_VALORPAGOINDEXADO, "##,##0.0000")
+    ' -- TxtValorPagoIndexado.SetText Format(XLF_VALORPAGOINDEXADO, "##,##0.0000")
       
   End If
   
   '----------------------------- Campos Texto para pagos e não pagos ----------------
   
-  ' -- TxtMoeda.SetText XLT_MOEDA
-  TxtValorTitulo.SetText Format(XLF_VALORTITULO, "##,##0.0000")
+  TxtMoeda.SetText XLT_MOEDA
+  ' -- TxtValorTitulo.SetText Format(XLF_VALORTITULO, "##,##0.0000")
   TxtValorPrevisto.SetText Format(XLF_VALORPREVISTO, "Standard")
   TxtObservacao.SetText FunObservacao(XLO_CAMPOS, XLD_DATABASE)
   
@@ -218,15 +218,15 @@ Private Sub SecDetalhe_Format(ByVal pFormattingInfo As Object)
     ForTitulo.TextColor = vbRed
     FldDataPagamento.TextColor = vbRed
     FldDataVencimento.TextColor = vbRed
-    TxtValorTitulo.TextColor = vbRed
-    ' -- TxtMoeda.TextColor = vbRed
+    ' -- TxtValorTitulo.TextColor = vbRed
+    TxtMoeda.TextColor = vbRed
     TxtValorPrevisto.TextColor = vbRed
     TxtObservacao.TextColor = vbRed
     
     TxtValorPago.TextColor = vbRed
-    TxtValorPagoIndexado.TextColor = vbRed
+    ' -- TxtValorPagoIndexado.TextColor = vbRed
     FldDataPagamento.TextColor = vbRed
-    ForMoeda.TextColor = vbRed
+    ' -- ForMoeda.TextColor = vbRed
     
   End If
   
@@ -282,9 +282,9 @@ Private Sub SecFooterCliente2_Format(ByVal pFormattingInfo As Object)
   If XFB_IMPRIMIU = True Then
     
     TxtTotalDebito.SetText ""
-    ' -- TxtMoedaDebito.SetText ""
+    TxtMoedaDebito.SetText ""
     TxtTotalLiquidado.SetText ""
-    ' -- TxtMoedaLiquidado.SetText ""
+    TxtMoedaLiquidado.SetText ""
     
     'Descarrega os vetores com os totais das moedas em debito
     For XFI_CONT = 0 To VFV_TOTALMOEDADEBITO.Count(1) - 1
@@ -294,7 +294,7 @@ Private Sub SecFooterCliente2_Format(ByVal pFormattingInfo As Object)
             XFI_CONT = VFV_TOTALMOEDADEBITO.Count(1) + 1
           Else
             TxtTotalDebito.SetText TxtTotalDebito.Text & vbCrLf & Format(VFV_TOTALMOEDADEBITO(XFI_CONT, 2), "##,##0.0000")
-            ' -- TxtMoedaDebito.SetText TxtMoedaDebito.Text & vbCrLf & VFV_TOTALMOEDADEBITO(XFI_CONT, 0)
+            TxtMoedaDebito.SetText TxtMoedaDebito.Text & vbCrLf & VFV_TOTALMOEDADEBITO(XFI_CONT, 0)
             XFI_CONT = XFI_CONT + 1
           End If
         Wend
@@ -309,7 +309,7 @@ Private Sub SecFooterCliente2_Format(ByVal pFormattingInfo As Object)
             XFI_CONT = VFV_TOTALMOEDALIQUIDADO.Count(1) + 1
           Else
             TxtTotalLiquidado.SetText TxtTotalLiquidado.Text & vbCrLf & Format(VFV_TOTALMOEDALIQUIDADO(XFI_CONT, 2), "##,##0.0000")
-            ' -- TxtMoedaLiquidado.SetText TxtMoedaLiquidado.Text & vbCrLf & VFV_TOTALMOEDALIQUIDADO(XFI_CONT, 0)
+            TxtMoedaLiquidado.SetText TxtMoedaLiquidado.Text & vbCrLf & VFV_TOTALMOEDALIQUIDADO(XFI_CONT, 0)
             XFI_CONT = XFI_CONT + 1
           End If
         Wend
