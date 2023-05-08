@@ -26,7 +26,7 @@ Function FunZeros(XLI_QTD As Integer) As String
    
 End Function
 
-Function funVerirficaCotacao(XLO_TITULO As adodb.Recordset, XLT_INDEXADOR As Byte, XLD_DATABASE As Date, XLB_FORMULARIOCOTACAO As Boolean, XLO_TELACOTACAO As Form) As Boolean
+Function funVerirficaCotacao(XLO_TITULO As ADODB.Recordset, XLT_INDEXADOR As Byte, XLD_DATABASE As Date, XLB_FORMULARIOCOTACAO As Boolean, XLO_TELACOTACAO As Form) As Boolean
 ' XLB_FORMULARIOCOTACAO Indica se apresentará a tela de cotações quando não tiver cotação
 ' XLO_TELACOTACAO è a tela de cotações que é passada como referência
     
@@ -176,9 +176,57 @@ Function FunCriaConsultaBase(XLD_DATABASE As Date, XLT_TIPOBANCO As String, XLT_
       " From " & XLT_NOMECONSULTA & " WHERE "
       
   ElseIf XLI_TIPOCONSULTA = 3 Then 'Exportacao bancária
-    
+  
+' - Consulta original (alterada em 05/05/2023 p/Paulo Garcia)
+' -------------------------------------------------------------------------------------------------
+'      XLT_SQL = "" & _
+'      "SELECT " & XLT_NOMECONSULTA & ".*, " & _
+'      "CASE Indexacao1   when 'M' then" & _
+'        " (select cotacoesmoedas.cota_vl_Valor from cotacoesmoedas where moed_cd_Moeda1=cotacoesmoedas.moed_cd_CodMoeda and cota_dt_datacotacao=convert(varchar,month(titu_dt_Vencimento))+'/01/' + convert(varchar,year(titu_dt_Vencimento)))" & _
+'        " when 'D' then" & _
+'        " (select cotacoesmoedas.cota_vl_Valor from cotacoesmoedas where moed_cd_Moeda1=cotacoesmoedas.moed_cd_CodMoeda and cota_dt_datacotacao=titu_dt_Vencimento )" & _
+'      " end as Cotacao1," & _
+'      "CASE  Indexacao2 when 'M' then" & _
+'        " (select cotacoesmoedas.cota_vl_Valor from cotacoesmoedas where moed_cd_Moeda2=cotacoesmoedas.moed_cd_CodMoeda and cota_dt_datacotacao=convert(varchar,month(titu_dt_Vencimento))+'/01/' + convert(varchar,year(titu_dt_Vencimento)))" & _
+'        " when 'D'  then" & _
+'        " (select cotacoesmoedas.cota_vl_Valor from cotacoesmoedas where moed_cd_Moeda2=cotacoesmoedas.moed_cd_CodMoeda and cota_dt_datacotacao=titu_dt_Vencimento)" & _
+'      " end as Cotacao2,"
+'
+' - Inserido bloco de formatação para gerar campo Titulo2, utilizado como "Nosso Número"
+' -------------------------------------------------------------------------------------------------
+'   Formato do "Nosso Número" = EEyyMMddHHmmSSS
+'       EE: Código da Empresa
+'       yy: Ano (2 posições)
+'       MM: Mês
+'       dd: Dia
+'       HH: Hora (de 00 a 23)
+'       mm: Minutos (00 a 59)
+'      SSS: Sequência do documento (na consulta)
+'
+' - Este bloco, utiliza a função FORMAT, disponível apenas em SQL Server 2012 ou posterior
+' -------------------------------------------------------------------------------------------------
+'      XLT_SQL = "" & _
+'      "SELECT " & XLT_NOMECONSULTA & ".*, " & _
+'      "Format(empr_cd_Empresa,'00') + Format(getdate(), 'yyMMddHHmm') + " & _
+'      "Format(ROW_NUMBER() OVER (PARTITION BY [empr_cd_Empresa] ORDER BY [Titulo]), '000') as Titulo2," & _
+'      "CASE Indexacao1   when 'M' then" & _
+'        " (select cotacoesmoedas.cota_vl_Valor from cotacoesmoedas where moed_cd_Moeda1=cotacoesmoedas.moed_cd_CodMoeda and cota_dt_datacotacao=convert(varchar,month(titu_dt_Vencimento))+'/01/' + convert(varchar,year(titu_dt_Vencimento)))" & _
+'        " when 'D' then" & _
+'        " (select cotacoesmoedas.cota_vl_Valor from cotacoesmoedas where moed_cd_Moeda1=cotacoesmoedas.moed_cd_CodMoeda and cota_dt_datacotacao=titu_dt_Vencimento )" & _
+'      " end as Cotacao1," & _
+'      "CASE  Indexacao2 when 'M' then" & _
+'        " (select cotacoesmoedas.cota_vl_Valor from cotacoesmoedas where moed_cd_Moeda2=cotacoesmoedas.moed_cd_CodMoeda and cota_dt_datacotacao=convert(varchar,month(titu_dt_Vencimento))+'/01/' + convert(varchar,year(titu_dt_Vencimento)))" & _
+'        " when 'D'  then" & _
+'        " (select cotacoesmoedas.cota_vl_Valor from cotacoesmoedas where moed_cd_Moeda2=cotacoesmoedas.moed_cd_CodMoeda and cota_dt_datacotacao=titu_dt_Vencimento)" & _
+'      " end as Cotacao2,"
+'
+' - Este bloco foi reescrito com funções RIGHT e CONVERT, para uso em SQL Server 2008 ou anterior
+' -------------------------------------------------------------------------------------------------
       XLT_SQL = "" & _
-      "SELECT " & XLT_NOMECONSULTA & ".*," & _
+      "SELECT " & XLT_NOMECONSULTA & ".*, " & _
+      "RIGHT('00' + CONVERT(VARCHAR, empr_cd_Empresa), 2) + " & _
+      "CONVERT(VARCHAR, getdate(), 12) + LEFT(REPLACE(CONVERT(VARCHAR, getdate(), 8), ':', ''), 4) + " & _
+      "RIGHT('000' + CONVERT(VARCHAR, (ROW_NUMBER() OVER (PARTITION BY empr_cd_Empresa ORDER BY Titulo))), 3) as Titulo2, " & _
       "CASE Indexacao1   when 'M' then" & _
         " (select cotacoesmoedas.cota_vl_Valor from cotacoesmoedas where moed_cd_Moeda1=cotacoesmoedas.moed_cd_CodMoeda and cota_dt_datacotacao=convert(varchar,month(titu_dt_Vencimento))+'/01/' + convert(varchar,year(titu_dt_Vencimento)))" & _
         " when 'D' then" & _
@@ -189,7 +237,7 @@ Function FunCriaConsultaBase(XLD_DATABASE As Date, XLT_TIPOBANCO As String, XLT_
         " when 'D'  then" & _
         " (select cotacoesmoedas.cota_vl_Valor from cotacoesmoedas where moed_cd_Moeda2=cotacoesmoedas.moed_cd_CodMoeda and cota_dt_datacotacao=titu_dt_Vencimento)" & _
       " end as Cotacao2,"
-      
+                  
       XLT_SQL = XLT_SQL & _
       "CASE  Indexacao1 when 'M' then " & _
         "CASE cont_tx_CorrecProrata when 'A' then" & _
@@ -259,7 +307,7 @@ Function FunCorrecaoMonetaria(ByVal XLF_VALORTITULO As Double, ByVal XLF_COTACAO
     Dim XLF_PERCENT As Double   'Divisão entre a cotacao do mês e do mês anterior
     Dim XLF_CORRECAO As Double
     Dim XLD_DATA As Date
-    Dim XLO_COTACAO As adodb.Recordset
+    Dim XLO_COTACAO As ADODB.Recordset
     
     'Se a moeda for 0 significa que ´deve ser informado o valor histórico, a correcao é 0
     If XLT_PRORATA = "M" And XLI_MOEDA = 0 Then
@@ -547,9 +595,9 @@ End Function
 'Retorna o valor indexado por uma determinada moeda
 Function FunCalcularValorIndexado(ByVal XLF_VALORREAL As Double, ByVal XLD_DTBASE As Date, ByVal XLI_CODMOEDA As Integer, ByVal XLT_INDEXACAO As String, ByVal XLT_PRORATA As String, XLO_TELACOTACAO As Form)
          
-    Dim XLO_COTACAO As New adodb.Recordset
-    Dim XLO_COTACAOANTERIOR As New adodb.Recordset
-    Dim XLO_COTACAOPOSTERIOR As New adodb.Recordset
+    Dim XLO_COTACAO As New ADODB.Recordset
+    Dim XLO_COTACAOANTERIOR As New ADODB.Recordset
+    Dim XLO_COTACAOPOSTERIOR As New ADODB.Recordset
     Dim XLF_COTACAO As Double
     Dim XLF_COTACAOANTERIOR As Double
     Dim XLF_COTACAOPOSTERIOR As Double

@@ -801,7 +801,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   79036419
+            Format          =   79101955
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -814,7 +814,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   79036419
+            Format          =   79101955
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -3308,7 +3308,8 @@ Private Sub BtnConfExportar_Click()
   Dim XLT_MENSAGEMVARIAVELTITULO As String
   Dim XLT_RESIDUOPARCELA As String
   Dim XLT_TIPOPLANOS As String
-  Dim XLT_TITULO As String
+  ' --- Variável removida - psgarcia 27/04/2023
+  'Dim XLT_TITULO As String
   Dim XLO_PERCDESCONTO As Double
   Dim XLO_PERCJUROS As String
   Dim XLT_VALORMULTA As String
@@ -3420,7 +3421,7 @@ Private Sub BtnConfExportar_Click()
   End If
   
   'Verificando o código do convênio
-  If datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca = "" Then
+  If DatContaCorrente.Recordset.Fields!coco_nr_conveniocobranca = "" Then
     MsgBox "Favor incluir o código do convênio no cadastro de conta corrente.", vbInformation, "EXPORTAÇÃO"
     Exit Sub
   End If
@@ -3448,7 +3449,7 @@ Private Sub BtnConfExportar_Click()
   Open XGT_LOCALARQ For Output As #1
   
   'Selecionando o último número de arquivo
-  XLT_SQL = "SELECT coco_nr_arqcobranca FROM ContasCorrente WHERE coco_cd_codigo = " & datContaCorrente.Recordset.Fields!coco_cd_codigo & " AND empr_cd_empresa = " & PCodEmpresa & " ORDER BY coco_cd_codigo DESC"
+  XLT_SQL = "SELECT coco_nr_arqcobranca FROM ContasCorrente WHERE coco_cd_codigo = " & DatContaCorrente.Recordset.Fields!coco_cd_codigo & " AND empr_cd_empresa = " & PCodEmpresa & " ORDER BY coco_cd_codigo DESC"
   SubQOpenRecordset XLO_ARQUIVO, XLT_SQL, Dinamico
   If XLO_ARQUIVO!coco_nr_arqcobranca <> "" Then
       XLI_ARQUIVO = CInt(XLO_ARQUIVO!coco_nr_arqcobranca) + 1
@@ -3460,7 +3461,7 @@ Private Sub BtnConfExportar_Click()
    
   Conexao.BeginTrans
   
-  Conexao.Execute "UPDATE ContasCorrente SET coco_nr_arqcobranca = " & XLI_ARQUIVO & " WHERE coco_cd_codigo = " & datContaCorrente.Recordset.Fields!coco_cd_codigo & " AND empr_cd_empresa = " & PCodEmpresa
+  Conexao.Execute "UPDATE ContasCorrente SET coco_nr_arqcobranca = " & XLI_ARQUIVO & " WHERE coco_cd_codigo = " & DatContaCorrente.Recordset.Fields!coco_cd_codigo & " AND empr_cd_empresa = " & PCodEmpresa
   
   'CGC DA EMPRESA
   XLT_CGCEMP = Mid(XGT_CGC, 1, 2) + Mid(XGT_CGC, 4, 3) + Mid(XGT_CGC, 8, 3) + Mid(XGT_CGC, 12, 4) + Mid(XGT_CGC, 17, 2)
@@ -3483,18 +3484,18 @@ Private Sub BtnConfExportar_Click()
       XLT_TEXTO = XLT_TEXTO & "COBRANCA" & Space(15 - Len("COBRANCA"))
       
       '06.0 - CÓDIGO DA AGÊNCIA ALTERADO *MICHEL 13/07/20022
-      XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(datContaCorrente.Recordset.Fields!coco_cd_Agencia) = "", FuncoesGenericas.FunZeros(4), (FuncoesGenericas.FunZeros(4 - Len(datContaCorrente.Recordset.Fields!coco_cd_Agencia))) & Format(datContaCorrente.Recordset.Fields!coco_cd_Agencia, "0000"))
+      XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(DatContaCorrente.Recordset.Fields!coco_cd_Agencia) = "", FuncoesGenericas.FunZeros(4), (FuncoesGenericas.FunZeros(4 - Len(DatContaCorrente.Recordset.Fields!coco_cd_Agencia))) & Format(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, "0000"))
       
       'CÓDIGO DA AGÊNCIA ALTERADO NOVO LAYOUT NÃO REQUER *MICHEL 05/05/2022
       'XLT_TEXTO = XLT_TEXTO & "0000"
             
       '07.0 - CÓDIGO DO BENEFICIÁRIO
-      If CLng(datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca) <= 999999 Then
+      If CLng(DatContaCorrente.Recordset.Fields!coco_nr_conveniocobranca) <= 999999 Then
         ' De 000001 a 999999        PSGarcia 22/03/2023
-        XLT_TEXTO = XLT_TEXTO & datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca & "0"
+        XLT_TEXTO = XLT_TEXTO & DatContaCorrente.Recordset.Fields!coco_nr_conveniocobranca & "0"
       Else
         ' > 1100000                 PSGarcia 22/03/2023
-        XLT_TEXTO = XLT_TEXTO & datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca
+        XLT_TEXTO = XLT_TEXTO & DatContaCorrente.Recordset.Fields!coco_nr_conveniocobranca
       End If
       
       '08.0 - USO EXCLUSIVO
@@ -3514,7 +3515,7 @@ Private Sub BtnConfExportar_Click()
       XLT_TEXTO = XLT_TEXTO & Format(DateTime.Now, "ddMMyy")
       
       '12.0V - VERSÃO do LAYOUT
-      If CLng(datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca) <= 999999 Then
+      If CLng(DatContaCorrente.Recordset.Fields!coco_nr_conveniocobranca) <= 999999 Then
         ' De 000001 a 999999        PSGarcia 22/03/2023
         XLT_TEXTO = XLT_TEXTO & Space(3)
       Else
@@ -3628,8 +3629,9 @@ Private Sub BtnConfExportar_Click()
               XLT_REGLOTE = XLT_REGLOTE + 1
               
               'Trata o número do titulo (p/Numeração Própria) substituindo caracteres Alfabéticos por Numéricos (ver tabela [dbo].[ImoveisCodigos])
-              NR_TITULO_CONVERTIDO = Trata_NrTitulo(XFO_EXPORTACAO!Titulo)
-              XLT_TITULO = Mid(NR_TITULO_CONVERTIDO, 1, 4) & Mid(NR_TITULO_CONVERTIDO, 6, 4) & Mid(NR_TITULO_CONVERTIDO, 11, 2) & Mid(NR_TITULO_CONVERTIDO, 14, 2) & Mid(NR_TITULO_CONVERTIDO, 17, 3) & Mid(NR_TITULO_CONVERTIDO, 21, 2)
+              'NR_TITULO_CONVERTIDO = Trata_NrTitulo(XFO_EXPORTACAO!Titulo)
+              'XLT_TITULO = Mid(NR_TITULO_CONVERTIDO, 1, 4) & Mid(NR_TITULO_CONVERTIDO, 6, 4) & Mid(NR_TITULO_CONVERTIDO, 11, 2) & Mid(NR_TITULO_CONVERTIDO, 14, 2) & Mid(NR_TITULO_CONVERTIDO, 17, 3) & Mid(NR_TITULO_CONVERTIDO, 21, 2)
+              NR_TITULO_CONVERTIDO = XFO_EXPORTACAO!Titulo2
                         
               '*****************Descrição de registro tipo '1' (Obrigatório) - Dados do título - Detalhe de Remessa*****************
               '01.1 - CÓDIGO DO REGISTRO - PREENCHER COM 1
@@ -3650,12 +3652,12 @@ Private Sub BtnConfExportar_Click()
               
               '05.1 - CÓDIGO DO BENEFICIÁRIO
               'XLT_TEXTO = XLT_TEXTO & datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca
-              If CLng(datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca) <= 999999 Then
+              If CLng(DatContaCorrente.Recordset.Fields!coco_nr_conveniocobranca) <= 999999 Then
                 ' De 000001 a 999999        PSGarcia 22/03/2023
-                XLT_TEXTO = XLT_TEXTO & "0" & datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca
+                XLT_TEXTO = XLT_TEXTO & "0" & DatContaCorrente.Recordset.Fields!coco_nr_conveniocobranca
               Else
                 ' > 1100000                 PSGarcia 22/03/2023
-                XLT_TEXTO = XLT_TEXTO & datContaCorrente.Recordset.Fields!coco_nr_conveniocobranca
+                XLT_TEXTO = XLT_TEXTO & DatContaCorrente.Recordset.Fields!coco_nr_conveniocobranca
               End If
               
               '06.1 - ID EMISSÃO (Código FREBABAN 1=banco, 2=cliente)
@@ -3723,7 +3725,8 @@ Private Sub BtnConfExportar_Click()
               XLT_TEXTO = XLT_TEXTO & "01"
               
               '16.1 - NÚMERO DO DOCUMENTO DE COBRANÇA (número do cliente)
-              XLT_TEXTO = XLT_TEXTO & Left(NR_TITULO_CONVERTIDO, 4) & Mid(NR_TITULO_CONVERTIDO, 6, 4) & Mid(NR_TITULO_CONVERTIDO, 11, 2)
+              'XLT_TEXTO = XLT_TEXTO & Left(NR_TITULO_CONVERTIDO, 4) & Mid(NR_TITULO_CONVERTIDO, 6, 4) & Mid(NR_TITULO_CONVERTIDO, 11, 2)
+              XLT_TEXTO = XLT_TEXTO & Left(XFO_EXPORTACAO!Titulo, 4) & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & Mid(XFO_EXPORTACAO!Titulo, 11, 2)
               
               '17.1 - DATA DE VENCIMENTO DO TÍTULO
               XLT_TEXTO = XLT_TEXTO & Format(XFO_EXPORTACAO!titu_dt_Vencimento, "ddMMyy")
@@ -3871,7 +3874,7 @@ Private Sub BtnConfExportar_Click()
                 XGM_MATRIZLOG(2, 1) = FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8)))
                 XGM_MATRIZLOG(3, 1) = XLF_DESCONTO
                 XGM_MATRIZLOG(4, 1) = XLF_VALOR
-                XGM_MATRIZLOG(5, 1) = datContaCorrente.Recordset.Fields!coco_cd_Agencia & " - " & datContaCorrente.Recordset.Fields!coco_tx_Conta & "-" & FunNuloVal(datContaCorrente.Recordset.Fields!coco_nr_Dag)
+                XGM_MATRIZLOG(5, 1) = DatContaCorrente.Recordset.Fields!coco_cd_Agencia & " - " & DatContaCorrente.Recordset.Fields!coco_tx_Conta & "-" & FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dag)
                 XGM_MATRIZLOG(6, 1) = XFO_EXPORTACAO!titu_dt_Vencimento
                 XGM_MATRIZLOG(7, 1) = XLT_DATADESCONTO
                 
@@ -4501,7 +4504,7 @@ Private Sub CmdPesquisar_Click()
   XGT_SELECAO = ""
   XGT_CONJUNCAO = ""
   
-  If FunObrigatorioCBO(cboCCorrente, "Selecione uma Conta Corrente.") Then Exit Sub
+  If FunObrigatorioCBO(CboCCorrente, "Selecione uma Conta Corrente.") Then Exit Sub
   '25/03/10 - Patrícia
   If Me.TxtNDiasProtesto.Text <> "" Then
     If Not IsNumeric(Me.TxtNDiasProtesto.Text) Then
@@ -4601,7 +4604,7 @@ Private Sub CmdPesquisar_Click()
   
   'Filtra a Conta Corrente
   XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
-     " coco_cd_codigo = " & cboCCorrente.BoundText
+     " coco_cd_codigo = " & CboCCorrente.BoundText
   XGT_CONJUNCAO = " AND "
      
   'Filtra os titulos que não foram exportados
@@ -4634,6 +4637,12 @@ Private Sub CmdPesquisar_Click()
               "FROM ConsCAPExpBancoCaixa " & _
               "WHERE" & XGT_SELECAO & "ORDER BY Titulo"
    
+   
+   
+   
+   
+   
+   
    subCarregaVetor XFT_SQL, Array("Titulo", "Exporta", "titu_dt_Vencimento", "ValorReal", _
      "focl_tx_RazaoSocial", "titu_vl_Desconto", "LimiteDesconto", "ValorTitulo", _
      "Seguro", "SaldoDevedor", "titu_nr_contratobanco", "DescDiario", "DataConsDesc", "ValAbatimento", "MultaJuros", "titu_dt_Base"), VFV_VETOREXP, TDBGrid1
@@ -4652,9 +4661,10 @@ Private Sub CmdPesquisar_Click()
      
   TDBGrid1.Refresh
   
-  XFT_SQL2 = FunCriaConsultaBase("01/01/01", NomeSgbd, "ConsCAPExpBancoCaixa", 3)
+  XFT_SQL2 = FunCriaConsultaBase("01/01/01", NomeSgbd, "ConsCAPExpBancoCaixa", 3) 'Função alterada em 04/05/23 (Paulo Garcia)
   XFT_SQL2 = XFT_SQL2 & XGT_SELECAO
-  XFT_SQL2 = XFT_SQL2 & " ORDER BY Titulo" '18/06/10
+  'XFT_SQL2 = XFT_SQL2 & " ORDER BY Titulo" '18/06/10
+  XFT_SQL2 = XFT_SQL2 & " ORDER BY empr_cd_Empresa, Titulo" ' alterado em 04/05/23 (Paulo Garcia)
 
   If XFO_EXPORTACAO.State = adStateOpen Then
     XFO_EXPORTACAO.Close
@@ -4794,7 +4804,7 @@ Private Sub Form_Load()
     
     subConectarControleDadosNV DatTipoPlano, "SELECT * FROM TiposPlanos ORDER BY tipl_tx_Descricao", Estatico
     subConectarControleDadosNV DatObs, "SELECT * FROM Observacoes ORDER BY obse_tx_observacao", Estatico
-    subConectarControleDadosNV datContaCorrente, "SELECT * FROM ConsGENCCcombo where empr_cd_empresa=" & Int(PCodEmpresa) & " AND banc_cd_codigo=104 ORDER BY coco_tx_Descricao", Estatico
+    subConectarControleDadosNV DatContaCorrente, "SELECT * FROM ConsGENCCcombo where empr_cd_empresa=" & Int(PCodEmpresa) & " AND banc_cd_codigo=104 ORDER BY coco_tx_Descricao", Estatico
     
     PanPesquisa.Left = (TDBGrid1.Width - PanPesquisa.Width) / 2
     PanPesquisa.Top = (TDBGrid1.Height - PanPesquisa.Height) / 2
@@ -4825,10 +4835,10 @@ End Sub
 
 Private Sub CboCCorrente_Change()
   
-  If cboCCorrente.BoundText <> "" Then
-    datContaCorrente.Recordset.Bookmark = cboCCorrente.SelectedItem
-    TxtMensagem1.Text = FunNulo(datContaCorrente.Recordset.Fields("coco_tx_Mensagem1"))
-    TxtMensagem2.Text = FunNulo(datContaCorrente.Recordset.Fields("coco_tx_Mensagem2"))
+  If CboCCorrente.BoundText <> "" Then
+    DatContaCorrente.Recordset.Bookmark = CboCCorrente.SelectedItem
+    TxtMensagem1.Text = FunNulo(DatContaCorrente.Recordset.Fields("coco_tx_Mensagem1"))
+    TxtMensagem2.Text = FunNulo(DatContaCorrente.Recordset.Fields("coco_tx_Mensagem2"))
   End If
     
 End Sub
