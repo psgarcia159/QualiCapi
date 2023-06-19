@@ -20,9 +20,9 @@ Begin VB.Form TelaFinTitulos
    WindowState     =   2  'Maximized
    Begin Threed.SSPanel PanPromissorias 
       Height          =   2865
-      Left            =   960
+      Left            =   6360
       TabIndex        =   25
-      Top             =   0
+      Top             =   3840
       Visible         =   0   'False
       Width           =   7680
       _Version        =   65536
@@ -80,7 +80,7 @@ Begin VB.Form TelaFinTitulos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   82575363
+            Format          =   81461251
             CurrentDate     =   37637
             MinDate         =   29221
          End
@@ -467,7 +467,7 @@ Begin VB.Form TelaFinTitulos
          _Version        =   393216
          CheckBox        =   -1  'True
          CustomFormat    =   "dd/MM/yy"
-         Format          =   82575363
+         Format          =   81461251
          CurrentDate     =   37459
       End
    End

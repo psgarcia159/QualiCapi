@@ -240,9 +240,9 @@ Begin VB.Form TelaManTabCorretores
    End
    Begin Threed.SSPanel PanCorretores 
       Height          =   2325
-      Left            =   360
+      Left            =   240
       TabIndex        =   14
-      Top             =   960
+      Top             =   1080
       Visible         =   0   'False
       Width           =   8475
       _Version        =   65536
@@ -467,8 +467,8 @@ Begin VB.Form TelaManTabCorretores
       Left            =   60
       TabIndex        =   17
       Top             =   30
-      Width           =   8790
-      _ExtentX        =   15505
+      Width           =   13350
+      _ExtentX        =   23548
       _ExtentY        =   6509
       _LayoutType     =   4
       _RowHeight      =   24
@@ -480,16 +480,23 @@ Begin VB.Form TelaManTabCorretores
       Columns(0)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns(1)._VlistStyle=   0
       Columns(1)._MaxComboItems=   5
-      Columns(1).Caption=   "CPF/CNPJ"
-      Columns(1).DataField=   "focl_tx_CgcCpf"
+      Columns(1).Caption=   "Comissão (%)"
+      Columns(1).DataField=   "corr_vl_percentcomissao"
+      Columns(1).NumberFormat=   "Standard"
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns(2)._VlistStyle=   0
       Columns(2)._MaxComboItems=   5
-      Columns(2).Caption=   "Comissão (%)"
-      Columns(2).DataField=   "corr_vl_percentcomissao"
-      Columns(2).NumberFormat=   "Standard"
+      Columns(2).Caption=   "CPF/CNPJ"
+      Columns(2).DataField=   "focl_tx_CgcCpf"
+      Columns(2).DataWidth=   20
       Columns(2)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns.Count   =   3
+      Columns(3)._VlistStyle=   0
+      Columns(3)._MaxComboItems=   5
+      Columns(3).Caption=   "Nome/Razão Social"
+      Columns(3).DataField=   "focl_tx_RazaoSocial"
+      Columns(3).DataWidth=   65
+      Columns(3)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+      Columns.Count   =   4
       Splits(0)._UserFlags=   0
       Splits(0).ExtendRightColumn=   -1  'True
       Splits(0).MarqueeStyle=   3
@@ -499,31 +506,39 @@ Begin VB.Form TelaManTabCorretores
       Splits(0).DividerColor=   12632256
       Splits(0).SpringMode=   0   'False
       Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
-      Splits(0)._ColumnProps(0)=   "Columns.Count=3"
-      Splits(0)._ColumnProps(1)=   "Column(0).Width=6747"
+      Splits(0)._ColumnProps(0)=   "Columns.Count=4"
+      Splits(0)._ColumnProps(1)=   "Column(0).Width=7699"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
-      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=6668"
+      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=7620"
       Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
       Splits(0)._ColumnProps(5)=   "Column(0)._ColStyle=528"
       Splits(0)._ColumnProps(6)=   "Column(0).WrapText=1"
       Splits(0)._ColumnProps(7)=   "Column(0).AllowFocus=0"
       Splits(0)._ColumnProps(8)=   "Column(0).Order=1"
-      Splits(0)._ColumnProps(9)=   "Column(1).Width=2725"
+      Splits(0)._ColumnProps(9)=   "Column(1).Width=2275"
       Splits(0)._ColumnProps(10)=   "Column(1).DividerColor=0"
-      Splits(0)._ColumnProps(11)=   "Column(1)._WidthInPix=2646"
+      Splits(0)._ColumnProps(11)=   "Column(1)._WidthInPix=2196"
       Splits(0)._ColumnProps(12)=   "Column(1)._EditAlways=0"
-      Splits(0)._ColumnProps(13)=   "Column(1)._ColStyle=532"
+      Splits(0)._ColumnProps(13)=   "Column(1)._ColStyle=8722"
       Splits(0)._ColumnProps(14)=   "Column(1).WrapText=1"
       Splits(0)._ColumnProps(15)=   "Column(1).AllowFocus=0"
       Splits(0)._ColumnProps(16)=   "Column(1).Order=2"
-      Splits(0)._ColumnProps(17)=   "Column(2).Width=2275"
+      Splits(0)._ColumnProps(17)=   "Column(2).Width=3440"
       Splits(0)._ColumnProps(18)=   "Column(2).DividerColor=0"
-      Splits(0)._ColumnProps(19)=   "Column(2)._WidthInPix=2196"
+      Splits(0)._ColumnProps(19)=   "Column(2)._WidthInPix=3360"
       Splits(0)._ColumnProps(20)=   "Column(2)._EditAlways=0"
-      Splits(0)._ColumnProps(21)=   "Column(2)._ColStyle=8722"
+      Splits(0)._ColumnProps(21)=   "Column(2)._ColStyle=532"
       Splits(0)._ColumnProps(22)=   "Column(2).WrapText=1"
       Splits(0)._ColumnProps(23)=   "Column(2).AllowFocus=0"
       Splits(0)._ColumnProps(24)=   "Column(2).Order=3"
+      Splits(0)._ColumnProps(25)=   "Column(3).Width=2725"
+      Splits(0)._ColumnProps(26)=   "Column(3).DividerColor=0"
+      Splits(0)._ColumnProps(27)=   "Column(3)._WidthInPix=2646"
+      Splits(0)._ColumnProps(28)=   "Column(3)._EditAlways=0"
+      Splits(0)._ColumnProps(29)=   "Column(3)._ColStyle=532"
+      Splits(0)._ColumnProps(30)=   "Column(3).WrapText=1"
+      Splits(0)._ColumnProps(31)=   "Column(3).AllowFocus=0"
+      Splits(0)._ColumnProps(32)=   "Column(3).Order=4"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   0
       PrintInfos(0).Name=   "piInternal 0"
@@ -583,35 +598,39 @@ Begin VB.Form TelaManTabCorretores
       _StyleDefs(33)  =   "Splits(0).Columns(0).HeadingStyle:id=25,.parent=14,.alignment=2"
       _StyleDefs(34)  =   "Splits(0).Columns(0).FooterStyle:id=26,.parent=15,.alignment=3"
       _StyleDefs(35)  =   "Splits(0).Columns(0).EditorStyle:id=27,.parent=17,.alignment=3"
-      _StyleDefs(36)  =   "Splits(0).Columns(1).Style:id=46,.parent=13,.alignment=3"
-      _StyleDefs(37)  =   "Splits(0).Columns(1).HeadingStyle:id=43,.parent=14,.alignment=2"
-      _StyleDefs(38)  =   "Splits(0).Columns(1).FooterStyle:id=44,.parent=15"
-      _StyleDefs(39)  =   "Splits(0).Columns(1).EditorStyle:id=45,.parent=17"
-      _StyleDefs(40)  =   "Splits(0).Columns(2).Style:id=32,.parent=13,.alignment=1,.locked=-1"
-      _StyleDefs(41)  =   "Splits(0).Columns(2).HeadingStyle:id=29,.parent=14,.alignment=2"
-      _StyleDefs(42)  =   "Splits(0).Columns(2).FooterStyle:id=30,.parent=15"
-      _StyleDefs(43)  =   "Splits(0).Columns(2).EditorStyle:id=31,.parent=17"
-      _StyleDefs(44)  =   "Named:id=33:Normal"
-      _StyleDefs(45)  =   ":id=33,.parent=0"
-      _StyleDefs(46)  =   "Named:id=34:Heading"
-      _StyleDefs(47)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-      _StyleDefs(48)  =   ":id=34,.wraptext=-1"
-      _StyleDefs(49)  =   "Named:id=35:Footing"
-      _StyleDefs(50)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-      _StyleDefs(51)  =   "Named:id=36:Selected"
-      _StyleDefs(52)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-      _StyleDefs(53)  =   "Named:id=37:Caption"
-      _StyleDefs(54)  =   ":id=37,.parent=34,.alignment=2"
-      _StyleDefs(55)  =   "Named:id=38:HighlightRow"
-      _StyleDefs(56)  =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-      _StyleDefs(57)  =   "Named:id=39:EvenRow"
-      _StyleDefs(58)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
-      _StyleDefs(59)  =   "Named:id=40:OddRow"
-      _StyleDefs(60)  =   ":id=40,.parent=33"
-      _StyleDefs(61)  =   "Named:id=41:RecordSelector"
-      _StyleDefs(62)  =   ":id=41,.parent=34"
-      _StyleDefs(63)  =   "Named:id=42:FilterBar"
-      _StyleDefs(64)  =   ":id=42,.parent=33"
+      _StyleDefs(36)  =   "Splits(0).Columns(1).Style:id=32,.parent=13,.alignment=1,.locked=-1"
+      _StyleDefs(37)  =   "Splits(0).Columns(1).HeadingStyle:id=29,.parent=14,.alignment=2"
+      _StyleDefs(38)  =   "Splits(0).Columns(1).FooterStyle:id=30,.parent=15"
+      _StyleDefs(39)  =   "Splits(0).Columns(1).EditorStyle:id=31,.parent=17"
+      _StyleDefs(40)  =   "Splits(0).Columns(2).Style:id=50,.parent=13,.alignment=3"
+      _StyleDefs(41)  =   "Splits(0).Columns(2).HeadingStyle:id=47,.parent=14,.alignment=2"
+      _StyleDefs(42)  =   "Splits(0).Columns(2).FooterStyle:id=48,.parent=15"
+      _StyleDefs(43)  =   "Splits(0).Columns(2).EditorStyle:id=49,.parent=17"
+      _StyleDefs(44)  =   "Splits(0).Columns(3).Style:id=54,.parent=13"
+      _StyleDefs(45)  =   "Splits(0).Columns(3).HeadingStyle:id=51,.parent=14,.alignment=2"
+      _StyleDefs(46)  =   "Splits(0).Columns(3).FooterStyle:id=52,.parent=15"
+      _StyleDefs(47)  =   "Splits(0).Columns(3).EditorStyle:id=53,.parent=17"
+      _StyleDefs(48)  =   "Named:id=33:Normal"
+      _StyleDefs(49)  =   ":id=33,.parent=0"
+      _StyleDefs(50)  =   "Named:id=34:Heading"
+      _StyleDefs(51)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(52)  =   ":id=34,.wraptext=-1"
+      _StyleDefs(53)  =   "Named:id=35:Footing"
+      _StyleDefs(54)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(55)  =   "Named:id=36:Selected"
+      _StyleDefs(56)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(57)  =   "Named:id=37:Caption"
+      _StyleDefs(58)  =   ":id=37,.parent=34,.alignment=2"
+      _StyleDefs(59)  =   "Named:id=38:HighlightRow"
+      _StyleDefs(60)  =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(61)  =   "Named:id=39:EvenRow"
+      _StyleDefs(62)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
+      _StyleDefs(63)  =   "Named:id=40:OddRow"
+      _StyleDefs(64)  =   ":id=40,.parent=33"
+      _StyleDefs(65)  =   "Named:id=41:RecordSelector"
+      _StyleDefs(66)  =   ":id=41,.parent=34"
+      _StyleDefs(67)  =   "Named:id=42:FilterBar"
+      _StyleDefs(68)  =   ":id=42,.parent=33"
    End
    Begin VB.Label lblLocalizar 
       Alignment       =   1  'Right Justify
@@ -946,6 +965,16 @@ Private Sub CmdAlterar_Click()
     TxtNome.Text = Adodc1.Recordset.Fields("corr_tx_nome")
     TxtComissao.Text = Format(Adodc1.Recordset.Fields("corr_vl_percentcomissao"), "standard")
     
+    ' Atualizar os campos do CboFornecedor a partir dos dados lidos
+    If (IsNull(Adodc1.Recordset.Fields("focl_cd_FornCli"))) Then
+        CboFornecedor.BoundText = ""
+        CboFornecedor.Text = ""
+    Else
+        CboFornecedor.BoundText = Adodc1.Recordset.Fields("focl_cd_FornCli")
+        CboFornecedor.Text = Adodc1.Recordset.Fields("focl_tx_RazaoSocial")
+    End If
+    
+    
     TDBGrid1.Enabled = False
     TxtNome.SetFocus
 End Sub
@@ -1059,6 +1088,10 @@ Private Sub CmdInserir_Click()
     cboLocalizar.Text = ""
     TDBGrid1.Enabled = False
     TxtNome.SetFocus
+    
+    CboFornecedor.BoundText = ""
+    CboFornecedor.Text = ""
+    
 End Sub
 
 Private Sub CmdInserir_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -1123,17 +1156,17 @@ Private Sub Form_Load()
     
     subManutencaoJanelasAtivas "I", "TelaManTabCorretores"
          
-    'Associa um banco de dados à tabela Descontos e Acréscimos
+'    'Associa um banco de dados à tabela Descontos e Acréscimos
 '    subCarregaDadosNV Adodc1, "Corretores", "corr_tx_Nome", _
 '                            "", "SELECT * FROM Corretores"
                             
+    ' Carrega os dados da tabela de Corretores
     subCarregaDadosNV Adodc1, "Corretores", "corr_tx_Nome", _
-                            "", "SELECT C.*, F.focl_tx_CgcCpf FROM Corretores C LEFT JOIN FornClientes F ON C.focl_cd_FornCli = F.focl_cd_FornCli"
+                            "", "SELECT C.*, F.focl_tx_CgcCpf, F.focl_tx_RazaoSocial FROM Corretores C LEFT JOIN FornClientes F ON C.focl_cd_FornCli = F.focl_cd_FornCli"
 
-'    subConectarControleDadosNV DatFornecedor, "SELECT * FROM FornClientes WHERE focl_tx_classe = 'F' ORDER BY focl_tx_razaosocial", Estatico
-    
-    subCarregaDadosNV DatFornecedor, "FornClientes", "focl_tx_razaosocial", _
-                            "", "SELECT * FROM FornClientes WHERE focl_tx_classe = 'F'"
+    ' Carrega os dados da tabela de Fornecedores
+    'subCarregaDadosNV DatFornecedor, "FornClientes", "focl_tx_RazaoSocial", "", "SELECT * FROM FornClientes WHERE focl_tx_Classe = 'F'"
+    subConectarControleDadosNV DatFornecedor, "SELECT * FROM FornClientes WHERE focl_tx_Classe = 'F' ORDER BY focl_tx_RazaoSocial", Estatico
         
     subHabilitaBotoes
     

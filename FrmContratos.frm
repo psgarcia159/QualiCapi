@@ -1,11 +1,11 @@
 VERSION 5.00
+Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
+Object = "{0D623638-DBA2-11D1-B5DF-0060976089D0}#7.0#0"; "tdbg7.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
-Object = "{0D623638-DBA2-11D1-B5DF-0060976089D0}#7.0#0"; "tdbg7.ocx"
-Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
 Begin VB.Form FrmManContratos 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Cadastro de Contratos"
@@ -260,44 +260,44 @@ Begin VB.Form FrmManContratos
          TabCaption(0)   =   "&Compradores"
          TabPicture(0)   =   "FrmContratos.frx":001E
          Tab(0).ControlEnabled=   0   'False
-         Tab(0).Control(0)=   "CmdTitular"
-         Tab(0).Control(1)=   "CmdInsComprador"
-         Tab(0).Control(2)=   "CmdExcComprador"
-         Tab(0).Control(3)=   "DatComprador"
-         Tab(0).Control(4)=   "TDBGrid1"
-         Tab(0).Control(5)=   "CboComprador"
-         Tab(0).Control(6)=   "LblCliente"
-         Tab(0).Control(7)=   "LblCliTitular"
+         Tab(0).Control(0)=   "LblCliTitular"
+         Tab(0).Control(1)=   "LblCliente"
+         Tab(0).Control(2)=   "CboComprador"
+         Tab(0).Control(3)=   "TDBGrid1"
+         Tab(0).Control(4)=   "DatComprador"
+         Tab(0).Control(5)=   "CmdExcComprador"
+         Tab(0).Control(6)=   "CmdInsComprador"
+         Tab(0).Control(7)=   "CmdTitular"
          Tab(0).ControlCount=   8
          TabCaption(1)   =   "&Fiadores"
          TabPicture(1)   =   "FrmContratos.frx":003A
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(1)=   "DatFiador"
-         Tab(1).Control(2)=   "TDBGrid3"
-         Tab(1).Control(3)=   "CboFiador"
-         Tab(1).Control(4)=   "CmdExcFiador"
-         Tab(1).Control(5)=   "CmdInsFiador"
+         Tab(1).Control(0)=   "CmdInsFiador"
+         Tab(1).Control(1)=   "CmdExcFiador"
+         Tab(1).Control(2)=   "CboFiador"
+         Tab(1).Control(3)=   "TDBGrid3"
+         Tab(1).Control(4)=   "DatFiador"
+         Tab(1).Control(5)=   "Label1"
          Tab(1).ControlCount=   6
          TabCaption(2)   =   "&Dados Financeiros"
          TabPicture(2)   =   "FrmContratos.frx":0056
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "FraProRata"
-         Tab(2).Control(1)=   "FraValores"
-         Tab(2).Control(2)=   "FraDesagio"
-         Tab(2).Control(3)=   "FraJuros"
-         Tab(2).Control(4)=   "FraSeguro"
-         Tab(2).Control(5)=   "FraMulta"
+         Tab(2).Control(0)=   "FraMulta"
+         Tab(2).Control(1)=   "FraSeguro"
+         Tab(2).Control(2)=   "FraJuros"
+         Tab(2).Control(3)=   "FraDesagio"
+         Tab(2).Control(4)=   "FraValores"
+         Tab(2).Control(5)=   "FraProRata"
          Tab(2).ControlCount=   6
          TabCaption(3)   =   "Dados da &Venda"
          TabPicture(3)   =   "FrmContratos.frx":0072
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "FraFinContabil"
-         Tab(3).Control(1)=   "FraDatas"
-         Tab(3).Control(2)=   "DatConta"
-         Tab(3).Control(3)=   "DatPcr"
-         Tab(3).Control(4)=   "DatIndexador"
-         Tab(3).Control(5)=   "DatIdentificador"
+         Tab(3).Control(0)=   "DatIdentificador"
+         Tab(3).Control(1)=   "DatIndexador"
+         Tab(3).Control(2)=   "DatPcr"
+         Tab(3).Control(3)=   "DatConta"
+         Tab(3).Control(4)=   "FraDatas"
+         Tab(3).Control(5)=   "FraFinContabil"
          Tab(3).ControlCount=   6
          TabCaption(4)   =   "C&orretores"
          TabPicture(4)   =   "FrmContratos.frx":008E
@@ -619,7 +619,7 @@ Begin VB.Form FrmManContratos
                _ExtentY        =   556
                _Version        =   393216
                CustomFormat    =   "dd/MM/yy"
-               Format          =   63766531
+               Format          =   81788931
                CurrentDate     =   37180
             End
             Begin MSComCtl2.DTPicker DtpRegContrato 
@@ -632,7 +632,7 @@ Begin VB.Form FrmManContratos
                _ExtentY        =   556
                _Version        =   393216
                CustomFormat    =   "dd/MM/yy"
-               Format          =   63766531
+               Format          =   81788931
                CurrentDate     =   37180
             End
             Begin MSComCtl2.DTPicker DtpDtQuitacao 
@@ -647,7 +647,7 @@ Begin VB.Form FrmManContratos
                CheckBox        =   -1  'True
                CustomFormat    =   "dd/MM/yy"
                DateIsNull      =   -1  'True
-               Format          =   63766531
+               Format          =   81788931
                CurrentDate     =   37686.4345601852
             End
             Begin MSComCtl2.DTPicker DtpDtVenda 
@@ -660,7 +660,7 @@ Begin VB.Form FrmManContratos
                _ExtentY        =   556
                _Version        =   393216
                CustomFormat    =   "dd/MM/yy"
-               Format          =   63766531
+               Format          =   81788931
                CurrentDate     =   37180
             End
             Begin MSDataListLib.DataCombo CboIndexador 
@@ -705,7 +705,7 @@ Begin VB.Form FrmManContratos
                CheckBox        =   -1  'True
                CustomFormat    =   "dd/MM/yy"
                DateIsNull      =   -1  'True
-               Format          =   63766531
+               Format          =   81788931
                CurrentDate     =   37686.4345601852
             End
             Begin VB.Label LblDistrato 
@@ -1783,7 +1783,7 @@ Begin VB.Form FrmManContratos
                CheckBox        =   -1  'True
                CustomFormat    =   "dd/MM/yy"
                DateIsNull      =   -1  'True
-               Format          =   63766531
+               Format          =   81788931
                CurrentDate     =   37630.3585069444
             End
             Begin MSAdodcLib.Adodc DatCorretor 
@@ -1994,7 +1994,7 @@ Begin VB.Form FrmManContratos
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2646"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=65808"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1048848"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).AllowFocus=0"
@@ -2004,7 +2004,7 @@ Begin VB.Form FrmManContratos
             Splits(0)._ColumnProps(13)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(14)=   "Column(1)._WidthInPix=7779"
             Splits(0)._ColumnProps(15)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=1057296"
             Splits(0)._ColumnProps(17)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(18)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(19)=   "Column(1).AllowFocus=0"
@@ -2014,7 +2014,7 @@ Begin VB.Form FrmManContratos
             Splits(0)._ColumnProps(23)=   "Column(2).DividerColor=0"
             Splits(0)._ColumnProps(24)=   "Column(2)._WidthInPix=2064"
             Splits(0)._ColumnProps(25)=   "Column(2)._EditAlways=0"
-            Splits(0)._ColumnProps(26)=   "Column(2)._ColStyle=74258"
+            Splits(0)._ColumnProps(26)=   "Column(2)._ColStyle=1057298"
             Splits(0)._ColumnProps(27)=   "Column(2).WrapText=1"
             Splits(0)._ColumnProps(28)=   "Column(2).FetchStyle=1"
             Splits(0)._ColumnProps(29)=   "Column(2).AllowFocus=0"
@@ -2024,7 +2024,7 @@ Begin VB.Form FrmManContratos
             Splits(0)._ColumnProps(33)=   "Column(3).DividerColor=0"
             Splits(0)._ColumnProps(34)=   "Column(3)._WidthInPix=2672"
             Splits(0)._ColumnProps(35)=   "Column(3)._EditAlways=0"
-            Splits(0)._ColumnProps(36)=   "Column(3)._ColStyle=74257"
+            Splits(0)._ColumnProps(36)=   "Column(3)._ColStyle=1057297"
             Splits(0)._ColumnProps(37)=   "Column(3).WrapText=1"
             Splits(0)._ColumnProps(38)=   "Column(3).FetchStyle=1"
             Splits(0)._ColumnProps(39)=   "Column(3).AllowFocus=0"
@@ -2215,7 +2215,7 @@ Begin VB.Form FrmManContratos
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2646"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=65808"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1048848"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -2226,7 +2226,7 @@ Begin VB.Form FrmManContratos
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=7779"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -2237,7 +2237,7 @@ Begin VB.Form FrmManContratos
             Splits(0)._ColumnProps(25)=   "Column(2)._WidthInPix=2646"
             Splits(0)._ColumnProps(26)=   "Column(2)._EditAlways=0"
             Splits(0)._ColumnProps(27)=   "Column(2).AllowSizing=0"
-            Splits(0)._ColumnProps(28)=   "Column(2)._ColStyle=65808"
+            Splits(0)._ColumnProps(28)=   "Column(2)._ColStyle=1048848"
             Splits(0)._ColumnProps(29)=   "Column(2).Visible=0"
             Splits(0)._ColumnProps(30)=   "Column(2).WrapText=1"
             Splits(0)._ColumnProps(31)=   "Column(2).FetchStyle=1"
@@ -2403,7 +2403,7 @@ Begin VB.Form FrmManContratos
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2646"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=65808"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1048848"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).AllowFocus=0"
@@ -2413,7 +2413,7 @@ Begin VB.Form FrmManContratos
             Splits(0)._ColumnProps(13)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(14)=   "Column(1)._WidthInPix=7779"
             Splits(0)._ColumnProps(15)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=1057296"
             Splits(0)._ColumnProps(17)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(18)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(19)=   "Column(1).AllowFocus=0"
@@ -2877,8 +2877,8 @@ Dim XFT_CODIMOVEL As String  'Código do Imóvel
 Dim XFT_CODCONTRATO As String  'Código do Contrato
 Dim XFT_STATUS As String  'Armazena o status do contrato
 
-Dim errLoop As ADODB.Error
-Dim StrError As String
+Dim ERRLOOP As ADODB.Error
+Dim STRERROR As String
 
 Sub SubDesabHabCampos(XHab As Boolean)
     
@@ -4082,13 +4082,40 @@ Private Sub Form_Load()
     XFB_ENTROUCORR = False
     
     subConectarControleDadosNV DatComprador, "SELECT focl_cd_forncli, focl_tx_classe,focl_tx_razaoSocial FROM FornClientes WHERE focl_tx_classe = 'C' ORDER BY focl_tx_razaoSocial", Estatico
-    subConectarControleDadosNV DatCorretor, "SELECT corr_cd_Corretor,corr_vl_PercentComissao,corr_tx_Nome + space(32 - len(corr_tx_Nome)) + '- ' + convert(varchar,corr_vl_PercentComissao) as Corretor FROM Corretores ORDER BY corr_tx_nome", Estatico
     subConectarControleDadosNV DatFiador, "SELECT fiad_cd_Fiador, fiad_tx_Nome FROM Fiadores ORDER BY fiad_tx_Nome", Estatico
     subConectarControleDadosNV DatIndexador, "SELECT * FROM Moedas ORDER BY moed_tx_Descricao", Estatico
     subConectarControleDadosNV DatPcr, "SELECT * FROM ConsGENCRcombo WHERE empr_cd_empresa = " & PCodEmpresa & " ORDER BY cere_cd_estruturado", Estatico
     subConectarControleDadosNV DatConta, "SELECT * FROM ConsGENPCcombo WHERE empr_cd_empresa = " & PCodEmpresa & " and (plco_tx_recdesp= 'R' or plco_tx_recdesp= 'G') ORDER BY plco_cd_estruturado", Estatico
     subConectarControleDadosNV DatContaCorrente, "SELECT * FROM ConsGENCCcombo where empr_cd_empresa=" & PCodEmpresa & " ORDER BY coco_tx_Descricao", Estatico
     subConectarControleDadosNV DatIdentificador, "SELECT * FROM Identificadores ORDER BY iden_tx_descricao", Estatico
+'    subConectarControleDadosNV DatCorretor, "SELECT corr_cd_Corretor,corr_vl_PercentComissao,corr_tx_Nome + space(32 - len(corr_tx_Nome)) + '- ' + convert(varchar,corr_vl_PercentComissao) as Corretor FROM Corretores ORDER BY corr_tx_nome", Estatico
+            
+    '
+    ' Carrega os dados do Corretor prioritariamente a partir da tabela CorretoresEmpreendimento
+    ' -----------------------------------------------------------------------------------------
+    XLT_SQL = "SELECT A.corr_cd_Corretor," & _
+              "       A.coem_vl_PercentPadrao AS corr_vl_PercentComissao," & _
+              "       C.corr_tx_Nome + space(32 - len(C.corr_tx_Nome)) + '- ' + convert(varchar, A.coem_vl_PercentPadrao) As Corretor" & _
+              "  FROM CorretoresEmpreendimento A" & _
+              "       JOIN" & _
+              "       Corretores C ON  A.corr_cd_Corretor = C.corr_cd_Corretor" & _
+              " WHERE A.empr_cd_Empresa        = " & PCodEmpresa & _
+              "   AND A.empd_cd_Empreendimento = '" & XFT_CODEMPREENDIMENTO & "'" & _
+              " ORDER BY C.corr_tx_Nome"
+
+    subConectarControleDadosNV DatCorretor, XLT_SQL, Estatico
+
+    If FunTabelaVazia(DatCorretor) Then
+
+        XLT_SQL = "SELECT corr_cd_Corretor," & _
+                  "       corr_vl_PercentComissao," & _
+                  "       corr_tx_Nome + space(32 - len(corr_tx_Nome)) + '- ' + convert(varchar,corr_vl_PercentComissao) As Corretor" & _
+                  "  FROM Corretores" & _
+                  " ORDER BY corr_tx_Nome"
+        
+        subConectarControleDadosNV DatCorretor, XLT_SQL, Estatico
+        
+    End If
             
     'Preenche dados
     LblCodEmpreendimento.Caption = XFT_CODEMPREENDIMENTO

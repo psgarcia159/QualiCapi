@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
-Object = "{6FBA474E-43AC-11CE-9A0E-00AA0062BB4C}#1.0#0"; "sysinfo.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6FBA474E-43AC-11CE-9A0E-00AA0062BB4C}#1.0#0"; "SYSINFO.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.MDIForm MdiPrincipal 
    BackColor       =   &H00C0C0C0&
    Caption         =   "QualiCapi"
@@ -31,7 +31,6 @@ Begin VB.MDIForm MdiPrincipal
       BeginProperty Buttons {0713E452-850A-101B-AFC0-4210102A8DA7} 
          NumButtons      =   19
          BeginProperty Button1 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -61,7 +60,6 @@ Begin VB.MDIForm MdiPrincipal
             ImageIndex      =   4
          EndProperty
          BeginProperty Button6 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -86,7 +84,6 @@ Begin VB.MDIForm MdiPrincipal
             Object.Width           =   1e-4
          EndProperty
          BeginProperty Button10 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -104,7 +101,6 @@ Begin VB.MDIForm MdiPrincipal
             ImageIndex      =   9
          EndProperty
          BeginProperty Button13 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -116,7 +112,6 @@ Begin VB.MDIForm MdiPrincipal
             ImageIndex      =   10
          EndProperty
          BeginProperty Button15 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -127,7 +122,6 @@ Begin VB.MDIForm MdiPrincipal
             ImageIndex      =   11
          EndProperty
          BeginProperty Button17 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -207,14 +201,12 @@ Begin VB.MDIForm MdiPrincipal
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   10585
             MinWidth        =   10585
-            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Mensagens do Sistema"
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3069
             MinWidth        =   3069
-            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Empresa Atual"
          EndProperty
@@ -222,7 +214,6 @@ Begin VB.MDIForm MdiPrincipal
             Alignment       =   1
             Object.Width           =   2822
             MinWidth        =   2822
-            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Informações sobre o Banco de Dados"
          EndProperty
@@ -233,17 +224,16 @@ Begin VB.MDIForm MdiPrincipal
             Object.Width           =   970
             MinWidth        =   970
             TextSave        =   "CAPS"
-            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Caps Lock"
          EndProperty
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Style           =   2
             Alignment       =   1
+            Enabled         =   0   'False
             Object.Width           =   882
             MinWidth        =   882
             TextSave        =   "NUM"
-            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Num Lock"
          EndProperty
@@ -254,14 +244,12 @@ Begin VB.MDIForm MdiPrincipal
             Object.Width           =   882
             MinWidth        =   882
             TextSave        =   "INS"
-            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Modo Insert"
          EndProperty
          BeginProperty Panel7 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3528
             MinWidth        =   3528
-            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Usuário Atual"
          EndProperty
@@ -290,7 +278,6 @@ Begin VB.MDIForm MdiPrincipal
       BeginProperty Panels {0713E89E-850A-101B-AFC0-4210102A8DA7} 
          NumPanels       =   1
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
@@ -408,6 +395,9 @@ Begin VB.MDIForm MdiPrincipal
          End
          Begin VB.Menu MnuManTabCorretores 
             Caption         =   "&Corretores"
+         End
+         Begin VB.Menu MnuManTabCorretoresEmpreendimento 
+            Caption         =   "Associa Corretores &X Empreendimentos"
          End
          Begin VB.Menu MnuManTabObservacoes 
             Caption         =   "&Observações"
@@ -1354,6 +1344,19 @@ Private Sub MnuManTabCCorrentes_Click()
         TelaContaCorrente.SetFocus
     End If
     MdiPrincipal.MousePointer = vbDefault
+End Sub
+
+Private Sub MnuManTabCorretoresEmpreendimento_Click()
+
+'    If Not FunVerifica_Permissao("TelaManTabCorretores", "1") Then
+'        Exit Sub
+'    End If
+    
+    TelaCorretoresPorEmpr.Show
+    If FunLocalizaJanelasAtivas("TelaCorretoresPorEmpr") <> -1 Then
+        TelaCorretoresPorEmpr.SetFocus
+    End If
+
 End Sub
 
 Private Sub MnuPosicaoComercializacao_Click()
