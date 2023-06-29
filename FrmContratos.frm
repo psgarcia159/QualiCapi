@@ -619,7 +619,7 @@ Begin VB.Form FrmManContratos
                _ExtentY        =   556
                _Version        =   393216
                CustomFormat    =   "dd/MM/yy"
-               Format          =   81788931
+               Format          =   82247683
                CurrentDate     =   37180
             End
             Begin MSComCtl2.DTPicker DtpRegContrato 
@@ -632,7 +632,7 @@ Begin VB.Form FrmManContratos
                _ExtentY        =   556
                _Version        =   393216
                CustomFormat    =   "dd/MM/yy"
-               Format          =   81788931
+               Format          =   82247683
                CurrentDate     =   37180
             End
             Begin MSComCtl2.DTPicker DtpDtQuitacao 
@@ -647,7 +647,7 @@ Begin VB.Form FrmManContratos
                CheckBox        =   -1  'True
                CustomFormat    =   "dd/MM/yy"
                DateIsNull      =   -1  'True
-               Format          =   81788931
+               Format          =   82247683
                CurrentDate     =   37686.4345601852
             End
             Begin MSComCtl2.DTPicker DtpDtVenda 
@@ -660,7 +660,7 @@ Begin VB.Form FrmManContratos
                _ExtentY        =   556
                _Version        =   393216
                CustomFormat    =   "dd/MM/yy"
-               Format          =   81788931
+               Format          =   82247683
                CurrentDate     =   37180
             End
             Begin MSDataListLib.DataCombo CboIndexador 
@@ -705,7 +705,7 @@ Begin VB.Form FrmManContratos
                CheckBox        =   -1  'True
                CustomFormat    =   "dd/MM/yy"
                DateIsNull      =   -1  'True
-               Format          =   81788931
+               Format          =   82247683
                CurrentDate     =   37686.4345601852
             End
             Begin VB.Label LblDistrato 
@@ -1783,7 +1783,7 @@ Begin VB.Form FrmManContratos
                CheckBox        =   -1  'True
                CustomFormat    =   "dd/MM/yy"
                DateIsNull      =   -1  'True
-               Format          =   81788931
+               Format          =   82247683
                CurrentDate     =   37630.3585069444
             End
             Begin MSAdodcLib.Adodc DatCorretor 
@@ -3085,18 +3085,18 @@ Sub subPreencheCampos()
               
         If Not DatConta.Recordset.EOF Then
             DatConta.Recordset.MoveFirst
-            If (XLO_Contrato!plco_cd_Conta <> "") And Not IsNull(XLO_Contrato!plco_cd_Conta) Then
-                DatConta.Recordset.Find "plco_cd_Conta =" & XLO_Contrato!plco_cd_Conta
+            If (XLO_Contrato!plco_cd_conta <> "") And Not IsNull(XLO_Contrato!plco_cd_conta) Then
+                DatConta.Recordset.Find "plco_cd_Conta =" & XLO_Contrato!plco_cd_conta
                 MskConta.Text = DatConta.Recordset.Fields("plco_cd_Codreduzido")
                 CboPlanoContas.BoundText = MskConta.Text
             End If
         End If
     
-        If Not DatPcr.Recordset.EOF Then
-            DatPcr.Recordset.MoveFirst
+        If Not DatPCR.Recordset.EOF Then
+            DatPCR.Recordset.MoveFirst
             If (XLO_Contrato!cere_cd_Pcr <> "") And Not IsNull(XLO_Contrato!cere_cd_Pcr) Then
-                DatPcr.Recordset.Find "cere_cd_pcr =" & XLO_Contrato!cere_cd_Pcr
-                MskPcr.Text = DatPcr.Recordset.Fields("cere_cd_estruturado")
+                DatPCR.Recordset.Find "cere_cd_pcr =" & XLO_Contrato!cere_cd_Pcr
+                MskPcr.Text = DatPCR.Recordset.Fields("cere_cd_estruturado")
                 CboPcr.BoundText = MskPcr.Text
             End If
         End If
@@ -3115,7 +3115,7 @@ Sub subPreencheCampos()
           CboIdentificador.BoundText = XLO_Contrato!iden_cd_Projeto
         End If
     
-        XFI_CODCLIENTE = XLO_Contrato!focl_cd_FornCli
+        XFI_CODCLIENTE = XLO_Contrato!focl_cd_forncli
     End If
     XLO_Contrato.Close ' Inserido em 13/10/08 - Patrícia
 End Sub
@@ -3158,7 +3158,7 @@ End Sub
 Private Sub CboCorretor_Change()
   If CboCorretor.BoundText <> "" Then
     If CDbl(LblValorDoImovel.Caption) > 0 Then
-      DatCorretor.Recordset.bookmark = CboCorretor.SelectedItem
+      DatCorretor.Recordset.Bookmark = CboCorretor.SelectedItem
       TxtPercComissao.Text = Format(DatCorretor.Recordset.Fields("corr_vl_percentcomissao"), "standard")
       TxtComissao.Text = Format(((CDbl(LblValorDoImovel.Caption) * DatCorretor.Recordset.Fields("corr_vl_percentcomissao")) / 100), "standard")
     Else
@@ -3187,8 +3187,8 @@ End Sub
 
 Private Sub CboPcr_Change()
   If CboPcr.Text <> "" Then
-    DatPcr.Recordset.bookmark = CboPcr.SelectedItem
-    If DatPcr.Recordset.Fields("cere_tx_tipo") <> "A" Then
+    DatPCR.Recordset.Bookmark = CboPcr.SelectedItem
+    If DatPCR.Recordset.Fields("cere_tx_tipo") <> "A" Then
       MsgBox "Este item do Centro de Custo não é analítico, logo não pode ser atribuído a uma Nota.", vbCritical + vbOKOnly, "ATENÇÃO"
       CboPcr.BoundText = MskPcr.Text
       CboPcr.SetFocus
@@ -3198,9 +3198,9 @@ Private Sub CboPcr_Change()
   End If
 End Sub
 
-Private Sub CboPlanoContas_Change()
+Private Sub cboPlanoContas_Change()
   If CboPlanoContas.Text <> "" Then
-    DatConta.Recordset.bookmark = CboPlanoContas.SelectedItem
+    DatConta.Recordset.Bookmark = CboPlanoContas.SelectedItem
     If DatConta.Recordset.Fields("plco_tx_tipo") <> "A" Then
       MsgBox "Este item do Plano de Contas não é analítico, logo não pode ser atribuído a uma Nota.", vbCritical + vbOKOnly, "ATENÇÃO"
       CboPlanoContas.BoundText = MskConta.Text
@@ -3281,7 +3281,7 @@ End Sub
 
 Private Sub CmdConfirmaCorretor_Click()
     If CboCorretor.Text <> "" Then
-        DatCorretor.Recordset.bookmark = CboCorretor.SelectedItem
+        DatCorretor.Recordset.Bookmark = CboCorretor.SelectedItem
         
         If XFT_INSCORRETOR = "A" And XFI_CODCORRETOR = CboCorretor.BoundText Then
             TDBGrid2.Columns(0).Text = CboCorretor.BoundText
@@ -3370,7 +3370,7 @@ Private Sub PreencheInformacoesOriginaisLog()
     XGM_MATRIZLOG(3, 1) = IIf(CboStatus.ListIndex = 1, "I", "A")
 
     XGM_MATRIZLOG(4, 1) = XFI_CODCLIENTE
-    XGM_MATRIZLOG(5, 1) = FunNulo(DatPcr.Recordset.Fields("cere_tx_Descricao")) & " - " & FunNulo(DatPcr.Recordset.Fields("cere_cd_Estruturado"))
+    XGM_MATRIZLOG(5, 1) = FunNulo(DatPCR.Recordset.Fields("cere_tx_Descricao")) & " - " & FunNulo(DatPCR.Recordset.Fields("cere_cd_Estruturado"))
     XGM_MATRIZLOG(6, 1) = FunNulo(DatConta.Recordset.Fields("plco_cd_Estruturado")) & " - " & FunNulo(DatConta.Recordset.Fields("plco_tx_DescContabil"))
     XGM_MATRIZLOG(7, 1) = FunNulo(CboCCorrente.BoundText)
     XGM_MATRIZLOG(8, 1) = FunNulo(CboIndexador.BoundText)
@@ -3493,7 +3493,7 @@ Private Sub GravaLog(XLT_OPERACAO As ENUM_OPERACOES, XLT_ORDEM As String)
     XGM_MATRIZLOG(2, Indice) = LblCodContrato.Caption
     XGM_MATRIZLOG(3, Indice) = IIf(CboStatus.ListIndex = 1, "I", "A")
     XGM_MATRIZLOG(4, Indice) = XFI_CODCLIENTE
-    XGM_MATRIZLOG(5, Indice) = FunNulo(DatPcr.Recordset.Fields("cere_tx_Descricao")) & " - " & FunNulo(DatPcr.Recordset.Fields("cere_cd_Estruturado"))
+    XGM_MATRIZLOG(5, Indice) = FunNulo(DatPCR.Recordset.Fields("cere_tx_Descricao")) & " - " & FunNulo(DatPCR.Recordset.Fields("cere_cd_Estruturado"))
     XGM_MATRIZLOG(6, Indice) = FunNulo(DatConta.Recordset.Fields("plco_cd_Estruturado")) & " - " & FunNulo(DatConta.Recordset.Fields("plco_tx_DescContabil"))
     XGM_MATRIZLOG(7, Indice) = FunNulo(CboCCorrente.BoundText)
     XGM_MATRIZLOG(8, Indice) = FunNulo(CboIndexador.BoundText)
@@ -3594,7 +3594,7 @@ Private Sub GravaLog(XLT_OPERACAO As ENUM_OPERACOES, XLT_ORDEM As String)
     
 End Sub
 
-Private Sub CmdGravar_Click()
+Private Sub cmdGravar_Click()
     
     Dim XLT_STATUS As String, XLT_SQL As String
     Dim XLT_JUROS As String, XLT_DESAGIO As String, XLT_SEGURO As String
@@ -3613,7 +3613,7 @@ Private Sub CmdGravar_Click()
         If CboPcr.Text = "" Then
             XLT_PCR = ""
         Else
-            XLT_PCR = DatPcr.Recordset.Fields("cere_cd_pcr")
+            XLT_PCR = DatPCR.Recordset.Fields("cere_cd_pcr")
         End If
         
         If CboPlanoContas.Text = "" Then
@@ -3913,7 +3913,7 @@ End Sub
 
 Private Sub CmdInsComprador_Click()
   If CboComprador.Text <> "" Then
-    DatComprador.Recordset.bookmark = CboComprador.SelectedItem
+    DatComprador.Recordset.Bookmark = CboComprador.SelectedItem
     
     If funExisteChave(1, Array("0"), Array(DatComprador.Recordset.Fields("focl_cd_forncli")), VFV_VETOR1, TDBGrid1) Then
         MsgBox "Esse Cliente já foi cadastrado", vbCritical, "ATENÇÃO !"
@@ -3949,7 +3949,7 @@ End Sub
 
 Private Sub CmdInsFiador_Click()
     If CboFiador.Text <> "" Then
-        DatFiador.Recordset.bookmark = CboFiador.SelectedItem
+        DatFiador.Recordset.Bookmark = CboFiador.SelectedItem
         
         If funExisteChave(1, Array("0"), Array(DatFiador.Recordset.Fields("fiad_cd_fiador")), VFV_VETOR3, TDBGrid3) Then
             MsgBox "Esse Fiador já foi cadastrado", vbCritical, "ATENÇÃO !"
@@ -3998,11 +3998,11 @@ Private Sub CmdTitular_Click()
     Dim XLI_POSPADRAO As Integer
     
     If VFV_VETOR1(0, 0) <> Empty Then
-        XLI_POS = TDBGrid1.bookmark
+        XLI_POS = TDBGrid1.Bookmark
         TDBGrid1.MoveFirst
         Do While Not TDBGrid1.EOF
             If TDBGrid1.Columns("Titular").Value = "S" Then
-                XLI_POSPADRAO = TDBGrid1.bookmark
+                XLI_POSPADRAO = TDBGrid1.Bookmark
                 If XLI_POSPADRAO = XLI_POS Then
                     MsgBox "Este Cliente já é o Titular!", vbCritical, "ATENÇÃO"
                     XFI_CODCLIENTE = TDBGrid1.Columns("Codigo")
@@ -4011,7 +4011,7 @@ Private Sub CmdTitular_Click()
                     If MsgBox("Já existe um Cliente Titular. Deseja alterar?", vbYesNo + vbCritical, "CUIDADO") = vbYes Then 'Confirma alteração
                         TDBGrid1.Columns("Titular").Text = "N"
                         TDBGrid1.Update
-                        TDBGrid1.bookmark = XLI_POS
+                        TDBGrid1.Bookmark = XLI_POS
                         TDBGrid1.Columns("Titular").Text = "S"
                         TDBGrid1.Update
                         XFI_CODCLIENTE = TDBGrid1.Columns("Codigo")
@@ -4023,7 +4023,7 @@ Private Sub CmdTitular_Click()
             End If
             TDBGrid1.MoveNext
         Loop
-        TDBGrid1.bookmark = XLI_POS
+        TDBGrid1.Bookmark = XLI_POS
         TDBGrid1.Columns("Titular").Text = "S"
         TDBGrid1.Update
         XFI_CODCLIENTE = TDBGrid1.Columns("Codigo")
@@ -4084,7 +4084,7 @@ Private Sub Form_Load()
     subConectarControleDadosNV DatComprador, "SELECT focl_cd_forncli, focl_tx_classe,focl_tx_razaoSocial FROM FornClientes WHERE focl_tx_classe = 'C' ORDER BY focl_tx_razaoSocial", Estatico
     subConectarControleDadosNV DatFiador, "SELECT fiad_cd_Fiador, fiad_tx_Nome FROM Fiadores ORDER BY fiad_tx_Nome", Estatico
     subConectarControleDadosNV DatIndexador, "SELECT * FROM Moedas ORDER BY moed_tx_Descricao", Estatico
-    subConectarControleDadosNV DatPcr, "SELECT * FROM ConsGENCRcombo WHERE empr_cd_empresa = " & PCodEmpresa & " ORDER BY cere_cd_estruturado", Estatico
+    subConectarControleDadosNV DatPCR, "SELECT * FROM ConsGENCRcombo WHERE empr_cd_empresa = " & PCodEmpresa & " ORDER BY cere_cd_estruturado", Estatico
     subConectarControleDadosNV DatConta, "SELECT * FROM ConsGENPCcombo WHERE empr_cd_empresa = " & PCodEmpresa & " and (plco_tx_recdesp= 'R' or plco_tx_recdesp= 'G') ORDER BY plco_cd_estruturado", Estatico
     subConectarControleDadosNV DatContaCorrente, "SELECT * FROM ConsGENCCcombo where empr_cd_empresa=" & PCodEmpresa & " ORDER BY coco_tx_Descricao", Estatico
     subConectarControleDadosNV DatIdentificador, "SELECT * FROM Identificadores ORDER BY iden_tx_descricao", Estatico
@@ -4128,7 +4128,9 @@ Private Sub Form_Load()
     End If
     
     SubQOpenRecordset XLO_IMOVEL, "SELECT * FROM ConsCapImoveis WHERE empr_cd_Empresa=" & PCodEmpresa & " AND imov_cd_imovel='" & XFT_CODIMOVEL & "' AND empd_cd_empreendimento='" & XFT_CODEMPREENDIMENTO & "'", "Estatico"
+    
     If Not (XLO_IMOVEL.BOF Or XLO_IMOVEL.EOF) Then
+    
         LblDescEmpreendimento.Caption = XLO_IMOVEL!Empreendimento
         LblDescTipoImovel.Caption = XLO_IMOVEL!Tipo
         LblDescGaragem.Caption = XLO_IMOVEL!imov_tx_Garagem
@@ -4141,8 +4143,8 @@ Private Sub Form_Load()
                 
                 If Not DatConta.Recordset.EOF Then
                     DatConta.Recordset.MoveFirst
-                    If Not IsNull(XLO_IMOVEL!plco_cd_Conta) Then
-                        DatConta.Recordset.Find "plco_cd_Conta =" & XLO_IMOVEL!plco_cd_Conta
+                    If Not IsNull(XLO_IMOVEL!plco_cd_conta) Then
+                        DatConta.Recordset.Find "plco_cd_Conta =" & XLO_IMOVEL!plco_cd_conta
                         MskConta.Text = DatConta.Recordset.Fields("plco_cd_Codreduzido")
                         CboPlanoContas.BoundText = MskConta.Text
                     Else
@@ -4150,12 +4152,12 @@ Private Sub Form_Load()
                         CboPlanoContas.BoundText = ""
                     End If
                 End If
-                If Not DatPcr.Recordset.EOF Then
-                    DatPcr.Recordset.MoveFirst
+                If Not DatPCR.Recordset.EOF Then
+                    DatPCR.Recordset.MoveFirst
                     If XInserir <> "I" Then
                         If Not IsNull(XLO_IMOVEL!cere_cd_Pcr) Then
-                            DatPcr.Recordset.Find "cere_cd_pcr =" & XLO_IMOVEL!cere_cd_Pcr
-                            MskPcr.Text = DatPcr.Recordset.Fields("cere_cd_estruturado")
+                            DatPCR.Recordset.Find "cere_cd_pcr =" & XLO_IMOVEL!cere_cd_Pcr
+                            MskPcr.Text = DatPCR.Recordset.Fields("cere_cd_estruturado")
                             CboPcr.BoundText = MskPcr.Text
                         Else
                           MskPcr.Text = ""
@@ -4236,7 +4238,7 @@ End Sub
 
 
 
-Private Sub Mskconta_LostFocus()
+Private Sub mskConta_LostFocus()
   If MskConta.Text <> "" Then
     CboPlanoContas.BoundText = MskConta.Text
     If CboPlanoContas.Text = "" Then
@@ -4368,7 +4370,7 @@ Sub subCarregaVetorCompradores(Sql As String, VetorCampos As Variant, Vetor As X
                 End If
             Next
             'O próximo if preenche a coluna titular com "S" para o comprador Titular
-            If XFI_CODCLIENTE = XLO_COMPRADOR!focl_cd_FornCli And Grid.Columns.Count = 3 Then
+            If XFI_CODCLIENTE = XLO_COMPRADOR!focl_cd_forncli And Grid.Columns.Count = 3 Then
                 subSetaVal Vetor, XLI_CONT, XLI_X, "S"
             End If
             XLO_COMPRADOR.MoveNext
@@ -4382,8 +4384,8 @@ Sub subCarregaVetorCompradores(Sql As String, VetorCampos As Variant, Vetor As X
     XLO_COMPRADOR.Close
 End Sub
 
-Private Sub TDBGrid1_FetchCellStyle(ByVal Condition As Integer, ByVal Split As Integer, bookmark As Variant, ByVal Col As Integer, ByVal CellStyle As TrueDBGrid70.StyleDisp)
-    If TDBGrid1.Columns("Titular").CellText(bookmark) = "S" Then
+Private Sub TDBGrid1_FetchCellStyle(ByVal Condition As Integer, ByVal Split As Integer, Bookmark As Variant, ByVal Col As Integer, ByVal CellStyle As TrueDBGrid70.StyleDisp)
+    If TDBGrid1.Columns("Titular").CellText(Bookmark) = "S" Then
         CellStyle.ForeColor = vbRed
     End If
 End Sub

@@ -31,6 +31,7 @@ Begin VB.MDIForm MdiPrincipal
       BeginProperty Buttons {0713E452-850A-101B-AFC0-4210102A8DA7} 
          NumButtons      =   19
          BeginProperty Button1 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -60,6 +61,7 @@ Begin VB.MDIForm MdiPrincipal
             ImageIndex      =   4
          EndProperty
          BeginProperty Button6 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -84,6 +86,7 @@ Begin VB.MDIForm MdiPrincipal
             Object.Width           =   1e-4
          EndProperty
          BeginProperty Button10 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -101,6 +104,7 @@ Begin VB.MDIForm MdiPrincipal
             ImageIndex      =   9
          EndProperty
          BeginProperty Button13 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -112,6 +116,7 @@ Begin VB.MDIForm MdiPrincipal
             ImageIndex      =   10
          EndProperty
          BeginProperty Button15 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -122,6 +127,7 @@ Begin VB.MDIForm MdiPrincipal
             ImageIndex      =   11
          EndProperty
          BeginProperty Button17 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -201,12 +207,16 @@ Begin VB.MDIForm MdiPrincipal
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   10585
             MinWidth        =   10585
+            TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Mensagens do Sistema"
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3069
             MinWidth        =   3069
+            TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Empresa Atual"
          EndProperty
@@ -214,6 +224,8 @@ Begin VB.MDIForm MdiPrincipal
             Alignment       =   1
             Object.Width           =   2822
             MinWidth        =   2822
+            TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Informações sobre o Banco de Dados"
          EndProperty
@@ -224,6 +236,7 @@ Begin VB.MDIForm MdiPrincipal
             Object.Width           =   970
             MinWidth        =   970
             TextSave        =   "CAPS"
+            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Caps Lock"
          EndProperty
@@ -234,6 +247,7 @@ Begin VB.MDIForm MdiPrincipal
             Object.Width           =   882
             MinWidth        =   882
             TextSave        =   "NUM"
+            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Num Lock"
          EndProperty
@@ -244,12 +258,14 @@ Begin VB.MDIForm MdiPrincipal
             Object.Width           =   882
             MinWidth        =   882
             TextSave        =   "INS"
+            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Modo Insert"
          EndProperty
          BeginProperty Panel7 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3528
             MinWidth        =   3528
+            Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Usuário Atual"
          EndProperty
@@ -278,6 +294,7 @@ Begin VB.MDIForm MdiPrincipal
       BeginProperty Panels {0713E89E-850A-101B-AFC0-4210102A8DA7} 
          NumPanels       =   1
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
@@ -435,7 +452,7 @@ Begin VB.MDIForm MdiPrincipal
                Caption         =   "SubClasse"
             End
          End
-         Begin VB.Menu SEP 
+         Begin VB.Menu SepLine01 
             Caption         =   "-"
          End
          Begin VB.Menu mniFeriados 
@@ -454,7 +471,7 @@ Begin VB.MDIForm MdiPrincipal
       Begin VB.Menu MnuFinCotacoes 
          Caption         =   "&Cotações"
       End
-      Begin VB.Menu MnuEspaco 
+      Begin VB.Menu SepLine02 
          Caption         =   "-"
       End
       Begin VB.Menu MnuFinPagtoUnico 
@@ -462,6 +479,15 @@ Begin VB.MDIForm MdiPrincipal
       End
       Begin VB.Menu MnuFinPagtoMultiplo 
          Caption         =   "Pagamento &Múltiplo"
+      End
+      Begin VB.Menu SepLine03 
+         Caption         =   "-"
+      End
+      Begin VB.Menu MnuFinNotasCorretores 
+         Caption         =   "Pagamento de Comissões"
+      End
+      Begin VB.Menu SepLine04 
+         Caption         =   "-"
       End
       Begin VB.Menu MnuAtualizarExpBancaria 
          Caption         =   "&Exportacao Bancária"
@@ -493,7 +519,7 @@ Begin VB.MDIForm MdiPrincipal
       Begin VB.Menu MnuExportacaoDimob 
          Caption         =   "Exportação &Dimob"
       End
-      Begin VB.Menu MnuEspaco2 
+      Begin VB.Menu SepLine05 
          Caption         =   "-"
       End
       Begin VB.Menu MnuFinAtualizarQualifin 
@@ -535,7 +561,7 @@ Begin VB.MDIForm MdiPrincipal
             Caption         =   "&Posição de Comercialização"
          End
       End
-      Begin VB.Menu MnuSpace 
+      Begin VB.Menu SepLine06 
          Caption         =   "-"
       End
       Begin VB.Menu MnuRelAssistenciaTecnica 
@@ -700,7 +726,7 @@ Begin VB.MDIForm MdiPrincipal
       Begin VB.Menu MnuAtualizar 
          Caption         =   "A&tualizar QualiCapi"
       End
-      Begin VB.Menu Sepz 
+      Begin VB.Menu SepLine07 
          Caption         =   "-"
       End
       Begin VB.Menu MnuExportacaoBancaria 
@@ -727,7 +753,7 @@ Begin VB.MDIForm MdiPrincipal
             Caption         =   "&ExpUnibanco"
          End
       End
-      Begin VB.Menu sept 
+      Begin VB.Menu SepLine08 
          Caption         =   "-"
       End
       Begin VB.Menu MnuConImpressora 
@@ -748,7 +774,7 @@ Begin VB.MDIForm MdiPrincipal
       Begin VB.Menu MnuConForm 
          Caption         =   "Configurações &Formularios"
       End
-      Begin VB.Menu MnuEspaco3 
+      Begin VB.Menu SepLine09 
          Caption         =   "-"
       End
       Begin VB.Menu MnuExportEmpresas 
@@ -1179,6 +1205,17 @@ Private Sub MnuFinCotacoes_Click()
     TelaCotacoes.SetFocus
   End If
   
+End Sub
+
+Private Sub MnuFinNotasCorretores_Click()
+    TelaPagamentoComissoes.Show
+    
+    If FunLocalizaJanelasAtivas("TelaPagamentoComissoes") <> -1 Then
+        TelaPagamentoComissoes.SetFocus
+    End If
+    
+    MdiPrincipal.MousePointer = vbDefault
+
 End Sub
 
 Private Sub mnuFluxoRecebiboReal_Click()
@@ -1987,17 +2024,17 @@ Private Sub MDIForm_Load()
         XLO_DESCONTOS.MoveFirst
         While Not XLO_DESCONTOS.EOF
         
-            If (XLO_DESCONTOS!deac_tx_Descricao = "Multa por Atraso - Cliente") Then
+            If (XLO_DESCONTOS!deac_tx_descricao = "Multa por Atraso - Cliente") Then
                 XGI_CODMULTA = XLO_DESCONTOS!deac_cd_descacresc
-            ElseIf (XLO_DESCONTOS!deac_tx_Descricao = "Juros por Atraso - Cliente") Then
+            ElseIf (XLO_DESCONTOS!deac_tx_descricao = "Juros por Atraso - Cliente") Then
                 XGI_CODJUROS = XLO_DESCONTOS!deac_cd_descacresc
-            ElseIf (XLO_DESCONTOS!deac_tx_Descricao = "Deságio - Cliente") Then
+            ElseIf (XLO_DESCONTOS!deac_tx_descricao = "Deságio - Cliente") Then
                 XGI_CODDESAGIO = XLO_DESCONTOS!deac_cd_descacresc
-            ElseIf (XLO_DESCONTOS!deac_tx_Descricao = "Descontos - Cliente") Then
+            ElseIf (XLO_DESCONTOS!deac_tx_descricao = "Descontos - Cliente") Then
                 XGI_CODDESCONTO = XLO_DESCONTOS!deac_cd_descacresc
-            ElseIf (XLO_DESCONTOS!deac_tx_Descricao = "Outros - Cliente") Then
+            ElseIf (XLO_DESCONTOS!deac_tx_descricao = "Outros - Cliente") Then
                 XGI_CODSEGURO = XLO_DESCONTOS!deac_cd_descacresc
-            ElseIf (XLO_DESCONTOS!deac_tx_Descricao = "Seguro - Cliente") Then
+            ElseIf (XLO_DESCONTOS!deac_tx_descricao = "Seguro - Cliente") Then
                 XGI_CODOUTROS = XLO_DESCONTOS!deac_cd_descacresc
             End If
         

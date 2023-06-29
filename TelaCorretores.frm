@@ -766,20 +766,20 @@ End Sub
 
 Private Sub cboLocalizar_Click(Area As Integer)
     If Area = 2 Then
-        Adodc1.Recordset.bookmark = cboLocalizar.SelectedItem
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
     End If
 End Sub
 
 Private Sub cboLocalizar_KeyUp(KeyCode As Integer, Shift As Integer)
     If cboLocalizar.BoundText <> "" Then
-        Adodc1.Recordset.bookmark = cboLocalizar.SelectedItem
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
     End If
 End Sub
 
 
-Private Sub cboLocalizar_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub cboLocalizar_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     If cboLocalizar.BoundText <> "" Then
-        Adodc1.Recordset.bookmark = cboLocalizar.SelectedItem
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
     End If
 End Sub
 
@@ -885,12 +885,12 @@ Private Sub CmdConfirmar_Click()
     If PanCorretores.Tag <> "I" Then
         subrecarregadadosNV Adodc1, "", FRM_Ordem, "", FRM_FiltroAtual
         cboLocalizar.BoundText = PanCorretores.Tag
-        Adodc1.Recordset.bookmark = cboLocalizar.SelectedItem
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
     Else
       FRM_Quantid = funOperacaoQuantid("+")
       XLI_BOOKMARK = TDBGrid1.ApproxCount + 1
       subrecarregadadosNV Adodc1, "", FRM_Ordem, "", FRM_FiltroAtual
-      TDBGrid1.bookmark = XLI_BOOKMARK
+      TDBGrid1.Bookmark = XLI_BOOKMARK
     End If
     cboLocalizar.Enabled = True
     TDBGrid1.Enabled = True
@@ -948,7 +948,7 @@ Sub subPrepararInsercao()
     TxtNome.Text = ""
     TxtComissao.Text = ""
 End Sub
-Private Sub CmdRemoverFiltro_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdRemoverFiltro_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Mostra os filtros ativos da tabela"
 End Sub
 
@@ -989,7 +989,7 @@ Private Sub CmdCancelar_Click()
     TDBGrid1.SetFocus
 End Sub
 
-Private Sub CmdImprimir_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdImprimir_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Imprime os dados da tabela"
 End Sub
 
@@ -999,7 +999,7 @@ Private Sub CmdSair_Click()
     Unload Me
 End Sub
 
-Private Sub CmdSair_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdSair_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Retorna à tela principal"
 End Sub
 
@@ -1019,7 +1019,7 @@ Private Sub CmdOrdem_Click()
     TDBGrid1.SetFocus
 End Sub
 
-Private Sub CmdOrdem_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdOrdem_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Ordena os registros atuais da tabela"
 End Sub
 
@@ -1071,7 +1071,7 @@ RotuloErro:
     End If
     subHabilitaBotoes
 End Sub
-Private Sub CmdExcluir_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdExcluir_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Remove da tabela o registro selecionado"
 End Sub
 
@@ -1094,7 +1094,7 @@ Private Sub CmdInserir_Click()
     
 End Sub
 
-Private Sub CmdInserir_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdInserir_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Insere um novo registro na tabela"
 End Sub
   
@@ -1119,13 +1119,13 @@ Private Sub TDBGrid1_DblClick()
     End If
 End Sub
 
-Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     
     cboLocalizar.Text = ""
     If Button = 2 And CmdInserir.Caption = "&Inserir" Then  'Verifica se o botão da direita foi pressionado
         Set Formulario = TelaManTabCorretores
         subTelaValoresGlobais "P"
-        FunExecutaFiltro Adodc1, Formulario, x
+        FunExecutaFiltro Adodc1, Formulario, X
         subTelaValoresGlobais "G"
     End If
     

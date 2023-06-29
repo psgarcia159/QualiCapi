@@ -915,7 +915,7 @@ End Sub
 Private Sub CboCorretor_Change()
 
     If CboCorretor.Text <> "" Then
-        DatFornecedor.Recordset.bookmark = CboCorretor.SelectedItem
+        DatFornecedor.Recordset.Bookmark = CboCorretor.SelectedItem
         
         ' Carrega o valor do percentual padrão
         TxtComissao.Text = Format(DatFornecedor.Recordset.Fields("corr_vl_PercentComissao"), "standard")
@@ -928,7 +928,7 @@ End Sub
 Private Sub CboEmpreendimento_Change()
 
     If CboEmpreendimento.Text <> "" Then
-        DatEmpreendimento.Recordset.bookmark = CboEmpreendimento.SelectedItem
+        DatEmpreendimento.Recordset.Bookmark = CboEmpreendimento.SelectedItem
         MskEmpreendimento.Text = CboEmpreendimento.BoundText
     End If
     
@@ -1222,14 +1222,14 @@ Private Sub CmdExcluir_Click()
 '      GravaLog EXCLUIR, "4"
       
       FRM_Quantid = funOperacaoQuantid("-")
-      XLI_BOOKMARK = TDBGrid1.bookmark
+      XLI_BOOKMARK = TDBGrid1.Bookmark
       subrecarregadadosNV Adodc1, "", FRM_Ordem, "", FRM_FiltroAtual
       
       If Not Adodc1.Recordset.EOF Then
          If XLI_BOOKMARK <= Adodc1.Recordset.RecordCount Then
-           TDBGrid1.bookmark = XLI_BOOKMARK
+           TDBGrid1.Bookmark = XLI_BOOKMARK
          Else
-           TDBGrid1.bookmark = XLI_BOOKMARK - 1
+           TDBGrid1.Bookmark = XLI_BOOKMARK - 1
          End If
       End If
        
