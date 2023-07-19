@@ -4,7 +4,7 @@ Object = "{0D623638-DBA2-11D1-B5DF-0060976089D0}#7.0#0"; "tdbg7.ocx"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.ocx"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form TelaExpBancaria 
    Caption         =   "Exportação Bancária - ITAÚ"
@@ -113,7 +113,7 @@ Begin VB.Form TelaExpBancaria
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   62390275
+         Format          =   84410371
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -730,7 +730,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
             Splits(0)._ColumnProps(7)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(8)=   "Column(0).FetchStyle=1"
             Splits(0)._ColumnProps(9)=   "Column(0).AllowFocus=0"
@@ -740,7 +740,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(13)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(14)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(15)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=1057296"
             Splits(0)._ColumnProps(17)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(18)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(19)=   "Column(1).AllowFocus=0"
@@ -868,7 +868,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -879,7 +879,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -980,7 +980,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   62390275
+            Format          =   84410371
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -993,7 +993,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   62390275
+            Format          =   84410371
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -1240,7 +1240,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
             Splits(0)._ColumnProps(7)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(8)=   "Column(0).FetchStyle=1"
             Splits(0)._ColumnProps(9)=   "Column(0).AllowFocus=0"
@@ -1250,7 +1250,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(13)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(14)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(15)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=1057296"
             Splits(0)._ColumnProps(17)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(18)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(19)=   "Column(1).AllowFocus=0"
@@ -1378,7 +1378,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -1389,7 +1389,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -1517,7 +1517,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -1528,7 +1528,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -1656,7 +1656,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -1667,7 +1667,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -2713,29 +2713,29 @@ Dim VFV_OBSERVACAO1 As New XArray
 Dim VFV_OBSERVACAO2 As New XArray
 Dim XFO_EXPORTACAO As New ADODB.Recordset
 Dim XFF_SALDODEVEDOR As Double
-Dim CarregouGrid As Boolean 'Indica se o grid já foi carregado ou não
+Dim CarregouGrid As Boolean         ' Indica se o grid já foi carregado ou não
 
 '*****************************************************************************************
 'Variaveis que guardarão valores específicos de cada formulário
 Dim PrimeiraVez As Boolean
 
-Dim FRM_ContFil As Integer ' Contador que armazena o número de filtros ativos
-Dim FRM_Ordem As String ' Nome do Campo que tem a chave da Tabela ativa
-Dim FRM_Campos_Obrig As String ' Lista dos campos que são obrigatórios na tabela
-Dim FRM_TipoVar As String ' Tipo do campo a ser filtrado
-Dim FRM_FiltroOrig As String ' Indica os filtros determinados pelo próprio sistema
-Dim FRM_FiltroAtual As String ' Indica o filtro atual da tabela corrente
-Dim FRM_filtra_especial As Integer ' Indica se a tabela utilizada possui filtros pré-definidos pelo sistema em FiltroOrig
-Dim FRM_Tem_Filtro As Boolean ' Informa se já foi relizado um filtro na tabela pelo usuário
-Dim FRM_ConTelaOrdem As Integer ' Indica o número de chaves utilizados para ordenação
-Dim FRM_Quantid As Long  ' Quantidade de registros da tabela
-Dim FRM_Filtrou As Boolean ' Informa se Algum campo foi filtrado
-Dim FRM_Ordens() As Integer    ' Vetor que mantem a ordem dos campos
-Dim FRM_Filtros() As String ' Array para armazenar os Filtros da Tabela
+Dim FRM_ContFil As Integer          ' Contador que armazena o número de filtros ativos
+Dim FRM_Ordem As String             ' Nome do Campo que tem a chave da Tabela ativa
+Dim FRM_Campos_Obrig As String      ' Lista dos campos que são obrigatórios na tabela
+Dim FRM_TipoVar As String           ' Tipo do campo a ser filtrado
+Dim FRM_FiltroOrig As String        ' Indica os filtros determinados pelo próprio sistema
+Dim FRM_FiltroAtual As String       ' Indica o filtro atual da tabela corrente
+Dim FRM_filtra_especial As Integer  ' Indica se a tabela utilizada possui filtros pré-definidos pelo sistema em FiltroOrig
+Dim FRM_Tem_Filtro As Boolean       ' Informa se já foi relizado um filtro na tabela pelo usuário
+Dim FRM_ConTelaOrdem As Integer     ' Indica o número de chaves utilizados para ordenação
+Dim FRM_Quantid As Long             ' Quantidade de registros da tabela
+Dim FRM_Filtrou As Boolean          ' Informa se Algum campo foi filtrado
+Dim FRM_Ordens() As Integer         ' Vetor que mantem a ordem dos campos
+Dim FRM_Filtros() As String         ' Array para armazenar os Filtros da Tabela
 
-Dim FRM_XInserir As String        'Flag para identificar se entrou na rotina para inserir ou alterar ('I'Inserir, 'A'Alterar, 'C'Consultar)
-Dim FRM_XOrigem As String         'Identifica a origem (que formulario) chamou o formulário ativo
-Dim FRM_SQLAtivo As String        'Atualizar o SQL Ativo após modificações de filtro e ordem
+Dim FRM_XInserir As String          'Flag para identificar se entrou na rotina para inserir ou alterar ('I'Inserir, 'A'Alterar, 'C'Consultar)
+Dim FRM_XOrigem As String           'Identifica a origem (que formulario) chamou o formulário ativo
+Dim FRM_SQLAtivo As String          'Atualizar o SQL Ativo após modificações de filtro e ordem
 
 
 Dim XFT_SQL As String       'Prepara Select para o vetor do grid
@@ -3563,14 +3563,14 @@ End Sub
 
 Private Sub CmdExportar_Click()
  
-  Dim XFT_SQL As String           'Prepara Select
-  Dim XLT_TEXTO As String         'Prepara Texto para gerar o arquivo
-  Dim XLT_CGCEMP As String           'CGC da empresa sem máscara
-  Dim XLT_CEPEMP As String           'Cep sem máscara
-  Dim XLF_VALOR As Double         'Valor do registro
-  Dim XLT_CGCCPF As String        'Cpf ou CGC do cliente
+  Dim XFT_SQL As String             ' Prepara Select
+  Dim XLT_TEXTO As String           ' Prepara Texto para gerar o arquivo
+  Dim XLT_CGCEMP As String          ' CGC da empresa sem máscara
+  Dim XLT_CEPEMP As String          ' Cep sem máscara
+  Dim XLF_VALOR As Double           ' Valor do registro
+  Dim XLT_CGCCPF As String          ' Cpf ou CGC do cliente
   Dim XLT_AGENCONTA As String
-  Dim XLB_SELECIONADO As Boolean  'Indica se foi ou não selecionado algum registro
+  Dim XLB_SELECIONADO As Boolean    ' Indica se foi ou não selecionado algum registro
   Dim XLT_TIPO As String
   Dim XLT_NOME As String
   Dim XLT_ENDERECO As String
@@ -3680,7 +3680,7 @@ Private Sub CmdExportar_Click()
   
   Conexao.BeginTrans
   
-  '**********HEADER DE ARQUIVO**********
+  '********** REGISTRO HEADER DE ARQUIVO REMESSA **********
   XLT_TEXTO = "0" & _
               "1" & _
               "REMESSA" & _
@@ -3778,15 +3778,63 @@ Private Sub CmdExportar_Click()
         ElseIf TxtInstrucao1.Text = "94" Or TxtInstrucao2.Text = "94" Then
           XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 40) & Space(40 - Len(TxtMensagem1.Text))
         Else
-            'Se tiver sacador avalista manda a informação que está em cboSacadorAvalista
+            ' Se tiver sacador/avalista manda a informação que está em cboSacadorAvalista
             If Me.cboSacadorAvalista.Text = "" Then
-                XLT_MENSAGEM1 = Left(PEmpresa, 30) & Space(30 - Len(Left(PEmpresa, 30))) & Space(4) & XLT_DATAMORA
+                ' Alterado em 18/07/2023 (PSG), para atender solicitação do ITAU: o campo BENEFICIARIO FINAL deve ser igual a espaços, quando Instrução 1 e 2 diferentes de 93 oe 94
+                ' XLT_MENSAGEM1 = Left(PEmpresa, 30) & Space(30 - Len(Left(PEmpresa, 30))) & Space(4) & XLT_DATAMORA
+                XLT_MENSAGEM1 = Space(34) & XLT_DATAMORA
             Else
                XLT_MENSAGEM1 = Left(Me.cboSacadorAvalista.Text, 30) & Space(30 - Len(Left(Me.cboSacadorAvalista.Text, 30))) & Space(4) & XLT_DATAMORA
             End If
+            
+        
         End If
         
-          '*****************HEADER DE LOTE*****************
+        '********** REGISTRO DETALHE (OBRIGATÓRIO) DE ARQUIVO REMESSA **********
+'          XLT_TEXTO = "1" & _                                                                                                      - TIPO DE REGISTRO
+'                      "02" & _                                                                                                     - CÓDIGO DE INSCRIÇÃO
+'                      Format(XLT_CGCEMP, "00000000000000") & _                                                                     - NÚMERO DE INSCRIÇÃO
+'                      Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _                               - AGÊNCIA
+'                      "00" & _                                                                                                     - ZEROS
+'                      Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _                                - CONTA
+'                      Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0") & _                         - DAC
+'                      Space(4) & _                                                                                                 - BRANCOS
+'                      "0000" & _                                                                                                   - INSTRUÇÃO/ALEGAÇÃO
+'                      XFO_EXPORTACAO!Titulo & Space(3) & _                                                                         - USO DA EMPRESA
+'                      FunZeros(8) & _                                                                                              - NOSSO NÚMERO
+'                      FunZeros(13) & _                                                                                             - QTDE DE MOEDA
+'                      "112" & _                                                                                                    - Nº DA CARTEIRA
+'                      Space(21) & _                                                                                                - USO DO BANCO
+'                      "I" & _                                                                                                      - CARTEIRA
+'                      "01" & _                                                                                                     - CÓD. DE OCORRÊNCIA
+'                      Left(XFO_EXPORTACAO!Titulo, 4) & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & _    - Nº DO DOCUMENTO
+'                      Format(XFO_EXPORTACAO!titu_dt_Vencimento, "ddmmyy") & _                                                      - VENCIMENTO
+'                      Format(XLF_VALOR * 100, "0000000000000") & _                                                                 - VALOR DO BOLETO
+'                      Format(DatContaCorrente.Recordset.Fields!banc_cd_Codigo, "000") & _                                          - CÓDIGO DO BANCO (341)
+'                      "00000" & _                                                                                                  - AGÊNCIA COBRADORA
+'                      "02" & _                                                                                                     - ESPÉCIE
+'                      "N"                                                                                                          - ACEITE
+'                      Format(DtpExportacao, "ddmmyy") & _                                                                          - DATA DE EMISSÃO
+'                      Format(TxtInstrucao1.Text, "00") & Space(2 - Len(Format(TxtInstrucao1.Text, "00"))) & _                      - INSTRUÇÃO 1
+'                      Format(TxtInstrucao2.Text, "00") & Space(2 - Len(Format(TxtInstrucao2.Text, "00"))) & _                      - INSTRUÇÃO 2
+'                      FunZeros(13) & _                                                                                             - JUROS DE 1 DIA
+'                      XLT_DATADESCONTO & _                                                                                         - DESCONTO ATÉ
+'                      Format(XLF_DESCONTO * 100, "0000000000000") & _                                                              - VALOR DO DESCONTO
+'                      FunZeros(13) & _                                                                                             - VALOR DO I.O.F.
+'                      FunZeros(13) & _                                                                                             - ABATIMENTO
+'                      XLT_TIPO & _                                                                                                 - CÓDIGO DE INSCRIÇÃO
+'                      Format(XLT_CGCCPF, "00000000000000") & _                                                                     - NÚMERO DE INSCRIÇÃO
+'                      XLT_NOME & _                                                                                                 - NOME DO PAGADOR
+'                      XLT_ENDERECO & _                                                                                             - LOGRADOURO
+'                      XLT_BAIRRO & _                                                                                               - BAIRRO
+'                      XLT_CEP & _                                                                                                  - CEP
+'                      XLT_CIDADE & _                                                                                               - CIDADE
+'                      XLT_ESTADO & _                                                                                               - ESTADO
+'                      XLT_MENSAGEM1 & _                                                                                            - BENEFICIARIO FINAL/MENSAGEM AO PAGADOR + BRANCOS + DATA DE MORA
+'                      Format(XLI_PRAZOMORA, "00") & _                                                                              - PRAZO
+'                      Space(1) & _                                                                                                 - BRANCOS
+'                      Format(XLI_NUMSQUENCIAL, "000000")                                                                           - NÚMERO SEQÜENCIAL
+                      
           XLT_TEXTO = "1" & _
                       "02" & _
                       Format(XLT_CGCEMP, "00000000000000") & _
@@ -3810,6 +3858,7 @@ Private Sub CmdExportar_Click()
                       "00000" & _
                       "02" & _
                       "N"
+                      
            XLT_TEXTO = XLT_TEXTO & _
                       Format(DtpExportacao, "ddmmyy") & _
                       Format(TxtInstrucao1.Text, "00") & Space(2 - Len(Format(TxtInstrucao1.Text, "00"))) & _
