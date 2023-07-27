@@ -328,7 +328,7 @@ Begin VB.Form TelaPagamentoComissoes
                _ExtentX        =   2593
                _ExtentY        =   582
                _Version        =   393216
-               Format          =   88014849
+               Format          =   93257729
                CurrentDate     =   36892
             End
             Begin MSMask.MaskEdBox MskNumdocumento 
@@ -353,7 +353,7 @@ Begin VB.Form TelaPagamentoComissoes
                _ExtentX        =   2593
                _ExtentY        =   582
                _Version        =   393216
-               Format          =   88014849
+               Format          =   93257729
                CurrentDate     =   36892
             End
             Begin MSComCtl2.DTPicker DtpVencimento 
@@ -365,7 +365,7 @@ Begin VB.Form TelaPagamentoComissoes
                _ExtentX        =   2593
                _ExtentY        =   582
                _Version        =   393216
-               Format          =   88014851
+               Format          =   93257731
                CurrentDate     =   36892
             End
             Begin MSMask.MaskEdBox Mskconta 
@@ -1252,7 +1252,12 @@ Begin VB.Form TelaPagamentoComissoes
       Columns(8).Caption=   "Data Pagamento Prevista"
       Columns(8).DataField=   "comi_dt_Pagamento"
       Columns(8)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns.Count   =   9
+      Columns(9)._VlistStyle=   0
+      Columns(9)._MaxComboItems=   5
+      Columns(9).Caption=   "Codigo Comissoes"
+      Columns(9).DataField=   "comi_cd_Comissoes"
+      Columns(9)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+      Columns.Count   =   10
       Splits(0)._UserFlags=   0
       Splits(0).ExtendRightColumn=   -1  'True
       Splits(0).MarqueeStyle=   3
@@ -1262,7 +1267,7 @@ Begin VB.Form TelaPagamentoComissoes
       Splits(0).DividerColor=   12632256
       Splits(0).SpringMode=   0   'False
       Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
-      Splits(0)._ColumnProps(0)=   "Columns.Count=9"
+      Splits(0)._ColumnProps(0)=   "Columns.Count=10"
       Splits(0)._ColumnProps(1)=   "Column(0).Width=2937"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
       Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2858"
@@ -1338,6 +1343,13 @@ Begin VB.Form TelaPagamentoComissoes
       Splits(0)._ColumnProps(73)=   "Column(8).AllowFocus=0"
       Splits(0)._ColumnProps(74)=   "Column(8).Order=9"
       Splits(0)._ColumnProps(75)=   "Column(8)._MinWidth=107251536"
+      Splits(0)._ColumnProps(76)=   "Column(9).Width=2725"
+      Splits(0)._ColumnProps(77)=   "Column(9).DividerColor=0"
+      Splits(0)._ColumnProps(78)=   "Column(9)._WidthInPix=2646"
+      Splits(0)._ColumnProps(79)=   "Column(9)._EditAlways=0"
+      Splits(0)._ColumnProps(80)=   "Column(9)._ColStyle=20"
+      Splits(0)._ColumnProps(81)=   "Column(9).WrapText=1"
+      Splits(0)._ColumnProps(82)=   "Column(9).Order=10"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
@@ -1435,27 +1447,31 @@ Begin VB.Form TelaPagamentoComissoes
       _StyleDefs(71)  =   "Splits(0).Columns(8).HeadingStyle:id=59,.parent=14,.alignment=2"
       _StyleDefs(72)  =   "Splits(0).Columns(8).FooterStyle:id=60,.parent=15"
       _StyleDefs(73)  =   "Splits(0).Columns(8).EditorStyle:id=61,.parent=17"
-      _StyleDefs(74)  =   "Named:id=33:Normal"
-      _StyleDefs(75)  =   ":id=33,.parent=0"
-      _StyleDefs(76)  =   "Named:id=34:Heading"
-      _StyleDefs(77)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-      _StyleDefs(78)  =   ":id=34,.wraptext=-1"
-      _StyleDefs(79)  =   "Named:id=35:Footing"
-      _StyleDefs(80)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-      _StyleDefs(81)  =   "Named:id=36:Selected"
-      _StyleDefs(82)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-      _StyleDefs(83)  =   "Named:id=37:Caption"
-      _StyleDefs(84)  =   ":id=37,.parent=34,.alignment=2"
-      _StyleDefs(85)  =   "Named:id=38:HighlightRow"
-      _StyleDefs(86)  =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-      _StyleDefs(87)  =   "Named:id=39:EvenRow"
-      _StyleDefs(88)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
-      _StyleDefs(89)  =   "Named:id=40:OddRow"
-      _StyleDefs(90)  =   ":id=40,.parent=33"
-      _StyleDefs(91)  =   "Named:id=41:RecordSelector"
-      _StyleDefs(92)  =   ":id=41,.parent=34"
-      _StyleDefs(93)  =   "Named:id=42:FilterBar"
-      _StyleDefs(94)  =   ":id=42,.parent=33"
+      _StyleDefs(74)  =   "Splits(0).Columns(9).Style:id=66,.parent=13"
+      _StyleDefs(75)  =   "Splits(0).Columns(9).HeadingStyle:id=63,.parent=14"
+      _StyleDefs(76)  =   "Splits(0).Columns(9).FooterStyle:id=64,.parent=15"
+      _StyleDefs(77)  =   "Splits(0).Columns(9).EditorStyle:id=65,.parent=17"
+      _StyleDefs(78)  =   "Named:id=33:Normal"
+      _StyleDefs(79)  =   ":id=33,.parent=0"
+      _StyleDefs(80)  =   "Named:id=34:Heading"
+      _StyleDefs(81)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(82)  =   ":id=34,.wraptext=-1"
+      _StyleDefs(83)  =   "Named:id=35:Footing"
+      _StyleDefs(84)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(85)  =   "Named:id=36:Selected"
+      _StyleDefs(86)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(87)  =   "Named:id=37:Caption"
+      _StyleDefs(88)  =   ":id=37,.parent=34,.alignment=2"
+      _StyleDefs(89)  =   "Named:id=38:HighlightRow"
+      _StyleDefs(90)  =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(91)  =   "Named:id=39:EvenRow"
+      _StyleDefs(92)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
+      _StyleDefs(93)  =   "Named:id=40:OddRow"
+      _StyleDefs(94)  =   ":id=40,.parent=33"
+      _StyleDefs(95)  =   "Named:id=41:RecordSelector"
+      _StyleDefs(96)  =   ":id=41,.parent=34"
+      _StyleDefs(97)  =   "Named:id=42:FilterBar"
+      _StyleDefs(98)  =   ":id=42,.parent=33"
    End
    Begin Threed.SSPanel PanBotoes 
       Height          =   975
@@ -2019,6 +2035,7 @@ Private Sub cmdGravar_Click()
     Dim XLT_PLCO_CD   As String       ' Código da Conta Contábil    (plco_cd_Conta)
     Dim XLT_IDEN_CD   As String       ' Código do Identificador     (iden_cd_Projeto)
     Dim XLT_COPA_CD   As String       ' Código do Pagamento         (copa_tx_codigo)
+    Dim XLT_COMI_CD   As String       ' Código da Comissão          (comi_cd_Comissoes)
     Dim XLT_COPA_NUM  As String       ' Número do Documento         (copa_nr_documento)
     Dim XLT_COPA_SER  As String       ' Série do Documento          (copa_tx_serie)
     Dim XLT_COPA_STD  As String       ' Status do Documento         (copa_tx_statusDocumento)
@@ -2044,6 +2061,7 @@ Private Sub cmdGravar_Click()
     XLT_CONT_CD = Adodc1.Recordset.Fields("cont_cd_Contrato")
     XLT_CORR_CD = Adodc1.Recordset.Fields("corr_cd_Corretor")
     XLT_FOCL_CD = Adodc1.Recordset.Fields("focl_cd_FornCli")
+    XLT_COMI_CD = Adodc1.Recordset.Fields("comi_cd_Comissoes")
     XLT_TIDO_CD = FunNuloBanco(CboTipoDoc.BoundText)
     XLT_CERE_CD = DatPCR.Recordset.Fields("cere_cd_Pcr")
     XLT_COCO_CD = FunNuloBanco(CboCCorrente.BoundText)
@@ -2068,10 +2086,10 @@ Private Sub cmdGravar_Click()
     If PanPagamento.Tag = "I" Then     ' Inserção
         XLT_SQL = "INSERT INTO CorretoresPagamento" & _
                   " (empr_cd_Empresa, empd_cd_Empreendimento, imov_cd_Imovel, cont_cd_Contrato, corr_cd_Corretor, focl_cd_FornCli, tido_cd_TipoDoc, cere_cd_Pcr, coco_cd_Codigo, plco_cd_Conta, iden_cd_Projeto, copa_tx_codigo," & _
-                  " copa_nr_documento, copa_tx_serie, copa_tx_statusDocumento, copa_dt_entrada, copa_dt_emissao, copa_dt_vencimento, copa_tx_historico, copa_vl_valor, copa_nr_titulocapi, copa_tx_statusPagamento)" & _
+                  " copa_nr_documento, copa_tx_serie, copa_tx_statusDocumento, copa_dt_entrada, copa_dt_emissao, copa_dt_vencimento, copa_tx_historico, copa_vl_valor, copa_nr_titulocapi, copa_tx_statusPagamento, comi_cd_Comissoes)" & _
                   " VALUES (" & XLT_EMPR_CD & ", '" & XLT_EMPD_CD & "', '" & XLT_IMOV_CD & "', '" & XLT_CONT_CD & "', " & XLT_CORR_CD & ", " & XLT_FOCL_CD & ", " & XLT_TIDO_CD & ", '" & XLT_CERE_CD & "', " & XLT_COCO_CD & ", '" & _
                   XLT_PLCO_CD & "', " & XLT_IDEN_CD & ", '" & XLT_COPA_CD & "', '" & XLT_COPA_NUM & "', '" & XLT_COPA_SER & "', '" & XLT_COPA_STD & "', " & XLT_COPA_DTR & ", " & XLT_COPA_DTE & ", " & XLT_COPA_DTV & ", '" & _
-                  XLT_COPA_HIS & "', " & XLT_COPA_VLR & ", '" & XLT_COPA_CAP & "', '" & XLT_COPA_STP & "')"
+                  XLT_COPA_HIS & "', " & XLT_COPA_VLR & ", '" & XLT_COPA_CAP & "', '" & XLT_COPA_STP & "', " & XLT_COMI_CD & ")"
 
 '        XLI_LOG = "2"
     Else                                ' Alteração
@@ -2083,8 +2101,9 @@ Private Sub cmdGravar_Click()
                   "  AND empd_cd_Empreendimento = '" & XLT_EMPD_CD & "'" & _
                   "  AND imov_cd_Imovel = '" & XLT_IMOV_CD & "'" & _
                   "  AND cont_cd_Contrato = '" & XLT_CONT_CD & "'" & _
-                  "  AND corr_cd_Corretor = " & XLT_CORR_CD
-    
+                  "  AND corr_cd_Corretor = " & XLT_CORR_CD & _
+                  "  AND comi_cd_Comissoes = " & XLT_COMI_CD
+                      
 '        XLI_LOG = "3"
     End If
     
@@ -2255,8 +2274,9 @@ Private Sub CmdAlterar_Click()
               "   AND A.empd_cd_Empreendimento = '" & Adodc1.Recordset.Fields("empd_cd_Empreendimento") & "'" & _
               "   AND A.imov_cd_Imovel = '" & Adodc1.Recordset.Fields("imov_cd_Imovel") & "'" & _
               "   AND A.cont_cd_Contrato = '" & Adodc1.Recordset.Fields("cont_cd_Contrato") & "'" & _
-              "   AND A.corr_cd_Corretor = " & Adodc1.Recordset.Fields("corr_cd_Corretor")
-               
+              "   AND A.corr_cd_Corretor = " & Adodc1.Recordset.Fields("corr_cd_Corretor") & _
+              "   AND A.comi_cd_Comissoes = " & Adodc1.Recordset.Fields("comi_cd_Comissoes")
+
     SubQOpenRecordset XLO_COPA, XLT_SQL, Estatico
     
     If (XLO_COPA.BOF Or XLO_COPA.EOF) Then
@@ -2444,13 +2464,22 @@ Private Sub CmdExcluir_Click()
     
         '
         ' Exclui o registro em CorretoresPagamento
+'        XLT_SQL = "DELETE" & _
+'                  "  FROM CorretoresPagamento" & _
+'                  " WHERE empr_cd_Empresa = " & Adodc1.Recordset.Fields("empr_cd_Empresa") & _
+'                  "   AND empd_cd_Empreendimento = '" & Adodc1.Recordset.Fields("empd_cd_Empreendimento") & "'" & _
+'                  "   AND imov_cd_Imovel = '" & Adodc1.Recordset.Fields("imov_cd_Imovel") & "'" & _
+'                  "   AND cont_cd_Contrato = '" & Adodc1.Recordset.Fields("cont_cd_Contrato") & "'" & _
+'                  "   AND corr_cd_Corretor = " & Adodc1.Recordset.Fields("corr_cd_Corretor")
+        
         XLT_SQL = "DELETE" & _
                   "  FROM CorretoresPagamento" & _
                   " WHERE empr_cd_Empresa = " & Adodc1.Recordset.Fields("empr_cd_Empresa") & _
                   "   AND empd_cd_Empreendimento = '" & Adodc1.Recordset.Fields("empd_cd_Empreendimento") & "'" & _
                   "   AND imov_cd_Imovel = '" & Adodc1.Recordset.Fields("imov_cd_Imovel") & "'" & _
                   "   AND cont_cd_Contrato = '" & Adodc1.Recordset.Fields("cont_cd_Contrato") & "'" & _
-                  "   AND corr_cd_Corretor = " & Adodc1.Recordset.Fields("corr_cd_Corretor")
+                  "   AND corr_cd_Corretor = " & Adodc1.Recordset.Fields("corr_cd_Corretor") & _
+                  "   AND comi_cd_Comissoes = " & Adodc1.Recordset.Fields("comi_cd_Comissoes")
         
         Conexao.BeginTrans
         Conexao.Execute XLT_SQL
@@ -2536,7 +2565,7 @@ Private Sub CmdInserir_Click()
     TxtValor.Text = Format$(TxtValor.Text, "##,##0.00")
     DtpEntrada.Value = Format(Now, "dd/MM/yyyy")
     DtpEmissao.Value = Format(Now, "dd/MM/yyyy")
-    DtpVencimento = Format(Now, "dd/MM/yyyy")
+    DtpVencimento.Value = Adodc1.Recordset.Fields("comi_dt_Pagamento")
 
     TxtCodTipoDoc.Text = ""
     CboTipoDoc.Text = ""
@@ -2574,6 +2603,8 @@ Private Sub CmdInserir_Click()
     
     If Not (XLO_RES.BOF And XLO_RES.EOF) Then
     
+        XLO_RES.MoveFirst
+        
 '        If Not IsNull(XLO_RES!plco_cd_CodReduzido) Then
 '            CboPlanoContas.BoundText = FunNulo(XLO_RES!plco_cd_CodReduzido)
 '            DatConta.Recordset.Bookmark = CboPlanoContas.SelectedItem
@@ -2813,14 +2844,14 @@ Private Sub Form_Load()
               "  JOIN CorretoresEmpreendimento       E ON A.empr_cd_Empresa        = E.empr_cd_Empresa AND A.empd_cd_Empreendimento = E.empd_cd_Empreendimento AND A.corr_cd_Corretor = E.corr_cd_Corretor" & _
               "  JOIN Contratos                      F ON A.empr_cd_Empresa        = F.empr_cd_Empresa AND A.empd_cd_Empreendimento = F.empd_cd_Empreendimento AND A.imov_cd_Imovel = F.imov_cd_Imovel AND A.cont_cd_Contrato = F.cont_cd_Contrato" & _
               "  LEFT OUTER JOIN FornClientes        G ON F.focl_cd_FornCli        = G.focl_cd_FornCli" & _
-              "  LEFT OUTER JOIN CorretoresPagamento H ON  A.empr_cd_Empresa       = H.empr_cd_Empresa AND A.empd_cd_Empreendimento = H.empd_cd_Empreendimento AND A.imov_cd_Imovel = H.imov_cd_Imovel AND A.cont_cd_Contrato = H.cont_cd_Contrato AND A.corr_cd_Corretor = H.corr_cd_Corretor" & _
+              "  LEFT OUTER JOIN CorretoresPagamento H ON A.comi_cd_Comissoes      = H.comi_cd_Comissoes" & _
               " WHERE A.empr_cd_Empresa = " & PCodEmpresa & _
               "   AND A.comi_dt_Pagamento IS NOT NULL" & _
               "   AND (H.copa_tx_statusPagamento IS NULL OR H.copa_tx_statusPagamento = 'P')" & _
               " ORDER BY A.empd_cd_Empreendimento, A.imov_cd_Imovel, A.cont_cd_Contrato, B.corr_tx_Nome"
                             
     '
-    ' Carrega Adodc's (dados para o Grid e combos)
+    ' Carrega Adodc's (dados para o Grid)
     subCarregaDadosNV Adodc1, "", "", "", XLT_SQL
     
     subConectarControleDadosNV DatConta, "SELECT * FROM ConsGENPCcombo WHERE empr_cd_empresa = " & PCodEmpresa & " and plco_tx_tipo = 'A' and (plco_tx_recdesp= 'D' or plco_tx_recdesp= 'G') AND plco_tx_status = 'A' ORDER BY plco_tx_desccontabil", Estatico
@@ -2842,12 +2873,17 @@ Private Sub Form_Load()
     PrimeiraVez = True
     
     If FunTabelaVazia(Adodc1) Then
-       CmdAlterar.Enabled = False
-       CmdExcluir.Enabled = False
-       CmdImprimir.Enabled = False
-       CmdOrdem.Enabled = False
-    End If
     
+        CmdAlterar.Enabled = False
+        CmdExcluir.Enabled = False
+        CmdImprimir.Enabled = False
+        CmdInserir.Enabled = False
+        CmdOrdem.Enabled = False
+        
+        MsgBox "Não foram encontrados registros para processar. É necessário a atualização das comissões dos corretores nos contratos dos imóveis, antes de entrar com os dados da programação de pagamento!", vbCritical, "ATENÇÃO !"
+        
+    End If
+        
     If BarraFerramentasPressionada = True Then
       Call CmdInserir_Click
       BarraFerramentasPressionada = False

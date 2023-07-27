@@ -260,44 +260,44 @@ Begin VB.Form FrmManContratos
          TabCaption(0)   =   "&Compradores"
          TabPicture(0)   =   "FrmContratos.frx":001E
          Tab(0).ControlEnabled=   0   'False
-         Tab(0).Control(0)=   "LblCliTitular"
-         Tab(0).Control(1)=   "LblCliente"
-         Tab(0).Control(2)=   "CboComprador"
-         Tab(0).Control(3)=   "TDBGrid1"
-         Tab(0).Control(4)=   "DatComprador"
-         Tab(0).Control(5)=   "CmdExcComprador"
-         Tab(0).Control(6)=   "CmdInsComprador"
-         Tab(0).Control(7)=   "CmdTitular"
+         Tab(0).Control(0)=   "CmdTitular"
+         Tab(0).Control(1)=   "CmdInsComprador"
+         Tab(0).Control(2)=   "CmdExcComprador"
+         Tab(0).Control(3)=   "DatComprador"
+         Tab(0).Control(4)=   "TDBGrid1"
+         Tab(0).Control(5)=   "CboComprador"
+         Tab(0).Control(6)=   "LblCliente"
+         Tab(0).Control(7)=   "LblCliTitular"
          Tab(0).ControlCount=   8
          TabCaption(1)   =   "&Fiadores"
          TabPicture(1)   =   "FrmContratos.frx":003A
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "CmdInsFiador"
-         Tab(1).Control(1)=   "CmdExcFiador"
-         Tab(1).Control(2)=   "CboFiador"
-         Tab(1).Control(3)=   "TDBGrid3"
-         Tab(1).Control(4)=   "DatFiador"
-         Tab(1).Control(5)=   "Label1"
+         Tab(1).Control(0)=   "Label1"
+         Tab(1).Control(1)=   "DatFiador"
+         Tab(1).Control(2)=   "TDBGrid3"
+         Tab(1).Control(3)=   "CboFiador"
+         Tab(1).Control(4)=   "CmdExcFiador"
+         Tab(1).Control(5)=   "CmdInsFiador"
          Tab(1).ControlCount=   6
          TabCaption(2)   =   "&Dados Financeiros"
          TabPicture(2)   =   "FrmContratos.frx":0056
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "FraMulta"
-         Tab(2).Control(1)=   "FraSeguro"
-         Tab(2).Control(2)=   "FraJuros"
-         Tab(2).Control(3)=   "FraDesagio"
-         Tab(2).Control(4)=   "FraValores"
-         Tab(2).Control(5)=   "FraProRata"
+         Tab(2).Control(0)=   "FraProRata"
+         Tab(2).Control(1)=   "FraValores"
+         Tab(2).Control(2)=   "FraDesagio"
+         Tab(2).Control(3)=   "FraJuros"
+         Tab(2).Control(4)=   "FraSeguro"
+         Tab(2).Control(5)=   "FraMulta"
          Tab(2).ControlCount=   6
          TabCaption(3)   =   "Dados da &Venda"
          TabPicture(3)   =   "FrmContratos.frx":0072
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "DatIdentificador"
-         Tab(3).Control(1)=   "DatIndexador"
-         Tab(3).Control(2)=   "DatPcr"
-         Tab(3).Control(3)=   "DatConta"
-         Tab(3).Control(4)=   "FraDatas"
-         Tab(3).Control(5)=   "FraFinContabil"
+         Tab(3).Control(0)=   "FraFinContabil"
+         Tab(3).Control(1)=   "FraDatas"
+         Tab(3).Control(2)=   "DatConta"
+         Tab(3).Control(3)=   "DatPcr"
+         Tab(3).Control(4)=   "DatIndexador"
+         Tab(3).Control(5)=   "DatIdentificador"
          Tab(3).ControlCount=   6
          TabCaption(4)   =   "C&orretores"
          TabPicture(4)   =   "FrmContratos.frx":008E
@@ -619,7 +619,7 @@ Begin VB.Form FrmManContratos
                _ExtentY        =   556
                _Version        =   393216
                CustomFormat    =   "dd/MM/yy"
-               Format          =   82247683
+               Format          =   84541443
                CurrentDate     =   37180
             End
             Begin MSComCtl2.DTPicker DtpRegContrato 
@@ -632,7 +632,7 @@ Begin VB.Form FrmManContratos
                _ExtentY        =   556
                _Version        =   393216
                CustomFormat    =   "dd/MM/yy"
-               Format          =   82247683
+               Format          =   84541443
                CurrentDate     =   37180
             End
             Begin MSComCtl2.DTPicker DtpDtQuitacao 
@@ -647,7 +647,7 @@ Begin VB.Form FrmManContratos
                CheckBox        =   -1  'True
                CustomFormat    =   "dd/MM/yy"
                DateIsNull      =   -1  'True
-               Format          =   82247683
+               Format          =   84541443
                CurrentDate     =   37686.4345601852
             End
             Begin MSComCtl2.DTPicker DtpDtVenda 
@@ -660,7 +660,7 @@ Begin VB.Form FrmManContratos
                _ExtentY        =   556
                _Version        =   393216
                CustomFormat    =   "dd/MM/yy"
-               Format          =   82247683
+               Format          =   84541443
                CurrentDate     =   37180
             End
             Begin MSDataListLib.DataCombo CboIndexador 
@@ -705,7 +705,7 @@ Begin VB.Form FrmManContratos
                CheckBox        =   -1  'True
                CustomFormat    =   "dd/MM/yy"
                DateIsNull      =   -1  'True
-               Format          =   82247683
+               Format          =   84541443
                CurrentDate     =   37686.4345601852
             End
             Begin VB.Label LblDistrato 
@@ -1783,7 +1783,7 @@ Begin VB.Form FrmManContratos
                CheckBox        =   -1  'True
                CustomFormat    =   "dd/MM/yy"
                DateIsNull      =   -1  'True
-               Format          =   82247683
+               Format          =   84541443
                CurrentDate     =   37630.3585069444
             End
             Begin MSAdodcLib.Adodc DatCorretor 
@@ -3290,20 +3290,22 @@ Private Sub CmdConfirmaCorretor_Click()
             TDBGrid2.Columns(3).Text = DtpPagamento.Value
             TDBGrid2.Update
         Else
+        
             If funExisteChave(1, Array("0"), Array(DatCorretor.Recordset.Fields("corr_cd_corretor")), VFV_VETOR2, TDBGrid2) Then
-                MsgBox "Esse Corretor já foi cadastrado", vbCritical, "ATENÇÃO !"
-                Exit Sub
-            Else
-                If XFT_INSCORRETOR = "I" Then
-                    subInsereRegistroVetor Array(CboCorretor.BoundText, CboCorretor.Text, TxtComissao.Text, DtpPagamento.Value), VFV_VETOR2, TDBGrid2
-                ElseIf XFT_INSCORRETOR = "A" Then
-                    TDBGrid2.Columns(0).Text = CboCorretor.BoundText
-                    TDBGrid2.Columns(1).Text = CboCorretor.Text
-                    TDBGrid2.Columns(2).Text = TxtComissao.Text
-                    TDBGrid2.Columns(3).Text = DtpPagamento.Value
-                    TDBGrid2.Update
-                End If
+                MsgBox "Esse Corretor já foi cadastrado", vbExclamation, "ATENÇÃO !"
+'                Exit Sub
             End If
+
+            If XFT_INSCORRETOR = "I" Then
+                subInsereRegistroVetor Array(CboCorretor.BoundText, CboCorretor.Text, TxtComissao.Text, DtpPagamento.Value), VFV_VETOR2, TDBGrid2
+            ElseIf XFT_INSCORRETOR = "A" Then
+                TDBGrid2.Columns(0).Text = CboCorretor.BoundText
+                TDBGrid2.Columns(1).Text = CboCorretor.Text
+                TDBGrid2.Columns(2).Text = TxtComissao.Text
+                TDBGrid2.Columns(3).Text = DtpPagamento.Value
+                TDBGrid2.Update
+            End If
+            
         End If
         
         If Not CmdExcCorretor.Enabled Then CmdExcCorretor.Enabled = True
@@ -4317,7 +4319,8 @@ End Sub
 
 Private Sub TabAuxiliar_Click(PreviousTab As Integer)
     Dim XLT_SQL As String
-    
+    Dim XLO_RES  As ADODB.Recordset
+
     If TabAuxiliar.Tab = 0 And Not XFB_ENTROUCOMP Then
         'Compradores
         XLT_SQL = "SELECT focl_cd_FornCli, focl_tx_RazaoSocial, focl_tx_RazaoSocial FROM ConsCAPCompradores WHERE empr_cd_Empresa = " & PCodEmpresa & " AND imov_cd_imovel = '" & XFT_CODIMOVEL & "' AND empd_cd_empreendimento='" & XFT_CODEMPREENDIMENTO & "' AND cont_cd_Contrato='" & LblCodContrato.Caption & "'"
@@ -4333,14 +4336,46 @@ Private Sub TabAuxiliar_Click(PreviousTab As Integer)
         End If
     ElseIf TabAuxiliar.Tab = 4 And Not XFB_ENTROUCORR Then
         'Corretores
-        XLT_SQL = "SELECT * FROM ConsCAPCorretores WHERE empr_cd_Empresa = " & PCodEmpresa & " AND imov_cd_imovel = '" & XFT_CODIMOVEL & "' AND empd_cd_empreendimento='" & XFT_CODEMPREENDIMENTO & "' AND cont_cd_Contrato='" & LblCodContrato.Caption & "'"
+        
+        'Se existe programação de pagamento de comissão, desabilita os botões e emite uma mensagem
+        XLT_SQL = "SELECT * FROM CorretoresPagamento WHERE empr_cd_Empresa = " & PCodEmpresa & " AND imov_cd_imovel = '" & XFT_CODIMOVEL & "' AND empd_cd_empreendimento='" & XFT_CODEMPREENDIMENTO & "' AND cont_cd_Contrato='" & LblCodContrato.Caption & "'"
+
+        SubQOpenRecordset XLO_RES, XLT_SQL, Estatico
+
+        If Not (XLO_RES.BOF And XLO_RES.EOF) Then
+
+            If Not IsNull(XLO_RES!copa_tx_statusPagamento) And XLO_RES!copa_tx_statusPagamento <> "N" Then
+                CmdAltCorretor.Enabled = False
+                CmdExcCorretor.Enabled = False
+                CmdInsCorretor.Enabled = False
+            End If
+
+            If XLO_RES!copa_tx_statusPagamento = "P" Then
+                MsgBox "A programação de pagamento da comissão para esse contrato já foi realizada. Para alterar as informações dessa aba, remova a programação.", vbExclamation, "ATENÇÃO !"
+            ElseIf XLO_RES!copa_tx_statusPagamento = "T" Then
+                MsgBox "A programação de pagamento da comissão para esse contrato já foi enviada ao Contas a Pagar. As informações dessa aba não podem ser alteradas.", vbExclamation, "ATENÇÃO !"
+            End If
+
+        End If
+
+        XLO_RES.Close
+        Set XLO_RES = Nothing
+        
+        ' Carrega o Grid com os dados do corretor/comissão
+        'XLT_SQL = "SELECT * FROM ConsCAPCorretores WHERE empr_cd_Empresa = " & PCodEmpresa & " AND imov_cd_imovel = '" & XFT_CODIMOVEL & "' AND empd_cd_empreendimento='" & XFT_CODEMPREENDIMENTO & "' AND cont_cd_Contrato='" & LblCodContrato.Caption & "'"
+        XLT_SQL = "SELECT * FROM ConsCAPCorretores WHERE empr_cd_Empresa = " & PCodEmpresa & " AND imov_cd_imovel = '" & XFT_CODIMOVEL & "' AND empd_cd_empreendimento='" & XFT_CODEMPREENDIMENTO & "' AND cont_cd_Contrato='" & LblCodContrato.Caption & "' ORDER BY comi_dt_Pagamento"
+        
         subCarregaVetor XLT_SQL, Array("corr_cd_Corretor", "corr_tx_Nome", "comi_vl_Comissao", "comi_dt_Pagamento"), VFV_VETOR2, TDBGrid2
+        
         XFB_ENTROUCORR = True
+        
         If IsEmpty(VFV_VETOR2(0, 0)) Then
           CmdAltCorretor.Enabled = False
           CmdExcCorretor.Enabled = False
         End If
+        
     End If
+    
 End Sub
 
 Sub subCarregaVetorCompradores(Sql As String, VetorCampos As Variant, Vetor As XArray, Grid As TDBGrid)   'Carrega o vetores

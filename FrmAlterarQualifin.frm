@@ -147,7 +147,7 @@ Begin VB.Form FrmFinAlteraQualifin
          _Version        =   393216
          CheckBox        =   -1  'True
          DateIsNull      =   -1  'True
-         Format          =   88473601
+         Format          =   85393409
          CurrentDate     =   37180
       End
       Begin MSComCtl2.DTPicker DtpFim 
@@ -161,7 +161,7 @@ Begin VB.Form FrmFinAlteraQualifin
          _Version        =   393216
          CheckBox        =   -1  'True
          DateIsNull      =   -1  'True
-         Format          =   88473601
+         Format          =   85393409
          CurrentDate     =   37180
       End
       Begin VB.Label LblDtFinal 
@@ -468,7 +468,7 @@ Begin VB.Form FrmFinAlteraQualifin
          _Version        =   393216
          Enabled         =   0   'False
          DateIsNull      =   -1  'True
-         Format          =   88473601
+         Format          =   85393409
          CurrentDate     =   37180
       End
    End
@@ -508,18 +508,18 @@ Private Sub CmdAtualizar_Click()
         
     If (optAtualizarPorVencimento.Value) Then
         'Período de Vencimento
-        If (Not IsNull(dtpInicio.Value)) And (Not IsNull(dtpFim.Value)) Then
+        If (Not IsNull(DtpInicio.Value)) And (Not IsNull(DtpFim.Value)) Then
             XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
-                "titu_dt_Prorrogacao >= " & FunNuloData(dtpInicio.Value, NomeSgbd) & "" & _
-                " AND titu_dt_Prorrogacao <= " & FunNuloData(dtpFim.Value, NomeSgbd) & ""
+                "titu_dt_Prorrogacao >= " & FunNuloData(DtpInicio.Value, NomeSgbd) & "" & _
+                " AND titu_dt_Prorrogacao <= " & FunNuloData(DtpFim.Value, NomeSgbd) & ""
             XGT_CONJUNCAO = " AND "
-        ElseIf (Not IsNull(dtpInicio.Value)) And (IsNull(dtpFim.Value)) Then
+        ElseIf (Not IsNull(DtpInicio.Value)) And (IsNull(DtpFim.Value)) Then
             XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
-                "titu_dt_Prorrogacao >= " & FunNuloData(dtpInicio.Value, NomeSgbd) & ""
+                "titu_dt_Prorrogacao >= " & FunNuloData(DtpInicio.Value, NomeSgbd) & ""
             XGT_CONJUNCAO = " AND "
-        ElseIf (IsNull(dtpInicio.Value)) And (Not IsNull(dtpFim.Value)) Then
+        ElseIf (IsNull(DtpInicio.Value)) And (Not IsNull(DtpFim.Value)) Then
             XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
-                "titu_dt_Prorrogacao <= " & FunNuloData(dtpFim.Value, NomeSgbd) & ""
+                "titu_dt_Prorrogacao <= " & FunNuloData(DtpFim.Value, NomeSgbd) & ""
             XGT_CONJUNCAO = " AND "
         End If
         
@@ -529,16 +529,16 @@ Private Sub CmdAtualizar_Click()
                        " WHERE empr_cd_empresa = " & PCodEmpresa & _
                        "   AND copa_tx_statusPagamento = 'P'"
                     
-            If (Not IsNull(dtpInicio.Value)) And (Not IsNull(dtpFim.Value)) Then
+            If (Not IsNull(DtpInicio.Value)) And (Not IsNull(DtpFim.Value)) Then
                 XLT_SQL2 = XLT_SQL2 & _
-                           "   AND copa_dt_vencimento >= " & FunNuloData(dtpInicio.Value, NomeSgbd) & _
-                           "   AND copa_dt_vencimento <= " & FunNuloData(dtpFim.Value, NomeSgbd)
-            ElseIf (Not IsNull(dtpInicio.Value)) And (IsNull(dtpFim.Value)) Then
+                           "   AND copa_dt_vencimento >= " & FunNuloData(DtpInicio.Value, NomeSgbd) & _
+                           "   AND copa_dt_vencimento <= " & FunNuloData(DtpFim.Value, NomeSgbd)
+            ElseIf (Not IsNull(DtpInicio.Value)) And (IsNull(DtpFim.Value)) Then
                 XLT_SQL2 = XLT_SQL2 & _
-                           "   AND copa_dt_vencimento >= " & FunNuloData(dtpInicio.Value, NomeSgbd)
-            ElseIf (IsNull(dtpInicio.Value)) And (Not IsNull(dtpFim.Value)) Then
+                           "   AND copa_dt_vencimento >= " & FunNuloData(DtpInicio.Value, NomeSgbd)
+            ElseIf (IsNull(DtpInicio.Value)) And (Not IsNull(DtpFim.Value)) Then
                 XLT_SQL2 = XLT_SQL2 & _
-                           "   AND copa_dt_vencimento <= " & FunNuloData(dtpFim.Value, NomeSgbd)
+                           "   AND copa_dt_vencimento <= " & FunNuloData(DtpFim.Value, NomeSgbd)
             End If
                 
             XLT_SQL2 = XLT_SQL2 & " ORDER BY empr_cd_Empresa, empd_cd_Empreendimento, imov_cd_Imovel, cont_cd_Contrato, corr_cd_Corretor"
@@ -546,7 +546,7 @@ Private Sub CmdAtualizar_Click()
         End If
         
     Else
-        XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & "titu_dt_Deposito = " & FunNuloData(DtpDeposito.Value, NomeSgbd)
+        XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & "titu_dt_Deposito = " & FunNuloData(dtpDeposito.Value, NomeSgbd)
         XGT_CONJUNCAO = " AND "
     End If
         
@@ -581,7 +581,7 @@ Private Sub CmdAtualizar_Click()
     ' Habilita a barra de progresso
     If XLO_TITULO.RecordCount > 0 Then
     
-       ' SSFrame1.Caption = "Exportando títulos:"
+'       SSFrame1.Caption = "Exportando Títulos:"
        ProgressBar1.Visible = True
        ProgressBar1.Min = 0
        ProgressBar1.Max = XLO_TITULO.RecordCount
@@ -611,7 +611,7 @@ Private Sub CmdAtualizar_Click()
             ElseIf (optAtualizarDataDeposito.Value) Then
                 
                 If XGB_PQUALICONT Then
-                   If funMesFechado(DtpDeposito) <> "A" Then
+                   If funMesFechado(dtpDeposito) <> "A" Then
                        MsgBox "Não é possível executar a operação, pois o mês contábil já foi fechado. " _
                                + Chr(13) + "Entre em contato com a Contabilidade.", vbCritical, "ATENÇÃO"
                         XLO_QUALIFIN.Close
@@ -633,7 +633,7 @@ Private Sub CmdAtualizar_Click()
                 SubQOpenRecordset XLO_CONTABILIDADE, XLT_SQL, Estatico
                 If Not XLO_CONTABILIDADE.EOF Then
                     
-                    COD_DUPLICATA = XLO_CONTABILIDADE!dupl_cd_Duplicata
+                    COD_DUPLICATA = XLO_CONTABILIDADE!dupl_cd_duplicata
                     COD_CONTACONTABIL = XLO_CONTABILIDADE!plco_cd_conta
                                         
                      XLT_SQL = "SELECT LANC_VL_VALOR FROM Lancamentos " & _
@@ -655,7 +655,7 @@ Private Sub CmdAtualizar_Click()
                             
                     'Diminuir do valor total da parte do crédito
                     SubQOpenRecordset XLO_TOTALPROMISSORIAS, "SELECT * FROM Lancamentos " & _
-                                " WHERE lanc_dt_Data= " & FunNuloData(DtpDeposito, NomeSgbd) & "" & _
+                                " WHERE lanc_dt_Data= " & FunNuloData(dtpDeposito, NomeSgbd) & "" & _
                                     " AND lanc_tx_Origem = 'C'" & _
                                     " AND empr_cd_empresa = " & PCodEmpresa & "" & _
                                     " AND plco_cd_credito is null AND plco_cd_debito = '" & COD_CONTACONTABIL & "'", Dinamico
@@ -663,7 +663,7 @@ Private Sub CmdAtualizar_Click()
                     If Not XLO_TOTALPROMISSORIAS.EOF Then
                         If XLO_TOTALPROMISSORIAS!lanc_vl_valor = CDbl(VALORPAGO) Then
                             Conexao.Execute "DELETE FROM Lancamentos " & _
-                                    " WHERE lanc_dt_Data= " & FunNuloData(DtpDeposito, NomeSgbd) & "" & _
+                                    " WHERE lanc_dt_Data= " & FunNuloData(dtpDeposito, NomeSgbd) & "" & _
                                     " AND lanc_tx_Origem = 'C'" & _
                                     " AND empr_cd_empresa = " & PCodEmpresa & "" & _
                                     " AND plco_cd_credito is null AND plco_cd_debito = '" & COD_CONTACONTABIL & "'"
@@ -690,28 +690,41 @@ Private Sub CmdAtualizar_Click()
         End If
         XLO_TITULO.MoveNext
     Wend
+    
     XLO_TITULO.Close
     Set XLO_TITULO = Nothing
+    
+    ProgressBar1.Visible = False
     
     '
     ' Aqui entra a exportação dos Pagamentos a Corretores
     ' ----------------------------------------------------
     
-    If ChkExpComissoes.Value <> 1 Or XLT_SQL2 = "" Then GoTo Saida
+    If ChkExpComissoes.Value <> 1 Or XLT_SQL2 = "" Then
+    
+        MsgBox "Não foi selecionada a opção de Atualização por Vencimento ou a opção de Exportar Pagamento de Comissões não foi marcada!", vbInformation + vbOKOnly, "ATENÇÃO"
+        GoTo Saida
+        
+    End If
     
     SubQOpenRecordset XLO_COPA, XLT_SQL2, Dinamico
     
     XLB_ERRO = False
     
-    ' Reinicia a ProgressBar
+    ' Reinicia a ProgressBar ou dá mensagem de que não encontrou nada a processar
     If XLO_COPA.RecordCount > 0 Then
         
-        ' SSFrame1.Caption = "Exportando comissões:"
+'        SSFrame1.Caption = "Exportando Pagamento de Comissões:"
         ProgressBar1.Visible = True
         ProgressBar1.Min = 0
         ProgressBar1.Max = XLO_COPA.RecordCount
         ProgressBar1.Value = 0
     
+    Else
+    
+        MsgBox "Não foram encontrados registros de Pagamento de Comissões para processar, para o período informado!", vbInformation + vbOKOnly, "ATENÇÃO"
+        GoTo Saida
+        
     End If
     
     While Not XLO_COPA.EOF
@@ -721,7 +734,6 @@ Private Sub CmdAtualizar_Click()
         GravaComissaoNoQualiFin XLO_COPA        ' Executa a subrotina com passagem do objeto XLO_COPA como parâmetro
         
         If Not XLB_ERRO Then
-            XLO_COPA!copa_tx_statusPagamento = "T"
             XLO_COPA.Update
         Else
             MsgBox "Erro na atualização do registro de pagamentos (" & XLO_COPA!copa_tx_codigo & ")!", vbCritical, "ATENÇÃO"
@@ -735,6 +747,8 @@ Private Sub CmdAtualizar_Click()
     
     XLO_COPA.Close
     Set XLO_COPA = Nothing
+        
+    ProgressBar1.Visible = False
         
 Saida:
 
@@ -805,7 +819,7 @@ Sub GravaComissaoNoQualiFin(XLO_COPA As Object)
     XLO_NOFI!nofi_dt_entrada = XLO_COPA!copa_dt_entrada
     XLO_NOFI!nofi_nr_DocSubstituido = Null
     
-    If XLO_COPA!copa_tx_statusDocumento = "R" Then              ' Código do registro de pagamento (quando realizado)
+    If XLO_COPA!copa_tx_statusDocumento = "R" Then              ' Código do registro de pagamento (somente quando realizado)
         XLO_NOFI!nofi_nr_TituloCapi = XLO_COPA!copa_nr_titulocapi
     Else
         XLO_NOFI!nofi_nr_TituloCapi = Null
@@ -874,7 +888,7 @@ Sub GravaComissaoNoQualiFin(XLO_COPA As Object)
     '
     ' Guarda o número da Duplicata
     ' -------------------------------------------------------------------------------
-    XLL_DUPLICATA = XLO_DUPL!dupl_cd_Duplicata
+    XLL_DUPLICATA = XLO_DUPL!dupl_cd_duplicata
     
     '
     ' Grava registro de distribuição (Apropriação)
@@ -890,6 +904,15 @@ Sub GravaComissaoNoQualiFin(XLO_COPA As Object)
     XLO_DUPL.Close
     Set XLO_DUPL = Nothing
     
+    '
+    ' Atualiza o registro de CorretoresPagamento com o Id da NF e Status
+    ' Obs.: Dados da duplicata, deverão ser obtidos por views que relacionem a Nota
+    '       Fiscal com a Duplicata pelo número da fatura
+    ' -------------------------------------------------------------------------------
+    XLO_COPA!nofi_cd_notafiscal = FunNuloBanco(XLL_NFISCAL)
+'    XLO_COPA!dupl_cd_duplicata = FunNuloBanco(XLL_DUPLICATA)
+    XLO_COPA!copa_tx_statusPagamento = "T"
+
     Exit Sub
     
 RotuloErro:
@@ -912,9 +935,9 @@ Private Sub Form_Load()
 
     '
     ' Inicializa os campos de data com as datas domês atual
-    dtpInicio.Value = DateSerial(Year(Now), Month(Now), 1)
+    DtpInicio.Value = DateSerial(Year(Now), Month(Now), 1)
     ' dtpFim.Value = Now
-    DtpDeposito.Value = Now
+    dtpDeposito.Value = Now
     
    ' CliqueBarraFerramentas = False
     XLT_SQL = "SELECT dbo.Titulos.empd_cd_Empreendimento + '.' + dbo.Titulos.imov_cd_Imovel + '.' + dbo.Titulos.cont_cd_Contrato + '.' + dbo.Titulos.titu_cd_Plano + '.' + dbo.Titulos.titu_cd_Parcela + '.' + dbo.Titulos.titu_cd_Residuo AS Titulo FROM dbo.Titulos WHERE dbo.Titulos.empr_cd_Empresa =" & PCodEmpresa & " ORDER BY titulo"
@@ -927,24 +950,24 @@ Private Sub Form_Unload(Cancel As Integer)
 End Sub
 
 Private Sub optAtualizarDataDeposito_Click()
-    dtpInicio.Enabled = False
-    dtpInicio.Value = Null
-    dtpFim.Enabled = False
-    dtpFim.Value = Null
+    DtpInicio.Enabled = False
+    DtpInicio.Value = Null
+    DtpFim.Enabled = False
+    DtpFim.Value = Null
     
-    DtpDeposito.Enabled = True
+    dtpDeposito.Enabled = True
     
     ChkExportar.Enabled = False
     ChkExportar.Value = 0
 End Sub
 
 Private Sub optAtualizarPorVencimento_Click()
-    dtpInicio.Enabled = True
-    dtpInicio.Value = Null
-    dtpFim.Enabled = True
-    dtpFim.Value = Null
+    DtpInicio.Enabled = True
+    DtpInicio.Value = Null
+    DtpFim.Enabled = True
+    DtpFim.Value = Null
     
-    DtpDeposito.Enabled = False
+    dtpDeposito.Enabled = False
     
     ChkExportar.Enabled = True
     ChkExportar.Value = 1
