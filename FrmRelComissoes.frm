@@ -556,6 +556,7 @@ Private Sub CboEmpreendimento_Click(Area As Integer)
         DatEmpreendimento.Recordset.Bookmark = CboEmpreendimento.SelectedItem
         MskEmpreendimento.Text = CboEmpreendimento.BoundText
         subConectarControleDadosNV DatUnidades, FunGetSelectUnidade(MskEmpreendimento.Text), Estatico
+        CboUnidades.Text = ""
     End If
 End Sub
 

@@ -328,7 +328,7 @@ Begin VB.Form TelaPagamentoComissoes
                _ExtentX        =   2593
                _ExtentY        =   582
                _Version        =   393216
-               Format          =   93257729
+               Format          =   84475905
                CurrentDate     =   36892
             End
             Begin MSMask.MaskEdBox MskNumdocumento 
@@ -353,7 +353,7 @@ Begin VB.Form TelaPagamentoComissoes
                _ExtentX        =   2593
                _ExtentY        =   582
                _Version        =   393216
-               Format          =   93257729
+               Format          =   84475905
                CurrentDate     =   36892
             End
             Begin MSComCtl2.DTPicker DtpVencimento 
@@ -365,7 +365,7 @@ Begin VB.Form TelaPagamentoComissoes
                _ExtentX        =   2593
                _ExtentY        =   582
                _Version        =   393216
-               Format          =   93257731
+               Format          =   84475907
                CurrentDate     =   36892
             End
             Begin MSMask.MaskEdBox Mskconta 
@@ -1348,8 +1348,9 @@ Begin VB.Form TelaPagamentoComissoes
       Splits(0)._ColumnProps(78)=   "Column(9)._WidthInPix=2646"
       Splits(0)._ColumnProps(79)=   "Column(9)._EditAlways=0"
       Splits(0)._ColumnProps(80)=   "Column(9)._ColStyle=20"
-      Splits(0)._ColumnProps(81)=   "Column(9).WrapText=1"
-      Splits(0)._ColumnProps(82)=   "Column(9).Order=10"
+      Splits(0)._ColumnProps(81)=   "Column(9).Visible=0"
+      Splits(0)._ColumnProps(82)=   "Column(9).WrapText=1"
+      Splits(0)._ColumnProps(83)=   "Column(9).Order=10"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
@@ -2458,20 +2459,12 @@ Private Sub CmdExcluir_Click()
         
     subDesabilitaBotoes
     
-    XLI_OPCAO = MsgBox("Confirma Remoção do Registro ?", vbExclamation, "CUIDADO")
+    XLI_OPCAO = MsgBox("Confirma Remoção do Registro ?", vbQuestion + vbYesNo, "CUIDADO")
     
-    If XLI_OPCAO = 1 Then  'Confirma exclusão
+    If XLI_OPCAO = vbYes Then  'Confirma exclusão
     
         '
         ' Exclui o registro em CorretoresPagamento
-'        XLT_SQL = "DELETE" & _
-'                  "  FROM CorretoresPagamento" & _
-'                  " WHERE empr_cd_Empresa = " & Adodc1.Recordset.Fields("empr_cd_Empresa") & _
-'                  "   AND empd_cd_Empreendimento = '" & Adodc1.Recordset.Fields("empd_cd_Empreendimento") & "'" & _
-'                  "   AND imov_cd_Imovel = '" & Adodc1.Recordset.Fields("imov_cd_Imovel") & "'" & _
-'                  "   AND cont_cd_Contrato = '" & Adodc1.Recordset.Fields("cont_cd_Contrato") & "'" & _
-'                  "   AND corr_cd_Corretor = " & Adodc1.Recordset.Fields("corr_cd_Corretor")
-        
         XLT_SQL = "DELETE" & _
                   "  FROM CorretoresPagamento" & _
                   " WHERE empr_cd_Empresa = " & Adodc1.Recordset.Fields("empr_cd_Empresa") & _
