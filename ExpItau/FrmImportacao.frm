@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
@@ -239,7 +239,7 @@ Private Sub CmdConfirmar_Click()
   
     XLB_ERRO = False
   
-    If MsgBox("Confirma a baixa dos títulos na conta corrente selecionada?", vbYesNo + vbCritical, "CUIDADO") = vbNo Then 'Confirma exclusão
+    If MsgBox("Confirma a baixa dos títulos na conta corrente selecionada?", vbYesNo + vbExclamation, "CUIDADO") = vbNo Then 'Confirma exclusão
         Exit Sub
     End If
   
@@ -317,7 +317,7 @@ Private Sub CmdConfirmar_Click()
       
             Input #1, XLT_TEXTO
         
-            If Left(XLT_TEXTO, 1) = "1" And Mid(XLT_TEXTO, 4, 17) = XLT_CGCEMP Then 'Verifica se é registro de transação
+            If Left(XLT_TEXTO, 1) = "1" And Mid(XLT_TEXTO, 4, 14) = XLT_CGCEMP Then 'Verifica se é registro de transação
         
                 If Mid(XLT_TEXTO, 109, 2) = "06" Then 'Verifica se é liquidação normal
                     XLT_TITULO = Mid(XLT_TEXTO, 38, 22)
