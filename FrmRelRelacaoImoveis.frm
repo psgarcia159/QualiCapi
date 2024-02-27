@@ -1,11 +1,12 @@
 VERSION 5.00
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
+Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
 Begin VB.Form FrmRelRelacaoImoveis 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Relatório Relação de Imóveis Quitados"
-   ClientHeight    =   2865
+   ClientHeight    =   3810
    ClientLeft      =   3330
    ClientTop       =   3615
    ClientWidth     =   5565
@@ -13,7 +14,7 @@ Begin VB.Form FrmRelRelacaoImoveis
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   2865
+   ScaleHeight     =   3810
    ScaleWidth      =   5565
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame1 
@@ -43,7 +44,7 @@ Begin VB.Form FrmRelRelacaoImoveis
          _Version        =   393216
          CheckBox        =   -1  'True
          DateIsNull      =   -1  'True
-         Format          =   49414145
+         Format          =   85852161
          CurrentDate     =   37459
       End
       Begin MSComCtl2.DTPicker dtpQuitacaoFim 
@@ -57,7 +58,7 @@ Begin VB.Form FrmRelRelacaoImoveis
          _Version        =   393216
          CheckBox        =   -1  'True
          DateIsNull      =   -1  'True
-         Format          =   49414145
+         Format          =   85852161
          CurrentDate     =   37459
       End
       Begin VB.Label Label2 
@@ -124,7 +125,7 @@ Begin VB.Form FrmRelRelacaoImoveis
          _Version        =   393216
          CheckBox        =   -1  'True
          DateIsNull      =   -1  'True
-         Format          =   49414145
+         Format          =   85852161
          CurrentDate     =   37459
       End
       Begin MSComCtl2.DTPicker dtpFim 
@@ -138,7 +139,7 @@ Begin VB.Form FrmRelRelacaoImoveis
          _Version        =   393216
          CheckBox        =   -1  'True
          DateIsNull      =   -1  'True
-         Format          =   49414145
+         Format          =   85852161
          CurrentDate     =   37459
       End
       Begin VB.Label LblInicio 
@@ -183,7 +184,7 @@ Begin VB.Form FrmRelRelacaoImoveis
       Height          =   345
       Left            =   4470
       TabIndex        =   1
-      Top             =   2415
+      Top             =   3255
       Width           =   1035
    End
    Begin VB.CommandButton CmdImprimir 
@@ -191,7 +192,7 @@ Begin VB.Form FrmRelRelacaoImoveis
       Height          =   345
       Left            =   3330
       TabIndex        =   0
-      Top             =   2415
+      Top             =   3255
       Width           =   1035
    End
    Begin MSAdodcLib.Adodc DatEmpreendimento 
@@ -269,6 +270,79 @@ Begin VB.Form FrmRelRelacaoImoveis
       Mask            =   "AAAA"
       PromptChar      =   " "
    End
+   Begin Threed.SSFrame FraStatus 
+      Height          =   765
+      Left            =   180
+      TabIndex        =   16
+      Top             =   2400
+      Width           =   5310
+      _Version        =   65536
+      _ExtentX        =   9366
+      _ExtentY        =   1349
+      _StockProps     =   14
+      Caption         =   "Status dos Contratos"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Begin VB.CheckBox ChkInativo 
+         Caption         =   "Inativos"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   2220
+         TabIndex        =   19
+         Top             =   300
+         Width           =   1000
+      End
+      Begin VB.CheckBox ChkAtivo 
+         Caption         =   "Ativos"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   975
+         TabIndex        =   18
+         Top             =   300
+         Value           =   1  'Checked
+         Width           =   1000
+      End
+      Begin VB.CheckBox ChkCedido 
+         Caption         =   "Cedidos"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   3480
+         TabIndex        =   17
+         Top             =   300
+         Width           =   1000
+      End
+   End
    Begin VB.Label LblImovel 
       Alignment       =   2  'Center
       Caption         =   "Faixa de Empreendimentos:"
@@ -312,7 +386,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Sub cmdCancelar_Click()
+Private Sub CmdCancelar_Click()
     Unload Me
 End Sub
 
@@ -321,8 +395,10 @@ Private Sub CmdImprimir_Click()
     Dim XLT_FILTROPERIODO As String         'Armazenar filtro do período de venda escolhido
     Dim XLT_STATUS As String                '1º Status escolhido
     Dim XLT_STATUS2 As String               '2º Status escolhido
+    Dim XLT_STATUS_IN As String             'clausula IN do where
     Dim XLT_EMPREENDIMENTO As String        'Empreendimento escolhido
     Dim XLT_FILTROPeriodoQuitacao As String 'Armazenar filtro do período de quitacao escolhido
+    
     
     FrmRelRelacaoImoveis.MousePointer = vbHourglass
  
@@ -334,7 +410,7 @@ Private Sub CmdImprimir_Click()
     XGT_CONJUNCAO = " AND "
   
     'validacao das datas
-    If DtpFim.Value < DtpInicio.Value Then
+    If dtpFim.Value < dtpInicio.Value Then
       MsgBox "intervalo inválido", vbCritical, "Data da venda"
       Exit Sub
     End If
@@ -345,22 +421,22 @@ Private Sub CmdImprimir_Click()
     
     'Período de venda
     
-    If (Not IsNull(DtpInicio.Value)) And (Not IsNull(DtpFim.Value)) Then
+    If (Not IsNull(dtpInicio.Value)) And (Not IsNull(dtpFim.Value)) Then
         XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
-        "ConsCAPRelSituacaoImoveis.dtVenda >= " & FunNuloData(DtpInicio.Value, NomeSgbd) & "" & _
-        " AND ConsCAPRelSituacaoImoveis.dtVenda <= " & FunNuloData(DtpFim.Value, NomeSgbd) & ""
+        "ConsCAPRelSituacaoImoveis.dtVenda >= " & FunNuloData(dtpInicio.Value, NomeSgbd) & "" & _
+        " AND ConsCAPRelSituacaoImoveis.dtVenda <= " & FunNuloData(dtpFim.Value, NomeSgbd) & ""
         XGT_CONJUNCAO = " AND "
-        XLT_FILTROPERIODO = "Período da venda: " & Format$(DtpInicio.Value, "dd/mm/yy") & " a " & Format$(DtpFim.Value, "dd/mm/yy")
-    ElseIf (Not IsNull(DtpInicio.Value)) And (IsNull(DtpFim.Value)) Then
+        XLT_FILTROPERIODO = "Período da venda: " & Format$(dtpInicio.Value, "dd/mm/yy") & " a " & Format$(dtpFim.Value, "dd/mm/yy")
+    ElseIf (Not IsNull(dtpInicio.Value)) And (IsNull(dtpFim.Value)) Then
         XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
-        "ConsCAPRelSituacaoImoveis.dtVenda >= " & FunNuloData(DtpInicio.Value, NomeSgbd) & ""
+        "ConsCAPRelSituacaoImoveis.dtVenda >= " & FunNuloData(dtpInicio.Value, NomeSgbd) & ""
         XGT_CONJUNCAO = " AND "
-        XLT_FILTROPERIODO = "Período da venda: A partir de " & Format$(DtpInicio.Value, "dd/mm/yy")
-    ElseIf (IsNull(DtpInicio.Value)) And (Not IsNull(DtpFim.Value)) Then
+        XLT_FILTROPERIODO = "Período da venda: A partir de " & Format$(dtpInicio.Value, "dd/mm/yy")
+    ElseIf (IsNull(dtpInicio.Value)) And (Not IsNull(dtpFim.Value)) Then
         XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
-        "ConsCAPRelSituacaoImoveis.dtVenda <= " & FunNuloData(DtpFim.Value, NomeSgbd) & ""
+        "ConsCAPRelSituacaoImoveis.dtVenda <= " & FunNuloData(dtpFim.Value, NomeSgbd) & ""
         XGT_CONJUNCAO = " AND "
-        XLT_FILTROPERIODO = "Período da venda: Até " & Format$(DtpFim.Value, "dd/mm/yy")
+        XLT_FILTROPERIODO = "Período da venda: Até " & Format$(dtpFim.Value, "dd/mm/yy")
     Else
         XLT_FILTROPERIODO = "Período da venda: Geral"
     End If
@@ -377,7 +453,7 @@ Private Sub CmdImprimir_Click()
         XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
         "ConsCAPRelSituacaoImoveis.dtQuitacao >= " & FunNuloData(dtpQuitacaoIni.Value, NomeSgbd) & ""
         XGT_CONJUNCAO = " AND "
-        XLT_FILTROPeriodoQuitacao = "Período da Quitação: A partir de " & Format$(DtpInicio.Value, "dd/mm/yy")
+        XLT_FILTROPeriodoQuitacao = "Período da Quitação: A partir de " & Format$(dtpInicio.Value, "dd/mm/yy")
     ElseIf (IsNull(dtpQuitacaoIni.Value)) And (Not IsNull(dtpQuitacaoFim.Value)) Then
         XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
         "ConsCAPRelSituacaoImoveis.dtQuitacao <= " & FunNuloData(dtpQuitacaoFim.Value, NomeSgbd) & ""
@@ -402,6 +478,57 @@ Private Sub CmdImprimir_Click()
     XGT_CONJUNCAO = " AND "
     End If
 
+
+    'Filtra Status dos contratos
+    
+    XLT_STATUS_IN = ""
+    XLT_STATUS = ""
+    XLT_STATUS2 = ""
+    
+    If ChkAtivo.Value = ChkInativo.Value And ChkAtivo.Value = ChkCedido.Value Then  'Todos Contratos
+        XLT_STATUS = "T"
+        XLT_FILTROSTATUS = "Status: Geral"
+'        XLT_STATUS_IN = "'A', 'I', 'C'"
+    Else
+    
+        If ChkAtivo.Value = 1 Then                                                  'Contratos Ativos
+            XLT_STATUS = "A"
+            XLT_FILTROSTATUS = "Status: Contratos Ativos "
+            XLT_STATUS_IN = "'A'"
+            
+            If ChkInativo.Value = 1 Then                                            'Contratos Ativos e Inativos
+                XLT_STATUS2 = "I"
+                XLT_FILTROSTATUS = XLT_FILTROSTATUS + "e Inativos"
+                XLT_STATUS_IN = "'A', 'I'"
+            ElseIf ChkCedido.Value = 1 Then                                         'Contratos Ativos e Cedidos
+                XLT_STATUS2 = "C"
+                XLT_FILTROSTATUS = XLT_FILTROSTATUS + "e Cedidos"
+                XLT_STATUS_IN = "'A', 'C'"
+            End If
+            
+        ElseIf ChkInativo.Value = 1 Then                                            'Contratos Inativos
+            XLT_STATUS = "I"
+            XLT_FILTROSTATUS = "Status: Contratos Inativos "
+            XLT_STATUS_IN = "'I'"
+            
+            If ChkCedido.Value = 1 Then                                             'Contratos Inativos e Cedidos
+                XLT_STATUS2 = "C"
+                XLT_FILTROSTATUS = XLT_FILTROSTATUS + "e Cedidos"
+                XLT_STATUS_IN = "'I', 'C'"
+            End If
+    
+        ElseIf ChkCedido.Value = 1 Then                                             'Contratos Cedidos
+            XLT_STATUS = "C"
+            XLT_FILTROSTATUS = "Status: Contratos Cedidos"
+            XLT_STATUS_IN = "'C'"
+        End If
+        
+        XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
+        "ConsCAPRelSituacaoImoveis.cont_tx_Status IN (" & XLT_STATUS_IN & ") "
+        XGT_CONJUNCAO = " AND "
+
+    End If
+  
    'Filtra imoveis Quitados
     XGT_SELECAO = XGT_SELECAO + XGT_CONJUNCAO + "ConsCAPRelSituacaoImoveis.dtQuitacao is not null"
    
