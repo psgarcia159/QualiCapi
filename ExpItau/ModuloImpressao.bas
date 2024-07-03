@@ -2,7 +2,8 @@ Attribute VB_Name = "ModuloImpressao"
 Option Explicit
 Global AltRodape As Single       'Variável usada para calcular tamanho da página (refere-se a altura ocupada pelo rodapé)
 Global AltCabecalho As Single       'Variável usada para calcular tamanho da página (refere-se a altura ocupada pelo cabeçalho)
-Sub subImprimeListagemGRID(xOrientacao As Integer, xGrid As TrueOleDBGrid70.PrintInfo, Texto As String)
+
+Sub subImprimeListagemGRID(xOrientacao As Integer, xGrid As TrueOleDBGrid70.PrintInfo, texto As String)
     With xGrid
         ' Setar margens a depender do tipo de impressão
         If xOrientacao = 1 Then
@@ -32,7 +33,7 @@ Sub subImprimeListagemGRID(xOrientacao As Integer, xGrid As TrueOleDBGrid70.Prin
         .PageHeaderFont.Name = "Arial"
         .PageHeaderFont.Size = 12
         .PageHeaderFont.Bold = True
-        .PageHeader = Texto + " \t\t" + CStr(Now)
+        .PageHeader = texto + " \t\t" + CStr(Now)
         
         ' O Cabeçalho e o rodapé devem aparecer em todas as páginas
         .RepeatColumnHeaders = True
@@ -52,7 +53,7 @@ Sub subImprimeListagemGRID(xOrientacao As Integer, xGrid As TrueOleDBGrid70.Prin
 
 End Sub
 
-Sub subImprimeListagemGRIDUnBound(xOrientacao As Integer, xGrid As TrueDBGrid70.PrintInfo, Texto As String)
+Sub subImprimeListagemGRIDUnBound(xOrientacao As Integer, xGrid As TrueDBGrid70.PrintInfo, texto As String)
     With xGrid
         ' Setar margens a depender do tipo de impressão
         If xOrientacao = 1 Then
@@ -82,7 +83,7 @@ Sub subImprimeListagemGRIDUnBound(xOrientacao As Integer, xGrid As TrueDBGrid70.
         .PageHeaderFont.Name = "Arial"
         .PageHeaderFont.Size = 12
         .PageHeaderFont.Bold = True
-        .PageHeader = Texto + " \t\t" + CStr(Now)
+        .PageHeader = texto + " \t\t" + CStr(Now)
         
         ' O Cabeçalho e o rodapé devem aparecer em todas as páginas
         .RepeatColumnHeaders = True
@@ -102,13 +103,14 @@ Sub subImprimeListagemGRIDUnBound(xOrientacao As Integer, xGrid As TrueDBGrid70.
 
 End Sub
 
-Function funTamanhoTextoPrinter(Texto As String, Escala As Integer, Fonte As String, TamLetra As Long) As Single
+Function funTamanhoTextoPrinter(texto As String, Escala As Integer, Fonte As String, TamLetra As Long) As Single
     Printer.ScaleMode = Escala
     Printer.FontName = Fonte
     Printer.FontSize = TamLetra
-    funTamanhoTextoPrinter = Printer.TextWidth(Texto)
+    funTamanhoTextoPrinter = Printer.TextWidth(texto)
 End Function
-Sub subQuebraTexto(Texto As String, XInicio As Single, TamCampo As Single, TamLetra As Long, Fonte As String, Negrito As Boolean, Italico As Boolean)
+
+Sub subQuebraTexto(texto As String, XInicio As Single, TamCampo As Single, TamLetra As Long, Fonte As String, Negrito As Boolean, Italico As Boolean)
     Dim Resto As String
     Dim ProcuraEspaco As Integer
         
@@ -119,24 +121,24 @@ Sub subQuebraTexto(Texto As String, XInicio As Single, TamCampo As Single, TamLe
     Printer.Font.Italic = Italico
     
     Resto = ""
-    Texto = Trim$(Texto)
+    texto = Trim$(texto)
     'Texto é uma variável que indica a string a ser impressa, após a impressão o seu valor é
     'substituído pelo valor de Resto, se não existir Resto significa que já foi impresso toda a
     'string, consequentemente o valor de texto também será vazio.
     
     'Se Texto for vazio imprime vazio e sai
-    If Texto = "" Then
-        subImprimeTexto Texto, XInicio, Printer.CurrentY, TamLetra, Fonte, Negrito, Italico
+    If texto = "" Then
+        subImprimeTexto texto, XInicio, Printer.CurrentY, TamLetra, Fonte, Negrito, Italico
         'subImprimeTexto Texto, XInicio, YInicio, TamLetra, Fonte, Negrito, Italico
         Exit Sub
     End If
     
-    While Texto <> ""
+    While texto <> ""
         'Enquanto o tamanho do Texto for maior que o tamanho do espaço reservado para ele
         'será retirado o último caractere do Texto e este será acrescido a variável Resto
-        While Printer.TextWidth(Texto) > TamCampo
-            Resto = Mid$(Texto, Len(Texto), 1) + Resto
-            Texto = Mid$(Texto, 1, (Len(Texto) - 1))
+        While Printer.TextWidth(texto) > TamCampo
+            Resto = Mid$(texto, Len(texto), 1) + Resto
+            texto = Mid$(texto, 1, (Len(texto) - 1))
         Wend
         
 '*********************************************************************************************************
@@ -146,36 +148,36 @@ Sub subQuebraTexto(Texto As String, XInicio As Single, TamCampo As Single, TamLe
         If Resto <> "" Then
             If Mid$(Resto, 1, 1) = " " Then 'Resto possui espaço no início quebrou uma palavra completa
                 Resto = LTrim$(Resto)
-            ElseIf Mid$(Texto, Len(Texto), 1) = " " Then 'Texto possui espaço no fim
-                Texto = RTrim$(Texto)                           'quebrou uma palavra completa
+            ElseIf Mid$(texto, Len(texto), 1) = " " Then 'Texto possui espaço no fim
+                texto = RTrim$(texto)                           'quebrou uma palavra completa
             Else 'Quebrou metade de uma palavra
-                ProcuraEspaco = Len(Texto)
+                ProcuraEspaco = Len(texto)
                 'Verifica se Texto possui algum espaço para quebrar a palavra completa
-                While Mid$(Texto, ProcuraEspaco, 1) <> " " And ProcuraEspaco <> 1
+                While Mid$(texto, ProcuraEspaco, 1) <> " " And ProcuraEspaco <> 1
                     ProcuraEspaco = ProcuraEspaco - 1
                 Wend
                 If ProcuraEspaco <> 1 Then
-                    Resto = Right$(Texto, Len(Texto) - ProcuraEspaco) & Resto
-                    Texto = RTrim$(Left(Texto, ProcuraEspaco))
+                    Resto = Right$(texto, Len(texto) - ProcuraEspaco) & Resto
+                    texto = RTrim$(Left(texto, ProcuraEspaco))
                 End If
             End If
         End If
 '*********************************************************************************************************
-        subImprimeTexto Texto, XInicio, Printer.CurrentY, TamLetra, Fonte, Negrito, Italico
-        Texto = Resto
+        subImprimeTexto texto, XInicio, Printer.CurrentY, TamLetra, Fonte, Negrito, Italico
+        texto = Resto
         Resto = ""
     Wend
 End Sub
 
 '*************************
 
-Function funTamanhoTexto(Texto As String) As Single
+Function funTamanhoTexto(texto As String) As Single
     Dim XSeguidas As Integer, X As Integer, ContLinhas As Integer
     X = 1
     XSeguidas = 1
     ContLinhas = 1
-    While X <> Len(Texto)
-        If Mid$(Texto, X, 1) = Chr$(13) Then
+    While X <> Len(texto)
+        If Mid$(texto, X, 1) = Chr$(13) Then
             ContLinhas = ContLinhas + 1
             XSeguidas = 0
         End If
@@ -194,15 +196,16 @@ Sub subImprimeBox(XInicio As Single, YInicio As Single, XFim As Single, YFim As 
     Printer.Line (XInicio, YInicio)-(XFim, YFim), QBColor(0), B
 End Sub
 
-Function subRetornaImpNum(Texto As String, XInicio As Single, TamCampo As Single, TamLetra As Long, Fonte As String, Negrito As Boolean, Italico As Boolean) As Single
+Function subRetornaImpNum(texto As String, XInicio As Single, TamCampo As Single, TamLetra As Long, Fonte As String, Negrito As Boolean, Italico As Boolean) As Single
     
     'Para Garantir Que Vai Verificar o Tamanho Com a Formatação Correta
     Printer.Font.Name = Fonte
     Printer.Font.Size = TamLetra
     Printer.Font.Bold = Negrito
     Printer.Font.Italic = Italico
-    subRetornaImpNum = XInicio + (TamCampo - Printer.TextWidth(Texto))
+    subRetornaImpNum = XInicio + (TamCampo - Printer.TextWidth(texto))
 End Function
+
 Sub subRodape(XInicio As Single, YInicio As Single, ByVal NomeRelatorio As String)
     Dim IniciaImp As Single
     AltRodape = 2.5
@@ -224,6 +227,7 @@ Sub subRodape(XInicio As Single, YInicio As Single, ByVal NomeRelatorio As Strin
         subImprimeTexto "PÁGINA: " & Printer.Page, 25.5, IniciaImp, 8, "Times New Roman", False, False
     End If
 End Sub
+
 Sub subImprimeCelula(XData As Object, IniCaixaX As Single, FimCaixaX As Single, IniCaixaY As Single, Largura As Single, Titulo As String, DistanciaTitCampo As Single, xcampo As String, Negrito As Boolean)
 '    Dim FimCaixaY As Single, GuardaY As Single, RecebeCampo As Variant
 '
@@ -281,7 +285,6 @@ Sub subCabecalhoListagemRelatorio(Titulo As String)
     AltCabecalho = 4
 End Sub
 
-
 Sub subCabecalho_Listagem_Relatorio(Titulo As String)
     Printer.CurrentY = 1
 '    If PLogo <> "" Then
@@ -311,6 +314,7 @@ Sub subImprimeTexto(cabecalho As String, ByVal X As Single, ByVal y As Single, T
     
     Printer.Print cabecalho
 End Sub
+
 Sub subCompletaCampo(RecebeCampo As String, XFim As Single, Negrito As Boolean)
     'Valor do cheque por extenso
       
@@ -356,6 +360,7 @@ Sub subCompletaCampo(RecebeCampo As String, XFim As Single, Negrito As Boolean)
        subImprimeTexto linha2, Printer.CurrentX, Printer.CurrentY, 9, "arial", Negrito, False
       End If
 End Sub
+
 Function subImprimePromissoria(Cont As Long, XLS_Obs As String, XLI_Clausula As Integer, XLO_RSTITU As ADODB.Recordset, XLO_RSCONFIG As ADODB.Recordset, XLD_DATA As Date, XLT_FONT As String)
     Dim TamanhoPapel As Single
     Dim LargPapel As Single, AltPapel As Single
@@ -510,13 +515,13 @@ Function funExtenso(XNum As Double) As String
 Dim T(4) As String
 Dim V(4) As String
 Dim p(4) As String
-Dim S(4) As String
+Dim s(4) As String
 Dim N(900) As String
-Dim Texto As String
+Dim texto As String
 Dim xNumero, num1, num2, num3, num4 As String
 Dim X As Integer
 Dim Status, Primeiro As Boolean
-Texto = ""
+texto = ""
 N(1) = "UM "
 N(2) = "DOIS "
 N(3) = "TRES "
@@ -569,10 +574,10 @@ p(2) = Mid(xNumero, 7, 3)
 p(1) = Mid(xNumero, 10, 3)
 'p(0) = Trim(Str(Round(XNum, 2) * 100 - Round(XNum) * 100))
 p(0) = Right(Trim(Str((Round(XNum, 2) * 100))), 2)
-S(4) = Val(p(4) + "000000000.00")
-S(3) = Val(p(4) + p(3) + "000000.00")
-S(2) = Val(p(4) + p(3) + p(2) + "000.00")
-S(1) = Val(p(4) + p(3) + p(2) + p(1) + ".00")
+s(4) = Val(p(4) + "000000000.00")
+s(3) = Val(p(4) + p(3) + "000000.00")
+s(2) = Val(p(4) + p(3) + p(2) + "000.00")
+s(1) = Val(p(4) + p(3) + p(2) + p(1) + ".00")
 For X = 4 To 1 Step -1
     If Val(p(X)) <> 0 Then
        num1 = Trim(Mid(p(X), 1, 1))
@@ -586,39 +591,39 @@ For X = 4 To 1 Step -1
           Else
              num1 = num1 + "00"
           End If
-          If XNum > S(X) Then
-             Texto = IIf(Texto <> "", Trim(Texto) + ", " + N(Val(num1)), Texto + N(Val(num1)))
+          If XNum > s(X) Then
+             texto = IIf(texto <> "", Trim(texto) + ", " + N(Val(num1)), texto + N(Val(num1)))
           Else
-             Texto = IIf(Texto <> "", Texto + "E " + N(Val(num1)), Texto + N(Val(num1)))
+             texto = IIf(texto <> "", texto + "E " + N(Val(num1)), texto + N(Val(num1)))
           End If
           Primeiro = False
        End If
        If num2 <> "" And num2 <> "0" Then
           num2 = IIf(Status, num2 + "0", num2 + num3)
-          If Primeiro And XNum > S(X) Then
-             Texto = IIf(Texto <> "", Trim(Texto) + ", " + N(Val(num2)), Texto + N(Val(num2)))
+          If Primeiro And XNum > s(X) Then
+             texto = IIf(texto <> "", Trim(texto) + ", " + N(Val(num2)), texto + N(Val(num2)))
           Else
-             Texto = IIf(Texto <> "", Texto + "E " + N(Val(num2)), Texto + N(Val(num2)))
+             texto = IIf(texto <> "", texto + "E " + N(Val(num2)), texto + N(Val(num2)))
           End If
           Primeiro = False
        End If
        If num3 <> "" And num3 <> "0" And Status Then
-          If Primeiro And XNum > S(X) Then
-             Texto = IIf(Texto <> "", Trim(Texto) + ", " + N(Val(num3)), Texto + N(Val(num3)))
+          If Primeiro And XNum > s(X) Then
+             texto = IIf(texto <> "", Trim(texto) + ", " + N(Val(num3)), texto + N(Val(num3)))
           Else
-             Texto = IIf(Texto <> "", Texto + "E " + N(Val(num3)), Texto + N(Val(num3)))
+             texto = IIf(texto <> "", texto + "E " + N(Val(num3)), texto + N(Val(num3)))
           End If
        End If
-       Texto = IIf(Val(p(X)) = 1, Texto + T(X), Texto + V(X))
+       texto = IIf(Val(p(X)) = 1, texto + T(X), texto + V(X))
     End If
 Next
 If Val(xNumero) <> 0 Then
    If Val(xNumero) = 1 Then
-      Texto = Texto + "REAL "
+      texto = texto + "REAL "
    ElseIf Val(p(2)) = 0 And Val(p(1)) = 0 Then
-      Texto = Texto + "DE REAIS "
+      texto = texto + "DE REAIS "
    Else
-      Texto = Texto + "REAIS "
+      texto = texto + "REAIS "
    End If
 End If
 If Val(p(0)) <> 0 Then
@@ -626,23 +631,22 @@ If Val(p(0)) <> 0 Then
    num2 = Mid(p(0), 2, 1)
    If num1 <> "" And num1 <> "0" Then
       num4 = IIf(num1 <> "1", num1 + "0", num1 + num2)
-      Texto = IIf(Texto <> "", Texto + "E " + N(Val(num4)), Texto + N(Val(num4)))
+      texto = IIf(texto <> "", texto + "E " + N(Val(num4)), texto + N(Val(num4)))
    End If
    If num2 <> "" And num2 <> "0" And num1 <> "1" Then
-      Texto = IIf(Texto <> "", Texto + "E " + N(Val(num2)), Texto + N(Val(num2)))
+      texto = IIf(texto <> "", texto + "E " + N(Val(num2)), texto + N(Val(num2)))
    End If
    If Val(p(0)) = 1 Then
-      Texto = Texto + "CENTAVO"
+      texto = texto + "CENTAVO"
    Else
-      Texto = Texto + "CENTAVOS"
+      texto = texto + "CENTAVOS"
    End If
 End If
-funExtenso = Texto
+funExtenso = texto
 
 End Function
 
-
-Sub subQuebraLinha(Texto As String, XInicio As Single, TamCampo As Single, TamLetra As Long, Fonte As String, Negrito As Boolean, Italico As Boolean)
+Sub subQuebraLinha(texto As String, XInicio As Single, TamCampo As Single, TamLetra As Long, Fonte As String, Negrito As Boolean, Italico As Boolean)
     'feita por Daniel
     Dim Resto As String
     Dim ProcuraEspaco As Integer
@@ -654,23 +658,23 @@ Sub subQuebraLinha(Texto As String, XInicio As Single, TamCampo As Single, TamLe
     Printer.Font.Italic = Italico
     
     Resto = ""
-    Texto = Trim$(Texto)
+    texto = Trim$(texto)
     'Texto é uma variável que indica a string a ser impressa, após a impressão o seu valor é
     'substituído pelo valor de Resto, se não existir Resto significa que já foi impresso toda a
     'string, consequentemente o valor de texto também será vazio.
     
     'Se Texto for vazio imprime vazio e sai
-    If Texto = "" Then
-        subImprimeTexto Texto, XInicio, Printer.CurrentY, TamLetra, Fonte, Negrito, Italico
+    If texto = "" Then
+        subImprimeTexto texto, XInicio, Printer.CurrentY, TamLetra, Fonte, Negrito, Italico
         Exit Sub
     End If
     
-    While Texto <> ""
+    While texto <> ""
         'Enquanto o tamanho do Texto for maior que o tamanho do espaço reservado para ele
         'será retirado o último caractere do Texto e este será acrescido a variável Resto
-        While Printer.TextWidth(Texto) > TamCampo
-            Resto = Mid$(Texto, Len(Texto), 1) + Resto
-            Texto = Mid$(Texto, 1, (Len(Texto) - 1))
+        While Printer.TextWidth(texto) > TamCampo
+            Resto = Mid$(texto, Len(texto), 1) + Resto
+            texto = Mid$(texto, 1, (Len(texto) - 1))
         Wend
         
 '*********************************************************************************************************
@@ -680,23 +684,23 @@ Sub subQuebraLinha(Texto As String, XInicio As Single, TamCampo As Single, TamLe
         If Resto <> "" Then
             If Mid$(Resto, 1, 1) = " " Then 'Resto possui espaço no início quebrou uma palavra completa
                 Resto = LTrim$(Resto)
-            ElseIf Mid$(Texto, Len(Texto), 1) = " " Then 'Texto possui espaço no fim
-                Texto = RTrim$(Texto)                           'quebrou uma palavra completa
+            ElseIf Mid$(texto, Len(texto), 1) = " " Then 'Texto possui espaço no fim
+                texto = RTrim$(texto)                           'quebrou uma palavra completa
             Else 'Quebrou metade de uma palavra
-                ProcuraEspaco = Len(Texto)
+                ProcuraEspaco = Len(texto)
                 'Verifica se Texto possui algum espaço para quebrar a palavra completa
-                While Mid$(Texto, ProcuraEspaco, 1) <> " " And ProcuraEspaco <> 1
+                While Mid$(texto, ProcuraEspaco, 1) <> " " And ProcuraEspaco <> 1
                     ProcuraEspaco = ProcuraEspaco - 1
                 Wend
                 If ProcuraEspaco <> 1 Then
-                    Resto = Right$(Texto, Len(Texto) - ProcuraEspaco) & Resto
-                    Texto = RTrim$(Left(Texto, ProcuraEspaco))
+                    Resto = Right$(texto, Len(texto) - ProcuraEspaco) & Resto
+                    texto = RTrim$(Left(texto, ProcuraEspaco))
                 End If
             End If
         End If
 '*********************************************************************************************************
-        subImprimeTexto Texto, XInicio, Printer.CurrentY, TamLetra, Fonte, Negrito, Italico
-        Texto = Resto
+        subImprimeTexto texto, XInicio, Printer.CurrentY, TamLetra, Fonte, Negrito, Italico
+        texto = Resto
         Resto = ""
     Wend
 End Sub

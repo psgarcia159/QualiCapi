@@ -1,0 +1,30 @@
+{
+	"UseSandbox": true,
+	"OAuth2Sbx": {
+		"UrlToken":     "https://sandbox.devportal.itau.com.br/api/oauth/jwt",
+		"GrantType":    "client_credentials",
+		"ClientId":     "d80d56bc-1513-3cb7-9b09-85ca65b50ff8",
+		"ClientSecret": "47e60927-cab0-46e5-9629-52477bdf9bf8"
+	},
+	"OAuth2Prd": {
+		"UrlToken":     "https://oauthd.itau/identity/connect/token"
+		"GrantType":    "client_credentials",
+		"ClientId":     "d80d56bc-1513-3cb7-9b09-85ca65b50ff8",
+		"ClientSecret": "47e60927-cab0-46e5-9629-52477bdf9bf8"
+	},
+	"EndpointsSbx": {
+		"UrlBase":  	"https://devportal.itau.com.br/sandboxapi/cash_management_ext_v2/v2",
+		"Boletos":  {
+			"UrlPost":	"/boletos",
+			"UrlGet":	"/boletos/{{id_boleto}}"
+		}
+	},
+	"EndpointsPrd": {
+		"UrlBase":  	"https://api.itau.com.br/cash_management/v2",
+		"Boletos":  {
+			"UrlPost":	"/boletos",
+			"UrlGet":	"/boletos/{{id_boleto}}"
+		}
+	}
+}
+			

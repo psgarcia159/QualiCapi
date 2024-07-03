@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{6FBA474E-43AC-11CE-9A0E-00AA0062BB4C}#1.0#0"; "SYSINFO.OCX"
 Begin VB.Form TelaInicial 
    Caption         =   "Pagamento Eletrônico - ITAÚ"
-   ClientHeight    =   5370
+   ClientHeight    =   5385
    ClientLeft      =   765
    ClientTop       =   1800
    ClientWidth     =   7500
@@ -11,9 +11,18 @@ Begin VB.Form TelaInicial
    MaxButton       =   0   'False
    MinButton       =   0   'False
    Picture         =   "TelaInicial.frx":08CA
-   ScaleHeight     =   5370
+   ScaleHeight     =   5385
    ScaleWidth      =   7500
    StartUpPosition =   2  'CenterScreen
+   Begin VB.CommandButton CmdEmiteBoleto 
+      Height          =   840
+      Left            =   2280
+      Picture         =   "TelaInicial.frx":20A3A
+      Style           =   1  'Graphical
+      TabIndex        =   7
+      Top             =   1470
+      Width           =   1100
+   End
    Begin VB.CommandButton CmdDesistir 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -26,7 +35,7 @@ Begin VB.Form TelaInicial
       EndProperty
       Height          =   615
       Left            =   6780
-      Picture         =   "TelaInicial.frx":20A3A
+      Picture         =   "TelaInicial.frx":215FC
       Style           =   1  'Graphical
       TabIndex        =   2
       Top             =   4725
@@ -34,20 +43,20 @@ Begin VB.Form TelaInicial
    End
    Begin VB.CommandButton CmdExporta 
       Height          =   840
-      Left            =   2250
-      Picture         =   "TelaInicial.frx":20E7C
+      Left            =   2280
+      Picture         =   "TelaInicial.frx":21A3E
       Style           =   1  'Graphical
       TabIndex        =   0
-      Top             =   1470
+      Top             =   2760
       Width           =   1100
    End
    Begin VB.CommandButton CmdImporta 
       Height          =   840
       Left            =   2265
-      Picture         =   "TelaInicial.frx":21746
+      Picture         =   "TelaInicial.frx":22308
       Style           =   1  'Graphical
       TabIndex        =   1
-      Top             =   2790
+      Top             =   4110
       Width           =   1100
    End
    Begin SysInfoLib.SysInfo SysInfo1 
@@ -56,6 +65,63 @@ Begin VB.Form TelaInicial
       _ExtentX        =   1005
       _ExtentY        =   1005
       _Version        =   393216
+   End
+   Begin VB.Label Label4 
+      Alignment       =   2  'Center
+      BackColor       =   &H00C0FFB0&
+      Caption         =   "Emissão de Boletos e envio por e-mail"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   12
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   540
+      Left            =   3720
+      TabIndex        =   8
+      Top             =   1560
+      Width           =   2895
+   End
+   Begin VB.Label Label3 
+      Alignment       =   2  'Center
+      BackColor       =   &H00C0FFB0&
+      Caption         =   "Importação de Arquivo de Retorno"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   12
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   540
+      Left            =   3720
+      TabIndex        =   6
+      Top             =   4200
+      Width           =   2895
+   End
+   Begin VB.Label Label2 
+      Alignment       =   2  'Center
+      BackColor       =   &H00C0FFB0&
+      Caption         =   "Exportação de Arquivo de Remessa"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   12
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   540
+      Left            =   3720
+      TabIndex        =   5
+      Top             =   2880
+      Width           =   2895
    End
    Begin VB.Label Label1 
       Alignment       =   2  'Center
@@ -112,6 +178,12 @@ End Sub
 Private Sub CmdExporta_Click()
     XGT_TIPO = "E"
     TelaExpBancaria.Show
+
+End Sub
+
+Private Sub CmdEmiteBoleto_Click()
+    XGT_TIPO = "B"
+    TelaEmissaoBoletos.Show
 End Sub
 
 Private Sub CmdImporta_Click()
@@ -200,6 +272,3 @@ Private Sub Form_Unload(Cancel As Integer)
     Unload Me
 End Sub
 
-Private Sub Label2_Click()
-
-End Sub

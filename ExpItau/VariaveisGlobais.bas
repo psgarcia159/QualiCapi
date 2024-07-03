@@ -12,7 +12,7 @@ Global XGT_CEP                      As String   'CEP da empresa
 Global XGT_NUMPORTA                 As String   'Nº porta
 Global XGT_BAIRRO                   As String   'Bairro da empresa
 Global XGT_ESTADO                   As String   'Estado da empresa
-Global XGT_TIPO                     As String   'Importação/Exportação do Itaú
+Global XGT_TIPO                     As String   '[I]mportação, [E]xportação ou [G]eração de boletos do Itaú
 Global XGT_TIPOGRID                 As String   'Indica o tipo do grid (B-Bound/U-UnBound)
 Global XGT_CAMPOFILTRO              As String   'Nome do campo que será filtrado
 Global XGB_PQUALIFIN                As Boolean  'VERIFICA SE O SISTEMA QUALIFIN ESTA INTEGRADO

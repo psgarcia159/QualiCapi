@@ -73,7 +73,9 @@ Public Function funAbreConexao() As Boolean
     Dim XLT_STRINGCONEXAO   As String * 254
     Dim XLT_TIPOBANCO       As String * 254
     Dim XLT_NOMEBANCO       As String * 254
-    
+    Dim XLT_USUARIO         As String * 254
+    Dim XLT_SENHA           As String * 254
+
     On Error GoTo RotuloErro
     Screen.MousePointer = vbHourglass
     'Indica o banco de dados a ser utilizado
@@ -87,6 +89,20 @@ Public Function funAbreConexao() As Boolean
     'PEGA O NOME DO BANCO
     GetPrivateProfileString "BancoDeDados", "NomeBanco", "", XLT_NOMEBANCO, 255, App.Path + "\QualiAdmFin.INI"
         
+    'PEGA O USUARIO
+    GetPrivateProfileString "BancoDeDados", "Usuario", "", XLT_USUARIO, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_USUARIO) Or IsEmpty(XLT_USUARIO) Or XLT_USUARIO = "" Then
+        XLT_USUARIO = "qualiadmfin"
+    End If
+        
+    'PEGA A SENHA
+    GetPrivateProfileString "BancoDeDados", "Senha", "", XLT_SENHA, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_SENHA) Or IsEmpty(XLT_SENHA) Or XLT_SENHA = "" Then
+        XLT_SENHA = "qd"
+    End If
+        
     Select Case Val(XLT_TIPOBANCO)
         Case 1
             NomeSgbd = "Access"
@@ -98,7 +114,7 @@ Public Function funAbreConexao() As Boolean
             Conexao.Provider = "sqloledb"
             XGT_SQL = "Data Source=" & FunStrArqIni(XLT_STRINGCONEXAO) & _
                       ";Initial Catalog=" & FunStrArqIni(XLT_NOMEBANCO) & _
-                      ";User Id=qualiadmfin;Password=qd; "
+                      ";User Id=" & FunStrArqIni(XLT_USUARIO) & ";Password=" & FunStrArqIni(XLT_SENHA) & "; "
             Conexao.Open XGT_SQL
     End Select
     Screen.MousePointer = vbDefault
@@ -120,6 +136,8 @@ Public Function funAbreConexaoRelatorio() As Boolean
     Dim XLT_STRINGCONEXAO   As String * 254
     Dim XLT_TIPOBANCO       As String * 254
     Dim XLT_NOMEBANCO       As String * 254
+    Dim XLT_USUARIO         As String * 254
+    Dim XLT_SENHA           As String * 254
     
     On Error GoTo RotuloErro
     Screen.MousePointer = vbHourglass
@@ -134,6 +152,20 @@ Public Function funAbreConexaoRelatorio() As Boolean
     'PEGA O NOME DO BANCO
     GetPrivateProfileString "BancoDeDados", "NomeBanco", "", XLT_NOMEBANCO, 255, App.Path + "\QualiAdmFin.INI"
     
+    'PEGA O USUARIO
+    GetPrivateProfileString "BancoDeDados", "Usuario", "", XLT_USUARIO, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_USUARIO) Or IsEmpty(XLT_USUARIO) Or XLT_USUARIO = "" Then
+        XLT_USUARIO = "qualiadmfin"
+    End If
+        
+    'PEGA A SENHA
+    GetPrivateProfileString "BancoDeDados", "Senha", "", XLT_SENHA, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_SENHA) Or IsEmpty(XLT_SENHA) Or XLT_SENHA = "" Then
+        XLT_SENHA = "qd"
+    End If
+    
     Select Case Val(XLT_TIPOBANCO)
         Case 1
             NomeSgbd = "Access"
@@ -145,7 +177,7 @@ Public Function funAbreConexaoRelatorio() As Boolean
             ConexaoRelatorio.Provider = "sqloledb"
             XGT_SQL = "Data Source=" & FunStrArqIni(XLT_STRINGCONEXAO) & _
                       ";Initial Catalog=" & FunStrArqIni(XLT_NOMEBANCO) & _
-                      ";User Id=qualiadmfin;Password=qd; "
+                      ";User Id=" & FunStrArqIni(XLT_USUARIO) & ";Password=" & FunStrArqIni(XLT_SENHA) & "; "
             ConexaoRelatorio.Open XGT_SQL
     End Select
     Screen.MousePointer = vbDefault
@@ -245,4 +277,6 @@ Public Sub subCarregaDadosNV(ControleDados As Object, TabelaAtiva As String, _
     ReDim Ordens(1) As Integer
     Ordens(1) = 1
 End Sub
+
+
 

@@ -6,13 +6,13 @@ Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
-Begin VB.Form TelaExpBancaria 
-   Caption         =   "Exportação Bancária - ITAÚ"
+Begin VB.Form TelaSelecionaTitulos 
+   Caption         =   "Emissão Boletos - ITAÚ"
    ClientHeight    =   5835
    ClientLeft      =   75
    ClientTop       =   1470
    ClientWidth     =   9465
-   Icon            =   "TelaExpBancaria.frx":0000
+   Icon            =   "TelaSelecionaTitulos.frx":0000
    LinkTopic       =   "Form1"
    ScaleHeight     =   5835
    ScaleWidth      =   9465
@@ -113,7 +113,7 @@ Begin VB.Form TelaExpBancaria
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   84475907
+         Format          =   86114307
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -178,7 +178,7 @@ Begin VB.Form TelaExpBancaria
       BevelInner      =   1
       Begin MSComDlg.CommonDialog DlgSalvar 
          Left            =   240
-         Top             =   3840
+         Top             =   4320
          _ExtentX        =   847
          _ExtentY        =   847
          _Version        =   393216
@@ -230,7 +230,7 @@ Begin VB.Form TelaExpBancaria
          TabsPerRow      =   4
          TabHeight       =   520
          TabCaption(0)   =   "Dados Gerais"
-         TabPicture(0)   =   "TelaExpBancaria.frx":08CA
+         TabPicture(0)   =   "TelaSelecionaTitulos.frx":08CA
          Tab(0).ControlEnabled=   -1  'True
          Tab(0).Control(0)=   "LblInstrucao1(0)"
          Tab(0).Control(0).Enabled=   0   'False
@@ -284,41 +284,41 @@ Begin VB.Form TelaExpBancaria
          Tab(0).Control(24).Enabled=   0   'False
          Tab(0).ControlCount=   25
          TabCaption(1)   =   "Empreendimentos"
-         TabPicture(1)   =   "TelaExpBancaria.frx":08E6
+         TabPicture(1)   =   "TelaSelecionaTitulos.frx":08E6
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(1)=   "LlbEmpreendimento"
-         Tab(1).Control(2)=   "TDBGridEmpr1"
-         Tab(1).Control(3)=   "TDBGridEmpr2"
-         Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(6)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(4)=   "TDBGridEmpr2"
+         Tab(1).Control(5)=   "TDBGridEmpr1"
+         Tab(1).Control(6)=   "LlbEmpreendimento"
+         Tab(1).Control(7)=   "Label1"
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
-         TabPicture(2)   =   "TelaExpBancaria.frx":0902
+         TabPicture(2)   =   "TelaSelecionaTitulos.frx":0902
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "Label3"
-         Tab(2).Control(1)=   "Label2"
-         Tab(2).Control(2)=   "TDBGridMoeda2"
-         Tab(2).Control(3)=   "TDBGridMoeda1"
+         Tab(2).Control(0)=   "CmdRemoverMoeda"
+         Tab(2).Control(1)=   "CmdInserirMoeda"
+         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(5)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(7)=   "CmdInserirMoeda"
-         Tab(2).Control(8)=   "CmdRemoverMoeda"
+         Tab(2).Control(5)=   "TDBGridMoeda1"
+         Tab(2).Control(6)=   "TDBGridMoeda2"
+         Tab(2).Control(7)=   "Label2"
+         Tab(2).Control(8)=   "Label3"
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
-         TabPicture(3)   =   "TelaExpBancaria.frx":091E
+         TabPicture(3)   =   "TelaSelecionaTitulos.frx":091E
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "Label5"
-         Tab(3).Control(1)=   "Label4"
-         Tab(3).Control(2)=   "TDBGridObs1"
-         Tab(3).Control(3)=   "TDBGridObs2"
-         Tab(3).Control(4)=   "CmdRemoverObservacao"
-         Tab(3).Control(5)=   "CmdInserirObservacao"
-         Tab(3).Control(6)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(7)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(0)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(1)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(2)=   "CmdInserirObservacao"
+         Tab(3).Control(3)=   "CmdRemoverObservacao"
+         Tab(3).Control(4)=   "TDBGridObs2"
+         Tab(3).Control(5)=   "TDBGridObs1"
+         Tab(3).Control(6)=   "Label4"
+         Tab(3).Control(7)=   "Label5"
          Tab(3).ControlCount=   8
          Begin VB.CommandButton CmdRemoverEmpreendimento 
             BackColor       =   &H00000000&
@@ -607,9 +607,9 @@ Begin VB.Form TelaExpBancaria
          End
          Begin VB.ComboBox CboNaturezasPlanos 
             Height          =   315
-            ItemData        =   "TelaExpBancaria.frx":093A
+            ItemData        =   "TelaSelecionaTitulos.frx":093A
             Left            =   1965
-            List            =   "TelaExpBancaria.frx":0950
+            List            =   "TelaSelecionaTitulos.frx":0950
             Style           =   2  'Dropdown List
             TabIndex        =   3
             Top             =   1245
@@ -980,7 +980,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   84475907
+            Format          =   86114307
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -993,7 +993,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   84475907
+            Format          =   86114307
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -1006,11 +1006,11 @@ Begin VB.Form TelaExpBancaria
             _ExtentX        =   556
             _ExtentY        =   556
             _StockProps     =   78
-            MouseIcon       =   "TelaExpBancaria.frx":098B
-            Picture         =   "TelaExpBancaria.frx":09A7
+            MouseIcon       =   "TelaSelecionaTitulos.frx":098B
+            Picture         =   "TelaSelecionaTitulos.frx":09A7
          End
          Begin MSDataListLib.DataCombo CboTiposPlanos 
-            Bindings        =   "TelaExpBancaria.frx":0AB9
+            Bindings        =   "TelaSelecionaTitulos.frx":0AB9
             Height          =   315
             Left            =   1965
             TabIndex        =   2
@@ -1034,11 +1034,11 @@ Begin VB.Form TelaExpBancaria
             _ExtentX        =   556
             _ExtentY        =   556
             _StockProps     =   78
-            MouseIcon       =   "TelaExpBancaria.frx":0AD4
-            Picture         =   "TelaExpBancaria.frx":0AF0
+            MouseIcon       =   "TelaSelecionaTitulos.frx":0AD4
+            Picture         =   "TelaSelecionaTitulos.frx":0AF0
          End
          Begin MSDataListLib.DataCombo CboCCorrente 
-            Bindings        =   "TelaExpBancaria.frx":0C02
+            Bindings        =   "TelaSelecionaTitulos.frx":0C02
             Height          =   330
             Left            =   1965
             TabIndex        =   4
@@ -1759,7 +1759,7 @@ Begin VB.Form TelaExpBancaria
             _StyleDefs(63)  =   ":id=42,.parent=33"
          End
          Begin MSDataListLib.DataCombo cboSacadorAvalista 
-            Bindings        =   "TelaExpBancaria.frx":0C21
+            Bindings        =   "TelaSelecionaTitulos.frx":0C21
             Height          =   330
             Left            =   1965
             TabIndex        =   72
@@ -1840,8 +1840,8 @@ Begin VB.Form TelaExpBancaria
             _ExtentX        =   556
             _ExtentY        =   556
             _StockProps     =   78
-            MouseIcon       =   "TelaExpBancaria.frx":0C3A
-            Picture         =   "TelaExpBancaria.frx":0C56
+            MouseIcon       =   "TelaSelecionaTitulos.frx":0C3A
+            Picture         =   "TelaSelecionaTitulos.frx":0C56
          End
          Begin VB.Label Label6 
             Alignment       =   1  'Right Justify
@@ -2645,8 +2645,8 @@ Begin VB.Form TelaExpBancaria
          Top             =   495
          Width           =   1680
       End
-      Begin VB.CommandButton CmdExportar 
-         Caption         =   "&Exportar"
+      Begin VB.CommandButton CmdExecuteAction 
+         Caption         =   "&Executar Ação"
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -2689,7 +2689,7 @@ Begin VB.Form TelaExpBancaria
       _Version        =   393216
    End
 End
-Attribute VB_Name = "TelaExpBancaria"
+Attribute VB_Name = "TelaSelecionaTitulos"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -2746,9 +2746,9 @@ Sub AjustaTela()
     'Formulario.Top = 1020
     Formulario.Top = 0
     Formulario.Height = Resolucaoy - 500
-    'Formulario.Height = TelaExpBancaria.SysInfo1.WorkAreaHeight - 1380
+    'Formulario.Height = TelaSelecionaTitulos.SysInfo1.WorkAreaHeight - 1380
     Formulario.Width = ResolucaoX - 60
-    'Formulario.Width = TelaExpBancaria.SysInfo1.WorkAreaWidth - 60
+    'Formulario.Width = TelaSelecionaTitulos.SysInfo1.WorkAreaWidth - 60
     'Formulario.Left = 10
     Formulario.Left = 5
     'Formulario.PanPeriodo.Top = 100 '45
@@ -2827,7 +2827,7 @@ End Sub
 Private Sub subHabilitaBotoes()
     CmdDesmarcar.Enabled = True
     CmdMarcar.Enabled = True
-    CmdExportar.Enabled = True
+    CmdExecuteAction.Enabled = True
     CmdDesconto.Enabled = True
     CmdImprimir.Enabled = True
     
@@ -2842,7 +2842,7 @@ End Sub
 Private Sub subDesabilitaBotoes()
     CmdDesmarcar.Enabled = False
     CmdMarcar.Enabled = False
-    CmdExportar.Enabled = False
+    CmdExecuteAction.Enabled = False
     CmdDesconto.Enabled = False
     CmdImprimir.Enabled = False
     CmdFiltro.Enabled = False
@@ -3561,7 +3561,7 @@ Private Sub CmdDesmarcar_Click()
     
 End Sub
 
-Private Sub CmdExportar_Click()
+Private Sub CmdExecuteAction_Click()
  
   Dim XFT_SQL As String             ' Prepara Select
   Dim XLT_TEXTO As String           ' Prepara Texto para gerar o arquivo
@@ -3587,372 +3587,389 @@ Private Sub CmdExportar_Click()
   Dim XLI_PRAZOMORA As Integer
   Dim XLT_CODMOEDA As String
  
-  XLB_SELECIONADO = False
-  TDBGrid1.MoveFirst
-  XFO_EXPORTACAO.MoveFirst
-  
-  While Not TDBGrid1.EOF
-    If TDBGrid1.Columns("Exp.").Value = "-1" Then
-      XLB_SELECIONADO = True
-      
-      'Verifica se está preenchido o endereço correspondencial,
-        'se todos os campos estão vazios
-           'verifica se é pessoa jurídica e verifica o endereço comercial
-           'verifica se é pessoa física e verifica o endereço residencial
-        'se algum endereço está incompleto, cancela a exportacao
-        
-      If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
-        If FunConfereCGC(Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 2) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 4, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 8, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 12, 4) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 17, 2)) = False Then
-          MsgBox "O CNPJ do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-              vbCrLf & "está incorreto."
-          Exit Sub
-        End If
-      Else
-        If FunConfereCPF(Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 5, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 9, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 13, 2)) = False Then
-          MsgBox "O CPF do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-              vbCrLf & "está incorreto."
-          
-          Exit Sub
-        End If
-      End If
-        
-      If XFO_EXPORTACAO!clie_tx_EndCorresp = "" And XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
-        And XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -   " And XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
-        And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
-        
-        If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
-          If XFO_EXPORTACAO!focl_tx_Endereco = "" Or XFO_EXPORTACAO!focl_tx_Bairro = "" _
-            Or XFO_EXPORTACAO!focl_tx_Cep = "  .   -  " Or XFO_EXPORTACAO!focl_tx_Cidade = "" _
-            Or XFO_EXPORTACAO!focl_tx_Estado = "" Then
-            
-            MsgBox "Os dados do endereço comercial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-              vbCrLf & "estão incompletos."
-            Exit Sub
-          End If
-          
-        Else
-          If XFO_EXPORTACAO!clie_tx_EndResidencial = "" Or XFO_EXPORTACAO!clie_tx_BairroResidencial = "" _
-            Or XFO_EXPORTACAO!clie_nr_CepResidencial = "  .   -   " Or XFO_EXPORTACAO!clie_tx_MunResidencial = "" _
-            Or XFO_EXPORTACAO!clie_tx_EstResidencial = "" Then
-            
-            MsgBox "Os dados do endereço residencial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-              vbCrLf & "estão incompletos."
-            Exit Sub
-          End If
-        End If
-        
-      ElseIf XFO_EXPORTACAO!clie_tx_EndCorresp = "" Or XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
-         Or XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -   " Or XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
-         Or XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
-        
-        MsgBox "Os dados do endereço correspondencial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-           vbCrLf & "estão incompletos."
-        Exit Sub
-      End If
-      
-    End If
-    TDBGrid1.MoveNext
-    XFO_EXPORTACAO.MoveNext
-  Wend
+' Passos a executar:
+' --------------------------------------------------------------------------------------------
+' 1   - Fazer um loop em Grid, lendo os titulos selecionados e processando conforme abaixo
+' 1.1   - Para cada titulo, ler aos dados necessários à montagem dos boletos, criar um número para cada boleto
+' 1.2   - Montar o(s) boleto(s) (objetos em memória, XML ou JSON)
+' 1.3   - Registrar o(s) boleto(s) no banco via API
+' 1.3.1   - Se token de autenticação inválido/inexistente, faz uma nova autenticação e guarda informações de expiração para controle de refresh
+' 1.3.2   - Montar e enviar os dados para a API
+' 1.3.3   - Tratar o retorno, identificando códigos de resposta e dados retornados via Json. Se algum erro, adicionar o titulo à uma lista ou corrigir status do boleto
+' 1.4   - Emitir boleto, salvar em PDF e enviar email via COM usando biblioteca externa (dll)
+' 1.4.1   - Enviar os dados do boleto para a biblioteca (incluindo e-mails e dados para criação de PDFs com senhas/criptografia)
+' 1.4.2   - Tratar o retorno, identificando os dados retornados. Se algum erro, adicionar o titulo à uma lista ou corrigir status do boleto.
+' 2   - Atualizar uma tabela de boletos com os status e códigos dos boletos
+' 3   - Atualizar os titulos para quais foram gerados os boletos
+'
+
+ 
+'  XLB_SELECIONADO = False
+'  TDBGrid1.MoveFirst
+'  XFO_EXPORTACAO.MoveFirst
+'
+'  While Not TDBGrid1.EOF
+'    If TDBGrid1.Columns("Exp.").Value = "-1" Then
+'      XLB_SELECIONADO = True
+'
+'      'Verifica se está preenchido o endereço correspondencial,
+'        'se todos os campos estão vazios
+'           'verifica se é pessoa jurídica e verifica o endereço comercial
+'           'verifica se é pessoa física e verifica o endereço residencial
+'        'se algum endereço está incompleto, cancela a exportacao
+'
+'      If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
+'        If FunConfereCGC(Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 2) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 4, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 8, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 12, 4) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 17, 2)) = False Then
+'          MsgBox "O CNPJ do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+'              vbCrLf & "está incorreto."
+'          Exit Sub
+'        End If
+'      Else
+'        If FunConfereCPF(Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 5, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 9, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 13, 2)) = False Then
+'          MsgBox "O CPF do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+'              vbCrLf & "está incorreto."
+'
+'          Exit Sub
+'        End If
+'      End If
+'
+'      If XFO_EXPORTACAO!clie_tx_EndCorresp = "" And XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
+'        And XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -   " And XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
+'        And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
+'
+'        If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
+'          If XFO_EXPORTACAO!focl_tx_Endereco = "" Or XFO_EXPORTACAO!focl_tx_Bairro = "" _
+'            Or XFO_EXPORTACAO!focl_tx_Cep = "  .   -  " Or XFO_EXPORTACAO!focl_tx_Cidade = "" _
+'            Or XFO_EXPORTACAO!focl_tx_Estado = "" Then
+'
+'            MsgBox "Os dados do endereço comercial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+'              vbCrLf & "estão incompletos."
+'            Exit Sub
+'          End If
+'
+'        Else
+'          If XFO_EXPORTACAO!clie_tx_EndResidencial = "" Or XFO_EXPORTACAO!clie_tx_BairroResidencial = "" _
+'            Or XFO_EXPORTACAO!clie_nr_CepResidencial = "  .   -   " Or XFO_EXPORTACAO!clie_tx_MunResidencial = "" _
+'            Or XFO_EXPORTACAO!clie_tx_EstResidencial = "" Then
+'
+'            MsgBox "Os dados do endereço residencial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+'              vbCrLf & "estão incompletos."
+'            Exit Sub
+'          End If
+'        End If
+'
+'      ElseIf XFO_EXPORTACAO!clie_tx_EndCorresp = "" Or XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
+'         Or XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -   " Or XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
+'         Or XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
+'
+'        MsgBox "Os dados do endereço correspondencial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+'           vbCrLf & "estão incompletos."
+'        Exit Sub
+'      End If
+'
+'    End If
+'    TDBGrid1.MoveNext
+'    XFO_EXPORTACAO.MoveNext
+'  Wend
 
   If Not XLB_SELECIONADO Then
       MsgBox "Não existem pagamentos selecionados.", vbCritical, "ATENÇÃO"
       Exit Sub
   End If
   
-  DlgSalvar.DialogTitle = "Arquivo de Exportação do ITAÚ"
-  DlgSalvar.DefaultExt = "txt"
-  DlgSalvar.InitDir = XGT_LOCALARQ
-  DlgSalvar.CancelError = False
-  DlgSalvar.ShowSave
+'  DlgSalvar.DialogTitle = "Arquivo de Exportação do ITAÚ"
+'  DlgSalvar.DefaultExt = "txt"
+'  DlgSalvar.InitDir = XGT_LOCALARQ
+'  DlgSalvar.CancelError = False
+'  DlgSalvar.ShowSave
+'
+'  If DlgSalvar.FileName = "" Then
+'      Exit Sub
+'  End If
+'
+'  If DlgSalvar.FileName <> "" Then
+'      XGT_LOCALARQ = DlgSalvar.FileName
+'      XGT_ARQUIVO = DlgSalvar.FileTitle
+'  End If
+'
+'  Open XGT_LOCALARQ For Output As #1
+'
+'
+'  Conexao.BeginTrans
   
-  If DlgSalvar.FileName = "" Then
-      Exit Sub
-  End If
-  
-  If DlgSalvar.FileName <> "" Then
-      XGT_LOCALARQ = DlgSalvar.FileName
-      XGT_ARQUIVO = DlgSalvar.FileTitle
-  End If
-  
-  Open XGT_LOCALARQ For Output As #1
-  
-  
-  Conexao.BeginTrans
-  
-  '********** REGISTRO HEADER DE ARQUIVO REMESSA **********
-  XLT_TEXTO = "0" & _
-              "1" & _
-              "REMESSA" & _
-              "01" & _
-              "COBRANCA" & Space(7) & _
-              Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
-              "00" & _
-              Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _
-              Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0") & _
-              Space(8) & _
-              Left(PEmpresa, 30) & Space(30 - Len(Left(PEmpresa, 30))) & _
-              Format(DatContaCorrente.Recordset.Fields!banc_cd_Codigo, "000") & _
-              "BANCO ITAU SA  " & _
-              Format(Now, "ddMMyy") & _
-              Space(294) & _
-              "000001"
-                
-  Print #1, funTiraAcento(XLT_TEXTO, True)
-  
-  XLI_NUMSQUENCIAL = 2
-  
-  XFO_EXPORTACAO.MoveFirst
-  TDBGrid1.MoveFirst
-  
-  While Not TDBGrid1.EOF
-      If TDBGrid1.Columns("Exp.").Value = "-1" Then
-          
-          XLT_CGCEMP = Mid(XGT_CGC, 1, 2) + Mid(XGT_CGC, 4, 3) + Mid(XGT_CGC, 8, 3) + Mid(XGT_CGC, 12, 4) + Mid(XGT_CGC, 17, 2)
-          
-          'Valor já com Seguro
-          XLF_VALOR = CDbl(TDBGrid1.Columns(3))
-          
-          If IsDate(TDBGrid1.Columns(6)) Then
-            XLT_DATADESCONTO = Format(TDBGrid1.Columns(6), "ddmmyy")
-          Else
-            XLT_DATADESCONTO = "000000"
-          End If
-          If (TDBGrid1.Columns(5)) = "" Then
-              TDBGrid1.Columns(5) = 0
-          End If
-          XLF_DESCONTO = CDbl(TDBGrid1.Columns(5))
-            
-          If XFO_EXPORTACAO!focl_tx_Tipo = "F" Then
-            XLT_TIPO = "01"
-            XLT_CGCCPF = Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 5, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 9, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 13, 2)
-          Else
-            XLT_TIPO = "02"
-            XLT_CGCCPF = Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 2) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 4, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 8, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 12, 4) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 17, 2)
-          End If
-          
-          XLT_NOME = Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 40)))
-          
-          If XFO_EXPORTACAO!clie_tx_EndCorresp = "" And XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
-            And XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -  " And XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
-            And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
-            
-            If XLT_TIPO = "02" Then
-              XLT_ENDERECO = Left(XFO_EXPORTACAO!focl_tx_Endereco, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!focl_tx_Endereco, 40)))
-              XLT_BAIRRO = Left(XFO_EXPORTACAO!focl_tx_Bairro, 12) + Space(12 - Len(Left(XFO_EXPORTACAO!focl_tx_Bairro, 12)))
-              XLT_CEP = Left(XFO_EXPORTACAO!focl_tx_Cep, 2) + Mid(XFO_EXPORTACAO!focl_tx_Cep, 4, 3) + Right(XFO_EXPORTACAO!focl_tx_Cep, 3)
-              XLT_CIDADE = Left(XFO_EXPORTACAO!focl_tx_Cidade, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!focl_tx_Cidade, 15)))
-              XLT_ESTADO = Left(XFO_EXPORTACAO!focl_tx_Estado, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!focl_tx_Estado, 2)))
-            Else
-              XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 40)))
-              XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 12) + Space(12 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 12)))
-              XLT_CEP = Left(XFO_EXPORTACAO!clie_nr_CepResidencial, 2) + Mid(XFO_EXPORTACAO!clie_nr_CepResidencial, 4, 3) + Right(XFO_EXPORTACAO!clie_nr_CepResidencial, 3)
-              XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 15)))
-              XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2)))
-            End If
-            
-          Else
-            XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40)))
-            XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12) + Space(12 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12)))
-            XLT_CEP = Left(XFO_EXPORTACAO!clie_nr_CepCorresp, 2) + Mid(XFO_EXPORTACAO!clie_nr_CepCorresp, 4, 3) + Right(XFO_EXPORTACAO!clie_nr_CepCorresp, 3)
-            XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15)))
-            XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2)))
-          End If
-            
-          If ChkJuros.Value = 1 Then
-            XLT_DATAMORA = Format(DateAdd("d", 1, XFO_EXPORTACAO!titu_dt_Vencimento), "ddmmyy")
-            If TxtPrzMora.Text = "" Then
-              XLI_PRAZOMORA = 0
-            Else
-              XLI_PRAZOMORA = TxtPrzMora.Text
-            End If
-          Else
-            XLT_DATAMORA = "000000"
-            If TxtInstrucao1.Text <> "94" And TxtInstrucao2.Text <> "94" Then
-              XLI_PRAZOMORA = 0
-            End If
-          End If
-            
-        If TxtInstrucao1.Text = "93" Or TxtInstrucao2.Text = "93" Then
-          XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 30) & Space(30 - Len(TxtMensagem1.Text)) & Space(4) & XLT_DATAMORA
-        ElseIf TxtInstrucao1.Text = "94" Or TxtInstrucao2.Text = "94" Then
-          XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 40) & Space(40 - Len(TxtMensagem1.Text))
-        Else
-            ' Se tiver sacador/avalista manda a informação que está em cboSacadorAvalista
-            If Me.cboSacadorAvalista.Text = "" Then
-                ' Alterado em 18/07/2023 (PSG), para atender solicitação do ITAU: o campo BENEFICIARIO FINAL deve ser igual a espaços, quando Instrução 1 e 2 diferentes de 93 oe 94
-                ' XLT_MENSAGEM1 = Left(PEmpresa, 30) & Space(30 - Len(Left(PEmpresa, 30))) & Space(4) & XLT_DATAMORA
-                XLT_MENSAGEM1 = Space(34) & XLT_DATAMORA
-            Else
-               XLT_MENSAGEM1 = Left(Me.cboSacadorAvalista.Text, 30) & Space(30 - Len(Left(Me.cboSacadorAvalista.Text, 30))) & Space(4) & XLT_DATAMORA
-            End If
-            
-        
-        End If
-        
-        '********** REGISTRO DETALHE (OBRIGATÓRIO) DE ARQUIVO REMESSA **********
-'          XLT_TEXTO = "1" & _                                                                                                      - TIPO DE REGISTRO
-'                      "02" & _                                                                                                     - CÓDIGO DE INSCRIÇÃO
-'                      Format(XLT_CGCEMP, "00000000000000") & _                                                                     - NÚMERO DE INSCRIÇÃO
-'                      Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _                               - AGÊNCIA
-'                      "00" & _                                                                                                     - ZEROS
-'                      Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _                                - CONTA
-'                      Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0") & _                         - DAC
-'                      Space(4) & _                                                                                                 - BRANCOS
-'                      "0000" & _                                                                                                   - INSTRUÇÃO/ALEGAÇÃO
-'                      XFO_EXPORTACAO!Titulo & Space(3) & _                                                                         - USO DA EMPRESA
-'                      FunZeros(8) & _                                                                                              - NOSSO NÚMERO
-'                      FunZeros(13) & _                                                                                             - QTDE DE MOEDA
-'                      "112" & _                                                                                                    - Nº DA CARTEIRA
-'                      Space(21) & _                                                                                                - USO DO BANCO
-'                      "I" & _                                                                                                      - CARTEIRA
-'                      "01" & _                                                                                                     - CÓD. DE OCORRÊNCIA
-'                      Left(XFO_EXPORTACAO!Titulo, 4) & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & _    - Nº DO DOCUMENTO
-'                      Format(XFO_EXPORTACAO!titu_dt_Vencimento, "ddmmyy") & _                                                      - VENCIMENTO
-'                      Format(XLF_VALOR * 100, "0000000000000") & _                                                                 - VALOR DO BOLETO
-'                      Format(DatContaCorrente.Recordset.Fields!banc_cd_Codigo, "000") & _                                          - CÓDIGO DO BANCO (341)
-'                      "00000" & _                                                                                                  - AGÊNCIA COBRADORA
-'                      "02" & _                                                                                                     - ESPÉCIE
-'                      "N"                                                                                                          - ACEITE
-'                      Format(DtpExportacao, "ddmmyy") & _                                                                          - DATA DE EMISSÃO
-'                      Format(TxtInstrucao1.Text, "00") & Space(2 - Len(Format(TxtInstrucao1.Text, "00"))) & _                      - INSTRUÇÃO 1
-'                      Format(TxtInstrucao2.Text, "00") & Space(2 - Len(Format(TxtInstrucao2.Text, "00"))) & _                      - INSTRUÇÃO 2
-'                      FunZeros(13) & _                                                                                             - JUROS DE 1 DIA
-'                      XLT_DATADESCONTO & _                                                                                         - DESCONTO ATÉ
-'                      Format(XLF_DESCONTO * 100, "0000000000000") & _                                                              - VALOR DO DESCONTO
-'                      FunZeros(13) & _                                                                                             - VALOR DO I.O.F.
-'                      FunZeros(13) & _                                                                                             - ABATIMENTO
-'                      XLT_TIPO & _                                                                                                 - CÓDIGO DE INSCRIÇÃO
-'                      Format(XLT_CGCCPF, "00000000000000") & _                                                                     - NÚMERO DE INSCRIÇÃO
-'                      XLT_NOME & _                                                                                                 - NOME DO PAGADOR
-'                      XLT_ENDERECO & _                                                                                             - LOGRADOURO
-'                      XLT_BAIRRO & _                                                                                               - BAIRRO
-'                      XLT_CEP & _                                                                                                  - CEP
-'                      XLT_CIDADE & _                                                                                               - CIDADE
-'                      XLT_ESTADO & _                                                                                               - ESTADO
-'                      XLT_MENSAGEM1 & _                                                                                            - BENEFICIARIO FINAL/MENSAGEM AO PAGADOR + BRANCOS + DATA DE MORA
-'                      Format(XLI_PRAZOMORA, "00") & _                                                                              - PRAZO
-'                      Space(1) & _                                                                                                 - BRANCOS
-'                      Format(XLI_NUMSQUENCIAL, "000000")                                                                           - NÚMERO SEQÜENCIAL
-                      
-          XLT_TEXTO = "1" & _
-                      "02" & _
-                      Format(XLT_CGCEMP, "00000000000000") & _
-                      Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
-                      "00" & _
-                      Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _
-                      Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0") & _
-                      Space(4) & _
-                      "0000" & _
-                      XFO_EXPORTACAO!Titulo & Space(3) & _
-                      FunZeros(8) & _
-                      FunZeros(13) & _
-                      "112" & _
-                      Space(21) & _
-                      "I" & _
-                      "01" & _
-                      Left(XFO_EXPORTACAO!Titulo, 4) & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & _
-                      Format(XFO_EXPORTACAO!titu_dt_Vencimento, "ddmmyy") & _
-                      Format(XLF_VALOR * 100, "0000000000000") & _
-                      Format(DatContaCorrente.Recordset.Fields!banc_cd_Codigo, "000") & _
-                      "00000" & _
-                      "02" & _
-                      "N"
-                      
-           XLT_TEXTO = XLT_TEXTO & _
-                      Format(DtpExportacao, "ddmmyy") & _
-                      Format(TxtInstrucao1.Text, "00") & Space(2 - Len(Format(TxtInstrucao1.Text, "00"))) & _
-                      Format(TxtInstrucao2.Text, "00") & Space(2 - Len(Format(TxtInstrucao2.Text, "00"))) & _
-                      FunZeros(13) & _
-                      XLT_DATADESCONTO & _
-                      Format(XLF_DESCONTO * 100, "0000000000000") & _
-                      FunZeros(13) & _
-                      FunZeros(13) & _
-                      XLT_TIPO & _
-                      Format(XLT_CGCCPF, "00000000000000") & _
-                      XLT_NOME & _
-                      XLT_ENDERECO & _
-                      XLT_BAIRRO & _
-                      XLT_CEP & _
-                      XLT_CIDADE & _
-                      XLT_ESTADO & _
-                      XLT_MENSAGEM1 & _
-                      Format(XLI_PRAZOMORA, "00") & _
-                      Space(1) & _
-                      Format(XLI_NUMSQUENCIAL, "000000")
-                      
-          Print #1, funTiraAcento(XLT_TEXTO, True)
-          
-          If OptIndexador1.Value = True Then
-            If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda1) Then
-              XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda1
-            Else
-              XLT_CODMOEDA = ""
-            End If
-          ElseIf OptIndexador2.Value = True Then
-            If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda2) Then
-              XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda2
-            Else
-              XLT_CODMOEDA = ""
-            End If
-          Else
-            XLT_CODMOEDA = ""
-          End If
-            
-          Conexao.Execute ("UPDATE Titulos Set titu_tx_ExpBanco='S'," & _
-            " moed_cd_Moeda3=" & FunNuloBancoVal(XLT_CODMOEDA) & "," & _
-            " titu_vl_Seguro=" & FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8))) & _
-            " WHERE empr_cd_Empresa=" & PCodEmpresa & _
-            " AND empd_cd_empreendimento='" & Left(XFO_EXPORTACAO!Titulo, 4) & "'" & _
-            " AND imov_cd_imovel='" & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & "'" & _
-            " AND cont_cd_Contrato='" & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & "'" & _
-            " AND titu_cd_Plano='" & Mid(XFO_EXPORTACAO!Titulo, 14, 2) & "'" & _
-            " AND titu_cd_Parcela='" & Mid(XFO_EXPORTACAO!Titulo, 17, 3) & "'" & _
-            " AND titu_cd_Residuo='" & Right(XFO_EXPORTACAO!Titulo, 2) & "'")
-            
-            
-            '******************REGISTRA LOG DA OPERAÇÃO**************************
-            ReDim XGM_MATRIZLOG(8, 2) As Variant
-            
-            XGM_MATRIZLOG(0, 0) = "Título"
-            XGM_MATRIZLOG(1, 0) = "Moeda"
-            XGM_MATRIZLOG(2, 0) = "Valor Seguro"
-            XGM_MATRIZLOG(3, 0) = "Valor do título"
-            XGM_MATRIZLOG(4, 0) = "Valor do desconto"
-            XGM_MATRIZLOG(5, 0) = "Conta corrente"
-            XGM_MATRIZLOG(6, 0) = "Data Venc. Título"
-            XGM_MATRIZLOG(7, 0) = "Data Venc. Desconto"
-            
-            XGM_MATRIZLOG(0, 1) = XFO_EXPORTACAO!Titulo
-            XGM_MATRIZLOG(1, 1) = FunNuloBancoVal(XLT_CODMOEDA)
-            XGM_MATRIZLOG(2, 1) = FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8)))
-            XGM_MATRIZLOG(3, 1) = XLF_VALOR
-            XGM_MATRIZLOG(4, 1) = XLF_DESCONTO
-            XGM_MATRIZLOG(5, 1) = DatContaCorrente.Recordset.Fields!coco_cd_Agencia & "-" & DatContaCorrente.Recordset.Fields!coco_tx_Conta & DatContaCorrente.Recordset.Fields!coco_nr_Dac
-            XGM_MATRIZLOG(6, 1) = XFO_EXPORTACAO!titu_dt_Vencimento
-            XGM_MATRIZLOG(7, 1) = XLT_DATADESCONTO
-            
-            Call subRegistraLog("TelaExpBancaria", "1", funCriaDescricaoLog(XGM_MATRIZLOG, EXPORTACAO_CAPI, PAGAMENTO_ELETRONICO_ITAU))
-            '*******************************************************************
-                
-          XLI_NUMSQUENCIAL = XLI_NUMSQUENCIAL + 1
-          
-      End If
-      
-      TDBGrid1.MoveNext
-      XFO_EXPORTACAO.MoveNext
-  Wend
-  
-  '******TRAILER DE ARQUIVO*******
-  XLT_TEXTO = "9" & _
-              Space(393) & _
-              Format(XLI_NUMSQUENCIAL, "000000")
-              
-  Print #1, funTiraAcento(XLT_TEXTO, True)
-  '**********************************************
-  Close #1
+'  '********** REGISTRO HEADER DE ARQUIVO REMESSA **********
+'  XLT_TEXTO = "0" & _
+'              "1" & _
+'              "REMESSA" & _
+'              "01" & _
+'              "COBRANCA" & Space(7) & _
+'              Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
+'              "00" & _
+'              Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _
+'              Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0") & _
+'              Space(8) & _
+'              Left(PEmpresa, 30) & Space(30 - Len(Left(PEmpresa, 30))) & _
+'              Format(DatContaCorrente.Recordset.Fields!banc_cd_Codigo, "000") & _
+'              "BANCO ITAU SA  " & _
+'              Format(Now, "ddMMyy") & _
+'              Space(294) & _
+'              "000001"
+'
+'  Print #1, funTiraAcento(XLT_TEXTO, True)
+'
+'  XLI_NUMSQUENCIAL = 2
+'
+'  XFO_EXPORTACAO.MoveFirst
+'  TDBGrid1.MoveFirst
+'
+'  While Not TDBGrid1.EOF
+'      If TDBGrid1.Columns("Exp.").Value = "-1" Then
+'
+'          XLT_CGCEMP = Mid(XGT_CGC, 1, 2) + Mid(XGT_CGC, 4, 3) + Mid(XGT_CGC, 8, 3) + Mid(XGT_CGC, 12, 4) + Mid(XGT_CGC, 17, 2)
+'
+'          'Valor já com Seguro
+'          XLF_VALOR = CDbl(TDBGrid1.Columns(3))
+'
+'          If IsDate(TDBGrid1.Columns(6)) Then
+'            XLT_DATADESCONTO = Format(TDBGrid1.Columns(6), "ddmmyy")
+'          Else
+'            XLT_DATADESCONTO = "000000"
+'          End If
+'          If (TDBGrid1.Columns(5)) = "" Then
+'              TDBGrid1.Columns(5) = 0
+'          End If
+'          XLF_DESCONTO = CDbl(TDBGrid1.Columns(5))
+'
+'          If XFO_EXPORTACAO!focl_tx_Tipo = "F" Then
+'            XLT_TIPO = "01"
+'            XLT_CGCCPF = Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 5, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 9, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 13, 2)
+'          Else
+'            XLT_TIPO = "02"
+'            XLT_CGCCPF = Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 2) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 4, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 8, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 12, 4) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 17, 2)
+'          End If
+'
+'          XLT_NOME = Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 40)))
+'
+'          If XFO_EXPORTACAO!clie_tx_EndCorresp = "" And XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
+'            And XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -  " And XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
+'            And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
+'
+'            If XLT_TIPO = "02" Then
+'              XLT_ENDERECO = Left(XFO_EXPORTACAO!focl_tx_Endereco, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!focl_tx_Endereco, 40)))
+'              XLT_BAIRRO = Left(XFO_EXPORTACAO!focl_tx_Bairro, 12) + Space(12 - Len(Left(XFO_EXPORTACAO!focl_tx_Bairro, 12)))
+'              XLT_CEP = Left(XFO_EXPORTACAO!focl_tx_Cep, 2) + Mid(XFO_EXPORTACAO!focl_tx_Cep, 4, 3) + Right(XFO_EXPORTACAO!focl_tx_Cep, 3)
+'              XLT_CIDADE = Left(XFO_EXPORTACAO!focl_tx_Cidade, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!focl_tx_Cidade, 15)))
+'              XLT_ESTADO = Left(XFO_EXPORTACAO!focl_tx_Estado, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!focl_tx_Estado, 2)))
+'            Else
+'              XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 40)))
+'              XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 12) + Space(12 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 12)))
+'              XLT_CEP = Left(XFO_EXPORTACAO!clie_nr_CepResidencial, 2) + Mid(XFO_EXPORTACAO!clie_nr_CepResidencial, 4, 3) + Right(XFO_EXPORTACAO!clie_nr_CepResidencial, 3)
+'              XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 15)))
+'              XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2)))
+'            End If
+'
+'          Else
+'            XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40)))
+'            XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12) + Space(12 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12)))
+'            XLT_CEP = Left(XFO_EXPORTACAO!clie_nr_CepCorresp, 2) + Mid(XFO_EXPORTACAO!clie_nr_CepCorresp, 4, 3) + Right(XFO_EXPORTACAO!clie_nr_CepCorresp, 3)
+'            XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15)))
+'            XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2)))
+'          End If
+'
+'          If ChkJuros.Value = 1 Then
+'            XLT_DATAMORA = Format(DateAdd("d", 1, XFO_EXPORTACAO!titu_dt_Vencimento), "ddmmyy")
+'            If TxtPrzMora.Text = "" Then
+'              XLI_PRAZOMORA = 0
+'            Else
+'              XLI_PRAZOMORA = TxtPrzMora.Text
+'            End If
+'          Else
+'            XLT_DATAMORA = "000000"
+'            If TxtInstrucao1.Text <> "94" And TxtInstrucao2.Text <> "94" Then
+'              XLI_PRAZOMORA = 0
+'            End If
+'          End If
+'
+'        If TxtInstrucao1.Text = "93" Or TxtInstrucao2.Text = "93" Then
+'          XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 30) & Space(30 - Len(TxtMensagem1.Text)) & Space(4) & XLT_DATAMORA
+'        ElseIf TxtInstrucao1.Text = "94" Or TxtInstrucao2.Text = "94" Then
+'          XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 40) & Space(40 - Len(TxtMensagem1.Text))
+'        Else
+'            ' Se tiver sacador/avalista manda a informação que está em cboSacadorAvalista
+'            If Me.cboSacadorAvalista.Text = "" Then
+'                ' Alterado em 18/07/2023 (PSG), para atender solicitação do ITAU: o campo BENEFICIARIO FINAL deve ser igual a espaços, quando Instrução 1 e 2 diferentes de 93 oe 94
+'                ' XLT_MENSAGEM1 = Left(PEmpresa, 30) & Space(30 - Len(Left(PEmpresa, 30))) & Space(4) & XLT_DATAMORA
+'                XLT_MENSAGEM1 = Space(34) & XLT_DATAMORA
+'            Else
+'               XLT_MENSAGEM1 = Left(Me.cboSacadorAvalista.Text, 30) & Space(30 - Len(Left(Me.cboSacadorAvalista.Text, 30))) & Space(4) & XLT_DATAMORA
+'            End If
+'
+'
+'        End If
+'
+'        '********** REGISTRO DETALHE (OBRIGATÓRIO) DE ARQUIVO REMESSA **********
+''          XLT_TEXTO = "1" & _                                                                                                      - TIPO DE REGISTRO
+''                      "02" & _                                                                                                     - CÓDIGO DE INSCRIÇÃO
+''                      Format(XLT_CGCEMP, "00000000000000") & _                                                                     - NÚMERO DE INSCRIÇÃO
+''                      Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _                               - AGÊNCIA
+''                      "00" & _                                                                                                     - ZEROS
+''                      Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _                                - CONTA
+''                      Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0") & _                         - DAC
+''                      Space(4) & _                                                                                                 - BRANCOS
+''                      "0000" & _                                                                                                   - INSTRUÇÃO/ALEGAÇÃO
+''                      XFO_EXPORTACAO!Titulo & Space(3) & _                                                                         - USO DA EMPRESA
+''                      FunZeros(8) & _                                                                                              - NOSSO NÚMERO
+''                      FunZeros(13) & _                                                                                             - QTDE DE MOEDA
+''                      "112" & _                                                                                                    - Nº DA CARTEIRA
+''                      Space(21) & _                                                                                                - USO DO BANCO
+''                      "I" & _                                                                                                      - CARTEIRA
+''                      "01" & _                                                                                                     - CÓD. DE OCORRÊNCIA
+''                      Left(XFO_EXPORTACAO!Titulo, 4) & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & _    - Nº DO DOCUMENTO
+''                      Format(XFO_EXPORTACAO!titu_dt_Vencimento, "ddmmyy") & _                                                      - VENCIMENTO
+''                      Format(XLF_VALOR * 100, "0000000000000") & _                                                                 - VALOR DO BOLETO
+''                      Format(DatContaCorrente.Recordset.Fields!banc_cd_Codigo, "000") & _                                          - CÓDIGO DO BANCO (341)
+''                      "00000" & _                                                                                                  - AGÊNCIA COBRADORA
+''                      "02" & _                                                                                                     - ESPÉCIE
+''                      "N"                                                                                                          - ACEITE
+''                      Format(DtpExportacao, "ddmmyy") & _                                                                          - DATA DE EMISSÃO
+''                      Format(TxtInstrucao1.Text, "00") & Space(2 - Len(Format(TxtInstrucao1.Text, "00"))) & _                      - INSTRUÇÃO 1
+''                      Format(TxtInstrucao2.Text, "00") & Space(2 - Len(Format(TxtInstrucao2.Text, "00"))) & _                      - INSTRUÇÃO 2
+''                      FunZeros(13) & _                                                                                             - JUROS DE 1 DIA
+''                      XLT_DATADESCONTO & _                                                                                         - DESCONTO ATÉ
+''                      Format(XLF_DESCONTO * 100, "0000000000000") & _                                                              - VALOR DO DESCONTO
+''                      FunZeros(13) & _                                                                                             - VALOR DO I.O.F.
+''                      FunZeros(13) & _                                                                                             - ABATIMENTO
+''                      XLT_TIPO & _                                                                                                 - CÓDIGO DE INSCRIÇÃO
+''                      Format(XLT_CGCCPF, "00000000000000") & _                                                                     - NÚMERO DE INSCRIÇÃO
+''                      XLT_NOME & _                                                                                                 - NOME DO PAGADOR
+''                      XLT_ENDERECO & _                                                                                             - LOGRADOURO
+''                      XLT_BAIRRO & _                                                                                               - BAIRRO
+''                      XLT_CEP & _                                                                                                  - CEP
+''                      XLT_CIDADE & _                                                                                               - CIDADE
+''                      XLT_ESTADO & _                                                                                               - ESTADO
+''                      XLT_MENSAGEM1 & _                                                                                            - BENEFICIARIO FINAL/MENSAGEM AO PAGADOR + BRANCOS + DATA DE MORA
+''                      Format(XLI_PRAZOMORA, "00") & _                                                                              - PRAZO
+''                      Space(1) & _                                                                                                 - BRANCOS
+''                      Format(XLI_NUMSQUENCIAL, "000000")                                                                           - NÚMERO SEQÜENCIAL
+'
+'          XLT_TEXTO = "1" & _
+'                      "02" & _
+'                      Format(XLT_CGCEMP, "00000000000000") & _
+'                      Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
+'                      "00" & _
+'                      Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _
+'                      Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0") & _
+'                      Space(4) & _
+'                      "0000" & _
+'                      XFO_EXPORTACAO!Titulo & Space(3) & _
+'                      FunZeros(8) & _
+'                      FunZeros(13) & _
+'                      "112" & _
+'                      Space(21) & _
+'                      "I" & _
+'                      "01" & _
+'                      Left(XFO_EXPORTACAO!Titulo, 4) & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & _
+'                      Format(XFO_EXPORTACAO!titu_dt_Vencimento, "ddmmyy") & _
+'                      Format(XLF_VALOR * 100, "0000000000000") & _
+'                      Format(DatContaCorrente.Recordset.Fields!banc_cd_Codigo, "000") & _
+'                      "00000" & _
+'                      "02" & _
+'                      "N"
+'
+'           XLT_TEXTO = XLT_TEXTO & _
+'                      Format(DtpExportacao, "ddmmyy") & _
+'                      Format(TxtInstrucao1.Text, "00") & Space(2 - Len(Format(TxtInstrucao1.Text, "00"))) & _
+'                      Format(TxtInstrucao2.Text, "00") & Space(2 - Len(Format(TxtInstrucao2.Text, "00"))) & _
+'                      FunZeros(13) & _
+'                      XLT_DATADESCONTO & _
+'                      Format(XLF_DESCONTO * 100, "0000000000000") & _
+'                      FunZeros(13) & _
+'                      FunZeros(13) & _
+'                      XLT_TIPO & _
+'                      Format(XLT_CGCCPF, "00000000000000") & _
+'                      XLT_NOME & _
+'                      XLT_ENDERECO & _
+'                      XLT_BAIRRO & _
+'                      XLT_CEP & _
+'                      XLT_CIDADE & _
+'                      XLT_ESTADO & _
+'                      XLT_MENSAGEM1 & _
+'                      Format(XLI_PRAZOMORA, "00") & _
+'                      Space(1) & _
+'                      Format(XLI_NUMSQUENCIAL, "000000")
+'
+'          Print #1, funTiraAcento(XLT_TEXTO, True)
+'
+'          If OptIndexador1.Value = True Then
+'            If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda1) Then
+'              XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda1
+'            Else
+'              XLT_CODMOEDA = ""
+'            End If
+'          ElseIf OptIndexador2.Value = True Then
+'            If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda2) Then
+'              XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda2
+'            Else
+'              XLT_CODMOEDA = ""
+'            End If
+'          Else
+'            XLT_CODMOEDA = ""
+'          End If
+'
+'          Conexao.Execute ("UPDATE Titulos Set titu_tx_ExpBanco='S'," & _
+'            " moed_cd_Moeda3=" & FunNuloBancoVal(XLT_CODMOEDA) & "," & _
+'            " titu_vl_Seguro=" & FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8))) & _
+'            " WHERE empr_cd_Empresa=" & PCodEmpresa & _
+'            " AND empd_cd_empreendimento='" & Left(XFO_EXPORTACAO!Titulo, 4) & "'" & _
+'            " AND imov_cd_imovel='" & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & "'" & _
+'            " AND cont_cd_Contrato='" & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & "'" & _
+'            " AND titu_cd_Plano='" & Mid(XFO_EXPORTACAO!Titulo, 14, 2) & "'" & _
+'            " AND titu_cd_Parcela='" & Mid(XFO_EXPORTACAO!Titulo, 17, 3) & "'" & _
+'            " AND titu_cd_Residuo='" & Right(XFO_EXPORTACAO!Titulo, 2) & "'")
+'
+'
+'            '******************REGISTRA LOG DA OPERAÇÃO**************************
+'            ReDim XGM_MATRIZLOG(8, 2) As Variant
+'
+'            XGM_MATRIZLOG(0, 0) = "Título"
+'            XGM_MATRIZLOG(1, 0) = "Moeda"
+'            XGM_MATRIZLOG(2, 0) = "Valor Seguro"
+'            XGM_MATRIZLOG(3, 0) = "Valor do título"
+'            XGM_MATRIZLOG(4, 0) = "Valor do desconto"
+'            XGM_MATRIZLOG(5, 0) = "Conta corrente"
+'            XGM_MATRIZLOG(6, 0) = "Data Venc. Título"
+'            XGM_MATRIZLOG(7, 0) = "Data Venc. Desconto"
+'
+'            XGM_MATRIZLOG(0, 1) = XFO_EXPORTACAO!Titulo
+'            XGM_MATRIZLOG(1, 1) = FunNuloBancoVal(XLT_CODMOEDA)
+'            XGM_MATRIZLOG(2, 1) = FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8)))
+'            XGM_MATRIZLOG(3, 1) = XLF_VALOR
+'            XGM_MATRIZLOG(4, 1) = XLF_DESCONTO
+'            XGM_MATRIZLOG(5, 1) = DatContaCorrente.Recordset.Fields!coco_cd_Agencia & "-" & DatContaCorrente.Recordset.Fields!coco_tx_Conta & DatContaCorrente.Recordset.Fields!coco_nr_Dac
+'            XGM_MATRIZLOG(6, 1) = XFO_EXPORTACAO!titu_dt_Vencimento
+'            XGM_MATRIZLOG(7, 1) = XLT_DATADESCONTO
+'
+'            Call subRegistraLog("TelaSelecionaTitulos", "1", funCriaDescricaoLog(XGM_MATRIZLOG, EXPORTACAO_CAPI, PAGAMENTO_ELETRONICO_ITAU))
+'            '*******************************************************************
+'
+'          XLI_NUMSQUENCIAL = XLI_NUMSQUENCIAL + 1
+'
+'      End If
+'
+'      TDBGrid1.MoveNext
+'      XFO_EXPORTACAO.MoveNext
+'  Wend
+'
+'  '******TRAILER DE ARQUIVO*******
+'  XLT_TEXTO = "9" & _
+'              Space(393) & _
+'              Format(XLI_NUMSQUENCIAL, "000000")
+'
+'  Print #1, funTiraAcento(XLT_TEXTO, True)
+'  '**********************************************
+'  Close #1
          
-  MsgBox "Exportação realizada com sucesso!", vbInformation + vbOKOnly, "ATENÇÃO"
+  MsgBox "Emissão de boletos realizada com sucesso!", vbInformation + vbOKOnly, "ATENÇÃO"
   
  Conexao.CommitTrans
   subDesabilitaBotoes
@@ -3966,7 +3983,7 @@ Private Sub CmdFiltro_Click()
     Dim XLI_POS As Integer
     Dim XLI_POS2 As Integer
     
-    Set Formulario = TelaExpBancaria
+    Set Formulario = TelaSelecionaTitulos
     subTelaValoresGlobais "P"
     TelaFiltro.Show 1 'Mostra a tela de filtros no modo modal
     subTelaValoresGlobais "G"
@@ -4330,7 +4347,7 @@ Private Sub CmdPesquisar_Click()
     
   TDBGrid1.Refresh
 
-  CmdExportar.Enabled = True
+  CmdExecuteAction.Enabled = True
   CmdDesconto.Enabled = True
   filtra_especial = True
   subTelaValoresGlobais "G"
@@ -4370,7 +4387,7 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, y
            Or TDBGrid1.ColContaining(X) = 6 Or TDBGrid1.ColContaining(X) = 7 Or TDBGrid1.ColContaining(X) = 8 Then
             MsgBox "Esta coluna não pode ser filtrada."
         Else
-            Set Formulario = TelaExpBancaria
+            Set Formulario = TelaSelecionaTitulos
             subTelaValoresGlobais "P"
         
             FunExecutaFiltroUnbound Array("Titulo", "Exporta", "titu_dt_Vencimento", "ValorReal", _
@@ -4388,7 +4405,7 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, y
               MsgBox "Não existem pagamentos pendentes com esses filtros!", vbInformation + vbOKOnly, "ATENÇÃO"
               CmdDesmarcar.Enabled = False
               CmdMarcar.Enabled = False
-              CmdExportar.Enabled = False
+              CmdExecuteAction.Enabled = False
               CmdDesconto.Enabled = False
               CmdImprimir.Enabled = False
               TDBGrid1.Enabled = False
@@ -4415,7 +4432,7 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, y
 End Sub
 
 Private Sub Form_Activate()
-    Set Formulario = TelaExpBancaria
+    Set Formulario = TelaSelecionaTitulos
     
     'Call AjustarTela
     
@@ -4438,7 +4455,7 @@ End Sub
 
 Private Sub Form_Load()
     
-    Set Formulario = TelaExpBancaria
+    Set Formulario = TelaSelecionaTitulos
     
     Call AjustaTela
         
@@ -4477,7 +4494,14 @@ Private Sub Form_Load()
       TDBGrid1.Splits(1).Size = 11
     End If
         
+    If XGT_TIPO = "B" Then
+        CmdExecuteAction.Caption = "&Emitir Boletos"
+    Else
+        CmdExecuteAction.Caption = "&Exportar"
+    End If
+    
     subDesabilitaBotoes
+    
     TDBGrid1.Enabled = False
     DtpVencimento.Value = Date
     DtpExportacao.Value = Date
@@ -4485,7 +4509,7 @@ Private Sub Form_Load()
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-   '*subManutencaoJanelasAtivas "R", "TelaExpBancaria"
+   '*subManutencaoJanelasAtivas "R", "TelaSelecionaTitulos"
    Unload Me
 End Sub
 

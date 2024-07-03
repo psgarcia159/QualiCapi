@@ -172,11 +172,11 @@ Function FunDigito(KeyAscii As Integer)
 End Function
 
 'Trata variavel para incluir valor nulo em campo de tabelas
-Function FunNulo(Texto As Variant) As String
-    If IsNull(Texto) Or IsEmpty(Texto) Or Texto = "" Then
+Function FunNulo(texto As Variant) As String
+    If IsNull(texto) Or IsEmpty(texto) Or texto = "" Then
         FunNulo = ""
     Else
-        FunNulo = Texto
+        FunNulo = texto
     End If
 End Function
 
@@ -189,19 +189,19 @@ Function funNull(XLV_Valor As Variant) As Variant
   End If
 End Function
 
-Function funNuloDataHora(Texto As Variant, Banco As String, Tipo As String) As String
+Function funNuloDataHora(texto As Variant, Banco As String, Tipo As String) As String
     'xTipo define se a hora é de inicio ou de fim
-    If Not IsDate(Texto) Then
+    If Not IsDate(texto) Then
         funNuloDataHora = "Null"
     ElseIf Banco = "Access" Then
-            funNuloDataHora = "#" & Format(CVDate(Texto), "MM/DD/YY")
+            funNuloDataHora = "#" & Format(CVDate(texto), "MM/DD/YY")
             If Tipo = "I" Then
                 funNuloDataHora = funNuloDataHora & " 00:00#"
             Else
                 funNuloDataHora = funNuloDataHora & " 23:59#"
             End If
         ElseIf Banco = "Sql Server" Then
-            funNuloDataHora = "'" & Format(CVDate(Texto), "MM/DD/YY")
+            funNuloDataHora = "'" & Format(CVDate(texto), "MM/DD/YY")
             If Tipo = "I" Then
                 funNuloDataHora = funNuloDataHora & " 00:00'"
             Else
@@ -273,47 +273,47 @@ End Function
 
 
 'Torna o preenchimento do combo obrigatório
-Function FunObrigatorioCBO(combo As DataCombo, Texto As String) As Boolean
+Function FunObrigatorioCBO(combo As DataCombo, texto As String) As Boolean
     If combo.Text = "" Then
-        MsgBox Texto, vbCritical, "CAMPO OBRIGATÓRIO"
+        MsgBox texto, vbCritical, "CAMPO OBRIGATÓRIO"
         FunObrigatorioCBO = True
         If combo.Enabled = True Then combo.SetFocus
     End If
 End Function
 
-Function FunNuloData(Texto As Variant, Banco As String) As String
-    If Not IsDate(Texto) Then
+Function FunNuloData(texto As Variant, Banco As String) As String
+    If Not IsDate(texto) Then
         FunNuloData = "Null"
     ElseIf Banco = "Access" Then
-        FunNuloData = "#" & Format(CVDate(Texto), "MM/DD/YY") & "#"
+        FunNuloData = "#" & Format(CVDate(texto), "MM/DD/YY") & "#"
     ElseIf Banco = "Sql Server" Then
-        FunNuloData = "'" & Format(CVDate(Texto), "MM/DD/YY") & "'"
+        FunNuloData = "'" & Format(CVDate(texto), "MM/DD/YY") & "'"
     Else
-        FunNuloData = "'" & Format(CVDate(Texto), "MM/DD/YY") & "'"
+        FunNuloData = "'" & Format(CVDate(texto), "MM/DD/YY") & "'"
     End If
 End Function
 
-Function FunNuloVal(Texto As Variant) As String
-    If IsNull(Texto) Or IsEmpty(Texto) Or Texto = "" Then
+Function FunNuloVal(texto As Variant) As String
+    If IsNull(texto) Or IsEmpty(texto) Or texto = "" Then
         FunNuloVal = 0
     Else
-        FunNuloVal = Texto
+        FunNuloVal = texto
     End If
 End Function
 
-Function FunNuloBancoVal(Texto As Variant) As String
-    If IsNull(Texto) Or Texto = Empty Then
+Function FunNuloBancoVal(texto As Variant) As String
+    If IsNull(texto) Or texto = Empty Then
         FunNuloBancoVal = "Null"
     Else
-        FunNuloBancoVal = Trim(Str(Texto))
+        FunNuloBancoVal = Trim(Str(texto))
     End If
 End Function
 
-Function FunNuloBanco(Texto As Variant) As String
-    If IsNull(Texto) Or Texto = Empty Then
+Function FunNuloBanco(texto As Variant) As String
+    If IsNull(texto) Or texto = Empty Then
         FunNuloBanco = "Null"
     Else
-        FunNuloBanco = Trim(Str(Texto))
+        FunNuloBanco = Trim(Str(texto))
     End If
 End Function
 
@@ -502,3 +502,4 @@ Function FunZeros(XLI_QTD As Integer) As String
    FunZeros = XLT_ZEROS
    
 End Function
+

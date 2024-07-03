@@ -1,10 +1,10 @@
 Attribute VB_Name = "ModuloGenerico"
 Option Explicit
-Sub subCarregaVariaveis(Sql As String)
+Sub subCarregaVariaveis(sql As String)
     'Atribui os parâmetros às variáveis globais
     '*Ordem = OrdemTabela
     '*Campos_Obrig = CamposObrigatorios
-    FiltroOrig = funTrataSql(Sql)
+    FiltroOrig = funTrataSql(sql)
     FiltroAtual = FiltroOrig
     
     'Inicializa as variáveis de controle de filtro da tabela
@@ -106,9 +106,7 @@ Function FunDefinirUltimoLote(Data As Date) As Integer
   End If
 End Function
 
-
-
-Sub subImprimeListagemGRIDUnBound(xOrientacao As Integer, xGrid As TrueDBGrid70.PrintInfo, Texto As String)
+Sub subImprimeListagemGRIDUnBound(xOrientacao As Integer, xGrid As TrueDBGrid70.PrintInfo, texto As String)
     With xGrid
         ' Setar margens a depender do tipo de impressão
         If xOrientacao = 1 Then
@@ -138,7 +136,7 @@ Sub subImprimeListagemGRIDUnBound(xOrientacao As Integer, xGrid As TrueDBGrid70.
         .PageHeaderFont.Name = "Arial"
         .PageHeaderFont.Size = 12
         .PageHeaderFont.Bold = True
-        .PageHeader = Texto + " \t\t" + CStr(Now)
+        .PageHeader = texto + " \t\t" + CStr(Now)
         
         ' O Cabeçalho e o rodapé devem aparecer em todas as páginas
         .RepeatColumnHeaders = True
@@ -155,7 +153,6 @@ Sub subImprimeListagemGRIDUnBound(xOrientacao As Integer, xGrid As TrueDBGrid70.
         xGrid.PrintPreview
     End If
     
-
 End Sub
 
 
