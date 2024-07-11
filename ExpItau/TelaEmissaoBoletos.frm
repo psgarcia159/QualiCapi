@@ -113,7 +113,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   141754371
+         Format          =   76152835
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -286,39 +286,39 @@ Begin VB.Form TelaEmissaoBoletos
          TabCaption(1)   =   "Empreendimentos"
          TabPicture(1)   =   "TelaEmissaoBoletos.frx":08E6
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(1)=   "LlbEmpreendimento"
-         Tab(1).Control(2)=   "TDBGridEmpr1"
-         Tab(1).Control(3)=   "TDBGridEmpr2"
-         Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(6)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(4)=   "TDBGridEmpr2"
+         Tab(1).Control(5)=   "TDBGridEmpr1"
+         Tab(1).Control(6)=   "LlbEmpreendimento"
+         Tab(1).Control(7)=   "Label1"
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
          TabPicture(2)   =   "TelaEmissaoBoletos.frx":0902
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "Label3"
-         Tab(2).Control(1)=   "Label2"
-         Tab(2).Control(2)=   "TDBGridMoeda2"
-         Tab(2).Control(3)=   "TDBGridMoeda1"
+         Tab(2).Control(0)=   "CmdRemoverMoeda"
+         Tab(2).Control(1)=   "CmdInserirMoeda"
+         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(5)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(7)=   "CmdInserirMoeda"
-         Tab(2).Control(8)=   "CmdRemoverMoeda"
+         Tab(2).Control(5)=   "TDBGridMoeda1"
+         Tab(2).Control(6)=   "TDBGridMoeda2"
+         Tab(2).Control(7)=   "Label2"
+         Tab(2).Control(8)=   "Label3"
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
          TabPicture(3)   =   "TelaEmissaoBoletos.frx":091E
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "Label5"
-         Tab(3).Control(1)=   "Label4"
-         Tab(3).Control(2)=   "TDBGridObs1"
-         Tab(3).Control(3)=   "TDBGridObs2"
-         Tab(3).Control(4)=   "CmdRemoverObservacao"
-         Tab(3).Control(5)=   "CmdInserirObservacao"
-         Tab(3).Control(6)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(7)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(0)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(1)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(2)=   "CmdInserirObservacao"
+         Tab(3).Control(3)=   "CmdRemoverObservacao"
+         Tab(3).Control(4)=   "TDBGridObs2"
+         Tab(3).Control(5)=   "TDBGridObs1"
+         Tab(3).Control(6)=   "Label4"
+         Tab(3).Control(7)=   "Label5"
          Tab(3).ControlCount=   8
          Begin VB.CommandButton CmdRemoverEmpreendimento 
             BackColor       =   &H00000000&
@@ -985,7 +985,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   141230083
+            Format          =   142213123
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -998,7 +998,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   141230083
+            Format          =   142213123
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -3174,7 +3174,7 @@ End Function
 
 Private Sub cboSacadorAvalista_Click(Area As Integer)
   If cboSacadorAvalista.BoundText <> "" Then
-    DatEmpresa.Recordset.Bookmark = cboSacadorAvalista.SelectedItem
+    datEmpresa.Recordset.Bookmark = cboSacadorAvalista.SelectedItem
   End If
 
 
@@ -3784,8 +3784,7 @@ Private Sub CmdEmitirBoletos_Click()
                     XLI_PRAZOMORA = 0
                 End If
             End If
-            
-            
+                        
             ' If TxtInstrucao1.Text = "93" Or TxtInstrucao2.Text = "93" Then
             '       XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 30) & Space(30 - Len(TxtMensagem1.Text)) & Space(4) & XLT_DATAMORA
             ' ElseIf TxtInstrucao1.Text = "94" Or TxtInstrucao2.Text = "94" Then
@@ -3986,16 +3985,16 @@ Private Sub CmdEmitirBoletos_Click()
                 XLT_PAYLOAD = XLT_PAYLOAD & _
                 FunJsonString("sacador_avalista", "{ ", False) & _
                 FunJsonString("pessoa", "{ ", False) & _
-                FunJsonString("nome_pessoa", DatEmpresa.Recordset.Fields!empr_tx_razaosocial) & ", " & _
+                FunJsonString("nome_pessoa", datEmpresa.Recordset.Fields!empr_tx_razaosocial) & ", " & _
                 FunJsonString("tipo_pessoa", "{ ", False) & _
                 FunJsonString("codigo_tipo_pessoa", "J") & ", " & _
-                FunJsonString("numero_cadastro_nacional_pessoa_juridica", Replace(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_CGC, ".", ""), "/", ""), "-", "")) & "} }, " & _
+                FunJsonString("numero_cadastro_nacional_pessoa_juridica", Replace(Replace(Replace(datEmpresa.Recordset.Fields!empr_tx_CGC, ".", ""), "/", ""), "-", "")) & "} }, " & _
                 FunJsonString("endereco", "{ ", False) & _
-                FunJsonString("nome_logradouro", DatEmpresa.Recordset.Fields!empr_tx_endereco) & ", " & _
-                FunJsonString("nome_bairro", DatEmpresa.Recordset.Fields!empr_tx_Bairro) & ", " & _
-                FunJsonString("nome_cidade", DatEmpresa.Recordset.Fields!empr_tx_cidade) & ", " & _
-                FunJsonString("sigla_UF", DatEmpresa.Recordset.Fields!empr_tx_Estado) & ", " & _
-                FunJsonString("numero_CEP", Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", "")) & "} }, "
+                FunJsonString("nome_logradouro", datEmpresa.Recordset.Fields!empr_tx_endereco) & ", " & _
+                FunJsonString("nome_bairro", datEmpresa.Recordset.Fields!empr_tx_Bairro) & ", " & _
+                FunJsonString("nome_cidade", datEmpresa.Recordset.Fields!empr_tx_cidade) & ", " & _
+                FunJsonString("sigla_UF", datEmpresa.Recordset.Fields!empr_tx_Estado) & ", " & _
+                FunJsonString("numero_CEP", Replace(Replace(datEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", "")) & "} }, "
             End If
 
             XLT_PAYLOAD = XLT_PAYLOAD & _
@@ -4032,9 +4031,9 @@ Private Sub CmdEmitirBoletos_Click()
 
             ' 1.3   - Registrar o(s) boleto(s) no banco via API
             ' --------------------------------------------------------------------------------------------
-            MsgBox "Parsed object input: " & XLT_PAYLOAD
+            MsgBox "Parsed object input to Itau API: " & XLT_PAYLOAD
             XLT_RESULT = FunPostBoleto(XLT_PAYLOAD)
-            MsgBox "Parsed object output: " & JSON.toString(XLT_RESULT)
+            MsgBox "Parsed object output from Itau API: " & JSON.toString(XLT_RESULT)
             
             ' 1.3.1   - Se token de autenticação inválido/inexistente, faz uma nova autenticação e guarda informações de expiração para controle de refresh
             ' --------------------------------------------------------------------------------------------
@@ -4197,12 +4196,15 @@ Private Sub CmdEmitirBoletos_Click()
             '  }
             '
             
-            
             ' 1.4.1   - Enviar os dados do boleto para a biblioteca (incluindo e-mails e dados para criação de PDFs com senhas/criptografia)
             ' --------------------------------------------------------------------------------------------
-            MsgBox "Parsed object input: " & XLT_PAYLOAD
+            XLT_PAYLOAD = FunReadJsonFile("BancoItauBoletoTeste.json")      ' carrega arquivo de teste
+            
+            MsgBox "Parsed object input to Boleto2Net: " & XLT_PAYLOAD
+            
             XLT_RESULT = BoletoService.EmiteBoleto(XLT_PAYLOAD)
-            MsgBox "Parsed object output: " & JSON.toString(XLT_RESULT)
+            
+            MsgBox "Parsed object output from Boleto2Net: " & JSON.toString(XLT_RESULT)
 
             ' 1.4.2   - Tratar o retorno, identificando os dados retornados. Se algum erro, adicionar o titulo à uma lista ou corrigir status do boleto.
             ' --------------------------------------------------------------------------------------------
@@ -4666,13 +4668,13 @@ Private Sub TDBGrid1_FetchRowStyle(ByVal Split As Integer, Bookmark As Variant, 
     End If
 End Sub
 
-Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, y As Single)
+Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
     
     Dim XLI_POS As Integer
     
     If Button = 2 Then   'Verifica se o botão da direita foi pressionado
-        If TDBGrid1.ColContaining(X) = 1 Or TDBGrid1.ColContaining(X) = 3 Or TDBGrid1.ColContaining(X) = 5 _
-           Or TDBGrid1.ColContaining(X) = 6 Or TDBGrid1.ColContaining(X) = 7 Or TDBGrid1.ColContaining(X) = 8 Then
+        If TDBGrid1.ColContaining(x) = 1 Or TDBGrid1.ColContaining(x) = 3 Or TDBGrid1.ColContaining(x) = 5 _
+           Or TDBGrid1.ColContaining(x) = 6 Or TDBGrid1.ColContaining(x) = 7 Or TDBGrid1.ColContaining(x) = 8 Then
             MsgBox "Esta coluna não pode ser filtrada."
         Else
             Set Formulario = TelaEmissaoBoletos
@@ -4680,7 +4682,7 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, y
         
             FunExecutaFiltroUnbound Array("Titulo", "Exporta", "titu_dt_Vencimento", "ValorReal", _
               "obse_tx_Observacao", "titu_vl_Desconto", "LimiteDesconto", "ValorTitulo", _
-              "Seguro", "SaldoDevedor"), VFV_VETOREXP, TDBGrid1, Formulario, X, XFT_SQL
+              "Seguro", "SaldoDevedor"), VFV_VETOREXP, TDBGrid1, Formulario, x, XFT_SQL
             
             subHabilitaBotoes
             subTelaValoresGlobais "G"
@@ -4769,7 +4771,7 @@ Private Sub Form_Load()
     
     ' Alterado em 24/06/2024 por PSG, para atender à emissão de boletos com sacador-avalista
     ' subConectarControleDadosNV DatEmpresa, "SELECT empr_cd_empresa, empr_tx_razaosocial FROM Empresas", Estatico
-    subConectarControleDadosNV DatEmpresa, "SELECT * FROM Empresas", Estatico
+    subConectarControleDadosNV datEmpresa, "SELECT * FROM Empresas", Estatico
     
     PanPesquisa.Left = (TDBGrid1.Width - PanPesquisa.Width) / 2
     PanPesquisa.Top = (TDBGrid1.Height - PanPesquisa.Height) / 2

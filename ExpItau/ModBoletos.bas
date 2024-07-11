@@ -55,7 +55,7 @@ Public Function FunReadJsonFile(FileName As String) As String
 
     FilePath = App.Path & "\\" & FileName
     
-    MsgBox "FilePath arquivo Boletos.json: " & FilePath, , "Aviso: FunReadJsonFile"
+'    MsgBox "FilePath arquivo Boletos.json: " & FilePath, , "Aviso: FunReadJsonFile"
 
     If LenB(Dir$(FilePath)) > 0 Then
         handle = FreeFile
