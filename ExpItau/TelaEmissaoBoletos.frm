@@ -113,7 +113,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   157417475
+         Format          =   141754371
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -985,7 +985,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   157810691
+            Format          =   141230083
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -998,7 +998,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   157810691
+            Format          =   141230083
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -2747,8 +2747,9 @@ Dim FRM_XInserir As String          'Flag para identificar se entrou na rotina p
 Dim FRM_XOrigem As String           'Identifica a origem (que formulario) chamou o formulário ativo
 Dim FRM_SQLAtivo As String          'Atualizar o SQL Ativo após modificações de filtro e ordem
 
-Dim XFT_SQL As String                   'Prepara Select para o vetor do grid
-Dim XFT_SQL2 As String                  'Prepara Select para o recordset auxiliar
+Dim XFT_SQL As String               'Prepara Select para o vetor do grid
+Dim XFT_SQL2 As String              'Prepara Select para o recordset auxiliar
+
 
 Sub AjustaTela()
     'Ajustar a Tela à resolução do monitor
@@ -3605,7 +3606,12 @@ Private Sub CmdEmitirBoletos_Click()
     Dim XLI_PRAZOMORA As Integer
     Dim XLT_CODMOEDA As String
     Dim XLT_PAYLOAD As String         ' Payload em Json para registro do boleto na API
-    Dim lixo As Variant
+    Dim XLT_RESULT As Variant
+
+    ' Instancia o componente COM para geração do Boleto
+    Dim BoletoService As Boleto2Net.BoletoService
+    Set BoletoService = New Boleto2Net.BoletoService
+    
 
     ' Valida titulos selecionados no Grid
     ' --------------------------------------------------------------------------------------------
@@ -3778,7 +3784,8 @@ Private Sub CmdEmitirBoletos_Click()
                     XLI_PRAZOMORA = 0
                 End If
             End If
-
+            
+            
             ' If TxtInstrucao1.Text = "93" Or TxtInstrucao2.Text = "93" Then
             '       XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 30) & Space(30 - Len(TxtMensagem1.Text)) & Space(4) & XLT_DATAMORA
             ' ElseIf TxtInstrucao1.Text = "94" Or TxtInstrucao2.Text = "94" Then
@@ -3793,6 +3800,7 @@ Private Sub CmdEmitirBoletos_Click()
             '               XLT_MENSAGEM1 = Left(Me.cboSacadorAvalista.Text, 30) & Space(30 - Len(Left(Me.cboSacadorAvalista.Text, 30))) & Space(4) & XLT_DATAMORA
             '       End If
             ' End If
+
 
             ' 1.2 - Montar o(s) boleto(s) em memória, em Json, para registrar via API
             ' --------------------------------------------------------------------------------------------
@@ -4025,24 +4033,176 @@ Private Sub CmdEmitirBoletos_Click()
             ' 1.3   - Registrar o(s) boleto(s) no banco via API
             ' --------------------------------------------------------------------------------------------
             MsgBox "Parsed object input: " & XLT_PAYLOAD
-            lixo = FunPostBoleto(XLT_PAYLOAD)
-            MsgBox "Parsed object output: " & JSON.toString(lixo)
+            XLT_RESULT = FunPostBoleto(XLT_PAYLOAD)
+            MsgBox "Parsed object output: " & JSON.toString(XLT_RESULT)
             
-
             ' 1.3.1   - Se token de autenticação inválido/inexistente, faz uma nova autenticação e guarda informações de expiração para controle de refresh
             ' --------------------------------------------------------------------------------------------
-
             ' 1.3.2   - Montar e enviar os dados para a API
             ' --------------------------------------------------------------------------------------------
-            
             ' 1.3.3   - Tratar o retorno, identificando códigos de resposta e dados retornados via Json. Se algum erro, adicionar o titulo à uma lista ou corrigir status do boleto
             ' --------------------------------------------------------------------------------------------
 
             ' 1.4   - Emitir boleto, salvar em PDF e enviar email via COM usando biblioteca externa (dll)
             ' --------------------------------------------------------------------------------------------
-
+            '
+            ' Json Schema/formato esperado (dados de exemplo)
+            ' -----------------------------------------------------------------------
+            '  {
+            '      "PathToFiles":                                   "C:\\Temp\\Boletos",
+            '      "Boleto": {
+            '          "Aceite":                                    "A",
+            '          "AgenciaCobradoraRecebedora":                "",
+            '          "AvisoDebitoAutomatico":                     "",
+            '          "BancoCobradorRecebedor":                    "",
+            '          "Carteira":                                  "",
+            '          "CarteiraImpressaoBoleto":                   "",
+            '          "CodigoBaixaDevolucao":                      0,
+            '          "CodigoInstrucao1":                          "",
+            '          "CodigoInstrucao2":                          "",
+            '          "CodigoInstrucao3":                          "",
+            '          "CodigoMoeda":                               9,
+            '          "CodigoOcorrencia":                          "",
+            '          "CodigoOcorrenciaAuxiliar":                  "",
+            '          "CodigoProtesto":                            0,
+            '          "ComplementoInstrucao1":                     "",
+            '          "ComplementoInstrucao2":                     "",
+            '          "ComplementoInstrucao3":                     "",
+            '          "DataCredito":                               "2024-07-09",
+            '          "DataDesconto":                              "2024-07-09",
+            '          "DataEmissao":                               "2024-07-09",
+            '          "DataJuros":                                 "2024-07-09",
+            '          "DataMulta":                                 "2024-07-09",
+            '          "DataProcessamento":                         "2024-07-09",
+            '          "DataVencimento":                            "2024-07-15",
+            '          "Demonstrativos":                            "",
+            '          "DescricaoOcorrencia":                       "",
+            '          "DiasBaixaDevolucao":                        30,
+            '          "DiasProtesto":                              3,
+            '          "EspecieDocumento":                          12,
+            '          "EspecieMoeda":                              "R$",
+            '          "IdentificadorDebitoAutomatico":             "",
+            '          "ImprimirValoresAuxiliares":                 true,
+            '          "MensagemArquivoRemessa":                    "MensagemArquivoRemessa",
+            '          "MensagemInstrucoesCaixa":                   "MensagemInstrucoesCaixa",
+            '          "NossoNumero":                               "CA123456",
+            '          "NossoNumeroDV":                             "X",
+            '          "NossoNumeroFormatado":                      "109/CA123456-X",
+            '          "NumeroControleParticipante":                "1234567890",
+            '          "NumeroDocumento":                           "98765",
+            '          "PercentualJurosDia":                        1.5,
+            '          "PercentualMulta":                           3.0,
+            '          "QRCode":                                    "",
+            '          "QuantidadeMoeda":                           0,
+            '          "RegistroArquivoRetorno":                    "",
+            '          "TipoCarteira":                              1,
+            '          "UsoBanco":                                  "",
+            '          "ValorAbatimento":                           0.00,
+            '          "ValorDesconto":                             0.00,
+            '          "ValorIOF":                                  20.00,
+            '          "ValorJurosDia":                             10.00,
+            '          "ValorMoeda":                                "",
+            '          "ValorMulta":                                0.00,
+            '          "ValorOutrasDespesas":                       0.00,
+            '          "ValorOutrosCreditos":                       0.00,
+            '          "ValorPago":                                 0.00,
+            '          "ValorPagoCredito":                          0.00,
+            '          "ValorTarifas":                              0.00,
+            '          "ValorTitulo":                               1000.00,
+            '          "VariacaoCarteira":                          ""
+            '      },
+            '      "Banco": {
+            '          "Codigo":                                    341,
+            '          "Digito":                                    "7",
+            '          "Nome":                                      "Itaú",
+            '          "RemoveAcentosArquivoRemessa":               true
+            '      },
+            '      "Cedente": {
+            '          "CPFCNPJ":                                   "86.875.666/0001-09",
+            '          "Codigo":                                    "987654321",
+            '          "CodigoDV":                                  "0",
+            '          "CodigoFormatado":                           "987654321-0",
+            '          "CodigoTransmissao":                         "",
+            '          "MostrarCNPJnoBoleto":                       true,
+            '          "Nome":                                      "Cedente Teste",
+            '          "Observacoes":                               "",
+            '          "TipoCPFCNPJ":                               "J",
+            '          "ContaBancaria": {
+            '              "Agencia":                               "1234",
+            '              "CarteiraPadrao":                        "109",
+            '              "CodigoBancoCorrespondente":             0,
+            '              "Conta":                                 "56789",
+            '              "DigitoAgencia":                         "",
+            '              "DigitoConta":                           "0",
+            '              "LocalPagamento":                        "",
+            '              "MensagemFixaSacado":                    "Mensagem fixa sacado",
+            '              "MensagemFixaTopoBoleto":                "Mensagem fixa topo boleto",
+            '              "NossoNumeroBancoCorrespondente":        "12345678",
+            '              "OperacaoConta":                         "",
+            '              "TipoCarteiraPadrao":                    1,
+            '              "TipoDistribuicao":                      2,
+            '              "TipoDocumento":                         1,
+            '              "TipoFormaCadastramento":                1,
+            '              "TipoImpressaoBoleto":                   2,
+            '              "VariacaoCarteiraPadrao":                ""
+            '          },
+            '          "Endereco": {
+            '              "LogradouroEndereco":                    "Rua Teste do Banco",
+            '              "LogradouroNumero":                      "1234",
+            '              "LogradouroComplemento":                 "Conunto 341",
+            '              "Bairro":                                "Brotas",
+            '              "Cidade":                                "Salvador",
+            '              "UF ":                                   "BA",
+            '              "CEP":                                   "4000000"
+            '          }
+            '      },
+            '      "Sacado": {
+            '          "CPFCNPJ":                                   "71.738.978/0001-01",
+            '          "Nome":                                      "Sacado Teste PJ",
+            '          "Observacoes":                               "Matricula 123/4",
+            '          "Endereco": {
+            '              "LogradouroEndereco":                    "Rua Teste do Sacado",
+            '              "LogradouroNumero":                      "567",
+            '              "LogradouroComplemento":                 "Edf. Mandarim",
+            '              "Bairro":                                "Caminho das Árvores",
+            '              "Cidade":                                "Salvador",
+            '              "UF ":                                   "BA",
+            '              "CEP":                                   "41820774"
+            '          }
+            '      },
+            '      "Avalista": {
+            '          "CPFCNPJ":                                   "86.875.666/0001-09",
+            '          "Nome":                                      "Avalista Sem Nome",
+            '          "Observacoes":                               "Observacoes inválidas",
+            '          "Endereco": {
+            '              "LogradouroEndereco":                    "Rua Teste do Avalista",
+            '              "LogradouroNumero":                      "370",
+            '              "LogradouroComplemento":                 "Apto. 1705",
+            '              "Bairro":                                "Caminho das Árvores",
+            '              "Cidade":                                "Salvador",
+            '              "UF ":                                   "BA",
+            '              "CEP":                                   "41820123"
+            '          }
+            '      },
+            '      "CodigoBarra": {
+            '          "CampoLivre":                                "",
+            '          "CodigoBanco":                               "CodigoBanco",
+            '          "CodigoDeBarras":                            "34191719500000600001090022335021234567890000",
+            '          "DigitoVerificador":                         "1",
+            '          "FatorVencimento":                           0.00,
+            '          "LinhaDigitavel":                            "34191.09008 22335.021238 45678.900007 1 71950000100000",
+            '          "Moeda":                                     9,
+            '          "ValorDocumento":                            "100000"
+            '      }
+            '  }
+            '
+            
+            
             ' 1.4.1   - Enviar os dados do boleto para a biblioteca (incluindo e-mails e dados para criação de PDFs com senhas/criptografia)
             ' --------------------------------------------------------------------------------------------
+            MsgBox "Parsed object input: " & XLT_PAYLOAD
+            XLT_RESULT = BoletoService.EmiteBoleto(XLT_PAYLOAD)
+            MsgBox "Parsed object output: " & JSON.toString(XLT_RESULT)
 
             ' 1.4.2   - Tratar o retorno, identificando os dados retornados. Se algum erro, adicionar o titulo à uma lista ou corrigir status do boleto.
             ' --------------------------------------------------------------------------------------------
@@ -4506,13 +4666,13 @@ Private Sub TDBGrid1_FetchRowStyle(ByVal Split As Integer, Bookmark As Variant, 
     End If
 End Sub
 
-Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, y As Single)
     
     Dim XLI_POS As Integer
     
     If Button = 2 Then   'Verifica se o botão da direita foi pressionado
-        If TDBGrid1.ColContaining(x) = 1 Or TDBGrid1.ColContaining(x) = 3 Or TDBGrid1.ColContaining(x) = 5 _
-           Or TDBGrid1.ColContaining(x) = 6 Or TDBGrid1.ColContaining(x) = 7 Or TDBGrid1.ColContaining(x) = 8 Then
+        If TDBGrid1.ColContaining(X) = 1 Or TDBGrid1.ColContaining(X) = 3 Or TDBGrid1.ColContaining(X) = 5 _
+           Or TDBGrid1.ColContaining(X) = 6 Or TDBGrid1.ColContaining(X) = 7 Or TDBGrid1.ColContaining(X) = 8 Then
             MsgBox "Esta coluna não pode ser filtrada."
         Else
             Set Formulario = TelaEmissaoBoletos
@@ -4520,7 +4680,7 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, x As Single, y
         
             FunExecutaFiltroUnbound Array("Titulo", "Exporta", "titu_dt_Vencimento", "ValorReal", _
               "obse_tx_Observacao", "titu_vl_Desconto", "LimiteDesconto", "ValorTitulo", _
-              "Seguro", "SaldoDevedor"), VFV_VETOREXP, TDBGrid1, Formulario, x, XFT_SQL
+              "Seguro", "SaldoDevedor"), VFV_VETOREXP, TDBGrid1, Formulario, X, XFT_SQL
             
             subHabilitaBotoes
             subTelaValoresGlobais "G"
@@ -4608,7 +4768,7 @@ Private Sub Form_Load()
     subConectarControleDadosNV DatContaCorrente, "SELECT * FROM ConsGENCCcombo where empr_cd_empresa=" & Int(PCodEmpresa) & " AND banc_cd_codigo=341 ORDER BY coco_tx_Descricao", Estatico
     
     ' Alterado em 24/06/2024 por PSG, para atender à emissão de boletos com sacador-avalista
-    'subConectarControleDadosNV DatEmpresa, "SELECT empr_cd_empresa, empr_tx_razaosocial FROM Empresas", Estatico
+    ' subConectarControleDadosNV DatEmpresa, "SELECT empr_cd_empresa, empr_tx_razaosocial FROM Empresas", Estatico
     subConectarControleDadosNV DatEmpresa, "SELECT * FROM Empresas", Estatico
     
     PanPesquisa.Left = (TDBGrid1.Width - PanPesquisa.Width) / 2
@@ -4638,7 +4798,7 @@ Private Sub Form_Load()
         Unload Me
     End If
         
-    MsgBox "Parsed object output: " & JSON.toString(XLO_BOLETOS), , "Aviso: Carga da configuração"
+'    MsgBox "Parsed object output: " & JSON.toString(XLO_BOLETOS), , "Aviso: Carga da configuração"
         
     
 End Sub

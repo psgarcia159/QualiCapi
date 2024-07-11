@@ -17,6 +17,7 @@ Global XLT_TOKENSCOPE   As String           ' Escopo de autenticação/autorização
 ' ----------------------------------------------------------------------------
 
 ' - Função para montagem de string Json ("parametro": "valor")
+' ----------------------------------------------------------------------------
 Public Function FunJsonString(Parametro As String, valor As String, Optional IsString As Boolean = True) As String
     Dim OutputStr As String
     If IsString Then
@@ -28,6 +29,7 @@ Public Function FunJsonString(Parametro As String, valor As String, Optional IsS
 End Function
 
 ' - Função para validar e-mail do pagador
+' ----------------------------------------------------------------------------
 Public Function FunValidaEmail(email As String) As Boolean
     Dim At As Integer
     Dim oneDot As Integer
@@ -44,6 +46,7 @@ Public Function FunValidaEmail(email As String) As Boolean
 End Function
 
 ' - Função para ler um arquivo texto (Json), retornando uma string
+' ----------------------------------------------------------------------------
 Public Function FunReadJsonFile(FileName As String) As String
     Dim handle     As Integer
     Dim FilePath   As String
@@ -65,6 +68,7 @@ Public Function FunReadJsonFile(FileName As String) As String
 End Function
 
 ' - Função para abertura do arquivo de configurações e inicialização do objeto Json
+' ----------------------------------------------------------------------------
 Public Function FunLoadConfig(Optional FilePath As String = "Boletos.json") As Boolean
     Set XLO_BOLETOS = JSON.parse(FunReadJsonFile(FilePath))
 
@@ -78,6 +82,7 @@ Public Function FunLoadConfig(Optional FilePath As String = "Boletos.json") As B
 End Function
        
 ' - Função para obter os dados de autorização (access_token, ...)
+' ----------------------------------------------------------------------------
 Public Function FunGetAuthorization() As Boolean
     Dim HttpReq      As New MSXML2.ServerXMLHTTP60    ' Cria o objeto HTTP
     Dim Body         As String                        ' Corpo da requisição
@@ -119,7 +124,8 @@ Public Function FunGetAuthorization() As Boolean
         
 End Function
 
-' Função para postar o boleto na API
+' - Função para postar o boleto na API
+' ----------------------------------------------------------------------------
 Public Function FunPostBoleto(Payload As String) As String
     Dim HttpReq      As New MSXML2.ServerXMLHTTP60
     Dim Result       As Object

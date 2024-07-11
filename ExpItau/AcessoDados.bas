@@ -9,13 +9,13 @@ Global Const Estatico = "Estatico"
 Global Conexao As New ADODB.Connection          ' Representa a conexão com o banco de dados.
 Global ConexaoRelatorio As New ADODB.Connection ' Representa a conexão com o banco de dados para Relatórios.
 
-Global NomeSgbd As String     ' Indica o nome do banco de dados a ser utilizado ex: Access
+Global NomeSgbd As String                       ' Indica o nome do banco de dados a ser utilizado ex: Access
 
-Global TipoBloqueio As Integer         ' Indica o tipo de bloqueio a ser utilizado ex: Pessimista ou Otimista
-                                       ' O Bloqueio Pessimista bloqueia o registro a partir do momento que
-                                       ' é realizado o edit e libera após a realização do update.
-                                       ' O Bloqueio Otimista bloqueia o registro apenas no momento que está
-                                       ' sendo realizado o update.
+Global TipoBloqueio As Integer                  ' Indica o tipo de bloqueio a ser utilizado ex: Pessimista ou Otimista
+                                                ' O Bloqueio Pessimista bloqueia o registro a partir do momento que
+                                                ' é realizado o edit e libera após a realização do update.
+                                                ' O Bloqueio Otimista bloqueia o registro apenas no momento que está
+                                                ' sendo realizado o update.
 
 'Conecta o controle de dados
 Public Sub subConectarControleDadosNV(ControleDados As Object, Sql As String, TipoRecordSet As String)

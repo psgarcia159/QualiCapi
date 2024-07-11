@@ -1,22 +1,22 @@
 Attribute VB_Name = "FuncoesGenericas"
 Option Explicit
-Global Filtros() As String ' Array para armazenar os Filtros da Tabela
-Global ContFil As Integer ' Contador que armazena o número de filtros ativos
-Global Filtrou As Boolean ' Informa se Algum campo foi filtrado
-Global Ordem As String ' Nome do Campo que tem a chave da Tabela ativa
-Global Campos_Obrig As String ' Lista dos campos que são obrigatórios na tabela
-Global Formulario As Form ' Indica o Formulario Ativo
-'Global TipoVar As String ' Tipo do campo a ser filtrado
-Global FiltroOrig As String ' Indica os filtros determinados pelo próprio sistema
-Global FiltroAtual As String ' Indica o filtro atual da tabela corrente
-Global filtra_especial As Integer ' Indica se a tabela utilizada possui filtros pré-definidos
-                                               ' pelo sistema em FiltroOrig
+Global Filtros() As String                      ' Array para armazenar os Filtros da Tabela
+Global ContFil As Integer                       ' Contador que armazena o número de filtros ativos
+Global Filtrou As Boolean                       ' Informa se Algum campo foi filtrado
+Global Ordem As String                          ' Nome do Campo que tem a chave da Tabela ativa
+Global Campos_Obrig As String                   ' Lista dos campos que são obrigatórios na tabela
+Global Formulario As Form                       ' Indica o Formulario Ativo
+'Global TipoVar As String                       ' Tipo do campo a ser filtrado
+Global FiltroOrig As String                     ' Indica os filtros determinados pelo próprio sistema
+Global FiltroAtual As String                    ' Indica o filtro atual da tabela corrente
+Global filtra_especial As Integer               ' Indica se a tabela utilizada possui filtros pré-definidos
+                                                ' pelo sistema em FiltroOrig
                                                                                 
-Global Tem_Filtro As Boolean ' Informa se já foi relizado um filtro na tabela pelo usuário
-Global ConTelaOrdem As Integer ' Indica o número de chaves utilizados para ordenação
-Global Ordens() As Integer    ' Vetor que mantem a ordem dos campos
-Global Vetor() As Variant ' Vetor para auxílio na criação da tabela padrao
-Global Quantid As Long  ' Quantidade de registros da tabela
+Global Tem_Filtro As Boolean                    ' Informa se já foi relizado um filtro na tabela pelo usuário
+Global ConTelaOrdem As Integer                  ' Indica o número de chaves utilizados para ordenação
+Global Ordens() As Integer                      ' Vetor que mantem a ordem dos campos
+Global Vetor() As Variant                       ' Vetor para auxílio na criação da tabela padrao
+Global Quantid As Long                          ' Quantidade de registros da tabela
 
 '* Funcoes de manipulacao de arquivos INI
 ' Leitura de arquivo INI
@@ -158,7 +158,7 @@ Public Function FunTrataFloat(ByVal XVariavel As String) As String
     If XVariavel = "" Then
         FunTrataFloat = "0"
     Else
-        FunTrataFloat = Str(CDbl(XVariavel))
+        FunTrataFloat = str(CDbl(XVariavel))
     End If
 End Function
 
@@ -305,7 +305,7 @@ Function FunNuloBancoVal(texto As Variant) As String
     If IsNull(texto) Or texto = Empty Then
         FunNuloBancoVal = "Null"
     Else
-        FunNuloBancoVal = Trim(Str(texto))
+        FunNuloBancoVal = Trim(str(texto))
     End If
 End Function
 
@@ -313,7 +313,7 @@ Function FunNuloBanco(texto As Variant) As String
     If IsNull(texto) Or texto = Empty Then
         FunNuloBanco = "Null"
     Else
-        FunNuloBanco = Trim(Str(texto))
+        FunNuloBanco = Trim(str(texto))
     End If
 End Function
 

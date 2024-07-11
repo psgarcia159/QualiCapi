@@ -25,6 +25,7 @@
 			"UrlPost":	"/boletos",
 			"UrlGet":	"/boletos/{{id_boleto}}"
 		}
-	}
+	},
+	"PathToFiles": 		"C:\\Temp\\Boletos"
 }
 			
