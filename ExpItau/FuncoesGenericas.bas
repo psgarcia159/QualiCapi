@@ -86,6 +86,9 @@ Function FunPegaGuardaUltimo(Tipo As String) As Double
         Case "PR" 'Documento Pagto/Rec
             FunPegaGuardaUltimo = ResUltimoDoc!Ulti_nr_DocPagRec + 1
             ResUltimoDoc!Ulti_nr_DocPagRec = (ResUltimoDoc!Ulti_nr_DocPagRec + 1)
+        Case "NN" 'Nosso_Numero do Boleto
+            FunPegaGuardaUltimo = ResUltimoDoc!Ulti_Nr_BoletoNossoNumero + 1
+            ResUltimoDoc!Ulti_Nr_BoletoNossoNumero = (ResUltimoDoc!Ulti_Nr_BoletoNossoNumero + 1)
 '        Case "RM" 'Número da Requisição (Estoque)
 '            FunPegaGuardaUltimo = ResUltimoDoc!Ulti_nr_Requisicao + 1
 '            ResUltimoDoc!Ulti_nr_Requisicao = (ResUltimoDoc!Ulti_nr_Requisicao + 1)
@@ -93,6 +96,7 @@ Function FunPegaGuardaUltimo(Tipo As String) As Double
     
     ResUltimoDoc.Update
     ResUltimoDoc.Close
+    
 End Function
 
 

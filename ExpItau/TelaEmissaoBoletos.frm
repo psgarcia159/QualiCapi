@@ -8,20 +8,180 @@ Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form TelaEmissaoBoletos 
    Caption         =   "Emissão Boletos - ITAÚ"
-   ClientHeight    =   5835
+   ClientHeight    =   7845
    ClientLeft      =   75
    ClientTop       =   1470
-   ClientWidth     =   9465
+   ClientWidth     =   10515
    Icon            =   "TelaEmissaoBoletos.frx":0000
    LinkTopic       =   "Form1"
-   ScaleHeight     =   5835
-   ScaleWidth      =   9465
+   ScaleHeight     =   7845
+   ScaleWidth      =   10515
    WindowState     =   2  'Maximized
+   Begin Threed.SSPanel PanBotoes 
+      Height          =   1245
+      Left            =   45
+      TabIndex        =   11
+      Top             =   5160
+      Width           =   9720
+      _Version        =   65536
+      _ExtentX        =   17145
+      _ExtentY        =   2196
+      _StockProps     =   15
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BevelOuter      =   0
+      Begin VB.CommandButton CmdDesconto 
+         Caption         =   "&Desconto"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   2700
+         TabIndex        =   61
+         Top             =   0
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdMarcar 
+         Caption         =   "&Marcar Todos"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   4620
+         TabIndex        =   60
+         Top             =   15
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdPesquisa 
+         Caption         =   "&Pesquisar"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   720
+         TabIndex        =   59
+         Top             =   0
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdDesmarcar 
+         Caption         =   "Desmarcar &Todos"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   6540
+         TabIndex        =   16
+         Top             =   15
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdImprimir 
+         Caption         =   "Im&primir"
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   6540
+         TabIndex        =   14
+         Top             =   495
+         Visible         =   0   'False
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdFiltro 
+         Caption         =   "&Seleções"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   2700
+         TabIndex        =   13
+         Top             =   495
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdEmitirBoletos 
+         Caption         =   "&Emitir Boleto(s)"
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   720
+         TabIndex        =   12
+         Top             =   495
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdSair 
+         Caption         =   "&Sair"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   4620
+         TabIndex        =   10
+         Top             =   495
+         Width           =   1680
+      End
+   End
    Begin Threed.SSPanel PanDesconto 
       Height          =   2235
       Left            =   3240
       TabIndex        =   62
-      Top             =   1560
+      Top             =   2160
       Visible         =   0   'False
       Width           =   3075
       _Version        =   65536
@@ -113,7 +273,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   76152835
+         Format          =   233177091
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -616,23 +776,19 @@ Begin VB.Form TelaEmissaoBoletos
             Width           =   3165
          End
          Begin VB.TextBox TxtInstrucao2 
-            Enabled         =   0   'False
             Height          =   315
             Left            =   1965
             MaxLength       =   2
             TabIndex        =   7
             Top             =   2475
-            Visible         =   0   'False
             Width           =   345
          End
          Begin VB.TextBox TxtInstrucao1 
-            Enabled         =   0   'False
             Height          =   315
             Left            =   1965
             MaxLength       =   2
             TabIndex        =   5
             Top             =   2100
-            Visible         =   0   'False
             Width           =   345
          End
          Begin VB.Frame FraDesagio 
@@ -689,13 +845,11 @@ Begin VB.Form TelaEmissaoBoletos
             End
          End
          Begin VB.TextBox TxtMensagem1 
-            Enabled         =   0   'False
             Height          =   315
             Left            =   2400
             MaxLength       =   2
             TabIndex        =   6
             Top             =   2100
-            Visible         =   0   'False
             Width           =   6375
          End
          Begin TrueDBGrid70.TDBGrid TDBGridEmpr2 
@@ -985,7 +1139,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   142213123
+            Format          =   232914947
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -998,7 +1152,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   142213123
+            Format          =   232914947
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -1977,7 +2131,7 @@ Begin VB.Form TelaEmissaoBoletos
          End
          Begin VB.Label LblMesAno 
             Alignment       =   1  'Right Justify
-            Caption         =   "Mês de Vencimento:"
+            Caption         =   "Mês de Vencimento: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -1995,7 +2149,7 @@ Begin VB.Form TelaEmissaoBoletos
          End
          Begin VB.Label LblDtExportacao 
             Alignment       =   1  'Right Justify
-            Caption         =   "Data Exportação:"
+            Caption         =   "Data Exportação: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -2014,7 +2168,7 @@ Begin VB.Form TelaEmissaoBoletos
          Begin VB.Label LblTipoPlano 
             Alignment       =   1  'Right Justify
             BackStyle       =   0  'Transparent
-            Caption         =   "Tipo do Plano:"
+            Caption         =   "Tipo do Plano: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -2033,7 +2187,7 @@ Begin VB.Form TelaEmissaoBoletos
          End
          Begin VB.Label LblNaturezaPlano 
             Alignment       =   1  'Right Justify
-            Caption         =   "Natureza do Plano:"
+            Caption         =   "Natureza do Plano: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -2051,7 +2205,7 @@ Begin VB.Form TelaEmissaoBoletos
          End
          Begin VB.Label LblCCorrente 
             Alignment       =   1  'Right Justify
-            Caption         =   "Conta Corrente:"
+            Caption         =   "Conta Corrente: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -2072,8 +2226,7 @@ Begin VB.Form TelaEmissaoBoletos
             Alignment       =   1  'Right Justify
             BackColor       =   &H00E0E0E0&
             BackStyle       =   0  'Transparent
-            Caption         =   "Instrução 2:"
-            Enabled         =   0   'False
+            Caption         =   "Instrução 2: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -2088,15 +2241,13 @@ Begin VB.Form TelaEmissaoBoletos
             Left            =   780
             TabIndex        =   43
             Top             =   2535
-            Visible         =   0   'False
             Width           =   1125
          End
          Begin VB.Label LblInstrucao1 
             Alignment       =   1  'Right Justify
             BackColor       =   &H00E0E0E0&
             BackStyle       =   0  'Transparent
-            Caption         =   "Instrução 1:"
-            Enabled         =   0   'False
+            Caption         =   "Instrução 1: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -2111,7 +2262,6 @@ Begin VB.Form TelaEmissaoBoletos
             Left            =   780
             TabIndex        =   42
             Top             =   2115
-            Visible         =   0   'False
             Width           =   1125
          End
       End
@@ -2135,7 +2285,7 @@ Begin VB.Form TelaEmissaoBoletos
       Columns(0)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns(1)._VlistStyle=   68
       Columns(1)._MaxComboItems=   5
-      Columns(1).Caption=   "Exp."
+      Columns(1).Caption=   "Sel."
       Columns(1).DataField=   "Exporta"
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns(2)._VlistStyle=   0
@@ -2532,164 +2682,6 @@ Begin VB.Form TelaEmissaoBoletos
       _StyleDefs(147) =   "Named:id=42:FilterBar"
       _StyleDefs(148) =   ":id=42,.parent=33"
    End
-   Begin Threed.SSPanel PanBotoes 
-      Height          =   885
-      Left            =   45
-      TabIndex        =   11
-      Top             =   4740
-      Width           =   9240
-      _Version        =   65536
-      _ExtentX        =   16298
-      _ExtentY        =   1561
-      _StockProps     =   15
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BevelOuter      =   0
-      Begin VB.CommandButton CmdDesconto 
-         Caption         =   "&Desconto"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   2700
-         TabIndex        =   61
-         Top             =   0
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdMarcar 
-         Caption         =   "&Marcar Todos"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   4620
-         TabIndex        =   60
-         Top             =   15
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdPesquisa 
-         Caption         =   "&Pesquisar"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   720
-         TabIndex        =   59
-         Top             =   0
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdDesmarcar 
-         Caption         =   "Desmarcar &Todos"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   6540
-         TabIndex        =   16
-         Top             =   15
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdImprimir 
-         Caption         =   "Im&primir"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   4620
-         TabIndex        =   14
-         Top             =   495
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdFiltro 
-         Caption         =   "&Seleções"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   2700
-         TabIndex        =   13
-         Top             =   495
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdEmitirBoletos 
-         Caption         =   "&Emitir Boletos"
-         Enabled         =   0   'False
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   720
-         TabIndex        =   12
-         Top             =   495
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdSair 
-         Caption         =   "&Sair"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   6540
-         TabIndex        =   10
-         Top             =   495
-         Width           =   1680
-      End
-   End
    Begin MSComDlg.CommonDialog CdbImpressora 
       Left            =   0
       Top             =   1320
@@ -2726,7 +2718,8 @@ Dim XFF_SALDODEVEDOR As Double
 Dim CarregouGrid As Boolean         ' Indica se o grid já foi carregado ou não
 
 '*****************************************************************************************
-'Variaveis que guardarão valores específicos de cada formulário
+' Variaveis que guardarão valores específicos de cada formulário
+'*****************************************************************************************
 Dim PrimeiraVez As Boolean
 
 Dim FRM_ContFil As Integer          ' Contador que armazena o número de filtros ativos
@@ -2743,12 +2736,12 @@ Dim FRM_Filtrou As Boolean          ' Informa se Algum campo foi filtrado
 Dim FRM_Ordens() As Integer         ' Vetor que mantem a ordem dos campos
 Dim FRM_Filtros() As String         ' Array para armazenar os Filtros da Tabela
 
-Dim FRM_XInserir As String          'Flag para identificar se entrou na rotina para inserir ou alterar ('I'Inserir, 'A'Alterar, 'C'Consultar)
-Dim FRM_XOrigem As String           'Identifica a origem (que formulario) chamou o formulário ativo
-Dim FRM_SQLAtivo As String          'Atualizar o SQL Ativo após modificações de filtro e ordem
+Dim FRM_XInserir As String          ' Flag para identificar se entrou na rotina para inserir ou alterar ('I'Inserir, 'A'Alterar, 'C'Consultar)
+Dim FRM_XOrigem As String           ' Identifica a origem (que formulario) chamou o formulário ativo
+Dim FRM_SQLAtivo As String          ' Atualizar o SQL Ativo após modificações de filtro e ordem
 
-Dim XFT_SQL As String               'Prepara Select para o vetor do grid
-Dim XFT_SQL2 As String              'Prepara Select para o recordset auxiliar
+Dim XFT_SQL As String               ' Prepara Select para o vetor do grid
+Dim XFT_SQL2 As String              ' Prepara Select para o recordset auxiliar
 
 
 Sub AjustaTela()
@@ -3174,7 +3167,7 @@ End Function
 
 Private Sub cboSacadorAvalista_Click(Area As Integer)
   If cboSacadorAvalista.BoundText <> "" Then
-    datEmpresa.Recordset.Bookmark = cboSacadorAvalista.SelectedItem
+    DatEmpresa.Recordset.Bookmark = cboSacadorAvalista.SelectedItem
   End If
 
 
@@ -3580,40 +3573,46 @@ Private Sub CmdDesmarcar_Click()
 End Sub
 
 Private Sub CmdEmitirBoletos_Click()
- 
     Dim XFT_SQL As String             ' Prepara Select
-    Dim XLT_TEXTO As String           ' Prepara Texto para gerar o arquivo
-    Dim XLT_CGCEMP As String          ' CGC da empresa sem máscara
-    Dim XLT_CEPEMP As String          ' Cep sem máscara
+    Dim XLT_CGCEMP As String          ' CGC/CPMF da empresa sem formatação (só digitos)
+    Dim XLT_CEPEMP As String          ' Cep da empresa, sem formatação (só digitos)
     Dim XLF_VALOR As Double           ' Valor do registro
-    Dim XLT_CGCCPF As String          ' Cpf ou CGC do cliente
-    Dim XLT_AGENCONTA As String
+    Dim XLT_CGCCPF As String          ' Cpf ou CGC do cliente sem formatação (só digitos)
+    Dim XLT_AGENCONTA As String       ' Código de identificação do beneficiário, composto por agência + conta
     Dim XLB_SELECIONADO As Boolean    ' Indica se foi ou não selecionado algum registro
-    Dim XLT_TIPO As String
-    Dim XLT_NOME As String
-    Dim XLT_FANTASIA As String
+    Dim XLT_NOME As String            ' Nome/Razão Social do cliente
+    Dim XLT_FANTASIA As String        ' Nome Fantasia do Cliente
     Dim XLT_ENDERECO As String
     Dim XLT_BAIRRO As String
     Dim XLT_CIDADE As String
-    Dim XLT_CEP As String
+    Dim XLT_CEP As String             ' Cep do Cliente, sem formatação (só digitos)
     Dim XLT_ESTADO As String
     Dim XLT_DATAMORA As String
     Dim XLT_MENSAGEM1 As String
     Dim XLT_DATADESCONTO As String
     Dim XLF_DESCONTO As Double
-    Dim XLI_NUMSQUENCIAL As Integer
     Dim XLB_VAZIO As Boolean
     Dim XLI_PRAZOMORA As Integer
     Dim XLT_CODMOEDA As String
-    Dim XLT_PAYLOAD As String         ' Payload em Json para registro do boleto na API
-    Dim XLT_RESULT As Variant
-
-    ' Instancia o componente COM para geração do Boleto
-    Dim BoletoService As Boleto2Net.BoletoService
-    Set BoletoService = New Boleto2Net.BoletoService
+    Dim XLT_JSON As String              ' String Json para montagem de dados para API e emissão do boleto
+    Dim XLO_JSONAPI As Object           ' Retorno das requisições à API do Itaú (em Json)
+    Dim XLO_JSONB2N As Object           ' Retorno das requisições à biblioteca COM (Boleto2Net)
+    Dim XLB_STATUS As Boolean           ' status das requisições
+    Dim XLI_COUNT As Integer            ' Contador de elementos
+    Dim XLT_NOSSONUMERO As String       ' Campo Nosso_Numero
+    Dim XLT_NOSSONUMERODV As String     ' Dv Nosso_numero
     
+    ' - Instancia o componente COM para geração/emissão do Boleto
+    ' --------------------------------------------------------------------------------------------
+    Dim BoletoService As New Boleto2Net.BoletoService
 
-    ' Valida titulos selecionados no Grid
+    XLT_CGCEMP = Replace(Replace(Replace(XGT_CGC, ".", ""), "/", ""), "-", "")
+    XLT_CEPEMP = Replace(Replace(XGT_CEP, ".", ""), "-", "")
+    XLT_AGENCONTA = Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
+                    Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 7), "0000000") & _
+                    Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")
+                       
+    ' - Valida titulos selecionados no Grid
     ' --------------------------------------------------------------------------------------------
     XLB_SELECIONADO = False
     TDBGrid1.MoveFirst
@@ -3621,7 +3620,7 @@ Private Sub CmdEmitirBoletos_Click()
 
     While Not TDBGrid1.EOF
 
-        If TDBGrid1.Columns("Exp.").Value = "-1" Then
+        If TDBGrid1.Columns("Sel.").Value = "-1" Then
         
             XLB_SELECIONADO = True
 
@@ -3651,7 +3650,6 @@ Private Sub CmdEmitirBoletos_Click()
                 And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
 
                 If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
-                
                     If XFO_EXPORTACAO!focl_tx_Endereco = "" _
                         Or XFO_EXPORTACAO!focl_tx_Bairro = "" _
                         Or XFO_EXPORTACAO!focl_tx_Cep = "  .   -  " _
@@ -3662,7 +3660,6 @@ Private Sub CmdEmitirBoletos_Click()
                         vbCrLf & "estão incompletos."
                         Exit Sub
                     End If
-                    
                 Else
                     If XFO_EXPORTACAO!clie_tx_EndResidencial = "" _
                         Or XFO_EXPORTACAO!clie_tx_BairroResidencial = "" _
@@ -3674,7 +3671,6 @@ Private Sub CmdEmitirBoletos_Click()
                         vbCrLf & "estão incompletos."
                         Exit Sub
                     End If
-                    
                 End If
                 
             ElseIf XFO_EXPORTACAO!clie_tx_EndCorresp = "" _
@@ -3688,7 +3684,7 @@ Private Sub CmdEmitirBoletos_Click()
                 Exit Sub
             End If
 
-            ' - Verifica/valida o endereço de e-mail do cliente
+            ' - Verifica/valida o endereço de e-mail (pré-requisito para a emissão dos boletos)
             ' ---------------------------------------------------------------------------------------
             If XFO_EXPORTACAO!focl_tx_EMail = "" Or FunValidaEmail(XFO_EXPORTACAO!focl_tx_EMail) = False Then
                 MsgBox "O E-mail do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
@@ -3712,17 +3708,12 @@ Private Sub CmdEmitirBoletos_Click()
     XFO_EXPORTACAO.MoveFirst
     TDBGrid1.MoveFirst
 
-    ' 1 - Fazer um loop em TDBGrid1, lendo os titulos selecionados e processando conforme abaixo
+    ' - Loop em TDBGrid1, lendo os titulos selecionados e processando conforme abaixo
     ' --------------------------------------------------------------------------------------------
     While Not TDBGrid1.EOF
     
-        If TDBGrid1.Columns("Exp.").Value = "-1" Then
+        If TDBGrid1.Columns("Sel.").Value = "-1" Then
 
-            ' 1.1 - Para cada titulo, ler aos dados necessários à montagem dos boletos, criar um número
-            '       para cada boleto
-            ' --------------------------------------------------------------------------------------------
-            XLT_CGCEMP = Replace(Replace(Replace(XGT_CGC, ".", ""), "/", ""), "-", "")
-            
             'Valor já com Seguro
             XLF_VALOR = CDbl(TDBGrid1.Columns(3))
 
@@ -3739,9 +3730,7 @@ Private Sub CmdEmitirBoletos_Click()
             XLF_DESCONTO = CDbl(TDBGrid1.Columns(5))
 
             XLT_CGCCPF = Replace(Replace(Replace(XFO_EXPORTACAO!focl_tx_CGCCPF, ".", ""), "/", ""), "-", "")
-
             XLT_NOME = Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 50) + Space(50 - Len(Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 50)))
-
             XLT_FANTASIA = Left(XFO_EXPORTACAO!focl_tx_Fantasia, 50) + Space(50 - Len(Left(XFO_EXPORTACAO!focl_tx_Fantasia, 50)))
 
             If XFO_EXPORTACAO!clie_tx_EndCorresp = "" _
@@ -3753,22 +3742,25 @@ Private Sub CmdEmitirBoletos_Click()
                 If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
                     XLT_ENDERECO = Left(XFO_EXPORTACAO!focl_tx_Endereco, 45) + Space(45 - Len(Left(XFO_EXPORTACAO!focl_tx_Endereco, 45)))
                     XLT_BAIRRO = Left(XFO_EXPORTACAO!focl_tx_Bairro, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!focl_tx_Bairro, 15)))
-                    XLT_CEP = Replace(Replace(XFO_EXPORTACAO!focl_tx_Cep, ".", ""), "-", "")
                     XLT_CIDADE = Left(XFO_EXPORTACAO!focl_tx_Cidade, 20) + Space(20 - Len(Left(XFO_EXPORTACAO!focl_tx_Cidade, 20)))
                     XLT_ESTADO = Left(XFO_EXPORTACAO!focl_tx_Estado, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!focl_tx_Estado, 2)))
+                    XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!focl_tx_Cep, ".", ""), "-", ""))
+'                    XLT_CEP = XFO_EXPORTACAO!focl_tx_Cep
                 Else
                     XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 45) + Space(45 - Len(Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 45)))
                     XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15)))
-                    XLT_CEP = Replace(Replace(XFO_EXPORTACAO!clie_nr_CepResidencial, ".", ""), "-", "")
                     XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 20) + Space(20 - Len(Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 20)))
                     XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2)))
+                    XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!clie_nr_CepResidencial, ".", ""), "-", ""))
+'                    XLT_CEP = XFO_EXPORTACAO!clie_nr_CepResidencial
                 End If
             Else
                 XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40)))
                 XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12) + Space(12 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12)))
-                XLT_CEP = Left(XFO_EXPORTACAO!clie_nr_CepCorresp, 2) + Mid(XFO_EXPORTACAO!clie_nr_CepCorresp, 4, 3) + Right(XFO_EXPORTACAO!clie_nr_CepCorresp, 3)
                 XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15)))
                 XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2)))
+                XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!clie_nr_CepCorresp, ".", ""), "-", ""))
+'                XLT_CEP = Left(XFO_EXPORTACAO!clie_nr_CepCorresp, 2) + Mid(XFO_EXPORTACAO!clie_nr_CepCorresp, 4, 3) + Right(XFO_EXPORTACAO!clie_nr_CepCorresp, 3)
             End If
 
             If ChkJuros.Value = 1 Then
@@ -3779,493 +3771,520 @@ Private Sub CmdEmitirBoletos_Click()
                         XLI_PRAZOMORA = TxtPrzMora.Text
                 End If
             Else
-                XLT_DATAMORA = "000000"
+                XLT_DATAMORA = "      "
                 If TxtInstrucao1.Text <> "94" And TxtInstrucao2.Text <> "94" Then
                     XLI_PRAZOMORA = 0
                 End If
             End If
                         
-            ' If TxtInstrucao1.Text = "93" Or TxtInstrucao2.Text = "93" Then
-            '       XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 30) & Space(30 - Len(TxtMensagem1.Text)) & Space(4) & XLT_DATAMORA
-            ' ElseIf TxtInstrucao1.Text = "94" Or TxtInstrucao2.Text = "94" Then
-            '       XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 40) & Space(40 - Len(TxtMensagem1.Text))
-            ' Else
-            '       ' Se tiver sacador/avalista manda a informação que está em cboSacadorAvalista
-            '       If Me.cboSacadorAvalista.Text = "" Then
-            '               ' Alterado em 18/07/2023 (PSG), para atender solicitação do ITAU: o campo BENEFICIARIO FINAL deve ser igual a espaços, quando Instrução 1 e 2 diferentes de 93 oe 94
-            '               ' XLT_MENSAGEM1 = Left(PEmpresa, 30) & Space(30 - Len(Left(PEmpresa, 30))) & Space(4) & XLT_DATAMORA
-            '               XLT_MENSAGEM1 = Space(34) & XLT_DATAMORA
-            '       Else
-            '               XLT_MENSAGEM1 = Left(Me.cboSacadorAvalista.Text, 30) & Space(30 - Len(Left(Me.cboSacadorAvalista.Text, 30))) & Space(4) & XLT_DATAMORA
-            '       End If
-            ' End If
-
-
-            ' 1.2 - Montar o(s) boleto(s) em memória, em Json, para registrar via API
+            If TxtInstrucao1.Text = "93" Or TxtInstrucao2.Text = "93" Then
+                XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 30) & Space(30 - Len(TxtMensagem1.Text)) & Space(4) & XLT_DATAMORA
+            ElseIf TxtInstrucao1.Text = "94" Or TxtInstrucao2.Text = "94" Then
+                XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 40) & Space(40 - Len(TxtMensagem1.Text))
+            Else
+                ' Se tiver sacador/avalista manda a informação que está em cboSacadorAvalista
+                If Me.cboSacadorAvalista.Text = "" Then
+                    ' Alterado em 18/07/2023 (PSG), para atender solicitação do ITAU: o campo BENEFICIARIO FINAL deve ser igual a espaços, quando Instrução 1 e 2 diferentes de 93 oe 94
+                    ' XLT_MENSAGEM1 = Left(PEmpresa, 30) & Space(30 - Len(Left(PEmpresa, 30))) & Space(4) & XLT_DATAMORA
+                    ' XLT_MENSAGEM1 = Space(34) & XLT_DATAMORA
+                    XLT_MENSAGEM1 = Space(40)
+                Else
+                    XLT_MENSAGEM1 = Left(Me.cboSacadorAvalista.Text, 30) & Space(30 - Len(Left(Me.cboSacadorAvalista.Text, 30))) & Space(4) & XLT_DATAMORA
+                End If
+            End If
+            
+            XLT_NOSSONUMERO = Format(FunPegaGuardaUltimo("NN"), "00000000")
+            
+            XLT_NOSSONUMERODV = FunDvMod10(Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
+                                           Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _
+                                           XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & XLT_NOSSONUMERO)
+            
+            ' - Monta objeto JSON com o formato requerido conforme documentação da API
+            '   (ver README.txt para layout completo)
             ' --------------------------------------------------------------------------------------------
-            ' {
-            '   "data": {
-            '       "etapa_processo_boleto": "efetivacao",                                       # - Simulação de Emissão - 'validacao' Emissão - 'efetivacao'
-            '       "codigo_canal_operacao": "API",                                              # - Fixo 'API'
-            '       "beneficiario": {
-            '         "id_beneficiario": "id_beneficiario"                                       # - Agência (4 dígitos) + Conta (7 dígitos) + DAC (1 dígito) =
-            '                                                                                        Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") +
-            '                                                                                        Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 7), "0000000") +
-            '                                                                                        Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")
-            '       },
-            '       "dado_boleto": {
-            '         "descricao_instrumento_cobranca": "boleto",                                # - Fixo 'boleto'
-            '         "forma_envio": "email",                                                    # - Deve ser indicado um dos tipos 'impressao' ou 'email'
-            '         "texto_endereco_email": "exemplo@itau.com.br",                             # - Caso informado 'email' no campo forma_envio, é obrigatório informar um e-mail válido =
-            '                                                                                        XFO_EXPORTACAO!focl_tx_EMail
-            '         "assunto_email": "Assunto do e-mail",                                      # - O campo pode ser preenchido de forma personalizada. Máximo caracteres: 50
-            '         "mensagem_email": "Texto para enviar ao cliente",                          # - O campo pode ser preenchido de forma personalizada. Máximo caracteres: 200
-            '         "tipo_boleto": "a vista",                                                  # - Deve ser indicado um dos tipos do boleto: 'a vista' ou 'proposta'. Informar 'a vista'
-            '         "codigo_carteira": "109",                                                  # - Fixo '109'
-            '         "valor_titulo": "00000000000001000",                                       # - Formato do campo: 15 dígitos inteiros e 2 casas decimais =
-            '                                                                                        Format(XLF_VALOR * 100, "00000000000000000")
-            '         "codigo_especie": "02",                                                    # - Fixo '02' - NP - Nota Promissoria (Ver tabela de Espécies)
-            '         "valor_abatimento": "00000000000000000",                                   # - Formato do campo: 15 dígitos inteiros e 2 casas decimais
-            '         "data_emissao": "2022-12-21",                                              # - Formato: AAAA-MM-DD =
-            '                                                                                        Format(DtpExportacao, "yyyy-mm-dd")
-            '         "pagamento_parcial": true,                                                 # - Se aceita pagamento_parcial (true ou false) padrão é false. Omitir este parâmetro
-            '         "quantidade_maximo_parcial": 2,                                            # - Se pagamento_parcial = true deve ser entre 1 e 99. Omitir este parâmetro
-            '         "pagador": {
-            '               "pessoa": {
-            '                 "nome_pessoa": "Pessoa teste",                                     # - Nome/Razão social do pagador. Máximo caracteres: 50 =
-            '                                                                                        XLT_NOME
-            '                 "nome_fantasia": "Pessoa teste",                                   # - Nome Fantasia do pagador. Exemplo: Empresa A. Máximo: 50 caracteres =
-            '                                                                                        XLT_FANTASIA
-            '                 "tipo_pessoa": {
-            '                       "codigo_tipo_pessoa": "F",                                   # - Tipo de pessoa do pagador Pessoa Física - 'F' Pessoa Jurídica - 'J' =
-            '                                                                                        XFO_EXPORTACAO!focl_tx_Tipo
-            '                       "numero_cadastro_pessoa_fisica": "cpf_pagador"               # - CPF do pagador para tipo_pessoa = F com 11 numeros (sem pontos, traços ou barras); não informar o campo caso tipo_pessoa J  = XLT_CGCCPF
-            '                       "numero_cadastro_nacional_pessoa_juridica": "cnpj_pagador"   # - CNPJ do pagador para tipo_pessoa = J com 14 números (sem pontos, traços ou barras); não informar o campo caso tipo_pessoa F = XLT_CGCCPF
-            '                 }
-            '               },
-            '               "endereco": {
-            '                 "nome_logradouro": "Rua endereço,71",                              # - Nome do logradouro, número, complemento. Obrigatório caso o sacador_avalista tenha sido indicado. Máximo caracteres: 45* =
-            '                                                                                        XLT_ENDERECO
-            '                 "nome_bairro": "Bairro",                                           # - Nome do bairro. Obrigatório caso informe sacador avalista. Obrigatório caso o sacador_avalista tenha sido indicado. Máximo: 15 caracteres* =
-            '                                                                                        XLT_BAIRRO
-            '                 "nome_cidade": "Cidade",                                           # - Nome da cidade. Obrigatório caso informe sacador avalista. Obrigatório caso o sacador_avalista tenha sido indicado. Máximo: 20 caracteres* =
-            '                                                                                        XLT_CIDADE
-            '                 "sigla_UF": "PE",                                                  # - Sigla da UF. Obrigatório caso informe sacador avalista. Obrigatório caso o sacador_avalista tenha sido indicado. Máximo: 2 caracteres =
-            '                                                                                        XLT_ESTADO
-            '                 "numero_CEP": "51340540"                                           # - CEP. Obrigatório caso informe sacador avalista.Formato: 8 números, sem pontos e traços =
-            '                                                                                        XLT_CEP
-            '               }
-            '         },
-            '         "sacador_avalista ": {                                                     # - Se tiver sacador/avalista Me.cboSacadorAvalista.Text = ""
-            '               "pessoa": {
-            '                 "nome_pessoa": "Pessoa teste",                                     # - Nome/Razão social do avalista. Máximo caracteres: 50 =
-            '                                                                                        DatEmpresa.Recordset.Fields!empr_tx_RazaoSocial
-            '                 "tipo_pessoa": {
-            '                       "codigo_tipo_pessoa": "F",                                   # - Tipo de pessoa do avalista Pessoa Física - 'F' Pessoa Jurídica - 'J'. Informar 'J'
-            '                       "numero_cadastro_pessoa_fisica": "cpf_avalista"              # - CPF do avalista para tipo_pessoa = F com 11 numeros (sem pontos, traços ou barras); não informar
-            '                       "numero_cadastro_nacional_pessoa_juridica": "cnpj_avalista"  # - CNPJ do avalista para tipo_pessoa = J com 14 números (sem pontos, traços ou barras) =
-            '                                                                                        Replace(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_CGC, ".", ""), "/", ""), "-", "")
-            '                 }
-            '               },
-            '               "endereco": {
-            '                 "nome_logradouro": "Rua endereço,71",                              # - Nome do logradouro, número, complemento. Obrigatório caso o sacador_avalista tenha sido indicado. Máximo caracteres: 45* =
-            '                                                                                        DatEmpresa.Recordset.Fields!empr_tx_Endereco
-            '                 "nome_bairro": "Bairro",                                           # - Nome do bairro. Obrigatório caso informe sacador avalista. Obrigatório caso o sacador_avalista tenha sido indicado. Máximo: 15 caracteres* =
-            '                                                                                        DatEmpresa.Recordset.Fields!empr_tx_Bairro
-            '                 "nome_cidade": "Cidade",                                           # - Nome da cidade. Obrigatório caso informe sacador avalista. Obrigatório caso o sacador_avalista tenha sido indicado. Máximo: 20 caracteres*
-            '                                                                                        DatEmpresa.Recordset.Fields!empr_tx_Cidade
-            '                 "sigla_UF": "PE",                                                  # - Sigla da UF. Obrigatório caso informe sacador avalista. Obrigatório caso o sacador_avalista tenha sido indicado. Máximo: 2 caracteres
-            '                                                                                        DatEmpresa.Recordset.Fields!empr_tx_Estado
-            '                 "numero_CEP": "51340540"                                           # - CEP. Obrigatório caso informe sacador avalista.Formato: 8 números, sem pontos e traços
-            '                                                                                        Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", "")
-            '               }
-            '         },
-            '         "dados_individuais_boleto": [
-            '               {
-            '                 "numero_nosso_numero": "20000000",                                 # - Máximo: 08 caracteres. Ver a exportação para a CEF???
-            '                 "data_vencimento": "2023-01-14",                                   # - Formato: AAAA-MM-DD =
-            '                                                                                        Format(XFO_EXPORTACAO!titu_dt_Vencimento, "yyyy-mm-dd")
-            '                 "valor_titulo": "00000000000119900",                               # - Formato do campo: 15 dígitos inteiros e 2 casas decimais =
-            '                                                                                        Format(XLF_VALOR * 100, "00000000000000000")
-            '                 "texto_uso_beneficiario": "2",                                     # - Campo de 25 caracteres, utilizado na API legado como "identificador_titulo_empresa". Deve ser utilizado apenas letras e números.
-            '                 "texto_seu_numero": "2"                                            # - Seu número é a identificação do boleto que poderá ter letras e números e facilitará a consulta e acompanhamento do status do boleto. Este campo é para controle do cliente e obrigatório em caso de serviço de protesto. Máximo: 10 caracteres*
-            '               }
-            '         ],
-            '         "multa": {
-            '               "codigo_tipo_multa": "02",                                           # - Código da multa '01' - Quando se deseja cobrar um valor fixo de multa após o vencimento. '02' - Quando se deseja cobrar um percentual do valor do título de multa após o vencimento. '03' - Quando não se deseja cobrar multa caso o pagamento seja feito após o vencimento (isento)
-            '               "data_multa": "2024-09-21",                                          # - Data de início de cobrança de multa. Caso o campo esteja vazio, será automaticamente assumido que a cobrança de multa se inicia logo após o vencimento. Formato: AAAA-MM-DD
-            '               "percentual_multa": "000000100000"                                   # - Percentual da multa cobrada. Obrigatório para tipo_multa 02. Valor calculado deve ser superior a R$0,01. Formato do campo: 7 dígitos inteiros e 5 casas decimais. Exemplo: 999999900000.
-            '         },
-            '         "juros": {
-            '               "codigo_tipo_juros": "90",                                           # - Tipo da cobrança dos juros no cálculo da cobrança. Para cada um dos valores informados, será impresso no boleto uma anotação referente.
-            '                                                                                        '05' - Quando não se deseja cobrar juros caso o pagamento seja feito após o vencimento (isento)
-            '                                                                                        '90' - Percentual mensal (utilizando parâmetros do cadastro de beneficiário para dias úteis ou corridos)
-            '                                                                                        '91' - Percentual diário (utilizando parâmetros do cadastro de beneficiário para dias úteis ou corridos)
-            '                                                                                        '92' - Percentual anual (utilizando parâmetros do cadastro de beneficiário para dias úteis ou corridos)
-            '                                                                                        '93' - Valor diário (utilizando parâmetros do cadastro de beneficiário para dias úteis ou corridos)
-            '               "data_juros": "2024-09-21",                                          # - Data de início de cobrança de juros. Caso o campo esteja vazio, será automaticamente assumido que a cobrança de juros se inicia logo após o vencimento. Formato: AAAA-MM-DD
-            '               "percentual_juros": "000000100000"                                   # - Percentual dos juros a ser cobrado. Valor calculado deve ser superior a R$0,01. Obrigatório para tipo_juros ‘90’, ‘91’ e ‘92’. Formato do campo: 7 dígitos inteiros e 5 casas decimais. Exemplo: 999999900000
-            '         },
-            '         "recebimento_divergente": {
-            '               "codigo_tipo_autorizacao": "03",                                     # - Tipo de autorização de recebimento divergente da cobrança
-            '                                                                                        '01' - Quando o título aceita qualquer valor divergente ao da cobrança.
-            '                                                                                        '02' - Quando o título contém uma faixa de valores aceitos para recebimentos divergentes
-            '                                                                                        '03' - Quando o título não deve aceitar pagamentos de valores divergentes ao da cobrança.
-            '                                                                                        '04' - Quando o título aceitar pagamentos de valores superiores ao mínimo definido
-            '      "codigo_tipo_recebimento": "V",                                               # - Tipo de autorização de recebimento divergente da cobrança. Obrigatório para codigo_tipo_autorizacao diferente de 01 e 03. V - Recebimento divergente for informado por valores P - Recebimento divergente for informado por percentuais
-            '      "valor_minimo": "00000000000000100",                                          # - Valor mínimo permitido para pagamento. Obrigatório para codigo_aceite_pagamento_divergente 2 ou 4. Formato do campo: 15 dígitos inteiros e 2 casas decimais
-            '      "percentual_minimo": "000000100000",                                          # - Percentual mínimo permitido para pagamento. Obrigatório para codigo_tipo_autorizacao 2 ou 4. Formato do campo: 7 dígitos inteiros e 5 casas decimais
-            '      "valor_maximo": "00000099999999900",                                          # - Valor máximo permitido para pagamento. Obrigatório para codigo_tipo_autorizacao 2. Formato do campo: 15 dígitos inteiros e 2 casas decimais
-            '      "percentual_maximo": "000001000000"                                           # - Percentual máximo permitido. Obrigatório para codigo_tipo_autorizacao 2. Formato do campo: 7 dígitos inteiros e 5 casas decimais
-            '         },
-            '         "instrucao_cobranca": [
-            '               {
-            '                 "codigo_instrucao_cobranca": "2",                                  # - Códigos das instruções de protesto. Podem ser enviadas até 3 instruções. Se houverem mais comandos, iremos descartar uma instrução aleatoriamente. Ver "Tabela de Instruções".
-            '                 "quantidade_dias_apos_vencimento": 10,                             # - Quantidade de dias após vencimento do boleto, o prazo deve ser entre 01 e 99 dias. Para baixa também é possível 365 dias de vencido.
-            '                 "dia_util": false                                                  # - Caso a quantidade de dias após o vencimento tenha que ser contabilizada em dia útil, informar true. Caso tenha que ser contabilizada em dias corridos, informar false. Atenção: O CEP do pagador e sacador avalista (se houver) precisa estar correto conforme Correio.
-            '               }
-            '         ],
-            '         "protesto": {
-            '               "protesto": true,                                                    # - Em caso de protesto informar "true". Em caso de não protesto não enviar o bloco de protesto OU enviar "false".
-            '               "quantidade_dias_protesto": 10                                       # - Em caso de protesto "true" (campo acima) enviar a quantidade de dias, mínimo 1 e máximo 99. Em caso de protesto "false" não enviar quantidade de dias OU enviar valor zero.
-            '         },
-            '         "desconto_expresso": false
-            '       }
-            '   }
-            '}
-      
-            XLT_AGENCONTA = Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
-            Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 7), "0000000") & _
-            Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")
-                    
-            XLT_PAYLOAD = "{ " & _
+            
+            ' --- { data
+            XLT_JSON = "{ " & _
             FunJsonString("data", "{ ", False) & _
-            FunJsonString("etapa_processo_boleto", "validacao") & ", " & _
-            FunJsonString("codigo_canal_operacao", "API") & ", " & _
+            FunJsonString("id_boleto", FunUUID()) & ", " & _
+            FunJsonString("etapa_processo_boleto", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EtapaProcesso")) & ", " & _
+            FunJsonString("codigo_canal_operacao", "API") & ", "
+            
+            ' --- { data { beneficiario
+            XLT_JSON = XLT_JSON & _
             FunJsonString("beneficiario", "{ ", False) & _
-            FunJsonString("id_beneficiario", XLT_AGENCONTA) & "}, "
+            FunJsonString("id_beneficiario", XLT_AGENCONTA) & ", " & _
+            FunJsonString("nome_cobranca", Trim(PEmpresa)) & ", "
                                             
-            XLT_PAYLOAD = XLT_PAYLOAD & _
+            ' --- { data { beneficiario { tipo_pessoa },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("tipo_pessoa", "{ ", False) & _
+            FunJsonString("codigo_tipo_pessoa", "J") & ", " & _
+            FunJsonString("numero_cadastro_nacional_pessoa_juridica", XLT_CGCEMP) & " }, "
+         
+            ' --- { data { beneficiario { endereco } },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("endereco", "{ ", False) & _
+            FunJsonString("nome_logradouro", IIf(PEndereco <> "", Trim(PEndereco), " ")) & ", " & _
+            FunJsonString("nome_bairro", IIf(XGT_BAIRRO <> "", Trim(XGT_BAIRRO), " ")) & ", " & _
+            FunJsonString("nome_cidade", IIf(PCidade <> "", Trim(PCidade), " ")) & ", " & _
+            FunJsonString("sigla_UF", IIf(XGT_ESTADO <> "", Trim(XGT_ESTADO), " ")) & ", " & _
+            FunJsonString("numero_CEP", IIf(XLT_CEPEMP <> "", Trim(XLT_CEPEMP), " ")) & " } }, "
+
+            ' --- { data { dado_boleto
+            XLT_JSON = XLT_JSON & _
             FunJsonString("dado_boleto", "{ ", False) & _
+            FunJsonString("codigo_aceite", "S") & ", " & _
+            FunJsonString("codigo_carteira", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira")) & ", " & _
+            FunJsonString("codigo_especie", "02") & ", " & _
+            FunJsonString("codigo_tipo_vencimento", "3", False) & ", " & _
+            FunJsonString("data_emissao", Format(DtpExportacao, "yyyy-mm-dd")) & ", " & _
+            FunJsonString("desconto_expresso", "false", False) & ", " & _
+            FunJsonString("descricao_especie", "NP Nota Promissoria") & ", " & _
             FunJsonString("descricao_instrumento_cobranca", "boleto") & ", " & _
             FunJsonString("forma_envio", "email") & ", " & _
-            FunJsonString("texto_endereco_email", XFO_EXPORTACAO!focl_tx_EMail) & ", " & _
-            FunJsonString("assunto_email", "Assunto do e-mail, 50 caracteres") & ", " & _
-            FunJsonString("mensagem_email", "Texto ao cliente, 200 caracteres") & ", " & _
-            FunJsonString("tipo_boleto", "a vista") & ", " & _
-            FunJsonString("codigo_carteira", "109") & ", " & _
-            FunJsonString("valor_titulo", Format(XLF_VALOR * 100, "00000000000000000")) & ", " & _
-            FunJsonString("codigo_especie", "02") & ", " & _
-            FunJsonString("valor_abatimento", "00000000000000000") & ", " & _
-            FunJsonString("data_emissao", Format(DtpExportacao, "yyyy-mm-dd")) & ", "
-                                                    
-            XLT_PAYLOAD = XLT_PAYLOAD & _
+            FunJsonString("tipo_boleto", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("TipoBoleto")) & ", " & _
+            FunJsonString("texto_uso_beneficiario", Trim(XFO_EXPORTACAO!Titulo)) & ", " & _
+            FunJsonString("valor_total_titulo", Format(XLF_VALOR * 100, "00000000000000000")) & ", "
+
+            ' --- { data { dado_boleto { protesto },
+'            XLT_JSON = XLT_JSON & _
+'            FunJsonString("protesto", "{ ", False) & _
+'            FunJsonString("protesto", "false", False) & ", " & _
+'            FunJsonString("codigo_tipo_protesto", "1", False) & ", " & _
+'            FunJsonString("quantidade_dias_protesto", "10", False) & ", " & _
+'            FunJsonString("protesto_falimentar", "true", False) & " }, "
+            
+            ' --- { data { dado_boleto { negativacao },
+'            XLT_JSON = XLT_JSON & _
+'            FunJsonString("negativacao", "{ ", False) & _
+'            FunJsonString("negativacao", "false", False) & ", " & _
+'            FunJsonString("codigo_tipo_negativacao", "1", False) & ", " & _
+'            FunJsonString("quantidade_dias_negativacao", "10", False) & " }, "
+           
+            ' --- { data { dado_boleto { instrucao_cobranca [ { } ],
+'            If (TxtInstrucao1.Text <> "" And TxtInstrucao1.Text <> "93" And TxtInstrucao1.Text <> "94") Or _
+'               (TxtInstrucao2.Text <> "" And TxtInstrucao2.Text <> "93" And TxtInstrucao2.Text <> "94") Then
+'
+'                XLT_JSON = XLT_JSON & _
+'                FunJsonString("instrucao_cobranca", "[ ", False)
+'                XLI_COUNT = 0
+'
+'                If (TxtInstrucao1.Text <> "" And TxtInstrucao1.Text <> "93" And TxtInstrucao1.Text <> "94") Then
+'                    XLI_COUNT = XLI_COUNT + 1
+'                    XLT_JSON = XLT_JSON & "{ " & _
+'                    FunJsonString("codigo_instrucao_cobranca", TxtInstrucao1.Text, False) & ", " & _
+'                    FunJsonString("quantidade_dias_instrucao_cobranca", CStr(XLI_PRAZOMORA), False) & " }"
+'                End If
+'
+'                If (TxtInstrucao2.Text <> "" And TxtInstrucao2.Text <> "93" And TxtInstrucao2.Text <> "94") Then
+'                    If XLI_COUNT > 0 Then
+'                        XLT_JSON = XLT_JSON & ", "
+'                    End If
+'                    XLT_JSON = XLT_JSON & "{ " & _
+'                    FunJsonString("codigo_instrucao_cobranca", TxtInstrucao2.Text, False) & ", " & _
+'                    FunJsonString("quantidade_dias_instrucao_cobranca", CStr(XLI_PRAZOMORA), False) & " }"
+'                End If
+'
+'                XLT_JSON = XLT_JSON & "], "
+'
+'            End If
+            
+            ' --- { data { dado_boleto { pagador
+            XLT_JSON = XLT_JSON & _
             FunJsonString("pagador", "{ ", False) & _
+            FunJsonString("texto_endereco_email", Trim(XFO_EXPORTACAO!focl_tx_EMail)) & ", " & _
+            FunJsonString("numero_ddd", " ") & ", " & _
+            FunJsonString("numero_telefone", " ") & ", "
+            
+            ' --- { data { dado_boleto { pagador { pessoa
+            XLT_JSON = XLT_JSON & _
             FunJsonString("pessoa", "{ ", False) & _
-            FunJsonString("nome_pessoa", XLT_NOME) & ", " & _
-            FunJsonString("nome_fantasia", XLT_FANTASIA) & ", " & _
+            FunJsonString("nome_pessoa", Trim(XLT_NOME)) & ", " & _
+            FunJsonString("nome_fantasia", Trim(XLT_FANTASIA)) & ", "
+
+            ' --- { data { dado_boleto { pagador { pessoa { tipo_pessoa },
+            XLT_JSON = XLT_JSON & _
             FunJsonString("tipo_pessoa", "{ ", False) & _
             FunJsonString("codigo_tipo_pessoa", XFO_EXPORTACAO!focl_tx_Tipo) & ", "
-                    
             If XFO_EXPORTACAO!focl_tx_Tipo = "F" Then
-                XLT_PAYLOAD = XLT_PAYLOAD & FunJsonString("numero_cadastro_pessoa_fisica", XLT_CGCCPF) & "} }, "
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("numero_cadastro_pessoa_fisica", XLT_CGCCPF)
             Else
-                XLT_PAYLOAD = XLT_PAYLOAD & FunJsonString("numero_cadastro_nacional_pessoa_juridica", XLT_CGCCPF) & "} }, "
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("numero_cadastro_nacional_pessoa_juridica", XLT_CGCCPF)
             End If
-                    
-            XLT_PAYLOAD = XLT_PAYLOAD & _
+            XLT_JSON = XLT_JSON & " }, "
+                     
+            ' --- { data { dado_boleto { pagador { pessoa { endereco } } },
+            XLT_JSON = XLT_JSON & _
             FunJsonString("endereco", "{ ", False) & _
-            FunJsonString("nome_logradouro", XLT_ENDERECO) & ", " & _
-            FunJsonString("nome_bairro", XLT_BAIRRO) & ", " & _
-            FunJsonString("nome_cidade", XLT_CIDADE) & ", " & _
-            FunJsonString("sigla_UF", XLT_ESTADO) & ", " & _
-            FunJsonString("numero_CEP", XLT_CEP) & "} }, "
-            
+            FunJsonString("nome_logradouro", IIf(XLT_ENDERECO <> "", Trim(XLT_ENDERECO), " ")) & ", " & _
+            FunJsonString("nome_bairro", IIf(XLT_BAIRRO <> "", Trim(XLT_BAIRRO), " ")) & ", " & _
+            FunJsonString("nome_cidade", IIf(XLT_CIDADE <> "", Trim(XLT_CIDADE), " ")) & ", " & _
+            FunJsonString("sigla_UF", IIf(XLT_ESTADO <> "", Trim(XLT_ESTADO), " ")) & ", " & _
+            FunJsonString("numero_CEP", IIf(XLT_CEP <> "", XLT_CEP, " ")) & " } } }, "
+
             If Me.cboSacadorAvalista.Text <> "" Then
-                XLT_PAYLOAD = XLT_PAYLOAD & _
-                FunJsonString("sacador_avalista", "{ ", False) & _
+            
+                ' --- { data { dado_boleto { sacador_avalista
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("sacador_avalista", "{ ", False)
+                
+                ' --- { data { dado_boleto { sacador_avalista { pessoa
+                XLT_JSON = XLT_JSON & _
                 FunJsonString("pessoa", "{ ", False) & _
-                FunJsonString("nome_pessoa", datEmpresa.Recordset.Fields!empr_tx_razaosocial) & ", " & _
+                FunJsonString("nome_pessoa", Trim(DatEmpresa.Recordset.Fields!empr_tx_razaosocial)) & ", " & _
+                FunJsonString("nome_fantasia", Trim(DatEmpresa.Recordset.Fields!empr_tx_fantasia)) & ", "
+
+                ' --- { data { dado_boleto { sacador_avalista { pessoa { tipo_pessoa },
+                XLT_JSON = XLT_JSON & _
                 FunJsonString("tipo_pessoa", "{ ", False) & _
                 FunJsonString("codigo_tipo_pessoa", "J") & ", " & _
-                FunJsonString("numero_cadastro_nacional_pessoa_juridica", Replace(Replace(Replace(datEmpresa.Recordset.Fields!empr_tx_CGC, ".", ""), "/", ""), "-", "")) & "} }, " & _
+                FunJsonString("numero_cadastro_nacional_pessoa_juridica", Replace(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_CGC, ".", ""), "/", ""), "-", "")) & " }, "
+
+                ' --- { data { dado_boleto { sacador_avalista { pessoa { endereco } } },
+                XLT_JSON = XLT_JSON & _
                 FunJsonString("endereco", "{ ", False) & _
-                FunJsonString("nome_logradouro", datEmpresa.Recordset.Fields!empr_tx_endereco) & ", " & _
-                FunJsonString("nome_bairro", datEmpresa.Recordset.Fields!empr_tx_Bairro) & ", " & _
-                FunJsonString("nome_cidade", datEmpresa.Recordset.Fields!empr_tx_cidade) & ", " & _
-                FunJsonString("sigla_UF", datEmpresa.Recordset.Fields!empr_tx_Estado) & ", " & _
-                FunJsonString("numero_CEP", Replace(Replace(datEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", "")) & "} }, "
+                FunJsonString("nome_logradouro", DatEmpresa.Recordset.Fields!empr_tx_endereco) & ", " & _
+                FunJsonString("nome_bairro", DatEmpresa.Recordset.Fields!empr_tx_Bairro) & ", " & _
+                FunJsonString("nome_cidade", DatEmpresa.Recordset.Fields!empr_tx_cidade) & ", " & _
+                FunJsonString("sigla_UF", DatEmpresa.Recordset.Fields!empr_tx_Estado) & ", " & _
+                FunJsonString("numero_CEP", Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", "")) & " } } }, "
+                
             End If
 
-            XLT_PAYLOAD = XLT_PAYLOAD & _
+            ' --- { data { dado_boleto { dados_individuais_boleto [ {
+            XLT_JSON = XLT_JSON & _
             FunJsonString("dados_individuais_boleto", "[ { ", False) & _
-            FunJsonString("numero_nosso_numero", "20000000") & ", " & _
+            FunJsonString("id_boleto_individual", FunUUID()) & ", " & _
             FunJsonString("data_vencimento", Format(XFO_EXPORTACAO!titu_dt_Vencimento, "yyyy-mm-dd")) & ", " & _
+            FunJsonString("numero_nosso_numero", XLT_NOSSONUMERO) & ", " & _
             FunJsonString("valor_titulo", Format(XLF_VALOR * 100, "00000000000000000")) & ", " & _
-            FunJsonString("texto_uso_beneficiario", "Campo de 25 caracteres") & ", " & _
-            FunJsonString("texto_seu_numero", "ABCDEFGHIJ") & "} ], "
+            FunJsonString("texto_uso_beneficiario", Trim(XFO_EXPORTACAO!Titulo)) & ", " & _
+            FunJsonString("texto_seu_numero", Left(XFO_EXPORTACAO!Titulo, 4) & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & Mid(XFO_EXPORTACAO!Titulo, 11, 2))
 
-            XLT_PAYLOAD = XLT_PAYLOAD & _
-            FunJsonString("multa", "{ ", False) & _
-            FunJsonString("codigo_tipo_multa", "02") & ", " & _
-            FunJsonString("data_multa", "") & ", " & _
-            FunJsonString("percentual_multa", "000000100000") & "}, "
-
-            XLT_PAYLOAD = XLT_PAYLOAD & _
-            FunJsonString("juros", "{ ", False) & _
-            FunJsonString("codigo_tipo_juros", "91") & ", " & _
-            FunJsonString("data_juros", XLT_DATAMORA) & ", " & _
-            FunJsonString("percentual_juros", "000000100000") & "}, "
-
-            XLT_PAYLOAD = XLT_PAYLOAD & _
-            FunJsonString("recebimento_divergente", "{ ", False) & _
-            FunJsonString("codigo_tipo_autorizacao", "03") & "}, "
-
-            XLT_PAYLOAD = XLT_PAYLOAD & _
-            FunJsonString("protesto", "{ ", False) & _
-            FunJsonString("protesto", "true ", False) & ", " & _
-            FunJsonString("quantidade_dias_protesto", "10") & "}, "
-
-            XLT_PAYLOAD = XLT_PAYLOAD & _
-            FunJsonString("desconto_expresso", "false ", False) & "} } } "
-
-            ' 1.3   - Registrar o(s) boleto(s) no banco via API
-            ' --------------------------------------------------------------------------------------------
-            MsgBox "Parsed object input to Itau API: " & XLT_PAYLOAD
-            XLT_RESULT = FunPostBoleto(XLT_PAYLOAD)
-            MsgBox "Parsed object output from Itau API: " & JSON.toString(XLT_RESULT)
+            ' --- { data { dado_boleto { dados_individuais_boleto [ { mensagens_cobranca [ { mensagem } ] } ]
+            If TxtInstrucao1.Text = "93" Or _
+               TxtInstrucao1.Text = "94" Or _
+               TxtInstrucao2.Text = "93" Or _
+               TxtInstrucao2.Text = "94" Then
             
-            ' 1.3.1   - Se token de autenticação inválido/inexistente, faz uma nova autenticação e guarda informações de expiração para controle de refresh
-            ' --------------------------------------------------------------------------------------------
-            ' 1.3.2   - Montar e enviar os dados para a API
-            ' --------------------------------------------------------------------------------------------
-            ' 1.3.3   - Tratar o retorno, identificando códigos de resposta e dados retornados via Json. Se algum erro, adicionar o titulo à uma lista ou corrigir status do boleto
-            ' --------------------------------------------------------------------------------------------
+                XLT_JSON = XLT_JSON & ", " & _
+                FunJsonString("mensagens_cobranca", "[ { ", False) & _
+                FunJsonString("mensagem", XLT_MENSAGEM1) & " } ]"
 
-            ' 1.4   - Emitir boleto, salvar em PDF e enviar email via COM usando biblioteca externa (dll)
-            ' --------------------------------------------------------------------------------------------
-            '
-            ' Json Schema/formato esperado (dados de exemplo)
-            ' -----------------------------------------------------------------------
-            '  {
-            '      "PathToFiles":                                   "C:\\Temp\\Boletos",
-            '      "Boleto": {
-            '          "Aceite":                                    "A",
-            '          "AgenciaCobradoraRecebedora":                "",
-            '          "AvisoDebitoAutomatico":                     "",
-            '          "BancoCobradorRecebedor":                    "",
-            '          "Carteira":                                  "",
-            '          "CarteiraImpressaoBoleto":                   "",
-            '          "CodigoBaixaDevolucao":                      0,
-            '          "CodigoInstrucao1":                          "",
-            '          "CodigoInstrucao2":                          "",
-            '          "CodigoInstrucao3":                          "",
-            '          "CodigoMoeda":                               9,
-            '          "CodigoOcorrencia":                          "",
-            '          "CodigoOcorrenciaAuxiliar":                  "",
-            '          "CodigoProtesto":                            0,
-            '          "ComplementoInstrucao1":                     "",
-            '          "ComplementoInstrucao2":                     "",
-            '          "ComplementoInstrucao3":                     "",
-            '          "DataCredito":                               "2024-07-09",
-            '          "DataDesconto":                              "2024-07-09",
-            '          "DataEmissao":                               "2024-07-09",
-            '          "DataJuros":                                 "2024-07-09",
-            '          "DataMulta":                                 "2024-07-09",
-            '          "DataProcessamento":                         "2024-07-09",
-            '          "DataVencimento":                            "2024-07-15",
-            '          "Demonstrativos":                            "",
-            '          "DescricaoOcorrencia":                       "",
-            '          "DiasBaixaDevolucao":                        30,
-            '          "DiasProtesto":                              3,
-            '          "EspecieDocumento":                          12,
-            '          "EspecieMoeda":                              "R$",
-            '          "IdentificadorDebitoAutomatico":             "",
-            '          "ImprimirValoresAuxiliares":                 true,
-            '          "MensagemArquivoRemessa":                    "MensagemArquivoRemessa",
-            '          "MensagemInstrucoesCaixa":                   "MensagemInstrucoesCaixa",
-            '          "NossoNumero":                               "CA123456",
-            '          "NossoNumeroDV":                             "X",
-            '          "NossoNumeroFormatado":                      "109/CA123456-X",
-            '          "NumeroControleParticipante":                "1234567890",
-            '          "NumeroDocumento":                           "98765",
-            '          "PercentualJurosDia":                        1.5,
-            '          "PercentualMulta":                           3.0,
-            '          "QRCode":                                    "",
-            '          "QuantidadeMoeda":                           0,
-            '          "RegistroArquivoRetorno":                    "",
-            '          "TipoCarteira":                              1,
-            '          "UsoBanco":                                  "",
-            '          "ValorAbatimento":                           0.00,
-            '          "ValorDesconto":                             0.00,
-            '          "ValorIOF":                                  20.00,
-            '          "ValorJurosDia":                             10.00,
-            '          "ValorMoeda":                                "",
-            '          "ValorMulta":                                0.00,
-            '          "ValorOutrasDespesas":                       0.00,
-            '          "ValorOutrosCreditos":                       0.00,
-            '          "ValorPago":                                 0.00,
-            '          "ValorPagoCredito":                          0.00,
-            '          "ValorTarifas":                              0.00,
-            '          "ValorTitulo":                               1000.00,
-            '          "VariacaoCarteira":                          ""
-            '      },
-            '      "Banco": {
-            '          "Codigo":                                    341,
-            '          "Digito":                                    "7",
-            '          "Nome":                                      "Itaú",
-            '          "RemoveAcentosArquivoRemessa":               true
-            '      },
-            '      "Cedente": {
-            '          "CPFCNPJ":                                   "86.875.666/0001-09",
-            '          "Codigo":                                    "987654321",
-            '          "CodigoDV":                                  "0",
-            '          "CodigoFormatado":                           "987654321-0",
-            '          "CodigoTransmissao":                         "",
-            '          "MostrarCNPJnoBoleto":                       true,
-            '          "Nome":                                      "Cedente Teste",
-            '          "Observacoes":                               "",
-            '          "TipoCPFCNPJ":                               "J",
-            '          "ContaBancaria": {
-            '              "Agencia":                               "1234",
-            '              "CarteiraPadrao":                        "109",
-            '              "CodigoBancoCorrespondente":             0,
-            '              "Conta":                                 "56789",
-            '              "DigitoAgencia":                         "",
-            '              "DigitoConta":                           "0",
-            '              "LocalPagamento":                        "",
-            '              "MensagemFixaSacado":                    "Mensagem fixa sacado",
-            '              "MensagemFixaTopoBoleto":                "Mensagem fixa topo boleto",
-            '              "NossoNumeroBancoCorrespondente":        "12345678",
-            '              "OperacaoConta":                         "",
-            '              "TipoCarteiraPadrao":                    1,
-            '              "TipoDistribuicao":                      2,
-            '              "TipoDocumento":                         1,
-            '              "TipoFormaCadastramento":                1,
-            '              "TipoImpressaoBoleto":                   2,
-            '              "VariacaoCarteiraPadrao":                ""
-            '          },
-            '          "Endereco": {
-            '              "LogradouroEndereco":                    "Rua Teste do Banco",
-            '              "LogradouroNumero":                      "1234",
-            '              "LogradouroComplemento":                 "Conunto 341",
-            '              "Bairro":                                "Brotas",
-            '              "Cidade":                                "Salvador",
-            '              "UF ":                                   "BA",
-            '              "CEP":                                   "4000000"
-            '          }
-            '      },
-            '      "Sacado": {
-            '          "CPFCNPJ":                                   "71.738.978/0001-01",
-            '          "Nome":                                      "Sacado Teste PJ",
-            '          "Observacoes":                               "Matricula 123/4",
-            '          "Endereco": {
-            '              "LogradouroEndereco":                    "Rua Teste do Sacado",
-            '              "LogradouroNumero":                      "567",
-            '              "LogradouroComplemento":                 "Edf. Mandarim",
-            '              "Bairro":                                "Caminho das Árvores",
-            '              "Cidade":                                "Salvador",
-            '              "UF ":                                   "BA",
-            '              "CEP":                                   "41820774"
-            '          }
-            '      },
-            '      "Avalista": {
-            '          "CPFCNPJ":                                   "86.875.666/0001-09",
-            '          "Nome":                                      "Avalista Sem Nome",
-            '          "Observacoes":                               "Observacoes inválidas",
-            '          "Endereco": {
-            '              "LogradouroEndereco":                    "Rua Teste do Avalista",
-            '              "LogradouroNumero":                      "370",
-            '              "LogradouroComplemento":                 "Apto. 1705",
-            '              "Bairro":                                "Caminho das Árvores",
-            '              "Cidade":                                "Salvador",
-            '              "UF ":                                   "BA",
-            '              "CEP":                                   "41820123"
-            '          }
-            '      },
-            '      "CodigoBarra": {
-            '          "CampoLivre":                                "",
-            '          "CodigoBanco":                               "CodigoBanco",
-            '          "CodigoDeBarras":                            "34191719500000600001090022335021234567890000",
-            '          "DigitoVerificador":                         "1",
-            '          "FatorVencimento":                           0.00,
-            '          "LinhaDigitavel":                            "34191.09008 22335.021238 45678.900007 1 71950000100000",
-            '          "Moeda":                                     9,
-            '          "ValorDocumento":                            "100000"
-            '      }
-            '  }
-            '
+            End If
             
-            ' 1.4.1   - Enviar os dados do boleto para a biblioteca (incluindo e-mails e dados para criação de PDFs com senhas/criptografia)
-            ' --------------------------------------------------------------------------------------------
-            XLT_PAYLOAD = FunReadJsonFile("BancoItauBoletoTeste.json")      ' carrega arquivo de teste
+            XLT_JSON = XLT_JSON & " } ] "
+           
+            ' --- { data { dado_boleto { mensagens_cobranca [ { mensagem } ]
+            If TxtInstrucao1.Text = "93" Or _
+               TxtInstrucao1.Text = "94" Or _
+               TxtInstrucao2.Text = "93" Or _
+               TxtInstrucao2.Text = "94" Then
             
-            MsgBox "Parsed object input to Boleto2Net: " & XLT_PAYLOAD
-            
-            XLT_RESULT = BoletoService.EmiteBoleto(XLT_PAYLOAD)
-            
-            MsgBox "Parsed object output from Boleto2Net: " & JSON.toString(XLT_RESULT)
+                XLT_JSON = XLT_JSON & ", " & _
+                FunJsonString("mensagens_cobranca", "[ { ", False) & _
+                FunJsonString("mensagem", XLT_MENSAGEM1) & " } ] "
 
-            ' 1.4.2   - Tratar o retorno, identificando os dados retornados. Se algum erro, adicionar o titulo à uma lista ou corrigir status do boleto.
+            End If
+                        
+            ' --- finaliza o json
+            XLT_JSON = XLT_JSON & " } } }"
+             
+            ' - Registrar o boleto no banco via API, retorna um objeto json armazenado em XLO_JSONAPI
+            '   (ver README.txt para layout)
             ' --------------------------------------------------------------------------------------------
-
-            ' 2   - Atualizar uma tabela de boletos com os status e códigos dos boletos
-            ' --------------------------------------------------------------------------------------------
-
-            ' 3   - Atualizar os titulos para quais foram gerados os boletos
-            ' --------------------------------------------------------------------------------------------
+            Set XLO_JSONAPI = JSON.parse(FunPostBoleto(XLT_JSON))
             
-            ' Conexao.Execute ("UPDATE Titulos Set titu_tx_ExpBanco='S'," & _
-            ' " moed_cd_Moeda3=" & FunNuloBancoVal(XLT_CODMOEDA) & "," & _
-            ' " titu_vl_Seguro=" & FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8))) & _
-            ' " WHERE empr_cd_Empresa=" & PCodEmpresa & _
-            ' " AND empd_cd_empreendimento='" & Left(XFO_EXPORTACAO!Titulo, 4) & "'" & _
-            ' " AND imov_cd_imovel='" & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & "'" & _
-            ' " AND cont_cd_Contrato='" & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & "'" & _
-            ' " AND titu_cd_Plano='" & Mid(XFO_EXPORTACAO!Titulo, 14, 2) & "'" & _
-            ' " AND titu_cd_Parcela='" & Mid(XFO_EXPORTACAO!Titulo, 17, 3) & "'" & _
-            ' " AND titu_cd_Residuo='" & Right(XFO_EXPORTACAO!Titulo, 2) & "'")
-            '
-            '
-            ' ' 4   - Registra o LOG da operação
-            ' ' --------------------------------------------------------------------------------------------
-            ' ReDim XGM_MATRIZLOG(8, 2) As Variant
-            '
-            ' XGM_MATRIZLOG(0, 0) = "Título"
-            ' XGM_MATRIZLOG(1, 0) = "Moeda"
-            ' XGM_MATRIZLOG(2, 0) = "Valor Seguro"
-            ' XGM_MATRIZLOG(3, 0) = "Valor do título"
-            ' XGM_MATRIZLOG(4, 0) = "Valor do desconto"
-            ' XGM_MATRIZLOG(5, 0) = "Conta corrente"
-            ' XGM_MATRIZLOG(6, 0) = "Data Venc. Título"
-            ' XGM_MATRIZLOG(7, 0) = "Data Venc. Desconto"
-            '
-            ' XGM_MATRIZLOG(0, 1) = XFO_EXPORTACAO!Titulo
-            ' XGM_MATRIZLOG(1, 1) = FunNuloBancoVal(XLT_CODMOEDA)
-            ' XGM_MATRIZLOG(2, 1) = FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8)))
-            ' XGM_MATRIZLOG(3, 1) = XLF_VALOR
-            ' XGM_MATRIZLOG(4, 1) = XLF_DESCONTO
-            ' XGM_MATRIZLOG(5, 1) = DatContaCorrente.Recordset.Fields!coco_cd_Agencia & "-" & DatContaCorrente.Recordset.Fields!coco_tx_Conta & DatContaCorrente.Recordset.Fields!coco_nr_Dac
-            ' XGM_MATRIZLOG(6, 1) = XFO_EXPORTACAO!titu_dt_Vencimento
-            ' XGM_MATRIZLOG(7, 1) = XLT_DATADESCONTO
-            '
-            ' Call subRegistraLog("TelaEmissaoBoletos", "1", funCriaDescricaoLog(XGM_MATRIZLOG, EXPORTACAO_CAPI, PAGAMENTO_ELETRONICO_ITAU))
+            If Not (XLO_JSONAPI Is Nothing) Then
+                If JSON.GetParserErrors <> "" Then
+                    MsgBox JSON.GetParserErrors, vbCritical, "Parsing Error(s) occured"
+                    GoTo WhileNext
+                End If
+            Else
+                MsgBox "Erro indefinido na geração do boleto para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    " (" & XFO_EXPORTACAO!Titulo & ").", vbInformation, "Erro: FunPostBoleto()"
+                GoTo WhileNext
+            End If
+                
+            ' - Monta objeto JSON com o layout/esquema necessário para a emissão do boleto em HTML e PDF
+            '   Foram utilizados os campos necessários para a geração dos boletos, caso sejam necessárias
+            '   mais informações, ver a documentação em :
+            '   https://devportal.itau.com.br/nossas-apis/itau-ep9-gtw-cash-management-ext-v2
+            ' --------------------------------------------------------------------------------------------
+            XLT_JSON = "{ "
+
+            ' --- { Boleto { },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Boleto", "{ ", False) & _
+            FunJsonString("Aceite", "A") & ", " & _
+            FunJsonString("AgenciaCobradoraRecebedora", "") & ", " & _
+            FunJsonString("AvisoDebitoAutomatico", "") & ", " & _
+            FunJsonString("BancoCobradorRecebedor", "") & ", " & _
+            FunJsonString("Carteira", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira")) & ", " & _
+            FunJsonString("CarteiraImpressaoBoleto", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira")) & ", " & _
+            FunJsonString("CodigoBaixaDevolucao", "0", False) & ", " & _
+            FunJsonString("CodigoInstrucao1", IIf(TxtInstrucao1.Text <> "", TxtInstrucao1.Text, "")) & ", " & _
+            FunJsonString("CodigoInstrucao2", IIf(TxtInstrucao2.Text <> "", TxtInstrucao2.Text, "")) & ", " & _
+            FunJsonString("CodigoInstrucao3", "") & ", " & _
+            FunJsonString("CodigoMoeda", "9", False) & ", " & _
+            FunJsonString("CodigoOcorrencia", "") & ", " & _
+            FunJsonString("CodigoOcorrenciaAuxiliar", "") & ", " & _
+            FunJsonString("CodigoProtesto", "0", False) & ", " & _
+            FunJsonString("ComplementoInstrucao1", IIf(TxtInstrucao1.Text <> "", XLT_MENSAGEM1, "")) & ", " & _
+            FunJsonString("ComplementoInstrucao2", IIf(TxtInstrucao2.Text <> "", TxtInstrucao2.Text, "")) & ", " & _
+            FunJsonString("ComplementoInstrucao3", "") & ", "
+            
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("DataEmissao", Format(DtpExportacao, "yyyy-mm-dd")) & ", " & _
+            FunJsonString("DataVencimento", XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("data_vencimento")) & ", " & _
+            FunJsonString("EspecieDocumento", "12", False) & ", " & _
+            FunJsonString("EspecieMoeda", "R$") & ", " & _
+            FunJsonString("ImprimirValoresAuxiliares", "true", False) & ", " & _
+            FunJsonString("MensagemArquivoRemessa", "") & ", " & _
+            FunJsonString("MensagemInstrucoesCaixa", "") & ", " & _
+            FunJsonString("NossoNumero", XLT_NOSSONUMERO) & ", " & _
+            FunJsonString("NossoNumeroDV", XLT_NOSSONUMERODV) & ", " & _
+            FunJsonString("NossoNumeroFormatado", _
+                           XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & _
+                           XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV) & ", " & _
+            FunJsonString("NumeroDocumento", XFO_EXPORTACAO!Titulo) & ", " & _
+            FunJsonString("ValorTitulo", Replace(Replace(FormatNumber(XLF_VALOR, 2), ".", ""), ",", "."), False) & " }, "
+
+            ' --- { Banco { }
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Banco", "{ ", False) & _
+            FunJsonString("Codigo", "341", False) & ", " & _
+            FunJsonString("Digito", "7") & ", " & _
+            FunJsonString("Nome", "Itaú") & ", " & _
+            FunJsonString("RemoveAcentosArquivoRemessa", "true", False) & " }, "
+
+            ' --- { Cedente
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Cedente", "{ ", False) & _
+            FunJsonString("CPFCNPJ", XGT_CGC) & ", " & _
+            FunJsonString("CodigoTransmissao", "") & ", " & _
+            FunJsonString("MostrarCNPJnoBoleto", "true", False) & ", " & _
+            FunJsonString("Nome", Trim(PEmpresa)) & ", " & _
+            FunJsonString("Observacoes", "") & ", " & _
+            FunJsonString("TipoCPFCNPJ", "J") & ", "
+
+            ' --- { Cedente { ContaBancaria { },
+            '     Observação, a conta no boleto usa apenas 5 posições numéricas
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("ContaBancaria", "{ ", False) & _
+            FunJsonString("Agencia", Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000")) & ", " & _
+            FunJsonString("CarteiraPadrao", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira")) & ", " & _
+            FunJsonString("CodigoBancoCorrespondente", "0", False) & ", " & _
+            FunJsonString("Conta", Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000")) & ", " & _
+            FunJsonString("DigitoAgencia", "") & ", " & _
+            FunJsonString("DigitoConta", Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")) & ", " & _
+            FunJsonString("LocalPagamento", "") & ", " & _
+            FunJsonString("MensagemFixaSacado", "Boleto referente ao titulo " & XFO_EXPORTACAO!Titulo) & ", " & _
+            FunJsonString("MensagemFixaTopoBoleto", "Boleto emitido por " & Trim(PEmpresa)) & ", "
+
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("NossoNumeroBancoCorrespondente", "") & ", " & _
+            FunJsonString("OperacaoConta", "") & ", " & _
+            FunJsonString("TipoCarteiraPadrao", "1", False) & ", " & _
+            FunJsonString("TipoDistribuicao", "2", False) & ", " & _
+            FunJsonString("TipoDocumento", "1", False) & ", " & _
+            FunJsonString("TipoFormaCadastramento", "1", False) & ", " & _
+            FunJsonString("TipoImpressaoBoleto", "2", False) & ", " & _
+            FunJsonString("VariacaoCarteiraPadrao", "") & " }, "
+
+            ' --- { Cedente { Endereco { } },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Endereco", "{ ", False) & _
+            FunJsonString("LogradouroEndereco", Trim(PEndereco)) & ", " & _
+            FunJsonString("LogradouroNumero", "") & ", " & _
+            FunJsonString("LogradouroComplemento", "") & ", " & _
+            FunJsonString("Bairro", Trim(XGT_BAIRRO)) & ", " & _
+            FunJsonString("Cidade", Trim(PCidade)) & ", " & _
+            FunJsonString("UF", Trim(XGT_ESTADO)) & ", " & _
+            FunJsonString("CEP", IIf(XLT_CEPEMP <> "", Trim(XLT_CEPEMP), " ")) & " } }, "
+
+            ' --- { Sacado
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Sacado", "{ ", False) & _
+            FunJsonString("CPFCNPJ", XFO_EXPORTACAO!focl_tx_CGCCPF) & ", " & _
+            FunJsonString("Nome", Trim(XLT_NOME)) & ", " & _
+            FunJsonString("Observacoes", "") & ", "
+
+            ' --- { Sacado { Endereco { } },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Endereco", "{ ", False) & _
+            FunJsonString("LogradouroEndereco", Trim(XLT_ENDERECO)) & ", " & _
+            FunJsonString("LogradouroNumero", "") & ", " & _
+            FunJsonString("LogradouroComplemento", "") & ", " & _
+            FunJsonString("Bairro", Trim(XLT_BAIRRO)) & ", " & _
+            FunJsonString("Cidade", Trim(XLT_CIDADE)) & ", " & _
+            FunJsonString("UF", Trim(XLT_ESTADO)) & ", " & _
+            FunJsonString("CEP", IIf(XLT_CEP <> "", XLT_CEP, " ")) & " } }, "
+
+            ' --- { Avalista { },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Avalista", "{ ", False)
+
+            If Me.cboSacadorAvalista.Text <> "" Then
+                ' --- { Avalista {
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("CPFCNPJ", DatEmpresa.Recordset.Fields!empr_tx_CGC) & ", " & _
+                FunJsonString("Nome", Trim(DatEmpresa.Recordset.Fields!empr_tx_razaosocial)) & ", " & _
+                FunJsonString("Observacoes", "") & ", "
+                
+                ' --- { Avalista { Endereco { } },
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("Endereco", "{ ", False) & _
+                FunJsonString("LogradouroEndereco", Trim(DatEmpresa.Recordset.Fields!empr_tx_endereco)) & ", " & _
+                FunJsonString("LogradouroNumero", "") & ", " & _
+                FunJsonString("LogradouroComplemento", "") & ", " & _
+                FunJsonString("Bairro", Trim(DatEmpresa.Recordset.Fields!empr_tx_Bairro)) & ", " & _
+                FunJsonString("Cidade", Trim(DatEmpresa.Recordset.Fields!empr_tx_cidade)) & ", " & _
+                FunJsonString("UF", Trim(DatEmpresa.Recordset.Fields!empr_tx_Estado)) & ", " & _
+                FunJsonString("CEP", IIf(DatEmpresa.Recordset.Fields!empr_tx_Cep <> "", Trim(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, ".", ""), "-", "")), " ")) & " } }, "
+            Else
+                ' --- { Avalista { Endereco { } },
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("Endereco", "{ ", False) & " } }, "
+            End If
+
+            ' --- { CodigoBarra { },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("CodigoBarra", "{ ", False) & _
+            FunJsonString("CampoLivre", "") & ", " & _
+            FunJsonString("CodigoBanco", "341") & ", " & _
+            FunJsonString("CodigoDeBarras", XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("codigo_barras")) & ", " & _
+            FunJsonString("DigitoVerificador", Mid$(XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("codigo_barras"), 5, 1)) & ", " & _
+            FunJsonString("FatorVencimento", "0", False) & ", " & _
+            FunJsonString("LinhaDigitavel", XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("numero_linha_digitavel")) & ", " & _
+            FunJsonString("Moeda", "9", False) & ", " & _
+            FunJsonString("ValorDocumento", Replace(Replace(FormatNumber(XLF_VALOR, 2), ".", ""), ",", "."), False) & " }, "
+
+            ' --- { PathToFiles } }
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("PathToFiles", XLO_BOLETOS.Item("PathToFiles")) & " } "
+            
+            ' - Emitir boleto, salvar em PDF com senha usando biblioteca externa (dll)
+            '   Corrige as contrabarras, para o parse do json (vem C:/xx\yy, deveria ser C:\\xx\\yy)
+            ' --------------------------------------------------------------------------------------------
+            Set XLO_JSONB2N = JSON.parse(Replace(Replace(BoletoService.EmiteBoleto(XLT_JSON), "/", "\"), "\", "\\"))
+
+            If Not (XLO_JSONB2N Is Nothing) Then
+                If JSON.GetParserErrors <> "" Then
+                    MsgBox JSON.GetParserErrors, vbCritical, "Parsing Error(s) occured"
+                    GoTo WhileNext
+                Else
+                    If XLO_JSONB2N.Item("status") <> "OK" Then
+                        MsgBox "Erro na emissão do boleto: " & XLO_JSONB2N.Item("message"), vbInformation, "Erro: BoletoService.EmiteBoleto()"
+                        GoTo WhileNext
+                    End If
+                End If
+            Else
+                MsgBox "Erro indefinido na emissão do boleto para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    " (" & XFO_EXPORTACAO!Titulo & ").", vbInformation, "Erro: BoletoService.EmiteBoleto()"
+               GoTo WhileNext
+            End If
+            
+            ' - Envia e-mail com o boleto (PDF criptografado) em anexo
+            ' --------------------------------------------------------------------------------------------
+            XLB_STATUS = FunSendEmail( _
+                            XFO_EXPORTACAO!focl_tx_RazaoSocial, _
+                            XFO_EXPORTACAO!Titulo, _
+                            Format(XFO_EXPORTACAO!titu_dt_Vencimento, "dd/mm/yyyy"), _
+                            XLF_VALOR, _
+                            XFO_EXPORTACAO!focl_tx_RazaoSocial & " <" & XFO_EXPORTACAO!focl_tx_EMail & ">", _
+                            XLO_JSONB2N.Item("arquivoPDF"))
+
+            ' - Tratar o retorno, identificando códigos de resposta e dados retornados via Json.
+            '   Se algum erro, adicionar o titulo à uma lista ou corrigir status do boleto
+            ' --------------------------------------------------------------------------------------------
+            If XLB_STATUS = False Then
+                MsgBox "Erro no envio do boleto por e-mail para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    " <" & XFO_EXPORTACAO!focl_tx_EMail & "> (" & XFO_EXPORTACAO!Titulo & ").", vbInformation, "Erro: FunSendEmail()"
+                GoTo WhileNext
+            End If
+
+            ' - Atualizar os titulos para quais foram gerados os boletos
+            ' --------------------------------------------------------------------------------------------
+            If OptIndexador1.Value = True Then
+                If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda1) Then
+                    XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda1
+                Else
+                    XLT_CODMOEDA = ""
+                End If
+            ElseIf OptIndexador2.Value = True Then
+                If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda2) Then
+                    XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda2
+                Else
+                    XLT_CODMOEDA = ""
+                End If
+            Else
+                XLT_CODMOEDA = ""
+            End If
+            
+            Conexao.Execute ("UPDATE Titulos Set titu_tx_ExpBanco='S'," & _
+                             " moed_cd_Moeda3=" & FunNuloBancoVal(XLT_CODMOEDA) & "," & _
+                             " titu_vl_Seguro=" & FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8))) & _
+                             " WHERE empr_cd_Empresa=" & PCodEmpresa & _
+                             " AND empd_cd_empreendimento='" & Left(XFO_EXPORTACAO!Titulo, 4) & "'" & _
+                             " AND imov_cd_imovel='" & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & "'" & _
+                             " AND cont_cd_Contrato='" & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & "'" & _
+                             " AND titu_cd_Plano='" & Mid(XFO_EXPORTACAO!Titulo, 14, 2) & "'" & _
+                             " AND titu_cd_Parcela='" & Mid(XFO_EXPORTACAO!Titulo, 17, 3) & "'" & _
+                             " AND titu_cd_Residuo='" & Right(XFO_EXPORTACAO!Titulo, 2) & "'")
+                        
+             ' - Registra o LOG da operação
+             ' --------------------------------------------------------------------------------------------
+             ReDim XGM_MATRIZLOG(12, 2) As Variant
+            
+             XGM_MATRIZLOG(0, 0) = "Título"
+             XGM_MATRIZLOG(1, 0) = "Moeda"
+             XGM_MATRIZLOG(2, 0) = "Valor Seguro"
+             XGM_MATRIZLOG(3, 0) = "Valor do Título"
+             XGM_MATRIZLOG(4, 0) = "Valor do Desconto"
+             XGM_MATRIZLOG(5, 0) = "Conta Corrente"
+             XGM_MATRIZLOG(6, 0) = "Data Venc. Título"
+             XGM_MATRIZLOG(7, 0) = "Data Venc. Desconto"
+             XGM_MATRIZLOG(8, 0) = "Id do Boleto"
+             XGM_MATRIZLOG(9, 0) = "Nosso Número"
+             XGM_MATRIZLOG(10, 0) = "Código de Barras"
+             XGM_MATRIZLOG(11, 0) = "Linha Digitável"
+            
+             XGM_MATRIZLOG(0, 1) = XFO_EXPORTACAO!Titulo
+             XGM_MATRIZLOG(1, 1) = FunNuloBancoVal(XLT_CODMOEDA)
+             XGM_MATRIZLOG(2, 1) = FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8)))
+             XGM_MATRIZLOG(3, 1) = XLF_VALOR
+             XGM_MATRIZLOG(4, 1) = XLF_DESCONTO
+             XGM_MATRIZLOG(5, 1) = DatContaCorrente.Recordset.Fields!coco_cd_Agencia & "-" & DatContaCorrente.Recordset.Fields!coco_tx_Conta & DatContaCorrente.Recordset.Fields!coco_nr_Dac
+             XGM_MATRIZLOG(6, 1) = XFO_EXPORTACAO!titu_dt_Vencimento
+             XGM_MATRIZLOG(7, 1) = XLT_DATADESCONTO
+             XGM_MATRIZLOG(8, 1) = XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("id_boleto_individual")
+             XGM_MATRIZLOG(9, 1) = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV
+             XGM_MATRIZLOG(10, 1) = XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("codigo_barras")
+             XGM_MATRIZLOG(11, 1) = XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("numero_linha_digitavel")
+            
+             Call subRegistraLog("TelaExpBancaria", "3", funCriaDescricaoLog(XGM_MATRIZLOG, EMITIR_BOLETO, PAGAMENTO_ELETRONICO_ITAU))
     
-            XLI_NUMSQUENCIAL = XLI_NUMSQUENCIAL + 1
-
         End If
+        
+WhileNext:
 
         TDBGrid1.MoveNext
         XFO_EXPORTACAO.MoveNext
+        
     Wend
 
-    MsgBox "Emissão de boletos realizada com sucesso!", vbInformation + vbOKOnly, "ATENÇÃO"
+    MsgBox "Emissão de boletos finalizada!", vbInformation + vbOKOnly, "ATENÇÃO"
 
     Conexao.CommitTrans
     subDesabilitaBotoes
     CmdImprimir.Enabled = True
+        
     Exit Sub
-  
+    
 End Sub
 
 Private Sub CmdFiltro_Click()
@@ -4313,7 +4332,7 @@ End Sub
 Private Sub CmdImprimir_Click()
     'Call subImprimeListagemGRIDUnBound(2, TDBGrid1.PrintInfo, "Listagem Títulos Exportados")
         
-    On Error GoTo TrataErro:
+    'On Error GoTo TrataErro:
     Dim GuardaY As Single
     Dim LargPapel As Single, AltPapel As Single, AreaImpressao As Single
     'Dim XNumBordero As String
@@ -4771,7 +4790,7 @@ Private Sub Form_Load()
     
     ' Alterado em 24/06/2024 por PSG, para atender à emissão de boletos com sacador-avalista
     ' subConectarControleDadosNV DatEmpresa, "SELECT empr_cd_empresa, empr_tx_razaosocial FROM Empresas", Estatico
-    subConectarControleDadosNV datEmpresa, "SELECT * FROM Empresas", Estatico
+    subConectarControleDadosNV DatEmpresa, "SELECT * FROM Empresas", Estatico
     
     PanPesquisa.Left = (TDBGrid1.Width - PanPesquisa.Width) / 2
     PanPesquisa.Top = (TDBGrid1.Height - PanPesquisa.Height) / 2

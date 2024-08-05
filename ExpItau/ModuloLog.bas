@@ -64,6 +64,8 @@ Enum ENUM_OPERACOES
     
     PAGAMENTO_TITULO
     CANCELAR_PAGAMENTO_TITULO
+    
+    EMITIR_BOLETO
 End Enum
 
 'Enumarator com as entidades que terão log
@@ -263,6 +265,8 @@ Function funNomeOperacao(enumerator As ENUM_OPERACOES)
             funNomeOperacao = "CANCELAMENTO DE PAGTO DE TÍTULO"
         Case PAGAMENTO_TITULO
             funNomeOperacao = "PAGAMENTO DE TÍTULO"
+        Case EMITIR_BOLETO
+            funNomeOperacao = "EMISSÃO DE BOLETO"
     End Select
 End Function
 
