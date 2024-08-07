@@ -408,3 +408,47 @@ Public Function FunDvMod10(Numero As String) As String
     
 End Function
 
+' - Função para cálculo de digito verificador (modulo 10)
+'   Example:
+'       Debug.Print FS("Name = {0}, Time = {1:hh:mm}, Number={2:#.00}", "My name", Now(), 12.5)
+' ----------------------------------------------------------------------------
+Function FunFormatString(StrText As String, ParamArray Parameters())
+
+    Dim Item
+    Dim i As Integer
+    i = 0
+
+    For Each Item In Parameters
+    
+        Dim intStart As Integer
+        intStart = InStr(StrText, "{" & i & "}")
+        If intStart < 1 Then intStart = InStr(StrText, "{" & i & ":")
+
+        If intStart > 0 Then
+            Dim intEnd As Integer
+            intEnd = InStr(intStart, StrText, "}")
+
+            Dim strFormatedValue As String
+
+            Dim intFormatPos As Integer
+            intFormatPos = InStr(intStart, StrText, ":")
+            If intFormatPos < intEnd Then
+                Dim strFormat As String
+                strFormat = Mid(StrText, intFormatPos + 1, intEnd - intFormatPos - 1)
+                strFormatedValue = Format(Item, strFormat)
+            Else
+                strFormatedValue = Item
+            End If
+
+            StrText = Left(StrText, intStart - 1) & _
+                      strFormatedValue & _
+                      Mid(StrText, intEnd + 1)
+
+        End If
+        i = i + 1
+    Next
+
+    FunFormatString = StrText
+
+End Function
+

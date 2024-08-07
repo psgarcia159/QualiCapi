@@ -273,7 +273,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   233177091
+         Format          =   181207043
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -1139,7 +1139,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   232914947
+            Format          =   144637955
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -1152,7 +1152,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   232914947
+            Format          =   144637955
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -3588,6 +3588,7 @@ Private Sub CmdEmitirBoletos_Click()
     Dim XLT_CEP As String             ' Cep do Cliente, sem formatação (só digitos)
     Dim XLT_ESTADO As String
     Dim XLT_DATAMORA As String
+    Dim XLT_INSTRUCAO As String
     Dim XLT_MENSAGEM1 As String
     Dim XLT_DATADESCONTO As String
     Dim XLF_DESCONTO As Double
@@ -3798,6 +3799,16 @@ Private Sub CmdEmitirBoletos_Click()
             XLT_NOSSONUMERODV = FunDvMod10(Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
                                            Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _
                                            XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & XLT_NOSSONUMERO)
+            
+            XLT_INSTRUCAO = ""
+            
+            If XLT_DATADESCONTO <> "" And XLF_DESCONTO <> 0 Then
+                XLT_INSTRUCAO = "CONCEDER DESCONTO DE R$ " & Format(XLF_DESCONTO, "0.00") & " ATÉ " & Format(TDBGrid1.Columns(6), "dd/mm/yyyy")
+            End If
+            
+            If XLT_MENSAGEM1 <> "" Then
+                XLT_INSTRUCAO = IIf(XLT_INSTRUCAO <> "", XLT_INSTRUCAO & " <br> ", "") & XLT_MENSAGEM1
+            End If
             
             ' - Monta objeto JSON com o formato requerido conforme documentação da API
             '   (ver README.txt para layout completo)
@@ -4033,24 +4044,26 @@ Private Sub CmdEmitirBoletos_Click()
             FunJsonString("CodigoOcorrencia", "") & ", " & _
             FunJsonString("CodigoOcorrenciaAuxiliar", "") & ", " & _
             FunJsonString("CodigoProtesto", "0", False) & ", " & _
-            FunJsonString("ComplementoInstrucao1", IIf(TxtInstrucao1.Text <> "", XLT_MENSAGEM1, "")) & ", " & _
-            FunJsonString("ComplementoInstrucao2", IIf(TxtInstrucao2.Text <> "", TxtInstrucao2.Text, "")) & ", " & _
+            FunJsonString("ComplementoInstrucao1", IIf(TxtInstrucao1.Text <> "", XLT_INSTRUCAO, "")) & ", " & _
+            FunJsonString("ComplementoInstrucao2", IIf(TxtInstrucao2.Text <> "", XLT_INSTRUCAO, "")) & ", " & _
             FunJsonString("ComplementoInstrucao3", "") & ", "
             
             XLT_JSON = XLT_JSON & _
+            FunJsonString("DataDesconto", XLT_DATADESCONTO) & ", " & _
             FunJsonString("DataEmissao", Format(DtpExportacao, "yyyy-mm-dd")) & ", " & _
             FunJsonString("DataVencimento", XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("data_vencimento")) & ", " & _
             FunJsonString("EspecieDocumento", "12", False) & ", " & _
             FunJsonString("EspecieMoeda", "R$") & ", " & _
             FunJsonString("ImprimirValoresAuxiliares", "true", False) & ", " & _
             FunJsonString("MensagemArquivoRemessa", "") & ", " & _
-            FunJsonString("MensagemInstrucoesCaixa", "") & ", " & _
+            FunJsonString("MensagemInstrucoesCaixa", IIf(XLT_INSTRUCAO <> "", XLT_INSTRUCAO, "")) & ", " & _
             FunJsonString("NossoNumero", XLT_NOSSONUMERO) & ", " & _
             FunJsonString("NossoNumeroDV", XLT_NOSSONUMERODV) & ", " & _
             FunJsonString("NossoNumeroFormatado", _
                            XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & _
                            XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV) & ", " & _
             FunJsonString("NumeroDocumento", XFO_EXPORTACAO!Titulo) & ", " & _
+            FunJsonString("ValorDesconto", Replace(Replace(FormatNumber(XLF_DESCONTO, 2), ".", ""), ",", "."), False) & ", " & _
             FunJsonString("ValorTitulo", Replace(Replace(FormatNumber(XLF_VALOR, 2), ".", ""), ",", "."), False) & " }, "
 
             ' --- { Banco { }
@@ -4082,8 +4095,8 @@ Private Sub CmdEmitirBoletos_Click()
             FunJsonString("DigitoAgencia", "") & ", " & _
             FunJsonString("DigitoConta", Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")) & ", " & _
             FunJsonString("LocalPagamento", "") & ", " & _
-            FunJsonString("MensagemFixaSacado", "Boleto referente ao titulo " & XFO_EXPORTACAO!Titulo) & ", " & _
-            FunJsonString("MensagemFixaTopoBoleto", "Boleto emitido por " & Trim(PEmpresa)) & ", "
+            FunJsonString("MensagemFixaSacado", "Ref. título " & XFO_EXPORTACAO!Titulo) & ", " & _
+            FunJsonString("MensagemFixaTopoBoleto", "Emitido por " & Trim(PEmpresa)) & ", "
 
             XLT_JSON = XLT_JSON & _
             FunJsonString("NossoNumeroBancoCorrespondente", "") & ", " & _
