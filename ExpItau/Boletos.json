@@ -21,14 +21,14 @@
             }
         },
 		"EmailConfig": {
-			"ServerName": 	"smtp.gmail.com",
+			"ServerName": 	"email-ssl.com.br",
 			"ServerPort": 	465,
 			"UseSSL": 		true,
-			"UserName": 	"psgarcia159@gmail.com",
-			"UserPassword": "raqs yopx twjv vsas",
+			"UserName": 	"cobranca@costaandrade.com.br",
+			"UserPassword": "Ftyhq#skf ^6Ti_87",
 			"MailFrom": 	"Costa Andrade <no-reply@costaandrade.com.br>",
 			"MailCC": 		"Costa Andrade <paulo@interativabr.com>",
-			"MailTo": 		"Homologação (Remover em Produção) <psgarcia159@gmail.com>",
+			"MailTo": 		"Homologação <psgarcia159@gmail.com>",
 			"MailSubject": 	"Boleto disponí­vel",
 			"IsHtmlBody": 	true
 		}

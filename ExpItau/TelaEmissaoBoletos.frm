@@ -273,7 +273,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   181207043
+         Format          =   70647811
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -1139,7 +1139,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   144637955
+            Format          =   70909955
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -1152,7 +1152,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   144637955
+            Format          =   70909955
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -3746,14 +3746,12 @@ Private Sub CmdEmitirBoletos_Click()
                     XLT_CIDADE = Left(XFO_EXPORTACAO!focl_tx_Cidade, 20) + Space(20 - Len(Left(XFO_EXPORTACAO!focl_tx_Cidade, 20)))
                     XLT_ESTADO = Left(XFO_EXPORTACAO!focl_tx_Estado, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!focl_tx_Estado, 2)))
                     XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!focl_tx_Cep, ".", ""), "-", ""))
-'                    XLT_CEP = XFO_EXPORTACAO!focl_tx_Cep
                 Else
                     XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 45) + Space(45 - Len(Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 45)))
                     XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15)))
                     XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 20) + Space(20 - Len(Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 20)))
                     XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2)))
                     XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!clie_nr_CepResidencial, ".", ""), "-", ""))
-'                    XLT_CEP = XFO_EXPORTACAO!clie_nr_CepResidencial
                 End If
             Else
                 XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40)))
@@ -3761,16 +3759,16 @@ Private Sub CmdEmitirBoletos_Click()
                 XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15)))
                 XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2)))
                 XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!clie_nr_CepCorresp, ".", ""), "-", ""))
-'                XLT_CEP = Left(XFO_EXPORTACAO!clie_nr_CepCorresp, 2) + Mid(XFO_EXPORTACAO!clie_nr_CepCorresp, 4, 3) + Right(XFO_EXPORTACAO!clie_nr_CepCorresp, 3)
             End If
 
             If ChkJuros.Value = 1 Then
-                XLT_DATAMORA = Format(DateAdd("d", 1, XFO_EXPORTACAO!titu_dt_Vencimento), "yyyy-mm-dd")
+                ' XLT_DATAMORA = Format(DateAdd("d", 1, XFO_EXPORTACAO!titu_dt_Vencimento), "yyyy-mm-dd")
                 If TxtPrzMora.Text = "" Then
                         XLI_PRAZOMORA = 0
                 Else
                         XLI_PRAZOMORA = TxtPrzMora.Text
                 End If
+                XLT_DATAMORA = Format(DateAdd("d", XLI_PRAZOMORA, XFO_EXPORTACAO!titu_dt_Vencimento), "dd/mm/yyyy")
             Else
                 XLT_DATAMORA = "      "
                 If TxtInstrucao1.Text <> "94" And TxtInstrucao2.Text <> "94" Then
@@ -3810,8 +3808,10 @@ Private Sub CmdEmitirBoletos_Click()
                 XLT_INSTRUCAO = IIf(XLT_INSTRUCAO <> "", XLT_INSTRUCAO & " <br> ", "") & XLT_MENSAGEM1
             End If
             
-            ' - Monta objeto JSON com o formato requerido conforme documentação da API
-            '   (ver README.txt para layout completo)
+            ' - Monta objeto JSON com o formato requerido conforme documentação da API.
+            '   Foram utilizados os campos necessários para a geração dos boletos, caso sejam necessárias
+            '   mais informações, ver a documentação em:
+            '       https://devportal.itau.com.br/nossas-apis/itau-ep9-gtw-cash-management-ext-v2
             ' --------------------------------------------------------------------------------------------
             
             ' --- { data
@@ -3858,7 +3858,7 @@ Private Sub CmdEmitirBoletos_Click()
             FunJsonString("texto_uso_beneficiario", Trim(XFO_EXPORTACAO!Titulo)) & ", " & _
             FunJsonString("valor_total_titulo", Format(XLF_VALOR * 100, "00000000000000000")) & ", "
 
-            ' --- { data { dado_boleto { protesto },
+            ' --- { data { dado_boleto { protesto }, (Não implementado)
 '            XLT_JSON = XLT_JSON & _
 '            FunJsonString("protesto", "{ ", False) & _
 '            FunJsonString("protesto", "false", False) & ", " & _
@@ -3866,14 +3866,14 @@ Private Sub CmdEmitirBoletos_Click()
 '            FunJsonString("quantidade_dias_protesto", "10", False) & ", " & _
 '            FunJsonString("protesto_falimentar", "true", False) & " }, "
             
-            ' --- { data { dado_boleto { negativacao },
+            ' --- { data { dado_boleto { negativacao }, (Não implementado)
 '            XLT_JSON = XLT_JSON & _
 '            FunJsonString("negativacao", "{ ", False) & _
 '            FunJsonString("negativacao", "false", False) & ", " & _
 '            FunJsonString("codigo_tipo_negativacao", "1", False) & ", " & _
 '            FunJsonString("quantidade_dias_negativacao", "10", False) & " }, "
            
-            ' --- { data { dado_boleto { instrucao_cobranca [ { } ],
+            ' --- { data { dado_boleto { instrucao_cobranca [ { } ], (Não implementado)
 '            If (TxtInstrucao1.Text <> "" And TxtInstrucao1.Text <> "93" And TxtInstrucao1.Text <> "94") Or _
 '               (TxtInstrucao2.Text <> "" And TxtInstrucao2.Text <> "93" And TxtInstrucao2.Text <> "94") Then
 '
@@ -4004,7 +4004,7 @@ Private Sub CmdEmitirBoletos_Click()
             ' --- finaliza o json
             XLT_JSON = XLT_JSON & " } } }"
              
-            ' - Registrar o boleto no banco via API, retorna um objeto json armazenado em XLO_JSONAPI
+            ' - Registra o boleto no banco Itaú, via API, e retorna um objeto json armazenado em XLO_JSONAPI
             '   (ver README.txt para layout)
             ' --------------------------------------------------------------------------------------------
             Set XLO_JSONAPI = JSON.parse(FunPostBoleto(XLT_JSON))
@@ -4022,8 +4022,7 @@ Private Sub CmdEmitirBoletos_Click()
                 
             ' - Monta objeto JSON com o layout/esquema necessário para a emissão do boleto em HTML e PDF
             '   Foram utilizados os campos necessários para a geração dos boletos, caso sejam necessárias
-            '   mais informações, ver a documentação em :
-            '   https://devportal.itau.com.br/nossas-apis/itau-ep9-gtw-cash-management-ext-v2
+            '   mais informações, ver a documentação em: https://github.com/BoletoNet/boleto2net
             ' --------------------------------------------------------------------------------------------
             XLT_JSON = "{ "
 
@@ -4049,7 +4048,7 @@ Private Sub CmdEmitirBoletos_Click()
             FunJsonString("ComplementoInstrucao3", "") & ", "
             
             XLT_JSON = XLT_JSON & _
-            FunJsonString("DataDesconto", XLT_DATADESCONTO) & ", " & _
+            IIf(XLT_DATADESCONTO <> "", FunJsonString("DataDesconto", XLT_DATADESCONTO) & ", ", "") & _
             FunJsonString("DataEmissao", Format(DtpExportacao, "yyyy-mm-dd")) & ", " & _
             FunJsonString("DataVencimento", XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("data_vencimento")) & ", " & _
             FunJsonString("EspecieDocumento", "12", False) & ", " & _
@@ -4220,7 +4219,7 @@ Private Sub CmdEmitirBoletos_Click()
                 GoTo WhileNext
             End If
 
-            ' - Atualizar os titulos para quais foram gerados os boletos
+            ' - Atualiza o titulo com os dados do boleto gerado
             ' --------------------------------------------------------------------------------------------
             If OptIndexador1.Value = True Then
                 If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda1) Then
@@ -4238,16 +4237,20 @@ Private Sub CmdEmitirBoletos_Click()
                 XLT_CODMOEDA = ""
             End If
             
-            Conexao.Execute ("UPDATE Titulos Set titu_tx_ExpBanco='S'," & _
-                             " moed_cd_Moeda3=" & FunNuloBancoVal(XLT_CODMOEDA) & "," & _
-                             " titu_vl_Seguro=" & FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8))) & _
-                             " WHERE empr_cd_Empresa=" & PCodEmpresa & _
-                             " AND empd_cd_empreendimento='" & Left(XFO_EXPORTACAO!Titulo, 4) & "'" & _
-                             " AND imov_cd_imovel='" & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & "'" & _
-                             " AND cont_cd_Contrato='" & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & "'" & _
-                             " AND titu_cd_Plano='" & Mid(XFO_EXPORTACAO!Titulo, 14, 2) & "'" & _
-                             " AND titu_cd_Parcela='" & Mid(XFO_EXPORTACAO!Titulo, 17, 3) & "'" & _
-                             " AND titu_cd_Residuo='" & Right(XFO_EXPORTACAO!Titulo, 2) & "'")
+            Conexao.Execute ("UPDATE Titulos Set titu_tx_ExpBanco = 'S'," & _
+                             " moed_cd_Moeda3 = " & FunNuloBancoVal(XLT_CODMOEDA) & "," & _
+                             " titu_vl_Seguro = " & FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8))) & "," & _
+                             " titu_tx_IdBoleto = '" & XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("id_boleto_individual") & "'," & _
+                             " titu_tx_NossoNumero = '" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV & "'," & _
+                             " titu_tx_CodigoBarras = '" & XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("codigo_barras") & "'," & _
+                             " titu_tx_LinhaDigitavel = '" & XLO_JSONAPI.Item("data").Item("dado_boleto").Item("dados_individuais_boleto").Item(1).Item("numero_linha_digitavel") & "'" & _
+                             " WHERE empr_cd_Empresa = " & PCodEmpresa & _
+                             " AND empd_cd_empreendimento = '" & Left(XFO_EXPORTACAO!Titulo, 4) & "'" & _
+                             " AND imov_cd_imovel = '" & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & "'" & _
+                             " AND cont_cd_Contrato = '" & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & "'" & _
+                             " AND titu_cd_Plano = '" & Mid(XFO_EXPORTACAO!Titulo, 14, 2) & "'" & _
+                             " AND titu_cd_Parcela = '" & Mid(XFO_EXPORTACAO!Titulo, 17, 3) & "'" & _
+                             " AND titu_cd_Residuo = '" & Right(XFO_EXPORTACAO!Titulo, 2) & "'")
                         
              ' - Registra o LOG da operação
              ' --------------------------------------------------------------------------------------------

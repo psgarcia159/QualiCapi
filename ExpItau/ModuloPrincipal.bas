@@ -53,7 +53,7 @@ Public Sub Main()
         End If
     Else
         If PCodEmpresa = "" Then
-           PCodEmpresa = 105 ' substituir por 1 antde de liberar para o cliente
+           PCodEmpresa = 105
         End If
         If func_cd_operador = "" Then
             func_cd_operador = 1
