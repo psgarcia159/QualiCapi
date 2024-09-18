@@ -273,7 +273,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   70647811
+         Format          =   160563203
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -1139,7 +1139,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   70909955
+            Format          =   127664131
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -1152,7 +1152,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   70909955
+            Format          =   127664131
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -3602,16 +3602,21 @@ Private Sub CmdEmitirBoletos_Click()
     Dim XLI_COUNT As Integer            ' Contador de elementos
     Dim XLT_NOSSONUMERO As String       ' Campo Nosso_Numero
     Dim XLT_NOSSONUMERODV As String     ' Dv Nosso_numero
+    Dim XLT_SENHACEDENTE As String      ' Senha da empresa para criação do arquivo PDF
+    Dim XLT_SENHASACADO As String       ' Senha do cliente para criação do arquivo PDF
     
     ' - Instancia o componente COM para geração/emissão do Boleto
     ' --------------------------------------------------------------------------------------------
     Dim BoletoService As New Boleto2Net.BoletoService
 
-    XLT_CGCEMP = Replace(Replace(Replace(XGT_CGC, ".", ""), "/", ""), "-", "")
-    XLT_CEPEMP = Replace(Replace(XGT_CEP, ".", ""), "-", "")
+    XLT_CGCEMP = Trim(Replace(Replace(Replace(XGT_CGC, ".", ""), "/", ""), "-", ""))
+    XLT_CEPEMP = Trim(Replace(Replace(XGT_CEP, ".", ""), "-", ""))
     XLT_AGENCONTA = Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
                     Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 7), "0000000") & _
                     Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")
+                    
+    ' - Padrão Costa Andrade = primeiros 3 + últimos 2 digitos
+    XLT_SENHACEDENTE = Format(Left(XLT_CGCEMP, 3), "000") & Format(Right(XLT_CGCEMP, 2), "00")
                        
     ' - Valida titulos selecionados no Grid
     ' --------------------------------------------------------------------------------------------
@@ -3693,6 +3698,14 @@ Private Sub CmdEmitirBoletos_Click()
                 Exit Sub
             End If
             
+            ' - Verifica/valida a data de vencimento dos titulos
+            ' ---------------------------------------------------------------------------------------
+            If XFO_EXPORTACAO!titu_dt_Vencimento < DtpExportacao Then
+                MsgBox "O título " & XFO_EXPORTACAO!Titulo & " do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                vbCrLf & "está vencido. Corrija o vencimento do título para que o boleto possa ser emitido."
+                Exit Sub
+            End If
+            
         End If
         
         TDBGrid1.MoveNext
@@ -3730,9 +3743,12 @@ Private Sub CmdEmitirBoletos_Click()
             
             XLF_DESCONTO = CDbl(TDBGrid1.Columns(5))
 
-            XLT_CGCCPF = Replace(Replace(Replace(XFO_EXPORTACAO!focl_tx_CGCCPF, ".", ""), "/", ""), "-", "")
+            XLT_CGCCPF = Trim(Replace(Replace(Replace(XFO_EXPORTACAO!focl_tx_CGCCPF, ".", ""), "/", ""), "-", ""))
             XLT_NOME = Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 50) + Space(50 - Len(Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 50)))
             XLT_FANTASIA = Left(XFO_EXPORTACAO!focl_tx_Fantasia, 50) + Space(50 - Len(Left(XFO_EXPORTACAO!focl_tx_Fantasia, 50)))
+
+            ' - Padrão Costa Andrade = primeiros 3 + últimos 2 digitos
+            XLT_SENHASACADO = Format(Left(XLT_CGCCPF, 3), "000") & Format(Right(XLT_CGCCPF, 2), "00")
 
             If XFO_EXPORTACAO!clie_tx_EndCorresp = "" _
                 And XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
@@ -3798,16 +3814,18 @@ Private Sub CmdEmitirBoletos_Click()
                                            Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _
                                            XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & XLT_NOSSONUMERO)
             
-            XLT_INSTRUCAO = ""
+            XLT_INSTRUCAO = "NÃO RECEBER APÓS O VENCIMENTO <br> " & _
+                            "DEVOLVER APÓS 01 DIA DE VENCIDO <br> " & _
+                            "NÃO PROTESTAR <br> "
             
             If XLT_DATADESCONTO <> "" And XLF_DESCONTO <> 0 Then
-                XLT_INSTRUCAO = "CONCEDER DESCONTO DE R$ " & Format(XLF_DESCONTO, "0.00") & " ATÉ " & Format(TDBGrid1.Columns(6), "dd/mm/yyyy")
+                XLT_INSTRUCAO = XLT_INSTRUCAO & "CONCEDER DESCONTO DE R$ " & Format(XLF_DESCONTO, "0.00") & " ATÉ " & Format(TDBGrid1.Columns(6), "dd/mm/yyyy") & " <br> "
             End If
             
             If XLT_MENSAGEM1 <> "" Then
-                XLT_INSTRUCAO = IIf(XLT_INSTRUCAO <> "", XLT_INSTRUCAO & " <br> ", "") & XLT_MENSAGEM1
+                XLT_INSTRUCAO = XLT_INSTRUCAO & XLT_MENSAGEM1
             End If
-            
+                        
             ' - Monta objeto JSON com o formato requerido conforme documentação da API.
             '   Foram utilizados os campos necessários para a geração dos boletos, caso sejam necessárias
             '   mais informações, ver a documentação em:
@@ -4175,9 +4193,15 @@ Private Sub CmdEmitirBoletos_Click()
             FunJsonString("Moeda", "9", False) & ", " & _
             FunJsonString("ValorDocumento", Replace(Replace(FormatNumber(XLF_VALOR, 2), ".", ""), ",", "."), False) & " }, "
 
-            ' --- { PathToFiles } }
+            ' --- { PathToFiles
             XLT_JSON = XLT_JSON & _
-            FunJsonString("PathToFiles", XLO_BOLETOS.Item("PathToFiles")) & " } "
+            FunJsonString("PathToFiles", XLO_BOLETOS.Item("PathToFiles")) & ", "
+            
+            ' --- { SenhaPdfSacado, SenhaPdfCedente } }
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("SenhaPdfSacado", XLT_SENHASACADO) & ", " & _
+            FunJsonString("SenhaPdfCedente", XLT_SENHACEDENTE) & " }"
+            
             
             ' - Emitir boleto, salvar em PDF com senha usando biblioteca externa (dll)
             '   Corrige as contrabarras, para o parse do json (vem C:/xx\yy, deveria ser C:\\xx\\yy)

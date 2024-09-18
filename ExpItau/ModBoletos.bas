@@ -13,6 +13,7 @@ Global XLT_ACCESSTOKEN  As String           ' String contendo o último access_to
 Global XLT_TOKENTYPE    As String           ' Tipo do Token, geralmente "Bearer"
 Global XLT_TOKENSCOPE   As String           ' Escopo de autenticação/autorização do token
 Global XLT_ROOTITEM     As String           ' Posicionamento do item em XLO_BOLETOS
+Global XLT_EMAILBODY    As String           ' Carrega o template em função do campo IsHtmlBody
 
 ' - Declaração de Function's e Sub's
 ' ----------------------------------------------------------------------------
@@ -60,8 +61,6 @@ Public Function FunReadTextFile(FileName As String) As String
 
     FilePath = App.Path & "\\" & FileName
     
-'    MsgBox "FilePath arquivo Boletos.json: " & FilePath, , "Aviso: FunReadTextFile"
-
     If LenB(Dir$(FilePath)) > 0 Then
         handle = FreeFile
         Open FilePath For Binary As #handle
@@ -90,7 +89,13 @@ Public Function FunLoadConfig(Optional FilePath As String = "Boletos.json") As B
             XLT_ROOTITEM = "Production"
         End If
     End If
-
+    
+    If XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("IsHtmlBody") = True Then
+        XLT_EMAILBODY = FunReadTextFile("TemplateBodyHTML")
+    Else
+        XLT_EMAILBODY = FunReadTextFile("TemplateBodyTXT")
+    End If
+    
 End Function
        
 ' - Função para obter os dados de autorização (access_token, ...)
@@ -245,6 +250,7 @@ Public Function FunSendEmail( _
          CDO.To = IIf(XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailTo") <> "", _
                       XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailTo"), _
                       MailTo)
+'         CDO.To = MailTo
     End If
         
     If XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailCC") <> "" Then
@@ -274,42 +280,18 @@ Public Function FunSendEmail( _
     
 End Function
 
-' - Função para gerar o arquivo HTML para o corpo do e-mail
+' - Função para gerar o corpo do e-mail, substituindo os dados do template
 ' ----------------------------------------------------------------------------
 Private Function FunEmailBody(NomeCliente As String, Titulo As String, Vencimento As String, valor As Double) As String
     Dim Output As String
     
-    If XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("IsHtmlBody") = True Then
-        Output = "<html><title>Emissor de Boletos</title><head></head><body>" & _
-                 "<p style=""font-family: arial, sans-serif; text-align: left; padding: 8px;"">" & _
-                 NomeCliente & ", informamos que seu boleto encontra-se disponível." & _
-                 "</p>" & _
-                 "<p></p><hr style=""color: #dddddd;"" /><p></p>" & _
-                 "<p style=""font-family: arial, sans-serif; text-align: left; padding: 8px;"">" & _
-                 "Titulo: " & Titulo & _
-                 "</p>" & _
-                 "<p style=""font-family: arial, sans-serif; text-align: left; padding: 8px;"">" & _
-                 "Data de vencimento: " & Vencimento & _
-                 "</p>" & _
-                 "<p style=""font-family: arial, sans-serif; text-align: left; padding: 8px;"">" & _
-                 "Valor: R$ " & Format$(valor, "STANDARD") & _
-                 "</p>" & _
-                 "<p></p><hr style=""color: #dddddd;"" /><p></p>" & _
-                 "<p style=""font-family: arial, sans-serif; text-align: left; padding: 8px;"">" & _
-                 "Segue em anexo o arquivo para pagamento. A senha para acesso ao boleto são os dígitos (só os números) do CPF ou CNPJ." & _
-                 "</p><p></p>" & _
-                 "<p style=""font-family: arial, sans-serif; text-align: left; padding: 8px;"">" & _
-                 "Caso tenha alguma dúvida ou problema, por favor entre em contato." & _
-                 "</p></body></html>"
-    Else
-        Output = NomeCliente & ", informamos que seu boleto encontra-se disponível." & vbCrLf & vbCrLf & _
-                 "Titulo: " & Titulo & vbCrLf & _
-                 "Data de vencimento: " & Vencimento & vbCrLf & _
-                 "Valor: R$ " & Format$(valor, "STANDARD") & vbCrLf & vbCrLf & _
-                 "Segue em anexo o arquivo para pagamento. A senha para acesso ao boleto são os dígitos (só os números) do CPF ou CNPJ." & vbCrLf & vbCrLf & _
-                 "Caso tenha alguma dúvida ou problema, por favor entre em contato."
-    End If
-
+    Output = Replace(XLT_EMAILBODY, "@RAZAO_SOCIAL@", PEmpresa)
+    Output = Replace(Output, "@CNPJ@", XGT_CGC)
+    Output = Replace(Output, "@NOME_CLIENTE@", NomeCliente)
+    Output = Replace(Output, "@NUMERO_TITULO@", Titulo)
+    Output = Replace(Output, "@DATA_VENCIMENTO@", Vencimento)
+    Output = Replace(Output, "@VALOR@", Format$(valor, "STANDARD"))
+    
     FunEmailBody = Output
     
 End Function
@@ -408,10 +390,10 @@ Public Function FunDvMod10(Numero As String) As String
     
 End Function
 
-' - Função para cálculo de digito verificador (modulo 10)
+' - Função para formatação de strings (equivalente a String.Format em C#)
 '   Example:
-'       Debug.Print FS("Name = {0}, Time = {1:hh:mm}, Number={2:#.00}", "My name", Now(), 12.5)
-' ----------------------------------------------------------------------------
+'       Debug.Print FunFormatString("Name = {0}, Time = {1:hh:mm}, Number={2:#.00}", "My name", Now(), 12.5)
+' ----------------------------------------------------------------------------------------------------------
 Function FunFormatString(StrText As String, ParamArray Parameters())
 
     Dim Item

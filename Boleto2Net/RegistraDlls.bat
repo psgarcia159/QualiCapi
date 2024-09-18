@@ -45,3 +45,7 @@ Rem --- Registra bibliotecas no GAC (????)
 "c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\gacutil.exe" /i System.Text.Json.dll
 "c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\gacutil.exe" /i System.Threading.Tasks.Extensions.dll
 "c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\gacutil.exe" /i System.ValueTuple.dll
+
+Rem --- Registra Assembly (????)
+"C:\Windows\Microsoft.NET\Framework\v4.0.30319\RegAsm.exe" /codebase /tlb:Boleto2Net.tlb Boleto2Net.dll
+
