@@ -17,6 +17,164 @@ Begin VB.Form TelaExpBancaria
    ScaleHeight     =   5835
    ScaleWidth      =   9465
    WindowState     =   2  'Maximized
+   Begin Threed.SSPanel PanBotoes 
+      Height          =   885
+      Left            =   45
+      TabIndex        =   11
+      Top             =   4740
+      Width           =   9240
+      _Version        =   65536
+      _ExtentX        =   16298
+      _ExtentY        =   1561
+      _StockProps     =   15
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BevelOuter      =   0
+      Begin VB.CommandButton CmdDesconto 
+         Caption         =   "&Desconto"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   2700
+         TabIndex        =   61
+         Top             =   0
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdMarcar 
+         Caption         =   "&Marcar Todos"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   4620
+         TabIndex        =   60
+         Top             =   15
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdPesquisa 
+         Caption         =   "&Pesquisar"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   720
+         TabIndex        =   59
+         Top             =   0
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdDesmarcar 
+         Caption         =   "Desmarcar &Todos"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   6540
+         TabIndex        =   16
+         Top             =   15
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdImprimir 
+         Caption         =   "Im&primir"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   4620
+         TabIndex        =   14
+         Top             =   495
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdFiltro 
+         Caption         =   "&Seleções"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   2700
+         TabIndex        =   13
+         Top             =   495
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdExportar 
+         Caption         =   "&Exportar"
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   720
+         TabIndex        =   12
+         Top             =   495
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdSair 
+         Caption         =   "&Sair"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   6540
+         TabIndex        =   10
+         Top             =   495
+         Width           =   1680
+      End
+   End
    Begin Threed.SSPanel PanDesconto 
       Height          =   2235
       Left            =   3240
@@ -113,7 +271,7 @@ Begin VB.Form TelaExpBancaria
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   144113667
+         Format          =   167772163
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -286,39 +444,39 @@ Begin VB.Form TelaExpBancaria
          TabCaption(1)   =   "Empreendimentos"
          TabPicture(1)   =   "TelaExpBancaria.frx":08E6
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(1)=   "LlbEmpreendimento"
-         Tab(1).Control(2)=   "TDBGridEmpr1"
-         Tab(1).Control(3)=   "TDBGridEmpr2"
-         Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(6)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(4)=   "TDBGridEmpr2"
+         Tab(1).Control(5)=   "TDBGridEmpr1"
+         Tab(1).Control(6)=   "LlbEmpreendimento"
+         Tab(1).Control(7)=   "Label1"
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
          TabPicture(2)   =   "TelaExpBancaria.frx":0902
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "Label3"
-         Tab(2).Control(1)=   "Label2"
-         Tab(2).Control(2)=   "TDBGridMoeda2"
-         Tab(2).Control(3)=   "TDBGridMoeda1"
+         Tab(2).Control(0)=   "CmdRemoverMoeda"
+         Tab(2).Control(1)=   "CmdInserirMoeda"
+         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(5)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(7)=   "CmdInserirMoeda"
-         Tab(2).Control(8)=   "CmdRemoverMoeda"
+         Tab(2).Control(5)=   "TDBGridMoeda1"
+         Tab(2).Control(6)=   "TDBGridMoeda2"
+         Tab(2).Control(7)=   "Label2"
+         Tab(2).Control(8)=   "Label3"
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
          TabPicture(3)   =   "TelaExpBancaria.frx":091E
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "Label5"
-         Tab(3).Control(1)=   "Label4"
-         Tab(3).Control(2)=   "TDBGridObs1"
-         Tab(3).Control(3)=   "TDBGridObs2"
-         Tab(3).Control(4)=   "CmdRemoverObservacao"
-         Tab(3).Control(5)=   "CmdInserirObservacao"
-         Tab(3).Control(6)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(7)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(0)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(1)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(2)=   "CmdInserirObservacao"
+         Tab(3).Control(3)=   "CmdRemoverObservacao"
+         Tab(3).Control(4)=   "TDBGridObs2"
+         Tab(3).Control(5)=   "TDBGridObs1"
+         Tab(3).Control(6)=   "Label4"
+         Tab(3).Control(7)=   "Label5"
          Tab(3).ControlCount=   8
          Begin VB.CommandButton CmdRemoverEmpreendimento 
             BackColor       =   &H00000000&
@@ -980,7 +1138,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   123928579
+            Format          =   136511491
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -993,7 +1151,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   123928579
+            Format          =   136511491
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -2522,164 +2680,6 @@ Begin VB.Form TelaExpBancaria
       _StyleDefs(146) =   ":id=41,.parent=34"
       _StyleDefs(147) =   "Named:id=42:FilterBar"
       _StyleDefs(148) =   ":id=42,.parent=33"
-   End
-   Begin Threed.SSPanel PanBotoes 
-      Height          =   885
-      Left            =   45
-      TabIndex        =   11
-      Top             =   4740
-      Width           =   9240
-      _Version        =   65536
-      _ExtentX        =   16298
-      _ExtentY        =   1561
-      _StockProps     =   15
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BevelOuter      =   0
-      Begin VB.CommandButton CmdDesconto 
-         Caption         =   "&Desconto"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   2700
-         TabIndex        =   61
-         Top             =   0
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdMarcar 
-         Caption         =   "&Marcar Todos"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   4620
-         TabIndex        =   60
-         Top             =   15
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdPesquisa 
-         Caption         =   "&Pesquisar"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   720
-         TabIndex        =   59
-         Top             =   0
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdDesmarcar 
-         Caption         =   "Desmarcar &Todos"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   6540
-         TabIndex        =   16
-         Top             =   15
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdImprimir 
-         Caption         =   "Im&primir"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   4620
-         TabIndex        =   14
-         Top             =   495
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdFiltro 
-         Caption         =   "&Seleções"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   2700
-         TabIndex        =   13
-         Top             =   495
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdExportar 
-         Caption         =   "&Exportar"
-         Enabled         =   0   'False
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   720
-         TabIndex        =   12
-         Top             =   495
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdSair 
-         Caption         =   "&Sair"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   6540
-         TabIndex        =   10
-         Top             =   495
-         Width           =   1680
-      End
    End
    Begin MSComDlg.CommonDialog CdbImpressora 
       Left            =   0

@@ -1,7 +1,8 @@
--- USE [QualiAdmFin_CA_2024_05_24]
--- GO
+--USE QualiAdmFin_CA_2024_05_24
+--GO
 
-/****** Atualiza view para emissão de boletos no QualiCapi/ExpItau (solicitação Costa Andrade) ******/
+DROP VIEW IF EXISTS [dbo].[ConsCAPExpBanco]
+GO
 
 SET ANSI_NULLS ON
 GO
@@ -9,12 +10,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE OR ALTER VIEW [dbo].[ConsCAPExpBanco]
+/****** View para exportação de boletos no QualiCapi  ******/
 
+CREATE VIEW [dbo].[ConsCAPExpBanco]
 AS
-
-SELECT  TOP 100 PERCENT
-		dbo.Titulos.empd_cd_Empreendimento + '.' + dbo.Titulos.imov_cd_Imovel + '.' + dbo.Titulos.cont_cd_Contrato + '.' + dbo.Titulos.titu_cd_Plano + '.' + dbo.Titulos.titu_cd_Parcela + '.' + dbo.Titulos.titu_cd_Residuo AS Titulo,
+SELECT  dbo.Titulos.empd_cd_Empreendimento + '.' + dbo.Titulos.imov_cd_Imovel + '.' + dbo.Titulos.cont_cd_Contrato + '.' + dbo.Titulos.titu_cd_Plano + '.' + dbo.Titulos.titu_cd_Parcela + '.' + dbo.Titulos.titu_cd_Residuo AS Titulo,
 		dbo.Titulos.coco_cd_Codigo, 
 		dbo.Titulos.obse_cd_Observacao,
 		dbo.Titulos.moed_cd_Moeda1,
@@ -95,3 +95,5 @@ FROM    dbo.Clientes
 ORDER BY titulo
 
 GO
+
+

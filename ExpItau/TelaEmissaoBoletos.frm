@@ -107,7 +107,6 @@ Begin VB.Form TelaEmissaoBoletos
       End
       Begin VB.CommandButton CmdImprimir 
          Caption         =   "Im&primir"
-         Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   8.25
@@ -118,10 +117,9 @@ Begin VB.Form TelaEmissaoBoletos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   345
-         Left            =   6540
+         Left            =   4620
          TabIndex        =   14
          Top             =   495
-         Visible         =   0   'False
          Width           =   1680
       End
       Begin VB.CommandButton CmdFiltro 
@@ -171,7 +169,7 @@ Begin VB.Form TelaEmissaoBoletos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   345
-         Left            =   4620
+         Left            =   6540
          TabIndex        =   10
          Top             =   495
          Width           =   1680
@@ -273,7 +271,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   160563203
+         Format          =   142737411
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -1139,7 +1137,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   127664131
+            Format          =   143065091
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -1152,7 +1150,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   127664131
+            Format          =   143065091
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -2888,7 +2886,7 @@ Function FunCalculaSaldoDevedor(XLO_RECORDSET As ADODB.Recordset, XLD_DATABASE A
 
   XLD_DATA = XLD_DATABASE
     
-  XLT_SQL = FunCriaConsultaBase(TDBGrid1.Columns("Vencimento"), NomeSgbd, "ConsCAPExpBanco", 1)
+  XLT_SQL = FunCriaConsultaBase(TDBGrid1.Columns("Vencimento"), NomeSgbd, "ConsCAPEmissaoBoleto", 1)
   XLT_SQL = XLT_SQL & "empr_cd_empresa = " & PCodEmpresa & "" & _
     " AND empd_cd_Empreendimento= '" & Left(XLO_RECORDSET("Titulo"), 4) & "'" & _
     " AND imov_cd_Imovel='" & Mid(XLO_RECORDSET("Titulo"), 6, 4) & "'" & _
@@ -4228,6 +4226,7 @@ Private Sub CmdEmitirBoletos_Click()
             ' --------------------------------------------------------------------------------------------
             XLB_STATUS = FunSendEmail( _
                             XFO_EXPORTACAO!focl_tx_RazaoSocial, _
+                            XFO_EXPORTACAO!empd_tx_Nome, _
                             XFO_EXPORTACAO!Titulo, _
                             Format(XFO_EXPORTACAO!titu_dt_Vencimento, "dd/mm/yyyy"), _
                             XLF_VALOR, _
@@ -4385,7 +4384,7 @@ Private Sub CmdImprimir_Click()
     Dim XLF_TOTALPAGAR As Double
     Dim XLI_QTDTITULOS As Integer
         
-    TitRel = "Listagem do Arquivo de Exportação"
+    TitRel = "Listagem de Títulos para Emissão de Boletos"
     
     Printer.ScaleMode = 7  'vbCentimeters
     
@@ -4426,7 +4425,7 @@ Private Sub CmdImprimir_Click()
     If Not (TDBGrid1.EOF And TDBGrid1.BOF) Then
         'TDBGrid1.MoveFirst
         While Not (TDBGrid1.EOF)
-            If (TDBGrid1.Columns("Exp.").Value = -1) Then
+            If (TDBGrid1.Columns("Sel.").Value = -1) Then
                 If Printer.CurrentY >= (AreaImpressao - 0.35) Then
                     Printer.NewPage
                     subRodape 2, AltPapel, TitRel
@@ -4658,7 +4657,7 @@ Private Sub CmdPesquisar_Click()
                   "0 as ValorTitulo, " & _
                   "0 as Seguro, " & _
                   "'N' as SaldoDevedor " & _
-              "FROM ConsCAPExpBanco " & _
+              "FROM ConsCAPEmissaoBoleto " & _
               "WHERE" & XGT_SELECAO & " ORDER BY Titulo"
    
    subCarregaVetor XFT_SQL, Array("Titulo", "Exporta", "titu_dt_Vencimento", "ValorReal", _
@@ -4679,7 +4678,7 @@ Private Sub CmdPesquisar_Click()
      
   TDBGrid1.Refresh
   
-  XFT_SQL2 = FunCriaConsultaBase("01/01/01", NomeSgbd, "ConsCAPExpBanco", 3)
+  XFT_SQL2 = FunCriaConsultaBase("01/01/01", NomeSgbd, "ConsCAPEmissaoBoleto", 3)
   XFT_SQL2 = XFT_SQL2 & XGT_SELECAO & " ORDER BY Titulo"
 
   If XFO_EXPORTACAO.State = adStateOpen Then

@@ -221,6 +221,7 @@ End Function
 ' ----------------------------------------------------------------------------
 Public Function FunSendEmail( _
                          NomeCliente As String, _
+                         Empreendimento As String, _
                          Titulo As String, _
                          Vencimento As String, _
                          valor As Double, _
@@ -241,8 +242,14 @@ Public Function FunSendEmail( _
         .Update
     End With
     
-    CDO.From = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailFrom")
-    CDO.Subject = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailSubject")
+' Alterado em 26/09/2024 por solicitação da Costa Andrade
+' ----------------------------------------------------------------------------
+'    CDO.From = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailFrom")
+'    CDO.Subject = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailSubject")
+    
+    CDO.From = PEmpresa & " <no-reply@costaandrade.com.br>"
+    CDO.Subject = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailSubject") & _
+                  " - Empreendimento " & Empreendimento & ", Vencimento " & Vencimento
     
     If XLT_ROOTITEM = "Sandbox" Then
          CDO.To = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailTo")
