@@ -368,8 +368,8 @@ Private Sub CmdConfirmar_Click()
                         XLI_CONT = XLI_CONT + 1
               
                         'Verifica se exportado(pago) com o indexador 1 ,2 ou nenhum
-                        If Not IsNull(XLO_IMPORTACAO!moed_cd_Moeda3) Then
-                            If XLO_IMPORTACAO!moed_cd_Moeda3 = XLO_IMPORTACAO!moed_cd_Moeda1 Then
+                        If Not IsNull(XLO_IMPORTACAO!moed_cd_moeda3) Then
+                            If XLO_IMPORTACAO!moed_cd_moeda3 = XLO_IMPORTACAO!moed_cd_moeda1 Then
                                 XLF_PREVISTO = Format(funCalculaCorrecaoMonetaria(XLO_IMPORTACAO, 1, XLO_IMPORTACAO!titu_dt_Vencimento), "Standard")
                             Else
                                 XLF_PREVISTO = Format(funCalculaCorrecaoMonetaria(XLO_IMPORTACAO, 2, XLO_IMPORTACAO!titu_dt_Vencimento), "Standard")
@@ -402,11 +402,11 @@ Private Sub CmdConfirmar_Click()
                         XLO_TITULO!titu_vl_Desconto = FunNuloVal(XLF_DESCONTO)
                         XLO_TITULO!titu_vl_ValorPago = FunNuloVal(XLF_VALORPAGO)
                                 
-                        If Not IsNull(XLO_IMPORTACAO!moed_cd_Moeda3) Then
-                            If XLO_IMPORTACAO!moed_cd_Moeda1 = XLO_IMPORTACAO!moed_cd_Moeda3 Then
+                        If Not IsNull(XLO_IMPORTACAO!moed_cd_moeda3) Then
+                            If XLO_IMPORTACAO!moed_cd_moeda1 = XLO_IMPORTACAO!moed_cd_moeda3 Then
                                 XLO_TITULO!titu_vl_Corrigido1 = FunNuloVal(XLF_CORRECAO)
                     
-                                If XLO_IMPORTACAO!moed_cd_Moeda1 = XLO_IMPORTACAO!moed_cd_Moeda2 Then
+                                If XLO_IMPORTACAO!moed_cd_moeda1 = XLO_IMPORTACAO!moed_cd_Moeda2 Then
                                     XLO_TITULO!titu_vl_Corrigido2 = FunNuloVal(XLF_CORRECAO)
                                 Else
                                     XLO_TITULO!titu_vl_Corrigido2 = 0
@@ -414,7 +414,7 @@ Private Sub CmdConfirmar_Click()
                             Else
                                 XLO_TITULO!titu_vl_Corrigido2 = FunNuloVal(XLF_CORRECAO)
                             
-                                If XLO_IMPORTACAO!moed_cd_Moeda1 = XLO_IMPORTACAO!moed_cd_Moeda2 Then
+                                If XLO_IMPORTACAO!moed_cd_moeda1 = XLO_IMPORTACAO!moed_cd_Moeda2 Then
                                     XLO_TITULO!titu_vl_Corrigido1 = FunNuloVal(XLF_CORRECAO)
                                 Else
                                     XLO_TITULO!titu_vl_Corrigido1 = 0
@@ -424,6 +424,25 @@ Private Sub CmdConfirmar_Click()
                             XLO_TITULO!titu_vl_Corrigido1 = 0
                             XLO_TITULO!titu_vl_Corrigido2 = 0
                         End If
+                        
+                        ' - Bloco para ajuste do(s) valor(es) corrigidos em função do valor pago
+                        ' - Costa Andrade - 28/10/2024
+                        ' -----------------------------------------------------------------------
+                        
+                        If (IsNull(XLO_IMPORTACAO!moed_cd_moeda3) And XLF_CORRECAO <> XLO_IMPORTACAO!titu_vl_Parcela) Then
+                        
+                            XLO_TITULO!titu_vl_Corrigido1 = FunNuloVal(XLF_CORRECAO)
+                            XLO_TITULO!moed_cd_moeda3 = XLO_TITULO!moed_cd_moeda1
+                            XLO_IMPORTACAO!moed_cd_moeda3 = XLO_IMPORTACAO!moed_cd_moeda1
+                
+                            If XLO_IMPORTACAO!moed_cd_moeda1 = XLO_IMPORTACAO!moed_cd_Moeda2 Then
+                                XLO_TITULO!titu_vl_Corrigido2 = FunNuloVal(XLF_CORRECAO)
+                            Else
+                                XLO_TITULO!titu_vl_Corrigido2 = 0
+                            End If
+                        End If
+                                                                        
+                        ' -----------------------------------------------------------------------
                                                 
                         XLO_TITULO!titu_dt_Pagamento = XLD_DATAPAG
                         XLO_TITULO!titu_dt_BasePagto = XLO_IMPORTACAO!titu_dt_Vencimento
@@ -432,7 +451,7 @@ Private Sub CmdConfirmar_Click()
                         XLO_TITULO!titu_tx_DocPagto = XLT_DOCPGTO
                         XLO_TITULO!coco_cd_codigo = CboCCorrente.BoundText
                     
-                        If IsNull(XLO_IMPORTACAO!moed_cd_Moeda3) Then
+                        If IsNull(XLO_IMPORTACAO!moed_cd_moeda3) Then
                             XLT_TIPOPAG = funGeraTipoPag(0, XLF_VALORPAGO, XLF_VALORPAGO - XLF_JUROS + XLF_DESCONTO, XLF_PREVISTO, XLO_IMPORTACAO!titu_dt_Vencimento, XLD_DATAPAG)
                         Else
                             XLT_TIPOPAG = funGeraTipoPag(1, XLF_VALORPAGO, XLF_VALORPAGO - XLF_JUROS + XLF_DESCONTO, XLF_PREVISTO, XLO_IMPORTACAO!titu_dt_Vencimento, XLD_DATAPAG)
@@ -440,8 +459,8 @@ Private Sub CmdConfirmar_Click()
               
                         XLO_TITULO!titu_tx_TipoPag = XLT_TIPOPAG
                  
-                        If Not IsNull(XLO_IMPORTACAO!moed_cd_Moeda3) Then
-                            If XLO_IMPORTACAO!moed_cd_Moeda3 = XLO_IMPORTACAO!moed_cd_Moeda1 Then
+                        If Not IsNull(XLO_IMPORTACAO!moed_cd_moeda3) Then
+                            If XLO_IMPORTACAO!moed_cd_moeda3 = XLO_IMPORTACAO!moed_cd_moeda1 Then
                                 XLO_TITULO!titu_tx_IndicePagamento = "1"
                                 XLO_TITULO!titu_tx_CorrigeParcela = "S"
                             Else
