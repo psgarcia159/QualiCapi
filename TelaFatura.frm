@@ -1,0 +1,1020 @@
+VERSION 5.00
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
+Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
+Begin VB.Form TelaFatura 
+   Caption         =   "Manutenção e Composição de Fatura"
+   ClientHeight    =   4545
+   ClientLeft      =   60
+   ClientTop       =   1245
+   ClientWidth     =   9600
+   LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
+   MDIChild        =   -1  'True
+   ScaleHeight     =   4545
+   ScaleWidth      =   9600
+   WindowState     =   2  'Maximized
+   Begin MSComDlg.CommonDialog CommonDialog1 
+      Left            =   9000
+      Top             =   1920
+      _ExtentX        =   847
+      _ExtentY        =   847
+      _Version        =   393216
+   End
+   Begin TrueOleDBGrid70.TDBGrid TDBGrid1 
+      Bindings        =   "TelaFatura.frx":0000
+      Height          =   3690
+      Left            =   45
+      TabIndex        =   8
+      Top             =   0
+      Width           =   8925
+      _ExtentX        =   15743
+      _ExtentY        =   6509
+      _LayoutType     =   4
+      _RowHeight      =   25
+      _WasPersistedAsPixels=   0
+      Columns(0)._VlistStyle=   0
+      Columns(0)._MaxComboItems=   5
+      Columns(0).Caption=   "Nº Processo"
+      Columns(0).DataField=   "nofi_nr_fatura"
+      Columns(0)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+      Columns(1)._VlistStyle=   0
+      Columns(1)._MaxComboItems=   5
+      Columns(1).Caption=   "Tipo"
+      Columns(1).DataField=   "tipo"
+      Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+      Columns(2)._VlistStyle=   16
+      Columns(2)._MaxComboItems=   5
+      Columns(2).ValueItems(0)._DefaultItem=   0
+      Columns(2).ValueItems(0).Value=   "1"
+      Columns(2).ValueItems(0).Value.vt=   8
+      Columns(2).ValueItems(0).DisplayValue=   "Simples"
+      Columns(2).ValueItems(0).DisplayValue.vt=   8
+      Columns(2).ValueItems(0)._PropDict=   "_DefaultItem,517,2"
+      Columns(2).ValueItems(1)._DefaultItem=   0
+      Columns(2).ValueItems(1).Value=   "2"
+      Columns(2).ValueItems(1).Value.vt=   8
+      Columns(2).ValueItems(1).DisplayValue=   "Simples"
+      Columns(2).ValueItems(1).DisplayValue.vt=   8
+      Columns(2).ValueItems(1)._PropDict=   "_DefaultItem,517,2"
+      Columns(2).ValueItems(2)._DefaultItem=   0
+      Columns(2).ValueItems(2).Value=   "3"
+      Columns(2).ValueItems(2).Value.vt=   8
+      Columns(2).ValueItems(2).DisplayValue=   "Composta"
+      Columns(2).ValueItems(2).DisplayValue.vt=   8
+      Columns(2).ValueItems(2)._PropDict=   "_DefaultItem,517,2"
+      Columns(2).ValueItems.Count=   3
+      Columns(2).Caption=   "Fatura"
+      Columns(2).DataField=   "nofi_tx_tipofatura"
+      Columns(2)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+      Columns(3)._VlistStyle=   0
+      Columns(3)._MaxComboItems=   5
+      Columns(3).Caption=   "Status"
+      Columns(3).DataField=   "status"
+      Columns(3)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+      Columns(4)._VlistStyle=   0
+      Columns(4)._MaxComboItems=   5
+      Columns(4).Caption=   "Cliente/Fornecedor"
+      Columns(4).DataField=   "focl_tx_fantasia"
+      Columns(4)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+      Columns(5)._VlistStyle=   0
+      Columns(5)._MaxComboItems=   5
+      Columns(5).Caption=   "Valor"
+      Columns(5).DataField=   "soma"
+      Columns(5).NumberFormat=   "Standard"
+      Columns(5)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+      Columns.Count   =   6
+      Splits(0)._UserFlags=   0
+      Splits(0).ExtendRightColumn=   -1  'True
+      Splits(0).MarqueeStyle=   3
+      Splits(0).RecordSelectorWidth=   503
+      Splits(0)._SavedRecordSelectors=   0   'False
+      Splits(0).AllowColMove=   -1  'True
+      Splits(0).DividerColor=   12632256
+      Splits(0).SpringMode=   0   'False
+      Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
+      Splits(0)._ColumnProps(0)=   "Columns.Count=6"
+      Splits(0)._ColumnProps(1)=   "Column(0).Width=2355"
+      Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
+      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2275"
+      Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
+      Splits(0)._ColumnProps(5)=   "Column(0)._ColStyle=528"
+      Splits(0)._ColumnProps(6)=   "Column(0).WrapText=1"
+      Splits(0)._ColumnProps(7)=   "Column(0).AllowFocus=0"
+      Splits(0)._ColumnProps(8)=   "Column(0).Order=1"
+      Splits(0)._ColumnProps(9)=   "Column(1).Width=2540"
+      Splits(0)._ColumnProps(10)=   "Column(1).DividerColor=0"
+      Splits(0)._ColumnProps(11)=   "Column(1)._WidthInPix=2461"
+      Splits(0)._ColumnProps(12)=   "Column(1)._EditAlways=0"
+      Splits(0)._ColumnProps(13)=   "Column(1)._ColStyle=528"
+      Splits(0)._ColumnProps(14)=   "Column(1).WrapText=1"
+      Splits(0)._ColumnProps(15)=   "Column(1).AllowFocus=0"
+      Splits(0)._ColumnProps(16)=   "Column(1).Order=2"
+      Splits(0)._ColumnProps(17)=   "Column(1)._MinWidth=33"
+      Splits(0)._ColumnProps(18)=   "Column(2).Width=2487"
+      Splits(0)._ColumnProps(19)=   "Column(2).DividerColor=0"
+      Splits(0)._ColumnProps(20)=   "Column(2)._WidthInPix=2408"
+      Splits(0)._ColumnProps(21)=   "Column(2)._EditAlways=0"
+      Splits(0)._ColumnProps(22)=   "Column(2)._ColStyle=528"
+      Splits(0)._ColumnProps(23)=   "Column(2).WrapText=1"
+      Splits(0)._ColumnProps(24)=   "Column(2).AllowFocus=0"
+      Splits(0)._ColumnProps(25)=   "Column(2).Order=3"
+      Splits(0)._ColumnProps(26)=   "Column(2)._MinWidth=104849504"
+      Splits(0)._ColumnProps(27)=   "Column(3).Width=2249"
+      Splits(0)._ColumnProps(28)=   "Column(3).DividerColor=0"
+      Splits(0)._ColumnProps(29)=   "Column(3)._WidthInPix=2170"
+      Splits(0)._ColumnProps(30)=   "Column(3)._EditAlways=0"
+      Splits(0)._ColumnProps(31)=   "Column(3)._ColStyle=532"
+      Splits(0)._ColumnProps(32)=   "Column(3).WrapText=1"
+      Splits(0)._ColumnProps(33)=   "Column(3).AllowFocus=0"
+      Splits(0)._ColumnProps(34)=   "Column(3).Order=4"
+      Splits(0)._ColumnProps(35)=   "Column(4).Width=6985"
+      Splits(0)._ColumnProps(36)=   "Column(4).DividerColor=0"
+      Splits(0)._ColumnProps(37)=   "Column(4)._WidthInPix=6906"
+      Splits(0)._ColumnProps(38)=   "Column(4)._EditAlways=0"
+      Splits(0)._ColumnProps(39)=   "Column(4)._ColStyle=528"
+      Splits(0)._ColumnProps(40)=   "Column(4).WrapText=1"
+      Splits(0)._ColumnProps(41)=   "Column(4).AllowFocus=0"
+      Splits(0)._ColumnProps(42)=   "Column(4).Order=5"
+      Splits(0)._ColumnProps(43)=   "Column(5).Width=2725"
+      Splits(0)._ColumnProps(44)=   "Column(5).DividerColor=0"
+      Splits(0)._ColumnProps(45)=   "Column(5)._WidthInPix=2646"
+      Splits(0)._ColumnProps(46)=   "Column(5)._EditAlways=0"
+      Splits(0)._ColumnProps(47)=   "Column(5)._ColStyle=530"
+      Splits(0)._ColumnProps(48)=   "Column(5).WrapText=1"
+      Splits(0)._ColumnProps(49)=   "Column(5).AllowFocus=0"
+      Splits(0)._ColumnProps(50)=   "Column(5).Order=6"
+      Splits.Count    =   1
+      PrintInfos(0)._StateFlags=   3
+      PrintInfos(0).Name=   "piInternal 0"
+      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=0,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=0,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderHeight=   0
+      PrintInfos(0).PageFooterHeight=   0
+      PrintInfos.Count=   1
+      DefColWidth     =   0
+      HeadLines       =   2
+      FootLines       =   1
+      MultipleLines   =   0
+      CellTipsWidth   =   0
+      MultiSelect     =   2
+      DeadAreaBackColor=   12632256
+      RowDividerColor =   12632256
+      RowSubDividerColor=   12632256
+      DirectionAfterEnter=   1
+      MaxRows         =   250000
+      ViewColumnCaptionWidth=   0
+      ViewColumnWidth =   0
+      _PropDict       =   "_ExtentX,2003,3;_ExtentY,2004,3;_LayoutType,512,2;_RowHeight,16,3;_StyleDefs,513,0;_WasPersistedAsPixels,516,2"
+      _StyleDefs(0)   =   "_StyleRoot:id=0,.parent=-1,.alignment=3,.valignment=0,.bgcolor=&H80000005&"
+      _StyleDefs(1)   =   ":id=0,.fgcolor=&H80000008&,.wraptext=0,.locked=0,.transparentBmp=0"
+      _StyleDefs(2)   =   ":id=0,.fgpicPosition=0,.bgpicMode=0,.appearance=0,.borderSize=0,.ellipsis=0"
+      _StyleDefs(3)   =   ":id=0,.borderColor=&H80000005&,.borderType=0,.bold=0,.fontsize=825,.italic=0"
+      _StyleDefs(4)   =   ":id=0,.underline=0,.strikethrough=0,.charset=0"
+      _StyleDefs(5)   =   ":id=0,.fontname=MS Sans Serif"
+      _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.bold=0,.fontsize=825,.italic=0"
+      _StyleDefs(7)   =   ":id=1,.underline=0,.strikethrough=0,.charset=0"
+      _StyleDefs(8)   =   ":id=1,.fontname=MS Sans Serif"
+      _StyleDefs(9)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
+      _StyleDefs(10)  =   "HeadingStyle:id=2,.parent=1,.namedParent=34,.bold=0,.fontsize=825,.italic=0"
+      _StyleDefs(11)  =   ":id=2,.underline=0,.strikethrough=0,.charset=0"
+      _StyleDefs(12)  =   ":id=2,.fontname=MS Sans Serif"
+      _StyleDefs(13)  =   "FooterStyle:id=3,.parent=1,.namedParent=35,.bold=0,.fontsize=825,.italic=0"
+      _StyleDefs(14)  =   ":id=3,.underline=0,.strikethrough=0,.charset=0"
+      _StyleDefs(15)  =   ":id=3,.fontname=MS Sans Serif"
+      _StyleDefs(16)  =   "InactiveStyle:id=5,.parent=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(17)  =   "SelectedStyle:id=6,.parent=1,.namedParent=36"
+      _StyleDefs(18)  =   "EditorStyle:id=7,.parent=1"
+      _StyleDefs(19)  =   "HighlightRowStyle:id=8,.parent=1,.namedParent=38"
+      _StyleDefs(20)  =   "EvenRowStyle:id=9,.parent=1,.namedParent=39"
+      _StyleDefs(21)  =   "OddRowStyle:id=10,.parent=1,.namedParent=40"
+      _StyleDefs(22)  =   "RecordSelectorStyle:id=11,.parent=2,.namedParent=41"
+      _StyleDefs(23)  =   "FilterBarStyle:id=12,.parent=1,.namedParent=42"
+      _StyleDefs(24)  =   "Splits(0).Style:id=13,.parent=1,.valignment=2,.wraptext=-1"
+      _StyleDefs(25)  =   "Splits(0).CaptionStyle:id=22,.parent=4"
+      _StyleDefs(26)  =   "Splits(0).HeadingStyle:id=14,.parent=2"
+      _StyleDefs(27)  =   "Splits(0).FooterStyle:id=15,.parent=3"
+      _StyleDefs(28)  =   "Splits(0).InactiveStyle:id=16,.parent=5"
+      _StyleDefs(29)  =   "Splits(0).SelectedStyle:id=18,.parent=6"
+      _StyleDefs(30)  =   "Splits(0).EditorStyle:id=17,.parent=7"
+      _StyleDefs(31)  =   "Splits(0).HighlightRowStyle:id=19,.parent=8"
+      _StyleDefs(32)  =   "Splits(0).EvenRowStyle:id=20,.parent=9"
+      _StyleDefs(33)  =   "Splits(0).OddRowStyle:id=21,.parent=10"
+      _StyleDefs(34)  =   "Splits(0).RecordSelectorStyle:id=23,.parent=11"
+      _StyleDefs(35)  =   "Splits(0).FilterBarStyle:id=24,.parent=12"
+      _StyleDefs(36)  =   "Splits(0).Columns(0).Style:id=28,.parent=13,.alignment=0"
+      _StyleDefs(37)  =   "Splits(0).Columns(0).HeadingStyle:id=25,.parent=14,.alignment=2"
+      _StyleDefs(38)  =   "Splits(0).Columns(0).FooterStyle:id=26,.parent=15"
+      _StyleDefs(39)  =   "Splits(0).Columns(0).EditorStyle:id=27,.parent=17"
+      _StyleDefs(40)  =   "Splits(0).Columns(1).Style:id=32,.parent=13,.alignment=0"
+      _StyleDefs(41)  =   "Splits(0).Columns(1).HeadingStyle:id=29,.parent=14,.alignment=2"
+      _StyleDefs(42)  =   "Splits(0).Columns(1).FooterStyle:id=30,.parent=15"
+      _StyleDefs(43)  =   "Splits(0).Columns(1).EditorStyle:id=31,.parent=17"
+      _StyleDefs(44)  =   "Splits(0).Columns(2).Style:id=54,.parent=13,.alignment=0"
+      _StyleDefs(45)  =   "Splits(0).Columns(2).HeadingStyle:id=51,.parent=14,.alignment=2"
+      _StyleDefs(46)  =   "Splits(0).Columns(2).FooterStyle:id=52,.parent=15"
+      _StyleDefs(47)  =   "Splits(0).Columns(2).EditorStyle:id=53,.parent=17"
+      _StyleDefs(48)  =   "Splits(0).Columns(3).Style:id=58,.parent=13"
+      _StyleDefs(49)  =   "Splits(0).Columns(3).HeadingStyle:id=55,.parent=14,.alignment=2"
+      _StyleDefs(50)  =   "Splits(0).Columns(3).FooterStyle:id=56,.parent=15"
+      _StyleDefs(51)  =   "Splits(0).Columns(3).EditorStyle:id=57,.parent=17"
+      _StyleDefs(52)  =   "Splits(0).Columns(4).Style:id=46,.parent=13,.alignment=0"
+      _StyleDefs(53)  =   "Splits(0).Columns(4).HeadingStyle:id=43,.parent=14,.alignment=2"
+      _StyleDefs(54)  =   "Splits(0).Columns(4).FooterStyle:id=44,.parent=15"
+      _StyleDefs(55)  =   "Splits(0).Columns(4).EditorStyle:id=45,.parent=17"
+      _StyleDefs(56)  =   "Splits(0).Columns(5).Style:id=50,.parent=13,.alignment=1"
+      _StyleDefs(57)  =   "Splits(0).Columns(5).HeadingStyle:id=47,.parent=14,.alignment=2"
+      _StyleDefs(58)  =   "Splits(0).Columns(5).FooterStyle:id=48,.parent=15"
+      _StyleDefs(59)  =   "Splits(0).Columns(5).EditorStyle:id=49,.parent=17"
+      _StyleDefs(60)  =   "Named:id=33:Normal"
+      _StyleDefs(61)  =   ":id=33,.parent=0"
+      _StyleDefs(62)  =   "Named:id=34:Heading"
+      _StyleDefs(63)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(64)  =   ":id=34,.wraptext=-1"
+      _StyleDefs(65)  =   "Named:id=35:Footing"
+      _StyleDefs(66)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(67)  =   "Named:id=36:Selected"
+      _StyleDefs(68)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(69)  =   "Named:id=37:Caption"
+      _StyleDefs(70)  =   ":id=37,.parent=34,.alignment=2"
+      _StyleDefs(71)  =   "Named:id=38:HighlightRow"
+      _StyleDefs(72)  =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(73)  =   "Named:id=39:EvenRow"
+      _StyleDefs(74)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
+      _StyleDefs(75)  =   "Named:id=40:OddRow"
+      _StyleDefs(76)  =   ":id=40,.parent=33"
+      _StyleDefs(77)  =   "Named:id=41:RecordSelector"
+      _StyleDefs(78)  =   ":id=41,.parent=34"
+      _StyleDefs(79)  =   "Named:id=42:FilterBar"
+      _StyleDefs(80)  =   ":id=42,.parent=33"
+   End
+   Begin Threed.SSPanel PanBotoes 
+      Height          =   360
+      Left            =   120
+      TabIndex        =   0
+      Top             =   4095
+      Width           =   9255
+      _Version        =   65536
+      _ExtentX        =   16325
+      _ExtentY        =   635
+      _StockProps     =   15
+      BackColor       =   12632256
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BevelOuter      =   0
+      Begin VB.CommandButton cmdExport 
+         Height          =   330
+         Left            =   8640
+         Picture         =   "TelaFatura.frx":0015
+         Style           =   1  'Graphical
+         TabIndex        =   11
+         Top             =   0
+         Width           =   375
+      End
+      Begin VB.CommandButton CmdImprimir 
+         Caption         =   "Im&primir"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   330
+         Left            =   6225
+         TabIndex        =   6
+         Top             =   30
+         Width           =   1020
+      End
+      Begin VB.CommandButton CmdSair 
+         Caption         =   "&Sair"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   330
+         Left            =   7440
+         TabIndex        =   7
+         Top             =   30
+         Width           =   1020
+      End
+      Begin VB.CommandButton CmdOrdem 
+         Caption         =   "&Ordem"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   330
+         Left            =   5025
+         TabIndex        =   5
+         Top             =   30
+         Width           =   1020
+      End
+      Begin VB.CommandButton Botao_Fil 
+         Caption         =   "Se&leções"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   330
+         Left            =   3825
+         TabIndex        =   4
+         Top             =   30
+         Width           =   1020
+      End
+      Begin VB.CommandButton CmdExcluir 
+         Caption         =   "&Excluir"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   330
+         Left            =   2625
+         TabIndex        =   3
+         Top             =   30
+         Width           =   1020
+      End
+      Begin VB.CommandButton CmdAlterar 
+         Caption         =   "&Alterar"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   330
+         Left            =   1425
+         TabIndex        =   2
+         Top             =   30
+         Width           =   1020
+      End
+      Begin VB.CommandButton CmdInserir 
+         Caption         =   "&Inserir"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   330
+         Left            =   225
+         TabIndex        =   1
+         Top             =   30
+         Width           =   1020
+      End
+   End
+   Begin MSAdodcLib.Adodc Adodc1 
+      Height          =   375
+      Left            =   6720
+      Top             =   3060
+      Visible         =   0   'False
+      Width           =   1935
+      _ExtentX        =   3413
+      _ExtentY        =   661
+      ConnectMode     =   0
+      CursorLocation  =   3
+      IsolationLevel  =   -1
+      ConnectionTimeout=   15
+      CommandTimeout  =   30
+      CursorType      =   3
+      LockType        =   3
+      CommandType     =   8
+      CursorOptions   =   0
+      CacheSize       =   50
+      MaxRecords      =   0
+      BOFAction       =   0
+      EOFAction       =   0
+      ConnectStringType=   1
+      Appearance      =   1
+      BackColor       =   -2147483643
+      ForeColor       =   -2147483640
+      Orientation     =   0
+      Enabled         =   -1
+      Connect         =   ""
+      OLEDBString     =   ""
+      OLEDBFile       =   ""
+      DataSourceName  =   ""
+      OtherAttributes =   ""
+      UserName        =   ""
+      Password        =   ""
+      RecordSource    =   ""
+      Caption         =   "Adodc1"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      _Version        =   393216
+   End
+   Begin MSDataListLib.DataCombo cboLocalizar 
+      Bindings        =   "TelaFatura.frx":01C4
+      Height          =   315
+      Left            =   2760
+      TabIndex        =   9
+      Top             =   3735
+      Width           =   5160
+      _ExtentX        =   9102
+      _ExtentY        =   556
+      _Version        =   393216
+      MatchEntry      =   -1  'True
+      Style           =   2
+      ListField       =   "nofi_nr_fatura"
+      BoundColumn     =   "nofi_nr_fatura"
+      Text            =   ""
+   End
+   Begin VB.Label lblLocalizar 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Localizar Descrição:"
+      ForeColor       =   &H00800000&
+      Height          =   255
+      Left            =   0
+      TabIndex        =   10
+      Top             =   3765
+      Width           =   2670
+   End
+End
+Attribute VB_Name = "TelaFatura"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+
+'Variáveis para viabilizar utilização dos grids unbound
+Dim Vetor1 As New XArray
+Dim xNumRecibo As String
+
+'*****************************************************************************************
+'Variaveis que guardarão valores específicos de cada formulário
+Dim PrimeiraVez As Boolean
+
+Dim FRM_ContFil As Integer ' Contador que armazena o número de filtros ativos
+Dim FRM_Ordem As String ' Nome do Campo que tem a chave da Tabela ativa
+Dim FRM_Campos_Obrig As String ' Lista dos campos que são obrigatórios na tabela
+Dim FRM_TipoVar As String ' Tipo do campo a ser filtrado
+Dim FRM_FiltroOrig As String ' Indica os filtros determinados pelo próprio sistema
+Dim FRM_FiltroAtual As String ' Indica o filtro atual da tabela corrente
+Dim FRM_filtra_especial As Integer ' Indica se a tabela utilizada possui filtros pré-definidos pelo sistema em FiltroOrig
+Dim FRM_Tem_Filtro As Boolean ' Informa se já foi relizado um filtro na tabela pelo usuário
+Dim FRM_ConTelaOrdem As Integer ' Indica o número de chaves utilizados para ordenação
+Dim FRM_Quantid As Long  ' Quantidade de registros da tabela
+Dim FRM_Filtrou As Boolean ' Informa se Algum campo foi filtrado
+Dim FRM_Ordens() As Integer    ' Vetor que mantem a ordem dos campos
+Dim FRM_Filtros() As String ' Array para armazenar os Filtros da Tabela
+
+Dim FRM_BarraFerramentasPressionada As Boolean
+Dim FRM_VariasVezes As Boolean    'Indica se vai executar a insercao na TelaPadrao varias ou uma vez
+Dim FRM_XInserir As String        'Flag para identificar se entrou na rotina para inserir ou alterar ('I'Inserir, 'A'Alterar, 'C'Consultar)
+Dim FRM_XOrigem As String         'Identifica a origem (que formulario) chamou o formulário ativo
+Dim FRM_SQLAtivo As String        'Atualizar o SQL Ativo após modificações de filtro e ordem
+Function FunVerificaRecolhimento() As Boolean
+    
+    Dim XLT_SQL As String
+    Dim XLO_CHECK As ADODB.Recordset
+    
+    XLT_SQL = "SELECT desc_cd_desconto FROM DescontosNF WHERE (deen_dt_recolhimento <> '' OR NOT deen_dt_recolhimento IS NULL) AND deen_nr_fatura = '" & Adodc1.Recordset.Fields("nofi_nr_fatura") & "'"
+    
+    SubQOpenRecordset XLO_CHECK, XLT_SQL, Estatico
+    
+    If Not XLO_CHECK.EOF Then
+        FunVerificaRecolhimento = False
+        Exit Function
+    End If
+    
+    FunVerificaRecolhimento = True
+    
+End Function
+
+Sub subTelaValoresGlobais(GuardaOUPegaValores As String)
+    Dim Count As Integer, Count2 As Integer
+    If GuardaOUPegaValores = "G" Then 'Guardando variáveis de definição da tela
+        FRM_ContFil = ContFil
+        FRM_Ordem = Ordem
+        FRM_Campos_Obrig = Campos_Obrig
+        FRM_TipoVar = TipoVar
+        FRM_FiltroOrig = FiltroOrig
+        FRM_FiltroAtual = FiltroAtual
+        FRM_filtra_especial = filtra_especial
+        FRM_Tem_Filtro = Tem_Filtro
+        FRM_ConTelaOrdem = ConTelaOrdem
+        FRM_Quantid = Quantid
+        FRM_Filtrou = Filtrou
+        FRM_BarraFerramentasPressionada = BarraFerramentasPressionada
+        FRM_VariasVezes = VariasVezes
+        FRM_XInserir = XInserir
+        FRM_XOrigem = XOrigem
+        FRM_SQLAtivo = SQLAtivo
+        
+        ReDim FRM_Filtros(UBound(Filtros, 1), UBound(Filtros, 2))
+        ReDim FRM_Ordens(UBound(Ordens, 1)) As Integer
+        
+        For Count = LBound(Filtros, 1) To UBound(Filtros, 1)
+            For Count2 = LBound(Filtros, 2) To UBound(Filtros, 2)
+                FRM_Filtros(Count, Count2) = Filtros(Count, Count2)
+            Next Count2
+        Next Count
+        For Count = LBound(Ordens) To UBound(Ordens)
+            FRM_Ordens(Count) = Ordens(Count)
+        Next Count
+    ElseIf GuardaOUPegaValores = "P" Then  'Regravando os valores relativos a tela atual variáveis de definição da tela
+        ContFil = FRM_ContFil
+        Ordem = FRM_Ordem
+        Campos_Obrig = FRM_Campos_Obrig
+        TipoVar = FRM_TipoVar
+        FiltroOrig = FRM_FiltroOrig
+        FiltroAtual = FRM_FiltroAtual
+        filtra_especial = FRM_filtra_especial
+        Tem_Filtro = FRM_Tem_Filtro
+        ConTelaOrdem = FRM_ConTelaOrdem
+        Quantid = FRM_Quantid
+        Filtrou = FRM_Filtrou
+        BarraFerramentasPressionada = FRM_BarraFerramentasPressionada
+        VariasVezes = FRM_VariasVezes
+        XInserir = FRM_XInserir
+        XOrigem = FRM_XOrigem
+        SQLAtivo = FRM_SQLAtivo
+
+        ReDim Filtros(UBound(FRM_Filtros, 1), UBound(FRM_Filtros, 2))
+        ReDim Ordens(UBound(FRM_Ordens, 1))
+        
+        For Count = LBound(FRM_Filtros, 1) To UBound(FRM_Filtros, 1)
+            For Count2 = LBound(FRM_Filtros, 2) To UBound(FRM_Filtros, 2)
+                Filtros(Count, Count2) = FRM_Filtros(Count, Count2)
+            Next Count2
+        Next Count
+        For Count = LBound(FRM_Ordens) To UBound(FRM_Ordens)
+            Ordens(Count) = FRM_Ordens(Count)
+        Next Count
+    End If
+End Sub
+
+Private Sub subHabilitaBotoes()
+
+    'Objetivo: Habilita os Botões da Tela
+    CmdInserir.Enabled = True
+    CmdAlterar.Enabled = True
+    CmdExcluir.Enabled = True
+    CmdSair.Enabled = True
+    CmdImprimir.Enabled = True
+    CmdOrdem.Enabled = True
+
+    'Verifica se tem Filtro Ativo
+    If ContFil = 0 Then
+       Botao_Fil.Enabled = False
+    Else
+       Botao_Fil.Enabled = True
+    End If
+End Sub
+Private Sub subDesabilitaBotoes()
+    'Objetivo: Desabilita os Botões da Tela
+    CmdInserir.Enabled = False
+    CmdAlterar.Enabled = False
+    CmdExcluir.Enabled = False
+    Botao_Fil.Enabled = False
+    CmdSair.Enabled = False
+    CmdImprimir.Enabled = False
+    CmdOrdem.Enabled = False
+End Sub
+
+Private Sub Botao_Fil_Click()
+    subDesabilitaBotoes
+    
+    Set Formulario = TelaFatura
+    subTelaValoresGlobais "P"
+    TelaFiltro.Show 1 'Mostra a tela de filtros no modo modal
+    subTelaValoresGlobais "G"
+
+    If Filtrou = True Then
+        subContaReg Adodc1
+        'Adodc1.Refresh
+        subrecarregadadosNV Adodc1, "", FRM_Ordem, "", FRM_FiltroAtual
+    End If
+    
+    subHabilitaBotoes
+    
+    If FunTabelaVazia(Adodc1) Then
+       CmdAlterar.Enabled = False
+       CmdExcluir.Enabled = False
+       CmdOrdem.Enabled = False
+       CmdImprimir.Enabled = False
+    End If
+    
+    TDBGrid1.SetFocus
+End Sub
+
+Private Sub cboLocalizar_Click(Area As Integer)
+    If Area = 2 Then
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
+    End If
+End Sub
+
+Private Sub cboLocalizar_KeyUp(KeyCode As Integer, Shift As Integer)
+    If cboLocalizar.BoundText <> "" Then
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
+    End If
+End Sub
+
+
+Private Sub cboLocalizar_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    If cboLocalizar.BoundText <> "" Then
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
+    End If
+End Sub
+
+Private Sub CmdAlterar_Click()
+    Dim ResNF As Object
+      
+    NFatura = Adodc1.Recordset.Fields("nofi_nr_fatura")
+
+    'ChaveF = Adodc1.Recordset.Fields("nofi_nr_fatura")
+    xChave = Adodc1.Recordset.Bookmark
+
+    XInserir = "A"
+    
+    If Adodc1.Recordset.Fields("tipo") = "A Receber" Then
+        EntSaida = "E"
+    Else
+        EntSaida = "S"
+    End If
+    
+    XFormulario = "TelaFatura"
+    If Adodc1.Recordset.Fields("nofi_tx_tipofatura") <> 3 Then
+        SubQOpenRecordset ResNF, "SELECT nofi_cd_notafiscal,nofi_tx_controle FROM NotasFiscais where nofi_nr_fatura =" & NFatura, "Estatico"
+        If Not (ResNF.BOF And ResNF.EOF) Then
+            Chave = ResNF!nofi_cd_notafiscal
+            If Not IsNull(ResNF!nofi_tx_controle) Then
+                XControleTransf = ResNF!nofi_tx_controle
+            End If
+        End If
+        ResNF.Close
+        'Se for Transferência chama o form de transf.
+        If IsNull(Adodc1.Recordset.Fields("focl_tx_fantasia")) Then 'O teste será pela sigla do tipo de doc.
+        'Se não existe fornecedor o registro é uma transferencia bancária
+            'If MsgBox("Não é permitido alterar uma Transferência Bancária. Deseja visualizá-la ?", vbYesNo + vbCritical, "ATENÇÃO") = vbYes Then
+                XFormulario = "TelaFatura"
+                FrmTransfBancaria.Show 1
+                Set Formulario = TelaFatura
+                Exit Sub
+            'Else
+            '    Exit Sub
+            'End If
+        End If
+        'se não for transf. chama o form de notasfiscais
+        FrmNotasFiscais.Show 1
+        Set Formulario = TelaFatura
+    Else
+        FrmFatura.Show 1
+    End If
+    'Adodc1.Refresh
+    TDBGrid1.Refresh
+    Adodc1.Recordset.Bookmark = xChave
+    subrecarregadadosNV Adodc1, "", FRM_Ordem, "", FRM_FiltroAtual
+    cboLocalizar.BoundText = Chave
+    If Not IsNull(cboLocalizar.SelectedItem) Then Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
+End Sub
+
+Private Sub CmdExcluir_Click()
+    Dim opcao As Integer
+    Dim Houve_Erro As Integer
+    Dim XStatus As String
+    Dim RESDUPL As Object
+       
+    Houve_Erro = False
+    
+    
+    If FunVerificaRecolhimento = False Then
+        MsgBox "Não é possível excluir a fatura selecionada, pois existe(m) imposto(s) recolhido(s) associado(s) a ela. " _
+                    + Chr(13) + "Para realizar essa operação cancele o recolhimento da fatura.", vbInformation, "ATENÇÃO"
+        Exit Sub
+    End If
+    
+    subDesabilitaBotoes
+       
+    If Adodc1.Recordset.Fields("nofi_tx_tipofatura") = "1" Then
+        SubQOpenRecordset RESDUPL, "SELECT nofi_tx_status FROM NotasFiscais WHERE nofi_nr_fatura = " & Adodc1.Recordset.Fields("nofi_nr_fatura") & " AND nofi_tx_status = 'P'", "Estatico"
+        If Not (RESDUPL.BOF And RESDUPL.EOF) Then
+            XStatus = "P"
+        End If
+        RESDUPL.Close
+    End If
+    
+    'If Adodc1.Recordset.Fields("nofi_tx_tipofatura") <> "1" Then
+    If XStatus <> "P" Then
+        'Verifica se existe alguma duplicata REALIZADA, se sim não deve permitir apagar a nota
+        SubQOpenRecordset RESDUPL, "SELECT * FROM Duplicatas WHERE dupl_nr_fatura = " & Adodc1.Recordset.Fields("nofi_nr_fatura") & " AND dupl_tx_status = 'R'", "Estatico"
+        If Not (RESDUPL.BOF And RESDUPL.EOF) Then
+            MsgBox "A Fatura não pode ser excluída pois existem duplicatas com Status = 'Realizado' vinculadas a ela.", vbCritical, "ATENÇÃO"
+            RESDUPL.Close
+            subHabilitaBotoes
+            Exit Sub
+        End If
+        RESDUPL.Close
+
+       opcao = MsgBox("Confirma Remoção do Registro ?", 273, "CUIDADO")
+       If opcao = 1 Then  'Confirma exclusão
+            On Error GoTo RotuloErro
+            Conexao.BeginTrans
+            Conexao.Execute "DELETE FROM Duplicatas WHERE dupl_nr_fatura=" & Adodc1.Recordset.Fields("nofi_nr_fatura")
+            Fatura = 0
+            XTipoFatura = "4"
+            Sql = "UPDATE NotasFiscais " & _
+                  "SET nofi_nr_fatura = " & Fatura & "," & _
+                  "nofi_tx_tipoFatura = '" & XTipoFatura & "'" & _
+                  "WHERE nofi_nr_fatura = " & TDBGrid1.Columns("Nº Processo")
+            Conexao.Execute Sql
+            Conexao.CommitTrans
+       End If
+       If Houve_Erro = False Then
+          'Adodc1.Refresh
+          Adodc1.Recordset.Requery adCmdText
+          'Quantid = Quantid - 1
+          'MdiPrincipal.BarraStatus.Panels(3).Text = Str(Quantid) + "/" + Str(Quantid)
+          MdiPrincipal.BarraStatus.Panels(3).Text = CStr(Adodc1.Recordset.RecordCount) + "/" + CStr(Adodc1.Recordset.RecordCount)
+          If ContFil <> 0 Then
+             subContaReg Adodc1
+          End If
+       End If
+       subHabilitaBotoes
+       If FunTabelaVazia(Adodc1) Then
+          CmdAlterar.Enabled = False
+          CmdExcluir.Enabled = False
+          CmdImprimir.Enabled = False
+          CmdOrdem.Enabled = False
+       End If
+    Else
+       MsgBox "A Fatura não pode ser excluída pois o Status de sua Nota = 'Previsto'.", vbCritical, "ATENÇÃO"
+       subHabilitaBotoes
+    End If
+   
+    TDBGrid1.Enabled = True
+    TDBGrid1.SetFocus
+    TDBGrid1.Col = 0
+    Exit Sub
+    
+RotuloErro:
+    Houve_Erro = True
+    funTrataErros (ComMensagem)
+    Resume Next
+          
+End Sub
+
+Private Sub cmdExport_Click()
+    Dim sLine As String
+    Dim tmpFile As String
+    Dim outFile As String
+    Dim i As Integer
+    
+    ' Sets the Dialog Title to Save File
+    CommonDialog1.DialogTitle = "Salvar arquivo"
+
+    ' Sets the File List box to Text File and All Files
+    CommonDialog1.Filter = "Arquivo CSV (*.csv)|*.csv"
+
+    ' Set the default files type to Text File
+    CommonDialog1.FilterIndex = 1
+
+    ' Sets the flags - Hide Read only, prompt to overwrite, and path must exist
+    CommonDialog1.Flags = cdlOFNHideReadOnly + cdlOFNOverwritePrompt + cdlOFNPathMustExist
+
+    ' Set dialog box so an error occurs if the dialogbox is cancelled
+    CommonDialog1.CancelError = True
+
+    ' Enables error handling to catch cancel error
+    On Error Resume Next
+    ' display the dialog box
+    CommonDialog1.ShowSave
+    If Err Then
+        ' This code runs if the dialog was cancelled
+        Exit Sub
+    End If
+    
+    'Call your export function
+    outFile = CommonDialog1.FileName
+    tmpFile = outFile & ".tmp"
+    
+    TDBGrid1.ExportToDelimitedFile tmpFile, , ";"
+ 
+    Close tmpFile
+    
+    'Now use this to add the Headers (to a new file)
+    Open tmpFile For Input As #1
+    Open outFile For Output As #2
+ 
+    'Write Headers
+    For i = 0 To TDBGrid1.Columns.Count - 1
+         If i = 0 And TDBGrid1.Columns(i).Visible Then
+             sLine = Chr(34) & TDBGrid1.Columns(i).Caption & Chr(34)
+         ElseIf TDBGrid1.Columns(i).Visible Then
+             sLine = sLine & ";" & Chr(34) & TDBGrid1.Columns(i).Caption & Chr(34)
+         End If
+    Next
+ 
+    Print #2, sLine
+
+     'Write contents of original file
+    Do Until EOF(1)
+         Line Input #1, sLine
+         Print #2, sLine
+    Loop
+ 
+    Close #1
+    Close #2
+ 
+    Kill tmpFile
+          
+    Screen.MousePointer = vbDefault
+    
+    MsgBox "Total exportado: " & Adodc1.Recordset.RecordCount & " registros", vbInformation, "Informação"
+End Sub
+
+Private Sub CmdImprimir_Click()
+    Call subImprimeListagemGRID(1, TDBGrid1.PrintInfo, "Listagem de Faturas")
+End Sub
+
+Private Sub CmdInserir_Click()
+    Dim ResFat As Object
+    
+    'ChaveF = -1
+    ChaveD = -1
+    ChaveDp = -1
+    NFatura = -1
+    XInserir = "I"
+    
+    If Not FunTabelaVazia(Adodc1) Then
+       CmdAlterar.Enabled = True
+       CmdExcluir.Enabled = True
+       CmdImprimir.Enabled = True
+       CmdOrdem.Enabled = True
+    End If
+
+    FrmFatura.Show 1
+    'Adodc1.Refresh TesteSubrecarregaDados
+    subrecarregadadosNV Adodc1, "", FRM_Ordem, "", FRM_FiltroAtual
+'    If NFatura <> -1 Then
+'        cboLocalizar.BoundText = NFatura
+'        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
+'    End If
+End Sub
+
+Private Sub CmdOrdem_Click()
+    
+    subDesabilitaBotoes
+    subTelaValoresGlobais "P"
+    TelaOrdem.Show 1
+    subTelaValoresGlobais "G"
+    subHabilitaBotoes
+    
+    lblLocalizar.Caption = "Localizar " & xLocalDescricao & ": "
+    cboLocalizar.ListField = xLocalCampo
+    cboLocalizar.Text = ""
+    
+    TDBGrid1.SetFocus
+    
+End Sub
+
+Private Sub CmdSair_Click()
+    MdiPrincipal.BarraStatus.Panels(3).Text = ""
+    MdiPrincipal.BarraStatus.Panels(1).Text = ""
+    MdiPrincipal.MousePointer = vbDefault
+    Unload Me
+End Sub
+
+Private Sub TDBGrid1_DblClick()
+  
+  CmdAlterar_Click
+  
+End Sub
+
+Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+   cboLocalizar.Text = ""
+   If Button = 2 And CmdInserir.Caption = "&Inserir" Then  'Verifica se o botão da direita foi pressionado
+        Set Formulario = TelaFatura
+        subTelaValoresGlobais "P"
+        FunExecutaFiltro Adodc1, Formulario, X
+        subTelaValoresGlobais "G"
+    End If
+    
+    subHabilitaBotoes
+    
+    If FunTabelaVazia(Adodc1) = True Then
+        CmdAlterar.Enabled = False
+       CmdExcluir.Enabled = False 'Desabilita o botão Excluir
+       CmdImprimir.Enabled = False
+       CmdOrdem.Enabled = False
+    End If
+
+End Sub
+
+Private Sub Form_Activate()
+    Set Formulario = TelaFatura
+    
+    If Not PrimeiraVez Then
+         subTelaValoresGlobais "P"
+    End If
+    
+    PrimeiraVez = False
+    
+    MdiPrincipal.BarraStatus.Panels(3).Text = CStr(Adodc1.Recordset.RecordCount) + "/" + CStr(Adodc1.Recordset.RecordCount)
+End Sub
+
+Private Sub Form_Load()
+    
+    Set Formulario = TelaFatura
+
+    Call subAjustaTelaLoc
+       
+    subManutencaoJanelasAtivas "I", "Telafatura"
+
+    'Associa um banco de dados à tabela Notas Fiscais
+    subCarregaDadosNV Adodc1, "", "nofi_nr_fatura", _
+                            "", "SELECT * FROM ConsFINCompFatura where nofi_nr_fatura > 0 and focl_tx_fantasia <> '' and empr_cd_empresa = " & PCodEmpresa & ""
+                            
+    subHabilitaBotoes
+    
+    filtra_especial = True
+     
+    subTelaValoresGlobais "G"
+    PrimeiraVez = True
+    
+    If FunTabelaVazia(Adodc1) Then
+       CmdAlterar.Enabled = False
+       CmdExcluir.Enabled = False
+       'CmdDuplicata.Enabled = False
+       CmdImprimir.Enabled = False
+       CmdOrdem.Enabled = False
+    End If
+    
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+    subManutencaoJanelasAtivas "R", "TelaFatura"
+End Sub
+
+
+Private Sub TDBGrid1_SelChange(Cancel As Integer)
+'Rotina para somar um conjunto de campos selecionados de uma coluna
+
+Dim XLD_TOTALSELECAO As Variant
+    Dim i As Integer
+
+    i = 0
+    
+    XLD_TOTALSELECAO = 0
+       
+    If TDBGrid1.SelRange Then
+        If TDBGrid1.SelStartCol = TDBGrid1.SelEndCol And (TDBGrid1.SelEndCol = 5) Then
+        
+            For i = 0 To TDBGrid1.SelBookmarks.Count - 1 Step 1
+            
+                If (TDBGrid1.Columns(TDBGrid1.SelEndCol).CellValue(TDBGrid1.SelBookmarks(i))) <> "" Then
+                    XLD_TOTALSELECAO = XLD_TOTALSELECAO + (TDBGrid1.Columns(TDBGrid1.SelEndCol).CellValue(TDBGrid1.SelBookmarks(i)))
+                End If
+            Next
+            
+            MsgBox "Total selecionado: R$ " & Format(CStr(XLD_TOTALSELECAO), "0.00"), vbInformation, "Seleção"
+        End If
+        
+        
+    End If
+
+End Sub

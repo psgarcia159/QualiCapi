@@ -1,16 +1,31 @@
 Attribute VB_Name = "ModQualiCapi"
 Option Explicit
 
-Global XGF_COTACAOANTERIOR As Double 'Indica o valor da cotação do mes anterior para basear os jutos para o pagamento do título
-Global XGB_RESULTADO As Boolean   'Indica se o usuário clicou em Gravar em um formulário moldal.
-Global XGB_GERARESIDUO As Boolean 'Indica se o resíduo deve ser gerado ou não
+Global XGF_COTACAOANTERIOR As Double    'Indica o valor da cotação do mes anterior para basear os jutos para o pagamento do título
+Global XGB_RESULTADO As Boolean         'Indica se o usuário clicou em Gravar em um formulário moldal.
+Global XGB_GERARESIDUO As Boolean       'Indica se o resíduo deve ser gerado ou não
 
-Global XGI_CODMULTA As Integer 'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Multa por Atraso - Cliente
-Global XGI_CODJUROS  As Integer 'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Juros por Atraso - Cliente
-Global XGI_CODDESAGIO  As Integer 'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Deságio - Cliente
-Global XGI_CODDESCONTO  As Integer 'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Descontos - Cliente
-Global XGI_CODSEGURO  As Integer 'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Seguro - Cliente
-Global XGI_CODOUTROS  As Integer 'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Outros - Cliente
+Global XGI_CODMULTA As Integer          'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Multa por Atraso - Cliente
+Global XGI_CODJUROS  As Integer         'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Juros por Atraso - Cliente
+Global XGI_CODDESAGIO  As Integer       'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Deságio - Cliente
+Global XGI_CODDESCONTO  As Integer      'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Descontos - Cliente
+Global XGI_CODSEGURO  As Integer        'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Seguro - Cliente
+Global XGI_CODOUTROS  As Integer        'INDICA QUAL O ID DA TABELA DESCONTOSACRESCIMOS QUE REPRESENTA Outros - Cliente
+
+'
+' - Definição de variáveis importadas do QualiFin para tratamento das NFs de corretores
+' --------------------------------------------------------------------------------------
+Global ChaveD As Variant                'controla o código do desconto
+Global ChaveDp As Variant               'controla o código da duplicata
+Global ChaveGlosaDev As Variant         'controla o código da glosa ou devolucao
+Global NFatura As Variant               'Nova fatura
+Global XControleTransf As String        'Armazena o nº de controle de um registro
+Global XVlDupl As Double                'Armazena o valor do da duplicata utilizado na TelaDuplicatas e TelaDescAcresc
+Global EntSaida As String               'Variável que guarda a classe E:Entrada ou S:Saída
+Global TipoRecolhi As String            'Variável que guarda o tipode Recolhimento 1:ISS ou 2:IRRF
+Global TipoPagto As String              'Variável que guarda o tipo de pagamento Ch:Cheque, B1:Borderô1 ou B2:Borderô2
+Global XGT_MESTRABALHO As Date          'Variável que irá guardar o mês de trabalho como sugestão para os relatórios
+' --------------------------------------------------------------------------------------
 
 
 Function FunZeros(XLI_QTD As Integer) As String
@@ -26,7 +41,7 @@ Function FunZeros(XLI_QTD As Integer) As String
    
 End Function
 
-Function funVerirficaCotacao(XLO_TITULO As adodb.Recordset, XLT_INDEXADOR As Byte, XLD_DATABASE As Date, XLB_FORMULARIOCOTACAO As Boolean, XLO_TELACOTACAO As Form) As Boolean
+Function funVerirficaCotacao(XLO_TITULO As ADODB.Recordset, XLT_INDEXADOR As Byte, XLD_DATABASE As Date, XLB_FORMULARIOCOTACAO As Boolean, XLO_TELACOTACAO As Form) As Boolean
 ' XLB_FORMULARIOCOTACAO Indica se apresentará a tela de cotações quando não tiver cotação
 ' XLO_TELACOTACAO è a tela de cotações que é passada como referência
     
@@ -259,7 +274,7 @@ Function FunCorrecaoMonetaria(ByVal XLF_VALORTITULO As Double, ByVal XLF_COTACAO
     Dim XLF_PERCENT As Double   'Divisão entre a cotacao do mês e do mês anterior
     Dim XLF_CORRECAO As Double
     Dim XLD_DATA As Date
-    Dim XLO_COTACAO As adodb.Recordset
+    Dim XLO_COTACAO As ADODB.Recordset
     
     'Se a moeda for 0 significa que ´deve ser informado o valor histórico, a correcao é 0
     If XLT_PRORATA = "M" And XLI_MOEDA = 0 Then
@@ -547,9 +562,9 @@ End Function
 'Retorna o valor indexado por uma determinada moeda
 Function FunCalcularValorIndexado(ByVal XLF_VALORREAL As Double, ByVal XLD_DTBASE As Date, ByVal XLI_CODMOEDA As Integer, ByVal XLT_INDEXACAO As String, ByVal XLT_PRORATA As String, XLO_TELACOTACAO As Form)
          
-    Dim XLO_COTACAO As New adodb.Recordset
-    Dim XLO_COTACAOANTERIOR As New adodb.Recordset
-    Dim XLO_COTACAOPOSTERIOR As New adodb.Recordset
+    Dim XLO_COTACAO As New ADODB.Recordset
+    Dim XLO_COTACAOANTERIOR As New ADODB.Recordset
+    Dim XLO_COTACAOPOSTERIOR As New ADODB.Recordset
     Dim XLF_COTACAO As Double
     Dim XLF_COTACAOANTERIOR As Double
     Dim XLF_COTACAOPOSTERIOR As Double

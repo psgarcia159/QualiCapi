@@ -1,8 +1,8 @@
 VERSION 5.00
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
-Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
+Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Begin VB.Form TelaManTabCorretores 
    Caption         =   "Tabela de Corretores"
    ClientHeight    =   4545
@@ -239,15 +239,15 @@ Begin VB.Form TelaManTabCorretores
       Text            =   ""
    End
    Begin Threed.SSPanel PanCorretores 
-      Height          =   1605
-      Left            =   315
+      Height          =   2325
+      Left            =   240
       TabIndex        =   14
-      Top             =   1200
+      Top             =   1080
       Visible         =   0   'False
-      Width           =   8235
+      Width           =   8475
       _Version        =   65536
-      _ExtentX        =   14526
-      _ExtentY        =   2831
+      _ExtentX        =   14949
+      _ExtentY        =   4101
       _StockProps     =   15
       Caption         =   " Cadastro de Corretores"
       ForeColor       =   16711680
@@ -285,18 +285,18 @@ Begin VB.Form TelaManTabCorretores
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   6030
+         Left            =   6150
          TabIndex        =   9
-         Top             =   1140
+         Top             =   1620
          Width           =   975
       End
       Begin VB.TextBox TxtNome 
          Height          =   315
-         Left            =   960
+         Left            =   1440
          MaxLength       =   30
          TabIndex        =   7
          Top             =   510
-         Width           =   5085
+         Width           =   4605
       End
       Begin VB.CommandButton CmdCancelar 
          Caption         =   "&Retornar"
@@ -310,10 +310,115 @@ Begin VB.Form TelaManTabCorretores
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   7095
+         Left            =   7215
          TabIndex        =   10
-         Top             =   1140
+         Top             =   1620
          Width           =   975
+      End
+      Begin MSAdodcLib.Adodc DatFornecedor 
+         Height          =   330
+         Left            =   240
+         Top             =   2160
+         Visible         =   0   'False
+         Width           =   2565
+         _ExtentX        =   4524
+         _ExtentY        =   582
+         ConnectMode     =   0
+         CursorLocation  =   3
+         IsolationLevel  =   -1
+         ConnectionTimeout=   15
+         CommandTimeout  =   30
+         CursorType      =   3
+         LockType        =   3
+         CommandType     =   8
+         CursorOptions   =   0
+         CacheSize       =   50
+         MaxRecords      =   0
+         BOFAction       =   0
+         EOFAction       =   0
+         ConnectStringType=   1
+         Appearance      =   1
+         BackColor       =   -2147483643
+         ForeColor       =   -2147483640
+         Orientation     =   0
+         Enabled         =   -1
+         Connect         =   ""
+         OLEDBString     =   ""
+         OLEDBFile       =   ""
+         DataSourceName  =   ""
+         OtherAttributes =   ""
+         UserName        =   ""
+         Password        =   ""
+         RecordSource    =   ""
+         Caption         =   "DatFornecedor"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         _Version        =   393216
+      End
+      Begin MSDataListLib.DataCombo CboFornecedor 
+         Bindings        =   "TelaCorretores.frx":0015
+         Height          =   315
+         Left            =   1440
+         TabIndex        =   19
+         Top             =   1125
+         Width           =   4605
+         _ExtentX        =   8123
+         _ExtentY        =   556
+         _Version        =   393216
+         MatchEntry      =   -1  'True
+         Style           =   2
+         ListField       =   "focl_tx_RazaoSocial"
+         BoundColumn     =   "focl_cd_forncli"
+         Text            =   "CboFornecedor"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin Threed.SSCommand CmdLimpar 
+         Height          =   330
+         Left            =   6120
+         TabIndex        =   20
+         Top             =   1080
+         Width           =   360
+         _Version        =   65536
+         _ExtentX        =   635
+         _ExtentY        =   582
+         _StockProps     =   78
+         MouseIcon       =   "TelaCorretores.frx":0031
+         Picture         =   "TelaCorretores.frx":0483
+      End
+      Begin VB.Label LblFornecedor 
+         Alignment       =   1  'Right Justify
+         BackColor       =   &H00E0E0E0&
+         Caption         =   "Fornecedor:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Index           =   1
+         Left            =   90
+         TabIndex        =   21
+         Top             =   1200
+         Width           =   1275
       End
       Begin VB.Label LblComissao 
          Alignment       =   1  'Right Justify
@@ -357,13 +462,13 @@ Begin VB.Form TelaManTabCorretores
       End
    End
    Begin TrueOleDBGrid70.TDBGrid TDBGrid1 
-      Bindings        =   "TelaCorretores.frx":0015
+      Bindings        =   "TelaCorretores.frx":0595
       Height          =   3690
       Left            =   60
       TabIndex        =   17
       Top             =   30
-      Width           =   8790
-      _ExtentX        =   15505
+      Width           =   13350
+      _ExtentX        =   23548
       _ExtentY        =   6509
       _LayoutType     =   4
       _RowHeight      =   24
@@ -379,7 +484,19 @@ Begin VB.Form TelaManTabCorretores
       Columns(1).DataField=   "corr_vl_percentcomissao"
       Columns(1).NumberFormat=   "Standard"
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns.Count   =   2
+      Columns(2)._VlistStyle=   0
+      Columns(2)._MaxComboItems=   5
+      Columns(2).Caption=   "CPF/CNPJ"
+      Columns(2).DataField=   "focl_tx_CgcCpf"
+      Columns(2).DataWidth=   20
+      Columns(2)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+      Columns(3)._VlistStyle=   0
+      Columns(3)._MaxComboItems=   5
+      Columns(3).Caption=   "Nome/Razão Social"
+      Columns(3).DataField=   "focl_tx_RazaoSocial"
+      Columns(3).DataWidth=   65
+      Columns(3)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+      Columns.Count   =   4
       Splits(0)._UserFlags=   0
       Splits(0).ExtendRightColumn=   -1  'True
       Splits(0).MarqueeStyle=   3
@@ -389,10 +506,10 @@ Begin VB.Form TelaManTabCorretores
       Splits(0).DividerColor=   12632256
       Splits(0).SpringMode=   0   'False
       Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
-      Splits(0)._ColumnProps(0)=   "Columns.Count=2"
-      Splits(0)._ColumnProps(1)=   "Column(0).Width=6747"
+      Splits(0)._ColumnProps(0)=   "Columns.Count=4"
+      Splits(0)._ColumnProps(1)=   "Column(0).Width=7699"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
-      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=6668"
+      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=7620"
       Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
       Splits(0)._ColumnProps(5)=   "Column(0)._ColStyle=528"
       Splits(0)._ColumnProps(6)=   "Column(0).WrapText=1"
@@ -406,6 +523,22 @@ Begin VB.Form TelaManTabCorretores
       Splits(0)._ColumnProps(14)=   "Column(1).WrapText=1"
       Splits(0)._ColumnProps(15)=   "Column(1).AllowFocus=0"
       Splits(0)._ColumnProps(16)=   "Column(1).Order=2"
+      Splits(0)._ColumnProps(17)=   "Column(2).Width=3440"
+      Splits(0)._ColumnProps(18)=   "Column(2).DividerColor=0"
+      Splits(0)._ColumnProps(19)=   "Column(2)._WidthInPix=3360"
+      Splits(0)._ColumnProps(20)=   "Column(2)._EditAlways=0"
+      Splits(0)._ColumnProps(21)=   "Column(2)._ColStyle=532"
+      Splits(0)._ColumnProps(22)=   "Column(2).WrapText=1"
+      Splits(0)._ColumnProps(23)=   "Column(2).AllowFocus=0"
+      Splits(0)._ColumnProps(24)=   "Column(2).Order=3"
+      Splits(0)._ColumnProps(25)=   "Column(3).Width=2725"
+      Splits(0)._ColumnProps(26)=   "Column(3).DividerColor=0"
+      Splits(0)._ColumnProps(27)=   "Column(3)._WidthInPix=2646"
+      Splits(0)._ColumnProps(28)=   "Column(3)._EditAlways=0"
+      Splits(0)._ColumnProps(29)=   "Column(3)._ColStyle=532"
+      Splits(0)._ColumnProps(30)=   "Column(3).WrapText=1"
+      Splits(0)._ColumnProps(31)=   "Column(3).AllowFocus=0"
+      Splits(0)._ColumnProps(32)=   "Column(3).Order=4"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   0
       PrintInfos(0).Name=   "piInternal 0"
@@ -469,27 +602,35 @@ Begin VB.Form TelaManTabCorretores
       _StyleDefs(37)  =   "Splits(0).Columns(1).HeadingStyle:id=29,.parent=14,.alignment=2"
       _StyleDefs(38)  =   "Splits(0).Columns(1).FooterStyle:id=30,.parent=15"
       _StyleDefs(39)  =   "Splits(0).Columns(1).EditorStyle:id=31,.parent=17"
-      _StyleDefs(40)  =   "Named:id=33:Normal"
-      _StyleDefs(41)  =   ":id=33,.parent=0"
-      _StyleDefs(42)  =   "Named:id=34:Heading"
-      _StyleDefs(43)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-      _StyleDefs(44)  =   ":id=34,.wraptext=-1"
-      _StyleDefs(45)  =   "Named:id=35:Footing"
-      _StyleDefs(46)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-      _StyleDefs(47)  =   "Named:id=36:Selected"
-      _StyleDefs(48)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-      _StyleDefs(49)  =   "Named:id=37:Caption"
-      _StyleDefs(50)  =   ":id=37,.parent=34,.alignment=2"
-      _StyleDefs(51)  =   "Named:id=38:HighlightRow"
-      _StyleDefs(52)  =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-      _StyleDefs(53)  =   "Named:id=39:EvenRow"
-      _StyleDefs(54)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
-      _StyleDefs(55)  =   "Named:id=40:OddRow"
-      _StyleDefs(56)  =   ":id=40,.parent=33"
-      _StyleDefs(57)  =   "Named:id=41:RecordSelector"
-      _StyleDefs(58)  =   ":id=41,.parent=34"
-      _StyleDefs(59)  =   "Named:id=42:FilterBar"
-      _StyleDefs(60)  =   ":id=42,.parent=33"
+      _StyleDefs(40)  =   "Splits(0).Columns(2).Style:id=50,.parent=13,.alignment=3"
+      _StyleDefs(41)  =   "Splits(0).Columns(2).HeadingStyle:id=47,.parent=14,.alignment=2"
+      _StyleDefs(42)  =   "Splits(0).Columns(2).FooterStyle:id=48,.parent=15"
+      _StyleDefs(43)  =   "Splits(0).Columns(2).EditorStyle:id=49,.parent=17"
+      _StyleDefs(44)  =   "Splits(0).Columns(3).Style:id=54,.parent=13"
+      _StyleDefs(45)  =   "Splits(0).Columns(3).HeadingStyle:id=51,.parent=14,.alignment=2"
+      _StyleDefs(46)  =   "Splits(0).Columns(3).FooterStyle:id=52,.parent=15"
+      _StyleDefs(47)  =   "Splits(0).Columns(3).EditorStyle:id=53,.parent=17"
+      _StyleDefs(48)  =   "Named:id=33:Normal"
+      _StyleDefs(49)  =   ":id=33,.parent=0"
+      _StyleDefs(50)  =   "Named:id=34:Heading"
+      _StyleDefs(51)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(52)  =   ":id=34,.wraptext=-1"
+      _StyleDefs(53)  =   "Named:id=35:Footing"
+      _StyleDefs(54)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(55)  =   "Named:id=36:Selected"
+      _StyleDefs(56)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(57)  =   "Named:id=37:Caption"
+      _StyleDefs(58)  =   ":id=37,.parent=34,.alignment=2"
+      _StyleDefs(59)  =   "Named:id=38:HighlightRow"
+      _StyleDefs(60)  =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(61)  =   "Named:id=39:EvenRow"
+      _StyleDefs(62)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
+      _StyleDefs(63)  =   "Named:id=40:OddRow"
+      _StyleDefs(64)  =   ":id=40,.parent=33"
+      _StyleDefs(65)  =   "Named:id=41:RecordSelector"
+      _StyleDefs(66)  =   ":id=41,.parent=34"
+      _StyleDefs(67)  =   "Named:id=42:FilterBar"
+      _StyleDefs(68)  =   ":id=42,.parent=33"
    End
    Begin VB.Label lblLocalizar 
       Alignment       =   1  'Right Justify
@@ -625,20 +766,20 @@ End Sub
 
 Private Sub cboLocalizar_Click(Area As Integer)
     If Area = 2 Then
-        Adodc1.Recordset.bookmark = cboLocalizar.SelectedItem
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
     End If
 End Sub
 
 Private Sub cboLocalizar_KeyUp(KeyCode As Integer, Shift As Integer)
     If cboLocalizar.BoundText <> "" Then
-        Adodc1.Recordset.bookmark = cboLocalizar.SelectedItem
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
     End If
 End Sub
 
 
-Private Sub cboLocalizar_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub cboLocalizar_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     If cboLocalizar.BoundText <> "" Then
-        Adodc1.Recordset.bookmark = cboLocalizar.SelectedItem
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
     End If
 End Sub
 
@@ -659,16 +800,16 @@ Private Sub CmdAjuste_Click()
         " AND corr_vl_PercentComissao=" & FunTrataFloat(XLO_CORRETORES!corr_vl_PercentComissao) & _
         " ORDER BY corr_cd_Corretor", Estatico
         
-    XLI_ESCOLHIDO = XLO_CODIGO!corr_cd_Corretor
+    XLI_ESCOLHIDO = XLO_CODIGO!corr_cd_corretor
     XLO_CODIGO.MoveNext
     
     While Not XLO_CODIGO.EOF
       
       Conexao.Execute "UPDATE Comissoes SET corr_cd_Corretor=" & XLI_ESCOLHIDO & _
-            "WHERE corr_cd_Corretor=" & XLO_CODIGO!corr_cd_Corretor, , adCmdText
+            "WHERE corr_cd_Corretor=" & XLO_CODIGO!corr_cd_corretor, , adCmdText
             
        Conexao.Execute "DELETE FROM Corretores WHERE" & _
-      " corr_cd_Corretor= " & XLO_CODIGO!corr_cd_Corretor
+      " corr_cd_Corretor= " & XLO_CODIGO!corr_cd_corretor
       
       XLO_CODIGO.MoveNext
         
@@ -695,6 +836,7 @@ End Sub
 Private Sub CmdConfirmar_Click()
     Dim XLT_SQL As String
     Dim XLI_BOOKMARK As Integer
+    Dim XLI_COD_FORN As String
     
     On Error GoTo RotuloErro
     
@@ -705,15 +847,32 @@ Private Sub CmdConfirmar_Click()
         Exit Sub
     End If
     
+    'CboFornecedor.BoundText => focl_cd_FornCli
+    If CboFornecedor.Text = "" Then
+        XLI_COD_FORN = "Null"
+    Else
+        XLI_COD_FORN = CboFornecedor.BoundText
+    End If
+            
     Conexao.BeginTrans
     If PanCorretores.Tag = "I" Then
-        XLT_SQL = "INSERT INTO Corretores (corr_tx_nome, corr_vl_percentcomissao) " & _
-              "VALUES ('" & TxtNome.Text & "'," & FunTrataFloat(TxtComissao.Text) & ")"
+'        XLT_SQL = "INSERT INTO Corretores (corr_tx_nome, corr_vl_percentcomissao) " & _
+'              "VALUES ('" & TxtNome.Text & "'," & FunTrataFloat(TxtComissao.Text) & ")"
+'              Conexao.Execute XLT_SQL
+
+        XLT_SQL = "INSERT INTO Corretores (corr_tx_nome, corr_vl_percentcomissao, focl_cd_FornCli) " & _
+              "VALUES ('" & TxtNome.Text & "'," & FunTrataFloat(TxtComissao.Text) & "," & XLI_COD_FORN & ")"
               Conexao.Execute XLT_SQL
+              
     Else    'Alteração
+'        XLT_SQL = "UPDATE Corretores " & _
+'                      "SET corr_tx_nome = '" & TxtNome.Text & "'," & _
+'                         " corr_vl_percentcomissao = " & FunTrataFloat(TxtComissao.Text) & "" & _
+'                      " WHERE corr_cd_corretor = " & PanCorretores.Tag
         XLT_SQL = "UPDATE Corretores " & _
                       "SET corr_tx_nome = '" & TxtNome.Text & "'," & _
-                         " corr_vl_percentcomissao = " & FunTrataFloat(TxtComissao.Text) & "" & _
+                         " corr_vl_percentcomissao = " & FunTrataFloat(TxtComissao.Text) & "," & _
+                         " focl_cd_FornCli = " & XLI_COD_FORN & "" & _
                       " WHERE corr_cd_corretor = " & PanCorretores.Tag
         Conexao.Execute XLT_SQL
     End If
@@ -726,12 +885,12 @@ Private Sub CmdConfirmar_Click()
     If PanCorretores.Tag <> "I" Then
         subrecarregadadosNV Adodc1, "", FRM_Ordem, "", FRM_FiltroAtual
         cboLocalizar.BoundText = PanCorretores.Tag
-        Adodc1.Recordset.bookmark = cboLocalizar.SelectedItem
+        Adodc1.Recordset.Bookmark = cboLocalizar.SelectedItem
     Else
       FRM_Quantid = funOperacaoQuantid("+")
       XLI_BOOKMARK = TDBGrid1.ApproxCount + 1
       subrecarregadadosNV Adodc1, "", FRM_Ordem, "", FRM_FiltroAtual
-      TDBGrid1.bookmark = XLI_BOOKMARK
+      TDBGrid1.Bookmark = XLI_BOOKMARK
     End If
     cboLocalizar.Enabled = True
     TDBGrid1.Enabled = True
@@ -749,6 +908,10 @@ End Sub
 
 Private Sub CmdImprimir_Click()
     Call subImprimeListagemGRID(1, TDBGrid1.PrintInfo, "Listagem de Corretores")
+End Sub
+
+Private Sub CmdLimpar_Click()
+    CboFornecedor.Text = ""
 End Sub
 
 Private Sub CmdRemoverFiltro_Click()
@@ -785,7 +948,7 @@ Sub subPrepararInsercao()
     TxtNome.Text = ""
     TxtComissao.Text = ""
 End Sub
-Private Sub CmdRemoverFiltro_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdRemoverFiltro_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Mostra os filtros ativos da tabela"
 End Sub
 
@@ -802,6 +965,16 @@ Private Sub CmdAlterar_Click()
     TxtNome.Text = Adodc1.Recordset.Fields("corr_tx_nome")
     TxtComissao.Text = Format(Adodc1.Recordset.Fields("corr_vl_percentcomissao"), "standard")
     
+    ' Atualizar os campos do CboFornecedor a partir dos dados lidos
+    If (IsNull(Adodc1.Recordset.Fields("focl_cd_FornCli"))) Then
+        CboFornecedor.BoundText = ""
+        CboFornecedor.Text = ""
+    Else
+        CboFornecedor.BoundText = Adodc1.Recordset.Fields("focl_cd_FornCli")
+        CboFornecedor.Text = Adodc1.Recordset.Fields("focl_tx_RazaoSocial")
+    End If
+    
+    
     TDBGrid1.Enabled = False
     TxtNome.SetFocus
 End Sub
@@ -816,7 +989,7 @@ Private Sub CmdCancelar_Click()
     TDBGrid1.SetFocus
 End Sub
 
-Private Sub CmdImprimir_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdImprimir_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Imprime os dados da tabela"
 End Sub
 
@@ -826,7 +999,7 @@ Private Sub CmdSair_Click()
     Unload Me
 End Sub
 
-Private Sub CmdSair_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdSair_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Retorna à tela principal"
 End Sub
 
@@ -846,7 +1019,7 @@ Private Sub CmdOrdem_Click()
     TDBGrid1.SetFocus
 End Sub
 
-Private Sub CmdOrdem_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdOrdem_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Ordena os registros atuais da tabela"
 End Sub
 
@@ -898,7 +1071,7 @@ RotuloErro:
     End If
     subHabilitaBotoes
 End Sub
-Private Sub CmdExcluir_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdExcluir_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Remove da tabela o registro selecionado"
 End Sub
 
@@ -915,9 +1088,13 @@ Private Sub CmdInserir_Click()
     cboLocalizar.Text = ""
     TDBGrid1.Enabled = False
     TxtNome.SetFocus
+    
+    CboFornecedor.BoundText = ""
+    CboFornecedor.Text = ""
+    
 End Sub
 
-Private Sub CmdInserir_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub CmdInserir_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     MdiPrincipal.BarraStatus.Panels(1).Text = "Insere um novo registro na tabela"
 End Sub
   
@@ -942,13 +1119,13 @@ Private Sub TDBGrid1_DblClick()
     End If
 End Sub
 
-Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     
     cboLocalizar.Text = ""
     If Button = 2 And CmdInserir.Caption = "&Inserir" Then  'Verifica se o botão da direita foi pressionado
         Set Formulario = TelaManTabCorretores
         subTelaValoresGlobais "P"
-        FunExecutaFiltro Adodc1, Formulario, x
+        FunExecutaFiltro Adodc1, Formulario, X
         subTelaValoresGlobais "G"
     End If
     
@@ -979,10 +1156,18 @@ Private Sub Form_Load()
     
     subManutencaoJanelasAtivas "I", "TelaManTabCorretores"
          
-    'Associa um banco de dados à tabela Descontos e Acréscimos
+'    'Associa um banco de dados à tabela Descontos e Acréscimos
+'    subCarregaDadosNV Adodc1, "Corretores", "corr_tx_Nome", _
+'                            "", "SELECT * FROM Corretores"
+                            
+    ' Carrega os dados da tabela de Corretores
     subCarregaDadosNV Adodc1, "Corretores", "corr_tx_Nome", _
-                            "", "SELECT * FROM Corretores"
-    
+                            "", "SELECT C.*, F.focl_tx_CgcCpf, F.focl_tx_RazaoSocial FROM Corretores C LEFT JOIN FornClientes F ON C.focl_cd_FornCli = F.focl_cd_FornCli"
+
+    ' Carrega os dados da tabela de Fornecedores
+    'subCarregaDadosNV DatFornecedor, "FornClientes", "focl_tx_RazaoSocial", "", "SELECT * FROM FornClientes WHERE focl_tx_Classe = 'F'"
+    subConectarControleDadosNV DatFornecedor, "SELECT * FROM FornClientes WHERE focl_tx_Classe = 'F' ORDER BY focl_tx_RazaoSocial", Estatico
+        
     subHabilitaBotoes
     
     filtra_especial = False

@@ -18,7 +18,7 @@ Global TipoBloqueio As Integer         ' Indica o tipo de bloqueio a ser utiliza
                                        ' sendo realizado o update.
 
 'Conecta o controle de dados
-Public Sub subConectarControleDadosNV(ControleDados As Object, Sql As String, TipoRecordSet As String)
+Public Sub subConectarControleDadosNV(ControleDados As Object, sql As String, TipoRecordSet As String)
     Dim ObjRecordset As Object
     
     Set ObjRecordset = New ADODB.Recordset
@@ -26,14 +26,14 @@ Public Sub subConectarControleDadosNV(ControleDados As Object, Sql As String, Ti
     'Seleciona o tipo de acesso
     Select Case TipoRecordSet
         Case "Dinamico"  ' Recordset que pode ser alterado
-            ObjRecordset.Open funTrataSql(Sql), Conexao, adOpenDynamic, TipoBloqueio, adCmdText
+            ObjRecordset.Open funTrataSql(sql), Conexao, adOpenDynamic, TipoBloqueio, adCmdText
             'ControleDados.CursorType = adOpenDynamic
         Case "Direto"       ' Recordset de leitura com movimentacao em apenas uma direcao
-            ObjRecordset.Open funTrataSql(Sql), Conexao, adOpenForwardOnly, TipoBloqueio, adCmdText
+            ObjRecordset.Open funTrataSql(sql), Conexao, adOpenForwardOnly, TipoBloqueio, adCmdText
             'ControleDados.CursorType = adOpenForwardOnly
         Case "Estatico"    ' Recordset de leitura com livre movimentacao
             ObjRecordset.CursorLocation = adUseClient
-            ObjRecordset.Open funTrataSql(Sql), Conexao, adOpenStatic, TipoBloqueio, adCmdText
+            ObjRecordset.Open funTrataSql(sql), Conexao, adOpenStatic, TipoBloqueio, adCmdText
 '            ControleDados.CursorType = adOpenStatic
     End Select
     Set ControleDados.Recordset = ObjRecordset
@@ -46,7 +46,7 @@ End Sub
 
 
 ' Abre um conjunto de registros de acordo com o Tipo de Acesso
-Public Sub SubQOpenRecordset(ObjRecordset As Object, Sql As String, TipoRecordSet As String)
+Public Sub SubQOpenRecordset(ObjRecordset As Object, sql As String, TipoRecordSet As String)
     Set ObjRecordset = New ADODB.Recordset
     Select Case TipoRecordSet
         Case "Dinamico"  ' Recordset que pode ser alterado
@@ -56,15 +56,15 @@ Public Sub SubQOpenRecordset(ObjRecordset As Object, Sql As String, TipoRecordSe
             'consequentemente não podemos pegar a chave para gravação de tabelas relacionadas
             ObjRecordset.CursorType = adOpenKeyset
             ObjRecordset.LockType = TipoBloqueio
-            ObjRecordset.Open funTrataSql(Sql), Conexao, , , adCmdText
+            ObjRecordset.Open funTrataSql(sql), Conexao, , , adCmdText
             'ObjRecordset.Open funTrataSql(sql), Conexao, adOpenDynamic, TipoBloqueio, adCmdText
         Case "Direto"       ' Recordset de leitura com movimentacao em apenas uma direcao
             'Set ObjRecordset = Conexao.OpenRecordset(funTrataSql(sql), adOpenForwardOnly)
-            ObjRecordset.Open funTrataSql(Sql), Conexao, adOpenForwardOnly, TipoBloqueio, adCmdText
+            ObjRecordset.Open funTrataSql(sql), Conexao, adOpenForwardOnly, TipoBloqueio, adCmdText
         Case "Estatico"    ' Recordset de leitura com livre movimentacao
             'Set ObjRecordset = Conexao.OpenRecordset(funTrataSql(sql), adOpenStatic)
             ObjRecordset.CursorLocation = adUseClient
-            ObjRecordset.Open funTrataSql(Sql), Conexao, adOpenStatic, TipoBloqueio, adCmdText
+            ObjRecordset.Open funTrataSql(sql), Conexao, adOpenStatic, TipoBloqueio, adCmdText
     End Select
 End Sub
 
@@ -73,7 +73,9 @@ Public Function funAbreConexao() As Boolean
     Dim XLT_STRINGCONEXAO   As String * 254
     Dim XLT_TIPOBANCO       As String * 254
     Dim XLT_NOMEBANCO       As String * 254
-    
+    Dim XLT_USUARIO         As String * 254
+    Dim XLT_SENHA           As String * 254
+
     On Error GoTo RotuloErro
     Screen.MousePointer = vbHourglass
     'Indica o banco de dados a ser utilizado
@@ -81,12 +83,26 @@ Public Function funAbreConexao() As Boolean
         MsgBox "Problemas na Leitura do Arquivo de configuração", vbCritical, "Configuração"
     End If
     
-    'PEGA O ENDEREÇOÇ DO BANCO
+    'PEGA O ENDEREÇO DO BANCO
     GetPrivateProfileString "BancoDeDados", "Endereco", "", XLT_STRINGCONEXAO, 255, App.Path + "\QualiAdmFin.INI"
     
     'PEGA O NOME DO BANCO
     GetPrivateProfileString "BancoDeDados", "NomeBanco", "", XLT_NOMEBANCO, 255, App.Path + "\QualiAdmFin.INI"
         
+    'PEGA O USUARIO
+    GetPrivateProfileString "BancoDeDados", "Usuario", "", XLT_USUARIO, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_USUARIO) Or IsEmpty(XLT_USUARIO) Or XLT_USUARIO = "" Then
+        XLT_USUARIO = "qualiadmfin"
+    End If
+        
+    'PEGA A SENHA
+    GetPrivateProfileString "BancoDeDados", "Senha", "", XLT_SENHA, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_SENHA) Or IsEmpty(XLT_SENHA) Or XLT_SENHA = "" Then
+        XLT_SENHA = "qd"
+    End If
+    
     Select Case Val(XLT_TIPOBANCO)
         Case 1
             NomeSgbd = "Access"
@@ -98,7 +114,7 @@ Public Function funAbreConexao() As Boolean
             Conexao.Provider = "sqloledb"
             XGT_SQL = "Data Source=" & FunStrArqIni(XLT_STRINGCONEXAO) & _
                       ";Initial Catalog=" & FunStrArqIni(XLT_NOMEBANCO) & _
-                      ";User Id=qualiadmfin;Password=qd; "
+                      ";User Id=" & FunStrArqIni(XLT_USUARIO) & ";Password=" & FunStrArqIni(XLT_SENHA) & "; "
             Conexao.Open XGT_SQL
     End Select
     Screen.MousePointer = vbDefault
@@ -120,6 +136,8 @@ Public Function funAbreConexaoRelatorio() As Boolean
     Dim XLT_STRINGCONEXAO   As String * 254
     Dim XLT_TIPOBANCO       As String * 254
     Dim XLT_NOMEBANCO       As String * 254
+    Dim XLT_USUARIO         As String * 254
+    Dim XLT_SENHA           As String * 254
     
     On Error GoTo RotuloErro
     Screen.MousePointer = vbHourglass
@@ -134,6 +152,20 @@ Public Function funAbreConexaoRelatorio() As Boolean
     'PEGA O NOME DO BANCO
     GetPrivateProfileString "BancoDeDados", "NomeBanco", "", XLT_NOMEBANCO, 255, App.Path + "\QualiAdmFin.INI"
     
+    'PEGA O USUARIO
+    GetPrivateProfileString "BancoDeDados", "Usuario", "", XLT_USUARIO, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_USUARIO) Or IsEmpty(XLT_USUARIO) Or XLT_USUARIO = "" Then
+        XLT_USUARIO = "qualiadmfin"
+    End If
+        
+    'PEGA A SENHA
+    GetPrivateProfileString "BancoDeDados", "Senha", "", XLT_SENHA, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_SENHA) Or IsEmpty(XLT_SENHA) Or XLT_SENHA = "" Then
+        XLT_SENHA = "qd"
+    End If
+    
     Select Case Val(XLT_TIPOBANCO)
         Case 1
             NomeSgbd = "Access"
@@ -145,7 +177,7 @@ Public Function funAbreConexaoRelatorio() As Boolean
             ConexaoRelatorio.Provider = "sqloledb"
             XGT_SQL = "Data Source=" & FunStrArqIni(XLT_STRINGCONEXAO) & _
                       ";Initial Catalog=" & FunStrArqIni(XLT_NOMEBANCO) & _
-                      ";User Id=qualiadmfin;Password=qd; "
+                      ";User Id=" & FunStrArqIni(XLT_USUARIO) & ";Password=" & FunStrArqIni(XLT_SENHA) & "; "
             ConexaoRelatorio.Open XGT_SQL
     End Select
     Screen.MousePointer = vbDefault

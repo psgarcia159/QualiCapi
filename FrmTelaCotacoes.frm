@@ -1,9 +1,9 @@
 VERSION 5.00
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
-Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
-Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
+Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Begin VB.Form TelaCotacoes 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Tabela de Cotações"
@@ -121,7 +121,7 @@ Begin VB.Form TelaCotacoes
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   75300867
+         Format          =   82575363
          CurrentDate     =   37455
       End
       Begin VB.Label Label3 
@@ -563,7 +563,7 @@ Private Sub subDesabilitaBotoes()
 End Sub
 'Esta função irá verificar se a data que será inserida na tabela para uma determinada moeda já existe
 Function FunExisteData(Data As String, Moeda As Variant) As Boolean
-    Dim XLO_Data As adodb.Recordset
+    Dim XLO_Data As ADODB.Recordset
     SubQOpenRecordset XLO_Data, "SELECT * FROM CotacoesMoedas WHERE moed_cd_codmoeda=" & _
     XFT_ChaveMoeda & " and cota_dt_datacotacao= " & FunNuloData(Data, NomeSgbd) & "", Estatico
     If XLO_Data.EOF And XLO_Data.BOF Then
@@ -589,8 +589,8 @@ Private Sub CmdAlterar_Click()
     PanCotacao.Enabled = True
     PanCotacao.Visible = True
     TDBGrid1.Enabled = False
-    DtpData.Value = Format$(Adodc1.Recordset.Fields("cota_dt_datacotacao"), "DD/MM/YY")
-    DtpData.Enabled = False
+    DTPData.Value = Format$(Adodc1.Recordset.Fields("cota_dt_datacotacao"), "DD/MM/YY")
+    DTPData.Enabled = False
     If Adodc1.Recordset.Fields("cota_vl_taxacotacao") <> 0 Then
         TxtTaxa.Text = Format$(Adodc1.Recordset.Fields("cota_vl_taxacotacao"), "##0.0000")
     Else
@@ -620,26 +620,26 @@ Private Sub CmdConfirma_Click()
     
     If PanCotacao.Tag = "I" Then
         'Verifica se já foi realizada uma cotação da moeda para uma determinada data
-        If FunExisteData(Format(DtpData.Value, "dd/mm/yy"), XFT_ChaveMoeda) Then
+        If FunExisteData(Format(DTPData.Value, "dd/mm/yy"), XFT_ChaveMoeda) Then
             MsgBox "Já existe cotação para esta data.", vbInformation, "ATENÇÃO!"
-            DtpData.SetFocus
+            DTPData.SetFocus
             Exit Sub
         Else
             If Not TDBGrid1.EOF And Not TDBGrid1.BOF Then
                 If LblData.Caption <> "" Then
                     If (XFT_IndexMoeda = "M") And _
-                    (Day(DtpData.Value) <> Day(TDBGrid1.Columns("Data"))) Then
+                    (Day(DTPData.Value) <> Day(TDBGrid1.Columns("Data"))) Then
                         'Só permitir cotações para o mesmo dia em cada mês
                         MsgBox "O período de indexação deve ser mensal.", vbInformation, "ATENÇÃO!"
-                        DtpData.SetFocus
+                        DTPData.SetFocus
                         Exit Sub
                     End If
                 Else
                     If (DatMoedas.Recordset.Fields("moed_tx_indexacao") = "M") And _
-                       (Day(DtpData.Value) <> Day(TDBGrid1.Columns("Data"))) Then
+                       (Day(DTPData.Value) <> Day(TDBGrid1.Columns("Data"))) Then
                         'Só permitir cotações para o mesmo dia em cada mês
                         MsgBox "O período de indexação deve ser mensal.", vbInformation, "ATENÇÃO!"
-                        DtpData.SetFocus
+                        DTPData.SetFocus
                         Exit Sub
                     End If
                 End If
@@ -647,7 +647,7 @@ Private Sub CmdConfirma_Click()
         End If
         
         XLT_SQL = "INSERT INTO CotacoesMoedas(cota_dt_datacotacao,moed_cd_codmoeda,cota_vl_taxacotacao,cota_vl_valor) " & _
-              "VALUES (" & FunNuloData(DtpData.Value, NomeSgbd) & ", " & XFT_ChaveMoeda & "," & FunNulo(FunTrataFloat(TxtTaxa.Text)) & "," & (FunTrataFloat(TxtValor.Text)) & ")"
+              "VALUES (" & FunNuloData(DTPData.Value, NomeSgbd) & ", " & XFT_ChaveMoeda & "," & FunNulo(FunTrataFloat(TxtTaxa.Text)) & "," & (FunTrataFloat(TxtValor.Text)) & ")"
         Conexao.Execute XLT_SQL
         
     Else
@@ -655,7 +655,7 @@ Private Sub CmdConfirma_Click()
         XLT_SQL = "UPDATE CotacoesMoedas set " _
               & "cota_vl_valor = " & (FunTrataFloat(TxtValor.Text)) & ", " _
               & "cota_vl_taxacotacao = " & FunNulo(FunTrataFloat(TxtTaxa.Text)) & "" _
-              & " WHERE moed_cd_codmoeda = " & XFT_ChaveMoeda & " and cota_dt_datacotacao=" & FunNuloData(DtpData.Value, NomeSgbd) & ""
+              & " WHERE moed_cd_codmoeda = " & XFT_ChaveMoeda & " and cota_dt_datacotacao=" & FunNuloData(DTPData.Value, NomeSgbd) & ""
         Conexao.Execute XLT_SQL
         
     End If
@@ -793,28 +793,28 @@ Private Sub CmdInserir_Click()
     PanCotacao.Enabled = True
     PanCotacao.Visible = True
     TDBGrid1.Enabled = False
-    DtpData.Enabled = True
+    DTPData.Enabled = True
     If LblData.Caption <> "" Then
         DatMoedas.Recordset.bookmark = CboMoedas.SelectedItem
         If DatMoedas.Recordset.Fields("moed_tx_indexacao") = "D" Then
-            DtpData.Value = Format$(Now, "DD/MM/YY")
+            DTPData.Value = Format$(Now, "DD/MM/YY")
         Else
             TDBGrid1.MoveFirst
             If TDBGrid1.Columns("Data") <> "" Then
-                DtpData.Value = Format(DateAdd("m", 1, TDBGrid1.Columns("Data")), "DD/MM/YY")
+                DTPData.Value = Format(DateAdd("m", 1, TDBGrid1.Columns("Data")), "DD/MM/YY")
             Else
-                DtpData.Value = Format$(Now, "DD/MM/YY")
+                DTPData.Value = Format$(Now, "DD/MM/YY")
             End If
         End If
     Else
         If XFT_IndexMoeda = "D" Then
-            DtpData.Value = Format$(Now, "DD/MM/YY")
+            DTPData.Value = Format$(Now, "DD/MM/YY")
         Else
             TDBGrid1.MoveFirst
             If TDBGrid1.Columns("Data") <> "" Then
-                DtpData.Value = Format(DateAdd("m", 1, TDBGrid1.Columns("Data")), "DD/MM/YY")
+                DTPData.Value = Format(DateAdd("m", 1, TDBGrid1.Columns("Data")), "DD/MM/YY")
             Else
-                DtpData.Value = Format$(Now, "DD/MM/YY")
+                DTPData.Value = Format$(Now, "DD/MM/YY")
             End If
         End If
     End If
@@ -839,7 +839,7 @@ End Sub
 
 Private Sub Form_Activate()
     
-    Dim XLO_MOEDA As New adodb.Recordset
+    Dim XLO_MOEDA As New ADODB.Recordset
     
     If LblData.Caption <> "" Then
         XFT_ChaveMoeda = LblChave.Caption
@@ -868,8 +868,8 @@ Private Sub Form_Activate()
         PanCotacao.Enabled = True
         PanCotacao.Visible = True
         TDBGrid1.Enabled = False
-        DtpData.Value = LblData.Caption
-        DtpData.Enabled = False
+        DTPData.Value = LblData.Caption
+        DTPData.Enabled = False
         TxtTaxa.Text = ""
         TxtValor.Text = ""
         TxtTaxa.SetFocus

@@ -1,9 +1,9 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
-Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form TelaExportacaoDimob 
    Caption         =   "Exportação DIMOB"
    ClientHeight    =   5640
@@ -68,7 +68,7 @@ Begin VB.Form TelaExportacaoDimob
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "yyyy"
-         Format          =   68419587
+         Format          =   83689475
          UpDown          =   -1  'True
          CurrentDate     =   38718
       End
@@ -222,7 +222,7 @@ Begin VB.Form TelaExportacaoDimob
             _ExtentY        =   661
             _Version        =   393216
             Enabled         =   0   'False
-            Format          =   68419585
+            Format          =   83689473
             CurrentDate     =   39448
          End
          Begin VB.Label LblData 
@@ -793,12 +793,13 @@ Private Sub CmdConfirmar_Click()
     " dbo.ConsCAPExportacaoDimob.empd_cd_Empreendimento = dbo.Titulos.empd_cd_Empreendimento AND" & _
     " dbo.ConsCAPExportacaoDimob.imov_cd_Imovel = dbo.Titulos.imov_cd_Imovel AND" & _
     " dbo.ConsCAPExportacaoDimob.cont_cd_Contrato = dbo.Titulos.cont_cd_Contrato AND" & _
-    " year(dbo.Titulos.titu_dt_Pagamento)=" & Year(DtpAno.Value) & "), 0)" & _
+    " Year(dbo.Titulos.titu_dt_Pagamento)=" & Year(DtpAno.Value) & "), 0)" & _
     " AS ValorPago FROM ConsCAPExportacaoDimob WHERE " & _
-    " year(cont_dt_RegistroContrato)=" & Year(DtpAno.Value) & " AND " & _
-    " empr_cd_Empresa =" & PCodEmpresa
+    " Year(cont_dt_RegistroContrato) = " & Year(DtpAno.Value) & " AND " & _
+    " empr_cd_Empresa = " & PCodEmpresa
     '" AND focl_tx_CGCCPF<>'000.614.175-73'"
-  
+    ' Para atender demanda JMJ (não confirmada) comentar a linha após o WHERE
+
 End Sub
 
 Private Sub CmdConfirmarExp_Click()
@@ -977,7 +978,7 @@ Private Sub CmdConfirmarExp_Click()
                     Mid(Adodc1.Recordset!contrato, 6, 4) & Right(Adodc1.Recordset!contrato, 2) & _
                     Format(Adodc1.Recordset!cont_dt_RegistroContrato, "ddmmyyyy") & _
                     Format(Adodc1.Recordset!TotalOperacao * 100, "00000000000000") & _
-                    Format(Adodc1.Recordset!ValorPago * 100, "00000000000000") & _
+                    Format(Adodc1.Recordset!VALORPAGO * 100, "00000000000000") & _
                     "U" & _
                     Left(XLT_ENDERECO, 60) & Space(60 - Len(Left(XLT_ENDERECO, 60))) & _
                     Left(Adodc1.Recordset!empd_nr_Cep, 2) + Mid(Adodc1.Recordset!empd_nr_Cep, 4, 3) + Right(Adodc1.Recordset!empd_nr_Cep, 3) & _

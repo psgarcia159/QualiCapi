@@ -1,12 +1,12 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
-Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "msdatlst.ocx"
-Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
 Object = "{12FEA440-3264-4401-B639-B45668B09A49}#9.0#0"; "DBImage.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
+Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
+Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form FrmPadraoEmpresa 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Padrões Utilizados"
@@ -551,6 +551,7 @@ Begin VB.Form FrmPadraoEmpresa
       _ExtentY        =   13573
       _Version        =   393216
       Tabs            =   7
+      Tab             =   2
       TabsPerRow      =   7
       TabHeight       =   741
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -564,11 +565,9 @@ Begin VB.Form FrmPadraoEmpresa
       EndProperty
       TabCaption(0)   =   "&Dados Gerais"
       TabPicture(0)   =   "FrmPadraoEmpresa.frx":0442
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "FramePadrao(0)"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "frRet"
-      Tab(0).Control(1).Enabled=   0   'False
+      Tab(0).ControlEnabled=   0   'False
+      Tab(0).Control(0)=   "frRet"
+      Tab(0).Control(1)=   "FramePadrao(0)"
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "&Endereço"
       TabPicture(1)   =   "FrmPadraoEmpresa.frx":045E
@@ -577,22 +576,37 @@ Begin VB.Form FrmPadraoEmpresa
       Tab(1).ControlCount=   1
       TabCaption(2)   =   "&Padrões"
       TabPicture(2)   =   "FrmPadraoEmpresa.frx":047A
-      Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Frame4"
-      Tab(2).Control(1)=   "Frame3"
-      Tab(2).Control(2)=   "FraNotasEstoque"
-      Tab(2).Control(3)=   "FraVinculaCRCC"
-      Tab(2).Control(4)=   "FraFiltra"
-      Tab(2).Control(5)=   "FraOrdemComboDesc"
-      Tab(2).Control(6)=   "FraModeloRecibo"
+      Tab(2).ControlEnabled=   -1  'True
+      Tab(2).Control(0)=   "FraCategoriaNvPlContas"
+      Tab(2).Control(0).Enabled=   0   'False
+      Tab(2).Control(1)=   "FraMascara"
+      Tab(2).Control(1).Enabled=   0   'False
+      Tab(2).Control(2)=   "FraExpContabilidade"
+      Tab(2).Control(2).Enabled=   0   'False
+      Tab(2).Control(3)=   "FraImportacao"
+      Tab(2).Control(3).Enabled=   0   'False
+      Tab(2).Control(4)=   "FraCapiQualifin"
+      Tab(2).Control(4).Enabled=   0   'False
+      Tab(2).Control(5)=   "FraQualifats"
+      Tab(2).Control(5).Enabled=   0   'False
+      Tab(2).Control(6)=   "FraPP"
+      Tab(2).Control(6).Enabled=   0   'False
       Tab(2).Control(7)=   "FraRelatorioQualiCapi"
-      Tab(2).Control(8)=   "FraPP"
-      Tab(2).Control(9)=   "FraQualifats"
-      Tab(2).Control(10)=   "FraCapiQualifin"
-      Tab(2).Control(11)=   "FraImportacao"
-      Tab(2).Control(12)=   "FraExpContabilidade"
-      Tab(2).Control(13)=   "FraMascara"
-      Tab(2).Control(14)=   "FraCategoriaNvPlContas"
+      Tab(2).Control(7).Enabled=   0   'False
+      Tab(2).Control(8)=   "FraModeloRecibo"
+      Tab(2).Control(8).Enabled=   0   'False
+      Tab(2).Control(9)=   "FraOrdemComboDesc"
+      Tab(2).Control(9).Enabled=   0   'False
+      Tab(2).Control(10)=   "FraFiltra"
+      Tab(2).Control(10).Enabled=   0   'False
+      Tab(2).Control(11)=   "FraVinculaCRCC"
+      Tab(2).Control(11).Enabled=   0   'False
+      Tab(2).Control(12)=   "FraNotasEstoque"
+      Tab(2).Control(12).Enabled=   0   'False
+      Tab(2).Control(13)=   "Frame3"
+      Tab(2).Control(13).Enabled=   0   'False
+      Tab(2).Control(14)=   "Frame4"
+      Tab(2).Control(14).Enabled=   0   'False
       Tab(2).ControlCount=   15
       TabCaption(3)   =   "&Logomarca"
       TabPicture(3)   =   "FrmPadraoEmpresa.frx":0496
@@ -646,7 +660,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   630
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   168
          Top             =   6720
          Width           =   3375
@@ -671,7 +685,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   630
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   165
          Top             =   5970
          Width           =   3375
@@ -698,7 +712,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1095
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   160
          Top             =   5040
          Width           =   8055
@@ -895,7 +909,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   630
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   90
          Top             =   6720
          Width           =   4515
@@ -921,7 +935,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   630
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   143
          Top             =   5220
          Visible         =   0   'False
@@ -955,7 +969,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   675
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   99
          Top             =   3460
          Width           =   4515
@@ -996,7 +1010,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   705
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   96
          Top             =   3060
          Width           =   3370
@@ -1653,7 +1667,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   630
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   91
          Top             =   5970
          Visible         =   0   'False
@@ -1687,7 +1701,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   615
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   88
          Top             =   5205
          Visible         =   0   'False
@@ -1801,7 +1815,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   615
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   84
          Top             =   2340
          Visible         =   0   'False
@@ -1854,7 +1868,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   975
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   82
          Top             =   4020
          Width           =   3370
@@ -1922,7 +1936,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   570
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   79
          Top             =   4380
          Visible         =   0   'False
@@ -1949,7 +1963,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1635
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   72
          Top             =   540
          Width           =   3370
@@ -2018,7 +2032,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1695
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   71
          Top             =   1650
          Width           =   4515
@@ -2085,7 +2099,7 @@ Begin VB.Form FrmPadraoEmpresa
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1035
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   68
          Top             =   540
          Width           =   4515
@@ -2136,7 +2150,7 @@ Begin VB.Form FrmPadraoEmpresa
          EndProperty
          Height          =   4095
          Index           =   0
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   50
          Top             =   720
          Width           =   8055
@@ -2854,7 +2868,7 @@ Begin VB.Form FrmPadraoEmpresa
       End
       Begin VB.Frame FraCategoriaNvPlContas 
          Height          =   1275
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   74
          Top             =   3360
          Visible         =   0   'False
@@ -3629,7 +3643,7 @@ Sub PreencheCampos()
     TxtBairro.Text = FunNulo(ResPadrao("empr_tx_Bairro").Value)
     TxtCidade.Text = FunNulo(ResPadrao("empr_tx_cidade").Value)
     TxtEstado.Text = FunNulo(ResPadrao("empr_tx_Estado").Value)
-    TxtPais.Text = FunNulo(ResPadrao("empr_tx_pais").Value)
+    txtPais.Text = FunNulo(ResPadrao("empr_tx_pais").Value)
     txtCodigoMunicipioIbge.Text = FunNulo(ResPadrao("empr_cd_MunicipioIbge").Value)
     TxtTelefone.Text = FunNulo(ResPadrao("empr_tx_telefone").Value)
     TxtFax.Text = FunNulo(ResPadrao("empr_tx_fax").Value)
@@ -3652,7 +3666,7 @@ Sub PreencheCampos()
     End If
     TxtIE.Text = FunNulo(ResPadrao("empr_tx_InscrEst").Value)
     TxtIM.Text = FunNulo(ResPadrao("empr_tx_InscrMun").Value)
-    TxtEmail.Text = FunNulo(ResPadrao("empr_tx_email").Value)
+    TxtEMail.Text = FunNulo(ResPadrao("empr_tx_email").Value)
     TxtHomePage.Text = FunNulo(ResPadrao("empr_tx_homepage").Value)
     SubCarregarImagemBanco ResPadrao
     TxtMascaraPC.Text = FunNulo(ResPadrao("empr_tx_planocmascara").Value)
@@ -3660,7 +3674,7 @@ Sub PreencheCampos()
     TxtBanco.Text = FunNulo(ResPadrao("empr_tx_Banco").Value)
     TxtPorta.Text = FunNulo(ResPadrao("empr_tx_PortaSmtp").Value)
     TxtServidor.Text = FunNulo(ResPadrao("empr_tx_ServidorSmtp").Value)
-    TxtCGA.Text = FunNulo(ResPadrao("empr_nr_CGA").Value)
+    TxtCga.Text = FunNulo(ResPadrao("empr_nr_CGA").Value)
     
     If XGT_NomeAplic = UCase("Compras") Then
         Senha.Text = Decrip_Senha(Trim$(FunNulo(ResPadrao("empr_tx_SenhaAutenticacao"))))
@@ -3858,7 +3872,7 @@ End Sub
 
 Private Sub CboReceitaDoacao_Change()
     If CboReceitaDoacao.Text <> "" Then
-        DatContaRecDoacao.Recordset.Bookmark = CboReceitaDoacao.SelectedItem
+        DatContaRecDoacao.Recordset.bookmark = CboReceitaDoacao.SelectedItem
         If DatContaRecDoacao.Recordset.Fields("plco_tx_tipo") <> "A" Then
             MsgBox "Este item do Plano de Contas não é analítico, logo não pode ser atribuído a uma Nota.", vbCritical + vbOKOnly, "ATENÇÃO"
             CboReceitaDoacao.BoundText = MskReceitaDoacao.Text
@@ -3910,6 +3924,7 @@ Private Sub ChkEmail_Click()
     End If
     
 End Sub
+
 Private Sub CmdGravar_Click()
   Me.MousePointer = vbHourglass
   Dim ResPadrao As Object
@@ -4064,7 +4079,7 @@ Private Sub CmdGravar_Click()
   ResPadrao("empr_tx_Bairro").Value = FunNulo(TxtBairro.Text)
   ResPadrao("empr_tx_cidade").Value = FunNulo(TxtCidade.Text)
   ResPadrao("empr_tx_Estado").Value = FunNulo(TxtEstado.Text)
-  ResPadrao("empr_tx_pais").Value = FunNulo(TxtPais.Text)
+  ResPadrao("empr_tx_pais").Value = FunNulo(txtPais.Text)
   ResPadrao("empr_cd_MunicipioIbge").Value = FunNulo(txtCodigoMunicipioIbge.Text)
   ResPadrao("empr_tx_Cep").Value = FunNulo(TxtCEP.Text)
   ResPadrao("empr_tx_telefone").Value = FunNulo(TxtTelefone.Text)
@@ -4092,7 +4107,7 @@ Private Sub CmdGravar_Click()
   If CboCCorrente.BoundText <> "" Then ResPadrao("Empr_cd_codcontacorrente").Value = CboCCorrente.BoundText
   ResPadrao("empr_tx_InscrEst").Value = FunNulo(TxtIE.Text)
   ResPadrao("empr_tx_InscrMun").Value = FunNulo(TxtIM.Text)
-  ResPadrao("empr_tx_email").Value = FunNulo(TxtEmail.Text)
+  ResPadrao("empr_tx_email").Value = FunNulo(TxtEMail.Text)
   ResPadrao("empr_tx_homepage").Value = FunNulo(TxtHomePage.Text)
   ResPadrao("empr_tx_planocmascara").Value = XMascaraPC
   ResPadrao("empr_nr_planocnivel").Value = XNivelPC
@@ -4107,7 +4122,7 @@ Private Sub CmdGravar_Click()
   ResPadrao("empr_tx_Banco").Value = funNull(TxtBanco.Text)
   ResPadrao("empr_tx_ServidorSmtp").Value = funNull(TxtServidor.Text)
   ResPadrao("empr_tx_PortaSmtp").Value = funNull(TxtPorta.Text)
-  ResPadrao("empr_nr_Cga").Value = funNull(TxtCGA.Text)
+  ResPadrao("empr_nr_Cga").Value = funNull(TxtCga.Text)
   ResPadrao("empr_cd_empresaVinculada").Value = IIf(CboEmpresaVinculada.Text <> "", CboEmpresaVinculada.BoundText, Null)
   If CboTipoPlanoContasReferencial.ListIndex > -1 Then
     ResPadrao("empr_nr_TipoPlanoReferencial").Value = CboTipoPlanoContasReferencial.ItemData(CboTipoPlanoContasReferencial.ListIndex)
@@ -4230,7 +4245,7 @@ Private Sub CmdGravar_Click()
   
   'Gravando os dados
   If CboReceitaDoacao.Text <> "" Then
-      DatContaRecDoacao.Recordset.Bookmark = CboReceitaDoacao.SelectedItem
+      DatContaRecDoacao.Recordset.bookmark = CboReceitaDoacao.SelectedItem
       ResPadrao!plco_cd_ReceitaDoacao = DatContaRecDoacao.Recordset.Fields("plco_cd_conta")
   End If
   
@@ -4327,8 +4342,8 @@ End Sub
 
 Private Sub CmdInserirCNAE_Click()
     Dim Sql As String
-    Dim errLoop As ADODB.Error
-    Dim StrError As String
+    Dim ERRLOOP As ADODB.Error
+    Dim STRERROR As String
     
     On Error GoTo MostraErro
     
@@ -4349,14 +4364,14 @@ MostraErro:
 
    ' Enumera a coleção de erros e apresenta
    ' as propriedades de cada erro ocorrido
-   For Each errLoop In Conexao.Errors
-      StrError = "Error #" & errLoop.Number & vbCr & _
-         "   " & errLoop.Description & vbCr & _
-         "   (Source: " & errLoop.Source & ")" & vbCr & _
-         "   (SQL State: " & errLoop.SQLState & ")" & vbCr & _
-         "   (NativeError: " & errLoop.NativeError & ")" & vbCr
+   For Each ERRLOOP In Conexao.Errors
+      STRERROR = "Error #" & ERRLOOP.Number & vbCr & _
+         "   " & ERRLOOP.Description & vbCr & _
+         "   (Source: " & ERRLOOP.Source & ")" & vbCr & _
+         "   (SQL State: " & ERRLOOP.SQLState & ")" & vbCr & _
+         "   (NativeError: " & ERRLOOP.NativeError & ")" & vbCr
 
-   MsgBox StrError, vbCritical + vbOKOnly, "ATENÇÃO !!!"
+   MsgBox STRERROR, vbCritical + vbOKOnly, "ATENÇÃO !!!"
    Next
 
    Resume Next
@@ -4364,8 +4379,8 @@ End Sub
 
 Private Sub CmdRemoverCNAE_Click()
     Dim Sql As String
-    Dim errLoop As ADODB.Error
-    Dim StrError As String
+    Dim ERRLOOP As ADODB.Error
+    Dim STRERROR As String
     
     'On Error GoTo MostraErro
     
@@ -4392,14 +4407,14 @@ MostraErro:
 
    ' Enumera a coleção de erros e apresenta
    ' as propriedades de cada erro ocorrido
-   For Each errLoop In Conexao.Errors
-      StrError = "Error #" & errLoop.Number & vbCr & _
-         "   " & errLoop.Description & vbCr & _
-         "   (Source: " & errLoop.Source & ")" & vbCr & _
-         "   (SQL State: " & errLoop.SQLState & ")" & vbCr & _
-         "   (NativeError: " & errLoop.NativeError & ")" & vbCr
+   For Each ERRLOOP In Conexao.Errors
+      STRERROR = "Error #" & ERRLOOP.Number & vbCr & _
+         "   " & ERRLOOP.Description & vbCr & _
+         "   (Source: " & ERRLOOP.Source & ")" & vbCr & _
+         "   (SQL State: " & ERRLOOP.SQLState & ")" & vbCr & _
+         "   (NativeError: " & ERRLOOP.NativeError & ")" & vbCr
 
-   MsgBox StrError, vbCritical + vbOKOnly, "ATENÇÃO !!!"
+   MsgBox STRERROR, vbCritical + vbOKOnly, "ATENÇÃO !!!"
    Next
 
    Resume Next

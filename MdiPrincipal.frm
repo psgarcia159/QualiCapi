@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
-Object = "{6FBA474E-43AC-11CE-9A0E-00AA0062BB4C}#1.0#0"; "sysinfo.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6FBA474E-43AC-11CE-9A0E-00AA0062BB4C}#1.0#0"; "SYSINFO.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.MDIForm MdiPrincipal 
    BackColor       =   &H00C0C0C0&
    Caption         =   "QualiCapi"
@@ -207,6 +207,7 @@ Begin VB.MDIForm MdiPrincipal
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   10585
             MinWidth        =   10585
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Mensagens do Sistema"
@@ -214,6 +215,7 @@ Begin VB.MDIForm MdiPrincipal
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3069
             MinWidth        =   3069
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Empresa Atual"
@@ -222,6 +224,7 @@ Begin VB.MDIForm MdiPrincipal
             Alignment       =   1
             Object.Width           =   2822
             MinWidth        =   2822
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
             Object.ToolTipText     =   "Informações sobre o Banco de Dados"
@@ -240,6 +243,7 @@ Begin VB.MDIForm MdiPrincipal
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Style           =   2
             Alignment       =   1
+            Enabled         =   0   'False
             Object.Width           =   882
             MinWidth        =   882
             TextSave        =   "NUM"
@@ -409,6 +413,9 @@ Begin VB.MDIForm MdiPrincipal
          Begin VB.Menu MnuManTabCorretores 
             Caption         =   "&Corretores"
          End
+         Begin VB.Menu MnuManTabCorretoresEmpreendimento 
+            Caption         =   "Associa Corretores &X Empreendimentos"
+         End
          Begin VB.Menu MnuManTabObservacoes 
             Caption         =   "&Observações"
          End
@@ -445,7 +452,7 @@ Begin VB.MDIForm MdiPrincipal
                Caption         =   "SubClasse"
             End
          End
-         Begin VB.Menu SEP 
+         Begin VB.Menu SepLine01 
             Caption         =   "-"
          End
          Begin VB.Menu mniFeriados 
@@ -464,7 +471,7 @@ Begin VB.MDIForm MdiPrincipal
       Begin VB.Menu MnuFinCotacoes 
          Caption         =   "&Cotações"
       End
-      Begin VB.Menu MnuEspaco 
+      Begin VB.Menu SepLine02 
          Caption         =   "-"
       End
       Begin VB.Menu MnuFinPagtoUnico 
@@ -472,6 +479,15 @@ Begin VB.MDIForm MdiPrincipal
       End
       Begin VB.Menu MnuFinPagtoMultiplo 
          Caption         =   "Pagamento &Múltiplo"
+      End
+      Begin VB.Menu SepLine03 
+         Caption         =   "-"
+      End
+      Begin VB.Menu MnuFinNotasCorretores 
+         Caption         =   "Pagamento de Comissões"
+      End
+      Begin VB.Menu SepLine04 
+         Caption         =   "-"
       End
       Begin VB.Menu MnuAtualizarExpBancaria 
          Caption         =   "&Exportacao Bancária"
@@ -503,7 +519,7 @@ Begin VB.MDIForm MdiPrincipal
       Begin VB.Menu MnuExportacaoDimob 
          Caption         =   "Exportação &Dimob"
       End
-      Begin VB.Menu MnuEspaco2 
+      Begin VB.Menu SepLine05 
          Caption         =   "-"
       End
       Begin VB.Menu MnuFinAtualizarQualifin 
@@ -545,7 +561,7 @@ Begin VB.MDIForm MdiPrincipal
             Caption         =   "&Posição de Comercialização"
          End
       End
-      Begin VB.Menu MnuSpace 
+      Begin VB.Menu SepLine06 
          Caption         =   "-"
       End
       Begin VB.Menu MnuRelAssistenciaTecnica 
@@ -710,7 +726,7 @@ Begin VB.MDIForm MdiPrincipal
       Begin VB.Menu MnuAtualizar 
          Caption         =   "A&tualizar QualiCapi"
       End
-      Begin VB.Menu Sepz 
+      Begin VB.Menu SepLine07 
          Caption         =   "-"
       End
       Begin VB.Menu MnuExportacaoBancaria 
@@ -737,7 +753,7 @@ Begin VB.MDIForm MdiPrincipal
             Caption         =   "&ExpUnibanco"
          End
       End
-      Begin VB.Menu sept 
+      Begin VB.Menu SepLine08 
          Caption         =   "-"
       End
       Begin VB.Menu MnuConImpressora 
@@ -758,7 +774,7 @@ Begin VB.MDIForm MdiPrincipal
       Begin VB.Menu MnuConForm 
          Caption         =   "Configurações &Formularios"
       End
-      Begin VB.Menu MnuEspaco3 
+      Begin VB.Menu SepLine09 
          Caption         =   "-"
       End
       Begin VB.Menu MnuExportEmpresas 
@@ -1191,6 +1207,17 @@ Private Sub MnuFinCotacoes_Click()
   
 End Sub
 
+Private Sub MnuFinNotasCorretores_Click()
+    TelaPagamentoComissoes.Show
+    
+    If FunLocalizaJanelasAtivas("TelaPagamentoComissoes") <> -1 Then
+        TelaPagamentoComissoes.SetFocus
+    End If
+    
+    MdiPrincipal.MousePointer = vbDefault
+
+End Sub
+
 Private Sub mnuFluxoRecebiboReal_Click()
     FrmRelAnexoFluxoRecebiveisReal.Show
 End Sub
@@ -1354,6 +1381,19 @@ Private Sub MnuManTabCCorrentes_Click()
         TelaContaCorrente.SetFocus
     End If
     MdiPrincipal.MousePointer = vbDefault
+End Sub
+
+Private Sub MnuManTabCorretoresEmpreendimento_Click()
+
+'    If Not FunVerifica_Permissao("TelaManTabCorretores", "1") Then
+'        Exit Sub
+'    End If
+    
+    TelaCorretoresPorEmpr.Show
+    If FunLocalizaJanelasAtivas("TelaCorretoresPorEmpr") <> -1 Then
+        TelaCorretoresPorEmpr.SetFocus
+    End If
+
 End Sub
 
 Private Sub MnuPosicaoComercializacao_Click()
@@ -1984,17 +2024,17 @@ Private Sub MDIForm_Load()
         XLO_DESCONTOS.MoveFirst
         While Not XLO_DESCONTOS.EOF
         
-            If (XLO_DESCONTOS!deac_tx_Descricao = "Multa por Atraso - Cliente") Then
+            If (XLO_DESCONTOS!deac_tx_descricao = "Multa por Atraso - Cliente") Then
                 XGI_CODMULTA = XLO_DESCONTOS!deac_cd_descacresc
-            ElseIf (XLO_DESCONTOS!deac_tx_Descricao = "Juros por Atraso - Cliente") Then
+            ElseIf (XLO_DESCONTOS!deac_tx_descricao = "Juros por Atraso - Cliente") Then
                 XGI_CODJUROS = XLO_DESCONTOS!deac_cd_descacresc
-            ElseIf (XLO_DESCONTOS!deac_tx_Descricao = "Deságio - Cliente") Then
+            ElseIf (XLO_DESCONTOS!deac_tx_descricao = "Deságio - Cliente") Then
                 XGI_CODDESAGIO = XLO_DESCONTOS!deac_cd_descacresc
-            ElseIf (XLO_DESCONTOS!deac_tx_Descricao = "Descontos - Cliente") Then
+            ElseIf (XLO_DESCONTOS!deac_tx_descricao = "Descontos - Cliente") Then
                 XGI_CODDESCONTO = XLO_DESCONTOS!deac_cd_descacresc
-            ElseIf (XLO_DESCONTOS!deac_tx_Descricao = "Outros - Cliente") Then
+            ElseIf (XLO_DESCONTOS!deac_tx_descricao = "Outros - Cliente") Then
                 XGI_CODSEGURO = XLO_DESCONTOS!deac_cd_descacresc
-            ElseIf (XLO_DESCONTOS!deac_tx_Descricao = "Seguro - Cliente") Then
+            ElseIf (XLO_DESCONTOS!deac_tx_descricao = "Seguro - Cliente") Then
                 XGI_CODOUTROS = XLO_DESCONTOS!deac_cd_descacresc
             End If
         

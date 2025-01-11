@@ -1,11 +1,11 @@
 VERSION 5.00
+Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
+Object = "{0D623638-DBA2-11D1-B5DF-0060976089D0}#7.0#0"; "tdbg7.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
-Object = "{0D623638-DBA2-11D1-B5DF-0060976089D0}#7.0#0"; "tdbg7.ocx"
-Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "THREED32.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form TelaFinPagtoMultiplos 
    Caption         =   "Pagamento Múltiplos de Títulos"
    ClientHeight    =   4500
@@ -250,14 +250,14 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
       Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1958"
       Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
-      Splits(0)._ColumnProps(5)=   "Column(0)._ColStyle=74257"
+      Splits(0)._ColumnProps(5)=   "Column(0)._ColStyle=1057297"
       Splits(0)._ColumnProps(6)=   "Column(0).WrapText=1"
       Splits(0)._ColumnProps(7)=   "Column(0).Order=1"
       Splits(0)._ColumnProps(8)=   "Column(1).Width=1773"
       Splits(0)._ColumnProps(9)=   "Column(1).DividerColor=0"
       Splits(0)._ColumnProps(10)=   "Column(1)._WidthInPix=1693"
       Splits(0)._ColumnProps(11)=   "Column(1)._EditAlways=0"
-      Splits(0)._ColumnProps(12)=   "Column(1)._ColStyle=74256"
+      Splits(0)._ColumnProps(12)=   "Column(1)._ColStyle=1057296"
       Splits(0)._ColumnProps(13)=   "Column(1).WrapText=1"
       Splits(0)._ColumnProps(14)=   "Column(1).Order=2"
       Splits(0)._ColumnProps(15)=   "Column(2).Width=2725"
@@ -265,7 +265,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(17)=   "Column(2)._WidthInPix=2646"
       Splits(0)._ColumnProps(18)=   "Column(2)._EditAlways=0"
       Splits(0)._ColumnProps(19)=   "Column(2).AllowSizing=0"
-      Splits(0)._ColumnProps(20)=   "Column(2)._ColStyle=66064"
+      Splits(0)._ColumnProps(20)=   "Column(2)._ColStyle=1049104"
       Splits(0)._ColumnProps(21)=   "Column(2).Visible=0"
       Splits(0)._ColumnProps(22)=   "Column(2).WrapText=1"
       Splits(0)._ColumnProps(23)=   "Column(2).AllowFocus=0"
@@ -274,7 +274,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(26)=   "Column(3).DividerColor=0"
       Splits(0)._ColumnProps(27)=   "Column(3)._WidthInPix=2646"
       Splits(0)._ColumnProps(28)=   "Column(3)._EditAlways=0"
-      Splits(0)._ColumnProps(29)=   "Column(3)._ColStyle=66064"
+      Splits(0)._ColumnProps(29)=   "Column(3)._ColStyle=1049104"
       Splits(0)._ColumnProps(30)=   "Column(3).Visible=0"
       Splits(0)._ColumnProps(31)=   "Column(3).WrapText=1"
       Splits(0)._ColumnProps(32)=   "Column(3).Order=4"
@@ -282,7 +282,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(34)=   "Column(4).DividerColor=0"
       Splits(0)._ColumnProps(35)=   "Column(4)._WidthInPix=1693"
       Splits(0)._ColumnProps(36)=   "Column(4)._EditAlways=0"
-      Splits(0)._ColumnProps(37)=   "Column(4)._ColStyle=66065"
+      Splits(0)._ColumnProps(37)=   "Column(4)._ColStyle=1049105"
       Splits(0)._ColumnProps(38)=   "Column(4).Visible=0"
       Splits(0)._ColumnProps(39)=   "Column(4).WrapText=1"
       Splits(0)._ColumnProps(40)=   "Column(4).Order=5"
@@ -291,7 +291,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(43)=   "Column(5).DividerColor=0"
       Splits(0)._ColumnProps(44)=   "Column(5)._WidthInPix=2302"
       Splits(0)._ColumnProps(45)=   "Column(5)._EditAlways=0"
-      Splits(0)._ColumnProps(46)=   "Column(5)._ColStyle=66066"
+      Splits(0)._ColumnProps(46)=   "Column(5)._ColStyle=1049106"
       Splits(0)._ColumnProps(47)=   "Column(5).Visible=0"
       Splits(0)._ColumnProps(48)=   "Column(5).WrapText=1"
       Splits(0)._ColumnProps(49)=   "Column(5).Order=6"
@@ -300,7 +300,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(52)=   "Column(6).DividerColor=0"
       Splits(0)._ColumnProps(53)=   "Column(6)._WidthInPix=1879"
       Splits(0)._ColumnProps(54)=   "Column(6)._EditAlways=0"
-      Splits(0)._ColumnProps(55)=   "Column(6)._ColStyle=66066"
+      Splits(0)._ColumnProps(55)=   "Column(6)._ColStyle=1049106"
       Splits(0)._ColumnProps(56)=   "Column(6).Visible=0"
       Splits(0)._ColumnProps(57)=   "Column(6).WrapText=1"
       Splits(0)._ColumnProps(58)=   "Column(6).Order=7"
@@ -309,7 +309,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(61)=   "Column(7).DividerColor=0"
       Splits(0)._ColumnProps(62)=   "Column(7)._WidthInPix=2117"
       Splits(0)._ColumnProps(63)=   "Column(7)._EditAlways=0"
-      Splits(0)._ColumnProps(64)=   "Column(7)._ColStyle=66066"
+      Splits(0)._ColumnProps(64)=   "Column(7)._ColStyle=1049106"
       Splits(0)._ColumnProps(65)=   "Column(7).Visible=0"
       Splits(0)._ColumnProps(66)=   "Column(7).WrapText=1"
       Splits(0)._ColumnProps(67)=   "Column(7).Order=8"
@@ -317,7 +317,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(69)=   "Column(8).DividerColor=0"
       Splits(0)._ColumnProps(70)=   "Column(8)._WidthInPix=2196"
       Splits(0)._ColumnProps(71)=   "Column(8)._EditAlways=0"
-      Splits(0)._ColumnProps(72)=   "Column(8)._ColStyle=66066"
+      Splits(0)._ColumnProps(72)=   "Column(8)._ColStyle=1049106"
       Splits(0)._ColumnProps(73)=   "Column(8).Visible=0"
       Splits(0)._ColumnProps(74)=   "Column(8).WrapText=1"
       Splits(0)._ColumnProps(75)=   "Column(8).Order=9"
@@ -325,7 +325,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(77)=   "Column(9).DividerColor=0"
       Splits(0)._ColumnProps(78)=   "Column(9)._WidthInPix=2064"
       Splits(0)._ColumnProps(79)=   "Column(9)._EditAlways=0"
-      Splits(0)._ColumnProps(80)=   "Column(9)._ColStyle=66066"
+      Splits(0)._ColumnProps(80)=   "Column(9)._ColStyle=1049106"
       Splits(0)._ColumnProps(81)=   "Column(9).Visible=0"
       Splits(0)._ColumnProps(82)=   "Column(9).WrapText=1"
       Splits(0)._ColumnProps(83)=   "Column(9).Order=10"
@@ -333,7 +333,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(85)=   "Column(10).DividerColor=0"
       Splits(0)._ColumnProps(86)=   "Column(10)._WidthInPix=2090"
       Splits(0)._ColumnProps(87)=   "Column(10)._EditAlways=0"
-      Splits(0)._ColumnProps(88)=   "Column(10)._ColStyle=66066"
+      Splits(0)._ColumnProps(88)=   "Column(10)._ColStyle=1049106"
       Splits(0)._ColumnProps(89)=   "Column(10).Visible=0"
       Splits(0)._ColumnProps(90)=   "Column(10).WrapText=1"
       Splits(0)._ColumnProps(91)=   "Column(10).Order=11"
@@ -341,7 +341,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(93)=   "Column(11).DividerColor=0"
       Splits(0)._ColumnProps(94)=   "Column(11)._WidthInPix=2090"
       Splits(0)._ColumnProps(95)=   "Column(11)._EditAlways=0"
-      Splits(0)._ColumnProps(96)=   "Column(11)._ColStyle=66066"
+      Splits(0)._ColumnProps(96)=   "Column(11)._ColStyle=1049106"
       Splits(0)._ColumnProps(97)=   "Column(11).Visible=0"
       Splits(0)._ColumnProps(98)=   "Column(11).WrapText=1"
       Splits(0)._ColumnProps(99)=   "Column(11).Order=12"
@@ -349,7 +349,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(101)=   "Column(12).DividerColor=0"
       Splits(0)._ColumnProps(102)=   "Column(12)._WidthInPix=2143"
       Splits(0)._ColumnProps(103)=   "Column(12)._EditAlways=0"
-      Splits(0)._ColumnProps(104)=   "Column(12)._ColStyle=66066"
+      Splits(0)._ColumnProps(104)=   "Column(12)._ColStyle=1049106"
       Splits(0)._ColumnProps(105)=   "Column(12).Visible=0"
       Splits(0)._ColumnProps(106)=   "Column(12).WrapText=1"
       Splits(0)._ColumnProps(107)=   "Column(12).Order=13"
@@ -358,7 +358,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(110)=   "Column(13)._WidthInPix=2646"
       Splits(0)._ColumnProps(111)=   "Column(13)._EditAlways=0"
       Splits(0)._ColumnProps(112)=   "Column(13).AllowSizing=0"
-      Splits(0)._ColumnProps(113)=   "Column(13)._ColStyle=74000"
+      Splits(0)._ColumnProps(113)=   "Column(13)._ColStyle=1057040"
       Splits(0)._ColumnProps(114)=   "Column(13).Visible=0"
       Splits(0)._ColumnProps(115)=   "Column(13).WrapText=1"
       Splits(0)._ColumnProps(116)=   "Column(13).Order=14"
@@ -366,7 +366,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(118)=   "Column(14).DividerColor=0"
       Splits(0)._ColumnProps(119)=   "Column(14)._WidthInPix=2646"
       Splits(0)._ColumnProps(120)=   "Column(14)._EditAlways=0"
-      Splits(0)._ColumnProps(121)=   "Column(14)._ColStyle=66066"
+      Splits(0)._ColumnProps(121)=   "Column(14)._ColStyle=1049106"
       Splits(0)._ColumnProps(122)=   "Column(14).Visible=0"
       Splits(0)._ColumnProps(123)=   "Column(14).WrapText=1"
       Splits(0)._ColumnProps(124)=   "Column(14).Order=15"
@@ -375,7 +375,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(127)=   "Column(15)._WidthInPix=2646"
       Splits(0)._ColumnProps(128)=   "Column(15)._EditAlways=0"
       Splits(0)._ColumnProps(129)=   "Column(15).AllowSizing=0"
-      Splits(0)._ColumnProps(130)=   "Column(15)._ColStyle=65808"
+      Splits(0)._ColumnProps(130)=   "Column(15)._ColStyle=1048848"
       Splits(0)._ColumnProps(131)=   "Column(15).Visible=0"
       Splits(0)._ColumnProps(132)=   "Column(15).WrapText=1"
       Splits(0)._ColumnProps(133)=   "Column(15).Order=16"
@@ -385,7 +385,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(137)=   "Column(16)._WidthInPix=2646"
       Splits(0)._ColumnProps(138)=   "Column(16)._EditAlways=0"
       Splits(0)._ColumnProps(139)=   "Column(16).AllowSizing=0"
-      Splits(0)._ColumnProps(140)=   "Column(16)._ColStyle=65808"
+      Splits(0)._ColumnProps(140)=   "Column(16)._ColStyle=1048848"
       Splits(0)._ColumnProps(141)=   "Column(16).Visible=0"
       Splits(0)._ColumnProps(142)=   "Column(16).WrapText=1"
       Splits(0)._ColumnProps(143)=   "Column(16).Order=17"
@@ -394,7 +394,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(146)=   "Column(17).DividerColor=0"
       Splits(0)._ColumnProps(147)=   "Column(17)._WidthInPix=2646"
       Splits(0)._ColumnProps(148)=   "Column(17)._EditAlways=0"
-      Splits(0)._ColumnProps(149)=   "Column(17)._ColStyle=65808"
+      Splits(0)._ColumnProps(149)=   "Column(17)._ColStyle=1048848"
       Splits(0)._ColumnProps(150)=   "Column(17).Visible=0"
       Splits(0)._ColumnProps(151)=   "Column(17).WrapText=1"
       Splits(0)._ColumnProps(152)=   "Column(17).Order=18"
@@ -402,7 +402,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(154)=   "Column(18).DividerColor=0"
       Splits(0)._ColumnProps(155)=   "Column(18)._WidthInPix=2646"
       Splits(0)._ColumnProps(156)=   "Column(18)._EditAlways=0"
-      Splits(0)._ColumnProps(157)=   "Column(18)._ColStyle=65808"
+      Splits(0)._ColumnProps(157)=   "Column(18)._ColStyle=1048848"
       Splits(0)._ColumnProps(158)=   "Column(18).Visible=0"
       Splits(0)._ColumnProps(159)=   "Column(18).WrapText=1"
       Splits(0)._ColumnProps(160)=   "Column(18).Order=19"
@@ -410,7 +410,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(162)=   "Column(19).DividerColor=0"
       Splits(0)._ColumnProps(163)=   "Column(19)._WidthInPix=2646"
       Splits(0)._ColumnProps(164)=   "Column(19)._EditAlways=0"
-      Splits(0)._ColumnProps(165)=   "Column(19)._ColStyle=65808"
+      Splits(0)._ColumnProps(165)=   "Column(19)._ColStyle=1048848"
       Splits(0)._ColumnProps(166)=   "Column(19).Visible=0"
       Splits(0)._ColumnProps(167)=   "Column(19).WrapText=1"
       Splits(0)._ColumnProps(168)=   "Column(19).Order=20"
@@ -418,7 +418,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(170)=   "Column(20).DividerColor=0"
       Splits(0)._ColumnProps(171)=   "Column(20)._WidthInPix=2646"
       Splits(0)._ColumnProps(172)=   "Column(20)._EditAlways=0"
-      Splits(0)._ColumnProps(173)=   "Column(20)._ColStyle=65808"
+      Splits(0)._ColumnProps(173)=   "Column(20)._ColStyle=1048848"
       Splits(0)._ColumnProps(174)=   "Column(20).Visible=0"
       Splits(0)._ColumnProps(175)=   "Column(20).WrapText=1"
       Splits(0)._ColumnProps(176)=   "Column(20).Order=21"
@@ -426,7 +426,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(178)=   "Column(21).DividerColor=0"
       Splits(0)._ColumnProps(179)=   "Column(21)._WidthInPix=2646"
       Splits(0)._ColumnProps(180)=   "Column(21)._EditAlways=0"
-      Splits(0)._ColumnProps(181)=   "Column(21)._ColStyle=65808"
+      Splits(0)._ColumnProps(181)=   "Column(21)._ColStyle=1048848"
       Splits(0)._ColumnProps(182)=   "Column(21).Visible=0"
       Splits(0)._ColumnProps(183)=   "Column(21).WrapText=1"
       Splits(0)._ColumnProps(184)=   "Column(21).Order=22"
@@ -434,7 +434,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(186)=   "Column(22).DividerColor=0"
       Splits(0)._ColumnProps(187)=   "Column(22)._WidthInPix=2646"
       Splits(0)._ColumnProps(188)=   "Column(22)._EditAlways=0"
-      Splits(0)._ColumnProps(189)=   "Column(22)._ColStyle=65808"
+      Splits(0)._ColumnProps(189)=   "Column(22)._ColStyle=1048848"
       Splits(0)._ColumnProps(190)=   "Column(22).Visible=0"
       Splits(0)._ColumnProps(191)=   "Column(22).WrapText=1"
       Splits(0)._ColumnProps(192)=   "Column(22).Order=23"
@@ -442,7 +442,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(194)=   "Column(23).DividerColor=0"
       Splits(0)._ColumnProps(195)=   "Column(23)._WidthInPix=2646"
       Splits(0)._ColumnProps(196)=   "Column(23)._EditAlways=0"
-      Splits(0)._ColumnProps(197)=   "Column(23)._ColStyle=65808"
+      Splits(0)._ColumnProps(197)=   "Column(23)._ColStyle=1048848"
       Splits(0)._ColumnProps(198)=   "Column(23).Visible=0"
       Splits(0)._ColumnProps(199)=   "Column(23).WrapText=1"
       Splits(0)._ColumnProps(200)=   "Column(23).Order=24"
@@ -450,7 +450,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(202)=   "Column(24).DividerColor=0"
       Splits(0)._ColumnProps(203)=   "Column(24)._WidthInPix=2646"
       Splits(0)._ColumnProps(204)=   "Column(24)._EditAlways=0"
-      Splits(0)._ColumnProps(205)=   "Column(24)._ColStyle=65808"
+      Splits(0)._ColumnProps(205)=   "Column(24)._ColStyle=1048848"
       Splits(0)._ColumnProps(206)=   "Column(24).Visible=0"
       Splits(0)._ColumnProps(207)=   "Column(24).WrapText=1"
       Splits(0)._ColumnProps(208)=   "Column(24).Order=25"
@@ -458,7 +458,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(0)._ColumnProps(210)=   "Column(25).DividerColor=0"
       Splits(0)._ColumnProps(211)=   "Column(25)._WidthInPix=2646"
       Splits(0)._ColumnProps(212)=   "Column(25)._EditAlways=0"
-      Splits(0)._ColumnProps(213)=   "Column(25)._ColStyle=65808"
+      Splits(0)._ColumnProps(213)=   "Column(25)._ColStyle=1048848"
       Splits(0)._ColumnProps(214)=   "Column(25).Visible=0"
       Splits(0)._ColumnProps(215)=   "Column(25).WrapText=1"
       Splits(0)._ColumnProps(216)=   "Column(25).Order=26"
@@ -479,7 +479,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(3)=   "Column(0)._WidthInPix=1879"
       Splits(1)._ColumnProps(4)=   "Column(0)._EditAlways=0"
       Splits(1)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-      Splits(1)._ColumnProps(6)=   "Column(0)._ColStyle=66065"
+      Splits(1)._ColumnProps(6)=   "Column(0)._ColStyle=1049105"
       Splits(1)._ColumnProps(7)=   "Column(0).Visible=0"
       Splits(1)._ColumnProps(8)=   "Column(0).WrapText=1"
       Splits(1)._ColumnProps(9)=   "Column(0).Order=1"
@@ -489,7 +489,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(13)=   "Column(1)._WidthInPix=3307"
       Splits(1)._ColumnProps(14)=   "Column(1)._EditAlways=0"
       Splits(1)._ColumnProps(15)=   "Column(1).AllowSizing=0"
-      Splits(1)._ColumnProps(16)=   "Column(1)._ColStyle=66064"
+      Splits(1)._ColumnProps(16)=   "Column(1)._ColStyle=1049104"
       Splits(1)._ColumnProps(17)=   "Column(1).Visible=0"
       Splits(1)._ColumnProps(18)=   "Column(1).WrapText=1"
       Splits(1)._ColumnProps(19)=   "Column(1).AllowFocus=0"
@@ -499,49 +499,49 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(23)=   "Column(2).DividerColor=0"
       Splits(1)._ColumnProps(24)=   "Column(2)._WidthInPix=1905"
       Splits(1)._ColumnProps(25)=   "Column(2)._EditAlways=0"
-      Splits(1)._ColumnProps(26)=   "Column(2)._ColStyle=74256"
+      Splits(1)._ColumnProps(26)=   "Column(2)._ColStyle=1057296"
       Splits(1)._ColumnProps(27)=   "Column(2).WrapText=1"
       Splits(1)._ColumnProps(28)=   "Column(2).Order=3"
       Splits(1)._ColumnProps(29)=   "Column(3).Width=2487"
       Splits(1)._ColumnProps(30)=   "Column(3).DividerColor=0"
       Splits(1)._ColumnProps(31)=   "Column(3)._WidthInPix=2408"
       Splits(1)._ColumnProps(32)=   "Column(3)._EditAlways=0"
-      Splits(1)._ColumnProps(33)=   "Column(3)._ColStyle=74256"
+      Splits(1)._ColumnProps(33)=   "Column(3)._ColStyle=1057296"
       Splits(1)._ColumnProps(34)=   "Column(3).WrapText=1"
       Splits(1)._ColumnProps(35)=   "Column(3).Order=4"
       Splits(1)._ColumnProps(36)=   "Column(4).Width=741"
       Splits(1)._ColumnProps(37)=   "Column(4).DividerColor=0"
       Splits(1)._ColumnProps(38)=   "Column(4)._WidthInPix=661"
       Splits(1)._ColumnProps(39)=   "Column(4)._EditAlways=0"
-      Splits(1)._ColumnProps(40)=   "Column(4)._ColStyle=66065"
+      Splits(1)._ColumnProps(40)=   "Column(4)._ColStyle=1049105"
       Splits(1)._ColumnProps(41)=   "Column(4).WrapText=1"
       Splits(1)._ColumnProps(42)=   "Column(4).Order=5"
       Splits(1)._ColumnProps(43)=   "Column(5).Width=2381"
       Splits(1)._ColumnProps(44)=   "Column(5).DividerColor=0"
       Splits(1)._ColumnProps(45)=   "Column(5)._WidthInPix=2302"
       Splits(1)._ColumnProps(46)=   "Column(5)._EditAlways=0"
-      Splits(1)._ColumnProps(47)=   "Column(5)._ColStyle=74258"
+      Splits(1)._ColumnProps(47)=   "Column(5)._ColStyle=1057298"
       Splits(1)._ColumnProps(48)=   "Column(5).WrapText=1"
       Splits(1)._ColumnProps(49)=   "Column(5).Order=6"
       Splits(1)._ColumnProps(50)=   "Column(6).Width=1958"
       Splits(1)._ColumnProps(51)=   "Column(6).DividerColor=0"
       Splits(1)._ColumnProps(52)=   "Column(6)._WidthInPix=1879"
       Splits(1)._ColumnProps(53)=   "Column(6)._EditAlways=0"
-      Splits(1)._ColumnProps(54)=   "Column(6)._ColStyle=74258"
+      Splits(1)._ColumnProps(54)=   "Column(6)._ColStyle=1057298"
       Splits(1)._ColumnProps(55)=   "Column(6).WrapText=1"
       Splits(1)._ColumnProps(56)=   "Column(6).Order=7"
       Splits(1)._ColumnProps(57)=   "Column(7).Width=2196"
       Splits(1)._ColumnProps(58)=   "Column(7).DividerColor=0"
       Splits(1)._ColumnProps(59)=   "Column(7)._WidthInPix=2117"
       Splits(1)._ColumnProps(60)=   "Column(7)._EditAlways=0"
-      Splits(1)._ColumnProps(61)=   "Column(7)._ColStyle=74258"
+      Splits(1)._ColumnProps(61)=   "Column(7)._ColStyle=1057298"
       Splits(1)._ColumnProps(62)=   "Column(7).WrapText=1"
       Splits(1)._ColumnProps(63)=   "Column(7).Order=8"
       Splits(1)._ColumnProps(64)=   "Column(8).Width=1640"
       Splits(1)._ColumnProps(65)=   "Column(8).DividerColor=0"
       Splits(1)._ColumnProps(66)=   "Column(8)._WidthInPix=1561"
       Splits(1)._ColumnProps(67)=   "Column(8)._EditAlways=0"
-      Splits(1)._ColumnProps(68)=   "Column(8)._ColStyle=66066"
+      Splits(1)._ColumnProps(68)=   "Column(8)._ColStyle=1049106"
       Splits(1)._ColumnProps(69)=   "Column(8).WrapText=1"
       Splits(1)._ColumnProps(70)=   "Column(8).Order=9"
       Splits(1)._ColumnProps(71)=   "Column(8)._MinWidth=116881424"
@@ -549,7 +549,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(73)=   "Column(9).DividerColor=0"
       Splits(1)._ColumnProps(74)=   "Column(9)._WidthInPix=1561"
       Splits(1)._ColumnProps(75)=   "Column(9)._EditAlways=0"
-      Splits(1)._ColumnProps(76)=   "Column(9)._ColStyle=66066"
+      Splits(1)._ColumnProps(76)=   "Column(9)._ColStyle=1049106"
       Splits(1)._ColumnProps(77)=   "Column(9).WrapText=1"
       Splits(1)._ColumnProps(78)=   "Column(9).Order=10"
       Splits(1)._ColumnProps(79)=   "Column(9)._MinWidth=116865856"
@@ -557,7 +557,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(81)=   "Column(10).DividerColor=0"
       Splits(1)._ColumnProps(82)=   "Column(10)._WidthInPix=1482"
       Splits(1)._ColumnProps(83)=   "Column(10)._EditAlways=0"
-      Splits(1)._ColumnProps(84)=   "Column(10)._ColStyle=74258"
+      Splits(1)._ColumnProps(84)=   "Column(10)._ColStyle=1057298"
       Splits(1)._ColumnProps(85)=   "Column(10).WrapText=1"
       Splits(1)._ColumnProps(86)=   "Column(10).Order=11"
       Splits(1)._ColumnProps(87)=   "Column(10)._MinWidth=116879424"
@@ -565,28 +565,28 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(89)=   "Column(11).DividerColor=0"
       Splits(1)._ColumnProps(90)=   "Column(11)._WidthInPix=1693"
       Splits(1)._ColumnProps(91)=   "Column(11)._EditAlways=0"
-      Splits(1)._ColumnProps(92)=   "Column(11)._ColStyle=66066"
+      Splits(1)._ColumnProps(92)=   "Column(11)._ColStyle=1049106"
       Splits(1)._ColumnProps(93)=   "Column(11).WrapText=1"
       Splits(1)._ColumnProps(94)=   "Column(11).Order=12"
       Splits(1)._ColumnProps(95)=   "Column(12).Width=1746"
       Splits(1)._ColumnProps(96)=   "Column(12).DividerColor=0"
       Splits(1)._ColumnProps(97)=   "Column(12)._WidthInPix=1667"
       Splits(1)._ColumnProps(98)=   "Column(12)._EditAlways=0"
-      Splits(1)._ColumnProps(99)=   "Column(12)._ColStyle=66066"
+      Splits(1)._ColumnProps(99)=   "Column(12)._ColStyle=1049106"
       Splits(1)._ColumnProps(100)=   "Column(12).WrapText=1"
       Splits(1)._ColumnProps(101)=   "Column(12).Order=13"
       Splits(1)._ColumnProps(102)=   "Column(13).Width=2725"
       Splits(1)._ColumnProps(103)=   "Column(13).DividerColor=0"
       Splits(1)._ColumnProps(104)=   "Column(13)._WidthInPix=2646"
       Splits(1)._ColumnProps(105)=   "Column(13)._EditAlways=0"
-      Splits(1)._ColumnProps(106)=   "Column(13)._ColStyle=74258"
+      Splits(1)._ColumnProps(106)=   "Column(13)._ColStyle=1057298"
       Splits(1)._ColumnProps(107)=   "Column(13).WrapText=1"
       Splits(1)._ColumnProps(108)=   "Column(13).Order=14"
       Splits(1)._ColumnProps(109)=   "Column(14).Width=2725"
       Splits(1)._ColumnProps(110)=   "Column(14).DividerColor=0"
       Splits(1)._ColumnProps(111)=   "Column(14)._WidthInPix=2646"
       Splits(1)._ColumnProps(112)=   "Column(14)._EditAlways=0"
-      Splits(1)._ColumnProps(113)=   "Column(14)._ColStyle=66066"
+      Splits(1)._ColumnProps(113)=   "Column(14)._ColStyle=1049106"
       Splits(1)._ColumnProps(114)=   "Column(14).WrapText=1"
       Splits(1)._ColumnProps(115)=   "Column(14).Order=15"
       Splits(1)._ColumnProps(116)=   "Column(15).Width=2725"
@@ -594,7 +594,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(118)=   "Column(15)._WidthInPix=2646"
       Splits(1)._ColumnProps(119)=   "Column(15)._EditAlways=0"
       Splits(1)._ColumnProps(120)=   "Column(15).AllowSizing=0"
-      Splits(1)._ColumnProps(121)=   "Column(15)._ColStyle=65808"
+      Splits(1)._ColumnProps(121)=   "Column(15)._ColStyle=1048848"
       Splits(1)._ColumnProps(122)=   "Column(15).Visible=0"
       Splits(1)._ColumnProps(123)=   "Column(15).WrapText=1"
       Splits(1)._ColumnProps(124)=   "Column(15).Order=16"
@@ -603,7 +603,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(127)=   "Column(16)._WidthInPix=2646"
       Splits(1)._ColumnProps(128)=   "Column(16)._EditAlways=0"
       Splits(1)._ColumnProps(129)=   "Column(16).AllowSizing=0"
-      Splits(1)._ColumnProps(130)=   "Column(16)._ColStyle=65808"
+      Splits(1)._ColumnProps(130)=   "Column(16)._ColStyle=1048848"
       Splits(1)._ColumnProps(131)=   "Column(16).Visible=0"
       Splits(1)._ColumnProps(132)=   "Column(16).WrapText=1"
       Splits(1)._ColumnProps(133)=   "Column(16).Order=17"
@@ -611,7 +611,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(135)=   "Column(17).DividerColor=0"
       Splits(1)._ColumnProps(136)=   "Column(17)._WidthInPix=2646"
       Splits(1)._ColumnProps(137)=   "Column(17)._EditAlways=0"
-      Splits(1)._ColumnProps(138)=   "Column(17)._ColStyle=65808"
+      Splits(1)._ColumnProps(138)=   "Column(17)._ColStyle=1048848"
       Splits(1)._ColumnProps(139)=   "Column(17).Visible=0"
       Splits(1)._ColumnProps(140)=   "Column(17).WrapText=1"
       Splits(1)._ColumnProps(141)=   "Column(17).Order=18"
@@ -619,7 +619,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(143)=   "Column(18).DividerColor=0"
       Splits(1)._ColumnProps(144)=   "Column(18)._WidthInPix=2646"
       Splits(1)._ColumnProps(145)=   "Column(18)._EditAlways=0"
-      Splits(1)._ColumnProps(146)=   "Column(18)._ColStyle=65808"
+      Splits(1)._ColumnProps(146)=   "Column(18)._ColStyle=1048848"
       Splits(1)._ColumnProps(147)=   "Column(18).Visible=0"
       Splits(1)._ColumnProps(148)=   "Column(18).WrapText=1"
       Splits(1)._ColumnProps(149)=   "Column(18).Order=19"
@@ -627,49 +627,49 @@ Begin VB.Form TelaFinPagtoMultiplos
       Splits(1)._ColumnProps(151)=   "Column(19).DividerColor=0"
       Splits(1)._ColumnProps(152)=   "Column(19)._WidthInPix=2646"
       Splits(1)._ColumnProps(153)=   "Column(19)._EditAlways=0"
-      Splits(1)._ColumnProps(154)=   "Column(19)._ColStyle=65808"
+      Splits(1)._ColumnProps(154)=   "Column(19)._ColStyle=1048848"
       Splits(1)._ColumnProps(155)=   "Column(19).WrapText=1"
       Splits(1)._ColumnProps(156)=   "Column(19).Order=20"
       Splits(1)._ColumnProps(157)=   "Column(20).Width=2725"
       Splits(1)._ColumnProps(158)=   "Column(20).DividerColor=0"
       Splits(1)._ColumnProps(159)=   "Column(20)._WidthInPix=2646"
       Splits(1)._ColumnProps(160)=   "Column(20)._EditAlways=0"
-      Splits(1)._ColumnProps(161)=   "Column(20)._ColStyle=65808"
+      Splits(1)._ColumnProps(161)=   "Column(20)._ColStyle=1048848"
       Splits(1)._ColumnProps(162)=   "Column(20).WrapText=1"
       Splits(1)._ColumnProps(163)=   "Column(20).Order=21"
       Splits(1)._ColumnProps(164)=   "Column(21).Width=2725"
       Splits(1)._ColumnProps(165)=   "Column(21).DividerColor=0"
       Splits(1)._ColumnProps(166)=   "Column(21)._WidthInPix=2646"
       Splits(1)._ColumnProps(167)=   "Column(21)._EditAlways=0"
-      Splits(1)._ColumnProps(168)=   "Column(21)._ColStyle=65808"
+      Splits(1)._ColumnProps(168)=   "Column(21)._ColStyle=1048848"
       Splits(1)._ColumnProps(169)=   "Column(21).WrapText=1"
       Splits(1)._ColumnProps(170)=   "Column(21).Order=22"
       Splits(1)._ColumnProps(171)=   "Column(22).Width=2725"
       Splits(1)._ColumnProps(172)=   "Column(22).DividerColor=0"
       Splits(1)._ColumnProps(173)=   "Column(22)._WidthInPix=2646"
       Splits(1)._ColumnProps(174)=   "Column(22)._EditAlways=0"
-      Splits(1)._ColumnProps(175)=   "Column(22)._ColStyle=65808"
+      Splits(1)._ColumnProps(175)=   "Column(22)._ColStyle=1048848"
       Splits(1)._ColumnProps(176)=   "Column(22).WrapText=1"
       Splits(1)._ColumnProps(177)=   "Column(22).Order=23"
       Splits(1)._ColumnProps(178)=   "Column(23).Width=2725"
       Splits(1)._ColumnProps(179)=   "Column(23).DividerColor=0"
       Splits(1)._ColumnProps(180)=   "Column(23)._WidthInPix=2646"
       Splits(1)._ColumnProps(181)=   "Column(23)._EditAlways=0"
-      Splits(1)._ColumnProps(182)=   "Column(23)._ColStyle=65808"
+      Splits(1)._ColumnProps(182)=   "Column(23)._ColStyle=1048848"
       Splits(1)._ColumnProps(183)=   "Column(23).WrapText=1"
       Splits(1)._ColumnProps(184)=   "Column(23).Order=24"
       Splits(1)._ColumnProps(185)=   "Column(24).Width=2725"
       Splits(1)._ColumnProps(186)=   "Column(24).DividerColor=0"
       Splits(1)._ColumnProps(187)=   "Column(24)._WidthInPix=2646"
       Splits(1)._ColumnProps(188)=   "Column(24)._EditAlways=0"
-      Splits(1)._ColumnProps(189)=   "Column(24)._ColStyle=65808"
+      Splits(1)._ColumnProps(189)=   "Column(24)._ColStyle=1048848"
       Splits(1)._ColumnProps(190)=   "Column(24).WrapText=1"
       Splits(1)._ColumnProps(191)=   "Column(24).Order=25"
       Splits(1)._ColumnProps(192)=   "Column(25).Width=2725"
       Splits(1)._ColumnProps(193)=   "Column(25).DividerColor=0"
       Splits(1)._ColumnProps(194)=   "Column(25)._WidthInPix=2646"
       Splits(1)._ColumnProps(195)=   "Column(25)._EditAlways=0"
-      Splits(1)._ColumnProps(196)=   "Column(25)._ColStyle=65808"
+      Splits(1)._ColumnProps(196)=   "Column(25)._ColStyle=1048848"
       Splits(1)._ColumnProps(197)=   "Column(25).WrapText=1"
       Splits(1)._ColumnProps(198)=   "Column(25).Order=26"
       Splits.Count    =   2
@@ -1196,25 +1196,29 @@ Begin VB.Form TelaFinPagtoMultiplos
       _ExtentY        =   3466
       _Version        =   393216
       Tabs            =   2
+      Tab             =   1
       TabsPerRow      =   2
       TabHeight       =   520
       TabCaption(0)   =   "Dados Gerais"
       TabPicture(0)   =   "TelaPagtoMultiplos.frx":0000
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "PanFundo"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).ControlCount=   1
       TabCaption(1)   =   "Dados Bancários"
       TabPicture(1)   =   "TelaPagtoMultiplos.frx":001C
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "LblCCorrente"
+      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "DatContaCorrente"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "CboCCorrente"
+      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).Control(3)=   "Frame1"
+      Tab(1).Control(3).Enabled=   0   'False
       Tab(1).ControlCount=   4
       Begin Threed.SSPanel PanFundo 
          Height          =   1560
-         Left            =   45
+         Left            =   -74955
          TabIndex        =   23
          Top             =   360
          Width           =   8790
@@ -1248,7 +1252,7 @@ Begin VB.Form TelaFinPagtoMultiplos
             _StockProps     =   15
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "MS Sans Serif"
-               Size            =   8.26
+               Size            =   8.25
                Charset         =   0
                Weight          =   400
                Underline       =   0   'False
@@ -1276,7 +1280,7 @@ Begin VB.Form TelaFinPagtoMultiplos
             _ExtentY        =   529
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   63111171
+            Format          =   82575363
             CurrentDate     =   37180
          End
          Begin MSComCtl2.DTPicker DtpBasePagto 
@@ -1289,7 +1293,7 @@ Begin VB.Form TelaFinPagtoMultiplos
             _ExtentY        =   529
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   63111171
+            Format          =   82575363
             CurrentDate     =   37180
          End
          Begin VB.Frame FraCorrecao 
@@ -1765,7 +1769,7 @@ Begin VB.Form TelaFinPagtoMultiplos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1035
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   13
          Top             =   360
          Width           =   8655
@@ -1815,7 +1819,7 @@ Begin VB.Form TelaFinPagtoMultiplos
             _ExtentY        =   529
             _Version        =   393216
             DateIsNull      =   -1  'True
-            Format          =   63111169
+            Format          =   82575361
             CurrentDate     =   37180
          End
          Begin VB.Label LblDtDeposito 
@@ -1873,7 +1877,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       Begin MSDataListLib.DataCombo CboCCorrente 
          Bindings        =   "TelaPagtoMultiplos.frx":00B2
          Height          =   330
-         Left            =   -73350
+         Left            =   1650
          TabIndex        =   21
          Top             =   1470
          Width           =   7035
@@ -1897,7 +1901,7 @@ Begin VB.Form TelaFinPagtoMultiplos
       End
       Begin MSAdodcLib.Adodc DatContaCorrente 
          Height          =   330
-         Left            =   -73395
+         Left            =   1605
          Top             =   1425
          Visible         =   0   'False
          Width           =   1815
@@ -1956,7 +1960,7 @@ Begin VB.Form TelaFinPagtoMultiplos
          EndProperty
          ForeColor       =   &H00000000&
          Height          =   270
-         Left            =   -74775
+         Left            =   225
          TabIndex        =   22
          Top             =   1500
          Width           =   1365
@@ -2322,7 +2326,7 @@ Private Sub CmdDesmarcar_Click()
     End If
 End Sub
 
-Private Sub cmdGravar_Click()
+Private Sub CmdGravar_Click()
     Dim XLO_TITULO As New ADODB.Recordset
     Dim XLT_SQL As String
     
@@ -2434,7 +2438,7 @@ Private Sub cmdGravar_Click()
             'titu_vl_ValorPago
             XLT_SQL = XLT_SQL & "titu_vl_ValorPago = " & FunTrataFloat(FunNuloVal(TDBGrid1.Columns("Valor a Pagar"))) & ", "
             
-            If OptIndexador1.Value = True Then
+            If optIndexador1.Value = True Then
                 'Valor Atual
                 XLT_SQL = XLT_SQL & "titu_vl_Corrigido1 = " & FunTrataFloat(FunNuloVal(TDBGrid1.Columns(7))) & ", "
                 
@@ -2485,7 +2489,7 @@ Private Sub cmdGravar_Click()
                 XLT_SQL = XLT_SQL & "titu_tx_PreDatado = 'N', "
             End If
             
-            If OptIndexador1.Value = True Then 'escolhido valor indexado 1
+            If optIndexador1.Value = True Then 'escolhido valor indexado 1
                 XLT_SQL = XLT_SQL & "titu_tx_IndicePagamento = 1, "
                 'XLT_SQL = XLT_SQL & "moed_cd_Moeda3 = " & funNull(TDBGrid1.Columns("Moeda1")) & ", "
                 XLT_SQL = XLT_SQL & "moed_cd_Moeda3 = " & FunNuloBanco(TDBGrid1.Columns("Moeda1")) & ", "
@@ -2598,7 +2602,7 @@ Private Sub cmdGravar_Click()
                             " AND titu_cd_Parcela='" & XLT_CODPARCELA & "' AND titu_cd_Residuo='" & Format(Int(XLT_CODRESIDUO) + 1, "00") & "'"
                         SubQOpenRecordset XLO_TITULO, XLT_SQL, Estatico
                     
-                        subGravaFinanceiro XLO_TITULO, "COMPROMISSAR", DatImovel.Recordset.Fields("focl_cd_FornCli"), XLO_TITULO!tipl_tx_Descricao, XLO_TITULO!Natureza
+                        subGravaFinanceiro XLO_TITULO, "COMPROMISSAR", DatImovel.Recordset.Fields("focl_cd_FornCli"), XLO_TITULO!tipl_tx_Descricao, XLO_TITULO!NATUREZA
                         XLO_TITULO.Close
                         Set XLO_TITULO = Nothing
                     End If
@@ -2611,7 +2615,7 @@ Private Sub cmdGravar_Click()
                      " AND titu_cd_Parcela='" & XLT_CODPARCELA & "' AND titu_cd_Residuo='" & XLT_CODRESIDUO & "'"
                 SubQOpenRecordset XLO_TITULO, XLT_SQL, Estatico
                 
-                subGravaFinanceiro XLO_TITULO, "PAGAR", DatImovel.Recordset.Fields("focl_cd_FornCli"), XLO_TITULO!tipl_tx_Descricao, XLO_TITULO!Natureza
+                subGravaFinanceiro XLO_TITULO, "PAGAR", DatImovel.Recordset.Fields("focl_cd_FornCli"), XLO_TITULO!tipl_tx_Descricao, XLO_TITULO!NATUREZA
                 XLO_TITULO.Close
                 Set XLO_TITULO = Nothing
             End If
@@ -3023,7 +3027,7 @@ Private Sub CmdPesquisar_Click()
       Exit Sub
     End If
        
-    If OptIndexador1.Value = True Then
+    If optIndexador1.Value = True Then
        
       If Not funVerirficaCotacao(XFO_PAGAMENTO, 1, DtpBasePagto.Value, True, TelaCotacoes) Then
         XFO_PAGAMENTO.Requery adCmdText
@@ -3167,7 +3171,7 @@ Sub subCalculaCampos(XLO_TITULO As ADODB.Recordset, XLI_X As Integer)
     
     XLB_CALCSEGUROS = True
     'CÁLCULO DA CORREÇÃO MONETÁRIA
-    If (OptIndexador1.Value = True And Vetor1(XLI_X, 15) <> "") Then  'Não possui o indexador
+    If (optIndexador1.Value = True And Vetor1(XLI_X, 15) <> "") Then  'Não possui o indexador
         'Correção Monetária
         XLF_VALORCORRIGIDO = Format(funCalculaCorrecaoMonetaria(XLO_TITULO, 1, DtpBasePagto.Value), "standard")
         
@@ -3177,7 +3181,7 @@ Sub subCalculaCampos(XLO_TITULO As ADODB.Recordset, XLI_X As Integer)
         'Juros CEF
         Vetor1(XLI_X, 7) = Format(XLF_VALORCORRIGIDO + Format(FunCalculaJurosCEF(XLO_TITULO, DtpBasePagto.Value, XLF_VALORCORRIGIDO), "standard"), "standard")
         
-    ElseIf (OptIndexador2.Value = True And Vetor1(XLI_X, 16) <> "") Then
+    ElseIf (optIndexador2.Value = True And Vetor1(XLI_X, 16) <> "") Then
         'Correção Monetária
         XLF_VALORCORRIGIDO = Format(funCalculaCorrecaoMonetaria(XLO_TITULO, 2, DtpBasePagto.Value), "standard")
         
