@@ -229,6 +229,8 @@ Public Function FunSendEmail( _
                 Optional UrlAttachment As String = "") As Boolean
                     
     Dim CDO As New CDO.Message
+    Dim At As Integer
+
 
     With CDO.Configuration.Fields
         .Item(cdoSMTPAuthenticate) = CdoProtocolsAuthentication.cdoBasic                                ' basic (clear-text) authentication
@@ -247,7 +249,14 @@ Public Function FunSendEmail( _
 '    CDO.From = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailFrom")
 '    CDO.Subject = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailSubject")
     
-    CDO.From = PEmpresa & " <no-reply@costaandrade.com.br>"
+' Alterado em 19/08/2025 por solicitação da Costa Andrade/Largo da Vitória
+' ----------------------------------------------------------------------------
+'    CDO.From = PEmpresa & " <no-reply@costaandrade.com.br>"
+
+    At = InStr(XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailFrom"), "<")
+    CDO.From = PEmpresa & " " & _
+               Mid(XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailFrom"), At)
+               
     CDO.Subject = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EmailConfig").Item("MailSubject") & _
                   " - Empreendimento " & Empreendimento & ", Vencimento " & Vencimento
     

@@ -82,7 +82,7 @@ O que importa são as chaves e o tipo de valor.
 -------------------------------------------------------------------------------
     {
         "data": {
-            "etapa_processo_boleto": "efetivacao",                                          # - Simulação de Emissão - 'validacao' Emissão - 'efetivacao'
+            "etapa_processo_boleto": "efetivacao",                                          # - Simulação de Emissão - 'validacao', Emissão - 'efetivacao'
             "codigo_canal_operacao": "API",                                                 # - Fixo 'API'
             "beneficiario": {   
                 "id_beneficiario": "id_beneficiario"                                        # - Agência (4 dígitos) + Conta (7 dígitos) + DAC (1 dígito) =
