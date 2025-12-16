@@ -1,0 +1,31 @@
+ @NOME_CLIENTE@, informamos que seu boleto encontra-se disponível.
+
+ Titulo: @NUMERO_TITULO@
+ Data de vencimento: @DATA_VENCIMENTO@
+ Valor: R$ @VALOR@
+
+ ALERTA:
+ Em razão de alerta recebido de bancos, lembrando que vem ocorrendo no mercado
+ emissão de boletos falsos, reiteramos que todos os nossos boletos são emitidos
+ pelo Banco Itaú, tendo como beneficiário do pagamento exclusivamente a 
+ @RAZAO_SOCIAL@, CNPJ @CNPJ@.
+ 
+ Lembramos, ainda, que é de responsabilidade do cliente a conferência do beneficiário
+ no ato de pagamento, que deve ser feita através do sistema de pagamento (aplicativo 
+ do banco; caixa eletrônico etc.) e, caso o beneficiário indicado não seja a 
+ @RAZAO_SOCIAL@, CNPJ @CNPJ@, não efetue o pagamento e entre em contato através dos
+ telefones indicados abaixo, reportando o ocorrido.
+ 
+ Com intuito de garantir maior segurança, o boleto encaminhado está protegido por 
+ senha pessoal. Em caso de dúvida, entre em contato conosco, por telefone.
+ 
+ Para visualizar o BOLETO, basta seguir três passos:
+ 1- Clique em documento anexo. 
+ 2- Vai abrir uma tela com o campo "Digite a senha".
+ 3- Coloque os 03 primeiros e os 02 últimos números do CPF ou CNPJ do titular e pronto.
+ 
+ Atenciosamente, 
+ 
+ @RAZAO_SOCIAL@
+ Financeiro
+ Contato: (71) 3355-6660 / (71) 99975-5866

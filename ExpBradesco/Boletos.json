@@ -1,0 +1,60 @@
+{
+    "PathToFiles":          "C:/Temp/Boletos",
+    "UseSandbox":           true,
+    "Production": {
+        "TipoBoleto":       "a vista",
+		"TipoRegistro":		"1",
+        "Carteira":         "09",
+		"EspecieTitulo":	"12",
+        "OAuth2": {
+            "UrlToken":     "https://openapi.bradesco.com.br/auth/server-mtls/v2/token",
+            "GrantType":    "client_credentials",
+            "ClientId":     "58ffcdf7-c28e-48e6-b576-8622c1238d72",
+            "ClientSecret": "376819f2-bb86-4c07-b719-c78a63f1c60f"
+            "Certificate":  "CURRENT_USER\\My\\LARGO DA VITORIA EMPREENDIMENTOS IMOBILIARIOS LTD:52041378000137"
+        },
+        "Endpoints": {
+            "UrlBase":      "https://openapi.bradesco.com.br/boleto/cobranca-registro/v1/cobranca"
+        },
+        "EmailConfig": {
+            "ServerName":   "email-ssl.com.br",
+            "ServerPort":   465,
+            "UseSSL":       true,
+            "UserName":     "cobranca@costaandrade.com.br",
+            "UserPassword": "Ftyhq#skf ^6Ti_87",
+            "MailFrom":     "Costa Andrade - Financeiro <no-reply@costaandrade.com.br>",
+			"MailCC": 		"Costa Andrade - Cobrança <paulo@interativabr.com>",
+			"MailTo": 		"Homologação - Testes <psgarcia159@gmail.com>",
+            "MailSubject":  "Boleto disponível",
+            "IsHtmlBody":   true
+        }
+    },
+    "Sandbox": {
+        "TipoBoleto":       "a vista",
+		"TipoRegistro":		"2",
+        "Carteira":         "09",
+		"EspecieTitulo":	"12",
+        "OAuth2": {
+            "UrlToken":     "https://openapisandbox.prebanco.com.br/auth/server-mtls/v2/token",
+            "GrantType":    "client_credentials",
+            "ClientId":     "0042290f-bfe8-487e-b0e6-fa29b25e24d2",
+            "ClientSecret": "f23cdf23-8c91-472c-90b3-2d1b278434fd"
+            "Certificate":  "CURRENT_USER\\My\\www.interativabr.com"
+        },
+        "Endpoints": {
+            "UrlBase":      "https://openapisandbox.prebanco.com.br/boleto/cobranca-registro/v1/cobranca"
+        },
+        "EmailConfig": {
+            "ServerName":   "smtp.gmail.com",
+            "ServerPort":   465,
+            "UseSSL":       true,
+            "UserName":     "psgarcia159@gmail.com",
+            "UserPassword": "raqs yopx twjv vsas",
+            "MailFrom":     "TesteBoletosBradesco <no-reply@gmail.com>",
+            "MailCC":       "TesteBoletosBradesco <psgarcia159@gmail.com>",
+            "MailTo":       "TesteBoletosBradesco <psgarcia159@gmail.com>",
+            "MailSubject":  "Boleto disponível",
+            "IsHtmlBody":   true
+        }
+    }
+}

@@ -73,6 +73,8 @@ Public Function funAbreConexao() As Boolean
     Dim XLT_STRINGCONEXAO   As String * 254
     Dim XLT_TIPOBANCO       As String * 254
     Dim XLT_NOMEBANCO       As String * 254
+    Dim XLT_USUARIO         As String * 254
+    Dim XLT_SENHA           As String * 254
     
     On Error GoTo RotuloErro
     Screen.MousePointer = vbHourglass
@@ -87,6 +89,20 @@ Public Function funAbreConexao() As Boolean
     'PEGA O NOME DO BANCO
     GetPrivateProfileString "BancoDeDados", "NomeBanco", "", XLT_NOMEBANCO, 255, App.Path + "\QualiAdmFin.INI"
         
+     'PEGA O USUARIO
+    GetPrivateProfileString "BancoDeDados", "Usuario", "", XLT_USUARIO, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_USUARIO) Or IsEmpty(XLT_USUARIO) Or XLT_USUARIO = "" Then
+        XLT_USUARIO = "qualiadmfin"
+    End If
+        
+    'PEGA A SENHA
+    GetPrivateProfileString "BancoDeDados", "Senha", "", XLT_SENHA, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_SENHA) Or IsEmpty(XLT_SENHA) Or XLT_SENHA = "" Then
+        XLT_SENHA = "qd"
+    End If
+        
     Select Case Val(XLT_TIPOBANCO)
         Case 1
             NomeSgbd = "Access"
@@ -98,7 +114,7 @@ Public Function funAbreConexao() As Boolean
             Conexao.Provider = "sqloledb"
             XGT_SQL = "Data Source=" & FunStrArqIni(XLT_STRINGCONEXAO) & _
                       ";Initial Catalog=" & FunStrArqIni(XLT_NOMEBANCO) & _
-                      ";User Id=qualiadmfin;Password=qd; "
+                      ";User Id=" & FunStrArqIni(XLT_USUARIO) & ";Password=" & FunStrArqIni(XLT_SENHA) & "; "
             Conexao.Open XGT_SQL
     End Select
     Screen.MousePointer = vbDefault
@@ -120,6 +136,8 @@ Public Function funAbreConexaoRelatorio() As Boolean
     Dim XLT_STRINGCONEXAO   As String * 254
     Dim XLT_TIPOBANCO       As String * 254
     Dim XLT_NOMEBANCO       As String * 254
+    Dim XLT_USUARIO         As String * 254
+    Dim XLT_SENHA           As String * 254
     
     On Error GoTo RotuloErro
     Screen.MousePointer = vbHourglass
@@ -134,6 +152,20 @@ Public Function funAbreConexaoRelatorio() As Boolean
     'PEGA O NOME DO BANCO
     GetPrivateProfileString "BancoDeDados", "NomeBanco", "", XLT_NOMEBANCO, 255, App.Path + "\QualiAdmFin.INI"
     
+    'PEGA O USUARIO
+    GetPrivateProfileString "BancoDeDados", "Usuario", "", XLT_USUARIO, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_USUARIO) Or IsEmpty(XLT_USUARIO) Or XLT_USUARIO = "" Then
+        XLT_USUARIO = "qualiadmfin"
+    End If
+        
+    'PEGA A SENHA
+    GetPrivateProfileString "BancoDeDados", "Senha", "", XLT_SENHA, 255, App.Path + "\QualiAdmFin.INI"
+    
+    If IsNull(XLT_SENHA) Or IsEmpty(XLT_SENHA) Or XLT_SENHA = "" Then
+        XLT_SENHA = "qd"
+    End If
+    
     Select Case Val(XLT_TIPOBANCO)
         Case 1
             NomeSgbd = "Access"
@@ -145,7 +177,7 @@ Public Function funAbreConexaoRelatorio() As Boolean
             ConexaoRelatorio.Provider = "sqloledb"
             XGT_SQL = "Data Source=" & FunStrArqIni(XLT_STRINGCONEXAO) & _
                       ";Initial Catalog=" & FunStrArqIni(XLT_NOMEBANCO) & _
-                      ";User Id=qualiadmfin;Password=qd; "
+                      ";User Id=" & FunStrArqIni(XLT_USUARIO) & ";Password=" & FunStrArqIni(XLT_SENHA) & "; "
             ConexaoRelatorio.Open XGT_SQL
     End Select
     Screen.MousePointer = vbDefault
@@ -168,7 +200,7 @@ End Function
 Public Sub subrecarregadadosNV(ControleDados As Object, TabelaAtiva As String, _
                                          OrdemTabela As String, CamposObrigatorios As String, _
                                          FiltroOriginal As String)
-    Dim Cont As Long
+    Dim cont As Long
     'Atribui os parâmetros às variáveis globais
     Ordem = OrdemTabela
     Campos_Obrig = CamposObrigatorios
@@ -183,18 +215,18 @@ Public Sub subrecarregadadosNV(ControleDados As Object, TabelaAtiva As String, _
         subConectarControleDadosNV ControleDados, FiltroAtual, Estatico
     End If
 
-    Cont = 0 'Zera a quantidade de registros da tabela
+    cont = 0 'Zera a quantidade de registros da tabela
     
     If Not ControleDados.Recordset.EOF Then
        ControleDados.Recordset.MoveLast
-       Cont = ControleDados.Recordset.RecordCount 'Informa a quantidade de registros da tabela.
+       cont = ControleDados.Recordset.RecordCount 'Informa a quantidade de registros da tabela.
     End If
 
     ' Mostra a quantidade de registros na barra de status
    'MdiPrincipal.BarraStatus.Panels(3).Text = Str(Cont) + "/" + Str(Quantid)
 
     ' Aponta para o primeiro registro da tabela
-    If Cont <> 0 Then
+    If cont <> 0 Then
        ControleDados.Recordset.MoveFirst
     End If
 End Sub

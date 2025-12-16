@@ -36,6 +36,8 @@ Enum ENUM_OPERACOES
     IMPORTAR_FOLHA_CR
     IMPORTAR_FOLHA_PIS_FGTS
     IMPORTACAO_FOLHA_FUNCIONARIOS
+        
+    EMITIR_BOLETO
 End Enum
 
 'Enumarator com as entidades que terão log

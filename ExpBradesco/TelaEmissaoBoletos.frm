@@ -6,22 +6,180 @@ Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
-Begin VB.Form TelaExpBancaria 
-   Caption         =   "Exportação Bancária - BRADESCO"
-   ClientHeight    =   6225
-   ClientLeft      =   615
-   ClientTop       =   330
-   ClientWidth     =   11355
-   Icon            =   "TelaExpBancaria.frx":0000
+Begin VB.Form TelaEmissaoBoletos 
+   Caption         =   "Emissão Boletos - BRADESCO"
+   ClientHeight    =   7845
+   ClientLeft      =   75
+   ClientTop       =   1470
+   ClientWidth     =   10515
+   Icon            =   "TelaEmissaoBoletos.frx":0000
    LinkTopic       =   "Form1"
-   ScaleHeight     =   6225
-   ScaleWidth      =   11355
+   ScaleHeight     =   7845
+   ScaleWidth      =   10515
    WindowState     =   2  'Maximized
+   Begin Threed.SSPanel PanBotoes 
+      Height          =   1245
+      Left            =   45
+      TabIndex        =   11
+      Top             =   5160
+      Width           =   9720
+      _Version        =   65536
+      _ExtentX        =   17145
+      _ExtentY        =   2196
+      _StockProps     =   15
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BevelOuter      =   0
+      Begin VB.CommandButton CmdDesconto 
+         Caption         =   "&Desconto"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   2700
+         TabIndex        =   61
+         Top             =   0
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdMarcar 
+         Caption         =   "&Marcar Todos"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   4620
+         TabIndex        =   60
+         Top             =   15
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdPesquisa 
+         Caption         =   "&Pesquisar"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   720
+         TabIndex        =   59
+         Top             =   0
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdDesmarcar 
+         Caption         =   "Desmarcar &Todos"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   6540
+         TabIndex        =   16
+         Top             =   15
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdImprimir 
+         Caption         =   "Im&primir"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   4620
+         TabIndex        =   14
+         Top             =   495
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdFiltro 
+         Caption         =   "&Seleções"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   2700
+         TabIndex        =   13
+         Top             =   495
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdEmitirBoletos 
+         Caption         =   "&Emitir Boleto(s)"
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   720
+         TabIndex        =   12
+         Top             =   495
+         Width           =   1680
+      End
+      Begin VB.CommandButton CmdSair 
+         Caption         =   "&Sair"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   345
+         Left            =   6540
+         TabIndex        =   10
+         Top             =   495
+         Width           =   1680
+      End
+   End
    Begin Threed.SSPanel PanDesconto 
       Height          =   2235
-      Left            =   3000
-      TabIndex        =   52
-      Top             =   1320
+      Left            =   3360
+      TabIndex        =   62
+      Top             =   1680
       Visible         =   0   'False
       Width           =   3075
       _Version        =   65536
@@ -56,7 +214,7 @@ Begin VB.Form TelaExpBancaria
          EndProperty
          Height          =   330
          Left            =   1860
-         TabIndex        =   59
+         TabIndex        =   69
          Top             =   1740
          Width           =   1065
       End
@@ -73,7 +231,7 @@ Begin VB.Form TelaExpBancaria
          EndProperty
          Height          =   330
          Left            =   600
-         TabIndex        =   58
+         TabIndex        =   68
          Top             =   1740
          Width           =   1065
       End
@@ -91,7 +249,7 @@ Begin VB.Form TelaExpBancaria
          EndProperty
          Height          =   315
          Left            =   180
-         TabIndex        =   57
+         TabIndex        =   67
          Top             =   1260
          Width           =   2655
       End
@@ -99,21 +257,21 @@ Begin VB.Form TelaExpBancaria
          Alignment       =   1  'Right Justify
          Height          =   315
          Left            =   1620
-         TabIndex        =   56
+         TabIndex        =   66
          Top             =   420
          Width           =   1035
       End
       Begin MSComCtl2.DTPicker DtpDesconto 
          Height          =   315
          Left            =   1620
-         TabIndex        =   53
+         TabIndex        =   63
          Top             =   840
          Width           =   1095
          _ExtentX        =   1931
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   84606979
+         Format          =   185991171
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -130,7 +288,7 @@ Begin VB.Form TelaExpBancaria
          EndProperty
          Height          =   195
          Left            =   660
-         TabIndex        =   55
+         TabIndex        =   65
          Top             =   480
          Width           =   975
       End
@@ -148,20 +306,20 @@ Begin VB.Form TelaExpBancaria
          EndProperty
          Height          =   255
          Left            =   300
-         TabIndex        =   54
+         TabIndex        =   64
          Top             =   900
          Width           =   1455
       End
    End
    Begin Threed.SSPanel PanPesquisa 
-      Height          =   4635
-      Left            =   1080
-      TabIndex        =   16
-      Top             =   120
-      Width           =   9135
+      Height          =   4815
+      Left            =   45
+      TabIndex        =   17
+      Top             =   360
+      Width           =   9255
       _Version        =   65536
-      _ExtentX        =   16113
-      _ExtentY        =   8176
+      _ExtentX        =   16325
+      _ExtentY        =   8493
       _StockProps     =   15
       Caption         =   "SSPanel1"
       BackColor       =   14737632
@@ -178,7 +336,7 @@ Begin VB.Form TelaExpBancaria
       BevelInner      =   1
       Begin MSComDlg.CommonDialog DlgSalvar 
          Left            =   240
-         Top             =   3840
+         Top             =   4320
          _ExtentX        =   847
          _ExtentY        =   847
          _Version        =   393216
@@ -195,9 +353,9 @@ Begin VB.Form TelaExpBancaria
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   6000
-         TabIndex        =   46
-         Top             =   4200
+         Left            =   6435
+         TabIndex        =   55
+         Top             =   4320
          Width           =   1245
       End
       Begin VB.CommandButton CmdFechar 
@@ -212,25 +370,25 @@ Begin VB.Form TelaExpBancaria
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   7320
-         TabIndex        =   45
-         Top             =   4200
+         Left            =   7740
+         TabIndex        =   54
+         Top             =   4320
          Width           =   1245
       End
       Begin TabDlg.SSTab SSTab1 
-         Height          =   4635
-         Left            =   0
-         TabIndex        =   18
-         Top             =   0
-         Width           =   9135
-         _ExtentX        =   16113
-         _ExtentY        =   8176
+         Height          =   4035
+         Left            =   180
+         TabIndex        =   19
+         Top             =   180
+         Width           =   8895
+         _ExtentX        =   15690
+         _ExtentY        =   7117
          _Version        =   393216
          Tabs            =   4
-         TabsPerRow      =   5
+         TabsPerRow      =   4
          TabHeight       =   520
          TabCaption(0)   =   "Dados Gerais"
-         TabPicture(0)   =   "TelaExpBancaria.frx":08CA
+         TabPicture(0)   =   "TelaEmissaoBoletos.frx":08CA
          Tab(0).ControlEnabled=   -1  'True
          Tab(0).Control(0)=   "LblInstrucao1(0)"
          Tab(0).Control(0).Enabled=   0   'False
@@ -248,228 +406,78 @@ Begin VB.Form TelaExpBancaria
          Tab(0).Control(6).Enabled=   0   'False
          Tab(0).Control(7)=   "Label6"
          Tab(0).Control(7).Enabled=   0   'False
-         Tab(0).Control(8)=   "LblMensagem1"
+         Tab(0).Control(8)=   "SSCommand1"
          Tab(0).Control(8).Enabled=   0   'False
-         Tab(0).Control(9)=   "DatObs"
+         Tab(0).Control(9)=   "DatEmpresa"
          Tab(0).Control(9).Enabled=   0   'False
-         Tab(0).Control(10)=   "DatTipoPlano"
+         Tab(0).Control(10)=   "cboSacadorAvalista"
          Tab(0).Control(10).Enabled=   0   'False
-         Tab(0).Control(11)=   "DatContaCorrente"
+         Tab(0).Control(11)=   "DatObs"
          Tab(0).Control(11).Enabled=   0   'False
-         Tab(0).Control(12)=   "CboCCorrente"
+         Tab(0).Control(12)=   "DatTipoPlano"
          Tab(0).Control(12).Enabled=   0   'False
-         Tab(0).Control(13)=   "CmdLimparNaturezaPlano"
+         Tab(0).Control(13)=   "DatContaCorrente"
          Tab(0).Control(13).Enabled=   0   'False
-         Tab(0).Control(14)=   "CboTiposPlanos"
+         Tab(0).Control(14)=   "CboCCorrente"
          Tab(0).Control(14).Enabled=   0   'False
-         Tab(0).Control(15)=   "CmdLimparTipoPlano"
+         Tab(0).Control(15)=   "CmdLimparNaturezaPlano"
          Tab(0).Control(15).Enabled=   0   'False
-         Tab(0).Control(16)=   "DtpExportacao"
+         Tab(0).Control(16)=   "CboTiposPlanos"
          Tab(0).Control(16).Enabled=   0   'False
-         Tab(0).Control(17)=   "DtpVencimento"
+         Tab(0).Control(17)=   "CmdLimparTipoPlano"
          Tab(0).Control(17).Enabled=   0   'False
-         Tab(0).Control(18)=   "TxtMensagem1"
+         Tab(0).Control(18)=   "DtpExportacao"
          Tab(0).Control(18).Enabled=   0   'False
-         Tab(0).Control(19)=   "FraDesagio"
+         Tab(0).Control(19)=   "DtpVencimento"
          Tab(0).Control(19).Enabled=   0   'False
-         Tab(0).Control(20)=   "TxtMensagem2"
+         Tab(0).Control(20)=   "TxtMensagem1"
          Tab(0).Control(20).Enabled=   0   'False
-         Tab(0).Control(21)=   "CboNaturezasPlanos"
+         Tab(0).Control(21)=   "FraDesagio"
          Tab(0).Control(21).Enabled=   0   'False
-         Tab(0).Control(22)=   "CboTipoCobranca"
+         Tab(0).Control(22)=   "TxtInstrucao1"
          Tab(0).Control(22).Enabled=   0   'False
-         Tab(0).Control(23)=   "Frame1"
+         Tab(0).Control(23)=   "TxtInstrucao2"
          Tab(0).Control(23).Enabled=   0   'False
-         Tab(0).Control(24)=   "CmbInstrucao"
+         Tab(0).Control(24)=   "CboNaturezasPlanos"
          Tab(0).Control(24).Enabled=   0   'False
          Tab(0).ControlCount=   25
          TabCaption(1)   =   "Empreendimentos"
-         TabPicture(1)   =   "TelaExpBancaria.frx":08E6
+         TabPicture(1)   =   "TelaEmissaoBoletos.frx":08E6
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(0).Enabled=   0   'False
-         Tab(1).Control(1)=   "LlbEmpreendimento"
-         Tab(1).Control(1).Enabled=   0   'False
-         Tab(1).Control(2)=   "TDBGridEmpr1"
-         Tab(1).Control(2).Enabled=   0   'False
-         Tab(1).Control(3)=   "TDBGridEmpr2"
-         Tab(1).Control(3).Enabled=   0   'False
-         Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(4).Enabled=   0   'False
-         Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(5).Enabled=   0   'False
-         Tab(1).Control(6)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(6).Enabled=   0   'False
-         Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
-         Tab(1).Control(7).Enabled=   0   'False
+         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(4)=   "TDBGridEmpr2"
+         Tab(1).Control(5)=   "TDBGridEmpr1"
+         Tab(1).Control(6)=   "LlbEmpreendimento"
+         Tab(1).Control(7)=   "Label1"
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
-         TabPicture(2)   =   "TelaExpBancaria.frx":0902
+         TabPicture(2)   =   "TelaEmissaoBoletos.frx":0902
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "Label3"
-         Tab(2).Control(0).Enabled=   0   'False
-         Tab(2).Control(1)=   "Label2"
-         Tab(2).Control(1).Enabled=   0   'False
-         Tab(2).Control(2)=   "TDBGridMoeda2"
-         Tab(2).Control(2).Enabled=   0   'False
-         Tab(2).Control(3)=   "TDBGridMoeda1"
-         Tab(2).Control(3).Enabled=   0   'False
+         Tab(2).Control(0)=   "CmdRemoverMoeda"
+         Tab(2).Control(1)=   "CmdInserirMoeda"
+         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(4).Enabled=   0   'False
-         Tab(2).Control(5)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(5).Enabled=   0   'False
-         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(6).Enabled=   0   'False
-         Tab(2).Control(7)=   "CmdInserirMoeda"
-         Tab(2).Control(7).Enabled=   0   'False
-         Tab(2).Control(8)=   "CmdRemoverMoeda"
-         Tab(2).Control(8).Enabled=   0   'False
+         Tab(2).Control(5)=   "TDBGridMoeda1"
+         Tab(2).Control(6)=   "TDBGridMoeda2"
+         Tab(2).Control(7)=   "Label2"
+         Tab(2).Control(8)=   "Label3"
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
-         TabPicture(3)   =   "TelaExpBancaria.frx":091E
+         TabPicture(3)   =   "TelaEmissaoBoletos.frx":091E
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "CmdRemoverObservacao"
-         Tab(3).Control(0).Enabled=   0   'False
-         Tab(3).Control(1)=   "CmdInserirObservacao"
-         Tab(3).Control(1).Enabled=   0   'False
-         Tab(3).Control(2)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(2).Enabled=   0   'False
-         Tab(3).Control(3)=   "CmdInserirTodosObservacao"
-         Tab(3).Control(3).Enabled=   0   'False
+         Tab(3).Control(0)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(1)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(2)=   "CmdInserirObservacao"
+         Tab(3).Control(3)=   "CmdRemoverObservacao"
          Tab(3).Control(4)=   "TDBGridObs2"
-         Tab(3).Control(4).Enabled=   0   'False
          Tab(3).Control(5)=   "TDBGridObs1"
-         Tab(3).Control(5).Enabled=   0   'False
-         Tab(3).Control(6)=   "Label5"
-         Tab(3).Control(6).Enabled=   0   'False
-         Tab(3).Control(7)=   "Label4"
-         Tab(3).Control(7).Enabled=   0   'False
+         Tab(3).Control(6)=   "Label4"
+         Tab(3).Control(7)=   "Label5"
          Tab(3).ControlCount=   8
-         Begin VB.ComboBox CmbInstrucao 
-            Height          =   315
-            ItemData        =   "TelaExpBancaria.frx":093A
-            Left            =   1920
-            List            =   "TelaExpBancaria.frx":0956
-            TabIndex        =   73
-            Top             =   3360
-            Width           =   6615
-         End
-         Begin VB.CommandButton CmdRemoverObservacao 
-            BackColor       =   &H00000000&
-            Caption         =   "<"
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   8.25
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   330
-            Left            =   -70710
-            TabIndex        =   68
-            Top             =   1920
-            Width           =   690
-         End
-         Begin VB.CommandButton CmdInserirObservacao 
-            BackColor       =   &H00000000&
-            Caption         =   ">"
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   8.25
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   330
-            Left            =   -70710
-            TabIndex        =   67
-            Top             =   1440
-            Width           =   690
-         End
-         Begin VB.CommandButton CmdRemoverTodosObservacao 
-            BackColor       =   &H00000000&
-            Caption         =   "<<"
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   8.25
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   330
-            Left            =   -70710
-            TabIndex        =   66
-            Top             =   2880
-            Width           =   690
-         End
-         Begin VB.CommandButton CmdInserirTodosObservacao 
-            BackColor       =   &H00000000&
-            Caption         =   ">>"
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   8.25
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   330
-            Left            =   -70710
-            TabIndex        =   65
-            Top             =   2415
-            Width           =   690
-         End
-         Begin VB.Frame Frame1 
-            Height          =   495
-            Left            =   5880
-            TabIndex        =   62
-            Top             =   2760
-            Width           =   2895
-            Begin VB.TextBox TxtNDiasProtesto 
-               DataMember      =   "l"
-               Height          =   315
-               Left            =   2160
-               MaxLength       =   2
-               TabIndex        =   64
-               Top             =   120
-               Width           =   585
-            End
-            Begin VB.Label Label8 
-               Alignment       =   1  'Right Justify
-               Caption         =   "Nº dias para Protesto:"
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   8.25
-                  Charset         =   0
-                  Weight          =   700
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H00000000&
-               Height          =   315
-               Left            =   120
-               TabIndex        =   63
-               Top             =   120
-               Width           =   1965
-            End
-         End
-         Begin VB.ComboBox CboTipoCobranca 
-            Height          =   315
-            ItemData        =   "TelaExpBancaria.frx":0AB2
-            Left            =   1965
-            List            =   "TelaExpBancaria.frx":0AC2
-            TabIndex        =   7
-            Top             =   2880
-            Width           =   3735
-         End
          Begin VB.CommandButton CmdRemoverEmpreendimento 
             BackColor       =   &H00000000&
             Caption         =   "<"
@@ -484,7 +492,7 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   330
             Left            =   -70830
-            TabIndex        =   31
+            TabIndex        =   37
             Top             =   1770
             Width           =   690
          End
@@ -502,7 +510,7 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   330
             Left            =   -70830
-            TabIndex        =   30
+            TabIndex        =   36
             Top             =   1320
             Width           =   690
          End
@@ -520,7 +528,7 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   330
             Left            =   -70830
-            TabIndex        =   29
+            TabIndex        =   35
             Top             =   2730
             Width           =   690
          End
@@ -538,7 +546,7 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   330
             Left            =   -70830
-            TabIndex        =   28
+            TabIndex        =   34
             Top             =   2280
             Width           =   690
          End
@@ -556,7 +564,7 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   330
             Left            =   -70830
-            TabIndex        =   27
+            TabIndex        =   33
             Top             =   2040
             Width           =   690
          End
@@ -574,7 +582,7 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   330
             Left            =   -70830
-            TabIndex        =   26
+            TabIndex        =   32
             Top             =   1560
             Width           =   690
          End
@@ -592,7 +600,7 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   330
             Left            =   -70830
-            TabIndex        =   25
+            TabIndex        =   31
             Top             =   3000
             Width           =   690
          End
@@ -610,8 +618,80 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   330
             Left            =   -70830
-            TabIndex        =   24
+            TabIndex        =   30
             Top             =   2535
+            Width           =   690
+         End
+         Begin VB.CommandButton CmdInserirTodosObservacao 
+            BackColor       =   &H00000000&
+            Caption         =   ">>"
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   330
+            Left            =   -70830
+            TabIndex        =   29
+            Top             =   2265
+            Width           =   690
+         End
+         Begin VB.CommandButton CmdRemoverTodosObservacao 
+            BackColor       =   &H00000000&
+            Caption         =   "<<"
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   330
+            Left            =   -70830
+            TabIndex        =   28
+            Top             =   2730
+            Width           =   690
+         End
+         Begin VB.CommandButton CmdInserirObservacao 
+            BackColor       =   &H00000000&
+            Caption         =   ">"
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   330
+            Left            =   -70830
+            TabIndex        =   27
+            Top             =   1290
+            Width           =   690
+         End
+         Begin VB.CommandButton CmdRemoverObservacao 
+            BackColor       =   &H00000000&
+            Caption         =   "<"
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   330
+            Left            =   -70830
+            TabIndex        =   26
+            Top             =   1770
             Width           =   690
          End
          Begin VB.Frame FraCorrecao 
@@ -627,7 +707,7 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   630
             Left            =   -74760
-            TabIndex        =   20
+            TabIndex        =   22
             Top             =   420
             Width           =   4995
             Begin VB.OptionButton OptIndexador2 
@@ -643,7 +723,7 @@ Begin VB.Form TelaExpBancaria
                EndProperty
                Height          =   375
                Left            =   3480
-               TabIndex        =   23
+               TabIndex        =   25
                Top             =   225
                Width           =   1395
             End
@@ -660,7 +740,7 @@ Begin VB.Form TelaExpBancaria
                EndProperty
                Height          =   375
                Left            =   1920
-               TabIndex        =   22
+               TabIndex        =   24
                Top             =   225
                Value           =   -1  'True
                Width           =   1335
@@ -678,36 +758,43 @@ Begin VB.Form TelaExpBancaria
                EndProperty
                Height          =   255
                Left            =   180
-               TabIndex        =   21
+               TabIndex        =   23
                Top             =   285
                Width           =   1575
             End
          End
          Begin VB.ComboBox CboNaturezasPlanos 
             Height          =   315
-            ItemData        =   "TelaExpBancaria.frx":0B60
+            ItemData        =   "TelaEmissaoBoletos.frx":093A
             Left            =   1965
-            List            =   "TelaExpBancaria.frx":0B76
+            List            =   "TelaEmissaoBoletos.frx":0950
             Style           =   2  'Dropdown List
             TabIndex        =   3
             Top             =   1245
             Width           =   3165
          End
-         Begin VB.TextBox TxtMensagem2 
+         Begin VB.TextBox TxtInstrucao2 
             Height          =   315
             Left            =   1965
-            MaxLength       =   60
-            TabIndex        =   6
-            ToolTipText     =   "Mensagem a ser impressa no Boleto."
+            MaxLength       =   2
+            TabIndex        =   7
             Top             =   2475
-            Width           =   6810
+            Width           =   345
+         End
+         Begin VB.TextBox TxtInstrucao1 
+            Height          =   315
+            Left            =   1965
+            MaxLength       =   2
+            TabIndex        =   5
+            Top             =   2100
+            Width           =   345
          End
          Begin VB.Frame FraDesagio 
             Height          =   615
-            Left            =   1200
-            TabIndex        =   19
-            Top             =   3720
-            Width           =   3345
+            Left            =   855
+            TabIndex        =   20
+            Top             =   3240
+            Width           =   7185
             Begin VB.CheckBox ChkJuros 
                Alignment       =   1  'Right Justify
                Caption         =   "Deseja cobrar juros de Mora?"
@@ -727,20 +814,46 @@ Begin VB.Form TelaExpBancaria
                Value           =   1  'Checked
                Width           =   2850
             End
+            Begin VB.TextBox TxtPrzMora 
+               Height          =   315
+               Left            =   6030
+               MaxLength       =   5
+               TabIndex        =   9
+               Top             =   195
+               Width           =   585
+            End
+            Begin VB.Label LblPrzMora 
+               Alignment       =   1  'Right Justify
+               Caption         =   "Prazo de Mora:"
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H00000000&
+               Height          =   315
+               Left            =   4620
+               TabIndex        =   21
+               Top             =   240
+               Width           =   1365
+            End
          End
          Begin VB.TextBox TxtMensagem1 
             Height          =   315
-            Left            =   1965
-            MaxLength       =   12
-            TabIndex        =   5
-            ToolTipText     =   $"TelaExpBancaria.frx":0BB1
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   6
             Top             =   2100
-            Width           =   6780
+            Width           =   6375
          End
          Begin TrueDBGrid70.TDBGrid TDBGridEmpr2 
             Height          =   2625
             Left            =   -69960
-            TabIndex        =   32
+            TabIndex        =   38
             Top             =   780
             Width           =   3705
             _ExtentX        =   6535
@@ -774,7 +887,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
             Splits(0)._ColumnProps(7)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(8)=   "Column(0).FetchStyle=1"
             Splits(0)._ColumnProps(9)=   "Column(0).AllowFocus=0"
@@ -784,12 +897,151 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(13)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(14)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(15)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=1057296"
+            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=74256"
             Splits(0)._ColumnProps(17)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(18)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(19)=   "Column(1).AllowFocus=0"
             Splits(0)._ColumnProps(20)=   "Column(1).Order=2"
             Splits(0)._ColumnProps(21)=   "Column(1)._MinWidth=80"
+            Splits.Count    =   1
+            PrintInfos(0)._StateFlags=   3
+            PrintInfos(0).Name=   "piInternal 0"
+            PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=0,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+            PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=0,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+            PrintInfos(0).PageHeaderHeight=   0
+            PrintInfos(0).PageFooterHeight=   0
+            PrintInfos.Count=   1
+            DataMode        =   4
+            DefColWidth     =   0
+            HeadLines       =   2
+            FootLines       =   1
+            MultipleLines   =   0
+            CellTipsWidth   =   0
+            DeadAreaBackColor=   12632256
+            RowDividerColor =   12632256
+            RowSubDividerColor=   12632256
+            DirectionAfterEnter=   1
+            MaxRows         =   250000
+            _PropDict       =   "_ExtentX,2003,3;_ExtentY,2004,3;_LayoutType,512,2;_RowHeight,16,3;_StyleDefs,513,0;_WasPersistedAsPixels,516,2"
+            _StyleDefs(0)   =   "_StyleRoot:id=0,.parent=-1,.alignment=0,.valignment=0,.bgcolor=&H80000005&"
+            _StyleDefs(1)   =   ":id=0,.fgcolor=&H80000008&,.wraptext=0,.locked=0,.transparentBmp=0"
+            _StyleDefs(2)   =   ":id=0,.fgpicPosition=0,.bgpicMode=0,.appearance=0,.borderSize=0,.ellipsis=0"
+            _StyleDefs(3)   =   ":id=0,.borderColor=&H80000005&,.borderType=0,.bold=0,.fontsize=825,.italic=0"
+            _StyleDefs(4)   =   ":id=0,.underline=0,.strikethrough=0,.charset=0"
+            _StyleDefs(5)   =   ":id=0,.fontname=MS Sans Serif"
+            _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.bgcolor=&H8000000E&,.fgcolor=&H0&"
+            _StyleDefs(7)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
+            _StyleDefs(8)   =   "HeadingStyle:id=2,.parent=1,.namedParent=34"
+            _StyleDefs(9)   =   "FooterStyle:id=3,.parent=1,.namedParent=35"
+            _StyleDefs(10)  =   "InactiveStyle:id=5,.parent=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+            _StyleDefs(11)  =   "SelectedStyle:id=6,.parent=1,.namedParent=36"
+            _StyleDefs(12)  =   "EditorStyle:id=7,.parent=1"
+            _StyleDefs(13)  =   "HighlightRowStyle:id=8,.parent=1,.namedParent=38"
+            _StyleDefs(14)  =   "EvenRowStyle:id=9,.parent=1,.namedParent=39"
+            _StyleDefs(15)  =   "OddRowStyle:id=10,.parent=1,.namedParent=40"
+            _StyleDefs(16)  =   "RecordSelectorStyle:id=11,.parent=2,.namedParent=41"
+            _StyleDefs(17)  =   "FilterBarStyle:id=12,.parent=1,.namedParent=42"
+            _StyleDefs(18)  =   "Splits(0).Style:id=21,.parent=1,.valignment=2,.wraptext=-1"
+            _StyleDefs(19)  =   "Splits(0).CaptionStyle:id=80,.parent=4"
+            _StyleDefs(20)  =   "Splits(0).HeadingStyle:id=22,.parent=2"
+            _StyleDefs(21)  =   "Splits(0).FooterStyle:id=23,.parent=3"
+            _StyleDefs(22)  =   "Splits(0).InactiveStyle:id=24,.parent=5"
+            _StyleDefs(23)  =   "Splits(0).SelectedStyle:id=76,.parent=6"
+            _StyleDefs(24)  =   "Splits(0).EditorStyle:id=75,.parent=7"
+            _StyleDefs(25)  =   "Splits(0).HighlightRowStyle:id=77,.parent=8,.bgcolor=&H800000&"
+            _StyleDefs(26)  =   "Splits(0).EvenRowStyle:id=78,.parent=9"
+            _StyleDefs(27)  =   "Splits(0).OddRowStyle:id=79,.parent=10"
+            _StyleDefs(28)  =   "Splits(0).RecordSelectorStyle:id=81,.parent=11"
+            _StyleDefs(29)  =   "Splits(0).FilterBarStyle:id=82,.parent=12"
+            _StyleDefs(30)  =   "Splits(0).Columns(0).Style:id=32,.parent=21,.alignment=0"
+            _StyleDefs(31)  =   "Splits(0).Columns(0).HeadingStyle:id=29,.parent=22,.alignment=2,.bold=-1"
+            _StyleDefs(32)  =   ":id=29,.fontsize=825,.italic=0,.underline=0,.strikethrough=0,.charset=0"
+            _StyleDefs(33)  =   ":id=29,.fontname=MS Sans Serif"
+            _StyleDefs(34)  =   "Splits(0).Columns(0).FooterStyle:id=30,.parent=23"
+            _StyleDefs(35)  =   "Splits(0).Columns(0).EditorStyle:id=31,.parent=75"
+            _StyleDefs(36)  =   "Splits(0).Columns(1).Style:id=86,.parent=21,.alignment=0,.valignment=2"
+            _StyleDefs(37)  =   ":id=86,.wraptext=-1,.locked=-1"
+            _StyleDefs(38)  =   "Splits(0).Columns(1).HeadingStyle:id=83,.parent=22,.alignment=2,.bold=-1"
+            _StyleDefs(39)  =   ":id=83,.fontsize=825,.italic=0,.underline=0,.strikethrough=0,.charset=0"
+            _StyleDefs(40)  =   ":id=83,.fontname=MS Sans Serif"
+            _StyleDefs(41)  =   "Splits(0).Columns(1).FooterStyle:id=84,.parent=23"
+            _StyleDefs(42)  =   "Splits(0).Columns(1).EditorStyle:id=85,.parent=75"
+            _StyleDefs(43)  =   "Named:id=33:Normal"
+            _StyleDefs(44)  =   ":id=33,.parent=0"
+            _StyleDefs(45)  =   "Named:id=34:Heading"
+            _StyleDefs(46)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+            _StyleDefs(47)  =   ":id=34,.wraptext=-1"
+            _StyleDefs(48)  =   "Named:id=35:Footing"
+            _StyleDefs(49)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+            _StyleDefs(50)  =   "Named:id=36:Selected"
+            _StyleDefs(51)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+            _StyleDefs(52)  =   "Named:id=37:Caption"
+            _StyleDefs(53)  =   ":id=37,.parent=34,.alignment=2"
+            _StyleDefs(54)  =   "Named:id=38:HighlightRow"
+            _StyleDefs(55)  =   ":id=38,.parent=33,.bgcolor=&H80000008&,.fgcolor=&H80000005&"
+            _StyleDefs(56)  =   "Named:id=39:EvenRow"
+            _StyleDefs(57)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
+            _StyleDefs(58)  =   "Named:id=40:OddRow"
+            _StyleDefs(59)  =   ":id=40,.parent=33"
+            _StyleDefs(60)  =   "Named:id=41:RecordSelector"
+            _StyleDefs(61)  =   ":id=41,.parent=34"
+            _StyleDefs(62)  =   "Named:id=42:FilterBar"
+            _StyleDefs(63)  =   ":id=42,.parent=33"
+         End
+         Begin TrueDBGrid70.TDBGrid TDBGridObs2 
+            Height          =   2565
+            Left            =   -69960
+            TabIndex        =   39
+            Top             =   840
+            Width           =   3705
+            _ExtentX        =   6535
+            _ExtentY        =   4524
+            _LayoutType     =   4
+            _RowHeight      =   25
+            _WasPersistedAsPixels=   0
+            Columns(0)._VlistStyle=   0
+            Columns(0)._MaxComboItems=   5
+            Columns(0).Caption=   "Codigo"
+            Columns(0).DataField=   ""
+            Columns(0)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+            Columns(1)._VlistStyle=   0
+            Columns(1)._MaxComboItems=   5
+            Columns(1).Caption=   "Observação"
+            Columns(1).DataField=   ""
+            Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+            Columns.Count   =   2
+            Splits(0)._UserFlags=   0
+            Splits(0).ExtendRightColumn=   -1  'True
+            Splits(0).Locked=   -1  'True
+            Splits(0).MarqueeStyle=   3
+            Splits(0).RecordSelectorWidth=   503
+            Splits(0).AllowColMove=   -1  'True
+            Splits(0).DividerColor=   12632256
+            Splits(0).SpringMode=   0   'False
+            Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
+            Splits(0)._ColumnProps(0)=   "Columns.Count=2"
+            Splits(0)._ColumnProps(1)=   "Column(0).Width=1244"
+            Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
+            Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
+            Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
+            Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
+            Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
+            Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
+            Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
+            Splits(0)._ColumnProps(10)=   "Column(0).AllowFocus=0"
+            Splits(0)._ColumnProps(11)=   "Column(0).Order=1"
+            Splits(0)._ColumnProps(12)=   "Column(0)._MinWidth=80"
+            Splits(0)._ColumnProps(13)=   "Column(1).Width=1296"
+            Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
+            Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
+            Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
+            Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
+            Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
+            Splits(0)._ColumnProps(21)=   "Column(1).Order=2"
+            Splits(0)._ColumnProps(22)=   "Column(1)._MinWidth=80"
             Splits.Count    =   1
             PrintInfos(0)._StateFlags=   3
             PrintInfos(0).Name=   "piInternal 0"
@@ -885,7 +1137,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   84606979
+            Format          =   143130627
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -898,24 +1150,24 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   84606979
+            Format          =   143130627
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
             Height          =   315
             Left            =   5160
-            TabIndex        =   33
+            TabIndex        =   40
             Top             =   840
             Width           =   315
             _Version        =   65536
             _ExtentX        =   556
             _ExtentY        =   556
             _StockProps     =   78
-            MouseIcon       =   "TelaExpBancaria.frx":0C3E
-            Picture         =   "TelaExpBancaria.frx":0C5A
+            MouseIcon       =   "TelaEmissaoBoletos.frx":098B
+            Picture         =   "TelaEmissaoBoletos.frx":09A7
          End
          Begin MSDataListLib.DataCombo CboTiposPlanos 
-            Bindings        =   "TelaExpBancaria.frx":0D6C
+            Bindings        =   "TelaEmissaoBoletos.frx":0AB9
             Height          =   315
             Left            =   1965
             TabIndex        =   2
@@ -932,18 +1184,18 @@ Begin VB.Form TelaExpBancaria
          Begin Threed.SSCommand CmdLimparNaturezaPlano 
             Height          =   315
             Left            =   5160
-            TabIndex        =   34
+            TabIndex        =   41
             Top             =   1245
             Width           =   315
             _Version        =   65536
             _ExtentX        =   556
             _ExtentY        =   556
             _StockProps     =   78
-            MouseIcon       =   "TelaExpBancaria.frx":0D87
-            Picture         =   "TelaExpBancaria.frx":0DA3
+            MouseIcon       =   "TelaEmissaoBoletos.frx":0AD4
+            Picture         =   "TelaEmissaoBoletos.frx":0AF0
          End
          Begin MSDataListLib.DataCombo CboCCorrente 
-            Bindings        =   "TelaExpBancaria.frx":0EB5
+            Bindings        =   "TelaEmissaoBoletos.frx":0C02
             Height          =   330
             Left            =   1965
             TabIndex        =   4
@@ -954,7 +1206,7 @@ Begin VB.Form TelaExpBancaria
             _Version        =   393216
             MatchEntry      =   -1  'True
             Style           =   2
-            ListField       =   "DESCCOMBO"
+            ListField       =   "desccombo"
             BoundColumn     =   "coco_cd_codigo"
             Text            =   ""
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -969,11 +1221,11 @@ Begin VB.Form TelaExpBancaria
          End
          Begin MSAdodcLib.Adodc DatContaCorrente 
             Height          =   330
-            Left            =   5820
-            Top             =   1260
+            Left            =   6360
+            Top             =   1080
             Visible         =   0   'False
-            Width           =   2475
-            _ExtentX        =   4366
+            Width           =   1755
+            _ExtentX        =   3096
             _ExtentY        =   582
             ConnectMode     =   0
             CursorLocation  =   3
@@ -1016,8 +1268,8 @@ Begin VB.Form TelaExpBancaria
          End
          Begin MSAdodcLib.Adodc DatTipoPlano 
             Height          =   330
-            Left            =   7620
-            Top             =   840
+            Left            =   6360
+            Top             =   360
             Visible         =   0   'False
             Width           =   1725
             _ExtentX        =   3043
@@ -1063,11 +1315,11 @@ Begin VB.Form TelaExpBancaria
          End
          Begin MSAdodcLib.Adodc DatObs 
             Height          =   330
-            Left            =   5760
-            Top             =   900
+            Left            =   6360
+            Top             =   720
             Visible         =   0   'False
-            Width           =   1665
-            _ExtentX        =   2937
+            Width           =   1785
+            _ExtentX        =   3149
             _ExtentY        =   582
             ConnectMode     =   0
             CursorLocation  =   3
@@ -1111,7 +1363,7 @@ Begin VB.Form TelaExpBancaria
          Begin TrueDBGrid70.TDBGrid TDBGridEmpr1 
             Height          =   2625
             Left            =   -74760
-            TabIndex        =   47
+            TabIndex        =   56
             Top             =   780
             Width           =   3705
             _ExtentX        =   6535
@@ -1145,7 +1397,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
             Splits(0)._ColumnProps(7)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(8)=   "Column(0).FetchStyle=1"
             Splits(0)._ColumnProps(9)=   "Column(0).AllowFocus=0"
@@ -1155,7 +1407,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(13)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(14)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(15)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=1057296"
+            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=74256"
             Splits(0)._ColumnProps(17)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(18)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(19)=   "Column(1).AllowFocus=0"
@@ -1249,7 +1501,7 @@ Begin VB.Form TelaExpBancaria
          Begin TrueDBGrid70.TDBGrid TDBGridMoeda1 
             Height          =   1965
             Left            =   -74760
-            TabIndex        =   48
+            TabIndex        =   57
             Top             =   1440
             Width           =   3705
             _ExtentX        =   6535
@@ -1283,7 +1535,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -1294,7 +1546,146 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
+            Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
+            Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
+            Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
+            Splits(0)._ColumnProps(21)=   "Column(1).Order=2"
+            Splits(0)._ColumnProps(22)=   "Column(1)._MinWidth=80"
+            Splits.Count    =   1
+            PrintInfos(0)._StateFlags=   3
+            PrintInfos(0).Name=   "piInternal 0"
+            PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=0,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+            PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=0,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+            PrintInfos(0).PageHeaderHeight=   0
+            PrintInfos(0).PageFooterHeight=   0
+            PrintInfos.Count=   1
+            DataMode        =   4
+            DefColWidth     =   0
+            HeadLines       =   2
+            FootLines       =   1
+            MultipleLines   =   0
+            CellTipsWidth   =   0
+            DeadAreaBackColor=   12632256
+            RowDividerColor =   12632256
+            RowSubDividerColor=   12632256
+            DirectionAfterEnter=   1
+            MaxRows         =   250000
+            _PropDict       =   "_ExtentX,2003,3;_ExtentY,2004,3;_LayoutType,512,2;_RowHeight,16,3;_StyleDefs,513,0;_WasPersistedAsPixels,516,2"
+            _StyleDefs(0)   =   "_StyleRoot:id=0,.parent=-1,.alignment=0,.valignment=0,.bgcolor=&H80000005&"
+            _StyleDefs(1)   =   ":id=0,.fgcolor=&H80000008&,.wraptext=0,.locked=0,.transparentBmp=0"
+            _StyleDefs(2)   =   ":id=0,.fgpicPosition=0,.bgpicMode=0,.appearance=0,.borderSize=0,.ellipsis=0"
+            _StyleDefs(3)   =   ":id=0,.borderColor=&H80000005&,.borderType=0,.bold=0,.fontsize=825,.italic=0"
+            _StyleDefs(4)   =   ":id=0,.underline=0,.strikethrough=0,.charset=0"
+            _StyleDefs(5)   =   ":id=0,.fontname=MS Sans Serif"
+            _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.bgcolor=&H8000000E&,.fgcolor=&H0&"
+            _StyleDefs(7)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
+            _StyleDefs(8)   =   "HeadingStyle:id=2,.parent=1,.namedParent=34"
+            _StyleDefs(9)   =   "FooterStyle:id=3,.parent=1,.namedParent=35"
+            _StyleDefs(10)  =   "InactiveStyle:id=5,.parent=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+            _StyleDefs(11)  =   "SelectedStyle:id=6,.parent=1,.namedParent=36"
+            _StyleDefs(12)  =   "EditorStyle:id=7,.parent=1"
+            _StyleDefs(13)  =   "HighlightRowStyle:id=8,.parent=1,.namedParent=38"
+            _StyleDefs(14)  =   "EvenRowStyle:id=9,.parent=1,.namedParent=39"
+            _StyleDefs(15)  =   "OddRowStyle:id=10,.parent=1,.namedParent=40"
+            _StyleDefs(16)  =   "RecordSelectorStyle:id=11,.parent=2,.namedParent=41"
+            _StyleDefs(17)  =   "FilterBarStyle:id=12,.parent=1,.namedParent=42"
+            _StyleDefs(18)  =   "Splits(0).Style:id=21,.parent=1,.valignment=2,.wraptext=-1"
+            _StyleDefs(19)  =   "Splits(0).CaptionStyle:id=80,.parent=4"
+            _StyleDefs(20)  =   "Splits(0).HeadingStyle:id=22,.parent=2"
+            _StyleDefs(21)  =   "Splits(0).FooterStyle:id=23,.parent=3"
+            _StyleDefs(22)  =   "Splits(0).InactiveStyle:id=24,.parent=5"
+            _StyleDefs(23)  =   "Splits(0).SelectedStyle:id=76,.parent=6"
+            _StyleDefs(24)  =   "Splits(0).EditorStyle:id=75,.parent=7"
+            _StyleDefs(25)  =   "Splits(0).HighlightRowStyle:id=77,.parent=8,.bgcolor=&H800000&"
+            _StyleDefs(26)  =   "Splits(0).EvenRowStyle:id=78,.parent=9"
+            _StyleDefs(27)  =   "Splits(0).OddRowStyle:id=79,.parent=10"
+            _StyleDefs(28)  =   "Splits(0).RecordSelectorStyle:id=81,.parent=11"
+            _StyleDefs(29)  =   "Splits(0).FilterBarStyle:id=82,.parent=12"
+            _StyleDefs(30)  =   "Splits(0).Columns(0).Style:id=32,.parent=21,.alignment=0"
+            _StyleDefs(31)  =   "Splits(0).Columns(0).HeadingStyle:id=29,.parent=22,.alignment=2,.bold=-1"
+            _StyleDefs(32)  =   ":id=29,.fontsize=825,.italic=0,.underline=0,.strikethrough=0,.charset=0"
+            _StyleDefs(33)  =   ":id=29,.fontname=MS Sans Serif"
+            _StyleDefs(34)  =   "Splits(0).Columns(0).FooterStyle:id=30,.parent=23"
+            _StyleDefs(35)  =   "Splits(0).Columns(0).EditorStyle:id=31,.parent=75"
+            _StyleDefs(36)  =   "Splits(0).Columns(1).Style:id=86,.parent=21,.alignment=0,.valignment=2"
+            _StyleDefs(37)  =   ":id=86,.wraptext=-1,.locked=-1"
+            _StyleDefs(38)  =   "Splits(0).Columns(1).HeadingStyle:id=83,.parent=22,.alignment=2,.bold=-1"
+            _StyleDefs(39)  =   ":id=83,.fontsize=825,.italic=0,.underline=0,.strikethrough=0,.charset=0"
+            _StyleDefs(40)  =   ":id=83,.fontname=MS Sans Serif"
+            _StyleDefs(41)  =   "Splits(0).Columns(1).FooterStyle:id=84,.parent=23"
+            _StyleDefs(42)  =   "Splits(0).Columns(1).EditorStyle:id=85,.parent=75"
+            _StyleDefs(43)  =   "Named:id=33:Normal"
+            _StyleDefs(44)  =   ":id=33,.parent=0"
+            _StyleDefs(45)  =   "Named:id=34:Heading"
+            _StyleDefs(46)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+            _StyleDefs(47)  =   ":id=34,.wraptext=-1"
+            _StyleDefs(48)  =   "Named:id=35:Footing"
+            _StyleDefs(49)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+            _StyleDefs(50)  =   "Named:id=36:Selected"
+            _StyleDefs(51)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+            _StyleDefs(52)  =   "Named:id=37:Caption"
+            _StyleDefs(53)  =   ":id=37,.parent=34,.alignment=2"
+            _StyleDefs(54)  =   "Named:id=38:HighlightRow"
+            _StyleDefs(55)  =   ":id=38,.parent=33,.bgcolor=&H80000008&,.fgcolor=&H80000005&"
+            _StyleDefs(56)  =   "Named:id=39:EvenRow"
+            _StyleDefs(57)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
+            _StyleDefs(58)  =   "Named:id=40:OddRow"
+            _StyleDefs(59)  =   ":id=40,.parent=33"
+            _StyleDefs(60)  =   "Named:id=41:RecordSelector"
+            _StyleDefs(61)  =   ":id=41,.parent=34"
+            _StyleDefs(62)  =   "Named:id=42:FilterBar"
+            _StyleDefs(63)  =   ":id=42,.parent=33"
+         End
+         Begin TrueDBGrid70.TDBGrid TDBGridObs1 
+            Height          =   2565
+            Left            =   -74745
+            TabIndex        =   58
+            Top             =   855
+            Width           =   3705
+            _ExtentX        =   6535
+            _ExtentY        =   4524
+            _LayoutType     =   4
+            _RowHeight      =   25
+            _WasPersistedAsPixels=   0
+            Columns(0)._VlistStyle=   0
+            Columns(0)._MaxComboItems=   5
+            Columns(0).Caption=   "Codigo"
+            Columns(0).DataField=   ""
+            Columns(0)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+            Columns(1)._VlistStyle=   0
+            Columns(1)._MaxComboItems=   5
+            Columns(1).Caption=   "Observação"
+            Columns(1).DataField=   ""
+            Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
+            Columns.Count   =   2
+            Splits(0)._UserFlags=   0
+            Splits(0).ExtendRightColumn=   -1  'True
+            Splits(0).Locked=   -1  'True
+            Splits(0).MarqueeStyle=   3
+            Splits(0).RecordSelectorWidth=   503
+            Splits(0).AllowColMove=   -1  'True
+            Splits(0).DividerColor=   12632256
+            Splits(0).SpringMode=   0   'False
+            Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
+            Splits(0)._ColumnProps(0)=   "Columns.Count=2"
+            Splits(0)._ColumnProps(1)=   "Column(0).Width=1244"
+            Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
+            Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
+            Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
+            Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
+            Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
+            Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
+            Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
+            Splits(0)._ColumnProps(10)=   "Column(0).AllowFocus=0"
+            Splits(0)._ColumnProps(11)=   "Column(0).Order=1"
+            Splits(0)._ColumnProps(12)=   "Column(0)._MinWidth=80"
+            Splits(0)._ColumnProps(13)=   "Column(1).Width=1296"
+            Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
+            Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
+            Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -1388,7 +1779,7 @@ Begin VB.Form TelaExpBancaria
          Begin TrueDBGrid70.TDBGrid TDBGridMoeda2 
             Height          =   1965
             Left            =   -69960
-            TabIndex        =   60
+            TabIndex        =   70
             Top             =   1440
             Width           =   3705
             _ExtentX        =   6535
@@ -1422,7 +1813,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -1433,7 +1824,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -1524,341 +1915,94 @@ Begin VB.Form TelaExpBancaria
             _StyleDefs(62)  =   "Named:id=42:FilterBar"
             _StyleDefs(63)  =   ":id=42,.parent=33"
          End
-         Begin TrueDBGrid70.TDBGrid TDBGridObs2 
-            Height          =   2565
-            Left            =   -69840
-            TabIndex        =   69
-            Top             =   990
-            Width           =   3705
-            _ExtentX        =   6535
-            _ExtentY        =   4524
-            _LayoutType     =   4
-            _RowHeight      =   25
-            _WasPersistedAsPixels=   0
-            Columns(0)._VlistStyle=   0
-            Columns(0)._MaxComboItems=   5
-            Columns(0).Caption=   "Codigo"
-            Columns(0).DataField=   ""
-            Columns(0)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-            Columns(1)._VlistStyle=   0
-            Columns(1)._MaxComboItems=   5
-            Columns(1).Caption=   "Observação"
-            Columns(1).DataField=   ""
-            Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-            Columns.Count   =   2
-            Splits(0)._UserFlags=   0
-            Splits(0).ExtendRightColumn=   -1  'True
-            Splits(0).Locked=   -1  'True
-            Splits(0).MarqueeStyle=   3
-            Splits(0).RecordSelectorWidth=   503
-            Splits(0).AllowColMove=   -1  'True
-            Splits(0).DividerColor=   12632256
-            Splits(0).SpringMode=   0   'False
-            Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
-            Splits(0)._ColumnProps(0)=   "Columns.Count=2"
-            Splits(0)._ColumnProps(1)=   "Column(0).Width=1244"
-            Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
-            Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
-            Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
-            Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
-            Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
-            Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
-            Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
-            Splits(0)._ColumnProps(10)=   "Column(0).AllowFocus=0"
-            Splits(0)._ColumnProps(11)=   "Column(0).Order=1"
-            Splits(0)._ColumnProps(12)=   "Column(0)._MinWidth=80"
-            Splits(0)._ColumnProps(13)=   "Column(1).Width=1296"
-            Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
-            Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
-            Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
-            Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
-            Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
-            Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
-            Splits(0)._ColumnProps(21)=   "Column(1).Order=2"
-            Splits(0)._ColumnProps(22)=   "Column(1)._MinWidth=80"
-            Splits.Count    =   1
-            PrintInfos(0)._StateFlags=   3
-            PrintInfos(0).Name=   "piInternal 0"
-            PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=0,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-            PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=0,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-            PrintInfos(0).PageHeaderHeight=   0
-            PrintInfos(0).PageFooterHeight=   0
-            PrintInfos.Count=   1
-            DataMode        =   4
-            DefColWidth     =   0
-            HeadLines       =   2
-            FootLines       =   1
-            MultipleLines   =   0
-            CellTipsWidth   =   0
-            DeadAreaBackColor=   12632256
-            RowDividerColor =   12632256
-            RowSubDividerColor=   12632256
-            DirectionAfterEnter=   1
-            MaxRows         =   250000
-            _PropDict       =   "_ExtentX,2003,3;_ExtentY,2004,3;_LayoutType,512,2;_RowHeight,16,3;_StyleDefs,513,0;_WasPersistedAsPixels,516,2"
-            _StyleDefs(0)   =   "_StyleRoot:id=0,.parent=-1,.alignment=0,.valignment=0,.bgcolor=&H80000005&"
-            _StyleDefs(1)   =   ":id=0,.fgcolor=&H80000008&,.wraptext=0,.locked=0,.transparentBmp=0"
-            _StyleDefs(2)   =   ":id=0,.fgpicPosition=0,.bgpicMode=0,.appearance=0,.borderSize=0,.ellipsis=0"
-            _StyleDefs(3)   =   ":id=0,.borderColor=&H80000005&,.borderType=0,.bold=0,.fontsize=825,.italic=0"
-            _StyleDefs(4)   =   ":id=0,.underline=0,.strikethrough=0,.charset=0"
-            _StyleDefs(5)   =   ":id=0,.fontname=MS Sans Serif"
-            _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.bgcolor=&H8000000E&,.fgcolor=&H0&"
-            _StyleDefs(7)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
-            _StyleDefs(8)   =   "HeadingStyle:id=2,.parent=1,.namedParent=34"
-            _StyleDefs(9)   =   "FooterStyle:id=3,.parent=1,.namedParent=35"
-            _StyleDefs(10)  =   "InactiveStyle:id=5,.parent=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-            _StyleDefs(11)  =   "SelectedStyle:id=6,.parent=1,.namedParent=36"
-            _StyleDefs(12)  =   "EditorStyle:id=7,.parent=1"
-            _StyleDefs(13)  =   "HighlightRowStyle:id=8,.parent=1,.namedParent=38"
-            _StyleDefs(14)  =   "EvenRowStyle:id=9,.parent=1,.namedParent=39"
-            _StyleDefs(15)  =   "OddRowStyle:id=10,.parent=1,.namedParent=40"
-            _StyleDefs(16)  =   "RecordSelectorStyle:id=11,.parent=2,.namedParent=41"
-            _StyleDefs(17)  =   "FilterBarStyle:id=12,.parent=1,.namedParent=42"
-            _StyleDefs(18)  =   "Splits(0).Style:id=21,.parent=1,.valignment=2,.wraptext=-1"
-            _StyleDefs(19)  =   "Splits(0).CaptionStyle:id=80,.parent=4"
-            _StyleDefs(20)  =   "Splits(0).HeadingStyle:id=22,.parent=2"
-            _StyleDefs(21)  =   "Splits(0).FooterStyle:id=23,.parent=3"
-            _StyleDefs(22)  =   "Splits(0).InactiveStyle:id=24,.parent=5"
-            _StyleDefs(23)  =   "Splits(0).SelectedStyle:id=76,.parent=6"
-            _StyleDefs(24)  =   "Splits(0).EditorStyle:id=75,.parent=7"
-            _StyleDefs(25)  =   "Splits(0).HighlightRowStyle:id=77,.parent=8,.bgcolor=&H800000&"
-            _StyleDefs(26)  =   "Splits(0).EvenRowStyle:id=78,.parent=9"
-            _StyleDefs(27)  =   "Splits(0).OddRowStyle:id=79,.parent=10"
-            _StyleDefs(28)  =   "Splits(0).RecordSelectorStyle:id=81,.parent=11"
-            _StyleDefs(29)  =   "Splits(0).FilterBarStyle:id=82,.parent=12"
-            _StyleDefs(30)  =   "Splits(0).Columns(0).Style:id=32,.parent=21,.alignment=0"
-            _StyleDefs(31)  =   "Splits(0).Columns(0).HeadingStyle:id=29,.parent=22,.alignment=2,.bold=-1"
-            _StyleDefs(32)  =   ":id=29,.fontsize=825,.italic=0,.underline=0,.strikethrough=0,.charset=0"
-            _StyleDefs(33)  =   ":id=29,.fontname=MS Sans Serif"
-            _StyleDefs(34)  =   "Splits(0).Columns(0).FooterStyle:id=30,.parent=23"
-            _StyleDefs(35)  =   "Splits(0).Columns(0).EditorStyle:id=31,.parent=75"
-            _StyleDefs(36)  =   "Splits(0).Columns(1).Style:id=86,.parent=21,.alignment=0,.valignment=2"
-            _StyleDefs(37)  =   ":id=86,.wraptext=-1,.locked=-1"
-            _StyleDefs(38)  =   "Splits(0).Columns(1).HeadingStyle:id=83,.parent=22,.alignment=2,.bold=-1"
-            _StyleDefs(39)  =   ":id=83,.fontsize=825,.italic=0,.underline=0,.strikethrough=0,.charset=0"
-            _StyleDefs(40)  =   ":id=83,.fontname=MS Sans Serif"
-            _StyleDefs(41)  =   "Splits(0).Columns(1).FooterStyle:id=84,.parent=23"
-            _StyleDefs(42)  =   "Splits(0).Columns(1).EditorStyle:id=85,.parent=75"
-            _StyleDefs(43)  =   "Named:id=33:Normal"
-            _StyleDefs(44)  =   ":id=33,.parent=0"
-            _StyleDefs(45)  =   "Named:id=34:Heading"
-            _StyleDefs(46)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-            _StyleDefs(47)  =   ":id=34,.wraptext=-1"
-            _StyleDefs(48)  =   "Named:id=35:Footing"
-            _StyleDefs(49)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-            _StyleDefs(50)  =   "Named:id=36:Selected"
-            _StyleDefs(51)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-            _StyleDefs(52)  =   "Named:id=37:Caption"
-            _StyleDefs(53)  =   ":id=37,.parent=34,.alignment=2"
-            _StyleDefs(54)  =   "Named:id=38:HighlightRow"
-            _StyleDefs(55)  =   ":id=38,.parent=33,.bgcolor=&H80000008&,.fgcolor=&H80000005&"
-            _StyleDefs(56)  =   "Named:id=39:EvenRow"
-            _StyleDefs(57)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
-            _StyleDefs(58)  =   "Named:id=40:OddRow"
-            _StyleDefs(59)  =   ":id=40,.parent=33"
-            _StyleDefs(60)  =   "Named:id=41:RecordSelector"
-            _StyleDefs(61)  =   ":id=41,.parent=34"
-            _StyleDefs(62)  =   "Named:id=42:FilterBar"
-            _StyleDefs(63)  =   ":id=42,.parent=33"
+         Begin MSDataListLib.DataCombo cboSacadorAvalista 
+            Bindings        =   "TelaEmissaoBoletos.frx":0C21
+            Height          =   330
+            Left            =   1965
+            TabIndex        =   72
+            Top             =   2880
+            Width           =   6330
+            _ExtentX        =   11165
+            _ExtentY        =   582
+            _Version        =   393216
+            MatchEntry      =   -1  'True
+            Style           =   2
+            ListField       =   "empr_tx_razaosocial"
+            BoundColumn     =   "empr_cd_empresa"
+            Text            =   ""
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Courier New"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
          End
-         Begin TrueDBGrid70.TDBGrid TDBGridObs1 
-            Height          =   2565
-            Left            =   -74640
-            TabIndex        =   70
-            Top             =   990
-            Width           =   3705
-            _ExtentX        =   6535
-            _ExtentY        =   4524
-            _LayoutType     =   4
-            _RowHeight      =   25
-            _WasPersistedAsPixels=   0
-            Columns(0)._VlistStyle=   0
-            Columns(0)._MaxComboItems=   5
-            Columns(0).Caption=   "Codigo"
-            Columns(0).DataField=   ""
-            Columns(0)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-            Columns(1)._VlistStyle=   0
-            Columns(1)._MaxComboItems=   5
-            Columns(1).Caption=   "Observação"
-            Columns(1).DataField=   ""
-            Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-            Columns.Count   =   2
-            Splits(0)._UserFlags=   0
-            Splits(0).ExtendRightColumn=   -1  'True
-            Splits(0).Locked=   -1  'True
-            Splits(0).MarqueeStyle=   3
-            Splits(0).RecordSelectorWidth=   503
-            Splits(0).AllowColMove=   -1  'True
-            Splits(0).DividerColor=   12632256
-            Splits(0).SpringMode=   0   'False
-            Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
-            Splits(0)._ColumnProps(0)=   "Columns.Count=2"
-            Splits(0)._ColumnProps(1)=   "Column(0).Width=1244"
-            Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
-            Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
-            Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
-            Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
-            Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
-            Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
-            Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
-            Splits(0)._ColumnProps(10)=   "Column(0).AllowFocus=0"
-            Splits(0)._ColumnProps(11)=   "Column(0).Order=1"
-            Splits(0)._ColumnProps(12)=   "Column(0)._MinWidth=80"
-            Splits(0)._ColumnProps(13)=   "Column(1).Width=1296"
-            Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
-            Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
-            Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
-            Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
-            Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
-            Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
-            Splits(0)._ColumnProps(21)=   "Column(1).Order=2"
-            Splits(0)._ColumnProps(22)=   "Column(1)._MinWidth=80"
-            Splits.Count    =   1
-            PrintInfos(0)._StateFlags=   3
-            PrintInfos(0).Name=   "piInternal 0"
-            PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=0,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-            PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=0,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-            PrintInfos(0).PageHeaderHeight=   0
-            PrintInfos(0).PageFooterHeight=   0
-            PrintInfos.Count=   1
-            DataMode        =   4
-            DefColWidth     =   0
-            HeadLines       =   2
-            FootLines       =   1
-            MultipleLines   =   0
-            CellTipsWidth   =   0
-            DeadAreaBackColor=   12632256
-            RowDividerColor =   12632256
-            RowSubDividerColor=   12632256
-            DirectionAfterEnter=   1
-            MaxRows         =   250000
-            _PropDict       =   "_ExtentX,2003,3;_ExtentY,2004,3;_LayoutType,512,2;_RowHeight,16,3;_StyleDefs,513,0;_WasPersistedAsPixels,516,2"
-            _StyleDefs(0)   =   "_StyleRoot:id=0,.parent=-1,.alignment=0,.valignment=0,.bgcolor=&H80000005&"
-            _StyleDefs(1)   =   ":id=0,.fgcolor=&H80000008&,.wraptext=0,.locked=0,.transparentBmp=0"
-            _StyleDefs(2)   =   ":id=0,.fgpicPosition=0,.bgpicMode=0,.appearance=0,.borderSize=0,.ellipsis=0"
-            _StyleDefs(3)   =   ":id=0,.borderColor=&H80000005&,.borderType=0,.bold=0,.fontsize=825,.italic=0"
-            _StyleDefs(4)   =   ":id=0,.underline=0,.strikethrough=0,.charset=0"
-            _StyleDefs(5)   =   ":id=0,.fontname=MS Sans Serif"
-            _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.bgcolor=&H8000000E&,.fgcolor=&H0&"
-            _StyleDefs(7)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
-            _StyleDefs(8)   =   "HeadingStyle:id=2,.parent=1,.namedParent=34"
-            _StyleDefs(9)   =   "FooterStyle:id=3,.parent=1,.namedParent=35"
-            _StyleDefs(10)  =   "InactiveStyle:id=5,.parent=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-            _StyleDefs(11)  =   "SelectedStyle:id=6,.parent=1,.namedParent=36"
-            _StyleDefs(12)  =   "EditorStyle:id=7,.parent=1"
-            _StyleDefs(13)  =   "HighlightRowStyle:id=8,.parent=1,.namedParent=38"
-            _StyleDefs(14)  =   "EvenRowStyle:id=9,.parent=1,.namedParent=39"
-            _StyleDefs(15)  =   "OddRowStyle:id=10,.parent=1,.namedParent=40"
-            _StyleDefs(16)  =   "RecordSelectorStyle:id=11,.parent=2,.namedParent=41"
-            _StyleDefs(17)  =   "FilterBarStyle:id=12,.parent=1,.namedParent=42"
-            _StyleDefs(18)  =   "Splits(0).Style:id=21,.parent=1,.valignment=2,.wraptext=-1"
-            _StyleDefs(19)  =   "Splits(0).CaptionStyle:id=80,.parent=4"
-            _StyleDefs(20)  =   "Splits(0).HeadingStyle:id=22,.parent=2"
-            _StyleDefs(21)  =   "Splits(0).FooterStyle:id=23,.parent=3"
-            _StyleDefs(22)  =   "Splits(0).InactiveStyle:id=24,.parent=5"
-            _StyleDefs(23)  =   "Splits(0).SelectedStyle:id=76,.parent=6"
-            _StyleDefs(24)  =   "Splits(0).EditorStyle:id=75,.parent=7"
-            _StyleDefs(25)  =   "Splits(0).HighlightRowStyle:id=77,.parent=8,.bgcolor=&H800000&"
-            _StyleDefs(26)  =   "Splits(0).EvenRowStyle:id=78,.parent=9"
-            _StyleDefs(27)  =   "Splits(0).OddRowStyle:id=79,.parent=10"
-            _StyleDefs(28)  =   "Splits(0).RecordSelectorStyle:id=81,.parent=11"
-            _StyleDefs(29)  =   "Splits(0).FilterBarStyle:id=82,.parent=12"
-            _StyleDefs(30)  =   "Splits(0).Columns(0).Style:id=32,.parent=21,.alignment=0"
-            _StyleDefs(31)  =   "Splits(0).Columns(0).HeadingStyle:id=29,.parent=22,.alignment=2,.bold=-1"
-            _StyleDefs(32)  =   ":id=29,.fontsize=825,.italic=0,.underline=0,.strikethrough=0,.charset=0"
-            _StyleDefs(33)  =   ":id=29,.fontname=MS Sans Serif"
-            _StyleDefs(34)  =   "Splits(0).Columns(0).FooterStyle:id=30,.parent=23"
-            _StyleDefs(35)  =   "Splits(0).Columns(0).EditorStyle:id=31,.parent=75"
-            _StyleDefs(36)  =   "Splits(0).Columns(1).Style:id=86,.parent=21,.alignment=0,.valignment=2"
-            _StyleDefs(37)  =   ":id=86,.wraptext=-1,.locked=-1"
-            _StyleDefs(38)  =   "Splits(0).Columns(1).HeadingStyle:id=83,.parent=22,.alignment=2,.bold=-1"
-            _StyleDefs(39)  =   ":id=83,.fontsize=825,.italic=0,.underline=0,.strikethrough=0,.charset=0"
-            _StyleDefs(40)  =   ":id=83,.fontname=MS Sans Serif"
-            _StyleDefs(41)  =   "Splits(0).Columns(1).FooterStyle:id=84,.parent=23"
-            _StyleDefs(42)  =   "Splits(0).Columns(1).EditorStyle:id=85,.parent=75"
-            _StyleDefs(43)  =   "Named:id=33:Normal"
-            _StyleDefs(44)  =   ":id=33,.parent=0"
-            _StyleDefs(45)  =   "Named:id=34:Heading"
-            _StyleDefs(46)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-            _StyleDefs(47)  =   ":id=34,.wraptext=-1"
-            _StyleDefs(48)  =   "Named:id=35:Footing"
-            _StyleDefs(49)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-            _StyleDefs(50)  =   "Named:id=36:Selected"
-            _StyleDefs(51)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-            _StyleDefs(52)  =   "Named:id=37:Caption"
-            _StyleDefs(53)  =   ":id=37,.parent=34,.alignment=2"
-            _StyleDefs(54)  =   "Named:id=38:HighlightRow"
-            _StyleDefs(55)  =   ":id=38,.parent=33,.bgcolor=&H80000008&,.fgcolor=&H80000005&"
-            _StyleDefs(56)  =   "Named:id=39:EvenRow"
-            _StyleDefs(57)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
-            _StyleDefs(58)  =   "Named:id=40:OddRow"
-            _StyleDefs(59)  =   ":id=40,.parent=33"
-            _StyleDefs(60)  =   "Named:id=41:RecordSelector"
-            _StyleDefs(61)  =   ":id=41,.parent=34"
-            _StyleDefs(62)  =   "Named:id=42:FilterBar"
-            _StyleDefs(63)  =   ":id=42,.parent=33"
-         End
-         Begin VB.Label LblMensagem1 
-            Caption         =   "Instrução:"
-            BeginProperty Font 
+         Begin MSAdodcLib.Adodc DatEmpresa 
+            Height          =   330
+            Left            =   6360
+            Top             =   1440
+            Visible         =   0   'False
+            Width           =   1785
+            _ExtentX        =   3149
+            _ExtentY        =   582
+            ConnectMode     =   0
+            CursorLocation  =   3
+            IsolationLevel  =   -1
+            ConnectionTimeout=   15
+            CommandTimeout  =   30
+            CursorType      =   3
+            LockType        =   3
+            CommandType     =   8
+            CursorOptions   =   0
+            CacheSize       =   50
+            MaxRecords      =   0
+            BOFAction       =   0
+            EOFAction       =   0
+            ConnectStringType=   1
+            Appearance      =   1
+            BackColor       =   -2147483643
+            ForeColor       =   -2147483640
+            Orientation     =   0
+            Enabled         =   -1
+            Connect         =   ""
+            OLEDBString     =   ""
+            OLEDBFile       =   ""
+            DataSourceName  =   ""
+            OtherAttributes =   ""
+            UserName        =   ""
+            Password        =   ""
+            RecordSource    =   ""
+            Caption         =   "DatEmpresa"
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "MS Sans Serif"
                Size            =   8.25
                Charset         =   0
-               Weight          =   700
+               Weight          =   400
                Underline       =   0   'False
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
+            _Version        =   393216
+         End
+         Begin Threed.SSCommand SSCommand1 
             Height          =   315
-            Left            =   960
-            TabIndex        =   74
-            Top             =   3360
-            Width           =   855
-         End
-         Begin VB.Label Label5 
-            Caption         =   "Observações"
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00C00000&
-            Height          =   330
-            Left            =   -74625
-            TabIndex        =   72
-            Top             =   600
-            Width           =   3705
-         End
-         Begin VB.Label Label4 
-            Caption         =   "Observações Escolhidas"
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H000000C0&
-            Height          =   330
-            Left            =   -69825
-            TabIndex        =   71
-            Top             =   600
-            Width           =   3720
+            Left            =   8400
+            TabIndex        =   73
+            Top             =   2880
+            Width           =   315
+            _Version        =   65536
+            _ExtentX        =   556
+            _ExtentY        =   556
+            _StockProps     =   78
+            MouseIcon       =   "TelaEmissaoBoletos.frx":0C3A
+            Picture         =   "TelaEmissaoBoletos.frx":0C56
          End
          Begin VB.Label Label6 
             Alignment       =   1  'Right Justify
-            BackStyle       =   0  'Transparent
-            Caption         =   "Tipo de Cobrança:"
+            Caption         =   "Sacador/Avalista:"
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -1870,10 +2014,10 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             ForeColor       =   &H00000000&
             Height          =   210
-            Left            =   120
-            TabIndex        =   61
+            Left            =   240
+            TabIndex        =   71
             Top             =   2880
-            Width           =   1740
+            Width           =   1605
          End
          Begin VB.Label LlbEmpreendimento 
             Caption         =   "Empreendimentos"
@@ -1889,7 +2033,7 @@ Begin VB.Form TelaExpBancaria
             ForeColor       =   &H00C00000&
             Height          =   330
             Left            =   -74805
-            TabIndex        =   17
+            TabIndex        =   18
             Top             =   390
             Width           =   2205
          End
@@ -1907,7 +2051,7 @@ Begin VB.Form TelaExpBancaria
             ForeColor       =   &H000000C0&
             Height          =   330
             Left            =   -69945
-            TabIndex        =   44
+            TabIndex        =   53
             Top             =   390
             Width           =   3180
          End
@@ -1925,7 +2069,7 @@ Begin VB.Form TelaExpBancaria
             ForeColor       =   &H00C00000&
             Height          =   330
             Left            =   -74745
-            TabIndex        =   43
+            TabIndex        =   52
             Top             =   1140
             Width           =   3705
          End
@@ -1943,13 +2087,49 @@ Begin VB.Form TelaExpBancaria
             ForeColor       =   &H000000C0&
             Height          =   330
             Left            =   -69945
-            TabIndex        =   42
+            TabIndex        =   51
             Top             =   1140
             Width           =   3720
          End
+         Begin VB.Label Label4 
+            Caption         =   "Observações Escolhidas"
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H000000C0&
+            Height          =   330
+            Left            =   -69945
+            TabIndex        =   50
+            Top             =   450
+            Width           =   3720
+         End
+         Begin VB.Label Label5 
+            Caption         =   "Observações"
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00C00000&
+            Height          =   330
+            Left            =   -74745
+            TabIndex        =   49
+            Top             =   450
+            Width           =   3705
+         End
          Begin VB.Label LblMesAno 
             Alignment       =   1  'Right Justify
-            Caption         =   "Mês de Vencimento:"
+            Caption         =   "Mês de Vencimento: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -1961,13 +2141,13 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   210
             Left            =   90
-            TabIndex        =   41
+            TabIndex        =   48
             Top             =   480
             Width           =   1815
          End
          Begin VB.Label LblDtExportacao 
             Alignment       =   1  'Right Justify
-            Caption         =   "Data de Exportação:"
+            Caption         =   "Data de Emissão: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -1979,14 +2159,14 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   255
             Left            =   2880
-            TabIndex        =   40
+            TabIndex        =   47
             Top             =   480
             Width           =   1770
          End
          Begin VB.Label LblTipoPlano 
             Alignment       =   1  'Right Justify
             BackStyle       =   0  'Transparent
-            Caption         =   "Tipo do Plano:"
+            Caption         =   "Tipo do Plano: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -1999,13 +2179,13 @@ Begin VB.Form TelaExpBancaria
             ForeColor       =   &H00000000&
             Height          =   210
             Left            =   645
-            TabIndex        =   39
+            TabIndex        =   46
             Top             =   885
             Width           =   1260
          End
          Begin VB.Label LblNaturezaPlano 
             Alignment       =   1  'Right Justify
-            Caption         =   "Natureza do Plano:"
+            Caption         =   "Natureza do Plano: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -2017,13 +2197,13 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   210
             Left            =   225
-            TabIndex        =   38
+            TabIndex        =   45
             Top             =   1290
             Width           =   1680
          End
          Begin VB.Label LblCCorrente 
             Alignment       =   1  'Right Justify
-            Caption         =   "Conta Corrente:"
+            Caption         =   "Conta Corrente: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -2036,7 +2216,7 @@ Begin VB.Form TelaExpBancaria
             ForeColor       =   &H00000000&
             Height          =   210
             Left            =   540
-            TabIndex        =   37
+            TabIndex        =   44
             Top             =   1710
             Width           =   1365
          End
@@ -2044,7 +2224,7 @@ Begin VB.Form TelaExpBancaria
             Alignment       =   1  'Right Justify
             BackColor       =   &H00E0E0E0&
             BackStyle       =   0  'Transparent
-            Caption         =   "Mensagem 2:"
+            Caption         =   "Instrução 2: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -2056,16 +2236,16 @@ Begin VB.Form TelaExpBancaria
             EndProperty
             Height          =   210
             Index           =   1
-            Left            =   600
-            TabIndex        =   36
-            Top             =   2520
-            Width           =   1245
+            Left            =   780
+            TabIndex        =   43
+            Top             =   2535
+            Width           =   1125
          End
          Begin VB.Label LblInstrucao1 
             Alignment       =   1  'Right Justify
             BackColor       =   &H00E0E0E0&
             BackStyle       =   0  'Transparent
-            Caption         =   "Mensagem 1:"
+            Caption         =   "Instrução 1: "
             BeginProperty Font 
                Name            =   "MS Sans Serif"
                Size            =   8.25
@@ -2075,188 +2255,23 @@ Begin VB.Form TelaExpBancaria
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Height          =   210
+            Height          =   330
             Index           =   0
-            Left            =   600
-            TabIndex        =   35
+            Left            =   780
+            TabIndex        =   42
             Top             =   2115
-            Width           =   1245
+            Width           =   1125
          End
       End
    End
-   Begin Threed.SSPanel PanBotoes 
-      Height          =   885
-      Left            =   45
-      TabIndex        =   10
-      Top             =   4740
-      Width           =   9240
-      _Version        =   65536
-      _ExtentX        =   16298
-      _ExtentY        =   1561
-      _StockProps     =   15
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BevelOuter      =   0
-      Begin VB.CommandButton CmdDesconto 
-         Caption         =   "&Desconto"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   2700
-         TabIndex        =   51
-         Top             =   0
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdMarcar 
-         Caption         =   "&Marcar Todos"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   4620
-         TabIndex        =   50
-         Top             =   15
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdPesquisa 
-         Caption         =   "&Pesquisar"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   720
-         TabIndex        =   49
-         Top             =   0
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdDesmarcar 
-         Caption         =   "Desmarcar &Todos"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   6540
-         TabIndex        =   15
-         Top             =   15
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdImprimir 
-         Caption         =   "Im&primir"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   4620
-         TabIndex        =   13
-         Top             =   495
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdFiltro 
-         Caption         =   "&Seleções"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   2700
-         TabIndex        =   12
-         Top             =   495
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdExportar 
-         Caption         =   "&Exportar"
-         Enabled         =   0   'False
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   720
-         TabIndex        =   11
-         Top             =   480
-         Width           =   1680
-      End
-      Begin VB.CommandButton CmdSair 
-         Caption         =   "&Sair"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   345
-         Left            =   6540
-         TabIndex        =   9
-         Top             =   495
-         Width           =   1680
-      End
-   End
-   Begin MSComDlg.CommonDialog CdbImpressora 
-      Left            =   0
-      Top             =   1320
-      _ExtentX        =   847
-      _ExtentY        =   847
-      _Version        =   393216
-   End
    Begin TrueDBGrid70.TDBGrid TDBGrid1 
-      Height          =   4605
+      Height          =   4650
       Left            =   0
-      TabIndex        =   14
+      TabIndex        =   15
       Top             =   0
-      Width           =   9495
-      _ExtentX        =   16748
-      _ExtentY        =   8123
+      Width           =   9255
+      _ExtentX        =   16325
+      _ExtentY        =   8202
       _LayoutType     =   4
       _RowHeight      =   24
       _WasPersistedAsPixels=   0
@@ -2268,7 +2283,7 @@ Begin VB.Form TelaExpBancaria
       Columns(0)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns(1)._VlistStyle=   68
       Columns(1)._MaxComboItems=   5
-      Columns(1).Caption=   "Exp."
+      Columns(1).Caption=   "Sel."
       Columns(1).DataField=   "Exporta"
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns(2)._VlistStyle=   0
@@ -2303,7 +2318,6 @@ Begin VB.Form TelaExpBancaria
       Columns(6).Caption=   "Desconto Até"
       Columns(6).FooterText=   "D"
       Columns(6).DataField=   "LimiteDesconto"
-      Columns(6).EditMask=   "  /  /  "
       Columns(6)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns(7)._VlistStyle=   0
       Columns(7)._MaxComboItems=   5
@@ -2323,40 +2337,7 @@ Begin VB.Form TelaExpBancaria
       Columns(9).Caption=   "SaldoDevedor"
       Columns(9).DataField=   ""
       Columns(9)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns(10)._VlistStyle=   0
-      Columns(10)._MaxComboItems=   5
-      Columns(10).Caption=   "Número do Contrato do Banco"
-      Columns(10).DataField=   "titu_nr_contratoBanco"
-      Columns(10)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns(11)._VlistStyle=   0
-      Columns(11)._MaxComboItems=   5
-      Columns(11).Caption=   "Desconto Diário R$"
-      Columns(11).DataField=   "DescDiario"
-      Columns(11).DefaultValue=   "00,00"
-      Columns(11).DefaultValue.vt=   8
-      Columns(11)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns(12)._VlistStyle=   0
-      Columns(12)._MaxComboItems=   5
-      Columns(12).Caption=   "Limite p/ Cons. Desconto."
-      Columns(12).DataField=   "DataConsDesc"
-      Columns(12).EditMask=   "  /  /  "
-      Columns(12)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns(13)._VlistStyle=   0
-      Columns(13)._MaxComboItems=   5
-      Columns(13).Caption=   "Valor Abatimento"
-      Columns(13).DataField=   "ValAbatimento R$"
-      Columns(13)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns(14)._VlistStyle=   0
-      Columns(14)._MaxComboItems=   5
-      Columns(14).Caption=   "Multa/Juros"
-      Columns(14).DataField=   "MultaJuros"
-      Columns(14)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns(15)._VlistStyle=   0
-      Columns(15)._MaxComboItems=   5
-      Columns(15).Caption=   "Data Base"
-      Columns(15).DataField=   "titu_dt_Base"
-      Columns(15)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns.Count   =   16
+      Columns.Count   =   10
       Splits(0)._UserFlags=   0
       Splits(0).ExtendRightColumn=   -1  'True
       Splits(0).MarqueeStyle=   4
@@ -2364,7 +2345,7 @@ Begin VB.Form TelaExpBancaria
       Splits(0).DividerColor=   12632256
       Splits(0).SpringMode=   0   'False
       Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
-      Splits(0)._ColumnProps(0)=   "Columns.Count=16"
+      Splits(0)._ColumnProps(0)=   "Columns.Count=10"
       Splits(0)._ColumnProps(1)=   "Column(0).Width=4630"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
       Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=4551"
@@ -2447,48 +2428,6 @@ Begin VB.Form TelaExpBancaria
       Splits(0)._ColumnProps(80)=   "Column(9).Visible=0"
       Splits(0)._ColumnProps(81)=   "Column(9).WrapText=1"
       Splits(0)._ColumnProps(82)=   "Column(9).Order=10"
-      Splits(0)._ColumnProps(83)=   "Column(10).Width=2725"
-      Splits(0)._ColumnProps(84)=   "Column(10).DividerColor=0"
-      Splits(0)._ColumnProps(85)=   "Column(10)._WidthInPix=2646"
-      Splits(0)._ColumnProps(86)=   "Column(10)._EditAlways=0"
-      Splits(0)._ColumnProps(87)=   "Column(10)._ColStyle=20"
-      Splits(0)._ColumnProps(88)=   "Column(10).WrapText=1"
-      Splits(0)._ColumnProps(89)=   "Column(10).Order=11"
-      Splits(0)._ColumnProps(90)=   "Column(11).Width=2725"
-      Splits(0)._ColumnProps(91)=   "Column(11).DividerColor=0"
-      Splits(0)._ColumnProps(92)=   "Column(11)._WidthInPix=2646"
-      Splits(0)._ColumnProps(93)=   "Column(11)._EditAlways=0"
-      Splits(0)._ColumnProps(94)=   "Column(11)._ColStyle=20"
-      Splits(0)._ColumnProps(95)=   "Column(11).WrapText=1"
-      Splits(0)._ColumnProps(96)=   "Column(11).Order=12"
-      Splits(0)._ColumnProps(97)=   "Column(12).Width=2725"
-      Splits(0)._ColumnProps(98)=   "Column(12).DividerColor=0"
-      Splits(0)._ColumnProps(99)=   "Column(12)._WidthInPix=2646"
-      Splits(0)._ColumnProps(100)=   "Column(12)._EditAlways=0"
-      Splits(0)._ColumnProps(101)=   "Column(12)._ColStyle=20"
-      Splits(0)._ColumnProps(102)=   "Column(12).WrapText=1"
-      Splits(0)._ColumnProps(103)=   "Column(12).Order=13"
-      Splits(0)._ColumnProps(104)=   "Column(13).Width=2725"
-      Splits(0)._ColumnProps(105)=   "Column(13).DividerColor=0"
-      Splits(0)._ColumnProps(106)=   "Column(13)._WidthInPix=2646"
-      Splits(0)._ColumnProps(107)=   "Column(13)._EditAlways=0"
-      Splits(0)._ColumnProps(108)=   "Column(13)._ColStyle=20"
-      Splits(0)._ColumnProps(109)=   "Column(13).WrapText=1"
-      Splits(0)._ColumnProps(110)=   "Column(13).Order=14"
-      Splits(0)._ColumnProps(111)=   "Column(14).Width=2725"
-      Splits(0)._ColumnProps(112)=   "Column(14).DividerColor=0"
-      Splits(0)._ColumnProps(113)=   "Column(14)._WidthInPix=2646"
-      Splits(0)._ColumnProps(114)=   "Column(14)._EditAlways=0"
-      Splits(0)._ColumnProps(115)=   "Column(14)._ColStyle=20"
-      Splits(0)._ColumnProps(116)=   "Column(14).WrapText=1"
-      Splits(0)._ColumnProps(117)=   "Column(14).Order=15"
-      Splits(0)._ColumnProps(118)=   "Column(15).Width=2725"
-      Splits(0)._ColumnProps(119)=   "Column(15).DividerColor=0"
-      Splits(0)._ColumnProps(120)=   "Column(15)._WidthInPix=2646"
-      Splits(0)._ColumnProps(121)=   "Column(15)._EditAlways=0"
-      Splits(0)._ColumnProps(122)=   "Column(15)._ColStyle=20"
-      Splits(0)._ColumnProps(123)=   "Column(15).WrapText=1"
-      Splits(0)._ColumnProps(124)=   "Column(15).Order=16"
       Splits(1)._UserFlags=   0
       Splits(1).ExtendRightColumn=   -1  'True
       Splits(1).MarqueeStyle=   4
@@ -2497,7 +2436,7 @@ Begin VB.Form TelaExpBancaria
       Splits(1).DividerColor=   12632256
       Splits(1).SpringMode=   0   'False
       Splits(1)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
-      Splits(1)._ColumnProps(0)=   "Columns.Count=16"
+      Splits(1)._ColumnProps(0)=   "Columns.Count=10"
       Splits(1)._ColumnProps(1)=   "Column(0).Width=4630"
       Splits(1)._ColumnProps(2)=   "Column(0).DividerColor=0"
       Splits(1)._ColumnProps(3)=   "Column(0)._WidthInPix=4551"
@@ -2571,48 +2510,6 @@ Begin VB.Form TelaExpBancaria
       Splits(1)._ColumnProps(71)=   "Column(9).Visible=0"
       Splits(1)._ColumnProps(72)=   "Column(9).WrapText=1"
       Splits(1)._ColumnProps(73)=   "Column(9).Order=10"
-      Splits(1)._ColumnProps(74)=   "Column(10).Width=2725"
-      Splits(1)._ColumnProps(75)=   "Column(10).DividerColor=0"
-      Splits(1)._ColumnProps(76)=   "Column(10)._WidthInPix=2646"
-      Splits(1)._ColumnProps(77)=   "Column(10)._EditAlways=0"
-      Splits(1)._ColumnProps(78)=   "Column(10)._ColStyle=20"
-      Splits(1)._ColumnProps(79)=   "Column(10).WrapText=1"
-      Splits(1)._ColumnProps(80)=   "Column(10).Order=11"
-      Splits(1)._ColumnProps(81)=   "Column(11).Width=2090"
-      Splits(1)._ColumnProps(82)=   "Column(11).DividerColor=0"
-      Splits(1)._ColumnProps(83)=   "Column(11)._WidthInPix=2011"
-      Splits(1)._ColumnProps(84)=   "Column(11)._EditAlways=0"
-      Splits(1)._ColumnProps(85)=   "Column(11)._ColStyle=20"
-      Splits(1)._ColumnProps(86)=   "Column(11).WrapText=1"
-      Splits(1)._ColumnProps(87)=   "Column(11).Order=12"
-      Splits(1)._ColumnProps(88)=   "Column(12).Width=2725"
-      Splits(1)._ColumnProps(89)=   "Column(12).DividerColor=0"
-      Splits(1)._ColumnProps(90)=   "Column(12)._WidthInPix=2646"
-      Splits(1)._ColumnProps(91)=   "Column(12)._EditAlways=0"
-      Splits(1)._ColumnProps(92)=   "Column(12)._ColStyle=20"
-      Splits(1)._ColumnProps(93)=   "Column(12).WrapText=1"
-      Splits(1)._ColumnProps(94)=   "Column(12).Order=13"
-      Splits(1)._ColumnProps(95)=   "Column(13).Width=2725"
-      Splits(1)._ColumnProps(96)=   "Column(13).DividerColor=0"
-      Splits(1)._ColumnProps(97)=   "Column(13)._WidthInPix=2646"
-      Splits(1)._ColumnProps(98)=   "Column(13)._EditAlways=0"
-      Splits(1)._ColumnProps(99)=   "Column(13)._ColStyle=20"
-      Splits(1)._ColumnProps(100)=   "Column(13).WrapText=1"
-      Splits(1)._ColumnProps(101)=   "Column(13).Order=14"
-      Splits(1)._ColumnProps(102)=   "Column(14).Width=2725"
-      Splits(1)._ColumnProps(103)=   "Column(14).DividerColor=0"
-      Splits(1)._ColumnProps(104)=   "Column(14)._WidthInPix=2646"
-      Splits(1)._ColumnProps(105)=   "Column(14)._EditAlways=0"
-      Splits(1)._ColumnProps(106)=   "Column(14)._ColStyle=20"
-      Splits(1)._ColumnProps(107)=   "Column(14).WrapText=1"
-      Splits(1)._ColumnProps(108)=   "Column(14).Order=15"
-      Splits(1)._ColumnProps(109)=   "Column(15).Width=2725"
-      Splits(1)._ColumnProps(110)=   "Column(15).DividerColor=0"
-      Splits(1)._ColumnProps(111)=   "Column(15)._WidthInPix=2646"
-      Splits(1)._ColumnProps(112)=   "Column(15)._EditAlways=0"
-      Splits(1)._ColumnProps(113)=   "Column(15)._ColStyle=20"
-      Splits(1)._ColumnProps(114)=   "Column(15).WrapText=1"
-      Splits(1)._ColumnProps(115)=   "Column(15).Order=16"
       Splits.Count    =   2
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
@@ -2643,7 +2540,7 @@ Begin VB.Form TelaExpBancaria
       _StyleDefs(7)   =   ":id=1,.underline=0,.strikethrough=0,.charset=0"
       _StyleDefs(8)   =   ":id=1,.fontname=MS Sans Serif"
       _StyleDefs(9)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
-      _StyleDefs(10)  =   "HeadingStyle:id=2,.parent=1,.namedParent=34,.bold=0,.fontsize=825,.italic=0"
+      _StyleDefs(10)  =   "HeadingStyle:id=2,.parent=1,.namedParent=34,.bold=-1,.fontsize=825,.italic=0"
       _StyleDefs(11)  =   ":id=2,.underline=0,.strikethrough=0,.charset=0"
       _StyleDefs(12)  =   ":id=2,.fontname=MS Sans Serif"
       _StyleDefs(13)  =   "FooterStyle:id=3,.parent=1,.namedParent=35,.bold=0,.fontsize=825,.italic=0"
@@ -2709,134 +2606,94 @@ Begin VB.Form TelaExpBancaria
       _StyleDefs(73)  =   "Splits(0).Columns(9).HeadingStyle:id=75,.parent=124"
       _StyleDefs(74)  =   "Splits(0).Columns(9).FooterStyle:id=76,.parent=125"
       _StyleDefs(75)  =   "Splits(0).Columns(9).EditorStyle:id=77,.parent=127"
-      _StyleDefs(76)  =   "Splits(0).Columns(10).Style:id=32,.parent=123"
-      _StyleDefs(77)  =   "Splits(0).Columns(10).HeadingStyle:id=29,.parent=124"
-      _StyleDefs(78)  =   "Splits(0).Columns(10).FooterStyle:id=30,.parent=125"
-      _StyleDefs(79)  =   "Splits(0).Columns(10).EditorStyle:id=31,.parent=127"
-      _StyleDefs(80)  =   "Splits(0).Columns(11).Style:id=94,.parent=123"
-      _StyleDefs(81)  =   "Splits(0).Columns(11).HeadingStyle:id=91,.parent=124"
-      _StyleDefs(82)  =   "Splits(0).Columns(11).FooterStyle:id=92,.parent=125"
-      _StyleDefs(83)  =   "Splits(0).Columns(11).EditorStyle:id=93,.parent=127"
-      _StyleDefs(84)  =   "Splits(0).Columns(12).Style:id=110,.parent=123"
-      _StyleDefs(85)  =   "Splits(0).Columns(12).HeadingStyle:id=107,.parent=124"
-      _StyleDefs(86)  =   "Splits(0).Columns(12).FooterStyle:id=108,.parent=125"
-      _StyleDefs(87)  =   "Splits(0).Columns(12).EditorStyle:id=109,.parent=127"
-      _StyleDefs(88)  =   "Splits(0).Columns(13).Style:id=102,.parent=123"
-      _StyleDefs(89)  =   "Splits(0).Columns(13).HeadingStyle:id=99,.parent=124"
-      _StyleDefs(90)  =   "Splits(0).Columns(13).FooterStyle:id=100,.parent=125"
-      _StyleDefs(91)  =   "Splits(0).Columns(13).EditorStyle:id=101,.parent=127"
-      _StyleDefs(92)  =   "Splits(0).Columns(14).Style:id=118,.parent=123"
-      _StyleDefs(93)  =   "Splits(0).Columns(14).HeadingStyle:id=115,.parent=124"
-      _StyleDefs(94)  =   "Splits(0).Columns(14).FooterStyle:id=116,.parent=125"
-      _StyleDefs(95)  =   "Splits(0).Columns(14).EditorStyle:id=117,.parent=127"
-      _StyleDefs(96)  =   "Splits(0).Columns(15).Style:id=170,.parent=123"
-      _StyleDefs(97)  =   "Splits(0).Columns(15).HeadingStyle:id=167,.parent=124"
-      _StyleDefs(98)  =   "Splits(0).Columns(15).FooterStyle:id=168,.parent=125"
-      _StyleDefs(99)  =   "Splits(0).Columns(15).EditorStyle:id=169,.parent=127"
-      _StyleDefs(100) =   "Splits(1).Style:id=13,.parent=1,.valignment=2,.wraptext=-1"
-      _StyleDefs(101) =   "Splits(1).CaptionStyle:id=22,.parent=4"
-      _StyleDefs(102) =   "Splits(1).HeadingStyle:id=14,.parent=2"
-      _StyleDefs(103) =   "Splits(1).FooterStyle:id=15,.parent=3"
-      _StyleDefs(104) =   "Splits(1).InactiveStyle:id=16,.parent=5"
-      _StyleDefs(105) =   "Splits(1).SelectedStyle:id=18,.parent=6"
-      _StyleDefs(106) =   "Splits(1).EditorStyle:id=17,.parent=7"
-      _StyleDefs(107) =   "Splits(1).HighlightRowStyle:id=19,.parent=8,.bgcolor=&H800000&"
-      _StyleDefs(108) =   "Splits(1).EvenRowStyle:id=20,.parent=9"
-      _StyleDefs(109) =   "Splits(1).OddRowStyle:id=21,.parent=10"
-      _StyleDefs(110) =   "Splits(1).RecordSelectorStyle:id=23,.parent=11"
-      _StyleDefs(111) =   "Splits(1).FilterBarStyle:id=24,.parent=12"
-      _StyleDefs(112) =   "Splits(1).Columns(0).Style:id=28,.parent=13,.alignment=2,.locked=-1"
-      _StyleDefs(113) =   "Splits(1).Columns(0).HeadingStyle:id=25,.parent=14,.alignment=2"
-      _StyleDefs(114) =   "Splits(1).Columns(0).FooterStyle:id=26,.parent=15"
-      _StyleDefs(115) =   "Splits(1).Columns(0).EditorStyle:id=27,.parent=17"
-      _StyleDefs(116) =   "Splits(1).Columns(1).Style:id=46,.parent=13,.alignment=2"
-      _StyleDefs(117) =   "Splits(1).Columns(1).HeadingStyle:id=43,.parent=14,.alignment=2"
-      _StyleDefs(118) =   "Splits(1).Columns(1).FooterStyle:id=44,.parent=15"
-      _StyleDefs(119) =   "Splits(1).Columns(1).EditorStyle:id=45,.parent=17"
-      _StyleDefs(120) =   "Splits(1).Columns(2).Style:id=50,.parent=13,.alignment=2,.locked=-1"
-      _StyleDefs(121) =   "Splits(1).Columns(2).HeadingStyle:id=47,.parent=14,.alignment=2"
-      _StyleDefs(122) =   "Splits(1).Columns(2).FooterStyle:id=48,.parent=15"
-      _StyleDefs(123) =   "Splits(1).Columns(2).EditorStyle:id=49,.parent=17"
-      _StyleDefs(124) =   "Splits(1).Columns(3).Style:id=58,.parent=13,.alignment=1,.locked=-1"
-      _StyleDefs(125) =   "Splits(1).Columns(3).HeadingStyle:id=55,.parent=14,.alignment=2"
-      _StyleDefs(126) =   "Splits(1).Columns(3).FooterStyle:id=56,.parent=15"
-      _StyleDefs(127) =   "Splits(1).Columns(3).EditorStyle:id=57,.parent=17"
-      _StyleDefs(128) =   "Splits(1).Columns(4).Style:id=62,.parent=13,.alignment=0,.locked=-1"
-      _StyleDefs(129) =   "Splits(1).Columns(4).HeadingStyle:id=59,.parent=14,.alignment=2"
-      _StyleDefs(130) =   "Splits(1).Columns(4).FooterStyle:id=60,.parent=15"
-      _StyleDefs(131) =   "Splits(1).Columns(4).EditorStyle:id=61,.parent=17"
-      _StyleDefs(132) =   "Splits(1).Columns(5).Style:id=66,.parent=13,.alignment=1,.locked=-1"
-      _StyleDefs(133) =   "Splits(1).Columns(5).HeadingStyle:id=63,.parent=14,.alignment=1"
-      _StyleDefs(134) =   "Splits(1).Columns(5).FooterStyle:id=64,.parent=15"
-      _StyleDefs(135) =   "Splits(1).Columns(5).EditorStyle:id=65,.parent=17"
-      _StyleDefs(136) =   "Splits(1).Columns(6).Style:id=70,.parent=13,.alignment=2,.locked=0"
-      _StyleDefs(137) =   "Splits(1).Columns(6).HeadingStyle:id=67,.parent=14,.alignment=2"
-      _StyleDefs(138) =   "Splits(1).Columns(6).FooterStyle:id=68,.parent=15"
-      _StyleDefs(139) =   "Splits(1).Columns(6).EditorStyle:id=69,.parent=17"
-      _StyleDefs(140) =   "Splits(1).Columns(7).Style:id=74,.parent=13,.alignment=1,.locked=0"
-      _StyleDefs(141) =   "Splits(1).Columns(7).HeadingStyle:id=71,.parent=14,.alignment=2"
-      _StyleDefs(142) =   "Splits(1).Columns(7).FooterStyle:id=72,.parent=15"
-      _StyleDefs(143) =   "Splits(1).Columns(7).EditorStyle:id=73,.parent=17"
-      _StyleDefs(144) =   "Splits(1).Columns(8).Style:id=86,.parent=13,.alignment=1"
-      _StyleDefs(145) =   "Splits(1).Columns(8).HeadingStyle:id=83,.parent=14"
-      _StyleDefs(146) =   "Splits(1).Columns(8).FooterStyle:id=84,.parent=15"
-      _StyleDefs(147) =   "Splits(1).Columns(8).EditorStyle:id=85,.parent=17"
-      _StyleDefs(148) =   "Splits(1).Columns(9).Style:id=90,.parent=13"
-      _StyleDefs(149) =   "Splits(1).Columns(9).HeadingStyle:id=87,.parent=14"
-      _StyleDefs(150) =   "Splits(1).Columns(9).FooterStyle:id=88,.parent=15"
-      _StyleDefs(151) =   "Splits(1).Columns(9).EditorStyle:id=89,.parent=17"
-      _StyleDefs(152) =   "Splits(1).Columns(10).Style:id=54,.parent=13"
-      _StyleDefs(153) =   "Splits(1).Columns(10).HeadingStyle:id=51,.parent=14"
-      _StyleDefs(154) =   "Splits(1).Columns(10).FooterStyle:id=52,.parent=15"
-      _StyleDefs(155) =   "Splits(1).Columns(10).EditorStyle:id=53,.parent=17"
-      _StyleDefs(156) =   "Splits(1).Columns(11).Style:id=98,.parent=13"
-      _StyleDefs(157) =   "Splits(1).Columns(11).HeadingStyle:id=95,.parent=14"
-      _StyleDefs(158) =   "Splits(1).Columns(11).FooterStyle:id=96,.parent=15"
-      _StyleDefs(159) =   "Splits(1).Columns(11).EditorStyle:id=97,.parent=17"
-      _StyleDefs(160) =   "Splits(1).Columns(12).Style:id=114,.parent=13"
-      _StyleDefs(161) =   "Splits(1).Columns(12).HeadingStyle:id=111,.parent=14"
-      _StyleDefs(162) =   "Splits(1).Columns(12).FooterStyle:id=112,.parent=15"
-      _StyleDefs(163) =   "Splits(1).Columns(12).EditorStyle:id=113,.parent=17"
-      _StyleDefs(164) =   "Splits(1).Columns(13).Style:id=106,.parent=13"
-      _StyleDefs(165) =   "Splits(1).Columns(13).HeadingStyle:id=103,.parent=14"
-      _StyleDefs(166) =   "Splits(1).Columns(13).FooterStyle:id=104,.parent=15"
-      _StyleDefs(167) =   "Splits(1).Columns(13).EditorStyle:id=105,.parent=17"
-      _StyleDefs(168) =   "Splits(1).Columns(14).Style:id=122,.parent=13"
-      _StyleDefs(169) =   "Splits(1).Columns(14).HeadingStyle:id=119,.parent=14"
-      _StyleDefs(170) =   "Splits(1).Columns(14).FooterStyle:id=120,.parent=15"
-      _StyleDefs(171) =   "Splits(1).Columns(14).EditorStyle:id=121,.parent=17"
-      _StyleDefs(172) =   "Splits(1).Columns(15).Style:id=174,.parent=13"
-      _StyleDefs(173) =   "Splits(1).Columns(15).HeadingStyle:id=171,.parent=14"
-      _StyleDefs(174) =   "Splits(1).Columns(15).FooterStyle:id=172,.parent=15"
-      _StyleDefs(175) =   "Splits(1).Columns(15).EditorStyle:id=173,.parent=17"
-      _StyleDefs(176) =   "Named:id=33:Normal"
-      _StyleDefs(177) =   ":id=33,.parent=0"
-      _StyleDefs(178) =   "Named:id=34:Heading"
-      _StyleDefs(179) =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-      _StyleDefs(180) =   ":id=34,.wraptext=-1"
-      _StyleDefs(181) =   "Named:id=35:Footing"
-      _StyleDefs(182) =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-      _StyleDefs(183) =   "Named:id=36:Selected"
-      _StyleDefs(184) =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-      _StyleDefs(185) =   "Named:id=37:Caption"
-      _StyleDefs(186) =   ":id=37,.parent=34,.alignment=2"
-      _StyleDefs(187) =   "Named:id=38:HighlightRow"
-      _StyleDefs(188) =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-      _StyleDefs(189) =   "Named:id=39:EvenRow"
-      _StyleDefs(190) =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
-      _StyleDefs(191) =   "Named:id=40:OddRow"
-      _StyleDefs(192) =   ":id=40,.parent=33"
-      _StyleDefs(193) =   "Named:id=41:RecordSelector"
-      _StyleDefs(194) =   ":id=41,.parent=34"
-      _StyleDefs(195) =   "Named:id=42:FilterBar"
-      _StyleDefs(196) =   ":id=42,.parent=33"
+      _StyleDefs(76)  =   "Splits(1).Style:id=13,.parent=1,.valignment=2,.wraptext=-1"
+      _StyleDefs(77)  =   "Splits(1).CaptionStyle:id=22,.parent=4"
+      _StyleDefs(78)  =   "Splits(1).HeadingStyle:id=14,.parent=2"
+      _StyleDefs(79)  =   "Splits(1).FooterStyle:id=15,.parent=3"
+      _StyleDefs(80)  =   "Splits(1).InactiveStyle:id=16,.parent=5"
+      _StyleDefs(81)  =   "Splits(1).SelectedStyle:id=18,.parent=6"
+      _StyleDefs(82)  =   "Splits(1).EditorStyle:id=17,.parent=7"
+      _StyleDefs(83)  =   "Splits(1).HighlightRowStyle:id=19,.parent=8,.bgcolor=&H800000&"
+      _StyleDefs(84)  =   "Splits(1).EvenRowStyle:id=20,.parent=9"
+      _StyleDefs(85)  =   "Splits(1).OddRowStyle:id=21,.parent=10"
+      _StyleDefs(86)  =   "Splits(1).RecordSelectorStyle:id=23,.parent=11"
+      _StyleDefs(87)  =   "Splits(1).FilterBarStyle:id=24,.parent=12"
+      _StyleDefs(88)  =   "Splits(1).Columns(0).Style:id=28,.parent=13,.alignment=2,.locked=-1"
+      _StyleDefs(89)  =   "Splits(1).Columns(0).HeadingStyle:id=25,.parent=14,.alignment=2"
+      _StyleDefs(90)  =   "Splits(1).Columns(0).FooterStyle:id=26,.parent=15"
+      _StyleDefs(91)  =   "Splits(1).Columns(0).EditorStyle:id=27,.parent=17"
+      _StyleDefs(92)  =   "Splits(1).Columns(1).Style:id=46,.parent=13,.alignment=2"
+      _StyleDefs(93)  =   "Splits(1).Columns(1).HeadingStyle:id=43,.parent=14,.alignment=2"
+      _StyleDefs(94)  =   "Splits(1).Columns(1).FooterStyle:id=44,.parent=15"
+      _StyleDefs(95)  =   "Splits(1).Columns(1).EditorStyle:id=45,.parent=17"
+      _StyleDefs(96)  =   "Splits(1).Columns(2).Style:id=50,.parent=13,.alignment=2,.locked=-1"
+      _StyleDefs(97)  =   "Splits(1).Columns(2).HeadingStyle:id=47,.parent=14,.alignment=2"
+      _StyleDefs(98)  =   "Splits(1).Columns(2).FooterStyle:id=48,.parent=15"
+      _StyleDefs(99)  =   "Splits(1).Columns(2).EditorStyle:id=49,.parent=17"
+      _StyleDefs(100) =   "Splits(1).Columns(3).Style:id=58,.parent=13,.alignment=1,.locked=-1"
+      _StyleDefs(101) =   "Splits(1).Columns(3).HeadingStyle:id=55,.parent=14,.alignment=2"
+      _StyleDefs(102) =   "Splits(1).Columns(3).FooterStyle:id=56,.parent=15"
+      _StyleDefs(103) =   "Splits(1).Columns(3).EditorStyle:id=57,.parent=17"
+      _StyleDefs(104) =   "Splits(1).Columns(4).Style:id=62,.parent=13,.alignment=0,.locked=-1"
+      _StyleDefs(105) =   "Splits(1).Columns(4).HeadingStyle:id=59,.parent=14,.alignment=2"
+      _StyleDefs(106) =   "Splits(1).Columns(4).FooterStyle:id=60,.parent=15"
+      _StyleDefs(107) =   "Splits(1).Columns(4).EditorStyle:id=61,.parent=17"
+      _StyleDefs(108) =   "Splits(1).Columns(5).Style:id=66,.parent=13,.alignment=1,.locked=-1"
+      _StyleDefs(109) =   "Splits(1).Columns(5).HeadingStyle:id=63,.parent=14,.alignment=1"
+      _StyleDefs(110) =   "Splits(1).Columns(5).FooterStyle:id=64,.parent=15"
+      _StyleDefs(111) =   "Splits(1).Columns(5).EditorStyle:id=65,.parent=17"
+      _StyleDefs(112) =   "Splits(1).Columns(6).Style:id=70,.parent=13,.alignment=2,.locked=0"
+      _StyleDefs(113) =   "Splits(1).Columns(6).HeadingStyle:id=67,.parent=14,.alignment=2"
+      _StyleDefs(114) =   "Splits(1).Columns(6).FooterStyle:id=68,.parent=15"
+      _StyleDefs(115) =   "Splits(1).Columns(6).EditorStyle:id=69,.parent=17"
+      _StyleDefs(116) =   "Splits(1).Columns(7).Style:id=74,.parent=13,.alignment=1,.locked=0"
+      _StyleDefs(117) =   "Splits(1).Columns(7).HeadingStyle:id=71,.parent=14,.alignment=2"
+      _StyleDefs(118) =   "Splits(1).Columns(7).FooterStyle:id=72,.parent=15"
+      _StyleDefs(119) =   "Splits(1).Columns(7).EditorStyle:id=73,.parent=17"
+      _StyleDefs(120) =   "Splits(1).Columns(8).Style:id=86,.parent=13,.alignment=1"
+      _StyleDefs(121) =   "Splits(1).Columns(8).HeadingStyle:id=83,.parent=14"
+      _StyleDefs(122) =   "Splits(1).Columns(8).FooterStyle:id=84,.parent=15"
+      _StyleDefs(123) =   "Splits(1).Columns(8).EditorStyle:id=85,.parent=17"
+      _StyleDefs(124) =   "Splits(1).Columns(9).Style:id=90,.parent=13"
+      _StyleDefs(125) =   "Splits(1).Columns(9).HeadingStyle:id=87,.parent=14"
+      _StyleDefs(126) =   "Splits(1).Columns(9).FooterStyle:id=88,.parent=15"
+      _StyleDefs(127) =   "Splits(1).Columns(9).EditorStyle:id=89,.parent=17"
+      _StyleDefs(128) =   "Named:id=33:Normal"
+      _StyleDefs(129) =   ":id=33,.parent=0"
+      _StyleDefs(130) =   "Named:id=34:Heading"
+      _StyleDefs(131) =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(132) =   ":id=34,.wraptext=-1"
+      _StyleDefs(133) =   "Named:id=35:Footing"
+      _StyleDefs(134) =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(135) =   "Named:id=36:Selected"
+      _StyleDefs(136) =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(137) =   "Named:id=37:Caption"
+      _StyleDefs(138) =   ":id=37,.parent=34,.alignment=2"
+      _StyleDefs(139) =   "Named:id=38:HighlightRow"
+      _StyleDefs(140) =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(141) =   "Named:id=39:EvenRow"
+      _StyleDefs(142) =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
+      _StyleDefs(143) =   "Named:id=40:OddRow"
+      _StyleDefs(144) =   ":id=40,.parent=33"
+      _StyleDefs(145) =   "Named:id=41:RecordSelector"
+      _StyleDefs(146) =   ":id=41,.parent=34"
+      _StyleDefs(147) =   "Named:id=42:FilterBar"
+      _StyleDefs(148) =   ":id=42,.parent=33"
+   End
+   Begin MSComDlg.CommonDialog CdbImpressora 
+      Left            =   0
+      Top             =   1320
+      _ExtentX        =   847
+      _ExtentY        =   847
+      _Version        =   393216
    End
 End
-Attribute VB_Name = "TelaExpBancaria"
+Attribute VB_Name = "TelaEmissaoBoletos"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 'Alterações que tem que ser repassadas para os outros bancos
 
 'Evento de exportação (moeda nula) xlt_moeda está como integer
@@ -2856,10 +2713,10 @@ Dim VFV_OBSERVACAO1 As New XArray
 Dim VFV_OBSERVACAO2 As New XArray
 Dim XFO_EXPORTACAO As New ADODB.Recordset
 Dim XFF_SALDODEVEDOR As Double
-Dim CarregouGrid As Boolean 'Indica se o grid já foi carregado ou não
+Dim CarregouGrid As Boolean         ' Indica se o grid já foi carregado ou não
 
 '*****************************************************************************************
-'Variaveis que guardarão valores específicos de cada formulário
+' Variaveis que guardarão valores específicos de cada formulário
 '*****************************************************************************************
 Dim PrimeiraVez As Boolean
 
@@ -2881,18 +2738,18 @@ Dim FRM_XInserir As String          ' Flag para identificar se entrou na rotina 
 Dim FRM_XOrigem As String           ' Identifica a origem (que formulario) chamou o formulário ativo
 Dim FRM_SQLAtivo As String          ' Atualizar o SQL Ativo após modificações de filtro e ordem
 
-
 Dim XFT_SQL As String               ' Prepara Select para o vetor do grid
 Dim XFT_SQL2 As String              ' Prepara Select para o recordset auxiliar
+
 
 Sub AjustaTela()
     'Ajustar a Tela à resolução do monitor
     'Formulario.Top = 1020
     Formulario.Top = 0
     Formulario.Height = Resolucaoy - 500
-    'Formulario.Height = TelaExpBancaria.SysInfo1.WorkAreaHeight - 1380
+    'Formulario.Height = TelaEmissaoBoletos.SysInfo1.WorkAreaHeight - 1380
     Formulario.Width = ResolucaoX - 60
-    'Formulario.Width = TelaExpBancaria.SysInfo1.WorkAreaWidth - 60
+    'Formulario.Width = TelaEmissaoBoletos.SysInfo1.WorkAreaWidth - 60
     'Formulario.Left = 10
     Formulario.Left = 5
     'Formulario.PanPeriodo.Top = 100 '45
@@ -2971,7 +2828,7 @@ End Sub
 Private Sub subHabilitaBotoes()
     CmdDesmarcar.Enabled = True
     CmdMarcar.Enabled = True
-    CmdExportar.Enabled = True
+    CmdEmitirBoletos.Enabled = True
     CmdDesconto.Enabled = True
     CmdImprimir.Enabled = True
     
@@ -2986,7 +2843,7 @@ End Sub
 Private Sub subDesabilitaBotoes()
     CmdDesmarcar.Enabled = False
     CmdMarcar.Enabled = False
-    CmdExportar.Enabled = False
+    CmdEmitirBoletos.Enabled = False
     CmdDesconto.Enabled = False
     CmdImprimir.Enabled = False
     CmdFiltro.Enabled = False
@@ -2996,44 +2853,22 @@ Sub SubCalculaValorAtualizado()
 
   Dim XLI_CONT As Integer
   Dim XLF_VALORCORRIGIDO As Double
-  Dim XLF_JUROS As Double
-  Dim XLF_MULTA As Double
     
   XFO_EXPORTACAO.MoveFirst
   For XLI_CONT = 0 To TDBGrid1.ApproxCount - 1
+  
     If OptIndexador1.Value = True Then
-        XLF_VALORCORRIGIDO = Format(funCalculaCorrecaoMonetaria(XFO_EXPORTACAO, 1, XFO_EXPORTACAO!titu_dt_Vencimento), "standard")
-        VFV_VETOREXP(XLI_CONT, 7) = Format(XLF_VALORCORRIGIDO + Format(FunCalculaJurosCEF(XFO_EXPORTACAO, XFO_EXPORTACAO!titu_dt_Vencimento, XLF_VALORCORRIGIDO), "standard"), "standard")
-        VFV_VETOREXP(XLI_CONT, 3) = VFV_VETOREXP(XLI_CONT, 7)
-        'CÁLCULO DE JUROS
-        '31/03/10 - Patrícia
-        If ChkJuros.Value = 1 Then
-            VFV_VETOREXP(XLI_CONT, 14) = Format(((XFO_EXPORTACAO!titu_vl_PercJurosMora) / 100) * VFV_VETOREXP(XLI_CONT, 7), "standard") '31/03/10 - Patrícia
-        Else
-            VFV_VETOREXP(XLI_CONT, 14) = 0
-        End If
+      XLF_VALORCORRIGIDO = Format(funCalculaCorrecaoMonetaria(XFO_EXPORTACAO, 1, XFO_EXPORTACAO!titu_dt_Vencimento), "standard")
+      VFV_VETOREXP(XLI_CONT, 7) = Format(XLF_VALORCORRIGIDO + Format(FunCalculaJurosCEF(XFO_EXPORTACAO, XFO_EXPORTACAO!titu_dt_Vencimento, XLF_VALORCORRIGIDO), "standard"), "standard")
+      VFV_VETOREXP(XLI_CONT, 3) = VFV_VETOREXP(XLI_CONT, 7)
     ElseIf OptIndexador2.Value = True Then
-        XLF_VALORCORRIGIDO = Format(funCalculaCorrecaoMonetaria(XFO_EXPORTACAO, 2, XFO_EXPORTACAO!titu_dt_Vencimento), "standard")
-        VFV_VETOREXP(XLI_CONT, 7) = Format(XLF_VALORCORRIGIDO + Format(FunCalculaJurosCEF(XFO_EXPORTACAO, XFO_EXPORTACAO!titu_dt_Vencimento, XLF_VALORCORRIGIDO), "standard"), "standard")
-        VFV_VETOREXP(XLI_CONT, 3) = VFV_VETOREXP(XLI_CONT, 7)
-        'CÁLCULO DE JUROS
-        '31/03/10 - Patrícia
-        If ChkJuros.Value = 1 Then
-            VFV_VETOREXP(XLI_CONT, 14) = Format(((XFO_EXPORTACAO!titu_vl_PercJurosMora) / 100) * VFV_VETOREXP(XLI_CONT, 7), "standard") '31/03/10 - Patrícia
-        Else
-            VFV_VETOREXP(XLI_CONT, 14) = 0
-        End If
+      XLF_VALORCORRIGIDO = Format(funCalculaCorrecaoMonetaria(XFO_EXPORTACAO, 2, XFO_EXPORTACAO!titu_dt_Vencimento), "standard")
+      VFV_VETOREXP(XLI_CONT, 7) = Format(XLF_VALORCORRIGIDO + Format(FunCalculaJurosCEF(XFO_EXPORTACAO, XFO_EXPORTACAO!titu_dt_Vencimento, XLF_VALORCORRIGIDO), "standard"), "standard")
+      VFV_VETOREXP(XLI_CONT, 3) = VFV_VETOREXP(XLI_CONT, 7)
     Else
-        XLF_VALORCORRIGIDO = XFO_EXPORTACAO!titu_vl_Parcela
-        VFV_VETOREXP(XLI_CONT, 7) = Format(XLF_VALORCORRIGIDO + Format(FunCalculaJurosCEF(XFO_EXPORTACAO, XFO_EXPORTACAO!titu_dt_Vencimento, XLF_VALORCORRIGIDO), "standard"), "standard")
-        VFV_VETOREXP(XLI_CONT, 3) = VFV_VETOREXP(XLI_CONT, 7)
-        'CÁLCULO DE JUROS
-        '31/03/10 - Patrícia
-        If ChkJuros.Value = 1 Then
-            VFV_VETOREXP(XLI_CONT, 14) = Format(((XFO_EXPORTACAO!titu_vl_PercJurosMora) / 100) * VFV_VETOREXP(XLI_CONT, 7), "standard") '31/03/10 - Patrícia
-        Else
-            VFV_VETOREXP(XLI_CONT, 14) = 0
-        End If
+      XLF_VALORCORRIGIDO = XFO_EXPORTACAO!titu_vl_Parcela
+      VFV_VETOREXP(XLI_CONT, 7) = Format(XLF_VALORCORRIGIDO + Format(FunCalculaJurosCEF(XFO_EXPORTACAO, XFO_EXPORTACAO!titu_dt_Vencimento, XLF_VALORCORRIGIDO), "standard"), "standard")
+      VFV_VETOREXP(XLI_CONT, 3) = VFV_VETOREXP(XLI_CONT, 7)
     End If
     XFO_EXPORTACAO.MoveNext
   Next
@@ -3051,12 +2886,12 @@ Function FunCalculaSaldoDevedor(XLO_RECORDSET As ADODB.Recordset, XLD_DATABASE A
 
   XLD_DATA = XLD_DATABASE
     
-  XLT_SQL = FunCriaConsultaBase(TDBGrid1.Columns("Vencimento"), NomeSgbd, "ConsCAPExpBanco", 1)
+  XLT_SQL = FunCriaConsultaBase(TDBGrid1.Columns("Vencimento"), NomeSgbd, "ConsCAPEmissaoBoleto", 1)
   XLT_SQL = XLT_SQL & "empr_cd_empresa = " & PCodEmpresa & "" & _
     " AND empd_cd_Empreendimento= '" & Left(XLO_RECORDSET("Titulo"), 4) & "'" & _
     " AND imov_cd_Imovel='" & Mid(XLO_RECORDSET("Titulo"), 6, 4) & "'" & _
     " AND cont_cd_Contrato='" & Mid(XLO_RECORDSET("Titulo"), 11, 2) & "'" & _
-    " AND titu_dt_Pagamento is null "
+    " AND titu_dt_Pagamento is null"
    
   SubQOpenRecordset XLO_TITULO, XLT_SQL, Estatico
  
@@ -3328,6 +3163,14 @@ Function FunProcuraNoGrid(XLO_RECORDSET As ADODB.Recordset) As String
 
 End Function
 
+Private Sub cboSacadorAvalista_Click(Area As Integer)
+  If cboSacadorAvalista.BoundText <> "" Then
+    DatEmpresa.Recordset.Bookmark = cboSacadorAvalista.SelectedItem
+  End If
+
+
+End Sub
+
 Private Sub CmdDesconto_Click()
   
   PanDesconto.Left = (TDBGrid1.Width - PanDesconto.Width) / 2
@@ -3371,6 +3214,10 @@ Private Sub CmdRetornar_Click()
   
   PanDesconto.Visible = False
   
+End Sub
+
+Private Sub SSCommand1_Click()
+    Me.cboSacadorAvalista.Text = ""
 End Sub
 
 Private Sub TDBGrid1_AfterColUpdate(ByVal ColIndex As Integer)
@@ -3541,9 +3388,7 @@ Private Sub CmdPesquisa_Click()
 End Sub
 
 Private Sub Cmdfechar_Click()
-  
   PanPesquisa.Visible = False
-  
 End Sub
 
 Private Sub CmdInserirEmpreendimento_Click()
@@ -3725,574 +3570,811 @@ Private Sub CmdDesmarcar_Click()
     
 End Sub
 
-Private Sub CmdExportar_Click()
- 
-  Dim XFT_SQL As String           'Prepara Select
-  Dim XLT_TEXTO As String         'Prepara Texto para gerar o arquivo
-  Dim XLT_CGCEMP As String        'CGC da empresa sem máscara
-  Dim XLT_CEPEMP As String        'Cep sem máscara
-  Dim XLF_VALOR As Double         'Valor do registro
-  Dim XLT_CGCCPF As String        'Cpf ou CGC do cliente
-  Dim XLT_AGENCONTA As String
-  Dim XLB_SELECIONADO As Boolean  'Indica se foi ou não selecionado algum registro
-  Dim XLT_TIPO As String
-  Dim XLT_NOME As String
-  Dim XLT_ENDERECO As String
-  Dim XLT_BAIRRO As String
-  Dim XLT_CIDADE As String
-  Dim XLT_CEP As String
-  Dim XLT_ESTADO As String
-  Dim XLT_DATAMORA As String
-  Dim XLT_MENSAGEM1 As String
-  Dim XLT_DATADESCONTO As String
-  Dim XLF_DESCONTO As Double
-  Dim XLI_NUMSQUENCIAL As Integer
-  Dim XLB_VAZIO As Boolean
-  Dim XLI_PRAZOMORA As Integer
-  Dim XLT_CODMOEDA As String
-  Dim XLT_REGLOTE As Integer
-  Dim XLI_ARQUIVO As Integer
-  Dim XLO_ARQUIVO As Object
-  Dim XLT_SQL As String
-  Dim XLI_TIPOCOBRANCA As Integer
-  Dim XLT_VALMORA As Double
-  Dim XLO_DADOSNF As New ADODB.Recordset
-  Dim XLT_MENSAGEMVARIAVELTITULO As String
-  Dim XLT_RESIDUOPARCELA As String
-  Dim XLT_TIPOPLANOS As String
-  
-  
-  'Incluído em 03/11/2008
-  On Error GoTo TrataErro:
-   
-  XLB_SELECIONADO = False
-  TDBGrid1.MoveFirst
-  XFO_EXPORTACAO.MoveFirst
-  
-  
-  While Not TDBGrid1.EOF
-    If TDBGrid1.Columns("Exp.").Value = "-1" Then
-      XLB_SELECIONADO = True
-      
-      
-      'Verifica se está preenchido o endereço correspondencial,
-        'se todos os campos estão vazios
-           'verifica se é pessoa jurídica e verifica o endereço comercial
-           'verifica se é pessoafísica  e verifica o endereço residencial
-        'se algum endereço está incompleto, cancela a exportacao
-      If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
-        If FunConfereCGC(Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 2) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 4, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 8, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 12, 4) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 17, 2)) = False Then
-          MsgBox "O CNPJ do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-              vbCrLf & "está incorreto."
-          Exit Sub
-        End If
-      Else
-        If FunConfereCPF(Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 5, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 9, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 13, 2)) = False Then
-          MsgBox "O CPF do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-              vbCrLf & "está incorreto."
-          
-          Exit Sub
-        End If
-      End If
+Private Sub CmdEmitirBoletos_Click()
+    Dim XFT_SQL           As String   ' Prepara Select
+    Dim XLT_CGCEMP        As String   ' CGC/CNPJ da empresa sem formatação (14 digitos)
+    Dim XLT_CGCEMP_RAIZ   As String   ' Raiz CNPJ da empresa (8 digitos)
+    Dim XLT_CGCEMP_FILIAL As String   ' Filial CNPJ da empresa (4 digitos)
+    Dim XLT_CGCEMP_DIGITO As String   ' Digito de controle CNPJ da empresa (2 digitos)
+    Dim XLT_CEPEMP        As String   ' CEP da empresa, sem formatação (8 digitos)
+    Dim XLT_CEPEMP_05     As String   ' CEP da empresa (5 digitos)
+    Dim XLT_CEPEMP_03     As String   ' CEP da empresa (3 digitos)
+    Dim XLF_VALOR         As Double   ' Valor do registro
+    Dim XLT_CGCCPF        As String   ' CPF/CNPJ do cliente sem formatação (11/14 digitos)
+    Dim XLT_CGCCPF_RAIZ   As String   ' Raiz CPF/CNPJ do cliente (9/8 digitos)
+    Dim XLT_CGCCPF_FILIAL As String   ' Filial CPF/CNPJ do cliente ("0" p/CPF, 4 digitos p/CNPJ)
+    Dim XLT_CGCCPF_DIGITO As String   ' Digito de controle CPF/CNPJ do cliente (2 digitos)
+    Dim XLT_AGENCONTA     As String   ' Código de identificação do beneficiário, composto por agência + conta
+    Dim XLB_SELECIONADO   As Boolean  ' Indica se foi ou não selecionado algum registro
+    Dim XLT_NOME          As String   ' Nome/Razão Social do cliente
+    Dim XLT_FANTASIA      As String   ' Nome Fantasia do Cliente
+    Dim XLT_ENDERECO      As String
+    Dim XLT_BAIRRO        As String
+    Dim XLT_CIDADE        As String
+    Dim XLT_CEP           As String   ' CEP do Cliente, sem formatação (8 digitos)
+    Dim XLT_CEP_05        As String   ' CEP do Cliente (5 digitos)
+    Dim XLT_CEP_03        As String   ' CEP do Cliente (3 digitos)
+    Dim XLT_ESTADO        As String
+    Dim XLT_DATAMORA      As String
+    Dim XLT_INSTRUCAO     As String
+    Dim XLT_MENSAGEM1     As String
+    Dim XLT_DATADESCONTO  As String
+    Dim XLF_DESCONTO      As Double
+    Dim XLB_VAZIO         As Boolean
+    Dim XLI_PRAZOMORA     As Integer
+    Dim XLT_CODMOEDA      As String
+    Dim XLT_JSON          As String   ' String Json para montagem de dados para API e emissão do boleto
+    Dim XLO_JSONAPI       As Object   ' Retorno das requisições à API do Itaú (em Json)
+    Dim XLO_JSONB2N       As Object   ' Retorno das requisições à biblioteca COM (Boleto2Net)
+    Dim XLB_STATUS        As Boolean  ' status das requisições
+    Dim XLI_COUNT         As Integer  ' Contador de elementos
+    Dim XLT_NOSSONUMERO   As String   ' Campo Nosso_Numero
+    Dim XLT_NOSSONUMERODV As String   ' Dv Nosso_numero
+    Dim XLT_SENHACEDENTE  As String   ' Senha da empresa para criação do arquivo PDF
+    Dim XLT_SENHASACADO  As String    ' Senha do cliente para criação do arquivo PDF
+    
+    ' - Instancia o componente COM para geração/emissão do Boleto
+    ' --------------------------------------------------------------------------------------------
+    Dim BoletoService As New Boleto2Net.BoletoService
+
+    ' - CGC/CNPJ deve ser revisto e separado em partes (raiz, filial e digito)
+    XLT_CGCEMP = Trim(Replace(Replace(Replace(XGT_CGC, ".", ""), "/", ""), "-", ""))
+    XLT_CGCEMP_RAIZ = Left(XLT_CGCEMP, 8)
+    XLT_CGCEMP_FILIAL = CStr(CLng(Mid(XLT_CGCEMP, 9, 4)))
+    XLT_CGCEMP_DIGITO = CStr(CLng(Right(XLT_CGCEMP, 2)))
+    
+    ' - CEP deve ser revisto e separado em partes (CEP e complemento)
+    XLT_CEPEMP = Trim(Replace(Replace(XGT_CEP, ".", ""), "-", ""))
+    XLT_CEPEMP_05 = CStr(CLng(Left(XLT_CEPEMP, 5)))
+    XLT_CEPEMP_03 = CStr(CLng(Right(XLT_CEPEMP, 3)))
+    
+    ' - Verificar se a formatação é correta para o Bradesco
+    XLT_AGENCONTA = Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
+                    Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 7), "00000000000000")
+                                        
+    ' - Padrão Costa Andrade = primeiros 3 + últimos 2 digitos
+    XLT_SENHACEDENTE = Format(Left(XLT_CGCEMP, 3), "000") & Format(Right(XLT_CGCEMP, 2), "00")
+                       
+    ' - Valida titulos selecionados no Grid
+    ' --------------------------------------------------------------------------------------------
+    XLB_SELECIONADO = False
+    TDBGrid1.MoveFirst
+    XFO_EXPORTACAO.MoveFirst
+
+    While Not TDBGrid1.EOF
+
+        If TDBGrid1.Columns("Sel.").Value = "-1" Then
         
-      If XFO_EXPORTACAO!titu_nr_contratobanco = "" Or IsNull(XFO_EXPORTACAO!titu_nr_contratobanco) Then
-        MsgBox "O título do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-              vbCrLf & "está sem o número contrato do banco. Favor inserir o número do contrato no título!"
-          
-          Exit Sub
-      End If
-        
-        
-      If (XFO_EXPORTACAO!clie_tx_EndCorresp = "" Or IsNull(XFO_EXPORTACAO!clie_tx_EndCorresp)) And (XFO_EXPORTACAO!clie_tx_BairroCorresp = "" Or IsNull(XFO_EXPORTACAO!clie_tx_BairroCorresp)) _
-        And (XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -   " Or IsNull(XFO_EXPORTACAO!clie_nr_CepCorresp)) And (XFO_EXPORTACAO!clie_tx_MunCorresp = "" Or IsNull(XFO_EXPORTACAO!clie_tx_MunCorresp)) _
-        And (XFO_EXPORTACAO!clie_tx_EstCorresp = "" Or IsNull(XFO_EXPORTACAO!clie_tx_EstCorresp)) Then
-        
-        If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
-          If (XFO_EXPORTACAO!focl_tx_Endereco = "" Or IsNull(XFO_EXPORTACAO!focl_tx_Endereco)) Or (XFO_EXPORTACAO!focl_tx_Bairro = "" Or IsNull(XFO_EXPORTACAO!focl_tx_Bairro)) _
-            Or (XFO_EXPORTACAO!focl_tx_Cep = "  .   -  " Or IsNull(XFO_EXPORTACAO!focl_tx_Cep)) Or (XFO_EXPORTACAO!focl_tx_Cidade = "" Or IsNull(XFO_EXPORTACAO!focl_tx_Cidade)) _
-            Or XFO_EXPORTACAO!focl_tx_Estado = "" Then
+            XLB_SELECIONADO = True
+
+            ' - Verifica/valida o CNPJ/CPF do cliente, conforme o tipo de pessoa (Juridica ou Fisica)
+            ' ---------------------------------------------------------------------------------------
+            If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
+                If FunConfereCGC(Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 2) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 4, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 8, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 12, 4) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 17, 2)) = False Then
+                    MsgBox "O CNPJ do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    vbCrLf & "está incorreto."
+                    Exit Sub
+                End If
+            Else
+                If FunConfereCPF(Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 5, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 9, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 13, 2)) = False Then
+                    MsgBox "O CPF do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    vbCrLf & "está incorreto."
+                    Exit Sub
+                End If
+            End If
+
+            ' - Verifica/valida o endereço de correspondência do cliente (comercial ou residencial),
+            '   conforme o tipo de pessoa (Juridica ou Fisica)
+            ' ---------------------------------------------------------------------------------------
+            If XFO_EXPORTACAO!clie_tx_EndCorresp = "" _
+                And XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
+                And XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -   " _
+                And XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
+                And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
+
+                If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
+                    If XFO_EXPORTACAO!focl_tx_Endereco = "" _
+                        Or XFO_EXPORTACAO!focl_tx_Bairro = "" _
+                        Or XFO_EXPORTACAO!focl_tx_Cep = "  .   -  " _
+                        Or XFO_EXPORTACAO!focl_tx_Cidade = "" _
+                        Or XFO_EXPORTACAO!focl_tx_Estado = "" Then
+
+                        MsgBox "Os dados do endereço comercial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                        vbCrLf & "estão incompletos."
+                        Exit Sub
+                    End If
+                Else
+                    If XFO_EXPORTACAO!clie_tx_EndResidencial = "" _
+                        Or XFO_EXPORTACAO!clie_tx_BairroResidencial = "" _
+                        Or XFO_EXPORTACAO!clie_nr_CepResidencial = "  .   -   " _
+                        Or XFO_EXPORTACAO!clie_tx_MunResidencial = "" _
+                        Or XFO_EXPORTACAO!clie_tx_EstResidencial = "" Then
+
+                        MsgBox "Os dados do endereço residencial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                        vbCrLf & "estão incompletos."
+                        Exit Sub
+                    End If
+                End If
+                
+            ElseIf XFO_EXPORTACAO!clie_tx_EndCorresp = "" _
+                Or XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
+                Or XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -   " _
+                Or XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
+                Or XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
+
+                MsgBox "Os dados do endereço de correspondência do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                vbCrLf & "estão incompletos."
+                Exit Sub
+            End If
+
+            ' - Verifica/valida o endereço de e-mail (pré-requisito para a emissão dos boletos)
+            ' ---------------------------------------------------------------------------------------
+            If XFO_EXPORTACAO!focl_tx_EMail = "" Or FunValidaEmail(XFO_EXPORTACAO!focl_tx_EMail) = False Then
+                MsgBox "O E-mail do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                vbCrLf & "está incompleto ou inválido."
+                Exit Sub
+            End If
             
-            MsgBox "Os dados do endereço comercial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-              vbCrLf & "estão incompletos."
-            Exit Sub
-          End If
-          
-        Else
-          If (XFO_EXPORTACAO!clie_tx_EndResidencial = "" Or IsNull(XFO_EXPORTACAO!clie_tx_EndResidencial)) Or XFO_EXPORTACAO!clie_tx_BairroResidencial = "" _
-            Or (XFO_EXPORTACAO!clie_nr_CepResidencial = "  .   -   " Or IsNull(XFO_EXPORTACAO!clie_nr_CepResidencial)) Or (XFO_EXPORTACAO!clie_tx_MunResidencial = "" Or IsNull(XFO_EXPORTACAO!clie_tx_MunResidencial)) _
-            Or (XFO_EXPORTACAO!clie_tx_EstResidencial = "" Or IsNull(XFO_EXPORTACAO!clie_tx_EstResidencial)) Then
+            ' - Verifica/valida a data de vencimento dos titulos
+            ' ---------------------------------------------------------------------------------------
+            If XFO_EXPORTACAO!titu_dt_Vencimento < DtpExportacao Then
+                MsgBox "O título " & XFO_EXPORTACAO!Titulo & " do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                vbCrLf & "está vencido. Corrija o vencimento do título para que o boleto possa ser emitido."
+                Exit Sub
+            End If
             
-            MsgBox "Os dados do endereço residencial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-              vbCrLf & "estão incompletos."
-            Exit Sub
-          End If
         End If
         
-      ElseIf (XFO_EXPORTACAO!clie_tx_EndCorresp = "" Or IsNull(XFO_EXPORTACAO!clie_tx_EndCorresp)) Or (XFO_EXPORTACAO!clie_tx_BairroCorresp = "" Or IsNull(XFO_EXPORTACAO!clie_tx_BairroCorresp)) _
-         Or (XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -   " Or IsNull(XFO_EXPORTACAO!clie_nr_CepCorresp)) Or (XFO_EXPORTACAO!clie_tx_MunCorresp = "" Or IsNull(XFO_EXPORTACAO!clie_tx_MunCorresp)) _
-         Or (XFO_EXPORTACAO!clie_tx_EstCorresp = "" Or IsNull(XFO_EXPORTACAO!clie_tx_EstCorresp)) Then
-        
-        MsgBox "Os dados do endereço correspondencial do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-           vbCrLf & "estão incompletos."
+        TDBGrid1.MoveNext
+        XFO_EXPORTACAO.MoveNext
+    Wend
+
+    If Not XLB_SELECIONADO Then
+        MsgBox "Não existem pagamentos selecionados.", vbCritical, "ATENÇÃO"
         Exit Sub
-      End If
-      
     End If
-    TDBGrid1.MoveNext
-    XFO_EXPORTACAO.MoveNext
-  Wend
-    
-  If Not XLB_SELECIONADO Then
-      MsgBox "Não existem pagamentos selecionados.", vbCritical, "ATENÇÃO"
-      Exit Sub
-  End If
-  
-  'Verificando o código do convênio
-  If DatContaCorrente.Recordset.Fields!coco_nr_conveniocobranca = "" Then
-    MsgBox "Favor incluir o código do convênio no cadastro de conta corrente.", vbInformation, "EXPORTAÇÃO"
-    Exit Sub
-  End If
-  
-  DlgSalvar.DialogTitle = "Arquivo de Exportação do BRADESCO"
-  DlgSalvar.Filter = "Arquivos de Remessa (*.rem)|*.rem"
-  DlgSalvar.InitDir = "C:\"
-  DlgSalvar.FileName = "CB" & Format(Now, "dd") & Format(Now, "MM") & "01"
-  DlgSalvar.CancelError = False
-  DlgSalvar.ShowSave
-  
-  
-  If DlgSalvar.FileName = "" Then
-      Exit Sub
-  End If
-  
-  If DlgSalvar.FileName <> "" Then
-      XGT_LOCALARQ = DlgSalvar.FileName
-      XGT_ARQUIVO = DlgSalvar.FileTitle
-  End If
-  
-  
-  Open XGT_LOCALARQ For Output As #1
-  
-  'Selecionando o último número de arquivo
-  XLT_SQL = "SELECT coco_nr_arqcobranca FROM ContasCorrente WHERE coco_cd_codigo = " & DatContaCorrente.Recordset.Fields!coco_cd_codigo & " AND empr_cd_empresa = " & PCodEmpresa & " ORDER BY coco_cd_codigo DESC"
-  SubQOpenRecordset XLO_ARQUIVO, XLT_SQL, Dinamico
-  If XLO_ARQUIVO!coco_nr_arqcobranca <> "" Then
-      XLI_ARQUIVO = CInt(XLO_ARQUIVO!coco_nr_arqcobranca) + 1
-  Else
-      XLI_ARQUIVO = 1
-  End If
-  
-  XLO_ARQUIVO.Close
-   
-  Conexao.BeginTrans
-  
-  Conexao.Execute "UPDATE ContasCorrente SET coco_nr_arqcobranca = " & XLI_ARQUIVO & " WHERE coco_cd_codigo = " & DatContaCorrente.Recordset.Fields!coco_cd_codigo & " AND empr_cd_empresa = " & PCodEmpresa
-  
-  'CGC DA EMPRESA
-  XLT_CGCEMP = Mid(XGT_CGC, 1, 2) + Mid(XGT_CGC, 4, 3) + Mid(XGT_CGC, 8, 3) + Mid(XGT_CGC, 12, 4) + Mid(XGT_CGC, 17, 2)
-  
-  '**********HEADER DE ARQUIVO**********
-  '001 a 001 -  Identificação do Registro
-  '002 a 002 -  Identificação do Arquivo Remessa
-  '003 a 009 -  Literal Remessa
-  '010 a 011 -  Código de Serviço
-  '012 a 026 -  Literal Serviço
-  '027 a 046 -  Código da Empresa
-  '047 a 076 -  Nome da Empresa
-  '077 a 079 -  Número do Bradesco na Câmara de Compensação
-  '080 a 094 -  Nome do Banco por Extenso
-  '095 a 100 -  Data da Gravação do Arquivo
-  '101 a 108 -  Branco
-  '109 a 110 -  Identificação do Sistema
-  '111 a 117 -  Nº Seqüencial do Arquivo
-  '118 a 394 -  Branco
-  '395 a 400 -  Nº Seqüencial do Registro de Um em Um
-    
-  XLT_TEXTO = "01" & _
-              "REMESSA" & _
-              "01" & _
-              "COBRANCA" & Space(7) & _
-              Format(DatContaCorrente.Recordset.Fields!coco_nr_conveniocobranca, "00000000000000000000") & _
-              Trim(Mid(UCase(PEmpresa), 1, 30)) & _
-              Space(30 - Len(Trim(Mid(PEmpresa, 1, 30)))) & _
-              "237" & _
-              "Bradesco" & Space(7) & _
-              Format(Now, "ddMMyy") & _
-              Space(8) & _
-              "MX" & _
-              Format(XLI_ARQUIVO, "0000000") & _
-              Space(277) & _
-              "000001"
-  Print #1, funTiraAcento(XLT_TEXTO, True)
-  
-  XFO_EXPORTACAO.MoveFirst
-  TDBGrid1.MoveFirst
-  
-  XLI_NUMSQUENCIAL = 1
-  
-  While Not TDBGrid1.EOF
-      
-      If TDBGrid1.Columns("Exp.").Value = "-1" Then
-         
-          XLI_NUMSQUENCIAL = XLI_NUMSQUENCIAL + 1
-                    
-          'Valor já com Seguro
-          XLF_VALOR = CDbl(TDBGrid1.Columns(3))
 
-          If IsDate(TDBGrid1.Columns(6)) Then
-            XLT_DATADESCONTO = Format(TDBGrid1.Columns(6), "ddmmyy")
-          Else
-            XLT_DATADESCONTO = "000000"
-          End If
-          
-          If (TDBGrid1.Columns(5)) = "" Then
-              TDBGrid1.Columns(5) = 0
-          End If
-          
-          XLF_DESCONTO = CDbl(TDBGrid1.Columns(5))
-            
-          'Número do contrato no banco
-          Dim NUMDOCUMENTO As String
-          Dim XLO_BLOCO As ADODB.Recordset
-          Dim XLT_BLOCO As String
-          
-          XLT_SQL = "SELECT empd_nr_bloco FROM empreendimentos WHERE empd_cd_empreendimento = " & XFO_EXPORTACAO!empd_cd_Empreendimento & " AND empr_cd_empresa = " & PCodEmpresa
-          SubQOpenRecordset XLO_BLOCO, XLT_SQL, Dinamico
-          
-            If XLO_BLOCO.EOF Or XLO_BLOCO!empd_nr_bloco = "" Or IsNull(XLO_BLOCO!empd_nr_bloco) Then
-                XLT_BLOCO = 0
-            Else
-                XLT_BLOCO = XLO_BLOCO!empd_nr_bloco
-            End If
-          XLO_BLOCO.Close
-          
-          NUMDOCUMENTO = XFO_EXPORTACAO!titu_nr_contratobanco & XLT_BLOCO & XFO_EXPORTACAO!imov_cd_Imovel
-          
-          'Tipo de Cobrança
-          Select Case Me.CboTipoCobranca.ListIndex
-             Case 0
-                  XLI_TIPOCOBRANCA = 1
-             Case 1
-                  XLI_TIPOCOBRANCA = 3
-             Case 2
-                  XLI_TIPOCOBRANCA = 5
-             Case 3
-                  XLI_TIPOCOBRANCA = 6
-         End Select
+'    Conexao.BeginTrans ' - Transaction desabilitada em 21/10/2024 PSG
 
-          If XFO_EXPORTACAO!focl_tx_Tipo = "F" Then
-            XLT_TIPO = "01"
-            XLT_CGCCPF = Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 5, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 9, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 13, 2)
-          Else
-            XLT_TIPO = "02"
-            XLT_CGCCPF = Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 2) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 4, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 8, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 12, 4) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 17, 2)
-          End If
-          
-          XLT_NOME = Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 40)))
-          
-          If XFO_EXPORTACAO!clie_tx_EndCorresp = "" And XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
-            And XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -  " And XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
-            And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
-            
-            If XLT_TIPO = "2" Then
-              XLT_ENDERECO = Left(XFO_EXPORTACAO!focl_tx_Endereco, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!focl_tx_Endereco, 40)))
-              XLT_BAIRRO = Left(XFO_EXPORTACAO!focl_tx_Bairro, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!focl_tx_Bairro, 15)))
-              XLT_CEP = Left(XFO_EXPORTACAO!focl_tx_Cep, 2) + Mid(XFO_EXPORTACAO!focl_tx_Cep, 4, 3) + Right(XFO_EXPORTACAO!focl_tx_Cep, 3)
-              XLT_CIDADE = Left(XFO_EXPORTACAO!focl_tx_Cidade, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!focl_tx_Cidade, 15)))
-              XLT_ESTADO = Left(XFO_EXPORTACAO!focl_tx_Estado, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!focl_tx_Estado, 2)))
+    XFO_EXPORTACAO.MoveFirst
+    TDBGrid1.MoveFirst
+
+    ' - Loop em TDBGrid1, lendo os titulos selecionados e processando conforme abaixo
+    ' --------------------------------------------------------------------------------------------
+    While Not TDBGrid1.EOF
+    
+        If TDBGrid1.Columns("Sel.").Value = "-1" Then
+
+            'Valor já com Seguro
+            XLF_VALOR = CDbl(TDBGrid1.Columns(3))
+
+            If IsDate(TDBGrid1.Columns(6)) Then
+                XLT_DATADESCONTO = Format(TDBGrid1.Columns(6), "dd.mm.yyyy")
             Else
-              XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 40)))
-              XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15)))
-              XLT_CEP = Left(XFO_EXPORTACAO!clie_nr_CepResidencial, 2) + Mid(XFO_EXPORTACAO!clie_nr_CepResidencial, 4, 3) + Right(XFO_EXPORTACAO!clie_nr_CepResidencial, 3)
-              XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 15)))
-              XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2)))
+                XLT_DATADESCONTO = ""
             End If
             
-          Else
-            XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40)))
-            XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 15)))
-            XLT_CEP = Left(XFO_EXPORTACAO!clie_nr_CepCorresp, 2) + Mid(XFO_EXPORTACAO!clie_nr_CepCorresp, 4, 3) + Right(XFO_EXPORTACAO!clie_nr_CepCorresp, 3)
-            XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15)))
-            XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2)))
-          End If
-          
-          XLT_REGLOTE = XLT_REGLOTE + 1
-                    
-          '*************** Registro de Transação - Tipo 1 - Detalhe - Remessa ***************
-          '001 a 001   Identificação do Registro
-          'Obs.: Os campos 002 a 020 serão preenchidos com zero e brancos, pois não será utilizada a Cobrança via Débito em Conta
-          '002 a 006   Agência de Débito
-          '007 a 007   Dígito da Agência de Débito
-          '008 a 012  Razão da Conta Corrente
-          '013 a 019  Conta Corrente
-          '020 a 020   Dígito da Conta Corrente
-       
-          XLT_TEXTO = "1" & _
-                      "00000" & _
-                      Space(1) & _
-                      "00000" & _
-                      "0000000" & _
-                      Space(1)
-                     
-          ' 021 a 037  Identificação da Empresa Cedente no Banco
-          '             21 a 21 - Zero
-          '             22 a 24 - código da carteira
-          '             25 a 29 - código da Agência Cedente, sem o dígito
-          '             30 a 36 - Conta Corrente
-          '             37 a 37 - dígito da Conta
-                     
-          XLT_TEXTO = XLT_TEXTO & "0" & _
-                      Format(FunNulo(DatContaCorrente.Recordset.Fields!coco_nr_CarteiraCobranca), "000") & _
-                      Format(FunNulo(DatContaCorrente.Recordset.Fields!coco_cd_Agencia), "00000") & _
-                      Format(FunNulo(DatContaCorrente.Recordset.Fields!coco_tx_Conta), "0000000") & _
-                      FunNulo(DatContaCorrente.Recordset.Fields!coco_nr_Dac) & Space(1 - Len(FunNulo(DatContaCorrente.Recordset.Fields!coco_nr_Dac)))
-                      
-          '038 a 062   Nº Controle do Participante
-          '063 a 065   Código do Banco a ser debitado na Câmara de Compensação
-          'oBS.: Esse campo será preeenchido com zeros pois se trata de Títulos em que não deve ser aplicado o débito automático.
-          '066 a 070   Zeros
+            If (TDBGrid1.Columns(5)) = "" Then
+                TDBGrid1.Columns(5) = 0
+            End If
+            
+            XLF_DESCONTO = CDbl(TDBGrid1.Columns(5))
 
-          XLT_TEXTO = XLT_TEXTO & FunNulo(XFO_EXPORTACAO!Titulo) & Space(25 - Len(FunNulo(XFO_EXPORTACAO!Titulo))) & _
-                        "000"
+            ' - CGC/CNPJ/CPF deve ser revisto e separado em partes (raiz, filial e digito)
+            XLT_CGCCPF = Trim(Replace(Replace(Replace(XFO_EXPORTACAO!focl_tx_CGCCPF, ".", ""), "/", ""), "-", ""))
+            
+            If Len(XLT_CGCCPF) = 14 Then
+                XLT_CGCCPF_RAIZ = Left(XLT_CGCCPF, 8)
+                XLT_CGCCPF_FILIAL = CStr(CLng(Mid(XLT_CGCCPF, 8, 4)))
+                XLT_CGCCPF_DIGITO = CStr(CLng(Right(XLT_CGCCPF, 2)))
+            Else
+                XLT_CGCCPF_RAIZ = Left(XLT_CGCCPF, 9)
+                XLT_CGCCPF_FILIAL = "0"
+                XLT_CGCCPF_DIGITO = CStr(CLng(Right(XLT_CGCCPF, 2)))
+            End If
+            
+            XLT_NOME = Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 50) + Space(50 - Len(Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 50)))
+            XLT_FANTASIA = Left(XFO_EXPORTACAO!focl_tx_Fantasia, 50) + Space(50 - Len(Left(XFO_EXPORTACAO!focl_tx_Fantasia, 50)))
+
+            ' - Padrão Costa Andrade = primeiros 3 + últimos 2 digitos
+            XLT_SENHASACADO = Format(Left(XLT_CGCCPF, 3), "000") & Format(Right(XLT_CGCCPF, 2), "00")
+
+            If XFO_EXPORTACAO!clie_tx_EndCorresp = "" _
+                And XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
+                And XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -  " _
+                And XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
+                And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
+
+                If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
+                    XLT_ENDERECO = Left(XFO_EXPORTACAO!focl_tx_Endereco, 45) + Space(45 - Len(Left(XFO_EXPORTACAO!focl_tx_Endereco, 45)))
+                    XLT_BAIRRO = Left(XFO_EXPORTACAO!focl_tx_Bairro, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!focl_tx_Bairro, 15)))
+                    XLT_CIDADE = Left(XFO_EXPORTACAO!focl_tx_Cidade, 20) + Space(20 - Len(Left(XFO_EXPORTACAO!focl_tx_Cidade, 20)))
+                    XLT_ESTADO = Left(XFO_EXPORTACAO!focl_tx_Estado, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!focl_tx_Estado, 2)))
+                    XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!focl_tx_Cep, ".", ""), "-", ""))
+                Else
+                    XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 45) + Space(45 - Len(Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 45)))
+                    XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15)))
+                    XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 20) + Space(20 - Len(Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 20)))
+                    XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2)))
+                    XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!clie_nr_CepResidencial, ".", ""), "-", ""))
+                End If
+            Else
+                XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40)))
+                XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12) + Space(12 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12)))
+                XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15)))
+                XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2)))
+                XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!clie_nr_CepCorresp, ".", ""), "-", ""))
+            End If
+
+            XLT_CEP_05 = CStr(CLng(Left(XLT_CEP, 5)))
+            XLT_CEP_03 = CStr(CLng(Right(XLT_CEP, 3)))
+
+            If ChkJuros.Value = 1 Then
+                ' XLT_DATAMORA = Format(DateAdd("d", 1, XFO_EXPORTACAO!titu_dt_Vencimento), "yyyy-mm-dd")
+                If TxtPrzMora.Text = "" Then
+                        XLI_PRAZOMORA = 0
+                Else
+                        XLI_PRAZOMORA = TxtPrzMora.Text
+                End If
+                XLT_DATAMORA = Format(DateAdd("d", XLI_PRAZOMORA, XFO_EXPORTACAO!titu_dt_Vencimento), "dd/mm/yyyy")
+            Else
+                XLT_DATAMORA = "      "
+                If TxtInstrucao1.Text <> "94" And TxtInstrucao2.Text <> "94" Then
+                    XLI_PRAZOMORA = 0
+                End If
+            End If
                         
-        If XFO_EXPORTACAO!titu_vl_PercMultaMora <> vbNull Then
-            XLT_TEXTO = XLT_TEXTO & "2" & Format(XFO_EXPORTACAO!titu_vl_PercMultaMora * 100, "0000")
-        Else
-            XLT_TEXTO = XLT_TEXTO & "00000"
+            If TxtInstrucao1.Text = "93" Or TxtInstrucao2.Text = "93" Then
+                XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 30) & Space(30 - Len(TxtMensagem1.Text)) & Space(4) & XLT_DATAMORA
+            ElseIf TxtInstrucao1.Text = "94" Or TxtInstrucao2.Text = "94" Then
+                XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 40) & Space(40 - Len(TxtMensagem1.Text))
+            Else
+                ' Se tiver sacador/avalista manda a informação que está em cboSacadorAvalista
+                If Me.cboSacadorAvalista.Text = "" Then
+                    ' Alterado em 18/07/2023 (PSG), para atender solicitação do ITAU: o campo BENEFICIARIO FINAL deve ser igual a espaços, quando Instrução 1 e 2 diferentes de 93 oe 94
+                    ' XLT_MENSAGEM1 = Left(PEmpresa, 30) & Space(30 - Len(Left(PEmpresa, 30))) & Space(4) & XLT_DATAMORA
+                    ' XLT_MENSAGEM1 = Space(34) & XLT_DATAMORA
+                    XLT_MENSAGEM1 = Space(40)
+                Else
+                    XLT_MENSAGEM1 = Left(Me.cboSacadorAvalista.Text, 30) & Space(30 - Len(Left(Me.cboSacadorAvalista.Text, 30))) & Space(4) & XLT_DATAMORA
+                End If
+            End If
+            
+            XLT_NOSSONUMERO = Format(FunPegaGuardaUltimo("NN"), "00000000000")
+            
+'            XLT_NOSSONUMERODV = FunDvMod10(Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
+'                                           Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _
+'                                           XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & XLT_NOSSONUMERO)
+            
+            XLT_NOSSONUMERODV = FunDvMod10(XLT_NOSSONUMERO)
+            
+            XLT_INSTRUCAO = "NÃO RECEBER APÓS O VENCIMENTO <br> " & _
+                            "DEVOLVER APÓS 01 DIA DE VENCIDO <br> " & _
+                            "NÃO PROTESTAR <br> "
+            
+            If XLT_DATADESCONTO <> "" And XLF_DESCONTO <> 0 Then
+                XLT_INSTRUCAO = XLT_INSTRUCAO & "CONCEDER DESCONTO DE R$ " & Format(XLF_DESCONTO, "0.00") & " ATÉ " & Format(TDBGrid1.Columns(6), "dd/mm/yyyy") & " <br> "
+            End If
+            
+            If XLT_MENSAGEM1 <> "" Then
+                XLT_INSTRUCAO = XLT_INSTRUCAO & XLT_MENSAGEM1
+            End If
+                        
+            ' - Monta objeto JSON com o formato requerido conforme documentação da API.
+            '   Foram utilizados os campos necessários para a geração dos boletos, caso sejam necessárias
+            '   mais informações, ver a documentação em:
+            '       https://devportal.itau.com.br/nossas-apis/itau-ep9-gtw-cash-management-ext-v2
+            ' --------------------------------------------------------------------------------------------
+            XLT_JSON = "{ " & _
+            FunJsonString("debitoAutomatico", "N") & ", " & _
+            FunJsonString("codigoUsuarioSolicitante", "WEBSERVIC") & ", " & _
+            FunJsonString("nuCPFCNPJ", XLT_CGCEMP_RAIZ) & ", " & _
+            FunJsonString("filialCPFCNPJ", XLT_CGCEMP_FILIAL, False) & ", " & _
+            FunJsonString("ctrlCPFCNPJ", XLT_CGCEMP_DIGITO, False) & ", " & _
+            FunJsonString("registraTitulo", CStr(CInt(XLO_BOLETOS.Item(XLT_ROOTITEM).Item("TipoRegistro"))), False) & ", " & _
+            FunJsonString("idProduto", CStr(CInt(XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira"))), False) & ", " & _
+            FunJsonString("nuNegociacao", XLT_AGENCONTA, False) & ", " & _
+            FunJsonString("nuTitulo", CStr(CLng(XLT_NOSSONUMERO)), False) & ", " & _
+            FunJsonString("nuCliente", XFO_EXPORTACAO!Titulo) & ", "
+
+
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("dtEmissaoTitulo", Format(DtpExportacao, "dd.mm.yyyy")) & ", " & _
+            FunJsonString("dtVencimentoTitulo", Format(XFO_EXPORTACAO!titu_dt_Vencimento, "dd.mm.yyyy")) & ", " & _
+            FunJsonString("tpVencimento", "0", False) & ", " & _
+            FunJsonString("indicadorMoeda", "0", False) & ", " & _
+            FunJsonString("vlNominalTitulo", Replace(Replace(FormatNumber(XLF_VALOR, 2), ".", ""), ",", "."), False) & ", " & _
+            FunJsonString("qmoedaNegocTitlo", "0", False) & ", " & _
+            FunJsonString("cdEspecieTitulo", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("EspecieTitulo"), False) & ", " & _
+            FunJsonString("cindcdAceitSacdo", "2") & ", " & _
+            FunJsonString("tpProtestoAutomaticoNegativacao", "0", False) & ", " & _
+            FunJsonString("prazoProtestoAutomaticoNegativacao", "0", False) & ", "
+
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("controleParticipante", XFO_EXPORTACAO!Titulo) & ", " & _
+            FunJsonString("cdPagamentoParcial", "") & ", " & _
+            FunJsonString("qtdePagamentoParcial", "0", False) & ", " & _
+            FunJsonString("qtdeDiasJuros", "0", False) & ", " & _
+            FunJsonString("percentualJuros", "0", False) & ", " & _
+            FunJsonString("vlJuros", "0", False) & ", " & _
+            FunJsonString("tipoDiasDecursoProt", "0", False) & ", " & _
+            FunJsonString("tipoDecursoPrazo", "0", False) & ", " & _
+            FunJsonString("tipoPrazoDecursoTres", "0", False) & ", " & _
+            FunJsonString("percentualMulta", "0", False) & ", "
+
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("dataLimiteDesconto1", XLT_DATADESCONTO) & ", " & _
+            FunJsonString("vlDesconto1", IIf(XLF_DESCONTO > 0, Replace(Format(XLF_DESCONTO, "0.00"), ",", "."), "0"), False) & ", " & _
+            FunJsonString("percentualDesconto1", "0", False) & ", " & _
+            FunJsonString("dataLimiteDesconto2", "") & ", " & _
+            FunJsonString("percentualDesconto2", "0", False) & ", " & _
+            FunJsonString("vlDesconto2", "0", False) & ", " & _
+            FunJsonString("dataLimiteDesconto3", "") & ", " & _
+            FunJsonString("percentualDesconto3", "0", False) & ", " & _
+            FunJsonString("vlDesconto3", "0", False) & ", " & _
+            FunJsonString("qtdeDiasMulta", "0", False) & ", " & _
+            FunJsonString("vlMulta", "0", False) & ", " & _
+            FunJsonString("vlAbatimento", "0", False) & ", " & _
+            FunJsonString("vlIOF", "0", False) & ", " & _
+            FunJsonString("prazoBonificacao", "0", False) & ", " & _
+            FunJsonString("percentualBonificacao", "0", False) & ", " & _
+            FunJsonString("dtLimiteBonificacao", "") & ", " & _
+            FunJsonString("vlBonificacao", "0", False) & ", "
+
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("nomePagador", Trim(XLT_NOME)) & ", " & _
+            FunJsonString("logradouroPagador", IIf(XLT_ENDERECO <> "", Trim(XLT_ENDERECO), "")) & ", " & _
+            FunJsonString("complementoLogradouroPagador", "") & ", " & _
+            FunJsonString("nuLogradouroPagador", " ") & ", " & _
+            FunJsonString("cepPagador", XLT_CEP_05, False) & ", " & _
+            FunJsonString("complementoCepPagador", XLT_CEP_03, False) & ", " & _
+            FunJsonString("bairroPagador", IIf(XLT_BAIRRO <> "", Trim(XLT_BAIRRO), "")) & ", " & _
+            FunJsonString("municipioPagador", IIf(XLT_CIDADE <> "", Trim(XLT_CIDADE), "")) & ", " & _
+            FunJsonString("ufPagador", IIf(XLT_ESTADO <> "", Trim(XLT_ESTADO), "")) & ", " & _
+            FunJsonString("cdIndCpfcnpjPagador", IIf(XFO_EXPORTACAO!focl_tx_Tipo = "F", "1", "2"), False) & ", " & _
+            FunJsonString("nuCpfcnpjPagador", XLT_CGCCPF, False) & ", " & _
+            FunJsonString("endEletronicoPagador", Trim(XFO_EXPORTACAO!focl_tx_EMail)) & ", " & _
+            FunJsonString("dddFoneSacado", "0", False) & ", " & _
+            FunJsonString("foneSacado", "0", False) & ", "
+
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("bancoDoDebAutomatico", "0", False) & ", " & _
+            FunJsonString("agenciaDoDebAutomatico", "0", False) & ", " & _
+            FunJsonString("digitoAgenciaDoDebAutomat", "0", False) & ", " & _
+            FunJsonString("contaDoDebAutomatico", "0", False) & ", " & _
+            FunJsonString("razaoDoDebAutomatico", "0", False) & ", " & _
+            FunJsonString("codBancoDoProtesto", "0", False) & ", " & _
+            FunJsonString("agenciaDoProtesto", "0", False) & ", "
+
+            If Me.cboSacadorAvalista.Text <> "" Then
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("nomeSacadorAvalista", Trim(DatEmpresa.Recordset.Fields!empr_tx_razaosocial)) & ", " & _
+                FunJsonString("logradouroSacadorAvalista", Trim(DatEmpresa.Recordset.Fields!empr_tx_endereco)) & ", " & _
+                FunJsonString("nuLogradouroSacadorAvalista", "") & ", " & _
+                FunJsonString("complementoLogradouroSacadorAvalista", "") & ", " & _
+                FunJsonString("cepSacadorAvalista", Left(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", ""), 5), False) & ", " & _
+                FunJsonString("complementoCepSacadorAvalista", Right(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", ""), 3), False) & ", " & _
+                FunJsonString("bairroSacadorAvalista", Trim(DatEmpresa.Recordset.Fields!empr_tx_Bairro)) & ", " & _
+                FunJsonString("municipioSacadorAvalista", Trim(DatEmpresa.Recordset.Fields!empr_tx_cidade)) & ", " & _
+                FunJsonString("ufSacadorAvalista", Trim(DatEmpresa.Recordset.Fields!empr_tx_Estado)) & ", " & _
+                FunJsonString("cdIndCpfcnpjSacadorAvalista", "2", False) & ", " & _
+                FunJsonString("nuCpfcnpjSacadorAvalista", Replace(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_CGC, ".", ""), "/", ""), "-", ""), False) & ", " & _
+                FunJsonString("enderecoSacadorAvalista", "") & ", " & _
+                FunJsonString("dddFoneSacadorAvalista", "0", False) & ", " & _
+                FunJsonString("foneSacadorAvalista", "0", False) & ", "
+            Else
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("nomeSacadorAvalista", "") & ", " & _
+                FunJsonString("logradouroSacadorAvalista", "") & ", " & _
+                FunJsonString("nuLogradouroSacadorAvalista", "") & ", " & _
+                FunJsonString("complementoLogradouroSacadorAvalista", "") & ", " & _
+                FunJsonString("cepSacadorAvalista", "0", False) & ", " & _
+                FunJsonString("complementoCepSacadorAvalista", "0", False) & ", " & _
+                FunJsonString("bairroSacadorAvalista", "") & ", " & _
+                FunJsonString("municipioSacadorAvalista", "") & ", " & _
+                FunJsonString("ufSacadorAvalista", "") & ", " & _
+                FunJsonString("cdIndCpfcnpjSacadorAvalista", "0", False) & ", " & _
+                FunJsonString("nuCpfcnpjSacadorAvalista", "0", False) & ", " & _
+                FunJsonString("enderecoSacadorAvalista", "") & ", " & _
+                FunJsonString("dddFoneSacadorAvalista", "0", False) & ", " & _
+                FunJsonString("foneSacadorAvalista", "0", False) & ", "
+            End If
+
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("listaMsgs", "[ ", False) & _
+            "{ " & FunJsonString("mensagem", XLT_MENSAGEM1) & " }, " & _
+            "{ " & FunJsonString("mensagem", "") & " } " & _
+            "] }"
+             
+             
+            ' - Dados para teste de Sandbox, Json de registro, conforme executado no Postman. Remover/comentar
+            ' --------------------------------------------------------------------------------------------
+'            XLT_JSON = "{ ""debitoAutomatico"": ""N"", ""codigoUsuarioSolicitante"": ""APISERVIC"", ""nuCPFCNPJ"": ""12345678"", ""filialCPFCNPJ"": 1018, ""ctrlCPFCNPJ"": 38, ""registraTitulo"": 1, ""idProduto"": 9, " & _
+'            """nuNegociacao"": 386100000000041000, ""nuTitulo"": 0, ""nuCliente"": ""WEBSERVICE"", ""dtEmissaoTitulo"": ""07.06.2025"", ""dtVencimentoTitulo"": ""07.08.2025"", ""tpVencimento"": 0, " & _
+'            """indicadorMoeda"": 0, ""vlNominalTitulo"": 1000.00, ""qmoedaNegocTitlo"": 0, ""cdEspecieTitulo"": 1, ""cindcdAceitSacdo"": ""2"", ""tpProtestoAutomaticoNegativacao"": 0, " & _
+'            """prazoProtestoAutomaticoNegativacao"": 0, ""tipoDiasDecursoProt"": 0, ""tipoDecursoPrazo"": 0, ""controleParticipante"": """", ""cdPagamentoParcial"": """", ""qtdePagamentoParcial"": 0, " & _
+'            """tipoPrazoDecursoTres"": 0, ""percentualJuros"": 0, ""vlJuros"": 0, ""qtdeDiasJuros"": 0, ""percentualMulta"": 0, ""vlMulta"": 0, ""qtdeDiasMulta"": 0, ""percentualDesconto1"": 0, " & _
+'            """vlDesconto1"": 0, ""dataLimiteDesconto1"": """", ""percentualDesconto2"": 0, ""vlDesconto2"": 0, ""dataLimiteDesconto2"": """", ""percentualDesconto3"": 0, ""vlDesconto3"": 0, " & _
+'            """dataLimiteDesconto3"": """", ""prazoBonificacao"": 0, ""percentualBonificacao"": 0, ""vlBonificacao"": 0, ""dtLimiteBonificacao"": """", ""vlAbatimento"": 0, ""vlIOF"": 0, " & _
+'            """nomePagador"": ""TESTE BE"", ""logradouroPagador"": ""AVENIDA COPACABANA"", ""nuLogradouroPagador"": ""237"", ""complementoLogradouroPagador"": ""3 ANDAR"", ""cepPagador"": 6050, " & _
+'            """complementoCepPagador"": 40, ""bairroPagador"": ""ALPHAVILLE"", ""municipioPagador"": ""BARUERI"", ""ufPagador"": ""SP"", ""cdIndCpfcnpjPagador"": 1, ""nuCpfcnpjPagador"": 11438390807, " & _
+'            """endEletronicoPagador"": """", ""dddFoneSacado"": 0, ""foneSacado"": 0, ""bancoDoDebAutomatico"": 237, ""agenciaDoDebAutomatico"": 2, ""digitoAgenciaDoDebAutomat"": 7, " & _
+'            """contaDoDebAutomatico"": 5223, ""razaoDoDebAutomatico"": 705, ""codBancoDoProtesto"": 0, ""agenciaDoProtesto"": 0, ""nomeSacadorAvalista"": ""A"", ""logradouroSacadorAvalista"": ""A"", " & _
+'            """nuLogradouroSacadorAvalista"": ""4"", ""complementoLogradouroSacadorAvalista"": """", ""cepSacadorAvalista"": 0, ""complementoCepSacadorAvalista"": 0, ""bairroSacadorAvalista"": ""D"", " & _
+'            """municipioSacadorAvalista"": ""D"", ""ufSacadorAvalista"": ""SP"", ""cdIndCpfcnpjSacadorAvalista"": 1, ""nuCpfcnpjSacadorAvalista"": 0, ""enderecoSacadorAvalista"": ""DD"", " & _
+'            """dddFoneSacadorAvalista"": 11, ""foneSacadorAvalista"": 24144323, ""listaMsgs"": [ { ""mensagem"": ""Teste MSG 1"" }, { ""mensagem"": ""Teste MSG 2"" } ] } "
+            
+            XLT_JSON = "{ ""debitoAutomatico"": ""N"", ""codigoUsuarioSolicitante"": ""APISERVIC"", ""nuCPFCNPJ"": ""44678151"", ""filialCPFCNPJ"": 1, ""ctrlCPFCNPJ"": 79, ""registraTitulo"": 1, ""idProduto"": 9, " & _
+            """nuNegociacao"": 123400000001234567, ""nuTitulo"": 1835, ""nuCliente"": ""0750.0301.01.02.003.00"", ""dtEmissaoTitulo"": ""15.08.2025"", ""dtVencimentoTitulo"": ""01.09.2025"", " & _
+            """tpVencimento"": 0, ""indicadorMoeda"": 0, ""vlNominalTitulo"": 3484.72, ""qmoedaNegocTitlo"": 0, ""cdEspecieTitulo"": 12, ""cindcdAceitSacdo"": ""2"", ""tpProtestoAutomaticoNegativacao"": 0, " & _
+            """prazoProtestoAutomaticoNegativacao"": 0, ""tipoDiasDecursoProt"": 0, ""tipoDecursoPrazo"": 0, ""controleParticipante"": ""0750.0301.01.02.003.00"", ""cdPagamentoParcial"": """", " & _
+            """qtdePagamentoParcial"": 0, ""tipoPrazoDecursoTres"": 0, ""percentualJuros"": 0, ""vlJuros"": 0, ""qtdeDiasJuros"": 0, ""percentualMulta"": 0, ""vlMulta"": 0, ""qtdeDiasMulta"": 0, " & _
+            """percentualDesconto1"": 0, ""vlDesconto1"": 0, ""dataLimiteDesconto1"": """", ""percentualDesconto2"": 0, ""vlDesconto2"": 0, ""dataLimiteDesconto2"": """", ""percentualDesconto3"": 0, " & _
+            """vlDesconto3"": 0, ""dataLimiteDesconto3"": """", ""prazoBonificacao"": 0, ""percentualBonificacao"": 0, ""vlBonificacao"": 0, ""dtLimiteBonificacao"": """", ""vlAbatimento"": 0, " & _
+            """vlIOF"": 0, ""nomePagador"": ""CRISTOVAO DO ROSARIO DOS SANTOS"", ""logradouroPagador"": ""RUA PROF VIEGAS, 186 APT 510 A EDF.MIRAB"", ""nuLogradouroPagador"": """", " & _
+            """complementoLogradouroPagador"": """", ""cepPagador"": 40301, ""complementoCepPagador"": 75, ""bairroPagador"": ""BARBALHO"", ""municipioPagador"": ""SALVADOR"", ""ufPagador"": ""BA"", " & _
+            """cdIndCpfcnpjPagador"": 1, ""nuCpfcnpjPagador"": 82059497515, ""endEletronicoPagador"": ""cristovaodossantos18@gmail.com"", ""dddFoneSacado"": 0, ""foneSacado"": 0, ""bancoDoDebAutomatico"": 0, " & _
+            """agenciaDoDebAutomatico"": 0, ""digitoAgenciaDoDebAutomat"": 0, ""contaDoDebAutomatico"": 0, ""razaoDoDebAutomatico"": 0, ""codBancoDoProtesto"": 0, ""agenciaDoProtesto"": 0, " & _
+            """nomeSacadorAvalista"": ""COSTA ANDRADE EMPREENDIMENTOS LTDA"", ""logradouroSacadorAvalista"": ""R. CEL ALMERINDO REHEM - ED EMP C. ANDRADE 13 AND"", ""nuLogradouroSacadorAvalista"": """", " & _
+            """complementoLogradouroSacadorAvalista"": """", ""cepSacadorAvalista"": 41820, ""complementoCepSacadorAvalista"": 768, ""bairroSacadorAvalista"": ""CAMINHO DAS ÁRVORES"", " & _
+            """municipioSacadorAvalista"": ""SALVADOR"", ""ufSacadorAvalista"": ""BA"", ""cdIndCpfcnpjSacadorAvalista"": 2, ""nuCpfcnpjSacadorAvalista"": 34237446000156, ""enderecoSacadorAvalista"": """", " & _
+            """dddFoneSacadorAvalista"": 71, ""foneSacadorAvalista"": 987654321, ""listaMsgs"": [ { ""mensagem"": ""COSTA ANDRADE EMPREENDIMENTOS 04/09/2025"" }, { ""mensagem"": """" } ] }"
+                   
+            ' --------------------------------------------------------------------------------------------
+                         
+                         
+            ' - Registra o boleto no banco Bradesco, via API, e retorna um objeto json armazenado em XLO_JSONAPI
+            '   (ver README.txt para layout)
+            ' --------------------------------------------------------------------------------------------
+            Set XLO_JSONAPI = JSON.parse(FunPostBoleto(XLT_JSON))
+            
+            If Not (XLO_JSONAPI Is Nothing) Then
+                If JSON.GetParserErrors <> "" Then
+                    MsgBox JSON.GetParserErrors, vbCritical, "Parsing Error(s) occured"
+                    GoTo WhileNext
+                End If
+            Else
+                MsgBox "Erro indefinido na geração do boleto para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    " (" & XFO_EXPORTACAO!Titulo & ").", vbInformation, "Erro: FunPostBoleto()"
+                GoTo WhileNext
+            End If
+            
+            
+            
+            ' - Dados de teste de Sandbox, Json de retorno, conforme executado no Postman. Remover/comentar
+            ' --------------------------------------------------------------------------------------------
+
+            XLT_JSON = "{ ""idProduto"": 9, ""negociacao"": 285600000000222652, ""cpssoaJuridContr"": 2269651, ""ctpoContrNegoc"": 48, ""nseqContrNegoc"": 236334, ""cprodtServcOper"": 1730, ""nuTituloGerado"": 51470000241, " & _
+            """tp08Reg1"": 1, ""agencCred10"": 0, ""ctaCred10"": 0, ""digCred10"": ""00"", ""cip10"": 0, ""codStatus10"": 1, ""status10"": ""A VENCER/VENCIDO"", ""nomeBeneficiario"": ""LOXJYMI LUJOYMUO"", " & _
+            """logradouroBeneficiario"": ""X VYSYXXO FY LYPYSYR 495"", ""nuLogradouroBeneficiario"": """", ""complementoLogradouroBeneficiario"": """", ""bairroBeneficiario"": ""ALAOXOLO"", ""cepBeneficiario"": 6028, " & _
+            """cepComplementoBeneficiario"": 220, ""municipioBeneficiario"": ""IRORJI"", ""ufBeneficiario"": ""SP"", ""razCredt10"": 0, ""nomePagador"": ""CLIENTE"", ""cpfcnpjPagador"": 114383908000007, " & _
+            """enderecoPagador"": ""AVENIDA COPACABANA"", ""bairroPagador"": ""ALPHAVILLE"", ""municipioPagador"": ""BARUERI"", ""ufPagador"": ""SP"", ""cepPagador"": 0, ""cepComplementoPagador"": ""000"", " & _
+            """cebp10"": """", ""debitoAuto10"": """", ""aceite10"": ""N"", ""endEletronicoPagador"": """", ""nomeSacadorAvalista"": ""PARCEIRO"", ""cnpjCpfSacadorAvalista"": 453179268000082, " & _
+            """enderecoSacadorAvalista"": ""AV SAO PAULO"", ""municipioSacadorAvalista"": ""OSASCO"", ""ufSacadorAvalista"": ""SP"", ""cepSacadorAvalista"": 0, ""cepComplementoSacadorAvalista"": 0, ""tp08Reg2"": 2, " & _
+            """cense10"": 0, ""agenOper10"": 0, ""bcoDepos10"": 0, ""agenDepos10"": 0, ""seuNumeroTitulo"": ""1"", ""dtRegistro"": ""27052025"", ""especieDocumentoTitulo"": ""DM"", ""descEspecie"": """", ""vlIOF"": 0, " & _
+            """dtEmissao"": ""27052025"", ""codigoMoedaTitulo"": ""R$"", ""quantidadeMoeda"": 0, ""quantidadeCasas"": 2, ""dtVencimento"": ""27.08.2025"", ""descricacaoMoeda"": ""R$"", ""vlTitulo"": 141.50, " & _
+            """vlAbatimento"": 0, ""dtInstrucaoProtestoNegativação"": """", ""diasInstrucaoProtestoNegativação"": 0, ""dataEnvioCartorio"": """", ""numeroCartorio"": """", ""numeroProtocoloCartorio"": """", " & _
+            """dataPedidoSustacao"": """", ""dataSustacao"": """", ""dtMulta"": ""27082025"", ""vlMulta"": 2000, ""qtdeCasasDecimaisMulta"": 5, ""cdValorMulta"": 2, ""descCdMulta"": ""TAXA MENSAL"", " & _
+            """dtJuros"": ""27082025"", ""vlJurosAoDia"": 50, ""dtDesconto1Bonificacao"": ""29052025"", ""vlDesconto1Bonificacao"": 5000, ""qtdeCasasDecimaisDesconto1Bonificacao"": 2, ""cdValorDesconto1Bonificacao"": 1, " & _
+            """descCdDesconto1Bonificacao"": """", ""dtDesconto2"": """", ""vlDesconto2"": 0, ""qtdeCasasDecimaisDesconto2"": 0, ""cdValorDesconto2"": 0, ""descCdDesconto2"": """", ""dtDesconto3"": """", " & _
+            """vlDesconto3"": 0, ""qtdeCasasDecimaisDesconto3"": 0, ""cdValorDesconto3"": 0, ""descCdDesconto3"": """", ""diasDispensaMulta"": 1, ""diasDispensaJuros"": 1, " & _
+            """cdBarras"": ""23791690400000141501234090000000045301234560"", ""linhaDigitavel"": ""23791.23405 90000.000043 53012.345608 1 69040000014150"", ""despCart10"": 0, ""bcoCentr10"": 0, " & _
+            """ageCentr10"": 0, ""acessEsc10"": 0, ""tipoEndosso"": """", ""codigoOrigemProtesto"": 0, ""codigoOrigemTitulo"": """", ""tpVencimento"": 0, ""indInstrucaoProtesto"": 0, ""indicadorDecurso"": 0, " & _
+            """quantidadeDiasDecurso"": 0, ""ctpoAbat10"": 0, ""cdValorJuros"": 1, ""tpDesconto1"": 1, ""tpDesconto2"": 0, ""tpDesconto3"": 0, ""nuControleParticipante"": """", ""diasJuros"": 1, ""cdJuros"": 1, " & _
+            """vlJuros"": 50, ""cpfcnpjBeneficiário"": ""031759488000055"", ""vlTituloEmitidoBoleto"": 0, ""dtVencimentoBoleto"": ""27/08/2025"", ""indTitParceld10"": """", ""indParcelaPrin10"": """", " & _
+            """indBoletoDda10"": """", ""dtLimitePagamentoBoleto"": ""27/08/2025"", ""dataImpressao10"": 27052025, ""horaImpressao10"": 0, ""identTitDda10"": 0, ""exibeLinDig10"": ""N"", ""permPgtoParcial"": """", " & _
+            """qtdePgtoParcial"": 0, ""bancoDeb"": 0, ""agenciaDeb"": 0, ""agenciaDebDv"": 0, ""contaDeb"": 0, ""razaoContaDebito"": 0 }"
+
+            Set XLO_JSONAPI = JSON.parse(XLT_JSON)
+                
+            ' --------------------------------------------------------------------------------------------
+                
+                
+                
+            ' - Monta objeto JSON com o layout/esquema necessário para a emissão do boleto em HTML e PDF
+            '   Foram utilizados os campos necessários para a geração dos boletos, caso sejam necessárias
+            '   mais informações, ver a documentação em: https://github.com/BoletoNet/boleto2net
+            ' --------------------------------------------------------------------------------------------
+            XLT_JSON = "{ "
+
+            ' --- { Boleto { },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Boleto", "{ ", False) & _
+            FunJsonString("Aceite", "A") & ", " & _
+            FunJsonString("AgenciaCobradoraRecebedora", "") & ", " & _
+            FunJsonString("AvisoDebitoAutomatico", "") & ", " & _
+            FunJsonString("BancoCobradorRecebedor", "") & ", " & _
+            FunJsonString("Carteira", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira")) & ", " & _
+            FunJsonString("CarteiraImpressaoBoleto", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira")) & ", " & _
+            FunJsonString("CodigoBaixaDevolucao", "0", False) & ", " & _
+            FunJsonString("CodigoInstrucao1", IIf(TxtInstrucao1.Text <> "", TxtInstrucao1.Text, "")) & ", " & _
+            FunJsonString("CodigoInstrucao2", IIf(TxtInstrucao2.Text <> "", TxtInstrucao2.Text, "")) & ", " & _
+            FunJsonString("CodigoInstrucao3", "") & ", " & _
+            FunJsonString("CodigoMoeda", "9", False) & ", " & _
+            FunJsonString("CodigoOcorrencia", "") & ", " & _
+            FunJsonString("CodigoOcorrenciaAuxiliar", "") & ", " & _
+            FunJsonString("CodigoProtesto", "0", False) & ", " & _
+            FunJsonString("ComplementoInstrucao1", IIf(TxtInstrucao1.Text <> "", XLT_INSTRUCAO, "")) & ", " & _
+            FunJsonString("ComplementoInstrucao2", IIf(TxtInstrucao2.Text <> "", XLT_INSTRUCAO, "")) & ", " & _
+            FunJsonString("ComplementoInstrucao3", "") & ", "
+            
+            XLT_JSON = XLT_JSON & _
+            IIf(XLT_DATADESCONTO <> "", FunJsonString("DataDesconto", XLT_DATADESCONTO) & ", ", "") & _
+            FunJsonString("DataEmissao", Format(DtpExportacao, "yyyy-mm-dd")) & ", " & _
+            FunJsonString("DataVencimento", Format(XFO_EXPORTACAO!titu_dt_Vencimento, "yyyy-mm-dd")) & ", " & _
+            FunJsonString("EspecieDocumento", "12", False) & ", " & _
+            FunJsonString("EspecieMoeda", "R$") & ", " & _
+            FunJsonString("ImprimirValoresAuxiliares", "true", False) & ", " & _
+            FunJsonString("MensagemArquivoRemessa", "") & ", " & _
+            FunJsonString("MensagemInstrucoesCaixa", IIf(XLT_INSTRUCAO <> "", XLT_INSTRUCAO, "")) & ", " & _
+            FunJsonString("NossoNumero", XLT_NOSSONUMERO) & ", " & _
+            FunJsonString("NossoNumeroDV", XLT_NOSSONUMERODV) & ", " & _
+            FunJsonString("NossoNumeroFormatado", _
+                           XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & _
+                           XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV) & ", " & _
+            FunJsonString("NumeroDocumento", XFO_EXPORTACAO!Titulo) & ", " & _
+            FunJsonString("ValorDesconto", Replace(Replace(FormatNumber(XLF_DESCONTO, 2), ".", ""), ",", "."), False) & ", " & _
+            FunJsonString("ValorTitulo", Replace(Replace(FormatNumber(XLF_VALOR, 2), ".", ""), ",", "."), False) & " }, "
+
+            ' --- { Banco { }
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Banco", "{ ", False) & _
+            FunJsonString("Codigo", "237", False) & ", " & _
+            FunJsonString("Digito", "2") & ", " & _
+            FunJsonString("Nome", "Bradesco") & ", " & _
+            FunJsonString("RemoveAcentosArquivoRemessa", "true", False) & " }, "
+
+            ' --- { Cedente
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Cedente", "{ ", False) & _
+            FunJsonString("CPFCNPJ", XGT_CGC) & ", " & _
+            FunJsonString("CodigoTransmissao", "") & ", " & _
+            FunJsonString("MostrarCNPJnoBoleto", "true", False) & ", " & _
+            FunJsonString("Nome", Trim(PEmpresa)) & ", " & _
+            FunJsonString("Observacoes", "") & ", " & _
+            FunJsonString("TipoCPFCNPJ", "J") & ", "
+
+            ' --- { Cedente { ContaBancaria { },
+            '     Observação, a conta no boleto usa apenas 5 posições numéricas
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("ContaBancaria", "{ ", False) & _
+            FunJsonString("Agencia", Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000")) & ", " & _
+            FunJsonString("CarteiraPadrao", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira")) & ", " & _
+            FunJsonString("CodigoBancoCorrespondente", "0", False) & ", " & _
+            FunJsonString("Conta", Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 7), "0000000")) & ", " & _
+            FunJsonString("DigitoAgencia", "") & ", " & _
+            FunJsonString("DigitoConta", Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")) & ", " & _
+            FunJsonString("LocalPagamento", "") & ", " & _
+            FunJsonString("MensagemFixaSacado", "Ref. título " & XFO_EXPORTACAO!Titulo) & ", " & _
+            FunJsonString("MensagemFixaTopoBoleto", "Emitido por " & Trim(PEmpresa)) & ", "
+
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("NossoNumeroBancoCorrespondente", "") & ", " & _
+            FunJsonString("OperacaoConta", "") & ", " & _
+            FunJsonString("TipoCarteiraPadrao", "1", False) & ", " & _
+            FunJsonString("TipoDistribuicao", "2", False) & ", " & _
+            FunJsonString("TipoDocumento", "1", False) & ", " & _
+            FunJsonString("TipoFormaCadastramento", "1", False) & ", " & _
+            FunJsonString("TipoImpressaoBoleto", "2", False) & ", " & _
+            FunJsonString("VariacaoCarteiraPadrao", "") & " }, "
+
+            ' --- { Cedente { Endereco { } },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Endereco", "{ ", False) & _
+            FunJsonString("LogradouroEndereco", Trim(PEndereco)) & ", " & _
+            FunJsonString("LogradouroNumero", "") & ", " & _
+            FunJsonString("LogradouroComplemento", "") & ", " & _
+            FunJsonString("Bairro", Trim(XGT_BAIRRO)) & ", " & _
+            FunJsonString("Cidade", Trim(PCidade)) & ", " & _
+            FunJsonString("UF", Trim(XGT_ESTADO)) & ", " & _
+            FunJsonString("CEP", IIf(XLT_CEPEMP <> "", Trim(XLT_CEPEMP), " ")) & " } }, "
+
+            ' --- { Sacado
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Sacado", "{ ", False) & _
+            FunJsonString("CPFCNPJ", XFO_EXPORTACAO!focl_tx_CGCCPF) & ", " & _
+            FunJsonString("Nome", Trim(XLT_NOME)) & ", " & _
+            FunJsonString("Observacoes", "") & ", "
+
+            ' --- { Sacado { Endereco { } },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Endereco", "{ ", False) & _
+            FunJsonString("LogradouroEndereco", Trim(XLT_ENDERECO)) & ", " & _
+            FunJsonString("LogradouroNumero", "") & ", " & _
+            FunJsonString("LogradouroComplemento", "") & ", " & _
+            FunJsonString("Bairro", Trim(XLT_BAIRRO)) & ", " & _
+            FunJsonString("Cidade", Trim(XLT_CIDADE)) & ", " & _
+            FunJsonString("UF", Trim(XLT_ESTADO)) & ", " & _
+            FunJsonString("CEP", IIf(XLT_CEP <> "", XLT_CEP, " ")) & " } }, "
+
+            ' --- { Avalista { },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("Avalista", "{ ", False)
+
+            If Me.cboSacadorAvalista.Text <> "" Then
+                ' --- { Avalista {
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("CPFCNPJ", DatEmpresa.Recordset.Fields!empr_tx_CGC) & ", " & _
+                FunJsonString("Nome", Trim(DatEmpresa.Recordset.Fields!empr_tx_razaosocial)) & ", " & _
+                FunJsonString("Observacoes", "") & ", "
+                
+                ' --- { Avalista { Endereco { } },
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("Endereco", "{ ", False) & _
+                FunJsonString("LogradouroEndereco", Trim(DatEmpresa.Recordset.Fields!empr_tx_endereco)) & ", " & _
+                FunJsonString("LogradouroNumero", "") & ", " & _
+                FunJsonString("LogradouroComplemento", "") & ", " & _
+                FunJsonString("Bairro", Trim(DatEmpresa.Recordset.Fields!empr_tx_Bairro)) & ", " & _
+                FunJsonString("Cidade", Trim(DatEmpresa.Recordset.Fields!empr_tx_cidade)) & ", " & _
+                FunJsonString("UF", Trim(DatEmpresa.Recordset.Fields!empr_tx_Estado)) & ", " & _
+                FunJsonString("CEP", IIf(DatEmpresa.Recordset.Fields!empr_tx_Cep <> "", Trim(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, ".", ""), "-", "")), " ")) & " } }, "
+            Else
+                ' --- { Avalista { Endereco { } },
+                XLT_JSON = XLT_JSON & _
+                FunJsonString("Endereco", "{ ", False) & " } }, "
+            End If
+
+            ' --- { CodigoBarra { },
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("CodigoBarra", "{ ", False) & _
+            FunJsonString("CampoLivre", "") & ", " & _
+            FunJsonString("CodigoBanco", "237") & ", " & _
+            FunJsonString("CodigoDeBarras", XLO_JSONAPI.Item("cdBarras")) & ", " & _
+            FunJsonString("DigitoVerificador", Mid$(XLO_JSONAPI.Item("cdBarras"), 5, 1)) & ", " & _
+            FunJsonString("FatorVencimento", "0", False) & ", " & _
+            FunJsonString("LinhaDigitavel", XLO_JSONAPI.Item("linhaDigitavel")) & ", " & _
+            FunJsonString("Moeda", "9", False) & ", " & _
+            FunJsonString("ValorDocumento", Replace(Replace(FormatNumber(XLF_VALOR, 2), ".", ""), ",", "."), False) & " }, "
+
+            ' --- { PathToFiles
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("PathToFiles", XLO_BOLETOS.Item("PathToFiles")) & ", "
+            
+            ' --- { SenhaPdfSacado, SenhaPdfCedente } }
+            XLT_JSON = XLT_JSON & _
+            FunJsonString("SenhaPdfSacado", XLT_SENHASACADO) & ", " & _
+            FunJsonString("SenhaPdfCedente", XLT_SENHACEDENTE) & " }"
+            
+            
+            ' - Emitir boleto, salvar em PDF com senha usando biblioteca externa (dll)
+            '   Corrige as contrabarras, para o parse do json (vem C:/xx\yy, deveria ser C:\\xx\\yy)
+            ' --------------------------------------------------------------------------------------------
+            Set XLO_JSONB2N = JSON.parse(Replace(Replace(BoletoService.EmiteBoleto(XLT_JSON), "/", "\"), "\", "\\"))
+
+            If Not (XLO_JSONB2N Is Nothing) Then
+                If JSON.GetParserErrors <> "" Then
+                    MsgBox JSON.GetParserErrors, vbCritical, "Parsing Error(s) occured"
+                    GoTo WhileNext
+                Else
+                    If XLO_JSONB2N.Item("status") <> "OK" Then
+                        MsgBox "Erro na emissão do boleto: " & XLO_JSONB2N.Item("message"), vbInformation, "Erro: BoletoService.EmiteBoleto()"
+                        GoTo WhileNext
+                    End If
+                End If
+            Else
+                MsgBox "Erro indefinido na emissão do boleto para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    " (" & XFO_EXPORTACAO!Titulo & ").", vbInformation, "Erro: BoletoService.EmiteBoleto()"
+               GoTo WhileNext
+            End If
+            
+            ' - Envia e-mail com o boleto (PDF criptografado) em anexo
+            ' --------------------------------------------------------------------------------------------
+            XLB_STATUS = FunSendEmail( _
+                            XFO_EXPORTACAO!focl_tx_RazaoSocial, _
+                            XFO_EXPORTACAO!empd_tx_Nome, _
+                            XFO_EXPORTACAO!Titulo, _
+                            Format(XFO_EXPORTACAO!titu_dt_Vencimento, "dd/mm/yyyy"), _
+                            XLF_VALOR, _
+                            XFO_EXPORTACAO!focl_tx_RazaoSocial & " <" & XFO_EXPORTACAO!focl_tx_EMail & ">", _
+                            XLO_JSONB2N.Item("arquivoPDF"))
+
+            ' - Tratar o retorno, identificando códigos de resposta e dados retornados via Json.
+            '   Se algum erro, adicionar o titulo à uma lista ou corrigir status do boleto
+            ' --------------------------------------------------------------------------------------------
+            If XLB_STATUS = False Then
+                MsgBox "Erro no envio do boleto por e-mail para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    " <" & XFO_EXPORTACAO!focl_tx_EMail & "> (" & XFO_EXPORTACAO!Titulo & ").", vbInformation, "Erro: FunSendEmail()"
+                GoTo WhileNext
+            End If
+
+            ' - Atualiza o titulo com os dados do boleto gerado
+            ' --------------------------------------------------------------------------------------------
+            If OptIndexador1.Value = True Then
+                If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda1) Then
+                    XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda1
+                Else
+                    XLT_CODMOEDA = ""
+                End If
+            ElseIf OptIndexador2.Value = True Then
+                If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda2) Then
+                    XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda2
+                Else
+                    XLT_CODMOEDA = ""
+                End If
+            Else
+                XLT_CODMOEDA = ""
+            End If
+            
+            Conexao.Execute ("UPDATE Titulos Set titu_tx_ExpBanco = 'S'," & _
+                             " moed_cd_Moeda3 = " & FunNuloBancoVal(XLT_CODMOEDA) & "," & _
+                             " titu_vl_Seguro = " & FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8))) & "," & _
+                             " titu_tx_IdBoleto = '" & XLO_JSONAPI.Item("nuTituloGerado") & "'," & _
+                             " titu_tx_NossoNumero = '" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV & "'," & _
+                             " titu_tx_CodigoBarras = '" & XLO_JSONAPI.Item("cdBarras") & "'," & _
+                             " titu_tx_LinhaDigitavel = '" & XLO_JSONAPI.Item("linhaDigitavel") & "'" & _
+                             " WHERE empr_cd_Empresa = " & PCodEmpresa & _
+                             " AND empd_cd_empreendimento = '" & Left(XFO_EXPORTACAO!Titulo, 4) & "'" & _
+                             " AND imov_cd_imovel = '" & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & "'" & _
+                             " AND cont_cd_Contrato = '" & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & "'" & _
+                             " AND titu_cd_Plano = '" & Mid(XFO_EXPORTACAO!Titulo, 14, 2) & "'" & _
+                             " AND titu_cd_Parcela = '" & Mid(XFO_EXPORTACAO!Titulo, 17, 3) & "'" & _
+                             " AND titu_cd_Residuo = '" & Right(XFO_EXPORTACAO!Titulo, 2) & "'")
+                        
+             ' - Registra o LOG da operação
+             ' --------------------------------------------------------------------------------------------
+             ReDim XGM_MATRIZLOG(12, 2) As Variant
+            
+             XGM_MATRIZLOG(0, 0) = "Título"
+             XGM_MATRIZLOG(1, 0) = "Moeda"
+             XGM_MATRIZLOG(2, 0) = "Valor Seguro"
+             XGM_MATRIZLOG(3, 0) = "Valor do Título"
+             XGM_MATRIZLOG(4, 0) = "Valor do Desconto"
+             XGM_MATRIZLOG(5, 0) = "Conta Corrente"
+             XGM_MATRIZLOG(6, 0) = "Data Venc. Título"
+             XGM_MATRIZLOG(7, 0) = "Data Venc. Desconto"
+             XGM_MATRIZLOG(8, 0) = "Id do Boleto"
+             XGM_MATRIZLOG(9, 0) = "Nosso Número"
+             XGM_MATRIZLOG(10, 0) = "Código de Barras"
+             XGM_MATRIZLOG(11, 0) = "Linha Digitável"
+            
+             XGM_MATRIZLOG(0, 1) = XFO_EXPORTACAO!Titulo
+             XGM_MATRIZLOG(1, 1) = FunNuloBancoVal(XLT_CODMOEDA)
+             XGM_MATRIZLOG(2, 1) = FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8)))
+             XGM_MATRIZLOG(3, 1) = XLF_VALOR
+             XGM_MATRIZLOG(4, 1) = XLF_DESCONTO
+             XGM_MATRIZLOG(5, 1) = DatContaCorrente.Recordset.Fields!coco_cd_Agencia & "-" & DatContaCorrente.Recordset.Fields!coco_tx_Conta & DatContaCorrente.Recordset.Fields!coco_nr_Dac
+             XGM_MATRIZLOG(6, 1) = XFO_EXPORTACAO!titu_dt_Vencimento
+             XGM_MATRIZLOG(7, 1) = XLT_DATADESCONTO
+             XGM_MATRIZLOG(8, 1) = XLO_JSONAPI.Item("nuTituloGerado")
+             XGM_MATRIZLOG(9, 1) = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV
+             XGM_MATRIZLOG(10, 1) = XLO_JSONAPI.Item("cdBarras")
+             XGM_MATRIZLOG(11, 1) = XLO_JSONAPI.Item("linhaDigitavel")
+            
+             Call subRegistraLog("TelaExpBancaria", "3", funCriaDescricaoLog(XGM_MATRIZLOG, EMITIR_BOLETO, PAGAMENTO_ELETRONICO_BRADESCO))
+    
         End If
-                        
-                        
-                        
-                        
-          '071 a 082   Identificação do Título no Banco
-          'Obs: Esse campo será preenchido com Brancos, pois se trata de Emissão de Papeleta pelo Banco - Cobrança com Registro
-          'XLT_TEXTO = XLT_TEXTO & Space(12)
-          'Bradesco solicitou que o campo seja preenchido com zeros(0) para empresa JMJ
-          If PFantasia = "JMJ" Or PFantasia = "PLENA" Or PFantasia = "LUAR DE AREMBEPE" Then
-            XLT_TEXTO = XLT_TEXTO & "000000000000"
-          Else
-            XLT_TEXTO = XLT_TEXTO & Space(12)
-          End If
-          '083 a 092   Desconto Bonificação por dia
-          XLT_TEXTO = XLT_TEXTO & Format((TDBGrid1.Columns("DescDiario").Value * 100), "0000000000")
-          '093 a 093   Condição para Emissão da Papeleta de Cobrança
-          'Obs: Esse campo será preenchido com valor "1" pois se refere a situação 1=Banco emite e Processa o registro.
-          XLT_TEXTO = XLT_TEXTO & "1"
-          '094 a 094   Ident. se emite papeleta para Débito Automático
-          XLT_TEXTO = XLT_TEXTO & "N"
-          '095 a 104   Identificação da Operação do Banco
-          XLT_TEXTO = XLT_TEXTO & Space(10)
-          '105 a 105   Indicador Rateio Crédito
-          XLT_TEXTO = XLT_TEXTO & Space(1)
-          '106 a 106   Endereçamento para Aviso do Débito Automático em Conta Corrente
-          'Obs.: Esse campo será preenchido com o valor "2", pois não será utilizada a Cobrança via Débito em Conta.
-          XLT_TEXTO = XLT_TEXTO & "2"
-          '107 a 108   Branco
-          XLT_TEXTO = XLT_TEXTO & Space(2)
-          '109 a 110   Identificação ocorrência
-          XLT_TEXTO = XLT_TEXTO & "01"
-          '111 a 120   Nº do Documento
-          SubQOpenRecordset XLO_DADOSNF, "SELECT nofi_nr_documento, nofi_dt_emissao FROM NotasFiscais WHERE nofi_nr_TituloCapi = '" & TDBGrid1.Columns("Título").Value & "'", Estatico
-          If Not XLO_DADOSNF.EOF Then
-            XLT_TEXTO = XLT_TEXTO & Mid(Trim(FunNulo(XLO_DADOSNF!nofi_nr_documento)), 2, Len(Trim(FunNulo(XLO_DADOSNF!nofi_nr_documento)))) & Space(10 - Len(Mid(Trim(FunNulo(XLO_DADOSNF!nofi_nr_documento)), 2, Len(Trim(FunNulo(XLO_DADOSNF!nofi_nr_documento))))))
-          Else
-            XLT_TEXTO = XLT_TEXTO & Space(10)
-          End If
-
-          '121 a 126   Data do Vencimento do Título
-          XLT_TEXTO = XLT_TEXTO & Format(XFO_EXPORTACAO!titu_dt_Vencimento, "ddmmyy")
-          '127 a 139   Valor do Título
-          XLT_TEXTO = XLT_TEXTO & Format((XLF_VALOR * 100), "0000000000000")
-          '140 a 142   Banco Encarregado da Cobrança
-          'Obs: Esse campo será preenchido com zeros, pois o campo (109 a 110   Identificação ocorrência) foi preenchido com o valor "01"
-          XLT_TEXTO = XLT_TEXTO & "000"
-          '143 a 147   Agência Depositária
-          'Obs: Esse campo será preenchido com zeros, pois o campo (109 a 110   Identificação ocorrência) foi preenchido com o valor "01"
-          XLT_TEXTO = XLT_TEXTO & "00000"
-          '148 a 149   Espécie de Título
-          'Obs: Esse campo será preenchido com o valor "02", pois os títulos a pagar são Notas Promissórias
-          XLT_TEXTO = XLT_TEXTO & "02"
-          '150 a 150   Identificação
-          'Obs.: Esse campo será preenchido com o valor "N" por indicação do próprio banco, pois no layout deles havia apenas o valor "N" para preenchimento desse campo.
-          XLT_TEXTO = XLT_TEXTO & "N"
-          '151 a 156   Data da emissão do Título
-          XLT_TEXTO = XLT_TEXTO & Format(Trim(FunNulo(TDBGrid1.Columns("titu_dt_Base").Value)), "DDMMYY")
-          '157 a 158   1ª instrução e 159 a 160   2ª instrução (Campo destinado para pré-determinar o protesto do Título, quando do registro.)
-          '- posição 157 a 158 = Indicar o código "06" - (Protesto)
-          '- posição 159 a 160 =  Indicar o número de dias a protestar (mínimo 5 dias)
-          'Nota: A posição 157 a 158, também poderá ser utilizada para definir as seguintes mensagens, a serem impressas nas papeletas de cobrança, emitidas pelo Banco:
-          '08 - Não cobrar juros de mora
-          '09 - Não receber após o vencimento
-          '10 - Multa de 10 % após o quarto dia do vencimento
-          '11 - Não receber após o 8º dia  do vencimento
-          '12 - cobrar encargos após o 5º dia do vencimento
-          '13- Cobrar encargos após o 10º dia do vencimento.
-          '14- Cobrar encargos após o 15º dia do vencimento
-          '15- Conceder desconto mesmo se pago após o vencimento.
-
-          If Val(TxtNDiasProtesto.Text) <> 0 Then
-            XLT_TEXTO = XLT_TEXTO & "06"
-            XLT_TEXTO = XLT_TEXTO & Format(TxtNDiasProtesto.Text, "00")
-          Else
-            'Se o Nº de dias para Protesto (TxtNDiasProtesto.text) não for informado pelo usuário, então os campos 157 a 158 serão preenchidos com o código da mensagem selecionada
-            'e os campos 159 a 160 serão preenchidos com brancos.:
-            If CmbInstrucao.Text <> "" Then
-                XLT_TEXTO = XLT_TEXTO & Mid(Trim(CmbInstrucao.Text), 1, 2)
-            Else
-                XLT_TEXTO = XLT_TEXTO & "00"
-            End If
-            XLT_TEXTO = XLT_TEXTO & "00"
-          End If
-          '161 a 173   Valor a ser cobrado por Dia de Atraso
-          XLT_TEXTO = XLT_TEXTO & Format(TDBGrid1.Columns("Multa/Juros").Value * 100, "0000000000000")
-          '174 a 179   Data Limite P/Concessão de Desconto
-          XLT_TEXTO = XLT_TEXTO & XLT_DATADESCONTO
-          '180 a 192   Valor do Desconto
-          If CDbl(TDBGrid1.Columns("DescDiario").Value) <> 0 Then
-            XLT_TEXTO = XLT_TEXTO & Format((XLF_DESCONTO * 100), "0000000000000")
-          Else
-            XLT_TEXTO = XLT_TEXTO & "0000000000000"
-          End If
-          '193 a 205   Valor do IOF
-          'Obs.:Este campo somente deverá ser preenchido pelas Empresas Cedentes, cujo ramo de atividade seja Administradora de Seguros.
-          XLT_TEXTO = XLT_TEXTO & "0000000000000"
-          '206 a 218   Valor do Abatimento a ser concedido ou cancelado
-          XLT_TEXTO = XLT_TEXTO & Format((TDBGrid1.Columns("Valor Abatimento").Value * 100), "0000000000000")
-          '219 a 220   Identificação do Tipo de Inscrição do Sacado
-          XLT_TEXTO = XLT_TEXTO & XLT_TIPO
-          '221 a 234   Nº Inscrição do Sacado
-          XLT_TEXTO = XLT_TEXTO & Format(XLT_CGCCPF, "00000000000000")
-          '235 a 274   Nome do Sacado
-          XLT_TEXTO = XLT_TEXTO & Trim(Mid(XLT_NOME, 1, 40)) & Space(40 - Len(Trim(Mid(XLT_NOME, 1, 40))))
-          '275 a 314   Endereço Completo
-          XLT_TEXTO = XLT_TEXTO & Trim(Mid((XLT_ENDERECO & "-" & XLT_ENDERECO & "-" & XLT_BAIRRO & "-" & XLT_CIDADE & "-" & XLT_ESTADO), 1, 40)) & Space(40 - Len(Trim(Mid((XLT_ENDERECO & "-" & XLT_ENDERECO & "-" & XLT_BAIRRO & "-" & XLT_CIDADE & "-" & XLT_ESTADO), 1, 40))))
-          '315 a 326   1ª Mensagem
-          XLT_TEXTO = XLT_TEXTO & Trim(TxtMensagem1.Text) & Space(12 - Len(Trim(TxtMensagem1.Text)))
-          '327 a 331   CEP e 332 a 334   Sufixo do CEP
-          XLT_TEXTO = XLT_TEXTO & Format(XLT_CEP, "00000000")
-          
-          If (Right(XFO_EXPORTACAO!Titulo, 2) <> "00") Then
-            XLT_RESIDUOPARCELA = " (Residuo)"
-          End If
-          
-         'Tipo Plano
-          If Not IsNull(XFO_EXPORTACAO!tipl_tx_Descricao) Then
-            XLT_TIPOPLANOS = XFO_EXPORTACAO!tipl_tx_Descricao
-          End If
-          
-          XLT_MENSAGEMVARIAVELTITULO = "Quadra " & Mid(XFO_EXPORTACAO!Titulo, 6, 2) & " Lote " & Mid(XFO_EXPORTACAO!Titulo, 8, 2) & " Parcela " & Mid(XFO_EXPORTACAO!Titulo, 17, 3) & " " & XLT_TIPOPLANOS & XLT_RESIDUOPARCELA
-          
-          '335 a 394   Sacador/Avalista  ou 2 ª Mensagem
-          'XLT_TEXTO = XLT_TEXTO & Trim(TxtMensagem2.Text) & Space(60 - Len(Trim(TxtMensagem2.Text)))
-          XLT_TEXTO = XLT_TEXTO & Trim(XLT_MENSAGEMVARIAVELTITULO) & Space(60 - Len(Trim(XLT_MENSAGEMVARIAVELTITULO)))
-          
-          '395 a 400   Nº Seqüencial do Registro
-          XLT_TEXTO = XLT_TEXTO & Format(XLI_NUMSQUENCIAL, "000000")
-
-          Print #1, funTiraAcento(XLT_TEXTO, True)
-          
-          XLT_REGLOTE = XLT_REGLOTE + 1
-          
-          'Pegando o código da moeda
-          If OptIndexador1.Value = True Then
-            If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda1) Then
-              XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda1
-            Else
-              XLT_CODMOEDA = ""
-            End If
-          ElseIf OptIndexador2.Value = True Then
-            If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda2) Then
-              XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda2
-            Else
-              XLT_CODMOEDA = ""
-            End If
-          Else
-            XLT_CODMOEDA = ""
-          End If
         
-          Conexao.Execute ("UPDATE Titulos Set titu_tx_ExpBanco='S'," & _
-            " moed_cd_Moeda3=" & FunNuloBancoVal(XLT_CODMOEDA) & "," & _
-            " titu_vl_Seguro=" & FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8))) & _
-            " WHERE empr_cd_Empresa=" & PCodEmpresa & _
-            " AND empd_cd_empreendimento='" & Left(XFO_EXPORTACAO!Titulo, 4) & "'" & _
-            " AND imov_cd_imovel='" & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & "'" & _
-            " AND cont_cd_Contrato='" & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & "'" & _
-            " AND titu_cd_Plano='" & Mid(XFO_EXPORTACAO!Titulo, 14, 2) & "'" & _
-            " AND titu_cd_Parcela='" & Mid(XFO_EXPORTACAO!Titulo, 17, 3) & "'" & _
-            " AND titu_cd_Residuo='" & Right(XFO_EXPORTACAO!Titulo, 2) & "'")
-            
-            
-            '******************REGISTRA LOG DA OPERAÇÃO**************************
-            ReDim XGM_MATRIZLOG(8, 2) As Variant
-            
-            XGM_MATRIZLOG(0, 0) = "Título"
-            XGM_MATRIZLOG(1, 0) = "Moeda"
-            XGM_MATRIZLOG(2, 0) = "Valor Seguro"
-            XGM_MATRIZLOG(3, 0) = "Valor do Desconto"
-            XGM_MATRIZLOG(4, 0) = "Valor do título"
-            XGM_MATRIZLOG(5, 0) = "Conta corrente"
-            XGM_MATRIZLOG(6, 0) = "Data Venc. Título"
-            XGM_MATRIZLOG(7, 0) = "Data Venc. Desconto"
-            
-            XGM_MATRIZLOG(0, 1) = XFO_EXPORTACAO!Titulo
-            XGM_MATRIZLOG(1, 1) = FunNuloBancoVal(XLT_CODMOEDA)
-            XGM_MATRIZLOG(2, 1) = FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8)))
-            XGM_MATRIZLOG(3, 1) = XLF_DESCONTO
-            XGM_MATRIZLOG(4, 1) = XLF_VALOR
-            XGM_MATRIZLOG(5, 1) = DatContaCorrente.Recordset.Fields!coco_cd_Agencia & " - " & DatContaCorrente.Recordset.Fields!coco_tx_Conta & "-" & FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dag)
-            XGM_MATRIZLOG(6, 1) = XFO_EXPORTACAO!titu_dt_Vencimento
-            XGM_MATRIZLOG(7, 1) = XLT_DATADESCONTO
-            
-            Call subRegistraLog("TelaExpBancaria", "1", funCriaDescricaoLog(XGM_MATRIZLOG, EXPORTACAO_CAPI, PAGAMENTO_ELETRONICO_BRADESCO))
-            '*******************************************************************
-          
-      End If
-      
-      TDBGrid1.MoveNext
-      XFO_EXPORTACAO.MoveNext
-  Wend
-  
-  '****************************************************************************
-  XLI_NUMSQUENCIAL = XLI_NUMSQUENCIAL + 1
-    
-  'Registro Trailler - Remessa
-          XLT_TEXTO = "9" & _
-                        Space(393) & _
-                        Format(XLI_NUMSQUENCIAL, "000000")
-          Print #1, funTiraAcento(XLT_TEXTO, True)
-  '**********************************************
-  Close #1
-         
-  MsgBox "Exportação realizada com sucesso!", vbInformation + vbOKOnly, "ATENÇÃO"
-  
-  Conexao.CommitTrans
-  subDesabilitaBotoes
-  CmdImprimir.Enabled = True
-    
-  CmbInstrucao.Enabled = True
-  
-  Exit Sub
-  
-TrataErro:
-    funTrataErros (ComMensagem)
-    Conexao.RollbackTrans
+WhileNext:
+
+        TDBGrid1.MoveNext
+        XFO_EXPORTACAO.MoveNext
+        
+    Wend
+
+    MsgBox "Emissão de boletos finalizada!", vbInformation + vbOKOnly, "ATENÇÃO"
+
+'    Conexao.CommitTrans            ' - Transaction desabilitada em 21/10/2024 PSG
+    subDesabilitaBotoes
+    CmdImprimir.Enabled = True
+        
     Exit Sub
-  
+    
 End Sub
+
 Private Sub CmdFiltro_Click()
     
     Dim XLI_POS As Integer
     Dim XLI_POS2 As Integer
     
-    Set Formulario = TelaExpBancaria
+    Set Formulario = TelaEmissaoBoletos
     subTelaValoresGlobais "P"
     TelaFiltro.Show 1 'Mostra a tela de filtros no modo modal
     subTelaValoresGlobais "G"
 
     If Filtrou = True Then
         subCarregaVetor FRM_FiltroAtual, Array("Titulo", "Exporta", "titu_dt_Vencimento", "ValorReal", _
-     "focl_tx_RazaoSocial", "titu_vl_Desconto", "LimiteDesconto", "ValorTitulo", _
-     "Seguro", "SaldoDevedor", "titu_nr_contratobanco", "DescDiario", "DataConsDesc", "ValAbatimento", "MultaJuros", "titu_dt_Base"), VFV_VETOREXP, TDBGrid1
+              "obse_tx_Observacao", "titu_vl_Desconto", "LimiteDesconto", "ValorTitulo", _
+              "Seguro", "SaldoDevedor"), VFV_VETOREXP, TDBGrid1
               
         'Retira o último filtro adicionado no sql do recordset
         XLI_POS = InStrRev(FiltroAtual, "WHERE", -1, vbTextCompare)
@@ -4324,7 +4406,7 @@ End Sub
 Private Sub CmdImprimir_Click()
     'Call subImprimeListagemGRIDUnBound(2, TDBGrid1.PrintInfo, "Listagem Títulos Exportados")
         
-    On Error GoTo TrataErro:
+    'On Error GoTo TrataErro:
     Dim GuardaY As Single
     Dim LargPapel As Single, AltPapel As Single, AreaImpressao As Single
     'Dim XNumBordero As String
@@ -4337,7 +4419,7 @@ Private Sub CmdImprimir_Click()
     Dim XLF_TOTALPAGAR As Double
     Dim XLI_QTDTITULOS As Integer
         
-    TitRel = "Listagem do Arquivo de Exportação"
+    TitRel = "Listagem de Títulos para Emissão de Boletos"
     
     Printer.ScaleMode = 7  'vbCentimeters
     
@@ -4378,7 +4460,7 @@ Private Sub CmdImprimir_Click()
     If Not (TDBGrid1.EOF And TDBGrid1.BOF) Then
         'TDBGrid1.MoveFirst
         While Not (TDBGrid1.EOF)
-            If (TDBGrid1.Columns("Exp.").Value = -1) Then
+            If (TDBGrid1.Columns("Sel.").Value = -1) Then
                 If Printer.CurrentY >= (AreaImpressao - 0.35) Then
                     Printer.NewPage
                     subRodape 2, AltPapel, TitRel
@@ -4499,7 +4581,7 @@ TrataErro:
 End Sub
 
 Private Sub CmdPesquisar_Click()
-  Dim XGT_SELECAO As String  'Armazena condições para o filtro
+  Dim XGT_SELECAO As String  'Armazena condiçõe para o filtro
   Dim XFI_CONT As Integer
   Dim XLT_NATUREZA As String
 
@@ -4507,28 +4589,7 @@ Private Sub CmdPesquisar_Click()
   XGT_CONJUNCAO = ""
   
   If FunObrigatorioCBO(CboCCorrente, "Selecione uma Conta Corrente.") Then Exit Sub
-  '25/03/10 - Patrícia
-  If Me.TxtNDiasProtesto.Text <> "" Then
-    If Not IsNumeric(Me.TxtNDiasProtesto.Text) Then
-        MsgBox "O Nº de Dias para Protesto não é um valor numérico. ", vbCritical, "ExpBradesco"
-        Exit Sub
-    Else
-        If Val(TxtNDiasProtesto.Text) <> 0 Then
-           If Val(TxtNDiasProtesto.Text) < 5 Then
-                MsgBox "O Nº de Dias para Protesto deverá ser no mínimo 5. ", vbCritical, "ExpBradesco"
-                Exit Sub
-           Else
-                CmbInstrucao.Enabled = False
-           End If
-        End If
-    End If
-  End If
-  
-  If Me.CboTipoCobranca.ListIndex = -1 Then
-    MsgBox "Escolha o tipo de cobrança.", vbCritical, "ExpBradesco"
-    Exit Sub
-  End If
-  
+
   If Not IsNull(DtpVencimento.Value) Then
      XGT_SELECAO = XGT_SELECAO & XGT_CONJUNCAO & _
       " month(titu_dt_Vencimento) =" & Month(DtpVencimento.Value) & _
@@ -4624,24 +4685,19 @@ Private Sub CmdPesquisar_Click()
      " cont_tx_Status='A' "
   XGT_CONJUNCAO = " AND "
     
-  '25/03/10 - Patrícia
   XFT_SQL = "SELECT *, " & _
                   "-1 as Exporta," & _
                   "0 as ValorReal," & _
                   "'' as LimiteDesconto," & _
                   "0 as ValorTitulo, " & _
                   "0 as Seguro, " & _
-                  "'N' as SaldoDevedor, " & _
-                  "'00,00' as DescDiario, " & _
-                  "'' as DataConsDesc, " & _
-                  "'0,00' as ValAbatimento, " & _
-                  "0 as MultaJuros " & _
-              "FROM ConsCAPExpBanco " & _
-              "WHERE" & XGT_SELECAO & "ORDER BY Titulo"
+                  "'N' as SaldoDevedor " & _
+              "FROM ConsCAPEmissaoBoleto " & _
+              "WHERE" & XGT_SELECAO & " ORDER BY Titulo"
    
    subCarregaVetor XFT_SQL, Array("Titulo", "Exporta", "titu_dt_Vencimento", "ValorReal", _
      "focl_tx_RazaoSocial", "titu_vl_Desconto", "LimiteDesconto", "ValorTitulo", _
-     "Seguro", "SaldoDevedor", "titu_nr_contratobanco", "DescDiario", "DataConsDesc", "ValAbatimento", "MultaJuros", "titu_dt_Base"), VFV_VETOREXP, TDBGrid1
+     "Seguro", "SaldoDevedor"), VFV_VETOREXP, TDBGrid1
      
   If VFV_VETOREXP(0, 0) <> Empty Then
     subHabilitaBotoes
@@ -4657,9 +4713,8 @@ Private Sub CmdPesquisar_Click()
      
   TDBGrid1.Refresh
   
-  XFT_SQL2 = FunCriaConsultaBase("01/01/01", NomeSgbd, "ConsCAPExpBanco", 3)
-  XFT_SQL2 = XFT_SQL2 & XGT_SELECAO
-  XFT_SQL2 = XFT_SQL2 & " ORDER BY Titulo" '18/06/10
+  XFT_SQL2 = FunCriaConsultaBase("01/01/01", NomeSgbd, "ConsCAPEmissaoBoleto", 3)
+  XFT_SQL2 = XFT_SQL2 & XGT_SELECAO & " ORDER BY Titulo"
 
   If XFO_EXPORTACAO.State = adStateOpen Then
     XFO_EXPORTACAO.Close
@@ -4675,7 +4730,7 @@ Private Sub CmdPesquisar_Click()
     
   TDBGrid1.Refresh
 
-  CmdExportar.Enabled = True
+  CmdEmitirBoletos.Enabled = True
   CmdDesconto.Enabled = True
   filtra_especial = True
   subTelaValoresGlobais "G"
@@ -4715,12 +4770,12 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, x As Single, y
            Or TDBGrid1.ColContaining(x) = 6 Or TDBGrid1.ColContaining(x) = 7 Or TDBGrid1.ColContaining(x) = 8 Then
             MsgBox "Esta coluna não pode ser filtrada."
         Else
-            Set Formulario = TelaExpBancaria
+            Set Formulario = TelaEmissaoBoletos
             subTelaValoresGlobais "P"
         
             FunExecutaFiltroUnbound Array("Titulo", "Exporta", "titu_dt_Vencimento", "ValorReal", _
               "obse_tx_Observacao", "titu_vl_Desconto", "LimiteDesconto", "ValorTitulo", _
-              "Seguro", "SaldoDevedor", "titu_nr_contratobanco"), VFV_VETOREXP, TDBGrid1, Formulario, x, XFT_SQL
+              "Seguro", "SaldoDevedor"), VFV_VETOREXP, TDBGrid1, Formulario, x, XFT_SQL
             
             subHabilitaBotoes
             subTelaValoresGlobais "G"
@@ -4733,7 +4788,7 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, x As Single, y
               MsgBox "Não existem pagamentos pendentes com esses filtros!", vbInformation + vbOKOnly, "ATENÇÃO"
               CmdDesmarcar.Enabled = False
               CmdMarcar.Enabled = False
-              CmdExportar.Enabled = False
+              CmdEmitirBoletos.Enabled = False
               CmdDesconto.Enabled = False
               CmdImprimir.Enabled = False
               TDBGrid1.Enabled = False
@@ -4760,7 +4815,7 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, x As Single, y
 End Sub
 
 Private Sub Form_Activate()
-    Set Formulario = TelaExpBancaria
+    Set Formulario = TelaEmissaoBoletos
     
     'Call AjustarTela
     
@@ -4783,7 +4838,7 @@ End Sub
 
 Private Sub Form_Load()
     
-    Set Formulario = TelaExpBancaria
+    Set Formulario = TelaEmissaoBoletos
     
     Call AjustaTela
         
@@ -4807,6 +4862,10 @@ Private Sub Form_Load()
     subConectarControleDadosNV DatObs, "SELECT * FROM Observacoes ORDER BY obse_tx_observacao", Estatico
     subConectarControleDadosNV DatContaCorrente, "SELECT * FROM ConsGENCCcombo where empr_cd_empresa=" & Int(PCodEmpresa) & " AND banc_cd_codigo=237 ORDER BY coco_tx_Descricao", Estatico
     
+    ' Alterado em 24/06/2024 por PSG, para atender à emissão de boletos com sacador-avalista
+    ' subConectarControleDadosNV DatEmpresa, "SELECT empr_cd_empresa, empr_tx_razaosocial FROM Empresas", Estatico
+    subConectarControleDadosNV DatEmpresa, "SELECT * FROM Empresas", Estatico
+    
     PanPesquisa.Left = (TDBGrid1.Width - PanPesquisa.Width) / 2
     PanPesquisa.Top = (TDBGrid1.Height - PanPesquisa.Height) / 2
     
@@ -4822,15 +4881,25 @@ Private Sub Form_Load()
     End If
         
     subDesabilitaBotoes
+    
     TDBGrid1.Enabled = False
     DtpVencimento.Value = Date
     DtpExportacao.Value = Date
-    Me.CboTipoCobranca.ListIndex = 0
+    
+    '
+    ' - Carrega o arquivo de configurações Boletos.json
+    ' -------------------------------------------------------------------------
+    If Not FunLoadConfig() Then
+        Unload Me
+    End If
+        
+'    MsgBox "Parsed object output: " & JSON.toString(XLO_BOLETOS), , "Aviso: Carga da configuração"
+        
     
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-   '*subManutencaoJanelasAtivas "R", "TelaExpBancaria"
+   '*subManutencaoJanelasAtivas "R", "TelaEmissaoBoletos"
    Unload Me
 End Sub
 
@@ -4838,10 +4907,20 @@ Private Sub CboCCorrente_Change()
   
   If CboCCorrente.BoundText <> "" Then
     DatContaCorrente.Recordset.Bookmark = CboCCorrente.SelectedItem
-    TxtMensagem1.Text = FunNulo(DatContaCorrente.Recordset.Fields("coco_tx_Mensagem1"))
-    TxtMensagem2.Text = FunNulo(DatContaCorrente.Recordset.Fields("coco_tx_Mensagem2"))
+    TxtInstrucao1.Text = FunNulo(DatContaCorrente.Recordset.Fields("coco_tx_Instrucao1"))
+    TxtInstrucao2.Text = FunNulo(DatContaCorrente.Recordset.Fields("coco_tx_Instrucao2"))
   End If
     
+End Sub
+
+Private Sub ChkJuros_Click()
+    If ChkJuros.Value = 1 Then
+        LblPrzMora.Enabled = True
+        TxtPrzMora.Enabled = True
+    Else
+        LblPrzMora.Enabled = False
+        TxtPrzMora.Enabled = False
+    End If
 End Sub
 
 Private Sub TxtDesconto_KeyPress(KeyAscii As Integer)
@@ -4861,27 +4940,43 @@ Private Sub TxtDesconto_LostFocus()
   
 End Sub
 
-Private Sub TxtNDiasProtesto_LostFocus()
-  '25/03/10 - Patrícia
-  If Me.TxtNDiasProtesto.Text <> "" Then
-    If Not IsNumeric(Me.TxtNDiasProtesto.Text) Then
-        MsgBox "O Nº de Dias para Protesto não é um valor numérico. ", vbCritical, "ExpBradesco"
-        Exit Sub
-    Else
-        If Val(TxtNDiasProtesto.Text) <> 0 Then
-           If Val(TxtNDiasProtesto.Text) < 5 Then
-                MsgBox "O Nº de Dias para Protesto deverá ser no mínimo 5. ", vbCritical, "ExpBradesco"
-                Exit Sub
-           Else
-                CmbInstrucao.Text = ""
-                CmbInstrucao.Enabled = False
-           End If
-        Else
-            CmbInstrucao.Enabled = True
+Private Sub TxtInstrucao1_Change()
+    If TxtInstrucao1.Text = "93" And (TxtInstrucao2.Text <> "93" Or TxtInstrucao2.Text <> "94") Then
+        TxtMensagem1.Top = 2070
+        If TxtMensagem1.Text <> "" Then
+            TxtMensagem1.Text = Left(TxtMensagem1.Text, 30)
         End If
+        TxtMensagem1.MaxLength = 30
+        TxtMensagem1.Visible = True
+    ElseIf TxtInstrucao1.Text = "94" And (TxtInstrucao2.Text <> "93" Or TxtInstrucao2.Text <> "94") Then
+        TxtMensagem1.Top = 2070
+        TxtMensagem1.MaxLength = 40
+        TxtMensagem1.Visible = True
+    ElseIf (TxtInstrucao1.Text <> "93" And TxtInstrucao1.Text <> "94") _
+      And (TxtInstrucao2.Text <> "93" And TxtInstrucao2.Text <> "94") Then
+        TxtMensagem1.Visible = False
+    ElseIf (TxtInstrucao1.Text <> "93" And TxtInstrucao1.Text <> "94") _
+      And (TxtInstrucao2.Text = "93" Or TxtInstrucao2.Text = "94") Then
+        TxtMensagem1.Top = 2490
     End If
-  End If
+End Sub
 
+Private Sub TxtInstrucao2_Change()
+    If TxtInstrucao2.Text = "93" And (TxtInstrucao1.Text <> "93" Or TxtInstrucao1.Text <> "94") Then
+        TxtMensagem1.Top = 2490
+        TxtMensagem1.MaxLength = 30
+        TxtMensagem1.Visible = True
+    ElseIf TxtInstrucao2.Text = "94" And (TxtInstrucao1.Text <> "93" Or TxtInstrucao1.Text <> "94") Then
+        TxtMensagem1.Top = 2490
+        TxtMensagem1.MaxLength = 40
+        TxtMensagem1.Visible = True
+    ElseIf (TxtInstrucao2.Text <> "93" And TxtInstrucao2.Text <> "94") _
+      And (TxtInstrucao1.Text <> "93" And TxtInstrucao1.Text <> "94") Then
+        TxtMensagem1.Visible = False
+    ElseIf (TxtInstrucao2.Text <> "93" And TxtInstrucao2.Text <> "94") _
+      And (TxtInstrucao1.Text = "93" Or TxtInstrucao1.Text = "94") Then
+        TxtMensagem1.Top = 2070
+    End If
 End Sub
 
 Private Sub TxtPrzMora_KeyPress(KeyAscii As Integer)

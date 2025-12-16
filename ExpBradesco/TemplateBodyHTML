@@ -1,0 +1,26 @@
+<html>
+	<title>Emissor de Boletos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<head/>
+	<body>
+		<div>
+			<div>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> @NOME_CLIENTE@, informamos que seu boleto encontra-se disponível. </p>
+				<hr style="" color: #dddddd;""/>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> Titulo: @NUMERO_TITULO@ </p>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> Data de vencimento: @DATA_VENCIMENTO@ </p>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> Valor: R$ @VALOR@ </p>
+				<hr style="" color: #dddddd;""/>
+			</div>
+			<div>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> ALERTA: </p>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> Em razão de alerta recebido de bancos, lembrando que vem ocorrendo no mercado emissão de boletos falsos, reiteramos que todos os nossos boletos são emitidos pelo Banco Itaú, tendo como beneficiário do pagamento exclusivamente a @RAZAO_SOCIAL@, CNPJ @CNPJ@. </p>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> Lembramos, ainda, que é de responsabilidade do cliente a conferência do beneficiário no ato de pagamento, que deve ser feita através do sistema de pagamento (aplicativo do banco; caixa eletrônico etc.) e, caso o beneficiário indicado não seja a @RAZAO_SOCIAL@, CNPJ @CNPJ@, não efetue o pagamento e entre em contato através dos telefones indicados abaixo, reportando o ocorrido. </p>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> Com intuito de garantir maior segurança, o boleto encaminhado está protegido por senha pessoal. Em caso de dúvida, entre em contato conosco, por telefone. </p>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> Para visualizar o BOLETO, basta seguir três passos: </p>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> 1- Clique em documento anexo. <br> 2- Vai abrir uma tela com o campo "Digite a senha". <br> 3- Coloque os 03 primeiros e os 02 últimos números do CPF ou CNPJ do titular e pronto. </p>
+				<p style="font-family: arial, sans-serif; text-align: left; padding: 6px;"> Atenciosamente, <br><br> @RAZAO_SOCIAL@ <br> Financeiro <br> Contato: (71) 3355-6660 / (71) 99975-5866 </p>
+			</div>
+		</div>
+	</body>
+</html>
