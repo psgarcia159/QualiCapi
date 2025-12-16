@@ -1,6 +1,6 @@
 {
     "PathToFiles":          "C:/Temp/Boletos",
-    "UseSandbox":           false,
+    "UseSandbox":           true,
     "Production": {
         "EtapaProcesso":    "validacao",
         "TipoBoleto":       "a vista",
@@ -8,9 +8,9 @@
         "OAuth2": {
             "UrlToken":     "https://sts.itau.com.br/api/oauth/token",
             "GrantType":    "client_credentials",
-            "ClientId":     "7f85ee8a-8929-4e59-b578-a43a8fafdba5",
-            "ClientSecret": "17159de0-9ff7-4c64-a6cb-0055888c78a0",
-            "Certificate":  "CURRENT_USER\\My\\7f85ee8a-8929-4e59-b578-a43a8fafdba5"
+            "ClientId":     "05acf678-3d0c-48d3-975e-c7ebce2892b0",
+            "ClientSecret": "b6a82cac-ce5d-4148-bc3a-e5166b3a63c1",
+            "Certificate":  "CURRENT_USER\\My\\05acf678-3d0c-48d3-975e-c7ebce2892b0"
         },
         "Endpoints": {
             "UrlBase":      "https://api.itau.com.br/cash_management/v2",
