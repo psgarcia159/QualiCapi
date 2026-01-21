@@ -1,6 +1,6 @@
 {
     "PathToFiles":          "C:/Temp/Boletos",
-    "UseSandbox":           true,
+    "UseSandbox":           false,
     "Production": {
         "EtapaProcesso":    "validacao",
         "TipoBoleto":       "a vista",
@@ -21,19 +21,51 @@
             }
         },
         "EmailConfig": {
-            "ServerName":   "email-ssl.com.br",
+            "ServerName":   "smtp.gmail.com",
             "ServerPort":   465,
             "UseSSL":       true,
-            "UserName":     "cobranca@costaandrade.com.br",
-            "UserPassword": "Ftyhq#skf ^6Ti_87",
-            "MailFrom":     "Costa Andrade - Financeiro <no-reply@costaandrade.com.br>",
-			"MailCC": 		"Costa Andrade - Cobrança <paulo@interativabr.com>",
-			"MailTo": 		"Homologação - Testes <psgarcia159@gmail.com>",
-            "MailSubject":  "Boleto disponível",
+            "UserName":     "psgarcia159@gmail.com",
+            "UserPassword": "raqs yopx twjv vsas",
+            "MailFrom":     "Costa Andrade <no-reply@gmail.com>",
+            "MailCC":       "Costa Andrade <psgarcia159@gmail.com>",
+            "MailTo":       "Costa Andrade <psgarcia159@gmail.com>",
+            "MailSubject":  "Homologação - Boleto disponí­vel",
             "IsHtmlBody":   true
         }
     },
     "Sandbox": {
+        "EtapaProcesso":    "validacao",
+        "TipoBoleto":       "a vista",
+        "Carteira":         "109",
+        "OAuth2": {
+            "UrlToken":     "https://sandbox.devportal.itau.com.br/api/oauth/jwt",
+            "GrantType":    "client_credentials",
+            "ClientId":     "d80d56bc-1513-3cb7-9b09-85ca65b50ff8",
+            "ClientSecret": "47e60927-cab0-46e5-9629-52477bdf9bf8",
+            "Certificate":  ""
+        },
+        "Endpoints": {
+            "UrlBase":      "https://devportal.itau.com.br/sandboxapi/cash_management_ext_v2/v2",
+            "Boletos": {
+                "ApiKey":   "c570d9e6-1465-40d2-b8fd-be56ca5cca4a",
+                "UrlPost":  "/boletos",
+                "UrlGet":   "/boletos/{{id_boleto}}"
+            }
+        },
+        "EmailConfig": {
+            "ServerName":   "smtp.gmail.com",
+            "ServerPort":   465,
+            "UseSSL":       true,
+            "UserName":     "psgarcia159@gmail.com",
+            "UserPassword": "raqs yopx twjv vsas",
+            "MailFrom":     "Costa Andrade <no-reply@gmail.com>",
+            "MailCC":       "Costa Andrade <psgarcia159@gmail.com>",
+            "MailTo":       "Costa Andrade <psgarcia159@gmail.com>",
+            "MailSubject":  "Boleto disponí­vel",
+            "IsHtmlBody":   true
+        }
+    },
+    "Outros": {
         "EtapaProcesso":    "validacao",
         "TipoBoleto":       "a vista",
         "Carteira":         "109",

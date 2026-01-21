@@ -17,13 +17,13 @@
             "UrlBase":      "https://openapi.bradesco.com.br/boleto/cobranca-registro/v1/cobranca"
         },
         "EmailConfig": {
-            "ServerName":   "email-ssl.com.br",
-            "ServerPort":   465,
-            "UseSSL":       true,
-            "UserName":     "cobranca@costaandrade.com.br",
-            "UserPassword": "Ftyhq#skf ^6Ti_87",
-            "MailFrom":     "Costa Andrade - Financeiro <no-reply@costaandrade.com.br>",
-			"MailCC": 		"Costa Andrade - Cobrança <paulo@interativabr.com>",
+            "ServerName":   "smtp.largodavitoriasquare.com.br",
+            "ServerPort":   587,
+            "UseSSL":       false,
+            "UserName":     "lvsquare@largodavitoriasquare.com.br",
+            "UserPassword": "LvsQu4re2025#",
+            "MailFrom":     "Largo da Vitória <lvsquare@largodavitoriasquare.com.br>",
+			"MailCC": 		"Largo da Vitoria - Cobrança <seguranca@bpconsultoria.info>",
 			"MailTo": 		"Homologação - Testes <psgarcia159@gmail.com>",
             "MailSubject":  "Homologação - Boleto disponível",
             "IsHtmlBody":   true

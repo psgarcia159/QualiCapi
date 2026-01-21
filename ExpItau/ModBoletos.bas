@@ -231,6 +231,7 @@ Public Function FunSendEmail( _
     Dim CDO As New CDO.Message
     Dim At As Integer
 
+On Error GoTo errHandler
 
     With CDO.Configuration.Fields
         .Item(cdoSMTPAuthenticate) = CdoProtocolsAuthentication.cdoBasic                                ' basic (clear-text) authentication
@@ -293,6 +294,14 @@ Public Function FunSendEmail( _
     End If
         
     Set CDO = Nothing
+    Exit Function
+    
+errHandler:
+    MsgBox "Erro no envio do E-mail: " & Err.Number & ": " & Err.Description, vbCritical, "Erro: FunSendEmail()"
+    FunSendEmail = False
+    Set CDO = Nothing
+    ' Optionally, you can log the error to a file here
+    Exit Function
     
 End Function
 

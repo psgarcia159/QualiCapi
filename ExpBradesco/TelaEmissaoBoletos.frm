@@ -271,7 +271,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   185991171
+         Format          =   70713347
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -444,39 +444,39 @@ Begin VB.Form TelaEmissaoBoletos
          TabCaption(1)   =   "Empreendimentos"
          TabPicture(1)   =   "TelaEmissaoBoletos.frx":08E6
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
-         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(4)=   "TDBGridEmpr2"
-         Tab(1).Control(5)=   "TDBGridEmpr1"
-         Tab(1).Control(6)=   "LlbEmpreendimento"
-         Tab(1).Control(7)=   "Label1"
+         Tab(1).Control(0)=   "Label1"
+         Tab(1).Control(1)=   "LlbEmpreendimento"
+         Tab(1).Control(2)=   "TDBGridEmpr1"
+         Tab(1).Control(3)=   "TDBGridEmpr2"
+         Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(6)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
          TabPicture(2)   =   "TelaEmissaoBoletos.frx":0902
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "CmdRemoverMoeda"
-         Tab(2).Control(1)=   "CmdInserirMoeda"
-         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
+         Tab(2).Control(0)=   "Label3"
+         Tab(2).Control(1)=   "Label2"
+         Tab(2).Control(2)=   "TDBGridMoeda2"
+         Tab(2).Control(3)=   "TDBGridMoeda1"
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(5)=   "TDBGridMoeda1"
-         Tab(2).Control(6)=   "TDBGridMoeda2"
-         Tab(2).Control(7)=   "Label2"
-         Tab(2).Control(8)=   "Label3"
+         Tab(2).Control(5)=   "CmdInserirTodosMoeda"
+         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(7)=   "CmdInserirMoeda"
+         Tab(2).Control(8)=   "CmdRemoverMoeda"
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
          TabPicture(3)   =   "TelaEmissaoBoletos.frx":091E
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "CmdInserirTodosObservacao"
-         Tab(3).Control(1)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(2)=   "CmdInserirObservacao"
-         Tab(3).Control(3)=   "CmdRemoverObservacao"
-         Tab(3).Control(4)=   "TDBGridObs2"
-         Tab(3).Control(5)=   "TDBGridObs1"
-         Tab(3).Control(6)=   "Label4"
-         Tab(3).Control(7)=   "Label5"
+         Tab(3).Control(0)=   "Label5"
+         Tab(3).Control(1)=   "Label4"
+         Tab(3).Control(2)=   "TDBGridObs1"
+         Tab(3).Control(3)=   "TDBGridObs2"
+         Tab(3).Control(4)=   "CmdRemoverObservacao"
+         Tab(3).Control(5)=   "CmdInserirObservacao"
+         Tab(3).Control(6)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(7)=   "CmdInserirTodosObservacao"
          Tab(3).ControlCount=   8
          Begin VB.CommandButton CmdRemoverEmpreendimento 
             BackColor       =   &H00000000&
@@ -1137,7 +1137,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   143130627
+            Format          =   163053571
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -1150,7 +1150,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   143130627
+            Format          =   163053571
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -2888,9 +2888,9 @@ Function FunCalculaSaldoDevedor(XLO_RECORDSET As ADODB.Recordset, XLD_DATABASE A
     
   XLT_SQL = FunCriaConsultaBase(TDBGrid1.Columns("Vencimento"), NomeSgbd, "ConsCAPEmissaoBoleto", 1)
   XLT_SQL = XLT_SQL & "empr_cd_empresa = " & PCodEmpresa & "" & _
-    " AND empd_cd_Empreendimento= '" & Left(XLO_RECORDSET("Titulo"), 4) & "'" & _
-    " AND imov_cd_Imovel='" & Mid(XLO_RECORDSET("Titulo"), 6, 4) & "'" & _
-    " AND cont_cd_Contrato='" & Mid(XLO_RECORDSET("Titulo"), 11, 2) & "'" & _
+    " AND empd_cd_Empreendimento= '" & Left$(XLO_RECORDSET("Titulo"), 4) & "'" & _
+    " AND imov_cd_Imovel='" & Mid$(XLO_RECORDSET("Titulo"), 6, 4) & "'" & _
+    " AND cont_cd_Contrato='" & Mid$(XLO_RECORDSET("Titulo"), 11, 2) & "'" & _
     " AND titu_dt_Pagamento is null"
    
   SubQOpenRecordset XLO_TITULO, XLT_SQL, Estatico
@@ -2942,22 +2942,22 @@ Sub SubCalculaSeguro()
   
   While Not XFO_EXPORTACAO.EOF
     XLB_PRIMEIRAVEZ = True
-    XLT_CONTRATO = Left(XFO_EXPORTACAO!Titulo, 12)
+    XLT_CONTRATO = Left$(XFO_EXPORTACAO!Titulo, 12)
     XLF_TAXASEGURO = XFO_EXPORTACAO!cont_vl_TaxaSegVida
     XLT_TIPOSEGURO = XFO_EXPORTACAO!cont_nr_TipoSeguro
     XLB_SAIR = False
     
     While (XLB_SAIR = False)
-    'While Left(VFV_VETOREXP(XLI_CONT, 0), 12) = XLT_CONTRATO
+    'While Left$(VFV_VETOREXP(XLI_CONT, 0), 12) = XLT_CONTRATO
       'Só faz a verificação na primeira vez que entra em um contrato diferente
       If XLB_PRIMEIRAVEZ Then
         XLT_SEGURO = "N"
         If XLF_TAXASEGURO <> 0 Then 'Verifica se tem seguro
           'Verificar se o seguro já foi pago no mês
           XLT_SQL = "SELECT Titulo FROM ConsCAPTitulos WHERE empr_cd_empresa = " & PCodEmpresa & "" & _
-                " AND empd_cd_Empreendimento= '" & Left(XFO_EXPORTACAO("Titulo"), 4) & "'" & _
-                " AND imov_cd_Imovel='" & Mid(XFO_EXPORTACAO("Titulo"), 6, 4) & "'" & _
-                " AND cont_cd_Contrato='" & Mid(XFO_EXPORTACAO("Titulo"), 11, 2) & "'" & _
+                " AND empd_cd_Empreendimento= '" & Left$(XFO_EXPORTACAO("Titulo"), 4) & "'" & _
+                " AND imov_cd_Imovel='" & Mid$(XFO_EXPORTACAO("Titulo"), 6, 4) & "'" & _
+                " AND cont_cd_Contrato='" & Mid$(XFO_EXPORTACAO("Titulo"), 11, 2) & "'" & _
                 " AND month(titu_dt_Pagamento)=" & Month(DtpVencimento.Value) & "" & _
                 " AND year(titu_dt_Pagamento)=" & Year(DtpVencimento.Value) & "" & _
                 " AND titu_vl_Seguro<>0 "
@@ -2968,8 +2968,8 @@ Sub SubCalculaSeguro()
              'de seu vencimento para poder desagiar as outras parcelas
              XLT_TEMP = FunProcuraNoGrid(XFO_EXPORTACAO)
              If XLT_TEMP <> "0" Then
-               XLT_TITULOESCOLHIDO = Left(XLT_TEMP, 22)
-               XLD_DATABASE = CDate(Right(XLT_TEMP, 8))
+               XLT_TITULOESCOLHIDO = Left$(XLT_TEMP, 22)
+               XLD_DATABASE = CDate(Right$(XLT_TEMP, 8))
                If XLT_TIPOSEGURO = 1 Then 'Seguro pelo saldo devedor
                  'Calcular o saldo devedor de todos os titulos não pagos
                  XLF_SALDODEVEDOR = FunCalculaSaldoDevedor(XFO_EXPORTACAO, XLD_DATABASE)
@@ -3009,7 +3009,7 @@ Sub SubCalculaSeguro()
         XLB_SAIR = True
         'GoTo apelacao
       Else
-        If Left(VFV_VETOREXP(XLI_CONT, 0), 12) <> XLT_CONTRATO Then
+        If Left$(VFV_VETOREXP(XLI_CONT, 0), 12) <> XLT_CONTRATO Then
           XLB_SAIR = True
         End If
       End If
@@ -3021,7 +3021,7 @@ Sub SubCalculaSeguro()
       
       'Preenche o Seguro no titulo escolhido
       While XLI_CONT >= 0
-        If Left(VFV_VETOREXP(XLI_CONT, 0), 12) = XLT_CONTRATO Then
+        If Left$(VFV_VETOREXP(XLI_CONT, 0), 12) = XLT_CONTRATO Then
           If VFV_VETOREXP(XLI_CONT, 0) = XLT_TITULOESCOLHIDO Then
             If XLT_TIPOSEGURO = 1 Then
               'Grava o Seguro
@@ -3075,9 +3075,9 @@ Function FunProcuraNoGrid(XLO_RECORDSET As ADODB.Recordset) As String
         
    'Abrir os registro (mensais) não pagos por ordem de dt. de criação
    XLT_SQL = "SELECT * FROM consCAPTitulos WHERE empr_cd_empresa = " & PCodEmpresa & "" & _
-               " AND empd_cd_Empreendimento= '" & Left(XLO_RECORDSET("Titulo"), 4) & "'" & _
-               " AND imov_cd_Imovel='" & Mid(XLO_RECORDSET("Titulo"), 6, 4) & "'" & _
-               " AND cont_cd_Contrato='" & Mid(XLO_RECORDSET("Titulo"), 11, 2) & "'" & _
+               " AND empd_cd_Empreendimento= '" & Left$(XLO_RECORDSET("Titulo"), 4) & "'" & _
+               " AND imov_cd_Imovel='" & Mid$(XLO_RECORDSET("Titulo"), 6, 4) & "'" & _
+               " AND cont_cd_Contrato='" & Mid$(XLO_RECORDSET("Titulo"), 11, 2) & "'" & _
                " AND titu_dt_Pagamento is null " & _
                " AND month(titu_dt_Vencimento) = " & Month(DtpVencimento.Value) & _
                " AND year(titu_dt_Vencimento) = " & Year(DtpVencimento.Value) & _
@@ -3103,9 +3103,9 @@ Function FunProcuraNoGrid(XLO_RECORDSET As ADODB.Recordset) As String
       If XLB_ACHEI = False Then
         XLO_SEGURO.Close
         XLT_SQL = "SELECT * FROM consCAPTitulos WHERE empr_cd_empresa = " & PCodEmpresa & "" & _
-                      " AND empd_cd_Empreendimento= '" & Left(XLO_RECORDSET("Titulo"), 4) & "'" & _
-                      " AND imov_cd_Imovel='" & Mid(XLO_RECORDSET("Titulo"), 6, 4) & "'" & _
-                      " AND cont_cd_Contrato='" & Mid(XLO_RECORDSET("Titulo"), 11, 2) & "'" & _
+                      " AND empd_cd_Empreendimento= '" & Left$(XLO_RECORDSET("Titulo"), 4) & "'" & _
+                      " AND imov_cd_Imovel='" & Mid$(XLO_RECORDSET("Titulo"), 6, 4) & "'" & _
+                      " AND cont_cd_Contrato='" & Mid$(XLO_RECORDSET("Titulo"), 11, 2) & "'" & _
                       " AND titu_dt_Pagamento is null " & _
                       " AND month(titu_dt_Vencimento) = " & Month(DtpVencimento.Value) & _
                       " AND year(titu_dt_Vencimento) = " & Year(DtpVencimento.Value) & _
@@ -3132,9 +3132,9 @@ Function FunProcuraNoGrid(XLO_RECORDSET As ADODB.Recordset) As String
    Else 'Abrir outro select para outros tipos de planos (<> Mensal)
        XLO_SEGURO.Close
        XLT_SQL = "SELECT * FROM consCAPTitulos WHERE empr_cd_empresa = " & PCodEmpresa & "" & _
-                     " AND empd_cd_Empreendimento= '" & Left(XLO_RECORDSET("Titulo"), 4) & "'" & _
-                     " AND imov_cd_Imovel='" & Mid(XLO_RECORDSET("Titulo"), 6, 4) & "'" & _
-                     " AND cont_cd_Contrato='" & Mid(XLO_RECORDSET("Titulo"), 11, 2) & "'" & _
+                     " AND empd_cd_Empreendimento= '" & Left$(XLO_RECORDSET("Titulo"), 4) & "'" & _
+                     " AND imov_cd_Imovel='" & Mid$(XLO_RECORDSET("Titulo"), 6, 4) & "'" & _
+                     " AND cont_cd_Contrato='" & Mid$(XLO_RECORDSET("Titulo"), 11, 2) & "'" & _
                      " AND titu_dt_Pagamento is null " & _
                      " AND month(titu_dt_Vencimento) = " & Month(DtpVencimento.Value) & _
                      " AND year(titu_dt_Vencimento) = " & Year(DtpVencimento.Value) & _
@@ -3249,7 +3249,7 @@ Private Sub TDBGrid1_AfterColUpdate(ByVal ColIndex As Integer)
       Next
     End If
     
-    XLT_CONTRATO = Left(XFO_EXPORTACAO!Titulo, 12)
+    XLT_CONTRATO = Left$(XFO_EXPORTACAO!Titulo, 12)
     XLF_TAXASEGURO = XFO_EXPORTACAO!cont_vl_TaxaSegVida
     XLT_TIPOSEGURO = XFO_EXPORTACAO!cont_nr_TipoSeguro
     
@@ -3266,7 +3266,7 @@ Private Sub TDBGrid1_AfterColUpdate(ByVal ColIndex As Integer)
           XFO_EXPORTACAO.MoveNext
           XLB_SAIR = True
         Else
-          If Left(VFV_VETOREXP(XLI_CONT, 0), 12) <> XLT_CONTRATO Then
+          If Left$(VFV_VETOREXP(XLI_CONT, 0), 12) <> XLT_CONTRATO Then
             XLB_SAIR = True
             XLI_CONT = XLI_CONT + 1
             XFO_EXPORTACAO.MoveNext
@@ -3285,8 +3285,8 @@ Private Sub TDBGrid1_AfterColUpdate(ByVal ColIndex As Integer)
         'de seu vencimento para poder desagiar as outras parcelas
         XLT_TEMP = FunProcuraNoGrid(XFO_EXPORTACAO)
         If XLT_TEMP <> "0" Then
-          XLT_TITULOESCOLHIDO = Left(XLT_TEMP, 22)
-          XLD_DATABASE = CDate(Right(XLT_TEMP, 8))
+          XLT_TITULOESCOLHIDO = Left$(XLT_TEMP, 22)
+          XLD_DATABASE = CDate(Right$(XLT_TEMP, 8))
           If XLT_TIPOSEGURO = 1 Then 'Seguro pelo saldo devedor
             'Calcular o saldo devedor de todos os titulos não pagos
             XLF_SALDODEVEDOR = FunCalculaSaldoDevedor(XFO_EXPORTACAO, XLD_DATABASE)
@@ -3326,7 +3326,7 @@ Private Sub TDBGrid1_AfterColUpdate(ByVal ColIndex As Integer)
       If XLI_CONT = TDBGrid1.ApproxCount Then
         XLB_SAIR = True
       Else
-        If Left(VFV_VETOREXP(XLI_CONT, 0), 12) <> XLT_CONTRATO Then
+        If Left$(VFV_VETOREXP(XLI_CONT, 0), 12) <> XLT_CONTRATO Then
           XLB_SAIR = True
         End If
       End If
@@ -3338,7 +3338,7 @@ Private Sub TDBGrid1_AfterColUpdate(ByVal ColIndex As Integer)
       
       'Preenche o Seguro no titulo escolhido
       While XLI_CONT >= 0
-        If Left(VFV_VETOREXP(XLI_CONT, 0), 12) = XLT_CONTRATO Then
+        If Left$(VFV_VETOREXP(XLI_CONT, 0), 12) = XLT_CONTRATO Then
           If VFV_VETOREXP(XLI_CONT, 0) = XLT_TITULOESCOLHIDO Then
             If XLT_TIPOSEGURO = 1 Then
               'Grava o Seguro
@@ -3580,7 +3580,7 @@ Private Sub CmdEmitirBoletos_Click()
     Dim XLT_CEPEMP_05     As String   ' CEP da empresa (5 digitos)
     Dim XLT_CEPEMP_03     As String   ' CEP da empresa (3 digitos)
     Dim XLF_VALOR         As Double   ' Valor do registro
-    Dim XLT_CGCCPF        As String   ' CPF/CNPJ do cliente sem formatação (11/14 digitos)
+    Dim XLT_CGCCPF        As String   ' CPF/CNPJ (CGC)do cliente sem formatação (11/14 digitos)
     Dim XLT_CGCCPF_RAIZ   As String   ' Raiz CPF/CNPJ do cliente (9/8 digitos)
     Dim XLT_CGCCPF_FILIAL As String   ' Filial CPF/CNPJ do cliente ("0" p/CPF, 4 digitos p/CNPJ)
     Dim XLT_CGCCPF_DIGITO As String   ' Digito de controle CPF/CNPJ do cliente (2 digitos)
@@ -3611,35 +3611,44 @@ Private Sub CmdEmitirBoletos_Click()
     Dim XLT_NOSSONUMERO   As String   ' Campo Nosso_Numero
     Dim XLT_NOSSONUMERODV As String   ' Dv Nosso_numero
     Dim XLT_SENHACEDENTE  As String   ' Senha da empresa para criação do arquivo PDF
-    Dim XLT_SENHASACADO  As String    ' Senha do cliente para criação do arquivo PDF
-    
+    Dim XLT_SENHASACADO   As String   ' Senha do cliente para criação do arquivo PDF
+    Dim XLT_STATUS        As String   ' Mensagem de status para o log de emissão deboletos
+    Dim XLT_LOTEBOLETOS   As String   ' Lista dos títulos selecionados para emissão de boleto (log)
+    Dim XLT_JSONOUT       As String   ' String Json para teste
+
     ' - Instancia o componente COM para geração/emissão do Boleto
     ' --------------------------------------------------------------------------------------------
     Dim BoletoService As New Boleto2Net.BoletoService
 
     ' - CGC/CNPJ deve ser revisto e separado em partes (raiz, filial e digito)
+    ' --------------------------------------------------------------------------------------------
     XLT_CGCEMP = Trim(Replace(Replace(Replace(XGT_CGC, ".", ""), "/", ""), "-", ""))
-    XLT_CGCEMP_RAIZ = Left(XLT_CGCEMP, 8)
-    XLT_CGCEMP_FILIAL = CStr(CLng(Mid(XLT_CGCEMP, 9, 4)))
-    XLT_CGCEMP_DIGITO = CStr(CLng(Right(XLT_CGCEMP, 2)))
+    XLT_CGCEMP_RAIZ = Left$(XLT_CGCEMP, 8)                      ' String com ou sem 0 à esquerda
+    XLT_CGCEMP_FILIAL = CStr(CLng(Mid$(XLT_CGCEMP, 9, 4)))      ' Numérico sem 0 à esquerda
+    XLT_CGCEMP_DIGITO = CStr(CLng(Right$(XLT_CGCEMP, 2)))       ' Numérico sem 0 à esquerda
     
     ' - CEP deve ser revisto e separado em partes (CEP e complemento)
+    ' --------------------------------------------------------------------------------------------
     XLT_CEPEMP = Trim(Replace(Replace(XGT_CEP, ".", ""), "-", ""))
-    XLT_CEPEMP_05 = CStr(CLng(Left(XLT_CEPEMP, 5)))
-    XLT_CEPEMP_03 = CStr(CLng(Right(XLT_CEPEMP, 3)))
+    XLT_CEPEMP_05 = CStr(CLng(Left$(XLT_CEPEMP, 5)))
+    XLT_CEPEMP_03 = CStr(CLng(Right$(XLT_CEPEMP, 3)))
     
     ' - Verificar se a formatação é correta para o Bradesco
-    XLT_AGENCONTA = Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
-                    Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 7), "00000000000000")
+    ' --------------------------------------------------------------------------------------------
+    XLT_AGENCONTA = Format(Left$(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
+                    Format(Left$(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 7), "00000000000000")
                                         
     ' - Padrão Costa Andrade = primeiros 3 + últimos 2 digitos
-    XLT_SENHACEDENTE = Format(Left(XLT_CGCEMP, 3), "000") & Format(Right(XLT_CGCEMP, 2), "00")
+    ' --------------------------------------------------------------------------------------------
+    XLT_SENHACEDENTE = Format(Left$(XLT_CGCEMP, 3), "000") & Format(Right$(XLT_CGCEMP, 2), "00")
                        
     ' - Valida titulos selecionados no Grid
     ' --------------------------------------------------------------------------------------------
     XLB_SELECIONADO = False
     TDBGrid1.MoveFirst
     XFO_EXPORTACAO.MoveFirst
+
+    XLT_LOTEBOLETOS = ""
 
     While Not TDBGrid1.EOF
 
@@ -3650,13 +3659,13 @@ Private Sub CmdEmitirBoletos_Click()
             ' - Verifica/valida o CNPJ/CPF do cliente, conforme o tipo de pessoa (Juridica ou Fisica)
             ' ---------------------------------------------------------------------------------------
             If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
-                If FunConfereCGC(Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 2) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 4, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 8, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 12, 4) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 17, 2)) = False Then
+                If FunConfereCGC(Mid$(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 2) + Mid$(XFO_EXPORTACAO!focl_tx_CGCCPF, 4, 3) + Mid$(XFO_EXPORTACAO!focl_tx_CGCCPF, 8, 3) + Mid$(XFO_EXPORTACAO!focl_tx_CGCCPF, 12, 4) + Mid$(XFO_EXPORTACAO!focl_tx_CGCCPF, 17, 2)) = False Then
                     MsgBox "O CNPJ do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
                     vbCrLf & "está incorreto."
                     Exit Sub
                 End If
             Else
-                If FunConfereCPF(Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 5, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 9, 3) + Mid(XFO_EXPORTACAO!focl_tx_CGCCPF, 13, 2)) = False Then
+                If FunConfereCPF(Mid$(XFO_EXPORTACAO!focl_tx_CGCCPF, 1, 3) + Mid$(XFO_EXPORTACAO!focl_tx_CGCCPF, 5, 3) + Mid$(XFO_EXPORTACAO!focl_tx_CGCCPF, 9, 3) + Mid$(XFO_EXPORTACAO!focl_tx_CGCCPF, 13, 2)) = False Then
                     MsgBox "O CPF do Cliente " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
                     vbCrLf & "está incorreto."
                     Exit Sub
@@ -3723,10 +3732,15 @@ Private Sub CmdEmitirBoletos_Click()
                 Exit Sub
             End If
             
-        End If
+            ' - Guarda número de titulo para gravação no log
+            ' -------------------------------------------------------------------------------------------
+            XLT_LOTEBOLETOS = XLT_LOTEBOLETOS & XFO_EXPORTACAO!Titulo & ", "
         
+        End If
+                
         TDBGrid1.MoveNext
         XFO_EXPORTACAO.MoveNext
+        
     Wend
 
     If Not XLB_SELECIONADO Then
@@ -3738,6 +3752,9 @@ Private Sub CmdEmitirBoletos_Click()
 
     XFO_EXPORTACAO.MoveFirst
     TDBGrid1.MoveFirst
+
+    XLT_STATUS = "Inicio da Emissão de Boletos"
+    SubRegistraLogLote XLT_STATUS, XLT_LOTEBOLETOS
 
     ' - Loop em TDBGrid1, lendo os titulos selecionados e processando conforme abaixo
     ' --------------------------------------------------------------------------------------------
@@ -3764,20 +3781,20 @@ Private Sub CmdEmitirBoletos_Click()
             XLT_CGCCPF = Trim(Replace(Replace(Replace(XFO_EXPORTACAO!focl_tx_CGCCPF, ".", ""), "/", ""), "-", ""))
             
             If Len(XLT_CGCCPF) = 14 Then
-                XLT_CGCCPF_RAIZ = Left(XLT_CGCCPF, 8)
-                XLT_CGCCPF_FILIAL = CStr(CLng(Mid(XLT_CGCCPF, 8, 4)))
-                XLT_CGCCPF_DIGITO = CStr(CLng(Right(XLT_CGCCPF, 2)))
+                XLT_CGCCPF_RAIZ = Left$(XLT_CGCCPF, 8)
+                XLT_CGCCPF_FILIAL = CStr(CLng(Mid$(XLT_CGCCPF, 8, 4)))
+                XLT_CGCCPF_DIGITO = CStr(CLng(Right$(XLT_CGCCPF, 2)))
             Else
-                XLT_CGCCPF_RAIZ = Left(XLT_CGCCPF, 9)
+                XLT_CGCCPF_RAIZ = Left$(XLT_CGCCPF, 9)
                 XLT_CGCCPF_FILIAL = "0"
-                XLT_CGCCPF_DIGITO = CStr(CLng(Right(XLT_CGCCPF, 2)))
+                XLT_CGCCPF_DIGITO = CStr(CLng(Right$(XLT_CGCCPF, 2)))
             End If
             
-            XLT_NOME = Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 50) + Space(50 - Len(Left(XFO_EXPORTACAO!focl_tx_RazaoSocial, 50)))
-            XLT_FANTASIA = Left(XFO_EXPORTACAO!focl_tx_Fantasia, 50) + Space(50 - Len(Left(XFO_EXPORTACAO!focl_tx_Fantasia, 50)))
+            XLT_NOME = Left$(XFO_EXPORTACAO!focl_tx_RazaoSocial, 50) + Space(50 - Len(Left$(XFO_EXPORTACAO!focl_tx_RazaoSocial, 50)))
+            XLT_FANTASIA = Left$(XFO_EXPORTACAO!focl_tx_Fantasia, 50) + Space(50 - Len(Left$(XFO_EXPORTACAO!focl_tx_Fantasia, 50)))
 
             ' - Padrão Costa Andrade = primeiros 3 + últimos 2 digitos
-            XLT_SENHASACADO = Format(Left(XLT_CGCCPF, 3), "000") & Format(Right(XLT_CGCCPF, 2), "00")
+            XLT_SENHASACADO = Format(Left$(XLT_CGCCPF, 3), "000") & Format(Right$(XLT_CGCCPF, 2), "00")
 
             If XFO_EXPORTACAO!clie_tx_EndCorresp = "" _
                 And XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
@@ -3786,28 +3803,28 @@ Private Sub CmdEmitirBoletos_Click()
                 And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
 
                 If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
-                    XLT_ENDERECO = Left(XFO_EXPORTACAO!focl_tx_Endereco, 45) + Space(45 - Len(Left(XFO_EXPORTACAO!focl_tx_Endereco, 45)))
-                    XLT_BAIRRO = Left(XFO_EXPORTACAO!focl_tx_Bairro, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!focl_tx_Bairro, 15)))
-                    XLT_CIDADE = Left(XFO_EXPORTACAO!focl_tx_Cidade, 20) + Space(20 - Len(Left(XFO_EXPORTACAO!focl_tx_Cidade, 20)))
-                    XLT_ESTADO = Left(XFO_EXPORTACAO!focl_tx_Estado, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!focl_tx_Estado, 2)))
+                    XLT_ENDERECO = Left$(XFO_EXPORTACAO!focl_tx_Endereco, 45) + Space(45 - Len(Left$(XFO_EXPORTACAO!focl_tx_Endereco, 45)))
+                    XLT_BAIRRO = Left$(XFO_EXPORTACAO!focl_tx_Bairro, 15) + Space(15 - Len(Left$(XFO_EXPORTACAO!focl_tx_Bairro, 15)))
+                    XLT_CIDADE = Left$(XFO_EXPORTACAO!focl_tx_Cidade, 20) + Space(20 - Len(Left$(XFO_EXPORTACAO!focl_tx_Cidade, 20)))
+                    XLT_ESTADO = Left$(XFO_EXPORTACAO!focl_tx_Estado, 2) + Space(2 - Len(Left$(XFO_EXPORTACAO!focl_tx_Estado, 2)))
                     XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!focl_tx_Cep, ".", ""), "-", ""))
                 Else
-                    XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 45) + Space(45 - Len(Left(XFO_EXPORTACAO!clie_tx_EndResidencial, 45)))
-                    XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15)))
-                    XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 20) + Space(20 - Len(Left(XFO_EXPORTACAO!clie_tx_MunResidencial, 20)))
-                    XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstResidencial, 2)))
+                    XLT_ENDERECO = Left$(XFO_EXPORTACAO!clie_tx_EndResidencial, 45) + Space(45 - Len(Left$(XFO_EXPORTACAO!clie_tx_EndResidencial, 45)))
+                    XLT_BAIRRO = Left$(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15) + Space(15 - Len(Left$(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15)))
+                    XLT_CIDADE = Left$(XFO_EXPORTACAO!clie_tx_MunResidencial, 20) + Space(20 - Len(Left$(XFO_EXPORTACAO!clie_tx_MunResidencial, 20)))
+                    XLT_ESTADO = Left$(XFO_EXPORTACAO!clie_tx_EstResidencial, 2) + Space(2 - Len(Left$(XFO_EXPORTACAO!clie_tx_EstResidencial, 2)))
                     XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!clie_nr_CepResidencial, ".", ""), "-", ""))
                 End If
             Else
-                XLT_ENDERECO = Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40) + Space(40 - Len(Left(XFO_EXPORTACAO!clie_tx_EndCorresp, 40)))
-                XLT_BAIRRO = Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12) + Space(12 - Len(Left(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12)))
-                XLT_CIDADE = Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15) + Space(15 - Len(Left(XFO_EXPORTACAO!clie_tx_MunCorresp, 15)))
-                XLT_ESTADO = Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2) + Space(2 - Len(Left(XFO_EXPORTACAO!clie_tx_EstCorresp, 2)))
+                XLT_ENDERECO = Left$(XFO_EXPORTACAO!clie_tx_EndCorresp, 40) + Space(40 - Len(Left$(XFO_EXPORTACAO!clie_tx_EndCorresp, 40)))
+                XLT_BAIRRO = Left$(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12) + Space(12 - Len(Left$(XFO_EXPORTACAO!clie_tx_BairroCorresp, 12)))
+                XLT_CIDADE = Left$(XFO_EXPORTACAO!clie_tx_MunCorresp, 15) + Space(15 - Len(Left$(XFO_EXPORTACAO!clie_tx_MunCorresp, 15)))
+                XLT_ESTADO = Left$(XFO_EXPORTACAO!clie_tx_EstCorresp, 2) + Space(2 - Len(Left$(XFO_EXPORTACAO!clie_tx_EstCorresp, 2)))
                 XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!clie_nr_CepCorresp, ".", ""), "-", ""))
             End If
 
-            XLT_CEP_05 = CStr(CLng(Left(XLT_CEP, 5)))
-            XLT_CEP_03 = CStr(CLng(Right(XLT_CEP, 3)))
+            XLT_CEP_05 = CStr(CLng(Left$(XLT_CEP, 5)))
+            XLT_CEP_03 = CStr(CLng(Right$(XLT_CEP, 3)))
 
             If ChkJuros.Value = 1 Then
                 ' XLT_DATAMORA = Format(DateAdd("d", 1, XFO_EXPORTACAO!titu_dt_Vencimento), "yyyy-mm-dd")
@@ -3825,25 +3842,25 @@ Private Sub CmdEmitirBoletos_Click()
             End If
                         
             If TxtInstrucao1.Text = "93" Or TxtInstrucao2.Text = "93" Then
-                XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 30) & Space(30 - Len(TxtMensagem1.Text)) & Space(4) & XLT_DATAMORA
+                XLT_MENSAGEM1 = Left$(TxtMensagem1.Text, 30) & Space(30 - Len(TxtMensagem1.Text)) & Space(4) & XLT_DATAMORA
             ElseIf TxtInstrucao1.Text = "94" Or TxtInstrucao2.Text = "94" Then
-                XLT_MENSAGEM1 = Left(TxtMensagem1.Text, 40) & Space(40 - Len(TxtMensagem1.Text))
+                XLT_MENSAGEM1 = Left$(TxtMensagem1.Text, 40) & Space(40 - Len(TxtMensagem1.Text))
             Else
                 ' Se tiver sacador/avalista manda a informação que está em cboSacadorAvalista
                 If Me.cboSacadorAvalista.Text = "" Then
                     ' Alterado em 18/07/2023 (PSG), para atender solicitação do ITAU: o campo BENEFICIARIO FINAL deve ser igual a espaços, quando Instrução 1 e 2 diferentes de 93 oe 94
-                    ' XLT_MENSAGEM1 = Left(PEmpresa, 30) & Space(30 - Len(Left(PEmpresa, 30))) & Space(4) & XLT_DATAMORA
+                    ' XLT_MENSAGEM1 = Left$(PEmpresa, 30) & Space(30 - Len(Left$(PEmpresa, 30))) & Space(4) & XLT_DATAMORA
                     ' XLT_MENSAGEM1 = Space(34) & XLT_DATAMORA
                     XLT_MENSAGEM1 = Space(40)
                 Else
-                    XLT_MENSAGEM1 = Left(Me.cboSacadorAvalista.Text, 30) & Space(30 - Len(Left(Me.cboSacadorAvalista.Text, 30))) & Space(4) & XLT_DATAMORA
+                    XLT_MENSAGEM1 = Left$(Me.cboSacadorAvalista.Text, 30) & Space(30 - Len(Left$(Me.cboSacadorAvalista.Text, 30))) & Space(4) & XLT_DATAMORA
                 End If
             End If
             
             XLT_NOSSONUMERO = Format(FunPegaGuardaUltimo("NN"), "00000000000")
             
-'            XLT_NOSSONUMERODV = FunDvMod10(Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
-'                                           Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _
+'            XLT_NOSSONUMERODV = FunDvMod10(Format(Left$(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000") & _
+'                                           Format(Left$(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 5), "00000") & _
 '                                           XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & XLT_NOSSONUMERO)
             
             XLT_NOSSONUMERODV = FunDvMod10(XLT_NOSSONUMERO)
@@ -3863,7 +3880,9 @@ Private Sub CmdEmitirBoletos_Click()
             ' - Monta objeto JSON com o formato requerido conforme documentação da API.
             '   Foram utilizados os campos necessários para a geração dos boletos, caso sejam necessárias
             '   mais informações, ver a documentação em:
-            '       https://devportal.itau.com.br/nossas-apis/itau-ep9-gtw-cash-management-ext-v2
+            '       https://developers.bradesco.com.br/#
+            '
+            '   Dúvida: "WEBSERVIC" (documentação site) ou "APISERV" (Coleção Postman)
             ' --------------------------------------------------------------------------------------------
             XLT_JSON = "{ " & _
             FunJsonString("debitoAutomatico", "N") & ", " & _
@@ -3874,9 +3893,8 @@ Private Sub CmdEmitirBoletos_Click()
             FunJsonString("registraTitulo", CStr(CInt(XLO_BOLETOS.Item(XLT_ROOTITEM).Item("TipoRegistro"))), False) & ", " & _
             FunJsonString("idProduto", CStr(CInt(XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira"))), False) & ", " & _
             FunJsonString("nuNegociacao", XLT_AGENCONTA, False) & ", " & _
-            FunJsonString("nuTitulo", CStr(CLng(XLT_NOSSONUMERO)), False) & ", " & _
+            FunJsonString("nuTitulo", CStr(CDbl(XLT_NOSSONUMERO)), False) & ", " & _
             FunJsonString("nuCliente", XFO_EXPORTACAO!Titulo) & ", "
-
 
             XLT_JSON = XLT_JSON & _
             FunJsonString("dtEmissaoTitulo", Format(DtpExportacao, "dd.mm.yyyy")) & ", " & _
@@ -3922,17 +3940,17 @@ Private Sub CmdEmitirBoletos_Click()
             FunJsonString("vlBonificacao", "0", False) & ", "
 
             XLT_JSON = XLT_JSON & _
-            FunJsonString("nomePagador", Trim(XLT_NOME)) & ", " & _
-            FunJsonString("logradouroPagador", IIf(XLT_ENDERECO <> "", Trim(XLT_ENDERECO), "")) & ", " & _
+            FunJsonString("nomePagador", RemoverCaracteresEspeciais(Trim(XLT_NOME))) & ", " & _
+            FunJsonString("logradouroPagador", RemoverCaracteresEspeciais(IIf(XLT_ENDERECO <> "", Trim(XLT_ENDERECO), ""))) & ", " & _
             FunJsonString("complementoLogradouroPagador", "") & ", " & _
-            FunJsonString("nuLogradouroPagador", " ") & ", " & _
+            FunJsonString("nuLogradouroPagador", "0") & ", " & _
             FunJsonString("cepPagador", XLT_CEP_05, False) & ", " & _
             FunJsonString("complementoCepPagador", XLT_CEP_03, False) & ", " & _
-            FunJsonString("bairroPagador", IIf(XLT_BAIRRO <> "", Trim(XLT_BAIRRO), "")) & ", " & _
-            FunJsonString("municipioPagador", IIf(XLT_CIDADE <> "", Trim(XLT_CIDADE), "")) & ", " & _
+            FunJsonString("bairroPagador", RemoverCaracteresEspeciais(IIf(XLT_BAIRRO <> "", Trim(XLT_BAIRRO), ""))) & ", " & _
+            FunJsonString("municipioPagador", RemoverCaracteresEspeciais(IIf(XLT_CIDADE <> "", Trim(XLT_CIDADE), ""))) & ", " & _
             FunJsonString("ufPagador", IIf(XLT_ESTADO <> "", Trim(XLT_ESTADO), "")) & ", " & _
             FunJsonString("cdIndCpfcnpjPagador", IIf(XFO_EXPORTACAO!focl_tx_Tipo = "F", "1", "2"), False) & ", " & _
-            FunJsonString("nuCpfcnpjPagador", XLT_CGCCPF, False) & ", " & _
+            FunJsonString("nuCpfcnpjPagador", CStr(CDbl(XLT_CGCCPF)), False) & ", " & _
             FunJsonString("endEletronicoPagador", Trim(XFO_EXPORTACAO!focl_tx_EMail)) & ", " & _
             FunJsonString("dddFoneSacado", "0", False) & ", " & _
             FunJsonString("foneSacado", "0", False) & ", "
@@ -3952,13 +3970,13 @@ Private Sub CmdEmitirBoletos_Click()
                 FunJsonString("logradouroSacadorAvalista", Trim(DatEmpresa.Recordset.Fields!empr_tx_endereco)) & ", " & _
                 FunJsonString("nuLogradouroSacadorAvalista", "") & ", " & _
                 FunJsonString("complementoLogradouroSacadorAvalista", "") & ", " & _
-                FunJsonString("cepSacadorAvalista", Left(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", ""), 5), False) & ", " & _
-                FunJsonString("complementoCepSacadorAvalista", Right(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", ""), 3), False) & ", " & _
+                FunJsonString("cepSacadorAvalista", Left$(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", ""), 5), False) & ", " & _
+                FunJsonString("complementoCepSacadorAvalista", Right$(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_Cep, "-", ""), ".", ""), 3), False) & ", " & _
                 FunJsonString("bairroSacadorAvalista", Trim(DatEmpresa.Recordset.Fields!empr_tx_Bairro)) & ", " & _
                 FunJsonString("municipioSacadorAvalista", Trim(DatEmpresa.Recordset.Fields!empr_tx_cidade)) & ", " & _
                 FunJsonString("ufSacadorAvalista", Trim(DatEmpresa.Recordset.Fields!empr_tx_Estado)) & ", " & _
                 FunJsonString("cdIndCpfcnpjSacadorAvalista", "2", False) & ", " & _
-                FunJsonString("nuCpfcnpjSacadorAvalista", Replace(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_CGC, ".", ""), "/", ""), "-", ""), False) & ", " & _
+                FunJsonString("nuCpfcnpjSacadorAvalista", CStr(CDbl(Replace(Replace(Replace(DatEmpresa.Recordset.Fields!empr_tx_CGC, ".", ""), "/", ""), "-", ""))), False) & ", " & _
                 FunJsonString("enderecoSacadorAvalista", "") & ", " & _
                 FunJsonString("dddFoneSacadorAvalista", "0", False) & ", " & _
                 FunJsonString("foneSacadorAvalista", "0", False) & ", "
@@ -3985,92 +4003,68 @@ Private Sub CmdEmitirBoletos_Click()
             "{ " & FunJsonString("mensagem", XLT_MENSAGEM1) & " }, " & _
             "{ " & FunJsonString("mensagem", "") & " } " & _
             "] }"
-             
-             
-            ' - Dados para teste de Sandbox, Json de registro, conforme executado no Postman. Remover/comentar
-            ' --------------------------------------------------------------------------------------------
-'            XLT_JSON = "{ ""debitoAutomatico"": ""N"", ""codigoUsuarioSolicitante"": ""APISERVIC"", ""nuCPFCNPJ"": ""12345678"", ""filialCPFCNPJ"": 1018, ""ctrlCPFCNPJ"": 38, ""registraTitulo"": 1, ""idProduto"": 9, " & _
-'            """nuNegociacao"": 386100000000041000, ""nuTitulo"": 0, ""nuCliente"": ""WEBSERVICE"", ""dtEmissaoTitulo"": ""07.06.2025"", ""dtVencimentoTitulo"": ""07.08.2025"", ""tpVencimento"": 0, " & _
-'            """indicadorMoeda"": 0, ""vlNominalTitulo"": 1000.00, ""qmoedaNegocTitlo"": 0, ""cdEspecieTitulo"": 1, ""cindcdAceitSacdo"": ""2"", ""tpProtestoAutomaticoNegativacao"": 0, " & _
-'            """prazoProtestoAutomaticoNegativacao"": 0, ""tipoDiasDecursoProt"": 0, ""tipoDecursoPrazo"": 0, ""controleParticipante"": """", ""cdPagamentoParcial"": """", ""qtdePagamentoParcial"": 0, " & _
-'            """tipoPrazoDecursoTres"": 0, ""percentualJuros"": 0, ""vlJuros"": 0, ""qtdeDiasJuros"": 0, ""percentualMulta"": 0, ""vlMulta"": 0, ""qtdeDiasMulta"": 0, ""percentualDesconto1"": 0, " & _
-'            """vlDesconto1"": 0, ""dataLimiteDesconto1"": """", ""percentualDesconto2"": 0, ""vlDesconto2"": 0, ""dataLimiteDesconto2"": """", ""percentualDesconto3"": 0, ""vlDesconto3"": 0, " & _
-'            """dataLimiteDesconto3"": """", ""prazoBonificacao"": 0, ""percentualBonificacao"": 0, ""vlBonificacao"": 0, ""dtLimiteBonificacao"": """", ""vlAbatimento"": 0, ""vlIOF"": 0, " & _
-'            """nomePagador"": ""TESTE BE"", ""logradouroPagador"": ""AVENIDA COPACABANA"", ""nuLogradouroPagador"": ""237"", ""complementoLogradouroPagador"": ""3 ANDAR"", ""cepPagador"": 6050, " & _
-'            """complementoCepPagador"": 40, ""bairroPagador"": ""ALPHAVILLE"", ""municipioPagador"": ""BARUERI"", ""ufPagador"": ""SP"", ""cdIndCpfcnpjPagador"": 1, ""nuCpfcnpjPagador"": 11438390807, " & _
-'            """endEletronicoPagador"": """", ""dddFoneSacado"": 0, ""foneSacado"": 0, ""bancoDoDebAutomatico"": 237, ""agenciaDoDebAutomatico"": 2, ""digitoAgenciaDoDebAutomat"": 7, " & _
-'            """contaDoDebAutomatico"": 5223, ""razaoDoDebAutomatico"": 705, ""codBancoDoProtesto"": 0, ""agenciaDoProtesto"": 0, ""nomeSacadorAvalista"": ""A"", ""logradouroSacadorAvalista"": ""A"", " & _
-'            """nuLogradouroSacadorAvalista"": ""4"", ""complementoLogradouroSacadorAvalista"": """", ""cepSacadorAvalista"": 0, ""complementoCepSacadorAvalista"": 0, ""bairroSacadorAvalista"": ""D"", " & _
-'            """municipioSacadorAvalista"": ""D"", ""ufSacadorAvalista"": ""SP"", ""cdIndCpfcnpjSacadorAvalista"": 1, ""nuCpfcnpjSacadorAvalista"": 0, ""enderecoSacadorAvalista"": ""DD"", " & _
-'            """dddFoneSacadorAvalista"": 11, ""foneSacadorAvalista"": 24144323, ""listaMsgs"": [ { ""mensagem"": ""Teste MSG 1"" }, { ""mensagem"": ""Teste MSG 2"" } ] } "
-            
-            XLT_JSON = "{ ""debitoAutomatico"": ""N"", ""codigoUsuarioSolicitante"": ""APISERVIC"", ""nuCPFCNPJ"": ""44678151"", ""filialCPFCNPJ"": 1, ""ctrlCPFCNPJ"": 79, ""registraTitulo"": 1, ""idProduto"": 9, " & _
-            """nuNegociacao"": 123400000001234567, ""nuTitulo"": 1835, ""nuCliente"": ""0750.0301.01.02.003.00"", ""dtEmissaoTitulo"": ""15.08.2025"", ""dtVencimentoTitulo"": ""01.09.2025"", " & _
-            """tpVencimento"": 0, ""indicadorMoeda"": 0, ""vlNominalTitulo"": 3484.72, ""qmoedaNegocTitlo"": 0, ""cdEspecieTitulo"": 12, ""cindcdAceitSacdo"": ""2"", ""tpProtestoAutomaticoNegativacao"": 0, " & _
-            """prazoProtestoAutomaticoNegativacao"": 0, ""tipoDiasDecursoProt"": 0, ""tipoDecursoPrazo"": 0, ""controleParticipante"": ""0750.0301.01.02.003.00"", ""cdPagamentoParcial"": """", " & _
-            """qtdePagamentoParcial"": 0, ""tipoPrazoDecursoTres"": 0, ""percentualJuros"": 0, ""vlJuros"": 0, ""qtdeDiasJuros"": 0, ""percentualMulta"": 0, ""vlMulta"": 0, ""qtdeDiasMulta"": 0, " & _
-            """percentualDesconto1"": 0, ""vlDesconto1"": 0, ""dataLimiteDesconto1"": """", ""percentualDesconto2"": 0, ""vlDesconto2"": 0, ""dataLimiteDesconto2"": """", ""percentualDesconto3"": 0, " & _
-            """vlDesconto3"": 0, ""dataLimiteDesconto3"": """", ""prazoBonificacao"": 0, ""percentualBonificacao"": 0, ""vlBonificacao"": 0, ""dtLimiteBonificacao"": """", ""vlAbatimento"": 0, " & _
-            """vlIOF"": 0, ""nomePagador"": ""CRISTOVAO DO ROSARIO DOS SANTOS"", ""logradouroPagador"": ""RUA PROF VIEGAS, 186 APT 510 A EDF.MIRAB"", ""nuLogradouroPagador"": """", " & _
-            """complementoLogradouroPagador"": """", ""cepPagador"": 40301, ""complementoCepPagador"": 75, ""bairroPagador"": ""BARBALHO"", ""municipioPagador"": ""SALVADOR"", ""ufPagador"": ""BA"", " & _
-            """cdIndCpfcnpjPagador"": 1, ""nuCpfcnpjPagador"": 82059497515, ""endEletronicoPagador"": ""cristovaodossantos18@gmail.com"", ""dddFoneSacado"": 0, ""foneSacado"": 0, ""bancoDoDebAutomatico"": 0, " & _
-            """agenciaDoDebAutomatico"": 0, ""digitoAgenciaDoDebAutomat"": 0, ""contaDoDebAutomatico"": 0, ""razaoDoDebAutomatico"": 0, ""codBancoDoProtesto"": 0, ""agenciaDoProtesto"": 0, " & _
-            """nomeSacadorAvalista"": ""COSTA ANDRADE EMPREENDIMENTOS LTDA"", ""logradouroSacadorAvalista"": ""R. CEL ALMERINDO REHEM - ED EMP C. ANDRADE 13 AND"", ""nuLogradouroSacadorAvalista"": """", " & _
-            """complementoLogradouroSacadorAvalista"": """", ""cepSacadorAvalista"": 41820, ""complementoCepSacadorAvalista"": 768, ""bairroSacadorAvalista"": ""CAMINHO DAS ÁRVORES"", " & _
-            """municipioSacadorAvalista"": ""SALVADOR"", ""ufSacadorAvalista"": ""BA"", ""cdIndCpfcnpjSacadorAvalista"": 2, ""nuCpfcnpjSacadorAvalista"": 34237446000156, ""enderecoSacadorAvalista"": """", " & _
-            """dddFoneSacadorAvalista"": 71, ""foneSacadorAvalista"": 987654321, ""listaMsgs"": [ { ""mensagem"": ""COSTA ANDRADE EMPREENDIMENTOS 04/09/2025"" }, { ""mensagem"": """" } ] }"
-                   
-            ' --------------------------------------------------------------------------------------------
-                         
-                         
+                          
             ' - Registra o boleto no banco Bradesco, via API, e retorna um objeto json armazenado em XLO_JSONAPI
             '   (ver README.txt para layout)
             ' --------------------------------------------------------------------------------------------
             Set XLO_JSONAPI = JSON.parse(FunPostBoleto(XLT_JSON))
             
+            XLT_STATUS = ""
+            
             If Not (XLO_JSONAPI Is Nothing) Then
                 If JSON.GetParserErrors <> "" Then
-                    MsgBox JSON.GetParserErrors, vbCritical, "Parsing Error(s) occured"
-                    GoTo WhileNext
+                    XLT_STATUS = "Erro no registro do boleto via API: 'Parsing Error(s) occured' - " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    " (" & XFO_EXPORTACAO!Titulo & ") -" & JSON.GetParserErrors
                 End If
             Else
-                MsgBox "Erro indefinido na geração do boleto para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-                    " (" & XFO_EXPORTACAO!Titulo & ").", vbInformation, "Erro: FunPostBoleto()"
+                XLT_STATUS = "Erro no registro do boleto via API: 'Indefinido' " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    " (" & XFO_EXPORTACAO!Titulo & ")."
+            End If
+            
+            If XLT_STATUS <> "" Then
+                MsgBox XLT_STATUS, vbCritical, "Erro ao registrar boleto via API"
+                SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
                 GoTo WhileNext
             End If
             
-            
-            
-            ' - Dados de teste de Sandbox, Json de retorno, conforme executado no Postman. Remover/comentar
+            ' - Atualiza o titulo com os dados do boleto gerado
             ' --------------------------------------------------------------------------------------------
-
-            XLT_JSON = "{ ""idProduto"": 9, ""negociacao"": 285600000000222652, ""cpssoaJuridContr"": 2269651, ""ctpoContrNegoc"": 48, ""nseqContrNegoc"": 236334, ""cprodtServcOper"": 1730, ""nuTituloGerado"": 51470000241, " & _
-            """tp08Reg1"": 1, ""agencCred10"": 0, ""ctaCred10"": 0, ""digCred10"": ""00"", ""cip10"": 0, ""codStatus10"": 1, ""status10"": ""A VENCER/VENCIDO"", ""nomeBeneficiario"": ""LOXJYMI LUJOYMUO"", " & _
-            """logradouroBeneficiario"": ""X VYSYXXO FY LYPYSYR 495"", ""nuLogradouroBeneficiario"": """", ""complementoLogradouroBeneficiario"": """", ""bairroBeneficiario"": ""ALAOXOLO"", ""cepBeneficiario"": 6028, " & _
-            """cepComplementoBeneficiario"": 220, ""municipioBeneficiario"": ""IRORJI"", ""ufBeneficiario"": ""SP"", ""razCredt10"": 0, ""nomePagador"": ""CLIENTE"", ""cpfcnpjPagador"": 114383908000007, " & _
-            """enderecoPagador"": ""AVENIDA COPACABANA"", ""bairroPagador"": ""ALPHAVILLE"", ""municipioPagador"": ""BARUERI"", ""ufPagador"": ""SP"", ""cepPagador"": 0, ""cepComplementoPagador"": ""000"", " & _
-            """cebp10"": """", ""debitoAuto10"": """", ""aceite10"": ""N"", ""endEletronicoPagador"": """", ""nomeSacadorAvalista"": ""PARCEIRO"", ""cnpjCpfSacadorAvalista"": 453179268000082, " & _
-            """enderecoSacadorAvalista"": ""AV SAO PAULO"", ""municipioSacadorAvalista"": ""OSASCO"", ""ufSacadorAvalista"": ""SP"", ""cepSacadorAvalista"": 0, ""cepComplementoSacadorAvalista"": 0, ""tp08Reg2"": 2, " & _
-            """cense10"": 0, ""agenOper10"": 0, ""bcoDepos10"": 0, ""agenDepos10"": 0, ""seuNumeroTitulo"": ""1"", ""dtRegistro"": ""27052025"", ""especieDocumentoTitulo"": ""DM"", ""descEspecie"": """", ""vlIOF"": 0, " & _
-            """dtEmissao"": ""27052025"", ""codigoMoedaTitulo"": ""R$"", ""quantidadeMoeda"": 0, ""quantidadeCasas"": 2, ""dtVencimento"": ""27.08.2025"", ""descricacaoMoeda"": ""R$"", ""vlTitulo"": 141.50, " & _
-            """vlAbatimento"": 0, ""dtInstrucaoProtestoNegativação"": """", ""diasInstrucaoProtestoNegativação"": 0, ""dataEnvioCartorio"": """", ""numeroCartorio"": """", ""numeroProtocoloCartorio"": """", " & _
-            """dataPedidoSustacao"": """", ""dataSustacao"": """", ""dtMulta"": ""27082025"", ""vlMulta"": 2000, ""qtdeCasasDecimaisMulta"": 5, ""cdValorMulta"": 2, ""descCdMulta"": ""TAXA MENSAL"", " & _
-            """dtJuros"": ""27082025"", ""vlJurosAoDia"": 50, ""dtDesconto1Bonificacao"": ""29052025"", ""vlDesconto1Bonificacao"": 5000, ""qtdeCasasDecimaisDesconto1Bonificacao"": 2, ""cdValorDesconto1Bonificacao"": 1, " & _
-            """descCdDesconto1Bonificacao"": """", ""dtDesconto2"": """", ""vlDesconto2"": 0, ""qtdeCasasDecimaisDesconto2"": 0, ""cdValorDesconto2"": 0, ""descCdDesconto2"": """", ""dtDesconto3"": """", " & _
-            """vlDesconto3"": 0, ""qtdeCasasDecimaisDesconto3"": 0, ""cdValorDesconto3"": 0, ""descCdDesconto3"": """", ""diasDispensaMulta"": 1, ""diasDispensaJuros"": 1, " & _
-            """cdBarras"": ""23791690400000141501234090000000045301234560"", ""linhaDigitavel"": ""23791.23405 90000.000043 53012.345608 1 69040000014150"", ""despCart10"": 0, ""bcoCentr10"": 0, " & _
-            """ageCentr10"": 0, ""acessEsc10"": 0, ""tipoEndosso"": """", ""codigoOrigemProtesto"": 0, ""codigoOrigemTitulo"": """", ""tpVencimento"": 0, ""indInstrucaoProtesto"": 0, ""indicadorDecurso"": 0, " & _
-            """quantidadeDiasDecurso"": 0, ""ctpoAbat10"": 0, ""cdValorJuros"": 1, ""tpDesconto1"": 1, ""tpDesconto2"": 0, ""tpDesconto3"": 0, ""nuControleParticipante"": """", ""diasJuros"": 1, ""cdJuros"": 1, " & _
-            """vlJuros"": 50, ""cpfcnpjBeneficiário"": ""031759488000055"", ""vlTituloEmitidoBoleto"": 0, ""dtVencimentoBoleto"": ""27/08/2025"", ""indTitParceld10"": """", ""indParcelaPrin10"": """", " & _
-            """indBoletoDda10"": """", ""dtLimitePagamentoBoleto"": ""27/08/2025"", ""dataImpressao10"": 27052025, ""horaImpressao10"": 0, ""identTitDda10"": 0, ""exibeLinDig10"": ""N"", ""permPgtoParcial"": """", " & _
-            """qtdePgtoParcial"": 0, ""bancoDeb"": 0, ""agenciaDeb"": 0, ""agenciaDebDv"": 0, ""contaDeb"": 0, ""razaoContaDebito"": 0 }"
-
-            Set XLO_JSONAPI = JSON.parse(XLT_JSON)
-                
-            ' --------------------------------------------------------------------------------------------
-                
-                
-                
+            If OptIndexador1.Value = True Then
+                If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda1) Then
+                    XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda1
+                Else
+                    XLT_CODMOEDA = ""
+                End If
+            ElseIf OptIndexador2.Value = True Then
+                If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda2) Then
+                    XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda2
+                Else
+                    XLT_CODMOEDA = ""
+                End If
+            Else
+                XLT_CODMOEDA = ""
+            End If
+            
+            XFT_SQL = "UPDATE Titulos Set titu_tx_ExpBanco = 'S'," & _
+                      " moed_cd_Moeda3 = " & FunNuloBancoVal(XLT_CODMOEDA) & "," & _
+                      " titu_vl_Seguro = " & FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8))) & "," & _
+                      " titu_tx_IdBoleto = '" & XLO_JSONAPI.Item("nuTituloGerado") & "'," & _
+                      " titu_tx_NossoNumero = '" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV & "'," & _
+                      " titu_tx_CodigoBarras = '" & Left$(XLO_JSONAPI.Item("cdBarras"), 100) & "'," & _
+                      " titu_tx_LinhaDigitavel = '" & XLO_JSONAPI.Item("linhaDigitavel") & "'" & _
+                      " WHERE empr_cd_Empresa = " & PCodEmpresa & _
+                      " AND empd_cd_empreendimento = '" & Left$(XFO_EXPORTACAO!Titulo, 4) & "'" & _
+                      " AND imov_cd_imovel = '" & Mid$(XFO_EXPORTACAO!Titulo, 6, 4) & "'" & _
+                      " AND cont_cd_Contrato = '" & Mid$(XFO_EXPORTACAO!Titulo, 11, 2) & "'" & _
+                      " AND titu_cd_Plano = '" & Mid$(XFO_EXPORTACAO!Titulo, 14, 2) & "'" & _
+                      " AND titu_cd_Parcela = '" & Mid$(XFO_EXPORTACAO!Titulo, 17, 3) & "'" & _
+                      " AND titu_cd_Residuo = '" & Right$(XFO_EXPORTACAO!Titulo, 2) & "'"
+                                
+            Conexao.Execute (XFT_SQL)
+                        
+            XLT_STATUS = "Boleto registrado na API: " & XFO_EXPORTACAO!focl_tx_RazaoSocial & " (" & XFO_EXPORTACAO!Titulo & ")."
+            SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
+                                
             ' - Monta objeto JSON com o layout/esquema necessário para a emissão do boleto em HTML e PDF
             '   Foram utilizados os campos necessários para a geração dos boletos, caso sejam necessárias
             '   mais informações, ver a documentação em: https://github.com/BoletoNet/boleto2net
@@ -4138,12 +4132,12 @@ Private Sub CmdEmitirBoletos_Click()
             '     Observação, a conta no boleto usa apenas 5 posições numéricas
             XLT_JSON = XLT_JSON & _
             FunJsonString("ContaBancaria", "{ ", False) & _
-            FunJsonString("Agencia", Format(Left(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000")) & ", " & _
+            FunJsonString("Agencia", Format(Left$(DatContaCorrente.Recordset.Fields!coco_cd_Agencia, 4), "0000")) & ", " & _
             FunJsonString("CarteiraPadrao", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira")) & ", " & _
             FunJsonString("CodigoBancoCorrespondente", "0", False) & ", " & _
-            FunJsonString("Conta", Format(Left(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 7), "0000000")) & ", " & _
+            FunJsonString("Conta", Format(Left$(DatContaCorrente.Recordset.Fields!coco_tx_Conta, 7), "0000000")) & ", " & _
             FunJsonString("DigitoAgencia", "") & ", " & _
-            FunJsonString("DigitoConta", Format(Right(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")) & ", " & _
+            FunJsonString("DigitoConta", Format(Right$(FunNuloVal(DatContaCorrente.Recordset.Fields!coco_nr_Dac), 1), "0")) & ", " & _
             FunJsonString("LocalPagamento", "") & ", " & _
             FunJsonString("MensagemFixaSacado", "Ref. título " & XFO_EXPORTACAO!Titulo) & ", " & _
             FunJsonString("MensagemFixaTopoBoleto", "Emitido por " & Trim(PEmpresa)) & ", "
@@ -4240,23 +4234,30 @@ Private Sub CmdEmitirBoletos_Click()
             '   Corrige as contrabarras, para o parse do json (vem C:/xx\yy, deveria ser C:\\xx\\yy)
             ' --------------------------------------------------------------------------------------------
             Set XLO_JSONB2N = JSON.parse(Replace(Replace(BoletoService.EmiteBoleto(XLT_JSON), "/", "\"), "\", "\\"))
-
+            
+            XLT_STATUS = ""
+            
             If Not (XLO_JSONB2N Is Nothing) Then
                 If JSON.GetParserErrors <> "" Then
-                    MsgBox JSON.GetParserErrors, vbCritical, "Parsing Error(s) occured"
-                    GoTo WhileNext
+                    XLT_STATUS = "Boleto registrado, mas ocorreu erro na emissão: 'Parsing Error(s) occured' - " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    " (" & XFO_EXPORTACAO!Titulo & ") -" & JSON.GetParserErrors
                 Else
                     If XLO_JSONB2N.Item("status") <> "OK" Then
-                        MsgBox "Erro na emissão do boleto: " & XLO_JSONB2N.Item("message"), vbInformation, "Erro: BoletoService.EmiteBoleto()"
-                        GoTo WhileNext
+                        XLT_STATUS = "Boleto registrado, mas ocorreu erro na emissão: '" & XLO_JSONB2N.Item("message") & "' - " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                        " (" & XFO_EXPORTACAO!Titulo & ")."
                     End If
                 End If
             Else
-                MsgBox "Erro indefinido na emissão do boleto para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-                    " (" & XFO_EXPORTACAO!Titulo & ").", vbInformation, "Erro: BoletoService.EmiteBoleto()"
-               GoTo WhileNext
+                XLT_STATUS = "Boleto registrado, mas ocorreu erro na emissão: 'Indefinido' " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                   " (" & XFO_EXPORTACAO!Titulo & ")."
             End If
-            
+                        
+            If XLT_STATUS <> "" Then
+                MsgBox XLT_STATUS, vbCritical, "Erro ao emitir boleto"
+                SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
+                GoTo WhileNext
+            End If
+                        
             ' - Envia e-mail com o boleto (PDF criptografado) em anexo
             ' --------------------------------------------------------------------------------------------
             XLB_STATUS = FunSendEmail( _
@@ -4271,76 +4272,19 @@ Private Sub CmdEmitirBoletos_Click()
             ' - Tratar o retorno, identificando códigos de resposta e dados retornados via Json.
             '   Se algum erro, adicionar o titulo à uma lista ou corrigir status do boleto
             ' --------------------------------------------------------------------------------------------
+            XLT_STATUS = ""
+            
             If XLB_STATUS = False Then
-                MsgBox "Erro no envio do boleto por e-mail para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-                    " <" & XFO_EXPORTACAO!focl_tx_EMail & "> (" & XFO_EXPORTACAO!Titulo & ").", vbInformation, "Erro: FunSendEmail()"
+                XLT_STATUS = "Boleto emitido, mas ocorreu erro no envio por e-mail para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    " <" & XFO_EXPORTACAO!focl_tx_EMail & "> (" & XFO_EXPORTACAO!Titulo & ")."
+                MsgBox XLT_STATUS, vbCritical, "Erro ao emitir boleto"
+                SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
+                GoTo WhileNext
+            Else
+                XLT_STATUS = "Boleto registrado, emitido e enviado por e-mail. Processo concluído!"
+                SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
                 GoTo WhileNext
             End If
-
-            ' - Atualiza o titulo com os dados do boleto gerado
-            ' --------------------------------------------------------------------------------------------
-            If OptIndexador1.Value = True Then
-                If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda1) Then
-                    XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda1
-                Else
-                    XLT_CODMOEDA = ""
-                End If
-            ElseIf OptIndexador2.Value = True Then
-                If Not IsNull(XFO_EXPORTACAO!moed_cd_Moeda2) Then
-                    XLT_CODMOEDA = XFO_EXPORTACAO!moed_cd_Moeda2
-                Else
-                    XLT_CODMOEDA = ""
-                End If
-            Else
-                XLT_CODMOEDA = ""
-            End If
-            
-            Conexao.Execute ("UPDATE Titulos Set titu_tx_ExpBanco = 'S'," & _
-                             " moed_cd_Moeda3 = " & FunNuloBancoVal(XLT_CODMOEDA) & "," & _
-                             " titu_vl_Seguro = " & FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8))) & "," & _
-                             " titu_tx_IdBoleto = '" & XLO_JSONAPI.Item("nuTituloGerado") & "'," & _
-                             " titu_tx_NossoNumero = '" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV & "'," & _
-                             " titu_tx_CodigoBarras = '" & XLO_JSONAPI.Item("cdBarras") & "'," & _
-                             " titu_tx_LinhaDigitavel = '" & XLO_JSONAPI.Item("linhaDigitavel") & "'" & _
-                             " WHERE empr_cd_Empresa = " & PCodEmpresa & _
-                             " AND empd_cd_empreendimento = '" & Left(XFO_EXPORTACAO!Titulo, 4) & "'" & _
-                             " AND imov_cd_imovel = '" & Mid(XFO_EXPORTACAO!Titulo, 6, 4) & "'" & _
-                             " AND cont_cd_Contrato = '" & Mid(XFO_EXPORTACAO!Titulo, 11, 2) & "'" & _
-                             " AND titu_cd_Plano = '" & Mid(XFO_EXPORTACAO!Titulo, 14, 2) & "'" & _
-                             " AND titu_cd_Parcela = '" & Mid(XFO_EXPORTACAO!Titulo, 17, 3) & "'" & _
-                             " AND titu_cd_Residuo = '" & Right(XFO_EXPORTACAO!Titulo, 2) & "'")
-                        
-             ' - Registra o LOG da operação
-             ' --------------------------------------------------------------------------------------------
-             ReDim XGM_MATRIZLOG(12, 2) As Variant
-            
-             XGM_MATRIZLOG(0, 0) = "Título"
-             XGM_MATRIZLOG(1, 0) = "Moeda"
-             XGM_MATRIZLOG(2, 0) = "Valor Seguro"
-             XGM_MATRIZLOG(3, 0) = "Valor do Título"
-             XGM_MATRIZLOG(4, 0) = "Valor do Desconto"
-             XGM_MATRIZLOG(5, 0) = "Conta Corrente"
-             XGM_MATRIZLOG(6, 0) = "Data Venc. Título"
-             XGM_MATRIZLOG(7, 0) = "Data Venc. Desconto"
-             XGM_MATRIZLOG(8, 0) = "Id do Boleto"
-             XGM_MATRIZLOG(9, 0) = "Nosso Número"
-             XGM_MATRIZLOG(10, 0) = "Código de Barras"
-             XGM_MATRIZLOG(11, 0) = "Linha Digitável"
-            
-             XGM_MATRIZLOG(0, 1) = XFO_EXPORTACAO!Titulo
-             XGM_MATRIZLOG(1, 1) = FunNuloBancoVal(XLT_CODMOEDA)
-             XGM_MATRIZLOG(2, 1) = FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8)))
-             XGM_MATRIZLOG(3, 1) = XLF_VALOR
-             XGM_MATRIZLOG(4, 1) = XLF_DESCONTO
-             XGM_MATRIZLOG(5, 1) = DatContaCorrente.Recordset.Fields!coco_cd_Agencia & "-" & DatContaCorrente.Recordset.Fields!coco_tx_Conta & DatContaCorrente.Recordset.Fields!coco_nr_Dac
-             XGM_MATRIZLOG(6, 1) = XFO_EXPORTACAO!titu_dt_Vencimento
-             XGM_MATRIZLOG(7, 1) = XLT_DATADESCONTO
-             XGM_MATRIZLOG(8, 1) = XLO_JSONAPI.Item("nuTituloGerado")
-             XGM_MATRIZLOG(9, 1) = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV
-             XGM_MATRIZLOG(10, 1) = XLO_JSONAPI.Item("cdBarras")
-             XGM_MATRIZLOG(11, 1) = XLO_JSONAPI.Item("linhaDigitavel")
-            
-             Call subRegistraLog("TelaExpBancaria", "3", funCriaDescricaoLog(XGM_MATRIZLOG, EMITIR_BOLETO, PAGAMENTO_ELETRONICO_BRADESCO))
     
         End If
         
@@ -4350,6 +4294,9 @@ WhileNext:
         XFO_EXPORTACAO.MoveNext
         
     Wend
+    
+    XLT_STATUS = "Final da Emissão de Boletos"
+    SubRegistraLogLote XLT_STATUS, XLT_LOTEBOLETOS
 
     MsgBox "Emissão de boletos finalizada!", vbInformation + vbOKOnly, "ATENÇÃO"
 
@@ -4359,6 +4306,67 @@ WhileNext:
         
     Exit Sub
     
+End Sub
+
+Private Sub SubRegistraLogBoleto(XLT_STATUS As String, XLT_CODMOEDA As String, XLF_VALOR As Double, XLF_DESCONTO As Double, XLT_DATADESCONTO As String, XLO_JSONAPI As Object, XLT_NOSSONUMERO As String, XLT_NOSSONUMERODV As String)
+
+    ' - Registra o LOG da Emissão de Boleto
+    ' --------------------------------------------------------------------------------------------
+    ReDim XGM_MATRIZLOG(13, 2) As Variant
+    
+    XGM_MATRIZLOG(0, 0) = "Status"
+    XGM_MATRIZLOG(1, 0) = "Título"
+    XGM_MATRIZLOG(2, 0) = "Moeda"
+    XGM_MATRIZLOG(3, 0) = "Valor Seguro"
+    XGM_MATRIZLOG(4, 0) = "Valor do Título"
+    XGM_MATRIZLOG(5, 0) = "Valor do Desconto"
+    XGM_MATRIZLOG(6, 0) = "Conta Corrente"
+    XGM_MATRIZLOG(7, 0) = "Data Venc. Título"
+    XGM_MATRIZLOG(8, 0) = "Data Venc. Desconto"
+    XGM_MATRIZLOG(9, 0) = "Id do Boleto"
+    XGM_MATRIZLOG(10, 0) = "Nosso Número"
+    XGM_MATRIZLOG(11, 0) = "Código de Barras"
+    XGM_MATRIZLOG(12, 0) = "Linha Digitável"
+    
+    XGM_MATRIZLOG(0, 1) = XLT_STATUS
+    XGM_MATRIZLOG(1, 1) = XFO_EXPORTACAO!Titulo
+    XGM_MATRIZLOG(2, 1) = FunNuloBancoVal(XLT_CODMOEDA)
+    XGM_MATRIZLOG(3, 1) = FunNuloVal(FunTrataFloat(TDBGrid1.Columns(8)))
+    XGM_MATRIZLOG(4, 1) = XLF_VALOR
+    XGM_MATRIZLOG(5, 1) = XLF_DESCONTO
+    XGM_MATRIZLOG(6, 1) = DatContaCorrente.Recordset.Fields!coco_cd_Agencia & "-" & DatContaCorrente.Recordset.Fields!coco_tx_Conta & DatContaCorrente.Recordset.Fields!coco_nr_Dac
+    XGM_MATRIZLOG(7, 1) = XFO_EXPORTACAO!titu_dt_Vencimento
+    XGM_MATRIZLOG(8, 1) = XLT_DATADESCONTO
+    XGM_MATRIZLOG(10, 1) = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "/" & XLT_NOSSONUMERO & "-" & XLT_NOSSONUMERODV
+    
+    If (XLO_JSONAPI Is Nothing) Then
+        XGM_MATRIZLOG(9, 1) = ""
+        XGM_MATRIZLOG(11, 1) = ""
+        XGM_MATRIZLOG(12, 1) = ""
+    Else
+        XGM_MATRIZLOG(9, 1) = XLO_JSONAPI.Item("nuTituloGerado")
+        XGM_MATRIZLOG(11, 1) = XLO_JSONAPI.Item("cdBarras")
+        XGM_MATRIZLOG(12, 1) = XLO_JSONAPI.Item("linhaDigitavel")
+    End If
+        
+    Call subRegistraLog("TelaExpBancaria", "3", funCriaDescricaoLog(XGM_MATRIZLOG, EMITIR_BOLETO, PAGAMENTO_ELETRONICO_BRADESCO))
+
+End Sub
+
+Private Sub SubRegistraLogLote(XLT_STATUS As String, XLT_LOTEBOLETOS As String)
+
+    ' - Registra o LOG de inicio/fim da Emissão de Boletos
+    ' --------------------------------------------------------------------------------------------
+    ReDim XGM_MATRIZLOG(2, 2) As Variant
+    
+    XGM_MATRIZLOG(0, 0) = "Status"
+    XGM_MATRIZLOG(1, 0) = "Títulos"
+
+    XGM_MATRIZLOG(0, 1) = XLT_STATUS
+    XGM_MATRIZLOG(1, 1) = "[ " & Left$(XLT_LOTEBOLETOS, Len(XLT_LOTEBOLETOS) - 2) & " ]"
+    
+    Call subRegistraLog("TelaExpBancaria", "3", funCriaDescricaoLog(XGM_MATRIZLOG, EMITIR_BOLETO, PAGAMENTO_ELETRONICO_BRADESCO))
+
 End Sub
 
 Private Sub CmdFiltro_Click()
@@ -4380,7 +4388,7 @@ Private Sub CmdFiltro_Click()
         XLI_POS = InStrRev(FiltroAtual, "WHERE", -1, vbTextCompare)
         XLI_POS2 = InStrRev(XFT_SQL2, "WHERE", -1, vbTextCompare)
         
-        XFT_SQL2 = Left(XFT_SQL2, XLI_POS2 - 1) & Right(FiltroAtual, Len(FiltroAtual) - XLI_POS + 1)
+        XFT_SQL2 = Left$(XFT_SQL2, XLI_POS2 - 1) & Right$(FiltroAtual, Len(FiltroAtual) - XLI_POS + 1)
         
         If XFO_EXPORTACAO.State = adStateOpen Then
           XFO_EXPORTACAO.Close
@@ -4798,7 +4806,7 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, x As Single, y
             
             'Procura o filtro adicionado no sql do vetor e copia para o sql do recordset
             XLI_POS = InStrRev(FiltroAtual, "AND", -1, vbTextCompare)
-            XFT_SQL2 = XFT_SQL2 & Right(FiltroAtual, Len(FiltroAtual) - XLI_POS + 1)
+            XFT_SQL2 = XFT_SQL2 & Right$(FiltroAtual, Len(FiltroAtual) - XLI_POS + 1)
             If XFO_EXPORTACAO.State = adStateOpen Then
               XFO_EXPORTACAO.Close
             End If
@@ -4944,7 +4952,7 @@ Private Sub TxtInstrucao1_Change()
     If TxtInstrucao1.Text = "93" And (TxtInstrucao2.Text <> "93" Or TxtInstrucao2.Text <> "94") Then
         TxtMensagem1.Top = 2070
         If TxtMensagem1.Text <> "" Then
-            TxtMensagem1.Text = Left(TxtMensagem1.Text, 30)
+            TxtMensagem1.Text = Left$(TxtMensagem1.Text, 30)
         End If
         TxtMensagem1.MaxLength = 30
         TxtMensagem1.Visible = True

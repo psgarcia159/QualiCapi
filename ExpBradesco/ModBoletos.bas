@@ -241,6 +241,7 @@ Public Function FunSendEmail( _
     Dim CDO As New CDO.Message
     Dim At As Integer
 
+On Error GoTo errHandler
 
     With CDO.Configuration.Fields
         .Item(cdoSMTPAuthenticate) = CdoProtocolsAuthentication.cdoBasic                                ' basic (clear-text) authentication
@@ -298,11 +299,19 @@ Public Function FunSendEmail( _
     If Err.Number = 0 Then
         FunSendEmail = True
     Else
-        MsgBox "Erro no envio do E-mail: " & Err.Description, , "Erro: FunSendEmail()"
+        MsgBox "Erro no envio do E-mail: " & Err.Number & ": " & Err.Description, vbCritical, "Erro: FunSendEmail()"
         FunSendEmail = False
     End If
         
     Set CDO = Nothing
+    Exit Function
+    
+errHandler:
+    MsgBox "Erro no envio do E-mail: " & Err.Number & ": " & Err.Description, vbCritical, "Erro: FunSendEmail()"
+    FunSendEmail = False
+    Set CDO = Nothing
+    ' Optionally, you can log the error to a file here
+    Exit Function
     
 End Function
 
@@ -458,5 +467,35 @@ Function FunFormatString(StrText As String, ParamArray Parameters())
 
     FunFormatString = StrText
 
+End Function
+
+Public Function RemoverCaracteresEspeciais(ByVal Texto As String) As String
+    Dim i As Long
+    Dim CaracteresComAcento As String
+    Dim CaracteresSemAcento As String
+    Dim Resultado As String
+    
+    ' Lista de caracteres a serem mapeados (acentos, cedilha, etc.)
+    CaracteresComAcento = "¡·¿‡¬‚√„…È»Ë ÍÕÌÃÏŒÓ”Û“Ú‘Ù’ı⁄˙Ÿ˘€˚«Á—Ò"
+    CaracteresSemAcento = "AaAaAaAaEeEeEeIiIiIiOoOoOoOoUuUuUuCcNn"
+    
+    Resultado = Texto
+    
+    ' 1. Substituir acentos
+    For i = 1 To Len(CaracteresComAcento)
+        Resultado = Replace(Resultado, Mid(CaracteresComAcento, i, 1), Mid(CaracteresSemAcento, i, 1))
+    Next i
+    
+    ' 2. Remover outros caracteres especiais (exemplos: @, #, $, %, etc.)
+    ' Adicione ou remova caracteres desta lista conforme necess·rio
+    Dim CaracteresParaRemover As String
+    Dim j As Integer
+    CaracteresParaRemover = "!@#$%®&*()_+{}[]|\:;<>,.?/∞∫™"
+    
+    For j = 1 To Len(CaracteresParaRemover)
+        Resultado = Replace(Resultado, Mid(CaracteresParaRemover, j, 1), "")
+    Next j
+    
+    RemoverCaracteresEspeciais = Resultado
 End Function
 

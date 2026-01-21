@@ -1,6 +1,6 @@
 {
     "PathToFiles":          "C:/Temp/Boletos",
-    "UseSandbox":           true,
+    "UseSandbox":           false,
     "Production": {
         "EtapaProcesso":    "validacao",
         "TipoBoleto":       "a vista",

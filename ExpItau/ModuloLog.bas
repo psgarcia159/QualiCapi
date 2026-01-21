@@ -1,6 +1,7 @@
 Attribute VB_Name = "ModuloLog"
 'Enumarator com as operações que terão log
 Enum ENUM_OPERACOES
+
     'QualiFin
     ALTERAR
     ALTERAR_DUPLICATA
@@ -50,8 +51,7 @@ Enum ENUM_OPERACOES
     REPASSE_TITULO
     TRANSFERENCIA_ENTRE_EMPRESAS
     PAGTO_TITULO_DTDEPOSITO
-        
-    
+            
     'ALTERAR_EMPREENDIMENTO
     'ALTERAR_IMOVEL
     'ALTERAR_TITULO
@@ -85,6 +85,7 @@ Enum ENUM_ENTIDADES
     PAGAMENTO_CHEQUE
     PAGAMENTO_DEBITO_CREDITO
     PAGAMENTO_BORDERO
+    IMPORTACAO_FOLHA
     
     'Exportação Bancária
     PAGAMENTO_ELETRONICO_ITAU
@@ -95,7 +96,6 @@ Enum ENUM_ENTIDADES
     PAGAMENTO_ELETRONICO_UNIBANCO
     PAGAMENTO_ELETRONICO_HSBC
     PAGAMENTO_ELETRONICO_CAIXA
-    IMPORTACAO_FOLHA
     
     'QualiCapi
     CONTRATO_CAPI
@@ -140,30 +140,30 @@ End Sub
 Function funCriaDescricaoLog(ByVal XLM_MATRIZLOG As Variant, XLT_OPERACAO As ENUM_OPERACOES, XLT_ENTIDADE As ENUM_ENTIDADES) As String
     Dim Cont As Integer
     Dim registroAnterior As Object
-    Dim descricao As String
+    Dim Descricao As String
      
     'Informa a empresa, a operação, a entidade e a identificação da entidade
-    descricao = "Emp: " & PEmpresa & "; OPERAÇÃO: " & funNomeOperacao(XLT_OPERACAO) & "; TELA: " & funNomeEntidade(XLT_ENTIDADE) & ";"
+    Descricao = "Emp: " & PEmpresa & "; OPERAÇÃO: " & funNomeOperacao(XLT_OPERACAO) & "; TELA: " & funNomeEntidade(XLT_ENTIDADE) & ";"
         
     'Descreve os campos apenas para alteração e exclusão.
     If XLT_OPERACAO = ALTERAR Or XLT_OPERACAO = ALTERAR_DESCONTO Or XLT_OPERACAO = ALTERAR_DISTRIBUICAO Or XLT_OPERACAO = ALTERAR_DUPLICATA Or XLT_OPERACAO = ALTERACAO_MULTIPLA Then
         'Preenche identificação da entidade antes de informar os campos alterados
         For Cont = 0 To 2
-            descricao = descricao & " " + UCase(XLM_MATRIZLOG(Cont, 0)) & ": " & XLM_MATRIZLOG(Cont, 1) & ";"
+            Descricao = Descricao & " " + UCase(XLM_MATRIZLOG(Cont, 0)) & ": " & XLM_MATRIZLOG(Cont, 1) & ";"
         Next
         
         For Cont = 0 To (UBound(XLM_MATRIZLOG) - 1)
             If (XLM_MATRIZLOG(Cont, 1) <> XLM_MATRIZLOG(Cont, 2) And XLM_MATRIZLOG(Cont, 2) <> Empty) Then
-                descricao = descricao & " " & UCase(XLM_MATRIZLOG(Cont, 0)) & " alterado de: " & UCase(XLM_MATRIZLOG(Cont, 1)) & " para: " & UCase(XLM_MATRIZLOG(Cont, 2)) & ";"
+                Descricao = Descricao & " " & UCase(XLM_MATRIZLOG(Cont, 0)) & " alterado de: " & UCase(XLM_MATRIZLOG(Cont, 1)) & " para: " & UCase(XLM_MATRIZLOG(Cont, 2)) & ";"
             End If
         Next
     Else
         For Cont = 0 To (UBound(XLM_MATRIZLOG) - 1)
-            descricao = descricao & " " + UCase(XLM_MATRIZLOG(Cont, 0)) & ": " & XLM_MATRIZLOG(Cont, 1) & ";"
+            Descricao = Descricao & " " + UCase(XLM_MATRIZLOG(Cont, 0)) & ": " & XLM_MATRIZLOG(Cont, 1) & ";"
         Next
     End If
   
-  funCriaDescricaoLog = descricao
+  funCriaDescricaoLog = Descricao
 End Function
 
 'Função para retornar o nome da operação como string
@@ -298,6 +298,8 @@ Function funNomeEntidade(enumerator As ENUM_ENTIDADES)
             funNomeEntidade = "PAGAMENTO DÉBITO/CRÉDITO EM CONTA"
         Case PAGAMENTO_BORDERO
             funNomeEntidade = "PAGAMENTO BORDERÔ"
+        Case PAGAMENTO_ELETRONICO_BRADESCO
+            funNomeEntidade = "PAGAMENTO ELETRÔNICO BANCO BRADESCO"
         Case PAGAMENTO_ELETRONICO_ITAU
             funNomeEntidade = "PAGAMENTO ELETRÔNICO BANCO ITAÚ"
         Case PAGAMENTO_ELETRONICO_REAL

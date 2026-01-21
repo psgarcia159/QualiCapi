@@ -1,6 +1,8 @@
 Attribute VB_Name = "ModuloLog"
 'Enumarator com as operações que terão log
 Enum ENUM_OPERACOES
+
+    'QualiFin
     ALTERAR
     ALTERAR_DUPLICATA
     ALTERAR_DESCONTO
@@ -36,12 +38,40 @@ Enum ENUM_OPERACOES
     IMPORTAR_FOLHA_CR
     IMPORTAR_FOLHA_PIS_FGTS
     IMPORTACAO_FOLHA_FUNCIONARIOS
-        
+    
+    'QualiCapi
+    ALTERACAO_MULTIPLA
+    ATIVAR_CONTRATO
+    CANCELAR_REPASSE_TITULO
+    COPIAR
+    CESSAO_CONTRATO
+    DISTRATAR_CONTRATO
+    EXCLUSAO_MULTIPLA
+    RECALCULAR
+    REPASSE_TITULO
+    TRANSFERENCIA_ENTRE_EMPRESAS
+    PAGTO_TITULO_DTDEPOSITO
+            
+    'ALTERAR_EMPREENDIMENTO
+    'ALTERAR_IMOVEL
+    'ALTERAR_TITULO
+    'CADASTRAR_EMPREENDIMENTO
+    'CADASTRAR_IMOVEL
+    'CADASTRAR_TITULO
+    'CADASTRAR_PLANO
+    'EXCLUIR_EMPREENDIMENTO
+    'EXCLUIR_IMOVEL
+    
+    PAGAMENTO_TITULO
+    CANCELAR_PAGAMENTO_TITULO
+    
     EMITIR_BOLETO
 End Enum
 
 'Enumarator com as entidades que terão log
 Enum ENUM_ENTIDADES
+    
+    'QualiFin
     IMPOSTO
     DISTRIBUICAO
     DUPLICATA
@@ -55,15 +85,28 @@ Enum ENUM_ENTIDADES
     PAGAMENTO_CHEQUE
     PAGAMENTO_DEBITO_CREDITO
     PAGAMENTO_BORDERO
+   IMPORTACAO_FOLHA
+    
+    'Exportação Bancária
+    PAGAMENTO_ELETRONICO_BRADESCO
+    PAGAMENTO_ELETRONICO_BRASIL
+    PAGAMENTO_ELETRONICO_HSBC
     PAGAMENTO_ELETRONICO_ITAU
     PAGAMENTO_ELETRONICO_REAL
     PAGAMENTO_ELETRONICO_SANTANDER
     PAGAMENTO_ELETRONICO_SUDAMERIS
-    PAGAMENTO_ELETRONICO_BRASIL
     PAGAMENTO_ELETRONICO_UNIBANCO
-    PAGAMENTO_ELETRONICO_HSBC
-    IMPORTACAO_FOLHA
-    PAGAMENTO_ELETRONICO_BRADESCO
+    PAGAMENTO_ELETRONICO_CAIXA
+    
+    'QualiCapi
+    CONTRATO_CAPI
+    EMPREENDIMENTO_CAPI
+    IMOVEL_CAPI
+    PLANO_CAPI
+    TITULO_CAPI
+    PAGAMENTO_MULTIPLO_CAPI
+    PAGAMENTO_UNICO_CAPI
+        
 End Enum
 
 'Rotina para gravar log
@@ -197,6 +240,34 @@ Function funNomeOperacao(enumerator As ENUM_OPERACOES)
             funNomeOperacao = "IMPORTAÇÃO DE FOLHA PIS/FGTS"
         Case IMPORTAR_FOLHA_FUNCIONARIOS
             funNomeOperacao = "IMPORTAÇÃO DE FUNCIONÁRIOS"
+        Case ATIVAR_CONTRATO
+            funNomeOperacao = "ATIVAR CONTRATO INATIVO"
+        Case CESSAO_CONTRATO
+            funNomeOperacao = "CESSÃO DE CONTRATO"
+        Case TRANSFERENCIA_ENTRE_EMPRESAS
+            funNomeOperacao = "TRANSFERÊNCIA ENTRE EMPRESAS"
+        Case EXCLUSAO_MULTIPLA
+            funNomeOperacao = "EXCLUSÃO MÚLTIPLA"
+        Case RECALCULAR
+            funNomeOperacao = "RECALCULAR"
+        Case REPASSE_TITULO
+            funNomeOperacao = "REPASSE DE TÍTULO"
+        Case CANCELAR_REPASSE_TITULO
+            funNomeOperacao = "CANCELAR REPASSE DE TÍTULO"
+        Case ALTERACAO_MULTIPLA
+            funNomeOperacao = "ALTERAÇÃO MÚLTIPLA"
+        Case DISTRATAR_CONTRATO
+            funNomeOperacao = "DISTRATO DE CONTRATO"
+        Case COPIAR
+            funNomeOperacao = "COPIAR"
+        Case PAGTO_TITULO_DTDEPOSITO
+            funNomeOperacao = "PAGTO DE TÍTULO COM DT DÉPOSITO MAIOR QUE DT PAGAMENTO"
+        Case CANCELAR_PAGAMENTO_TITULO
+            funNomeOperacao = "CANCELAMENTO DE PAGTO DE TÍTULO"
+        Case PAGAMENTO_TITULO
+            funNomeOperacao = "PAGAMENTO DE TÍTULO"
+        Case EMITIR_BOLETO
+            funNomeOperacao = "EMISSÃO DE BOLETO"
     End Select
 End Function
 
@@ -228,6 +299,8 @@ Function funNomeEntidade(enumerator As ENUM_ENTIDADES)
             funNomeEntidade = "PAGAMENTO DÉBITO/CRÉDITO EM CONTA"
         Case PAGAMENTO_BORDERO
             funNomeEntidade = "PAGAMENTO BORDERÔ"
+        Case PAGAMENTO_ELETRONICO_BRADESCO
+            funNomeEntidade = "PAGAMENTO ELETRÔNICO BANCO BRADESCO"
         Case PAGAMENTO_ELETRONICO_ITAU
             funNomeEntidade = "PAGAMENTO ELETRÔNICO BANCO ITAÚ"
         Case PAGAMENTO_ELETRONICO_REAL
@@ -244,6 +317,14 @@ Function funNomeEntidade(enumerator As ENUM_ENTIDADES)
             funNomeEntidade = "PAGAMENTO ELETRÔNICO BANCO HSBC"
         Case IMPORTACAO_FOLHA
             funNomeEntidade = "IMPORTAÇÃO DE FOLHA DE PAGAMENTO"
+        Case EMPREENDIMENTO_CAPI
+            funNomeEntidade = "EMPREENDIMENTOS"
+        Case IMOVEL_CAPI
+            funNomeEntidade = "IMÓVEIS"
+        Case CONTRATO_CAPI
+            funNomeEntidade = "CONTRATOS"
+        Case TITULO_CAPI
+            funNomeEntidade = "TÍTULOS"
     End Select
 End Function
 
