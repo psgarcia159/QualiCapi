@@ -1,6 +1,6 @@
 {
     "PathToFiles":          "C:/Temp/Boletos",
-    "UseSandbox":           false,
+    "UseSandbox":           true,
     "Production": {
         "TipoBoleto":       "a vista",
 		"TipoRegistro":		"2",
@@ -22,10 +22,10 @@
             "UseSSL":       true,
             "UserName":     "cobranca@costaandrade.com.br",
             "UserPassword": "Ftyhq#skf ^6Ti_87",
-            "MailFrom":     "Costa Andrade - Financeiro <no-reply@costaandrade.com.br>",
-			"MailCC": 		"Costa Andrade - Cobrança <paulo@interativabr.com>",
-			"MailTo": 		"Homologação - Testes <psgarcia159@gmail.com>",
-            "MailSubject":  "Homologação - Boleto disponível",
+            "MailFrom":     "Homologação Bradesco <no-reply@gmail.com>",
+            "MailCC":       "Homologação Bradesco <psgarcia159@gmail.com>",
+            "MailTo":       "Homologação Bradesco <paulo@interativabr.com>",
+            "MailSubject":  "Homologação Bradesco - Boleto disponí­vel",
             "IsHtmlBody":   true
         }
     },
@@ -50,10 +50,10 @@
             "UseSSL":       true,
             "UserName":     "psgarcia159@gmail.com",
             "UserPassword": "raqs yopx twjv vsas",
-            "MailFrom":     "TesteBoletosBradesco <no-reply@gmail.com>",
-            "MailCC":       "TesteBoletosBradesco <psgarcia159@gmail.com>",
-            "MailTo":       "TesteBoletosBradesco <psgarcia159@gmail.com>",
-            "MailSubject":  "Teste - Boleto disponível",
+            "MailFrom":     "Sandbox Bradesco <no-reply@gmail.com>",
+            "MailCC":       "Sandbox Bradesco <psgarcia159@gmail.com>",
+            "MailTo":       "Sandbox Bradesco <paulo@interativabr.com>",
+            "MailSubject":  "Sandbox Bradesco - Boleto disponí­vel",
             "IsHtmlBody":   true
         }
     }

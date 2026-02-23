@@ -19,5 +19,5 @@ FrmImportacao = 50, 50, 818, 501, C, 25, 25, 793, 476, C
 TelaExpBancaria = 862, 1, 1713, 959, C, 52, 52, 463, 693, C
 cStringBuilder = 0, 0, 0, 0, C
 JSON = 78, 78, 506, 719, C
-ModBoletos = 87, 142, 515, 783, 
-TelaEmissaoBoletos = 44, 5, 905, 965, Z, -3, 2, 735, 643, C
+ModBoletos = 87, 142, 515, 783, C
+TelaEmissaoBoletos = 44, 5, 905, 965, C, -3, 2, 735, 643, C

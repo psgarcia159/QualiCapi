@@ -113,7 +113,7 @@ Begin VB.Form TelaExpBancaria
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   84606979
+         Format          =   140509187
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -287,63 +287,38 @@ Begin VB.Form TelaExpBancaria
          TabPicture(1)   =   "TelaExpBancaria.frx":08E6
          Tab(1).ControlEnabled=   0   'False
          Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(0).Enabled=   0   'False
          Tab(1).Control(1)=   "LlbEmpreendimento"
-         Tab(1).Control(1).Enabled=   0   'False
          Tab(1).Control(2)=   "TDBGridEmpr1"
-         Tab(1).Control(2).Enabled=   0   'False
          Tab(1).Control(3)=   "TDBGridEmpr2"
-         Tab(1).Control(3).Enabled=   0   'False
          Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(4).Enabled=   0   'False
          Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(5).Enabled=   0   'False
          Tab(1).Control(6)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(6).Enabled=   0   'False
          Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
-         Tab(1).Control(7).Enabled=   0   'False
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
          TabPicture(2)   =   "TelaExpBancaria.frx":0902
          Tab(2).ControlEnabled=   0   'False
          Tab(2).Control(0)=   "Label3"
-         Tab(2).Control(0).Enabled=   0   'False
          Tab(2).Control(1)=   "Label2"
-         Tab(2).Control(1).Enabled=   0   'False
          Tab(2).Control(2)=   "TDBGridMoeda2"
-         Tab(2).Control(2).Enabled=   0   'False
          Tab(2).Control(3)=   "TDBGridMoeda1"
-         Tab(2).Control(3).Enabled=   0   'False
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(4).Enabled=   0   'False
          Tab(2).Control(5)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(5).Enabled=   0   'False
          Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(6).Enabled=   0   'False
          Tab(2).Control(7)=   "CmdInserirMoeda"
-         Tab(2).Control(7).Enabled=   0   'False
          Tab(2).Control(8)=   "CmdRemoverMoeda"
-         Tab(2).Control(8).Enabled=   0   'False
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
          TabPicture(3)   =   "TelaExpBancaria.frx":091E
          Tab(3).ControlEnabled=   0   'False
          Tab(3).Control(0)=   "CmdRemoverObservacao"
-         Tab(3).Control(0).Enabled=   0   'False
          Tab(3).Control(1)=   "CmdInserirObservacao"
-         Tab(3).Control(1).Enabled=   0   'False
          Tab(3).Control(2)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(2).Enabled=   0   'False
          Tab(3).Control(3)=   "CmdInserirTodosObservacao"
-         Tab(3).Control(3).Enabled=   0   'False
          Tab(3).Control(4)=   "TDBGridObs2"
-         Tab(3).Control(4).Enabled=   0   'False
          Tab(3).Control(5)=   "TDBGridObs1"
-         Tab(3).Control(5).Enabled=   0   'False
          Tab(3).Control(6)=   "Label5"
-         Tab(3).Control(6).Enabled=   0   'False
          Tab(3).Control(7)=   "Label4"
-         Tab(3).Control(7).Enabled=   0   'False
          Tab(3).ControlCount=   8
          Begin VB.ComboBox CmbInstrucao 
             Height          =   315
@@ -774,7 +749,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
             Splits(0)._ColumnProps(7)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(8)=   "Column(0).FetchStyle=1"
             Splits(0)._ColumnProps(9)=   "Column(0).AllowFocus=0"
@@ -784,7 +759,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(13)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(14)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(15)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=1057296"
+            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=74256"
             Splits(0)._ColumnProps(17)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(18)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(19)=   "Column(1).AllowFocus=0"
@@ -885,7 +860,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   84606979
+            Format          =   69730307
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -898,7 +873,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   84606979
+            Format          =   69730307
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -1145,7 +1120,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
             Splits(0)._ColumnProps(7)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(8)=   "Column(0).FetchStyle=1"
             Splits(0)._ColumnProps(9)=   "Column(0).AllowFocus=0"
@@ -1155,7 +1130,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(13)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(14)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(15)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=1057296"
+            Splits(0)._ColumnProps(16)=   "Column(1)._ColStyle=74256"
             Splits(0)._ColumnProps(17)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(18)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(19)=   "Column(1).AllowFocus=0"
@@ -1283,7 +1258,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -1294,7 +1269,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -1422,7 +1397,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -1433,7 +1408,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -1561,7 +1536,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -1572,7 +1547,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -1700,7 +1675,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=1164"
             Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
             Splits(0)._ColumnProps(5)=   "Column(0).AllowSizing=0"
-            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=1049104"
+            Splits(0)._ColumnProps(6)=   "Column(0)._ColStyle=66064"
             Splits(0)._ColumnProps(7)=   "Column(0).Visible=0"
             Splits(0)._ColumnProps(8)=   "Column(0).WrapText=1"
             Splits(0)._ColumnProps(9)=   "Column(0).FetchStyle=1"
@@ -1711,7 +1686,7 @@ Begin VB.Form TelaExpBancaria
             Splits(0)._ColumnProps(14)=   "Column(1).DividerColor=0"
             Splits(0)._ColumnProps(15)=   "Column(1)._WidthInPix=1217"
             Splits(0)._ColumnProps(16)=   "Column(1)._EditAlways=0"
-            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=1057296"
+            Splits(0)._ColumnProps(17)=   "Column(1)._ColStyle=74256"
             Splits(0)._ColumnProps(18)=   "Column(1).WrapText=1"
             Splits(0)._ColumnProps(19)=   "Column(1).FetchStyle=1"
             Splits(0)._ColumnProps(20)=   "Column(1).AllowFocus=0"
@@ -3768,13 +3743,10 @@ Private Sub CmdExportar_Click()
   XLB_SELECIONADO = False
   TDBGrid1.MoveFirst
   XFO_EXPORTACAO.MoveFirst
-  
-  
+    
   While Not TDBGrid1.EOF
     If TDBGrid1.Columns("Exp.").Value = "-1" Then
-      XLB_SELECIONADO = True
-      
-      
+            
       'Verifica se está preenchido o endereço correspondencial,
         'se todos os campos estão vazios
            'verifica se é pessoa jurídica e verifica o endereço comercial
@@ -3837,9 +3809,13 @@ Private Sub CmdExportar_Click()
         Exit Sub
       End If
       
+      XLB_SELECIONADO = True
+            
     End If
+    
     TDBGrid1.MoveNext
     XFO_EXPORTACAO.MoveNext
+    
   Wend
     
   If Not XLB_SELECIONADO Then
@@ -3856,17 +3832,17 @@ Private Sub CmdExportar_Click()
   DlgSalvar.DialogTitle = "Arquivo de Exportação do BRADESCO"
   DlgSalvar.Filter = "Arquivos de Remessa (*.rem)|*.rem"
   DlgSalvar.InitDir = "C:\"
-  DlgSalvar.FileName = "CB" & Format(Now, "dd") & Format(Now, "MM") & "01"
+  DlgSalvar.fileName = "CB" & Format(Now, "dd") & Format(Now, "MM") & "01"
   DlgSalvar.CancelError = False
   DlgSalvar.ShowSave
   
   
-  If DlgSalvar.FileName = "" Then
+  If DlgSalvar.fileName = "" Then
       Exit Sub
   End If
   
-  If DlgSalvar.FileName <> "" Then
-      XGT_LOCALARQ = DlgSalvar.FileName
+  If DlgSalvar.fileName <> "" Then
+      XGT_LOCALARQ = DlgSalvar.fileName
       XGT_ARQUIVO = DlgSalvar.FileTitle
   End If
   

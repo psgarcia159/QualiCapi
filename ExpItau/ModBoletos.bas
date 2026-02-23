@@ -18,6 +18,11 @@ Global XLT_EMAILBODY    As String           ' Carrega o template em funÁ„o do ca
 ' - DeclaraÁ„o de Function's e Sub's
 ' ----------------------------------------------------------------------------
 
+' - DeclaraÁ„o da Sub Sleep (aguardar um perÌodo de tempo em milisegundos)
+' ----------------------------------------------------------------------------
+Public Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
+
+
 ' - FunÁ„o para montagem de string Json ("parametro": "valor")
 ' ----------------------------------------------------------------------------
 Public Function FunJsonString(Parametro As String, valor As String, Optional IsString As Boolean = True) As String
@@ -130,7 +135,7 @@ Public Function FunGetAuthorization() As Boolean
     HttpReq.Send Body
         
     If HttpReq.Status <> 200 Then
-        MsgBox "Erro na requisiÁ„o HTTP: " & HttpReq.Status & ": " & HttpReq.StatusText & ": " & HttpReq.ResponseText, , "Erro: FunGetAuthorization()"
+        MsgBox "Erro na requisiÁ„o HTTP: " & HttpReq.Status & ": " & HttpReq.StatusText & ": " & HttpReq.ResponseText, vbCritical, "Erro: FunGetAuthorization()"
         FunGetAuthorization = False
     Else
         Set Result = JSON.parse(HttpReq.ResponseText)
@@ -153,22 +158,23 @@ Public Function FunPostBoleto(Payload As String) As String
     Dim HttpReq      As New MSXML2.ServerXMLHTTP60
     Dim DiffTime     As Variant
     Dim Status       As Boolean
+    Dim StatusMsg    As String
     
     If XLI_EXPIRESIN > 0 Then
-        ' - Calcula a diferenÁa entre o hor·rio atual e o hor·rio em que foi obtido o token + 10
+        ' - Calcula a diferenÁa entre o hor·rio atual e o hor·rio em que foi obtido o token + 15
         '   (em segundos)
         ' --------------------------------------------------------------------------------------------
-        DiffTime = XLI_EXPIRESIN - (DateDiff("s", XLD_DATETOKEN, Now) + 10)
+        DiffTime = XLI_EXPIRESIN - (DateDiff("s", XLD_DATETOKEN, Now) + 15)
     Else
         DiffTime = -1
     End If
         
-    ' - Se diferenÁa <= ao prazo de expiraÁ„o, renova o token (lembrando, tem 10 segundos de folga)
+    ' - Se diferenÁa <= ao prazo de expiraÁ„o, renova o token (lembrando, tem 15 segundos de folga)
     ' --------------------------------------------------------------------------------------------
     If DiffTime <= 0 Then
         Status = FunGetAuthorization()
         If Not Status Then
-            MsgBox "Erro, falha na obtenÁ„o do token de autorizaÁ„o.", , "Erro: FunPostBoleto()"
+            MsgBox "Erro, falha na obtenÁ„o do token de autorizaÁ„o.", vbCritical, "Erro: FunPostBoleto()"
             Exit Function
         End If
     End If
@@ -204,8 +210,9 @@ Public Function FunPostBoleto(Payload As String) As String
     HttpReq.Send Payload
         
     If HttpReq.Status <> 200 Then
-        MsgBox "Erro na requisiÁ„o HTTP: " & HttpReq.Status & ": " & HttpReq.StatusText & ": " & HttpReq.ResponseText, , "Erro: FunPostBoleto()"
-        FunPostBoleto = ""
+        StatusMsg = "Erro HTTP: " & HttpReq.Status & " : " & HttpReq.StatusText & " : " & HttpReq.ResponseText
+        MsgBox StatusMsg, vbCritical, "Erro: FunPostBoleto()"
+        FunPostBoleto = StatusMsg
     Else
         FunPostBoleto = HttpReq.ResponseText
     End If
@@ -226,12 +233,16 @@ Public Function FunSendEmail( _
                          Vencimento As String, _
                          valor As Double, _
                          MailTo As String, _
-                Optional UrlAttachment As String = "") As Boolean
+                Optional UrlAttachment As String = "") As String
                     
-    Dim CDO As New CDO.Message
-    Dim At As Integer
+    Dim CDO       As New CDO.Message
+    Dim At        As Integer
+    Dim Status    As Boolean
+    Dim StatusMsg As String
 
 On Error GoTo errHandler
+
+    Status = False
 
     With CDO.Configuration.Fields
         .Item(cdoSMTPAuthenticate) = CdoProtocolsAuthentication.cdoBasic                                ' basic (clear-text) authentication
@@ -286,19 +297,31 @@ On Error GoTo errHandler
 
     CDO.Send
 
-    If Err.Number = 0 Then
-        FunSendEmail = True
-    Else
-        MsgBox "Erro no envio do E-mail: " & Err.Description, , "Erro: FunSendEmail()"
-        FunSendEmail = False
-    End If
+'    If Err.Number = 0 Then
+'        FunSendEmail = True
+'    Else
+'        MsgBox "Erro no envio do E-mail: " & Err.Description, vbCritical, "Erro: FunSendEmail()"
+'        FunSendEmail = False
+'    End If
         
+    FunSendEmail = "Ok"
     Set CDO = Nothing
     Exit Function
     
 errHandler:
-    MsgBox "Erro no envio do E-mail: " & Err.Number & ": " & Err.Description, vbCritical, "Erro: FunSendEmail()"
-    FunSendEmail = False
+
+    If Status = False Then
+        Status = True
+        ' MsgBox "Erro no envio do E-mail. Reenviando em 5 segundos, aguarde ..."
+        Sleep 5000 ' Pauses the application for 5 seconds
+        CDO.Send
+        FunSendEmail = "Ok"
+    Else
+        StatusMsg = "Erro no envio do E-mail: " & Err.Number & " : " & Err.Description
+        MsgBox StatusMsg, vbCritical, "Erro: FunSendEmail()"
+        FunSendEmail = StatusMsg
+    End If
+       
     Set CDO = Nothing
     ' Optionally, you can log the error to a file here
     Exit Function
@@ -457,5 +480,56 @@ Function FunFormatString(StrText As String, ParamArray Parameters())
 
     FunFormatString = StrText
 
+End Function
+
+' - FunÁ„o para remover caracteres Tab, CrLf, Cr, Lf e substituir m˙ltiplos espaÁos por um espaÁo,
+'   recursivamente em uma string
+' ----------------------------------------------------------------------------------------------------------
+Function FunRemoveSpaces(ByVal texto As String) As String
+    Dim textoFormatado As String
+    textoFormatado = Trim(texto) ' Opcional: remove espaÁos no inÌcio/fim
+    
+    ' Substitui tabulaÁıes e quebras por espaÁos
+    textoFormatado = Replace(textoFormatado, vbTab, " ")
+    textoFormatado = Replace(textoFormatado, vbCrLf, " ")
+    textoFormatado = Replace(textoFormatado, vbCr, " ")
+    textoFormatado = Replace(textoFormatado, vbLf, " ")
+
+    ' Loop recursivo/iterativo: enquanto houver dois espaÁos, substitua por um
+    Do While InStr(1, textoFormatado, "  ") > 0
+        textoFormatado = Replace(textoFormatado, "  ", " ")
+    Loop
+    
+    FunRemoveSpaces = textoFormatado
+End Function
+
+Public Function RemoverCaracteresEspeciais(ByVal texto As String) As String
+    Dim i As Long
+    Dim CaracteresComAcento As String
+    Dim CaracteresSemAcento As String
+    Dim Resultado As String
+    
+    ' Lista de caracteres a serem mapeados (acentos, cedilha, etc.)
+    CaracteresComAcento = "¡·¿‡¬‚√„…È»Ë ÍÕÌÃÏŒÓ”Û“Ú‘Ù’ı⁄˙Ÿ˘€˚«Á—Ò"
+    CaracteresSemAcento = "AaAaAaAaEeEeEeIiIiIiOoOoOoOoUuUuUuCcNn"
+    
+    Resultado = texto
+    
+    ' 1. Substituir acentos
+    For i = 1 To Len(CaracteresComAcento)
+        Resultado = Replace(Resultado, Mid(CaracteresComAcento, i, 1), Mid(CaracteresSemAcento, i, 1))
+    Next i
+    
+    ' 2. Remover outros caracteres especiais (exemplos: @, #, $, %, etc.)
+    ' Adicione ou remova caracteres desta lista conforme necess·rio
+    Dim CaracteresParaRemover As String
+    Dim j As Integer
+    CaracteresParaRemover = "!@#$%®&*()_+{}[]|\:;<>,.?/∞∫™"
+    
+    For j = 1 To Len(CaracteresParaRemover)
+        Resultado = Replace(Resultado, Mid(CaracteresParaRemover, j, 1), "")
+    Next j
+    
+    RemoverCaracteresEspeciais = Resultado
 End Function
 

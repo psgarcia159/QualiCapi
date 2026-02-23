@@ -271,7 +271,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   70713347
+         Format          =   69009411
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -444,39 +444,39 @@ Begin VB.Form TelaEmissaoBoletos
          TabCaption(1)   =   "Empreendimentos"
          TabPicture(1)   =   "TelaEmissaoBoletos.frx":08E6
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(1)=   "LlbEmpreendimento"
-         Tab(1).Control(2)=   "TDBGridEmpr1"
-         Tab(1).Control(3)=   "TDBGridEmpr2"
-         Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(6)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(4)=   "TDBGridEmpr2"
+         Tab(1).Control(5)=   "TDBGridEmpr1"
+         Tab(1).Control(6)=   "LlbEmpreendimento"
+         Tab(1).Control(7)=   "Label1"
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
          TabPicture(2)   =   "TelaEmissaoBoletos.frx":0902
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "Label3"
-         Tab(2).Control(1)=   "Label2"
-         Tab(2).Control(2)=   "TDBGridMoeda2"
-         Tab(2).Control(3)=   "TDBGridMoeda1"
+         Tab(2).Control(0)=   "CmdRemoverMoeda"
+         Tab(2).Control(1)=   "CmdInserirMoeda"
+         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(5)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(7)=   "CmdInserirMoeda"
-         Tab(2).Control(8)=   "CmdRemoverMoeda"
+         Tab(2).Control(5)=   "TDBGridMoeda1"
+         Tab(2).Control(6)=   "TDBGridMoeda2"
+         Tab(2).Control(7)=   "Label2"
+         Tab(2).Control(8)=   "Label3"
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
          TabPicture(3)   =   "TelaEmissaoBoletos.frx":091E
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "Label5"
-         Tab(3).Control(1)=   "Label4"
-         Tab(3).Control(2)=   "TDBGridObs1"
-         Tab(3).Control(3)=   "TDBGridObs2"
-         Tab(3).Control(4)=   "CmdRemoverObservacao"
-         Tab(3).Control(5)=   "CmdInserirObservacao"
-         Tab(3).Control(6)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(7)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(0)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(1)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(2)=   "CmdInserirObservacao"
+         Tab(3).Control(3)=   "CmdRemoverObservacao"
+         Tab(3).Control(4)=   "TDBGridObs2"
+         Tab(3).Control(5)=   "TDBGridObs1"
+         Tab(3).Control(6)=   "Label4"
+         Tab(3).Control(7)=   "Label5"
          Tab(3).ControlCount=   8
          Begin VB.CommandButton CmdRemoverEmpreendimento 
             BackColor       =   &H00000000&
@@ -1137,7 +1137,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   163053571
+            Format          =   140574723
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -1150,7 +1150,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   163053571
+            Format          =   140574723
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -3654,8 +3654,6 @@ Private Sub CmdEmitirBoletos_Click()
 
         If TDBGrid1.Columns("Sel.").Value = "-1" Then
         
-            XLB_SELECIONADO = True
-
             ' - Verifica/valida o CNPJ/CPF do cliente, conforme o tipo de pessoa (Juridica ou Fisica)
             ' ---------------------------------------------------------------------------------------
             If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
@@ -3736,6 +3734,8 @@ Private Sub CmdEmitirBoletos_Click()
             ' -------------------------------------------------------------------------------------------
             XLT_LOTEBOLETOS = XLT_LOTEBOLETOS & XFO_EXPORTACAO!Titulo & ", "
         
+            XLB_SELECIONADO = True
+
         End If
                 
         TDBGrid1.MoveNext
@@ -4007,24 +4007,39 @@ Private Sub CmdEmitirBoletos_Click()
             ' - Registra o boleto no banco Bradesco, via API, e retorna um objeto json armazenado em XLO_JSONAPI
             '   (ver README.txt para layout)
             ' --------------------------------------------------------------------------------------------
-            Set XLO_JSONAPI = JSON.parse(FunPostBoleto(XLT_JSON))
+            ' Set XLO_JSONAPI = JSON.parse(FunPostBoleto(XLT_JSON))
+
+            ' - Remove espaços duplos e caracteres Tab, Cr, CrLf e Lf da requisição e da resposta
+            ' --------------------------------------------------------------------------------------------
+            XLT_JSON = FunRemoveSpaces(XLT_JSON)
+            XLT_JSONOUT = FunPostBoleto(XLT_JSON)
+            XLT_JSONOUT = FunRemoveSpaces(XLT_JSONOUT)
+
+            Set XLO_JSONAPI = JSON.parse(XLT_JSONOUT)
             
+            ' - Registra o Log e gera arquivo texto com a requisição e a resposta
+            ' --------------------------------------------------------------------------------------------
             XLT_STATUS = ""
             
             If Not (XLO_JSONAPI Is Nothing) Then
                 If JSON.GetParserErrors <> "" Then
-                    XLT_STATUS = "Erro no registro do boleto via API: 'Parsing Error(s) occured' - " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                    XLT_STATUS = "Erro no registro do boleto via API: 'Parsing Error(s) occurred' - " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
                     " (" & XFO_EXPORTACAO!Titulo & ") -" & JSON.GetParserErrors
                 End If
             Else
-                XLT_STATUS = "Erro no registro do boleto via API: 'Indefinido' " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-                    " (" & XFO_EXPORTACAO!Titulo & ")."
+                XLT_STATUS = "Erro no registro do boleto via API: 'Sem resposta ou dados inválidos' - " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
+                " (" & XFO_EXPORTACAO!Titulo & ")."
             End If
             
             If XLT_STATUS <> "" Then
                 MsgBox XLT_STATUS, vbCritical, "Erro ao registrar boleto via API"
-                SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
+                SubRegistraLogAPI XLT_STATUS, XLT_JSON, XLT_JSONOUT
+                ' SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
                 GoTo WhileNext
+            Else
+                XLT_STATUS = "Boleto registrado na API: " & XFO_EXPORTACAO!focl_tx_RazaoSocial & " (" & XFO_EXPORTACAO!Titulo & ")."
+                SubRegistraLogAPI XLT_STATUS, XLT_JSON, XLT_JSONOUT
+                ' SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
             End If
             
             ' - Atualiza o titulo com os dados do boleto gerado
@@ -4062,9 +4077,6 @@ Private Sub CmdEmitirBoletos_Click()
                                 
             Conexao.Execute (XFT_SQL)
                         
-            XLT_STATUS = "Boleto registrado na API: " & XFO_EXPORTACAO!focl_tx_RazaoSocial & " (" & XFO_EXPORTACAO!Titulo & ")."
-            SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
-                                
             ' - Monta objeto JSON com o layout/esquema necessário para a emissão do boleto em HTML e PDF
             '   Foram utilizados os campos necessários para a geração dos boletos, caso sejam necessárias
             '   mais informações, ver a documentação em: https://github.com/BoletoNet/boleto2net
@@ -4249,7 +4261,7 @@ Private Sub CmdEmitirBoletos_Click()
                 End If
             Else
                 XLT_STATUS = "Boleto registrado, mas ocorreu erro na emissão: 'Indefinido' " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
-                   " (" & XFO_EXPORTACAO!Titulo & ")."
+                " (" & XFO_EXPORTACAO!Titulo & ")."
             End If
                         
             If XLT_STATUS <> "" Then
@@ -4308,7 +4320,7 @@ WhileNext:
     
 End Sub
 
-Private Sub SubRegistraLogBoleto(XLT_STATUS As String, XLT_CODMOEDA As String, XLF_VALOR As Double, XLF_DESCONTO As Double, XLT_DATADESCONTO As String, XLO_JSONAPI As Object, XLT_NOSSONUMERO As String, XLT_NOSSONUMERODV As String)
+Private Sub SubRegistraLogBoleto(XLT_STATUS As String, ByVal XLT_CODMOEDA As String, ByVal XLF_VALOR As Double, ByVal XLF_DESCONTO As Double, ByVal XLT_DATADESCONTO As String, ByVal XLO_JSONAPI As Object, ByVal XLT_NOSSONUMERO As String, ByVal XLT_NOSSONUMERODV As String)
 
     ' - Registra o LOG da Emissão de Boleto
     ' --------------------------------------------------------------------------------------------
@@ -4353,7 +4365,7 @@ Private Sub SubRegistraLogBoleto(XLT_STATUS As String, XLT_CODMOEDA As String, X
 
 End Sub
 
-Private Sub SubRegistraLogLote(XLT_STATUS As String, XLT_LOTEBOLETOS As String)
+Private Sub SubRegistraLogLote(XLT_STATUS As String, ByVal XLT_LOTEBOLETOS As String)
 
     ' - Registra o LOG de inicio/fim da Emissão de Boletos
     ' --------------------------------------------------------------------------------------------
@@ -4367,6 +4379,68 @@ Private Sub SubRegistraLogLote(XLT_STATUS As String, XLT_LOTEBOLETOS As String)
     
     Call subRegistraLog("TelaExpBancaria", "3", funCriaDescricaoLog(XGM_MATRIZLOG, EMITIR_BOLETO, PAGAMENTO_ELETRONICO_BRADESCO))
 
+End Sub
+
+Private Sub SubRegistraLogAPI(XLT_STATUS As String, ByVal XLT_JSON As String, ByVal XLT_JSONOUT As String)
+
+    ' - Registra o LOG de inicio/fim da Emissão de Boletos
+    ' --------------------------------------------------------------------------------------------
+    ReDim XGM_MATRIZLOG(3, 2) As Variant
+    Dim XLT_REQUEST           As String
+    Dim XLT_RESPONSE          As String
+    
+    XLT_REQUEST = FunRemoveSpaces(XLT_JSON)
+    XLT_RESPONSE = FunRemoveSpaces(XLT_JSONOUT)
+    
+    XGM_MATRIZLOG(0, 0) = "Status"
+    XGM_MATRIZLOG(1, 0) = "Request"
+    XGM_MATRIZLOG(2, 0) = "Response"
+
+    XGM_MATRIZLOG(0, 1) = XLT_STATUS
+    XGM_MATRIZLOG(1, 1) = XLT_REQUEST
+    XGM_MATRIZLOG(2, 1) = XLT_RESPONSE
+    
+    Call subRegistraLog("TelaExpBancaria", "3", funCriaDescricaoLog(XGM_MATRIZLOG, EMITIR_BOLETO, PAGAMENTO_ELETRONICO_BRADESCO))
+    
+    SubGeraArquivoTexto XLT_REQUEST, XLT_RESPONSE
+
+End Sub
+
+Private Sub SubGeraArquivoTexto(ByVal XLT_REQUEST As String, ByVal XLT_RESPONSE As String)
+    Dim fso        As Object
+    Dim arq        As Object
+    Dim folderPath As String
+    Dim fileName   As String
+    Dim fullPath   As String
+    
+    ' Create a FileSystemObject instance
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    
+    ' Define your path and file name
+    folderPath = Replace(XLO_BOLETOS.Item("PathToFiles"), "/", "\")
+    fileName = "\Boleto_" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("Carteira") & "_" & XFO_EXPORTACAO!Titulo & ".txt"
+    
+    ' Use BuildPath to combine them safely
+    ' It handles whether folderPath already has a trailing backslash
+    fullPath = fso.BuildPath(folderPath, fileName)
+    
+    ' Cria o arquivo (Caminho, Sobrescrever, Unicode)
+    ' True no segundo parâmetro sobrescreve se já existir
+    Set arq = fso.CreateTextFile(fullPath, True, True)
+    
+    ' Escreve texto no arquivo
+    arq.WriteLine ("TÍTULO: " & XFO_EXPORTACAO!Titulo)
+    arq.WriteBlankLines (1) ' Adiciona uma linha em branco
+    arq.WriteLine ("REQUEST:")
+    arq.WriteLine (XLT_REQUEST)
+    arq.WriteBlankLines (1)
+    arq.WriteLine ("RESPONSE:")
+    arq.WriteLine (XLT_RESPONSE)
+    arq.WriteBlankLines (1)
+    
+    ' Fecha o arquivo
+    arq.Close
+    
 End Sub
 
 Private Sub CmdFiltro_Click()

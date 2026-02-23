@@ -53,13 +53,13 @@ End Function
 
 ' - Função para ler um arquivo texto/Json, retornando uma string
 ' ----------------------------------------------------------------------------
-Public Function FunReadTextFile(FileName As String) As String
+Public Function FunReadTextFile(fileName As String) As String
     Dim handle     As Integer
     Dim FilePath   As String
     
     On Error Resume Next
 
-    FilePath = App.Path & "\\" & FileName
+    FilePath = App.Path & "\\" & fileName
     
     If LenB(Dir$(FilePath)) > 0 Then
         handle = FreeFile
@@ -469,7 +469,28 @@ Function FunFormatString(StrText As String, ParamArray Parameters())
 
 End Function
 
-Public Function RemoverCaracteresEspeciais(ByVal Texto As String) As String
+' - Função para remover caracteres Tab, CrLf, Cr, Lf e substituir múltiplos espaços por um espaço,
+'   recursivamente em uma string
+' ----------------------------------------------------------------------------------------------------------
+Function FunRemoveSpaces(ByVal texto As String) As String
+    Dim textoFormatado As String
+    textoFormatado = Trim(texto) ' Opcional: remove espaços no início/fim
+    
+    ' Substitui tabulações e quebras por espaços
+    textoFormatado = Replace(textoFormatado, vbTab, " ")
+    textoFormatado = Replace(textoFormatado, vbCrLf, " ")
+    textoFormatado = Replace(textoFormatado, vbCr, " ")
+    textoFormatado = Replace(textoFormatado, vbLf, " ")
+
+    ' Loop recursivo/iterativo: enquanto houver dois espaços, substitua por um
+    Do While InStr(1, textoFormatado, "  ") > 0
+        textoFormatado = Replace(textoFormatado, "  ", " ")
+    Loop
+    
+    FunRemoveSpaces = textoFormatado
+End Function
+
+Public Function RemoverCaracteresEspeciais(ByVal texto As String) As String
     Dim i As Long
     Dim CaracteresComAcento As String
     Dim CaracteresSemAcento As String
@@ -479,7 +500,7 @@ Public Function RemoverCaracteresEspeciais(ByVal Texto As String) As String
     CaracteresComAcento = "ÁáÀàÂâÃãÉéÈèÊêÍíÌìÎîÓóÒòÔôÕõÚúÙùÛûÇçÑñ"
     CaracteresSemAcento = "AaAaAaAaEeEeEeIiIiIiOoOoOoOoUuUuUuCcNn"
     
-    Resultado = Texto
+    Resultado = texto
     
     ' 1. Substituir acentos
     For i = 1 To Len(CaracteresComAcento)
