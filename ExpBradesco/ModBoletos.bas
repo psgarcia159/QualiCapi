@@ -18,6 +18,11 @@ Global XLT_EMAILBODY    As String           ' Carrega o template em função do ca
 ' - Declaração de Function's e Sub's
 ' ----------------------------------------------------------------------------
 
+' - Declaração da Sub Sleep (aguardar um período de tempo em milisegundos)
+' ----------------------------------------------------------------------------
+Public Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
+
+
 ' - Função para montagem de string Json ("parametro": "valor")
 ' ----------------------------------------------------------------------------
 Public Function FunJsonString(Parametro As String, valor As String, Optional IsString As Boolean = True) As String
@@ -111,6 +116,7 @@ Public Function FunGetAuthorization() As Boolean
     UrlToken = XLO_BOLETOS.Item(XLT_ROOTITEM).Item("OAuth2").Item("UrlToken")
     
     ' - Monta o payload (body) da requisição
+    ' --------------------------------------------------------------------------------------------
     Body = "grant_type=" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("OAuth2").Item("GrantType") & _
            "&client_id=" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("OAuth2").Item("ClientId") & _
            "&client_secret=" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("OAuth2").Item("ClientSecret")
@@ -137,7 +143,7 @@ Public Function FunGetAuthorization() As Boolean
    ' - Trata o retorno
    ' --------------------------------------------------------------------------------------------
    If HttpReq.Status <> 200 Then
-        MsgBox "Erro na requisição HTTP: " & HttpReq.Status & ": " & HttpReq.statusText & ": " & HttpReq.responseText, , "Erro: FunGetAuthorization()"
+        MsgBox "Erro na requisição HTTP: " & HttpReq.Status & ": " & HttpReq.statusText & ": " & HttpReq.responseText, vbCritical, "Erro: FunGetAuthorization()"
         FunGetAuthorization = False
     Else
         Set Result = JSON.parse(HttpReq.responseText)
@@ -154,29 +160,30 @@ Public Function FunGetAuthorization() As Boolean
     
 End Function
 
-' - Função para postar o boleto na API
+' - Função para postar o boleto na API (Bradesco)
 ' ----------------------------------------------------------------------------
 Public Function FunPostBoleto(Payload As String) As String
     Dim HttpReq      As New MSXML2.ServerXMLHTTP60
     Dim DiffTime     As Variant
     Dim Status       As Boolean
+    Dim StatusMsg    As String
     Dim UrlBoleto    As String
 
     If XLI_EXPIRESIN > 0 Then
-        ' - Calcula a diferença entre o horário atual e o horário em que foi obtido o token + 10
+        ' - Calcula a diferença entre o horário atual e o horário em que foi obtido o token + 15
         '   (em segundos)
         ' --------------------------------------------------------------------------------------------
-        DiffTime = XLI_EXPIRESIN - (DateDiff("s", XLD_DATETOKEN, Now) + 10)
+        DiffTime = XLI_EXPIRESIN - (DateDiff("s", XLD_DATETOKEN, Now) + 15)
     Else
         DiffTime = -1
     End If
         
-    ' - Se diferença <= ao prazo de expiração, renova o token (lembrando, tem 10 segundos de folga)
+    ' - Se diferença <= ao prazo de expiração, renova o token (lembrando, tem 15 segundos de folga)
     ' --------------------------------------------------------------------------------------------
     If DiffTime <= 0 Then
         Status = FunGetAuthorization()
         If Not Status Then
-            MsgBox "Erro, falha na obtenção do token de autorização.", , "Erro: FunPostBoleto()"
+            MsgBox "Erro, falha na obtenção do token de autorização.", vbCritical, "Erro: FunPostBoleto()"
             Exit Function
         End If
     End If
@@ -214,8 +221,9 @@ Public Function FunPostBoleto(Payload As String) As String
     ' - Trata o retorno
     ' --------------------------------------------------------------------------------------------
     If HttpReq.Status <> 200 Then
-        MsgBox "Erro na requisição HTTP: " & HttpReq.Status & ": " & HttpReq.statusText & ": " & HttpReq.responseText, , "Erro: FunPostBoleto()"
-        FunPostBoleto = ""
+        StatusMsg = "Erro HTTP: " & HttpReq.Status & " : " & HttpReq.statusText & " : " & HttpReq.responseText
+        MsgBox StatusMsg, vbCritical, "Erro: FunPostBoleto()"
+        FunPostBoleto = StatusMsg
     Else
         FunPostBoleto = HttpReq.responseText
     End If
@@ -236,12 +244,16 @@ Public Function FunSendEmail( _
                          Vencimento As String, _
                          valor As Double, _
                          MailTo As String, _
-                Optional UrlAttachment As String = "") As Boolean
+                Optional UrlAttachment As String = "") As String
                     
     Dim CDO As New CDO.Message
     Dim At As Integer
+    Dim Status    As Boolean
+    Dim StatusMsg As String
 
 On Error GoTo errHandler
+
+    Status = False
 
     With CDO.Configuration.Fields
         .Item(cdoSMTPAuthenticate) = CdoProtocolsAuthentication.cdoBasic                                ' basic (clear-text) authentication
@@ -296,19 +308,31 @@ On Error GoTo errHandler
 
     CDO.Send
 
-    If Err.Number = 0 Then
-        FunSendEmail = True
-    Else
-        MsgBox "Erro no envio do E-mail: " & Err.Number & ": " & Err.Description, vbCritical, "Erro: FunSendEmail()"
-        FunSendEmail = False
-    End If
+'    If Err.Number = 0 Then
+'        FunSendEmail = True
+'    Else
+'        MsgBox "Erro no envio do E-mail: " & Err.Number & ": " & Err.Description, vbCritical, "Erro: FunSendEmail()"
+'        FunSendEmail = False
+'    End If
         
+    FunSendEmail = "Ok"
     Set CDO = Nothing
     Exit Function
     
 errHandler:
-    MsgBox "Erro no envio do E-mail: " & Err.Number & ": " & Err.Description, vbCritical, "Erro: FunSendEmail()"
-    FunSendEmail = False
+
+    If Status = False Then
+        Status = True
+        ' MsgBox "Erro no envio do E-mail. Reenviando em 5 segundos, aguarde ..."
+        Sleep 5000 ' Pauses the application for 5 seconds
+        CDO.Send
+        FunSendEmail = "Ok"
+    Else
+        StatusMsg = "Erro no envio do E-mail: " & Err.Number & " : " & Err.Description
+        MsgBox StatusMsg, vbCritical, "Erro: FunSendEmail()"
+        FunSendEmail = StatusMsg
+    End If
+       
     Set CDO = Nothing
     ' Optionally, you can log the error to a file here
     Exit Function

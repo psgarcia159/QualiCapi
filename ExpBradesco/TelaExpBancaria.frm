@@ -113,7 +113,7 @@ Begin VB.Form TelaExpBancaria
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   140509187
+         Format          =   167772163
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -286,39 +286,39 @@ Begin VB.Form TelaExpBancaria
          TabCaption(1)   =   "Empreendimentos"
          TabPicture(1)   =   "TelaExpBancaria.frx":08E6
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(1)=   "LlbEmpreendimento"
-         Tab(1).Control(2)=   "TDBGridEmpr1"
-         Tab(1).Control(3)=   "TDBGridEmpr2"
-         Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(6)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(4)=   "TDBGridEmpr2"
+         Tab(1).Control(5)=   "TDBGridEmpr1"
+         Tab(1).Control(6)=   "LlbEmpreendimento"
+         Tab(1).Control(7)=   "Label1"
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
          TabPicture(2)   =   "TelaExpBancaria.frx":0902
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "Label3"
-         Tab(2).Control(1)=   "Label2"
-         Tab(2).Control(2)=   "TDBGridMoeda2"
-         Tab(2).Control(3)=   "TDBGridMoeda1"
+         Tab(2).Control(0)=   "CmdRemoverMoeda"
+         Tab(2).Control(1)=   "CmdInserirMoeda"
+         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(5)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(7)=   "CmdInserirMoeda"
-         Tab(2).Control(8)=   "CmdRemoverMoeda"
+         Tab(2).Control(5)=   "TDBGridMoeda1"
+         Tab(2).Control(6)=   "TDBGridMoeda2"
+         Tab(2).Control(7)=   "Label2"
+         Tab(2).Control(8)=   "Label3"
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
          TabPicture(3)   =   "TelaExpBancaria.frx":091E
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "CmdRemoverObservacao"
-         Tab(3).Control(1)=   "CmdInserirObservacao"
-         Tab(3).Control(2)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(3)=   "CmdInserirTodosObservacao"
-         Tab(3).Control(4)=   "TDBGridObs2"
-         Tab(3).Control(5)=   "TDBGridObs1"
-         Tab(3).Control(6)=   "Label5"
-         Tab(3).Control(7)=   "Label4"
+         Tab(3).Control(0)=   "Label4"
+         Tab(3).Control(1)=   "Label5"
+         Tab(3).Control(2)=   "TDBGridObs1"
+         Tab(3).Control(3)=   "TDBGridObs2"
+         Tab(3).Control(4)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(5)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(6)=   "CmdInserirObservacao"
+         Tab(3).Control(7)=   "CmdRemoverObservacao"
          Tab(3).ControlCount=   8
          Begin VB.ComboBox CmbInstrucao 
             Height          =   315
@@ -860,7 +860,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   69730307
+            Format          =   139001859
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -873,7 +873,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   69730307
+            Format          =   167575555
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 

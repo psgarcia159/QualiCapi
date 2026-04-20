@@ -111,20 +111,24 @@ Public Function FunGetAuthorization() As Boolean
     Dim Result       As Object                        ' Retorno/resposta da requisição
     
     ' - Monta o payload (body) da requisição
+    ' --------------------------------------------------------------------------------------------
     Body = "grant_type=" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("OAuth2").Item("GrantType") & _
            "&client_id=" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("OAuth2").Item("ClientId") & _
            "&client_secret=" & XLO_BOLETOS.Item(XLT_ROOTITEM).Item("OAuth2").Item("ClientSecret")
                
     ' - Abre a requisição com o método POST
+    ' --------------------------------------------------------------------------------------------
     HttpReq.Open "POST", XLO_BOLETOS.Item(XLT_ROOTITEM).Item("OAuth2").Item("UrlToken"), False
 
     ' - Monta os headers da requisição
+    ' --------------------------------------------------------------------------------------------
     HttpReq.SetRequestHeader "Content-type", "application/x-www-form-urlencoded"
     HttpReq.SetRequestHeader "Content-Length", Len(Body)
     HttpReq.SetRequestHeader "x-itau-correlationID", FunUUID()
     HttpReq.SetRequestHeader "x-itau-flowID", FunUUID()
    
     ' - Anexa o Certificado à requisição quando é produção
+    ' --------------------------------------------------------------------------------------------
     If XLT_ROOTITEM = "Production" Then
         HttpReq.SetOption 2, HttpReq.getOption(2) And Not SXH_OPTION_IGNORE_SERVER_SSL_CERT_ERROR_FLAGS
         HttpReq.SetOption 3, XLO_BOLETOS.Item(XLT_ROOTITEM).Item("OAuth2").Item("Certificate")
@@ -134,6 +138,8 @@ Public Function FunGetAuthorization() As Boolean
     
     HttpReq.Send Body
         
+   ' - Trata o retorno
+   ' --------------------------------------------------------------------------------------------
     If HttpReq.Status <> 200 Then
         MsgBox "Erro na requisição HTTP: " & HttpReq.Status & ": " & HttpReq.StatusText & ": " & HttpReq.ResponseText, vbCritical, "Erro: FunGetAuthorization()"
         FunGetAuthorization = False
@@ -152,7 +158,7 @@ Public Function FunGetAuthorization() As Boolean
     
 End Function
 
-' - Função para postar o boleto na API
+' - Função para postar o boleto na API (Itaú)
 ' ----------------------------------------------------------------------------
 Public Function FunPostBoleto(Payload As String) As String
     Dim HttpReq      As New MSXML2.ServerXMLHTTP60
@@ -209,6 +215,8 @@ Public Function FunPostBoleto(Payload As String) As String
     ' --------------------------------------------------------------------------------------------
     HttpReq.Send Payload
         
+    ' - Trata o retorno
+    ' --------------------------------------------------------------------------------------------
     If HttpReq.Status <> 200 Then
         StatusMsg = "Erro HTTP: " & HttpReq.Status & " : " & HttpReq.StatusText & " : " & HttpReq.ResponseText
         MsgBox StatusMsg, vbCritical, "Erro: FunPostBoleto()"

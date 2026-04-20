@@ -271,7 +271,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   126025731
+         Format          =   141295619
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -444,39 +444,39 @@ Begin VB.Form TelaEmissaoBoletos
          TabCaption(1)   =   "Empreendimentos"
          TabPicture(1)   =   "TelaEmissaoBoletos.frx":08E6
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(1)=   "LlbEmpreendimento"
-         Tab(1).Control(2)=   "TDBGridEmpr1"
-         Tab(1).Control(3)=   "TDBGridEmpr2"
-         Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(6)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(4)=   "TDBGridEmpr2"
+         Tab(1).Control(5)=   "TDBGridEmpr1"
+         Tab(1).Control(6)=   "LlbEmpreendimento"
+         Tab(1).Control(7)=   "Label1"
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
          TabPicture(2)   =   "TelaEmissaoBoletos.frx":0902
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "Label3"
-         Tab(2).Control(1)=   "Label2"
-         Tab(2).Control(2)=   "TDBGridMoeda2"
-         Tab(2).Control(3)=   "TDBGridMoeda1"
+         Tab(2).Control(0)=   "CmdRemoverMoeda"
+         Tab(2).Control(1)=   "CmdInserirMoeda"
+         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(5)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(7)=   "CmdInserirMoeda"
-         Tab(2).Control(8)=   "CmdRemoverMoeda"
+         Tab(2).Control(5)=   "TDBGridMoeda1"
+         Tab(2).Control(6)=   "TDBGridMoeda2"
+         Tab(2).Control(7)=   "Label2"
+         Tab(2).Control(8)=   "Label3"
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
          TabPicture(3)   =   "TelaEmissaoBoletos.frx":091E
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "Label5"
-         Tab(3).Control(1)=   "Label4"
-         Tab(3).Control(2)=   "TDBGridObs1"
-         Tab(3).Control(3)=   "TDBGridObs2"
-         Tab(3).Control(4)=   "CmdRemoverObservacao"
-         Tab(3).Control(5)=   "CmdInserirObservacao"
-         Tab(3).Control(6)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(7)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(0)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(1)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(2)=   "CmdInserirObservacao"
+         Tab(3).Control(3)=   "CmdRemoverObservacao"
+         Tab(3).Control(4)=   "TDBGridObs2"
+         Tab(3).Control(5)=   "TDBGridObs1"
+         Tab(3).Control(6)=   "Label4"
+         Tab(3).Control(7)=   "Label5"
          Tab(3).ControlCount=   8
          Begin VB.CommandButton CmdRemoverEmpreendimento 
             BackColor       =   &H00000000&
@@ -1137,7 +1137,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   114425859
+            Format          =   141623299
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -1150,7 +1150,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   114425859
+            Format          =   141623299
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -3823,7 +3823,7 @@ Private Sub CmdEmitirBoletos_Click()
 
             If XFO_EXPORTACAO!clie_tx_EndCorresp = "" _
                 And XFO_EXPORTACAO!clie_tx_BairroCorresp = "" _
-                And XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -  " _
+                And XFO_EXPORTACAO!clie_nr_CepCorresp = "  .   -   " _
                 And XFO_EXPORTACAO!clie_tx_MunCorresp = "" _
                 And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
 
@@ -4108,7 +4108,6 @@ Private Sub CmdEmitirBoletos_Click()
 '            GoTo WhileNext
             
             
-             
             ' - Registra o boleto no banco Itaú, via API, e retorna um objeto json armazenado em XLO_JSONAPI
             '   (ver README.txt para layout)
             ' --------------------------------------------------------------------------------------------
@@ -4137,7 +4136,7 @@ Private Sub CmdEmitirBoletos_Click()
             End If
             
             If XLT_STATUS <> "" Then
-                ' MsgBox XLT_STATUS & vbCrLf & "Verifique o arquivo de LOG (" & XGT_LOCALARQ & ") antes de reemitir o boleto.", vbCritical, "Erro ao registrar boleto via API"
+                
                 MsgBox XLT_STATUS, vbCritical, "Erro ao registrar boleto via API"
                                 
                 SubRegistraLogAPI XLT_STATUS, XLT_JSON, XLT_JSONOUT
@@ -4152,9 +4151,12 @@ Private Sub CmdEmitirBoletos_Click()
                 Print #XLI_FILENUMBER, XLT_TEXTO
                 
                 GoTo WhileNext
+                
             Else
+            
                 XLT_STATUS = "Boleto registrado na API: " & XFO_EXPORTACAO!focl_tx_RazaoSocial & " (" & XFO_EXPORTACAO!Titulo & ")."
                 SubRegistraLogAPI XLT_STATUS, XLT_JSON, XLT_JSONOUT
+            
             End If
                                         
             ' - Atualiza o titulo com os dados do boleto registrado
@@ -4366,21 +4368,27 @@ Private Sub CmdEmitirBoletos_Click()
             
             If Not (XLO_JSONB2N Is Nothing) Then
                 If JSON.GetParserErrors <> "" Then
+                
                     XLT_STATUS = "Boleto registrado, mas ocorreu erro na emissão: 'Parsing Error(s) occured' - " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
                     " (" & XFO_EXPORTACAO!Titulo & ") -" & JSON.GetParserErrors
+                
                 Else
                     If XLO_JSONB2N.Item("status") <> "OK" Then
+                    
                         XLT_STATUS = "Boleto registrado, mas ocorreu erro na emissão: '" & XLO_JSONB2N.Item("message") & "' - " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
                         " (" & XFO_EXPORTACAO!Titulo & ")."
+                        
                     End If
                 End If
             Else
+            
                 XLT_STATUS = "Boleto registrado, mas ocorreu erro na emissão: 'Indefinido' " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
                 " (" & XFO_EXPORTACAO!Titulo & ")."
+                
             End If
                         
             If XLT_STATUS <> "" Then
-                ' MsgBox XLT_STATUS & vbCrLf & "Verifique o arquivo de LOG (" & XGT_LOCALARQ & ") antes de reemitir o boleto.", vbCritical, "Erro ao emitir boleto"
+            
                 MsgBox XLT_STATUS, vbCritical, "Erro ao emitir boleto"
                 SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
                 
@@ -4393,9 +4401,9 @@ Private Sub CmdEmitirBoletos_Click()
                 Print #XLI_FILENUMBER, XLT_TEXTO
                 
                 GoTo WhileNext
+                
             End If
-            
-                        
+                                    
             ' - Envia e-mail com o boleto (PDF criptografado) em anexo
             ' --------------------------------------------------------------------------------------------
             XLT_MAILSTATUS = FunSendEmail( _
@@ -4413,10 +4421,10 @@ Private Sub CmdEmitirBoletos_Click()
             XLT_STATUS = ""
             
             If Left(XLT_MAILSTATUS, 4) = "Erro" Then
+            
                 XLT_STATUS = "Boleto emitido, mas ocorreu erro no envio por e-mail para " & XFO_EXPORTACAO!focl_tx_RazaoSocial & _
                     " <" & XFO_EXPORTACAO!focl_tx_EMail & "> (" & XFO_EXPORTACAO!Titulo & "). "
-                ' MsgBox XLT_STATUS & vbCrLf & "Verifique o arquivo de LOG (" & XGT_LOCALARQ & ") antes de reenviar o boleto.", vbCritical, "Erro ao enviar boleto"
-                MsgBox XLT_STATUS, vbCritical, "Erro ao enviar boleto"
+                MsgBox XLT_STATUS, vbCritical, "Erro ao enviar o boleto"
                 SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
                 
                 XLT_TEXTO = Chr(34) & XFO_EXPORTACAO!Titulo & Chr(34) & ";" & _
@@ -4429,7 +4437,9 @@ Private Sub CmdEmitirBoletos_Click()
                 Print #XLI_FILENUMBER, XLT_TEXTO
                 
                 GoTo WhileNext
+                
             Else
+            
                 XLT_STATUS = "Boleto registrado, emitido e enviado por e-mail. Processo concluído!"
                 SubRegistraLogBoleto XLT_STATUS, XLT_CODMOEDA, XLF_VALOR, XLF_DESCONTO, XLT_DATADESCONTO, XLO_JSONAPI, XLT_NOSSONUMERO, XLT_NOSSONUMERODV
                 
@@ -4443,6 +4453,7 @@ Private Sub CmdEmitirBoletos_Click()
                 Print #XLI_FILENUMBER, XLT_TEXTO
                 
                 GoTo WhileNext
+                
             End If
 
         End If

@@ -1,4 +1,4 @@
-TelaExpBancaria = -5, 0, 958, 961, C, -1, 2, 718, 576, C
+TelaExpBancaria = -5, 0, 958, 961, , -1, 2, 718, 576, C
 FuncoesGenericas = 982, 7, 1619, 825, C
 AcessoDados = 5, 8, 1102, 624, C
 VariaveisGlobais = 923, 131, 1549, 569, C
@@ -17,7 +17,7 @@ ModQualiCapiPagamento = 22, 22, 700, 388, C
 ModuloImpressao = 110, 110, 676, 548, C
 ModuloLog = 67, 54, 1367, 607, C
 FrmImportacao = -3, -1, 836, 946, C, 44, 44, 837, 492, C
-TelaEmissaoBoletos = 8, 1, 994, 960, C, 50, 33, 781, 601, C
+TelaEmissaoBoletos = 8, 1, 994, 960, Z, 50, 33, 781, 601, C
 ModBoletos = -14, -2, 942, 959, C
 JSON = 237, 82, 1537, 635, C
 cStringBuilder = 0, 0, 0, 0, C
