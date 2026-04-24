@@ -226,39 +226,64 @@ Begin VB.Form TelaExpBancaria
          TabCaption(1)   =   "Empreendimentos"
          TabPicture(1)   =   "TelaExpBancaria.frx":001C
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
-         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(4)=   "TDBGridEmpr2"
-         Tab(1).Control(5)=   "TDBGridEmpr1"
-         Tab(1).Control(6)=   "LlbEmpreendimento"
-         Tab(1).Control(7)=   "Label1"
+         Tab(1).Control(0)=   "LlbEmpreendimento"
+         Tab(1).Control(0).Enabled=   0   'False
+         Tab(1).Control(1)=   "Label1"
+         Tab(1).Control(1).Enabled=   0   'False
+         Tab(1).Control(2)=   "TDBGridEmpr1"
+         Tab(1).Control(2).Enabled=   0   'False
+         Tab(1).Control(3)=   "TDBGridEmpr2"
+         Tab(1).Control(3).Enabled=   0   'False
+         Tab(1).Control(4)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(4).Enabled=   0   'False
+         Tab(1).Control(5)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(5).Enabled=   0   'False
+         Tab(1).Control(6)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(6).Enabled=   0   'False
+         Tab(1).Control(7)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(7).Enabled=   0   'False
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
          TabPicture(2)   =   "TelaExpBancaria.frx":0038
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "CmdRemoverMoeda"
-         Tab(2).Control(1)=   "CmdInserirMoeda"
-         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(5)=   "TDBGridMoeda1"
-         Tab(2).Control(6)=   "TDBGridMoeda2"
-         Tab(2).Control(7)=   "Label2"
-         Tab(2).Control(8)=   "Label3"
+         Tab(2).Control(0)=   "Label2"
+         Tab(2).Control(0).Enabled=   0   'False
+         Tab(2).Control(1)=   "Label3"
+         Tab(2).Control(1).Enabled=   0   'False
+         Tab(2).Control(2)=   "TDBGridMoeda2"
+         Tab(2).Control(2).Enabled=   0   'False
+         Tab(2).Control(3)=   "TDBGridMoeda1"
+         Tab(2).Control(3).Enabled=   0   'False
+         Tab(2).Control(4)=   "CmdRemoverMoeda"
+         Tab(2).Control(4).Enabled=   0   'False
+         Tab(2).Control(5)=   "CmdInserirMoeda"
+         Tab(2).Control(5).Enabled=   0   'False
+         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(6).Enabled=   0   'False
+         Tab(2).Control(7)=   "CmdInserirTodosMoeda"
+         Tab(2).Control(7).Enabled=   0   'False
+         Tab(2).Control(8)=   "FraCorrecao"
+         Tab(2).Control(8).Enabled=   0   'False
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
          TabPicture(3)   =   "TelaExpBancaria.frx":0054
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "CmdInserirTodosObservacao"
-         Tab(3).Control(1)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(2)=   "CmdInserirObservacao"
-         Tab(3).Control(3)=   "CmdRemoverObservacao"
-         Tab(3).Control(4)=   "TDBGridObs2"
-         Tab(3).Control(5)=   "TDBGridObs1"
-         Tab(3).Control(6)=   "Label4"
-         Tab(3).Control(7)=   "Label5"
+         Tab(3).Control(0)=   "Label5"
+         Tab(3).Control(0).Enabled=   0   'False
+         Tab(3).Control(1)=   "Label4"
+         Tab(3).Control(1).Enabled=   0   'False
+         Tab(3).Control(2)=   "TDBGridObs1"
+         Tab(3).Control(2).Enabled=   0   'False
+         Tab(3).Control(3)=   "TDBGridObs2"
+         Tab(3).Control(3).Enabled=   0   'False
+         Tab(3).Control(4)=   "CmdRemoverObservacao"
+         Tab(3).Control(4).Enabled=   0   'False
+         Tab(3).Control(5)=   "CmdInserirObservacao"
+         Tab(3).Control(5).Enabled=   0   'False
+         Tab(3).Control(6)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(6).Enabled=   0   'False
+         Tab(3).Control(7)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(7).Enabled=   0   'False
          Tab(3).ControlCount=   8
          Begin VB.TextBox TxtMensagem1 
             Height          =   315
@@ -801,7 +826,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   79101955
+            Format          =   41746435
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -814,7 +839,7 @@ Begin VB.Form TelaExpBancaria
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   79101955
+            Format          =   41746435
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -3808,13 +3833,15 @@ Private Sub BtnConfExportar_Click()
               XLT_TEXTO = XLT_TEXTO & Format(XLT_VALORMULTA, "0000000000")
               
               '41.1 - SACADOR/AVALISTA
-              XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_NOME) = "", Space(22), Trim(Mid(XLT_NOME, 1, 22))) & Space(22 - Len(Trim(Mid(XLT_NOME, 1, 22))))
+              ' Alterado em 20/04/2026 por solicitação da JMJ - Remoção do Sacador/Avalista
+              ' XLT_TEXTO = XLT_TEXTO & IIf(FunNulo(XLT_NOME) = "", Space(22), Trim(Mid(XLT_NOME, 1, 22))) & Space(22 - Len(Trim(Mid(XLT_NOME, 1, 22))))
+              XLT_TEXTO = XLT_TEXTO & Space(22)
               
               '42.1 - INSTRUÇÃO 3
               XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(2)
               
               '43.1 - PRAZO
-              'XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(2 - Len(XLI_PRAZOMORA)) & IIf(FunNulo(XLI_PRAZOMORA) = "", "05", Format(XLI_PRAZOMORA, "00"))
+              ' XLT_TEXTO = XLT_TEXTO & FuncoesGenericas.FunZeros(2 - Len(XLI_PRAZOMORA)) & IIf(FunNulo(XLI_PRAZOMORA) = "", "05", Format(XLI_PRAZOMORA, "00"))
               XLT_TEXTO = XLT_TEXTO & "30"
               
               '44.1 - CÓDIGO DA MOEDA - PREENCHER COM 1
