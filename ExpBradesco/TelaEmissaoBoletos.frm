@@ -271,7 +271,7 @@ Begin VB.Form TelaEmissaoBoletos
          _ExtentY        =   556
          _Version        =   393216
          CustomFormat    =   "dd/MM/yy"
-         Format          =   167772163
+         Format          =   144375811
          CurrentDate     =   37658
       End
       Begin VB.Label LblDesconto 
@@ -444,39 +444,39 @@ Begin VB.Form TelaEmissaoBoletos
          TabCaption(1)   =   "Empreendimentos"
          TabPicture(1)   =   "TelaEmissaoBoletos.frx":08E6
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label1"
-         Tab(1).Control(1)=   "LlbEmpreendimento"
-         Tab(1).Control(2)=   "TDBGridEmpr1"
-         Tab(1).Control(3)=   "TDBGridEmpr2"
-         Tab(1).Control(4)=   "CmdInserirTodosEmpreendimento"
-         Tab(1).Control(5)=   "CmdRemoverTodosEmpreendimento"
-         Tab(1).Control(6)=   "CmdInserirEmpreendimento"
-         Tab(1).Control(7)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(0)=   "CmdRemoverEmpreendimento"
+         Tab(1).Control(1)=   "CmdInserirEmpreendimento"
+         Tab(1).Control(2)=   "CmdRemoverTodosEmpreendimento"
+         Tab(1).Control(3)=   "CmdInserirTodosEmpreendimento"
+         Tab(1).Control(4)=   "TDBGridEmpr2"
+         Tab(1).Control(5)=   "TDBGridEmpr1"
+         Tab(1).Control(6)=   "LlbEmpreendimento"
+         Tab(1).Control(7)=   "Label1"
          Tab(1).ControlCount=   8
          TabCaption(2)   =   "Moedas"
          TabPicture(2)   =   "TelaEmissaoBoletos.frx":0902
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "Label3"
-         Tab(2).Control(1)=   "Label2"
-         Tab(2).Control(2)=   "TDBGridMoeda2"
-         Tab(2).Control(3)=   "TDBGridMoeda1"
+         Tab(2).Control(0)=   "CmdRemoverMoeda"
+         Tab(2).Control(1)=   "CmdInserirMoeda"
+         Tab(2).Control(2)=   "CmdRemoverTodosMoeda"
+         Tab(2).Control(3)=   "CmdInserirTodosMoeda"
          Tab(2).Control(4)=   "FraCorrecao"
-         Tab(2).Control(5)=   "CmdInserirTodosMoeda"
-         Tab(2).Control(6)=   "CmdRemoverTodosMoeda"
-         Tab(2).Control(7)=   "CmdInserirMoeda"
-         Tab(2).Control(8)=   "CmdRemoverMoeda"
+         Tab(2).Control(5)=   "TDBGridMoeda1"
+         Tab(2).Control(6)=   "TDBGridMoeda2"
+         Tab(2).Control(7)=   "Label2"
+         Tab(2).Control(8)=   "Label3"
          Tab(2).ControlCount=   9
          TabCaption(3)   =   "Observações"
          TabPicture(3)   =   "TelaEmissaoBoletos.frx":091E
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "Label5"
-         Tab(3).Control(1)=   "Label4"
-         Tab(3).Control(2)=   "TDBGridObs1"
-         Tab(3).Control(3)=   "TDBGridObs2"
-         Tab(3).Control(4)=   "CmdRemoverObservacao"
-         Tab(3).Control(5)=   "CmdInserirObservacao"
-         Tab(3).Control(6)=   "CmdRemoverTodosObservacao"
-         Tab(3).Control(7)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(0)=   "CmdInserirTodosObservacao"
+         Tab(3).Control(1)=   "CmdRemoverTodosObservacao"
+         Tab(3).Control(2)=   "CmdInserirObservacao"
+         Tab(3).Control(3)=   "CmdRemoverObservacao"
+         Tab(3).Control(4)=   "TDBGridObs2"
+         Tab(3).Control(5)=   "TDBGridObs1"
+         Tab(3).Control(6)=   "Label4"
+         Tab(3).Control(7)=   "Label5"
          Tab(3).ControlCount=   8
          Begin VB.CommandButton CmdRemoverEmpreendimento 
             BackColor       =   &H00000000&
@@ -1137,7 +1137,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "MM/yy"
-            Format          =   167510019
+            Format          =   184090627
             CurrentDate     =   37636
          End
          Begin MSComCtl2.DTPicker DtpExportacao 
@@ -1150,7 +1150,7 @@ Begin VB.Form TelaEmissaoBoletos
             _ExtentY        =   556
             _Version        =   393216
             CustomFormat    =   "dd/MM/yy"
-            Format          =   167510019
+            Format          =   184090627
             CurrentDate     =   37180
          End
          Begin Threed.SSCommand CmdLimparTipoPlano 
@@ -3861,13 +3861,13 @@ Private Sub CmdEmitirBoletos_Click()
                 And XFO_EXPORTACAO!clie_tx_EstCorresp = "" Then
 
                 If XFO_EXPORTACAO!focl_tx_Tipo = "J" Then
-                    XLT_ENDERECO = Left$(XFO_EXPORTACAO!focl_tx_Endereco, 45) + Space(45 - Len(Left$(XFO_EXPORTACAO!focl_tx_Endereco, 45)))
+                    XLT_ENDERECO = Left$(XFO_EXPORTACAO!focl_tx_Endereco, 40) + Space(40 - Len(Left$(XFO_EXPORTACAO!focl_tx_Endereco, 40)))
                     XLT_BAIRRO = Left$(XFO_EXPORTACAO!focl_tx_Bairro, 15) + Space(15 - Len(Left$(XFO_EXPORTACAO!focl_tx_Bairro, 15)))
                     XLT_CIDADE = Left$(XFO_EXPORTACAO!focl_tx_Cidade, 20) + Space(20 - Len(Left$(XFO_EXPORTACAO!focl_tx_Cidade, 20)))
                     XLT_ESTADO = Left$(XFO_EXPORTACAO!focl_tx_Estado, 2) + Space(2 - Len(Left$(XFO_EXPORTACAO!focl_tx_Estado, 2)))
                     XLT_CEP = Trim(Replace(Replace(XFO_EXPORTACAO!focl_tx_Cep, ".", ""), "-", ""))
                 Else
-                    XLT_ENDERECO = Left$(XFO_EXPORTACAO!clie_tx_EndResidencial, 45) + Space(45 - Len(Left$(XFO_EXPORTACAO!clie_tx_EndResidencial, 45)))
+                    XLT_ENDERECO = Left$(XFO_EXPORTACAO!clie_tx_EndResidencial, 40) + Space(40 - Len(Left$(XFO_EXPORTACAO!clie_tx_EndResidencial, 40)))
                     XLT_BAIRRO = Left$(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15) + Space(15 - Len(Left$(XFO_EXPORTACAO!clie_tx_BairroResidencial, 15)))
                     XLT_CIDADE = Left$(XFO_EXPORTACAO!clie_tx_MunResidencial, 20) + Space(20 - Len(Left$(XFO_EXPORTACAO!clie_tx_MunResidencial, 20)))
                     XLT_ESTADO = Left$(XFO_EXPORTACAO!clie_tx_EstResidencial, 2) + Space(2 - Len(Left$(XFO_EXPORTACAO!clie_tx_EstResidencial, 2)))
@@ -4265,17 +4265,17 @@ Private Sub CmdEmitirBoletos_Click()
             XLT_JSON = XLT_JSON & _
             FunJsonString("Sacado", "{ ", False) & _
             FunJsonString("CPFCNPJ", XFO_EXPORTACAO!focl_tx_CGCCPF) & ", " & _
-            FunJsonString("Nome", Trim(XLT_NOME)) & ", " & _
+            FunJsonString("Nome", RemoverCaracteresEspeciais(Trim(XLT_NOME))) & ", " & _
             FunJsonString("Observacoes", "") & ", "
 
             ' --- { Sacado { Endereco { } },
             XLT_JSON = XLT_JSON & _
             FunJsonString("Endereco", "{ ", False) & _
-            FunJsonString("LogradouroEndereco", Trim(XLT_ENDERECO)) & ", " & _
+            FunJsonString("LogradouroEndereco", RemoverCaracteresEspeciais(IIf(XLT_ENDERECO <> "", Trim(XLT_ENDERECO), ""))) & ", " & _
             FunJsonString("LogradouroNumero", "") & ", " & _
             FunJsonString("LogradouroComplemento", "") & ", " & _
-            FunJsonString("Bairro", Trim(XLT_BAIRRO)) & ", " & _
-            FunJsonString("Cidade", Trim(XLT_CIDADE)) & ", " & _
+            FunJsonString("Bairro", RemoverCaracteresEspeciais(IIf(XLT_BAIRRO <> "", Trim(XLT_BAIRRO), ""))) & ", " & _
+            FunJsonString("Cidade", RemoverCaracteresEspeciais(IIf(XLT_CIDADE <> "", Trim(XLT_CIDADE), ""))) & ", " & _
             FunJsonString("UF", Trim(XLT_ESTADO)) & ", " & _
             FunJsonString("CEP", IIf(XLT_CEP <> "", XLT_CEP, " ")) & " } }, "
 
@@ -4331,6 +4331,7 @@ Private Sub CmdEmitirBoletos_Click()
             ' - Emitir boleto, salvar em PDF com senha usando biblioteca externa (dll)
             '   Corrige as contrabarras, para o parse do json (vem C:/xx\yy, deveria ser C:\\xx\\yy)
             ' --------------------------------------------------------------------------------------------
+            XLT_JSON = FunRemoveSpaces(XLT_JSON)
             Set XLO_JSONB2N = JSON.parse(Replace(Replace(BoletoService.EmiteBoleto(XLT_JSON), "/", "\"), "\", "\\"))
             
             XLT_STATUS = ""
